@@ -84,25 +84,16 @@
 
 
 
-<meta name="description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#includevoid gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window)
-{
-GtkIMContextClass *klass;
-g_return_if_fail (G">
+<meta name="description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#include”gtk/gtkimcontext.h”void gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window){GtkIMContextClass *klass;g_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ubuntu下sublime中文输入问题">
 <meta property="og:url" content="https://github.com/DuncanZhou/2016/12/09/ubuntu-sublime/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#includevoid gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window)
-{
-GtkIMContextClass *klass;
-g_return_if_fail (G">
-<meta property="og:updated_time" content="2016-12-09T05:06:53.561Z">
+<meta property="og:description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#include”gtk/gtkimcontext.h”void gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window){GtkIMContextClass *klass;g_">
+<meta property="og:updated_time" content="2016-12-09T05:28:29.888Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ubuntu下sublime中文输入问题">
-<meta name="twitter:description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#includevoid gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window)
-{
-GtkIMContextClass *klass;
-g_return_if_fail (G">
+<meta name="twitter:description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#include”gtk/gtkimcontext.h”void gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window){GtkIMContextClass *klass;g_">
 
 
 
@@ -194,7 +185,7 @@ g_return_if_fail (G">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -204,7 +195,7 @@ g_return_if_fail (G">
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -283,8 +274,8 @@ g_return_if_fail (G">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T13:06:53+08:00">
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T13:28:29+08:00">
                 2016-12-09
               </time>
             
@@ -320,21 +311,7 @@ g_return_if_fail (G">
       
 
       
-        <h1 id="ubuntu下安装的sublime-text中文不能输入问题："><a href="#ubuntu下安装的sublime-text中文不能输入问题：" class="headerlink" title="ubuntu下安装的sublime text中文不能输入问题："></a>ubuntu下安装的sublime text中文不能输入问题：</h1><h2 id="a-保存下面的代码到文件sublime-imfix-c-位于-目录"><a href="#a-保存下面的代码到文件sublime-imfix-c-位于-目录" class="headerlink" title="a.保存下面的代码到文件sublime_imfix.c(位于~目录)"></a>a.保存下面的代码到文件sublime_imfix.c(位于~目录)</h2><p>#include<gtk gtkimcontext.h=""><br>void gtk_im_context_set_client_window (GtkIMContext <em>context, GdkWindow  </em>window)</gtk></p>
-<p>{</p>
-<p>GtkIMContextClass *klass;</p>
-<p>g_return_if_fail (GTK_IS_IM_CONTEXT (context));</p>
-<p>klass = GTK_IM_CONTEXT_GET_CLASS (context);</p>
-<p>if (klass-&gt;set_client_window)</p>
-<p>klass-&gt;set_client_window (context, window);</p>
-<p>g_object_set_data(G_OBJECT(context),”window”,window);</p>
-<p>if(!GDK_IS_WINDOW (window))</p>
-<p>return;</p>
-<p>int width = gdk_window_get_width(window);</p>
-<p>int height = gdk_window_get_height(window);</p>
-<p>if(width != 0 &amp;&amp; height !=0)</p>
-<p>gtk_im_context_focus_in(context);</p>
-<p>}</p>
+        <h1 id="ubuntu下安装的sublime-text中文不能输入问题："><a href="#ubuntu下安装的sublime-text中文不能输入问题：" class="headerlink" title="ubuntu下安装的sublime text中文不能输入问题："></a>ubuntu下安装的sublime text中文不能输入问题：</h1><h2 id="a-保存下面的代码到文件sublime-imfix-c-位于-目录"><a href="#a-保存下面的代码到文件sublime-imfix-c-位于-目录" class="headerlink" title="a.保存下面的代码到文件sublime_imfix.c(位于~目录)"></a>a.保存下面的代码到文件sublime_imfix.c(位于~目录)</h2><p>#include”gtk/gtkimcontext.h”<br>void gtk_im_context_set_client_window (GtkIMContext <em>context, GdkWindow  </em>window)<br>{<br>GtkIMContextClass *klass;<br>g_return_if_fail (GTK_IS_IM_CONTEXT (context));<br>klass = GTK_IM_CONTEXT_GET_CLASS (context);<br>if (klass-&gt;set_client_window)<br>klass-&gt;set_client_window (context, window);<br>g_object_set_data(G_OBJECT(context),”window”,window);<br>if(!GDK_IS_WINDOW (window))<br>return;<br>int width = gdk_window_get_width(window);<br>int height = gdk_window_get_height(window);<br>if(width != 0 &amp;&amp; height !=0)<br>gtk_im_context_focus_in(context);<br>}</p>
 <h2 id="b-将上一步的代码编译成共享库libsublime-imfix-so，命令"><a href="#b-将上一步的代码编译成共享库libsublime-imfix-so，命令" class="headerlink" title="b.将上一步的代码编译成共享库libsublime-imfix.so，命令"></a>b.将上一步的代码编译成共享库libsublime-imfix.so，命令</h2><p>gcc -shared -o libsublime-imfix.so sublime_imfix.c  <code>pkg-config --libs --cflags gtk+-2.0</code> -fPIC<br>    注意：如果提示 gtk/gtkimcontext.h：没有那个文件或目录，那就是没有相关的依赖软件，安装命令：</p>
 <p>sudo apt-get install build-essential libgtk2.0-dev</p>
 <h2 id="c-将libsublime-imfix-so拷贝到sublime-text所在文件夹"><a href="#c-将libsublime-imfix-so拷贝到sublime-text所在文件夹" class="headerlink" title="c.将libsublime-imfix.so拷贝到sublime_text所在文件夹"></a>c.将libsublime-imfix.so拷贝到sublime_text所在文件夹</h2><p>sudo mv libsublime-imfix.so /opt/sublime_text/</p>
@@ -428,10 +405,10 @@ g_return_if_fail (G">
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -448,7 +425,7 @@ g_return_if_fail (G">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">2</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -515,7 +492,7 @@ g_return_if_fail (G">
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
