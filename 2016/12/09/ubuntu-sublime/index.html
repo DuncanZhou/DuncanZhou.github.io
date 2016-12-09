@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#includevoid gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window)
+{
+GtkIMContextClass *klass;
+g_return_if_fail (G">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/2016/12/09/ubuntu-sublime/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#includevoid gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window)
+{
+GtkIMContextClass *klass;
+g_return_if_fail (G">
+<meta property="og:updated_time" content="2016-12-09T04:27:40.382Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#includevoid gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window)
+{
+GtkIMContextClass *klass;
+g_return_if_fail (G">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ubuntu-sublime" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/12/09/ubuntu-sublime/" class="article-date">
+  <time datetime="2016-12-09T04:27:40.418Z" itemprop="datePublished">2016-12-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="ubuntu下安装的sublime-text中文不能输入问题："><a href="#ubuntu下安装的sublime-text中文不能输入问题：" class="headerlink" title="ubuntu下安装的sublime text中文不能输入问题："></a>ubuntu下安装的sublime text中文不能输入问题：</h2><h1 id="a-保存下面的代码到文件sublime-imfix-c-位于-目录"><a href="#a-保存下面的代码到文件sublime-imfix-c-位于-目录" class="headerlink" title="a.保存下面的代码到文件sublime_imfix.c(位于~目录)"></a>a.保存下面的代码到文件sublime_imfix.c(位于~目录)</h1><p>#include<gtk gtkimcontext.h=""><br>void gtk_im_context_set_client_window (GtkIMContext <em>context, GdkWindow  </em>window)</gtk></p>
+<p>{</p>
+<p>GtkIMContextClass *klass;</p>
+<p>g_return_if_fail (GTK_IS_IM_CONTEXT (context));</p>
+<p>klass = GTK_IM_CONTEXT_GET_CLASS (context);</p>
+<p>if (klass-&gt;set_client_window)</p>
+<p>klass-&gt;set_client_window (context, window);</p>
+<p>g_object_set_data(G_OBJECT(context),”window”,window);</p>
+<p>if(!GDK_IS_WINDOW (window))</p>
+<p>return;</p>
+<p>int width = gdk_window_get_width(window);</p>
+<p>int height = gdk_window_get_height(window);</p>
+<p>if(width != 0 &amp;&amp; height !=0)</p>
+<p>gtk_im_context_focus_in(context);</p>
+<p>}</p>
+<h1 id="b-将上一步的代码编译成共享库libsublime-imfix-so，命令"><a href="#b-将上一步的代码编译成共享库libsublime-imfix-so，命令" class="headerlink" title="b.将上一步的代码编译成共享库libsublime-imfix.so，命令"></a>b.将上一步的代码编译成共享库libsublime-imfix.so，命令</h1><p>gcc -shared -o libsublime-imfix.so sublime_imfix.c  <code>pkg-config --libs --cflags gtk+-2.0</code> -fPIC<br>    注意：如果提示 gtk/gtkimcontext.h：没有那个文件或目录，那就是没有相关的依赖软件，安装命令：</p>
+<p>sudo apt-get install build-essential libgtk2.0-dev</p>
+<h1 id="c-将libsublime-imfix-so拷贝到sublime-text所在文件夹"><a href="#c-将libsublime-imfix-so拷贝到sublime-text所在文件夹" class="headerlink" title="c.将libsublime-imfix.so拷贝到sublime_text所在文件夹"></a>c.将libsublime-imfix.so拷贝到sublime_text所在文件夹</h1><p>sudo mv libsublime-imfix.so /opt/sublime_text/</p>
+<h1 id="d-修改文件-usr-bin-subl的内容"><a href="#d-修改文件-usr-bin-subl的内容" class="headerlink" title="d.修改文件/usr/bin/subl的内容"></a>d.修改文件/usr/bin/subl的内容</h1><p>sudo gedit /usr/bin/subl<br>将</p>
+<p>#!/bin/sh</p>
+<p>exec /opt/sublime_text/sublime_text “$@”</p>
+<p>修改为</p>
+<p>#!/bin/sh</p>
+<p>LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so exec /opt/sublime_text/sublime_text “$@”</p>
+<p>原文链接：<a href="http://www.jianshu.com/p/1f3a3e4f4e92" target="_blank" rel="external">http://www.jianshu.com/p/1f3a3e4f4e92</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2016/12/09/ubuntu-sublime/" data-id="ciwhaiezf0000chjcf6x7vm6l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/11/08/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Hello World</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">December 2016</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/11/">November 2016</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2016/12/09/ubuntu-sublime/">(no title)</a>
+          </li>
+        
+          <li>
+            <a href="/2016/11/08/hello-world/">Hello World</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2016 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
