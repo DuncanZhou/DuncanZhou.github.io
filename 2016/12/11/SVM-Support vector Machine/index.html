@@ -84,15 +84,38 @@
 
 
 
-<meta name="description" content="write something useful">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Duncan's Blog">
-<meta property="og:url" content="https://github.com/DuncanZhou/index.html">
+<meta name="description" content="支持向量机(SVM-Support Vector Machine)：定义1.SVM是一种分类算法，是一种二类分类模型,用于解决分类和回归问题。通过寻求结构化风险最小来提高学习机泛化能力，实现经验风险和置信范围最小化，从而达到在统计样本量较少的情况下，亦能获得良好统计规律的目的。
+
+i.e.给定一个包含正例和反例的样本集合，svm的目的是寻找一个超平面来对样本进行分割，把样本中的正例面和反例面分开，">
+<meta property="og:type" content="article">
+<meta property="og:title" content="支持向量机(Support Vector Machine)学习">
+<meta property="og:url" content="https://github.com/DuncanZhou/2016/12/11/SVM-Support vector Machine/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="write something useful">
+<meta property="og:description" content="支持向量机(SVM-Support Vector Machine)：定义1.SVM是一种分类算法，是一种二类分类模型,用于解决分类和回归问题。通过寻求结构化风险最小来提高学习机泛化能力，实现经验风险和置信范围最小化，从而达到在统计样本量较少的情况下，亦能获得良好统计规律的目的。
+
+i.e.给定一个包含正例和反例的样本集合，svm的目的是寻找一个超平面来对样本进行分割，把样本中的正例面和反例面分开，">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/1.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/2.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/3.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/4.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/5.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/6.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/7.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/8.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/9.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/10.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/11.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/15.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/12.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/13.PNG">
+<meta property="og:image" content="https://github.com/DuncanZhou/images/raw/master/14.PNG">
+<meta property="og:updated_time" content="2016-12-11T03:39:12.134Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Duncan's Blog">
-<meta name="twitter:description" content="write something useful">
+<meta name="twitter:title" content="支持向量机(Support Vector Machine)学习">
+<meta name="twitter:description" content="支持向量机(SVM-Support Vector Machine)：定义1.SVM是一种分类算法，是一种二类分类模型,用于解决分类和回归问题。通过寻求结构化风险最小来提高学习机泛化能力，实现经验风险和置信范围最小化，从而达到在统计样本量较少的情况下，亦能获得良好统计规律的目的。
+
+i.e.给定一个包含正例和反例的样本集合，svm的目的是寻找一个超平面来对样本进行分割，把样本中的正例面和反例面分开，">
+<meta name="twitter:image" content="https://github.com/DuncanZhou/images/raw/master/1.PNG">
 
 
 
@@ -120,13 +143,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2016/12/11/SVM-Support vector Machine/"/>
 
 
 
 
 
-  <title> Duncan's Blog </title>
+  <title> 支持向量机(Support Vector Machine)学习 | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -147,9 +170,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -228,9 +249,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -263,10 +284,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/12/11/SVM-Support vector Machine/" itemprop="url">
-                  支持向量机(Support Vector Machine)学习
-                </a>
+                支持向量机(Support Vector Machine)学习
               
             
           </h1>
@@ -315,9 +333,7 @@
       
 
       
-        
-          
-            <h1 id="支持向量机-SVM-Support-Vector-Machine-："><a href="#支持向量机-SVM-Support-Vector-Machine-：" class="headerlink" title="支持向量机(SVM-Support Vector Machine)："></a>支持向量机(SVM-Support Vector Machine)：</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>1.SVM是一种分类算法，是一种<em>二类分类模型</em>,用于解决分类和回归问题。通过寻求结构化风险最小来提高学习机泛化能力，实现经验风险和置信范围最小化，从而达到在统计样本量较少的情况下，亦能获得良好统计规律的目的。</p>
+        <h1 id="支持向量机-SVM-Support-Vector-Machine-："><a href="#支持向量机-SVM-Support-Vector-Machine-：" class="headerlink" title="支持向量机(SVM-Support Vector Machine)："></a>支持向量机(SVM-Support Vector Machine)：</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>1.SVM是一种分类算法，是一种<em>二类分类模型</em>,用于解决分类和回归问题。通过寻求结构化风险最小来提高学习机泛化能力，实现经验风险和置信范围最小化，从而达到在统计样本量较少的情况下，亦能获得良好统计规律的目的。</p>
 <blockquote>
 <p><em>i.e.</em><font color="red">给定一个包含正例和反例的样本集合，svm的目的是寻找一个超平面来对样本进行分割，把样本中的正例面和反例面分开，但不是简单的分开，原则是使正例和反例之间的间隔最大，鲁棒性最好。</font></p>
 </blockquote>
@@ -339,16 +355,20 @@
 <p>共性：<img src="https://github.com/DuncanZhou/images/raw/master/13.PNG" alt=""></p>
 <h2 id="支持向量回归（Support-Vector-Regression）"><a href="#支持向量回归（Support-Vector-Regression）" class="headerlink" title="支持向量回归（Support Vector Regression）"></a>支持向量回归（Support Vector Regression）</h2><p>给定样本D={(x1,y1),(x2,y2),…},希望学得一个回归模型，使得f(x)与y尽可能接近，w和b是待确定参数。<br>传统回归模型通常直接基于模型输出f(x)与真实输出y之间的差别来计算损失，当且仅当f(x)与y完全相同时，损失才为0.与次不同，SVR假设我们能容忍f(x)与y之间最多有e的偏差，小于等于e的都算0误差。SVR问题形式化为<img src="https://github.com/DuncanZhou/images/raw/master/14.PNG" alt=""></p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
@@ -357,314 +377,34 @@
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2016/12/09/ubuntu-sublime/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/12/09/ubuntu-sublime/" rel="next" title="ubuntu下sublime中文输入问题">
+                <i class="fa fa-chevron-left"></i> ubuntu下sublime中文输入问题
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/12/09/ubuntu-sublime/" itemprop="url">
-                  ubuntu下sublime中文输入问题
-                </a>
-              
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T13:28:29+08:00">
-                2016-12-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <h1 id="ubuntu下安装的sublime-text中文不能输入问题："><a href="#ubuntu下安装的sublime-text中文不能输入问题：" class="headerlink" title="ubuntu下安装的sublime text中文不能输入问题："></a>ubuntu下安装的sublime text中文不能输入问题：</h1><h2 id="a-保存下面的代码到文件sublime-imfix-c-位于-目录"><a href="#a-保存下面的代码到文件sublime-imfix-c-位于-目录" class="headerlink" title="a.保存下面的代码到文件sublime_imfix.c(位于~目录)"></a>a.保存下面的代码到文件sublime_imfix.c(位于~目录)</h2><p>#include”gtk/gtkimcontext.h”<br>void gtk_im_context_set_client_window (GtkIMContext <em>context, GdkWindow  </em>window)<br>{<br>GtkIMContextClass *klass;<br>g_return_if_fail (GTK_IS_IM_CONTEXT (context));<br>klass = GTK_IM_CONTEXT_GET_CLASS (context);<br>if (klass-&gt;set_client_window)<br>klass-&gt;set_client_window (context, window);<br>g_object_set_data(G_OBJECT(context),”window”,window);<br>if(!GDK_IS_WINDOW (window))<br>return;<br>int width = gdk_window_get_width(window);<br>int height = gdk_window_get_height(window);<br>if(width != 0 &amp;&amp; height !=0)<br>gtk_im_context_focus_in(context);<br>}</p>
-<h2 id="b-将上一步的代码编译成共享库libsublime-imfix-so，命令"><a href="#b-将上一步的代码编译成共享库libsublime-imfix-so，命令" class="headerlink" title="b.将上一步的代码编译成共享库libsublime-imfix.so，命令"></a>b.将上一步的代码编译成共享库libsublime-imfix.so，命令</h2><p>gcc -shared -o libsublime-imfix.so sublime_imfix.c  <code>pkg-config --libs --cflags gtk+-2.0</code> -fPIC<br>    注意：如果提示 gtk/gtkimcontext.h：没有那个文件或目录，那就是没有相关的依赖软件，安装命令：</p>
-<p>sudo apt-get install build-essential libgtk2.0-dev</p>
-<h2 id="c-将libsublime-imfix-so拷贝到sublime-text所在文件夹"><a href="#c-将libsublime-imfix-so拷贝到sublime-text所在文件夹" class="headerlink" title="c.将libsublime-imfix.so拷贝到sublime_text所在文件夹"></a>c.将libsublime-imfix.so拷贝到sublime_text所在文件夹</h2><p>sudo mv libsublime-imfix.so /opt/sublime_text/</p>
-<h2 id="d-修改文件-usr-bin-subl的内容"><a href="#d-修改文件-usr-bin-subl的内容" class="headerlink" title="d.修改文件/usr/bin/subl的内容"></a>d.修改文件/usr/bin/subl的内容</h2><p>sudo gedit /usr/bin/subl<br>将</p>
-<p>#!/bin/sh</p>
-<p>exec /opt/sublime_text/sublime_text “$@”</p>
-<p>修改为</p>
-<p>#!/bin/sh</p>
-<p>LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so exec /opt/sublime_text/sublime_text “$@”</p>
-<p>原文链接：<a href="http://www.jianshu.com/p/1f3a3e4f4e92" target="_blank" rel="external">http://www.jianshu.com/p/1f3a3e4f4e92</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2016/11/01/springmvc-mybatis/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/01/springmvc-mybatis/" itemprop="url">
-                  springmvc-mybatis
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-01T20:13:18+08:00">
-                2016-11-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>SpringMVC+Mybatis配置（基于Maven构建，编辑器Intellij）</p>
-</blockquote>
-<p>本文基于原文<a href="http://doc.okbase.net/fengshizty/archive/126397.html配置环境。" target="_blank" rel="external">http://doc.okbase.net/fengshizty/archive/126397.html配置环境。</a><br>首先说说几个问题<br>1.关于Mybatis-Request processing failed; nested exception is org.apache.ibatis.binding.BindingException: Invalid bound statement (not found):<br>    数据映射xml文件最好在resources下建立mapper文件夹，并将mapper文件夹也设置为resources格式</p>
-<p>2.当在Controller中通过ModelMap返回给视图数据时，如果在jsp页面中使用${}这样的EL语言获取值时，需要在&lt;%@ page contentType=”text/html;charset=UTF-8” language=”java” isELIgnored=”false” %&gt;中添加isELIgnored值为false。</p>
-<p>3.如果使用Mybatis自动生成dao、mapping、model层文件时，尤其是mapping xml文件里的路径一定要注意正确，否则会给你的项目调试带来很大的麻烦。</p>
-<p>4.原文中使用了SpringJUnit4ClassRunner测试，在完成这个步骤时遇到的问题是，这边测试时，Spring的配置并没有加载好，所以在注入dao层的mapper时报错，所以最后是在整个demo完成时再测试的。测试代码如下：</p>
-<pre><code>import com.alibaba.fastjson.JSON;
-import com.duncan.user.model.UserInfo;
-import com.duncan.user.service.UserService;
-import org.apache.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import java.util.List;
-/**
- * Created by DuncanZhou on 2016/10/31.
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { &quot;classpath:spring.xml&quot;,
-        &quot;classpath:spring-mybatis.xml&quot; })
-public class TestUserService {
-    private static final Logger LOGGER = Logger
-            .getLogger(TestUserService.class);
-    @Autowired
-    private UserService userService;
-    @Test
-    public void testQueryById1() {
-        UserInfo userInfo = userService.getUserById(1);
-        LOGGER.info(JSON.toJSON(userInfo));
-    }
-
-//    @Test
-//    public void testQueryAll() {
-//        List&lt;UserInfo&gt; userInfos = userService.getUsers();
-//        LOGGER.info(JSON.toJSON(userInfos));
-//    }
-
-    @Test
-    public void testInsert() {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setName(&quot;xiaoming&quot;);
-        userInfo.setSex(&quot;man&quot;);
-        userInfo.setAge(23);
-        userInfo.setPasswd(&quot;123&quot;);
-        int result = userService.insert(userInfo);
-        System.out.println(result);
-    }
-}
-</code></pre><p>工程目录结构如下<br><img src="http://ww1.sinaimg.cn/large/006BtUvSjw1f9curjlyyaj309z0gg75t.jpg" alt=""> </p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
@@ -672,6 +412,10 @@ public class TestUserService {
 
 
           
+  <div class="comments" id="comments">
+    
+  </div>
+
 
         </div>
         
@@ -691,8 +435,17 @@ public class TestUserService {
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg"
@@ -731,6 +484,22 @@ public class TestUserService {
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#支持向量机-SVM-Support-Vector-Machine-："><span class="nav-number">1.</span> <span class="nav-text">支持向量机(SVM-Support Vector Machine)：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性划分-gt-非线性划分"><span class="nav-number">1.2.</span> <span class="nav-text">线性划分 -> 非线性划分</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-问题"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-解决方案"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.解决方案</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-涉及到的问题"><span class="nav-number">1.2.3.</span> <span class="nav-text">3.涉及到的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-常用的核函数"><span class="nav-number">1.2.4.</span> <span class="nav-text">4.常用的核函数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软间隔与正则化"><span class="nav-number">1.3.</span> <span class="nav-text">软间隔与正则化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#支持向量回归（Support-Vector-Regression）"><span class="nav-number">1.4.</span> <span class="nav-text">支持向量回归（Support Vector Regression）</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
@@ -829,6 +598,10 @@ public class TestUserService {
   
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
 
   
 
