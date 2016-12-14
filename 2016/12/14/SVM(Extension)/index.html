@@ -84,16 +84,31 @@
 
 
 
-<meta name="description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#include”gtk/gtkimcontext.h”void gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window){GtkIMContextClass *klass;g_">
+<meta name="description" content="SMO算法(Sequential Minimal Optimization)1.定义
+SMO算法用于训练SVM，将大优化问题分解为多个小优化问题。这些小优化问题往往很容易求解，并且对它们进行顺序求解的结构与将它们作为整体来求解的结果是完全一致。
+
+2.目标及原理
+SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha，就能求出权重向量w。
+每次循环中选择两个alpha进行优化处理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu下sublime中文输入问题">
-<meta property="og:url" content="https://github.com/DuncanZhou/2016/12/09/ubuntu-sublime/index.html">
+<meta property="og:title" content="支持向量机(Support Vector Machine)学习（补充）">
+<meta property="og:url" content="https://github.com/DuncanZhou/2016/12/14/SVM(Extension)/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#include”gtk/gtkimcontext.h”void gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window){GtkIMContextClass *klass;g_">
-<meta property="og:updated_time" content="2016-12-09T05:28:29.888Z">
+<meta property="og:description" content="SMO算法(Sequential Minimal Optimization)1.定义
+SMO算法用于训练SVM，将大优化问题分解为多个小优化问题。这些小优化问题往往很容易求解，并且对它们进行顺序求解的结构与将它们作为整体来求解的结果是完全一致。
+
+2.目标及原理
+SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha，就能求出权重向量w。
+每次循环中选择两个alpha进行优化处理">
+<meta property="og:updated_time" content="2016-12-14T02:17:10.678Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ubuntu下sublime中文输入问题">
-<meta name="twitter:description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#include”gtk/gtkimcontext.h”void gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window){GtkIMContextClass *klass;g_">
+<meta name="twitter:title" content="支持向量机(Support Vector Machine)学习（补充）">
+<meta name="twitter:description" content="SMO算法(Sequential Minimal Optimization)1.定义
+SMO算法用于训练SVM，将大优化问题分解为多个小优化问题。这些小优化问题往往很容易求解，并且对它们进行顺序求解的结构与将它们作为整体来求解的结果是完全一致。
+
+2.目标及原理
+SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha，就能求出权重向量w。
+每次循环中选择两个alpha进行优化处理">
 
 
 
@@ -121,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2016/12/09/ubuntu-sublime/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2016/12/14/SVM(Extension)/"/>
 
 
 
 
 
-  <title> ubuntu下sublime中文输入问题 | Duncan's Blog </title>
+  <title> 支持向量机(Support Vector Machine)学习（补充） | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -238,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2016/12/09/ubuntu-sublime/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2016/12/14/SVM(Extension)/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -262,7 +277,7 @@
             
             
               
-                ubuntu下sublime中文输入问题
+                支持向量机(Support Vector Machine)学习（补充）
               
             
           </h1>
@@ -275,8 +290,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T13:28:29+08:00">
-                2016-12-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-14T10:17:10+08:00">
+                2016-12-14
               </time>
             
 
@@ -311,17 +326,17 @@
       
 
       
-        <h1 id="ubuntu下安装的sublime-text中文不能输入问题："><a href="#ubuntu下安装的sublime-text中文不能输入问题：" class="headerlink" title="ubuntu下安装的sublime text中文不能输入问题："></a>ubuntu下安装的sublime text中文不能输入问题：</h1><h2 id="a-保存下面的代码到文件sublime-imfix-c-位于-目录"><a href="#a-保存下面的代码到文件sublime-imfix-c-位于-目录" class="headerlink" title="a.保存下面的代码到文件sublime_imfix.c(位于~目录)"></a>a.保存下面的代码到文件sublime_imfix.c(位于~目录)</h2><p>#include”gtk/gtkimcontext.h”<br>void gtk_im_context_set_client_window (GtkIMContext <em>context, GdkWindow  </em>window)<br>{<br>GtkIMContextClass *klass;<br>g_return_if_fail (GTK_IS_IM_CONTEXT (context));<br>klass = GTK_IM_CONTEXT_GET_CLASS (context);<br>if (klass-&gt;set_client_window)<br>klass-&gt;set_client_window (context, window);<br>g_object_set_data(G_OBJECT(context),”window”,window);<br>if(!GDK_IS_WINDOW (window))<br>return;<br>int width = gdk_window_get_width(window);<br>int height = gdk_window_get_height(window);<br>if(width != 0 &amp;&amp; height !=0)<br>gtk_im_context_focus_in(context);<br>}</p>
-<h2 id="b-将上一步的代码编译成共享库libsublime-imfix-so，命令"><a href="#b-将上一步的代码编译成共享库libsublime-imfix-so，命令" class="headerlink" title="b.将上一步的代码编译成共享库libsublime-imfix.so，命令"></a>b.将上一步的代码编译成共享库libsublime-imfix.so，命令</h2><p>gcc -shared -o libsublime-imfix.so sublime_imfix.c  <code>pkg-config --libs --cflags gtk+-2.0</code> -fPIC<br>    注意：如果提示 gtk/gtkimcontext.h：没有那个文件或目录，那就是没有相关的依赖软件，安装命令：</p>
-<p>sudo apt-get install build-essential libgtk2.0-dev</p>
-<h2 id="c-将libsublime-imfix-so拷贝到sublime-text所在文件夹"><a href="#c-将libsublime-imfix-so拷贝到sublime-text所在文件夹" class="headerlink" title="c.将libsublime-imfix.so拷贝到sublime_text所在文件夹"></a>c.将libsublime-imfix.so拷贝到sublime_text所在文件夹</h2><p>sudo mv libsublime-imfix.so /opt/sublime_text/</p>
-<h2 id="d-修改文件-usr-bin-subl的内容"><a href="#d-修改文件-usr-bin-subl的内容" class="headerlink" title="d.修改文件/usr/bin/subl的内容"></a>d.修改文件/usr/bin/subl的内容</h2><p>sudo gedit /usr/bin/subl<br>将</p>
-<p>#!/bin/sh</p>
-<p>exec /opt/sublime_text/sublime_text “$@”</p>
-<p>修改为</p>
-<p>#!/bin/sh</p>
-<p>LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so exec /opt/sublime_text/sublime_text “$@”</p>
-<p>原文链接：<a href="http://www.jianshu.com/p/1f3a3e4f4e92" target="_blank" rel="external">http://www.jianshu.com/p/1f3a3e4f4e92</a></p>
+        <h1 id="SMO算法-Sequential-Minimal-Optimization"><a href="#SMO算法-Sequential-Minimal-Optimization" class="headerlink" title="SMO算法(Sequential Minimal Optimization)"></a>SMO算法(Sequential Minimal Optimization)</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h2><blockquote>
+<p>SMO算法用于训练SVM，将大优化问题分解为多个小优化问题。这些小优化问题往往很容易求解，并且对它们进行顺序求解的结构与将它们作为整体来求解的结果是完全一致。</p>
+</blockquote>
+<h2 id="2-目标及原理"><a href="#2-目标及原理" class="headerlink" title="2.目标及原理"></a>2.目标及原理</h2><blockquote>
+<p>SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha，就能求出权重向量w。</p>
+<p>每次循环中选择两个alpha进行优化处理。一旦找到一对合适的alpha，那么就增大其中一个同时减少另一个。这里所谓的“合适”就是指两个alpha必须要符合一定的条件，条件之一就是这两个alpha必须在间隔边界之外，而其第二个条件则是这两个alpha还没有进行过区间化处理或者不在边界上。</p>
+</blockquote>
+<h2 id="3-调参"><a href="#3-调参" class="headerlink" title="3.调参"></a>3.调参</h2><blockquote>
+<p>SVM中有两个参数<font color="red">C</font>和<font color="red">K1</font>，其中C是惩罚系数，即对误差的宽容度。C越高，说明越不能容忍出误差，容易过拟合。C越小，容易欠拟合。</p>
+<p>k1是参数是RBF函数作为核函数后，该函数自带的一个参数，隐含的决定了数据映射到新的特征空间后的分布，k1越大，支持向量越少，k1越小，支持向量越多。支持向量的个数影响训练与预测的速度。</p>
+</blockquote>
 
       
     </div>
@@ -348,8 +363,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/01/springmvc-mybatis/" rel="next" title="springmvc-mybatis">
-                <i class="fa fa-chevron-left"></i> springmvc-mybatis
+              <a href="/2016/12/12/SVM-Support vector Machine/" rel="next" title="支持向量机(Support Vector Machine)学习">
+                <i class="fa fa-chevron-left"></i> 支持向量机(Support Vector Machine)学习
               </a>
             
           </div>
@@ -357,10 +372,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/12/SVM-Support vector Machine/" rel="prev" title="支持向量机(Support Vector Machine)学习">
-                支持向量机(Support Vector Machine)学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -466,7 +477,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu下安装的sublime-text中文不能输入问题："><span class="nav-number">1.</span> <span class="nav-text">ubuntu下安装的sublime text中文不能输入问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-保存下面的代码到文件sublime-imfix-c-位于-目录"><span class="nav-number">1.1.</span> <span class="nav-text">a.保存下面的代码到文件sublime_imfix.c(位于~目录)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b-将上一步的代码编译成共享库libsublime-imfix-so，命令"><span class="nav-number">1.2.</span> <span class="nav-text">b.将上一步的代码编译成共享库libsublime-imfix.so，命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-将libsublime-imfix-so拷贝到sublime-text所在文件夹"><span class="nav-number">1.3.</span> <span class="nav-text">c.将libsublime-imfix.so拷贝到sublime_text所在文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d-修改文件-usr-bin-subl的内容"><span class="nav-number">1.4.</span> <span class="nav-text">d.修改文件/usr/bin/subl的内容</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SMO算法-Sequential-Minimal-Optimization"><span class="nav-number">1.</span> <span class="nav-text">SMO算法(Sequential Minimal Optimization)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-定义"><span class="nav-number">1.1.</span> <span class="nav-text">1.定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-目标及原理"><span class="nav-number">1.2.</span> <span class="nav-text">2.目标及原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-调参"><span class="nav-number">1.3.</span> <span class="nav-text">3.调参</span></a></li></ol></li></ol></div>
             
 
           </div>
