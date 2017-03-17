@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#include”gtk/gtkimcontext.h”void gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window){GtkIMContextClass *klass;g_">
+<meta name="description" content="论文题目Personalized Search by Tag-based User Profiling and Resource Profile in Collaborative Tagging SystemsConcept
+Collaboative Tagging Systems:协标签系统，类似于YouTube、Flickr这样一类系统，允许用户使用标签对资源进行标注，而得出用户的标签；所以，">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ubuntu下sublime中文输入问题">
-<meta property="og:url" content="https://github.com/DuncanZhou/2016/12/09/ubuntu-sublime/index.html">
+<meta property="og:title" content="Personalized Search论文阅读笔记">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/03/17/Personalized Search by Tag-based in Collaborative Tagging Systems/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#include”gtk/gtkimcontext.h”void gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window){GtkIMContextClass *klass;g_">
-<meta property="og:updated_time" content="2016-12-09T05:28:29.888Z">
+<meta property="og:description" content="论文题目Personalized Search by Tag-based User Profiling and Resource Profile in Collaborative Tagging SystemsConcept
+Collaboative Tagging Systems:协标签系统，类似于YouTube、Flickr这样一类系统，允许用户使用标签对资源进行标注，而得出用户的标签；所以，">
+<meta property="og:updated_time" content="2017-03-17T13:55:43.743Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ubuntu下sublime中文输入问题">
-<meta name="twitter:description" content="ubuntu下安装的sublime text中文不能输入问题：a.保存下面的代码到文件sublime_imfix.c(位于~目录)#include”gtk/gtkimcontext.h”void gtk_im_context_set_client_window (GtkIMContext context, GdkWindow  window){GtkIMContextClass *klass;g_">
+<meta name="twitter:title" content="Personalized Search论文阅读笔记">
+<meta name="twitter:description" content="论文题目Personalized Search by Tag-based User Profiling and Resource Profile in Collaborative Tagging SystemsConcept
+Collaboative Tagging Systems:协标签系统，类似于YouTube、Flickr这样一类系统，允许用户使用标签对资源进行标注，而得出用户的标签；所以，">
 
 
 
@@ -121,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2016/12/09/ubuntu-sublime/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/03/17/Personalized Search by Tag-based in Collaborative Tagging Systems/"/>
 
 
 
 
 
-  <title> ubuntu下sublime中文输入问题 | Duncan's Blog </title>
+  <title> Personalized Search论文阅读笔记 | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -238,7 +241,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2016/12/09/ubuntu-sublime/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/03/17/Personalized Search by Tag-based in Collaborative Tagging Systems/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -262,7 +265,7 @@
             
             
               
-                ubuntu下sublime中文输入问题
+                Personalized Search论文阅读笔记
               
             
           </h1>
@@ -275,8 +278,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T13:28:29+08:00">
-                2016-12-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T21:55:43+08:00">
+                2017-03-17
               </time>
             
 
@@ -311,17 +314,39 @@
       
 
       
-        <h1 id="ubuntu下安装的sublime-text中文不能输入问题："><a href="#ubuntu下安装的sublime-text中文不能输入问题：" class="headerlink" title="ubuntu下安装的sublime text中文不能输入问题："></a>ubuntu下安装的sublime text中文不能输入问题：</h1><h2 id="a-保存下面的代码到文件sublime-imfix-c-位于-目录"><a href="#a-保存下面的代码到文件sublime-imfix-c-位于-目录" class="headerlink" title="a.保存下面的代码到文件sublime_imfix.c(位于~目录)"></a>a.保存下面的代码到文件sublime_imfix.c(位于~目录)</h2><p>#include”gtk/gtkimcontext.h”<br>void gtk_im_context_set_client_window (GtkIMContext <em>context, GdkWindow  </em>window)<br>{<br>GtkIMContextClass *klass;<br>g_return_if_fail (GTK_IS_IM_CONTEXT (context));<br>klass = GTK_IM_CONTEXT_GET_CLASS (context);<br>if (klass-&gt;set_client_window)<br>klass-&gt;set_client_window (context, window);<br>g_object_set_data(G_OBJECT(context),”window”,window);<br>if(!GDK_IS_WINDOW (window))<br>return;<br>int width = gdk_window_get_width(window);<br>int height = gdk_window_get_height(window);<br>if(width != 0 &amp;&amp; height !=0)<br>gtk_im_context_focus_in(context);<br>}</p>
-<h2 id="b-将上一步的代码编译成共享库libsublime-imfix-so，命令"><a href="#b-将上一步的代码编译成共享库libsublime-imfix-so，命令" class="headerlink" title="b.将上一步的代码编译成共享库libsublime-imfix.so，命令"></a>b.将上一步的代码编译成共享库libsublime-imfix.so，命令</h2><p>gcc -shared -o libsublime-imfix.so sublime_imfix.c  <code>pkg-config --libs --cflags gtk+-2.0</code> -fPIC<br>    注意：如果提示 gtk/gtkimcontext.h：没有那个文件或目录，那就是没有相关的依赖软件，安装命令：</p>
-<p>sudo apt-get install build-essential libgtk2.0-dev</p>
-<h2 id="c-将libsublime-imfix-so拷贝到sublime-text所在文件夹"><a href="#c-将libsublime-imfix-so拷贝到sublime-text所在文件夹" class="headerlink" title="c.将libsublime-imfix.so拷贝到sublime_text所在文件夹"></a>c.将libsublime-imfix.so拷贝到sublime_text所在文件夹</h2><p>sudo mv libsublime-imfix.so /opt/sublime_text/</p>
-<h2 id="d-修改文件-usr-bin-subl的内容"><a href="#d-修改文件-usr-bin-subl的内容" class="headerlink" title="d.修改文件/usr/bin/subl的内容"></a>d.修改文件/usr/bin/subl的内容</h2><p>sudo gedit /usr/bin/subl<br>将</p>
-<p>#!/bin/sh</p>
-<p>exec /opt/sublime_text/sublime_text “$@”</p>
-<p>修改为</p>
-<p>#!/bin/sh</p>
-<p>LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so exec /opt/sublime_text/sublime_text “$@”</p>
-<p>原文链接：<a href="http://www.jianshu.com/p/1f3a3e4f4e92" target="_blank" rel="external">http://www.jianshu.com/p/1f3a3e4f4e92</a></p>
+        <h2 id="论文题目"><a href="#论文题目" class="headerlink" title="论文题目"></a>论文题目</h2><h3 id="Personalized-Search-by-Tag-based-User-Profiling-and-Resource-Profile-in-Collaborative-Tagging-Systems"><a href="#Personalized-Search-by-Tag-based-User-Profiling-and-Resource-Profile-in-Collaborative-Tagging-Systems" class="headerlink" title="Personalized Search by Tag-based User Profiling and Resource Profile in Collaborative Tagging Systems"></a>Personalized Search by Tag-based User Profiling and Resource Profile in Collaborative Tagging Systems</h3><h2 id="Concept"><a href="#Concept" class="headerlink" title="Concept"></a>Concept</h2><blockquote>
+<p><strong>Collaboative Tagging Systems</strong>:协标签系统，类似于YouTube、Flickr这样一类系统，允许用户使用标签对资源进行标注，而得出用户的标签；所以，用户具有标签，资源也有标签，这样称为协同标签。</p>
+<p><strong>folksonomy</strong>:大众分类的。如上所说的一些系统中允许用户去标注资源，即，利用大众的力量去分类资源。</p>
+<p><strong>personalized search</strong>:个性化搜索，在返回和查询相关的结果时不仅考虑和搜索的关键词相关，并且考虑用户的profile(偏好)。</p>
+</blockquote>
+<h2 id="About-this-paper"><a href="#About-this-paper" class="headerlink" title="About this paper"></a>About this paper</h2><p>论文中首先总结了之前的工作中对用户和资源的profile构建的方法，用户和资源的profile的tag的权重计算方法有TF、TF-IDF、BM25，以及用户兴趣和资源相似性的计算方法，但这些方法都存在一定的局限性。<br><strong>TF方法</strong>：对于标注比较频繁或者比较活跃的用户，经常使用某些tag标注。如果使用TF计算tag的权重，那么，对于不经常标注资源的用户，其偏好的标签权重必定比活跃的用户tag小很多。</p>
+<p><font color="green">举个例子:</font></p>
+<blockquote>
+<p>Tom = {(tag1:300;tag2:200;tag3:280)}; Jerry = {(tag1:50;tag2:30;tag3:10)} 对于，Tom和Jerry来说，tag1都是其偏好的，但是如果以TF来计算，tag1对于Tom的偏好程度是大于Jerry的，而其实，tag1对Jerry是更为感兴趣的。同理，对于资源标签权重计算方法也存在相似问题。</p>
+</blockquote>
+<p><strong>TF-IDF方法</strong>：这里为TF-IDF的演变版，TF-IUF和TF-IRF。TF-IDF用来表示一个tag能否表示该实体的程度，同理，TF-IUF和TF-IRF表示一个标签能否表示该用户和资源。但是，这里存在的问题是，标签的权值并不能表示用户对于该标签的偏好程度。</p>
+<p><font color="green">举个例子:</font></p>
+<blockquote>
+<p>Tom的标签使用频率如下:[tag1:500;tag2:400;…;tagn:1]。如果使用TF-IDF方法来计算标签权重，那么，tagn的TF-IDF权重是最大的，但是，tagn并不是用户最感兴趣的。同理，对于资源标签权重计算方法也存在相似问题。</p>
+</blockquote>
+<p><strong>BM25</strong>:BM25方法是以TF和TF-IDF的值作为变量，所以BM25方法也存在以上的局限性。</p>
+<p><strong>用户兴趣与资源相似性计算方法</strong>:一般计算该相似度采用的方法是余弦相似性等相似性计算法方法，这存在一些问题。因为现在用户的标签的权值代表的是用户对该tag的感兴趣程度，而不是与目标资源的相关程度，所以用一般相似性计算方法是不合理的。</p>
+<p><font color="green">举个例子:</font></p>
+<blockquote>
+<p>Resource1 = {(tag1:0.9;tag2:0.95;tag3:0.85)}; Resource2 = {(tag1:0.9;tag2:0.1;tag3:0.01)}; User = {(tag1:0.8;tag2:0.5;…;tag3:0.25)}。如果用一般方法计算相似度，那么R1相似性小于R2，而与用户偏好相似的更多是R1。是因为用户对tag1，tag2，tag3都是偏好的，而R2只是对tag1更符合一些。</p>
+</blockquote>
+<p>所以，基于以上方法的不合理之处，该论文提出了计算user和resource标签权值及计算用户兴趣和资源相关性的方法。</p>
+<h2 id="论文提出的方法"><a href="#论文提出的方法" class="headerlink" title="论文提出的方法"></a>论文提出的方法</h2><h3 id="User-Profiles-Modeling"><a href="#User-Profiles-Modeling" class="headerlink" title="User Profiles Modeling"></a>User Profiles Modeling</h3><blockquote>
+<p>某用户中标签的权值 = 该标签被用来标注的次数 / 该用户标签总标注次数</p>
+</blockquote>
+<h3 id="Resources-Profiles-Modeling"><a href="#Resources-Profiles-Modeling" class="headerlink" title="Resources Profiles Modeling"></a>Resources Profiles Modeling</h3><blockquote>
+<p>某资源中标签的权值 = 使用该标签标注该资源的用户数 / 标注该资源的总用户数</p>
+</blockquote>
+<h3 id="Personalized-Search"><a href="#Personalized-Search" class="headerlink" title="Personalized Search"></a>Personalized Search</h3><p>分为查询相似性计算和用户兴趣与查询相似性计算。相关公式见论文。<br>最后，将两个相似性分数融合得到相似性分数。</p>
+<h2 id="实验结果准确性度量标准"><a href="#实验结果准确性度量标准" class="headerlink" title="实验结果准确性度量标准"></a>实验结果准确性度量标准</h2><p>数据集：MovieLens数据集和该论文自己的一个demo系统。</p>
+<p><font color="red">1.标准1</font>:imp = 1 / rp - 1 / rb;rp为新方法对目标资源的等级，rb为baseline方法对目标资源的等级。</p>
+<p><font color="red">2.标准2</font>:HR：命中率计算方法</p>
+<p><font color="red">3.标准3</font>:MRR：平均倒数评级 </p>
 
       
     </div>
@@ -348,8 +373,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/11/01/springmvc-mybatis/" rel="next" title="springmvc-mybatis">
-                <i class="fa fa-chevron-left"></i> springmvc-mybatis
+              <a href="/2016/12/15/BackTrackingNote/" rel="next" title="回溯法笔记">
+                <i class="fa fa-chevron-left"></i> 回溯法笔记
               </a>
             
           </div>
@@ -357,10 +382,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/12/SVM-Support vector Machine/" rel="prev" title="支持向量机(Support Vector Machine)学习">
-                支持向量机(Support Vector Machine)学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -466,7 +487,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ubuntu下安装的sublime-text中文不能输入问题："><span class="nav-number">1.</span> <span class="nav-text">ubuntu下安装的sublime text中文不能输入问题：</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-保存下面的代码到文件sublime-imfix-c-位于-目录"><span class="nav-number">1.1.</span> <span class="nav-text">a.保存下面的代码到文件sublime_imfix.c(位于~目录)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#b-将上一步的代码编译成共享库libsublime-imfix-so，命令"><span class="nav-number">1.2.</span> <span class="nav-text">b.将上一步的代码编译成共享库libsublime-imfix.so，命令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#c-将libsublime-imfix-so拷贝到sublime-text所在文件夹"><span class="nav-number">1.3.</span> <span class="nav-text">c.将libsublime-imfix.so拷贝到sublime_text所在文件夹</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#d-修改文件-usr-bin-subl的内容"><span class="nav-number">1.4.</span> <span class="nav-text">d.修改文件/usr/bin/subl的内容</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#论文题目"><span class="nav-number">1.</span> <span class="nav-text">论文题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Personalized-Search-by-Tag-based-User-Profiling-and-Resource-Profile-in-Collaborative-Tagging-Systems"><span class="nav-number">1.1.</span> <span class="nav-text">Personalized Search by Tag-based User Profiling and Resource Profile in Collaborative Tagging Systems</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Concept"><span class="nav-number">2.</span> <span class="nav-text">Concept</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#About-this-paper"><span class="nav-number">3.</span> <span class="nav-text">About this paper</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#论文提出的方法"><span class="nav-number">4.</span> <span class="nav-text">论文提出的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#User-Profiles-Modeling"><span class="nav-number">4.1.</span> <span class="nav-text">User Profiles Modeling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Resources-Profiles-Modeling"><span class="nav-number">4.2.</span> <span class="nav-text">Resources Profiles Modeling</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Personalized-Search"><span class="nav-number">4.3.</span> <span class="nav-text">Personalized Search</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实验结果准确性度量标准"><span class="nav-number">5.</span> <span class="nav-text">实验结果准确性度量标准</span></a></li></ol></div>
             
 
           </div>
