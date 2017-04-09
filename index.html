@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/04/08/Personalized Search泛读记录/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/04/09/Personalized Search泛读记录/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/08/Personalized Search泛读记录/" itemprop="url">
+                <a class="post-title-link" href="/2017/04/09/Personalized Search泛读记录/" itemprop="url">
                   Personalized Search泛读记录
                 </a>
               
@@ -279,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-08T14:23:39+08:00">
-                2017-04-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-09T16:08:02+08:00">
+                2017-04-09
               </time>
             
 
@@ -324,11 +324,11 @@
 <p>1.3 用户分个体还是某类群体</p>
 <p>在用户model中还需考虑的有长期和短期的兴趣,仅仅根据用户长期的兴趣来推测用户现在想要的搜索结果会有偏差.e.g.一个人之前搜索的”java”都是关于编程语言,但不排除他下一次搜索”java”是要找”java咖啡或者java 岛”.用户的兴趣会改变的.</p>
 <p>对用户可profile的信息有:Clickthrough Histories/Queries Histories/搜索过网页的Snippets/收藏过的书签</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>1.可以入手的方面有三类:user/query/resource(web resource)<br>2.可以选择的对象有两个:Server端和Client-Side端<br>3.可以选择的小问题有:User Profile/个性化搜索的准确性/个性化搜索的评价标准/个性化搜索的隐私问题</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>1.可以入手的方面有三类:user/query/resource(web resource)/evaluation<br>2.可以选择的对象有两个:Server端和Client-Side端<br>3.可以选择的小问题有:User Profile/个性化搜索的准确性/个性化搜索的评价标准/个性化搜索的隐私问题</p>
 <blockquote>
 <p>基本的方法：<br>（1）对Query做扩展或替换<br>比如，用户正在浏览的关于汽车的页面，那么当他搜索“轮廓”时，会将Query的关键词添加“汽车”关键词，使返回的结果是用户想要找的汽车轮廓结果。<br>（2）对结果排序<br>根据user profile，进行相似度匹配对结果重新排序。</p>
 </blockquote>
-<h3 id="泛读论文时方法总结"><a href="#泛读论文时方法总结" class="headerlink" title="泛读论文时方法总结"></a>泛读论文时方法总结</h3><p>其他方法：<br>1）2002年CIKM中将用户的Query分类<br>2）2003年”Scaling Personalized Web Search”根据用户兴趣给页面分配权重用图来计算，类似PageRank<br>3）2005年WWW”A Personalized Search Engine Based on Web-Snippet Hierarchical Clustering”对网页的Snippet做了聚类然后对结果再根据User Profile对查询结果再排序<br><strong><font color="red">(Snippet指的是网页的标题和摘要)</font></strong><br>4）2005年WWW-“CubeSVD: A Novel Approach to Personalized Web Search”将用户的点击链接历史记录(who click which web page)作为user profile部分辅助查询.通过从点击链接记录数据中发现用户的兴趣和搜索信息的模式.<br>5)2005年CIKM”Implicit User Modeling for Personalized Search”User Model方法,完成了一个客户端查询代理.针对长期兴趣可能会改变的问题,本文中利用即时的搜索上下文和隐式的反馈来user model.<br>隐式的反馈信息有着两类:1)根据之前的查询寻找合适的term去扩展现在的query;2)利用用户已经看过的文档形成摘要来对没有看过的文档重新排序<br>6)2005年WI”Personalized Serach Based on User Search History”根据用户搜索历史对用户profile,利用User Profiles来对查询或者snippets分类,然后再对搜索结果重排序<br>7)2005年WI”Personaliezed Search Results with User Interest Hierarchies Learnt from Bookmarks”建立分层的user profile来对查询结果重新排序.<br>8)2005年DATAK期刊”Category ranking for personalzied search”在ODP分类基础上根据用户profile重新选择一个子图结构分类来personalize 查询结果<br>9)2006年WWW”Automatic Identification of User Interest For Personalized Search”利用用户历史点击记录构建user profile来对查询结果重新排序.<br>10)2007年WWW”A Large-scale Evaluation and Analysis of Personalized Search Strategies”评价Personalized Search对于传统搜索是否有提高,并且揭示了Click-Based方法优于profile-based方法<br>11)2007年CIS”Personalized Web Search Using User Profile”在Client-Side构建User Profile,然后对用户的Query根据Profile进行扩充使查询更具体,将Query提交给Search Engine.<br>12)2007WWW”Privacy-Enhancing Personalized Web Search”权衡用户隐私和个性化搜索的需要,将用户无结构的个人数据整合成有结构的User Profile<br>13)2007年SIGIR”Privacy Protection in Personalized Search”在个性化搜索时同时保护用户隐私,在Client-Side保护隐私比在Server-Client要好<br>14)2007年WI”Using Personalized Web Search for Enhancing Common Sense and Folksonomy Based Intelligent Search Systems”对于大众分类标签的这样的系统中,用户检索时对于其他用户标注的内容会检索到不相关的内容,本文利用搜索历史和兴趣分类来建立用户偏好<br>15)2008年CIKM”Matching Task Profiles and User Needs in Personalized Web Search”在Client-Side,同时结合用户之前的<strong><font color="green">历史搜索结果</font></strong>和<strong><font color="green>" 当前的session上下文<="" font=""></font></strong>对用户建立不同粒度的profile.同时结合past search results(search histories)和current session context就弥补了只根据用户长期兴趣造成的缺点.<br>16)</p>
+<h3 id="泛读论文时方法总结"><a href="#泛读论文时方法总结" class="headerlink" title="泛读论文时方法总结"></a>泛读论文时方法总结</h3><p>其他方法：<br>1）2002年CIKM中将用户的Query分类<br>2）2003年”Scaling Personalized Web Search”根据用户兴趣给页面分配权重用图来计算，类似PageRank<br>3）2005年WWW”A Personalized Search Engine Based on Web-Snippet Hierarchical Clustering”对网页的Snippet做了聚类然后对结果再根据User Profile对查询结果再排序<br><strong><font color="red">(Snippet指的是网页的标题和摘要)</font></strong><br>4）2005年WWW-“CubeSVD: A Novel Approach to Personalized Web Search”将用户的点击链接历史记录(who click which web page)作为user profile部分辅助查询.通过从点击链接记录数据中发现用户的兴趣和搜索信息的模式.<br>5)2005年CIKM”Implicit User Modeling for Personalized Search”User Model方法,完成了一个客户端查询代理.针对长期兴趣可能会改变的问题,本文中利用即时的搜索上下文和隐式的反馈来user model.<br>隐式的反馈信息有着两类:1)根据之前的查询寻找合适的term去扩展现在的query;2)利用用户已经看过的文档形成摘要来对没有看过的文档重新排序<br>6)2005年WI”Personalized Serach Based on User Search History”根据用户搜索历史对用户profile,利用User Profiles来对查询或者snippets分类,然后再对搜索结果重排序<br>7)2005年WI”Personaliezed Search Results with User Interest Hierarchies Learnt from Bookmarks”建立分层的user profile来对查询结果重新排序.<br>8)2005年DATAK期刊”Category ranking for personalzied search”在ODP分类基础上根据用户profile重新选择一个子图结构分类来personalize 查询结果<br>9)2006年WWW”Automatic Identification of User Interest For Personalized Search”利用用户历史点击记录构建user profile来对查询结果重新排序.<br><strong><font color="blue">补充:2006年SIGKDD”Mining Long-Term Search History to Improve Search Accuracy”挖掘用户长期的搜索历史提出统计的语言模型</font></strong><br>10)2007年WWW”A Large-scale Evaluation and Analysis of Personalized Search Strategies”评价Personalized Search对于传统搜索是否有提高,并且揭示了Click-Based方法优于profile-based方法<br>11)2007年CIS”Personalized Web Search Using User Profile”在Client-Side构建User Profile,然后对用户的Query根据Profile进行扩充使查询更具体,将Query提交给Search Engine.<br>12)2007WWW”Privacy-Enhancing Personalized Web Search”权衡用户隐私和个性化搜索的需要,将用户无结构的个人数据整合成有结构的User Profile<br>13)2007年SIGIR”Privacy Protection in Personalized Search”在个性化搜索时同时保护用户隐私,在Client-Side保护隐私比在Server-Client要好<br>14)2007年WI”Using Personalized Web Search for Enhancing Common Sense and Folksonomy Based Intelligent Search Systems”对于大众分类标签的这样的系统中,用户检索时对于其他用户标注的内容会检索到不相关的内容,本文利用搜索历史和兴趣分类来建立用户偏好<br>15)2008年CIKM”Matching Task Profiles and User Needs in Personalized Web Search”在Client-Side,同时结合用户之前的<strong><font color="green">历史搜索结果</font></strong>和<strong><font color="green>" 当前的session上下文<="" font=""></font></strong>对用户建立不同粒度的profile.同时结合past search results(search histories)和current session context就弥补了只根据用户长期兴趣造成的缺点.<br>16)2008年WWW”Personalized Search and Exploration with MyTag”一篇DEMO完成了这样一个系统,根据flickr,YouTube和del.icio.us多个系统构造用户profile,在用户查询时完成返回多个平台的个性化资源结果.<br>17)2008年SIGIR”The Impact of History Length on Personalized Search”一篇DEMO基于任务研究web search(Task-based即限制了查询的方向,限制了查询任务),研究了搜索历史的长度对personalized search的影响.<br>18)2009年”Cluster Based Personalized Search”着手了两方面:利用文本聚类方法来Personalized Search和新的evaluation准则<br>19)2009年WSDM”Discovering and Using Groups to Improve Personalized Search”由于利用收集的个人信息来User Profile,但是由于通常User的个人信息通常不足够来构建,所以该篇文章利用其他用户来辅助收集用户个人信息.通过Query的相似性groupize一类用户<br><strong><font color="blue">20)2009年TKDE期刊”Evaluating the Effectiveness of Personalized Web Search”测试了五种personalized search算法,提出了新的评价框架来测试是否personalized search对于不同的用户提出不同的queries在不同的搜索上下文中有没有用.(五种测试方法:2种Click-based和3种Topipcal-interest-based);并且,提出了现有的personalized search的缺点:大多数提出的算法都是运用到所有的用户和查询上(对于有些很明确的查询不需要应用personalized;personalization算法的有效性会根据不同的搜索上下文而不同;现有的论文中测试personalized search的算法是基于少量的参与者积累查询数据集,很少有在真是世界中数据集做测试)</font></strong><br><strong><font color="blue">21)2009年CIKM”Personalized Social Search Based on the User’s Social Network”利用用户的三种社会关系:家庭社会关系/相似社会关系/全部的社会关系来建立user profile</font></strong><br><strong><font color="blue">22)2009年CSE”Social Tagging in Query Expansion:a New Way for Personalized Web Search”对于社交网络和协标注系统利用协标注来对Query进行扩展</font></strong><br><strong><font color="blue">23)2009年Konwl Inf syst”Towards a graph-based user profile modeling for a session-based personalized search”提出了利用图结构来user profile</font></strong><br>24)2010年WWW”Anonymizing User Profiles for Personalized Web Search”关于user profile的隐私保护<br>25)</p>
 
           
         
