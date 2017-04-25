@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/04/15/Personalized Search泛读记录/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/04/25/Personalized Search泛读记录/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/04/15/Personalized Search泛读记录/" itemprop="url">
+                <a class="post-title-link" href="/2017/04/25/Personalized Search泛读记录/" itemprop="url">
                   Personalized Search泛读记录
                 </a>
               
@@ -279,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-15T22:16:35+08:00">
-                2017-04-15
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-25T20:58:19+08:00">
+                2017-04-25
               </time>
             
 
@@ -319,11 +319,15 @@
           
             <h3 id="Backgournd"><a href="#Backgournd" class="headerlink" title="Backgournd"></a>Backgournd</h3><p>搜索在20年前就已出现在互联网，而如今搜索已经无处不在。传统的搜索像这样，用户给出Query，Query中包含1个或多个关键词，搜索引擎通过关键词去检索返回查询结果。然而，在互联网上存在的资源早已是亿万级，所以仅仅用传统的搜索方法去返回给用户查询结果势必会存在大量用户不需要的结果，根据2007年”Tag recommendations in folksonomies”一文中提出不考虑用户偏好返回的搜索结果中仅有20%-45%是用户想要的，另外,用户所想查找的内容也可能远远不在结果的前列，所以，这类问题的解决需要在传统的搜索方法上考虑context-上下文，即，<br>将(1)用户的行为、习惯、兴趣/历史搜索结果等等;(2)资源上下文(3)任务上下文等因素考虑进去。</p>
 <p>网络个性化用于四类:predicting web navigation, assisting personalization information, personalizing content, and personalizing search results<br>有两类方法:协同过滤和user profiles<br>协同过滤的缺点:这种方法能根据大多数人的兴趣推测什么是流行的,但不能预测某一个用户是否对新的页面是否感兴趣.</p>
-<p>1.User Models<br>1.1 可以用来构建用户特征的有<br>a)内容方面:查询的关键词、网页的内容、桌面索引等等<br>b)行为方面:浏览的网页、tag 活动/直接或间接的反馈等<br>c)上下文方面:性别、年龄、地理位置、时间等</p>
-<p>1.2 时间上分短期和长期兴趣</p>
+<p><strong>1.User Models</strong><br>1.1 可以用来构建用户特征的有<br>a)内容方面:查询的关键词、网页的内容、桌面索引等等<br>b)行为方面:浏览的网页、tag 活动/直接或间接的反馈等<br>c)上下文方面:性别、年龄、地理位置、时间等</p>
+<p>1.2 时间上分短期和长期兴趣(将两者结合起来,按时间分配权重)<br>1.2.1长期兴趣偏好建立方式:<br>    行为:具体的查询和URLs<br>    内容:语言模型/主题模型</p>
+<p>1.2.2短期兴趣偏好建立方式:<br>    搜索session的queries</p>
 <p>1.3 用户分个体还是某类群体</p>
 <p><strong><font color="red">Note:</font></strong><br><strong><font size="4">a</font></strong>.在用户model中还需考虑的有长期和短期的兴趣,仅仅根据用户长期的兴趣来推测用户现在想要的搜索结果会有偏差.e.g.一个人之前搜索的”java”都是关于编程语言,但不排除他下一次搜索”java”是要找”java咖啡或者java 岛”.用户的兴趣会改变的.<br><strong><font size="4">b</font></strong>.对用户可profile的信息有:Clickthrough Histories/Queries Histories/搜索过网页的Snippets/收藏过的书签<br><strong><font size="4">c</font></strong>.Domain Ontological:所谓的领域本体（domain-specific ontology）就是对学科概念的一种描述，包括学科中的概念、概念的属性、概念间的关系以及属性和关系的约束。由于知识具有显著的领域特性，所以领域本体能够更为合理而有效地进行知识的表示。<br><strong><font size="4">d</font></strong>.Folksonomy中的challenges:(1)用户标注的tags有很多的同样的拼写,不同意思的单词;有很多同义词;(2)怎么根据tags去对用户偏好建模(Tags聚类/VSM-空间向量模型/领域本体论(有一篇文章中将用户的tags映射到ODP(the Open Directionary Project)-Web topic ontology中))<br>–在Folksonomy中,用户标注的资源都是用户所感兴趣的资源,或者说用户所标注的资源都能代表用户的兴趣偏好;也就是说用户不再仅仅是web资源的消费者,同时用户可以通过承担web的一些任务同时方便其他web用户.(Folksnonomy这样一类系统代表性的有:Flickr.com/Delicious.com/Last.fm)<br><strong><font size="4">e</font></strong>.Clustering:聚类用于两个方面:切分和分层(分级).<br><strong><font size="4">f</font></strong>.<strong>Social Context</strong>:有一些预定义好的值,每个上下文的值都有具体的值.<strong>Verbal Context:</strong>历史查询/点击记录等</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>1.可以入手的方面有三类:user/query/resource(web resource)/evaluation/查询效率<br>2.可以选择的对象有两个:Server端和Client-Side端<br>3.可以选择的小问题有:User Profile/个性化搜索的准确性/个性化搜索的评价标准/个性化搜索的隐私问题</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>1.可以入手的方面有三类:user model(long-term &amp; short-term)/query的替换或扩充/resource(web resource)/privacy/evaluation/查询效率<br>2.可以选择的对象有两个:Server端和Client-Side端</p>
+<p>用户相关性:<br>1.直接的显示反馈<br>2.隐式地从点击熵获得</p>
+<p>用户潜在的意图:<br>1.上下文的元数据<br>    Location/Time/Device</p>
+<p>2.过去的行为<br>    当前的session活动/长期的活动和兴趣偏好</p>
 <blockquote>
 <p>基本的方法：<br>（1）对Query做扩展或替换<br>比如，用户正在浏览的关于汽车的页面，那么当他搜索“轮廓”时，会将Query的关键词添加“汽车”关键词，使返回的结果是用户想要找的汽车轮廓结果。<br>（2）对结果排序<br>根据user profile，进行相似度匹配对结果重新排序。</p>
 </blockquote>
