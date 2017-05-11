@@ -94,7 +94,7 @@
 <meta property="og:description" content="重新选择neo-4j官方的与python交互包，尝试了py2neo包后发现对neo4j了解还不够，很多操作只是浅尝辄止，所以，决定阅读neo4j的官方开发驱动包，并尝试学习Cypher语言，这对以后对人物关系的挖掘是有帮助的．
 
 1.概念neo-4j由两部分组成:relationship,label和property,label或者relationship中包含property,label与la">
-<meta property="og:updated_time" content="2017-05-11T03:53:20.888Z">
+<meta property="og:updated_time" content="2017-05-11T04:14:21.076Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="neo4j官方开发文档阅读记录">
 <meta name="twitter:description" content="重新选择neo-4j官方的与python交互包，尝试了py2neo包后发现对neo4j了解还不够，很多操作只是浅尝辄止，所以，决定阅读neo4j的官方开发驱动包，并尝试学习Cypher语言，这对以后对人物关系的挖掘是有帮助的．
@@ -191,7 +191,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -201,7 +201,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -280,8 +280,8 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T11:53:20+08:00">
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T12:14:21+08:00">
                 2017-05-11
               </time>
             
@@ -331,6 +331,16 @@
 <p>更新结点属性,但不确定图中是否存在一个结点时(这样做的代价是开销很大),总之,使用MERGE,它没有找到就会创建.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MERGE (m:Movie &#123; title:&quot;Cloud Atlas&quot; &#125;)</div><div class="line">ON CREATE SET m.released = 2012</div><div class="line">RETURN m</div></pre></td></tr></table></figure></p>
 <p><font color="red">2.4 where语法</font><br>以下两种写法相同<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (m:Movie)</div><div class="line">WHERE m.title = &quot;The Matrix&quot;</div><div class="line">RETURN m</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MATCH (m:Movie &#123; title: &quot;The Matrix&quot; &#125;)</div><div class="line">RETURN m</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (p:Person)-[r:ACTED_IN]-&gt;(m:Movie)</div><div class="line">WHERE p.name =~ &quot;K.+&quot; OR m.released &gt; 2000 OR &quot;Neo&quot; IN r.roles</div><div class="line">RETURN p,r,m</div></pre></td></tr></table></figure>
+<p>where子句可以用关系来判断<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (p:Person)-[:ACTED_IN]-&gt;(m)</div><div class="line">WHERE NOT (p)-[:DIRECTED]-&gt;()</div><div class="line">RETURN p,m</div></pre></td></tr></table></figure></p>
+<p>使用别名返回值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (p:Person)</div><div class="line">RETURN p, p.name AS name, upper(p.name), coalesce(p.nickname,&quot;n/a&quot;) AS nickname, &#123; name: p.name,</div><div class="line">  label:head(labels(p))&#125; AS person</div></pre></td></tr></table></figure></p>
+<p>聚合函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MATCH (:Person)</div><div class="line">RETURN count(*) AS people</div></pre></td></tr></table></figure></p>
+<p>排序和分页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (a:Person)-[:ACTED_IN]-&gt;(m:Movie)</div><div class="line">RETURN a,count(*) AS appearances</div><div class="line">ORDER BY appearances DESC LIMIT 10;</div></pre></td></tr></table></figure></p>
+<p>聚集<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MATCH (m:Movie)&lt;-[:ACTED_IN]-(a:Person)</div><div class="line">RETURN m.title AS movie, collect(a.name) AS cast, count(*) AS actors</div></pre></td></tr></table></figure></p>
+<p>合并两个结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">MATCH (actor:Person)-[r:ACTED_IN]-&gt;(movie:Movie)</div><div class="line">RETURN actor.name AS name, type(r) AS acted_in, movie.title AS title</div><div class="line">UNION</div><div class="line">MATCH (director:Person)-[r:DIRECTED]-&gt;(movie:Movie)</div><div class="line">RETURN director.name AS name, type(r) AS acted_in, movie.title AS title</div></pre></td></tr></table></figure></p>
+<p>with语法保留中间结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MATCH (person:Person)-[:ACTED_IN]-&gt;(m:Movie)</div><div class="line">WITH person, count(*) AS appearances, collect(m.title) AS movies</div><div class="line">WHERE appearances &gt; 1</div><div class="line">RETURN person.name, appearances, movies</div></pre></td></tr></table></figure></p>
+<p>增加约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE CONSTRAINT ON (movie:Movie) ASSERT movie.title IS UNIQUE</div></pre></td></tr></table></figure></p>
+<p>创建索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE INDEX ON :Actor(name)</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -414,10 +424,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -434,7 +444,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -501,7 +511,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

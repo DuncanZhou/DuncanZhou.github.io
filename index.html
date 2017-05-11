@@ -186,7 +186,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -196,7 +196,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -278,8 +278,8 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T11:53:20+08:00">
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T12:14:21+08:00">
                 2017-05-11
               </time>
             
@@ -331,6 +331,16 @@
 <p>更新结点属性,但不确定图中是否存在一个结点时(这样做的代价是开销很大),总之,使用MERGE,它没有找到就会创建.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MERGE (m:Movie &#123; title:&quot;Cloud Atlas&quot; &#125;)</div><div class="line">ON CREATE SET m.released = 2012</div><div class="line">RETURN m</div></pre></td></tr></table></figure></p>
 <p><font color="red">2.4 where语法</font><br>以下两种写法相同<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (m:Movie)</div><div class="line">WHERE m.title = &quot;The Matrix&quot;</div><div class="line">RETURN m</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MATCH (m:Movie &#123; title: &quot;The Matrix&quot; &#125;)</div><div class="line">RETURN m</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (p:Person)-[r:ACTED_IN]-&gt;(m:Movie)</div><div class="line">WHERE p.name =~ &quot;K.+&quot; OR m.released &gt; 2000 OR &quot;Neo&quot; IN r.roles</div><div class="line">RETURN p,r,m</div></pre></td></tr></table></figure>
+<p>where子句可以用关系来判断<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (p:Person)-[:ACTED_IN]-&gt;(m)</div><div class="line">WHERE NOT (p)-[:DIRECTED]-&gt;()</div><div class="line">RETURN p,m</div></pre></td></tr></table></figure></p>
+<p>使用别名返回值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (p:Person)</div><div class="line">RETURN p, p.name AS name, upper(p.name), coalesce(p.nickname,&quot;n/a&quot;) AS nickname, &#123; name: p.name,</div><div class="line">  label:head(labels(p))&#125; AS person</div></pre></td></tr></table></figure></p>
+<p>聚合函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MATCH (:Person)</div><div class="line">RETURN count(*) AS people</div></pre></td></tr></table></figure></p>
+<p>排序和分页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (a:Person)-[:ACTED_IN]-&gt;(m:Movie)</div><div class="line">RETURN a,count(*) AS appearances</div><div class="line">ORDER BY appearances DESC LIMIT 10;</div></pre></td></tr></table></figure></p>
+<p>聚集<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MATCH (m:Movie)&lt;-[:ACTED_IN]-(a:Person)</div><div class="line">RETURN m.title AS movie, collect(a.name) AS cast, count(*) AS actors</div></pre></td></tr></table></figure></p>
+<p>合并两个结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">MATCH (actor:Person)-[r:ACTED_IN]-&gt;(movie:Movie)</div><div class="line">RETURN actor.name AS name, type(r) AS acted_in, movie.title AS title</div><div class="line">UNION</div><div class="line">MATCH (director:Person)-[r:DIRECTED]-&gt;(movie:Movie)</div><div class="line">RETURN director.name AS name, type(r) AS acted_in, movie.title AS title</div></pre></td></tr></table></figure></p>
+<p>with语法保留中间结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MATCH (person:Person)-[:ACTED_IN]-&gt;(m:Movie)</div><div class="line">WITH person, count(*) AS appearances, collect(m.title) AS movies</div><div class="line">WHERE appearances &gt; 1</div><div class="line">RETURN person.name, appearances, movies</div></pre></td></tr></table></figure></p>
+<p>增加约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE CONSTRAINT ON (movie:Movie) ASSERT movie.title IS UNIQUE</div></pre></td></tr></table></figure></p>
+<p>创建索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE INDEX ON :Actor(name)</div></pre></td></tr></table></figure></p>
 
           
         
@@ -408,7 +418,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-10T22:50:12+08:00">
                 2017-05-10
               </time>
@@ -532,7 +542,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-08T13:13:21+08:00">
                 2017-05-08
               </time>
@@ -653,7 +663,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T14:48:27+08:00">
                 2017-04-26
               </time>
@@ -785,7 +795,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-05T20:55:40+08:00">
                 2017-04-05
               </time>
@@ -917,7 +927,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T21:55:43+08:00">
                 2017-03-17
               </time>
@@ -1066,7 +1076,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-15T12:32:41+08:00">
                 2016-12-15
               </time>
@@ -1207,7 +1217,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-14T10:17:10+08:00">
                 2016-12-14
               </time>
@@ -1334,7 +1344,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T18:54:28+08:00">
                 2016-12-12
               </time>
@@ -1471,7 +1481,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T13:28:29+08:00">
                 2016-12-09
               </time>
@@ -1596,7 +1606,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1647,7 +1657,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
