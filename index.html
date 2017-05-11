@@ -186,7 +186,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -196,7 +196,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -278,8 +278,8 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T13:46:18+08:00">
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T15:41:17+08:00">
                 2017-05-11
               </time>
             
@@ -328,7 +328,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">MATCH (n)</div><div class="line">RETURN</div><div class="line">CASE</div><div class="line">WHEN n.eyes = &apos;blue&apos;</div><div class="line">THEN 1</div><div class="line">WHEN n.age &lt; 40</div><div class="line">THEN 2</div><div class="line">ELSE 3 END AS result</div></pre></td></tr></table></figure>
 <p>2.5.2 带参数查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MATCH (n:Person &#123; name: $name &#125;)</div><div class="line">RETURN n</div></pre></td></tr></table></figure></p>
 <p>2.5.3 定义正则表达式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MATCH (n:Person)</div><div class="line"># regex在之前定义</div><div class="line">WHERE n.name =~ $regex</div><div class="line">RETURN n.name</div></pre></td></tr></table></figure></p>
-<p>用json数据创建结点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;props&quot; : &#123;</div><div class="line"> </div><div class="line">&quot;name&quot; : &quot;Andres&quot;,</div><div class="line"> </div><div class="line">&quot;position&quot; : &quot;Developer&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">CREATE ($props)</div></pre></td></tr></table></figure></p>
+<p>2.5.4<br>用json数据创建结点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;props&quot; : &#123;</div><div class="line"> </div><div class="line">&quot;name&quot; : &quot;Andres&quot;,</div><div class="line"> </div><div class="line">&quot;position&quot; : &quot;Developer&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">CREATE ($props)</div></pre></td></tr></table></figure></p>
+<p>用json数据批量创建结点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;props&quot; : [ &#123;</div><div class="line"> </div><div class="line">&quot;awesome&quot; : true,</div><div class="line"> </div><div class="line">&quot;name&quot; : &quot;Andres&quot;,</div><div class="line"> </div><div class="line">&quot;position&quot; : &quot;Developer&quot;</div><div class="line">  &#125;, &#123;</div><div class="line"> </div><div class="line">&quot;children&quot; : 3,</div><div class="line"> </div><div class="line">&quot;name&quot; : &quot;Michael&quot;,</div><div class="line"> </div><div class="line">&quot;position&quot; : &quot;Developer&quot;</div><div class="line">  &#125; ]</div><div class="line">&#125;</div><div class="line"></div><div class="line">UNWIND $props AS properties</div><div class="line">CREATE (n:Person)</div><div class="line">SET n = properties</div><div class="line">RETURN n</div></pre></td></tr></table></figure></p>
+<p>2.5.5 查询关系(限定跳数)<br>a到b的跳数少于7跳<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(a)-[*..7]-&gt;(b)</div></pre></td></tr></table></figure></p>
+<p>2.5.6 Match<br>匹配关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 不分方向</div><div class="line">--</div><div class="line"># 带有具体关系</div><div class="line">-[r]-</div><div class="line"># 指向关系</div><div class="line">--&gt;</div><div class="line"># 带有具体关系</div><div class="line">-[r]-&gt;</div></pre></td></tr></table></figure></p>
+<p>两点之间最短长度的路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (martin:Person &#123; name: &apos;Martin Sheen&apos; &#125;),(oliver:Person &#123; name: &apos;Oliver Stone&apos; &#125;), p =</div><div class="line">shortestPath((martin)-[*..15]-(oliver))</div><div class="line">RETURN p</div></pre></td></tr></table></figure></p>
+<p>2.5.7 直接从CSV文件中批量插入结点数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># CSV文件内容:</div><div class="line">&quot;1&quot;,&quot;ABBA&quot;,&quot;1992&quot;</div><div class="line">&quot;2&quot;,&quot;Roxette&quot;,&quot;1986&quot;</div><div class="line">&quot;3&quot;,&quot;Europe&quot;,&quot;1979&quot;</div><div class="line">&quot;4&quot;,&quot;The Cardigans&quot;,&quot;1992&quot;</div><div class="line"></div><div class="line"># query</div><div class="line">LOAD CSV FROM &apos;&#123;csv-dir&#125;/artists.csv&apos; AS line</div><div class="line">CREATE (:Artist &#123; name: line[1], year: toInt(line[2])&#125;)</div></pre></td></tr></table></figure></p>
+<p>当CSV文件包含大量数据时,使用USING PERIODIC COMMIT<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">USING PERIODIC COMMIT</div><div class="line">LOAD CSV FROM &apos;&#123;csv-dir&#125;/artists.csv&apos; AS line</div><div class="line">CREATE (:Artist &#123; name: line[1], year: toInt(line[2])&#125;)</div></pre></td></tr></table></figure></p>
 
           
         
@@ -406,7 +412,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-10T22:50:12+08:00">
                 2017-05-10
               </time>
@@ -530,7 +536,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-08T13:13:21+08:00">
                 2017-05-08
               </time>
@@ -651,7 +657,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T14:48:27+08:00">
                 2017-04-26
               </time>
@@ -783,7 +789,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-05T20:55:40+08:00">
                 2017-04-05
               </time>
@@ -915,7 +921,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T21:55:43+08:00">
                 2017-03-17
               </time>
@@ -1064,7 +1070,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-15T12:32:41+08:00">
                 2016-12-15
               </time>
@@ -1205,7 +1211,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-14T10:17:10+08:00">
                 2016-12-14
               </time>
@@ -1332,7 +1338,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T18:54:28+08:00">
                 2016-12-12
               </time>
@@ -1469,7 +1475,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T13:28:29+08:00">
                 2016-12-09
               </time>
@@ -1594,7 +1600,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">11</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1645,7 +1651,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
