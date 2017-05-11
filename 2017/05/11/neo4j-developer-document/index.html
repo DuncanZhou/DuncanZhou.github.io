@@ -84,28 +84,22 @@
 
 
 
-<meta name="description" content="论文题目Exploring Folksonomy for Personalized Search概念解释Folksonomy:
+<meta name="description" content="重新选择neo-4j官方的与python交互包，尝试了py2neo包后发现对neo4j了解还不够，很多操作只是浅尝辄止，所以，决定阅读neo4j的官方开发驱动包，并尝试学习Cypher语言，这对以后对人物关系的挖掘是有帮助的．
 
-该单词由folk和taxonomy组成，folk是口语中伙伴的意思，taxonomy是分类方法的意思，该词用来表示现在存在的大众分类的一种现象。目前许多应用允许用户上传资源时选择标签标注该资源。现有的应用如flickr和dogear。
-
-Motivation对于这样允许">
+1.概念neo-4j由两部分组成:relationship,label和property,label或者relationship中包含property,label与la">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Personalized Search论文阅读笔记-08年SIGIR">
-<meta property="og:url" content="https://github.com/DuncanZhou/2017/04/05/Exploring Folksonomy for Personalized Search/index.html">
+<meta property="og:title" content="neo4j官方开发文档阅读记录">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/05/11/neo4j-developer-document/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="论文题目Exploring Folksonomy for Personalized Search概念解释Folksonomy:
+<meta property="og:description" content="重新选择neo-4j官方的与python交互包，尝试了py2neo包后发现对neo4j了解还不够，很多操作只是浅尝辄止，所以，决定阅读neo4j的官方开发驱动包，并尝试学习Cypher语言，这对以后对人物关系的挖掘是有帮助的．
 
-该单词由folk和taxonomy组成，folk是口语中伙伴的意思，taxonomy是分类方法的意思，该词用来表示现在存在的大众分类的一种现象。目前许多应用允许用户上传资源时选择标签标注该资源。现有的应用如flickr和dogear。
-
-Motivation对于这样允许">
-<meta property="og:updated_time" content="2017-04-05T09:18:25.000Z">
+1.概念neo-4j由两部分组成:relationship,label和property,label或者relationship中包含property,label与la">
+<meta property="og:updated_time" content="2017-05-11T03:53:20.888Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Personalized Search论文阅读笔记-08年SIGIR">
-<meta name="twitter:description" content="论文题目Exploring Folksonomy for Personalized Search概念解释Folksonomy:
+<meta name="twitter:title" content="neo4j官方开发文档阅读记录">
+<meta name="twitter:description" content="重新选择neo-4j官方的与python交互包，尝试了py2neo包后发现对neo4j了解还不够，很多操作只是浅尝辄止，所以，决定阅读neo4j的官方开发驱动包，并尝试学习Cypher语言，这对以后对人物关系的挖掘是有帮助的．
 
-该单词由folk和taxonomy组成，folk是口语中伙伴的意思，taxonomy是分类方法的意思，该词用来表示现在存在的大众分类的一种现象。目前许多应用允许用户上传资源时选择标签标注该资源。现有的应用如flickr和dogear。
-
-Motivation对于这样允许">
+1.概念neo-4j由两部分组成:relationship,label和property,label或者relationship中包含property,label与la">
 
 
 
@@ -133,13 +127,13 @@ Motivation对于这样允许">
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2017/04/05/Exploring Folksonomy for Personalized Search/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/05/11/neo4j-developer-document/"/>
 
 
 
 
 
-  <title> Personalized Search论文阅读笔记-08年SIGIR | Duncan's Blog </title>
+  <title> neo4j官方开发文档阅读记录 | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -250,7 +244,7 @@ Motivation对于这样允许">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/04/05/Exploring Folksonomy for Personalized Search/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/05/11/neo4j-developer-document/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -274,7 +268,7 @@ Motivation对于这样允许">
             
             
               
-                Personalized Search论文阅读笔记-08年SIGIR
+                neo4j官方开发文档阅读记录
               
             
           </h1>
@@ -287,8 +281,8 @@ Motivation对于这样允许">
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-05T20:55:40+08:00">
-                2017-04-05
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T11:53:20+08:00">
+                2017-05-11
               </time>
             
 
@@ -323,22 +317,20 @@ Motivation对于这样允许">
       
 
       
-        <h2 id="论文题目"><a href="#论文题目" class="headerlink" title="论文题目"></a>论文题目</h2><h3 id="Exploring-Folksonomy-for-Personalized-Search"><a href="#Exploring-Folksonomy-for-Personalized-Search" class="headerlink" title="Exploring Folksonomy for Personalized Search"></a>Exploring Folksonomy for Personalized Search</h3><h2 id="概念解释"><a href="#概念解释" class="headerlink" title="概念解释"></a>概念解释</h2><p><strong>Folksonomy:</strong></p>
-<blockquote>
-<p>该单词由folk和taxonomy组成，folk是口语中伙伴的意思，taxonomy是分类方法的意思，该词用来表示现在存在的大众分类的一种现象。目前许多应用允许用户上传资源时选择标签标注该资源。现有的应用如flickr和dogear。</p>
+        <blockquote>
+<p>重新选择neo-4j官方的与python交互包，尝试了py2neo包后发现对neo4j了解还不够，很多操作只是浅尝辄止，所以，决定阅读neo4j的官方开发驱动包，并尝试学习Cypher语言，这对以后对人物关系的挖掘是有帮助的．</p>
 </blockquote>
-<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>对于这样允许大众分类的应用，如何满足用户在搜索时尽可能准确地返回用户所需要的资源是一个有意思的问题。因为如果像传统的搜索方法仅通过查询关键词去匹配搜索结果，返回的结果可能会不满足用户的初衷。而且，不同的用户在搜索不同的资源时有可能会使用同样的关键词，比如，爱好运动和爱好喝咖啡的用户在搜索杯子的时候使用的关键词都可能是“杯子”，而返回的结果对于爱好运动的用户来说应该尽可能是运动型杯子，对于爱好喝咖啡的用户来说应该尽可能是咖啡杯子。所以，这里的问题都归结于Personalized Search。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>根据之前的工作，解决这样问题的方法有两类:<font color="red">Query Refinement</font>和<font color="red">Result Processing</font> </p>
-<blockquote>
-<p>1)对于查询术语进行替换和扩展，替换成其他的术语或者用其他的术语来填充<br>2)对查询返回的结果再排序或者结果聚类等方法<br>使用较为普遍的是Result Processing，该篇论文中使用的也是第二种方法。</p>
-</blockquote>
-<p>本文中提出的方法分为三个步骤：<br>1)Query中的terms先求结果排序得到Ranklist<br>2)通过User的Interest Vector和资源的Topic Vector求相似性得到Ranklist<br>3)聚合两个list得到最终的Ranklist<br>(具体在实验过程中，为了提高效率，第二步求Ranklist只对第一步中的前N个再去求排序)</p>
-<h2 id="Details-Of-Methods"><a href="#Details-Of-Methods" class="headerlink" title="Details-Of-Methods"></a>Details-Of-Methods</h2><p><font color="red"><strong>Step1：</strong></font><br>对于Query中的terms去求资源排序，本文中采用<strong>BM25</strong>和<strong>Language Model for IR(LMIR)</strong>这两种文本检索模型。<br>先通过基本的文本检索去得到第一步的Ranklist。</p>
-<p><font color="red"><strong>Step2：</strong></font><br>第二步是本文的核心。关键在于建立Topic Space,因为建立了Topic Space后，才能对用户建立兴趣向量，才能对资源建立主题向量，然后再去计算两者之间的相似性。</p>
-<p>1.本文中的主题空间使用了Folksonomy的方法，以标注的tag作为向量的每一维，每个维的值的计算方法可以通过tfidf或者BM25来计算，从而构成用户和资源的兴趣和topic向量。<br>此外，本文中以ODP分好类的web pages的topic space作为baseline方法。</p>
-<p>2.当分别构建好用户和资源的向量后，本文通过类PageRank算法来迭代形成最终的用户和资源的矩阵。R矩阵行代表用户，列代表兴趣。T矩阵行代表资源，列代表topic。</p>
-<p><font color="red"><strong>Step3：</strong></font><br>本文中聚合两个list的方法是通过简单的WBF方法去得到最终的Ranklist</p>
-<h2 id="Evaluation-Methods"><a href="#Evaluation-Methods" class="headerlink" title="Evaluation-Methods"></a>Evaluation-Methods</h2><p>本文基于一个假设：用户收藏过或标注过的资源即为用户相关资源，以此来通过检索评价标准来评价Personalized Search。</p>
+<h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><p>neo-4j由两部分组成:relationship,label和property,label或者relationship中包含property,label与label之间形成关系.</p>
+<h3 id="2-语法"><a href="#2-语法" class="headerlink" title="2.语法"></a>2.语法</h3><p><font color="red">2.1 Node语法</font><br>Cypher语言用()代表一个节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">()</div><div class="line">(matrix)</div><div class="line">(matrix:Movie)</div><div class="line">(matrix:Movie&#123;title:&quot;The Matrix&quot;,released:1997&#125;)</div></pre></td></tr></table></figure></p>
+<p><font color="red">2.2 Relationship语法</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">--&gt;</div><div class="line">-[role]-&gt;</div><div class="line">-[:ACTED_IN]-&gt;</div><div class="line"># 关系的类型</div><div class="line">-[role:ACTED_IN]-&gt;</div><div class="line"># 关系的属性值,属性值可以是数组</div><div class="line">-[role:ACTED_IN &#123;role:[&quot;Neo&quot;]&#125;]-&gt;</div></pre></td></tr></table></figure></p>
+<p><font color="red">2.3 Pattern语法</font><br>语法中有Node和Relationship<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(keanu:Person:Actor &#123;name:&quot;Keanu Reeves&quot;&#125;)</div><div class="line">-[role:ACTED_IN &#123;roles:[&quot;Neo&quot;]&#125;]-&gt;</div><div class="line">(matrix:Movie &#123;title:&quot;The matrix&quot;&#125;)</div></pre></td></tr></table></figure></p>
+<p>保存结点关系path<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># acted_in中保存的就是path,有很多函数可以对path操作:nodes(path),rels(paht),len(path)</div><div class="line">acted_in = (:Person)-[:ACTED_IN]-&gt;(:Movie)</div></pre></td></tr></table></figure></p>
+<p>创建数据及及结点关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">CREATE (:MOVIE &#123;title:&quot;The Matrix&quot;,released:1997&#125;)</div><div class="line">CREATE (p:Person &#123; name:&quot;Keanu Reeves&quot;, born:1964 &#125;)</div><div class="line">RETURN p</div><div class="line"># 创建关系</div><div class="line">CREATE (a:Person &#123; name:&quot;Tom Hanks&quot;,</div><div class="line">  born:1956 &#125;)-[r:ACTED_IN &#123; roles: [&quot;Forrest&quot;]&#125;]-&gt;(m:Movie &#123; title:&quot;Forrest Gump&quot;,released:1994 &#125;)</div><div class="line">CREATE (d:Person &#123; name:&quot;Robert Zemeckis&quot;, born:1951 &#125;)-[:DIRECTED]-&gt;(m)</div><div class="line">RETURN a,d,r,m</div></pre></td></tr></table></figure></p>
+<p>匹配pattern<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">MATCH(m:Movie)</div><div class="line">RETURN m</div><div class="line">MATCH(p:Person &#123;name:&quot;duncan&quot;&#125;)</div><div class="line">RETURN p</div><div class="line"># 匹配关系</div><div class="line">MATCH (p:Person &#123; name:&quot;Tom Hanks&quot; &#125;)-[r:ACTED_IN]-&gt;(m:Movie)</div><div class="line">RETURN m.title, r.roles</div></pre></td></tr></table></figure></p>
+<p>添加节点并添加关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MATCH (p:Person &#123; name:&quot;Tom Hanks&quot; &#125;)</div><div class="line">CREATE (m:Movie &#123; title:&quot;Cloud Atlas&quot;,released:2012 &#125;)</div><div class="line">CREATE (p)-[r:ACTED_IN &#123; roles: [&apos;Zachry&apos;]&#125;]-&gt;(m)</div><div class="line">RETURN p,r,m</div></pre></td></tr></table></figure></p>
+<p>更新结点属性,但不确定图中是否存在一个结点时(这样做的代价是开销很大),总之,使用MERGE,它没有找到就会创建.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MERGE (m:Movie &#123; title:&quot;Cloud Atlas&quot; &#125;)</div><div class="line">ON CREATE SET m.released = 2012</div><div class="line">RETURN m</div></pre></td></tr></table></figure></p>
+<p><font color="red">2.4 where语法</font><br>以下两种写法相同<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (m:Movie)</div><div class="line">WHERE m.title = &quot;The Matrix&quot;</div><div class="line">RETURN m</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MATCH (m:Movie &#123; title: &quot;The Matrix&quot; &#125;)</div><div class="line">RETURN m</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -365,8 +357,8 @@ Motivation对于这样允许">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/03/17/Personalized Search by Tag-based in Collaborative Tagging Systems/" rel="next" title="Personalized Search论文阅读笔记">
-                <i class="fa fa-chevron-left"></i> Personalized Search论文阅读笔记
+              <a href="/2017/05/10/py2neo/" rel="next" title="python与neo-4j交互(对py2neo包做的笔记)">
+                <i class="fa fa-chevron-left"></i> python与neo-4j交互(对py2neo包做的笔记)
               </a>
             
           </div>
@@ -374,10 +366,6 @@ Motivation对于这样允许">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/04/26/Personalized Search泛读记录/" rel="prev" title="Personalized Search泛读记录">
-                Personalized Search泛读记录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -483,7 +471,7 @@ Motivation对于这样允许">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#论文题目"><span class="nav-number">1.</span> <span class="nav-text">论文题目</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Exploring-Folksonomy-for-Personalized-Search"><span class="nav-number">1.1.</span> <span class="nav-text">Exploring Folksonomy for Personalized Search</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#概念解释"><span class="nav-number">2.</span> <span class="nav-text">概念解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Motivation"><span class="nav-number">3.</span> <span class="nav-text">Motivation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Solution"><span class="nav-number">4.</span> <span class="nav-text">Solution</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Details-Of-Methods"><span class="nav-number">5.</span> <span class="nav-text">Details-Of-Methods</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Evaluation-Methods"><span class="nav-number">6.</span> <span class="nav-text">Evaluation-Methods</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念"><span class="nav-number">1.</span> <span class="nav-text">1.概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-语法"><span class="nav-number">2.</span> <span class="nav-text">2.语法</span></a></li></ol></div>
             
 
           </div>

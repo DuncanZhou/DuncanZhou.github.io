@@ -84,31 +84,15 @@
 
 
 
-<meta name="description" content="SMO算法(Sequential Minimal Optimization)1.定义
-SMO算法用于训练SVM，将大优化问题分解为多个小优化问题。这些小优化问题往往很容易求解，并且对它们进行顺序求解的结构与将它们作为整体来求解的结果是完全一致。
-
-2.目标及原理
-SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha，就能求出权重向量w。
-每次循环中选择两个alpha进行优化处理">
-<meta property="og:type" content="article">
-<meta property="og:title" content="支持向量机(Support Vector Machine)学习（补充）">
-<meta property="og:url" content="https://github.com/DuncanZhou/2016/12/14/SVM(Extension)/index.html">
+<meta name="description" content="write something useful">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Duncan's Blog">
+<meta property="og:url" content="https://github.com/DuncanZhou/page/2/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="SMO算法(Sequential Minimal Optimization)1.定义
-SMO算法用于训练SVM，将大优化问题分解为多个小优化问题。这些小优化问题往往很容易求解，并且对它们进行顺序求解的结构与将它们作为整体来求解的结果是完全一致。
-
-2.目标及原理
-SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha，就能求出权重向量w。
-每次循环中选择两个alpha进行优化处理">
-<meta property="og:updated_time" content="2016-12-14T02:17:10.678Z">
+<meta property="og:description" content="write something useful">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="支持向量机(Support Vector Machine)学习（补充）">
-<meta name="twitter:description" content="SMO算法(Sequential Minimal Optimization)1.定义
-SMO算法用于训练SVM，将大优化问题分解为多个小优化问题。这些小优化问题往往很容易求解，并且对它们进行顺序求解的结构与将它们作为整体来求解的结果是完全一致。
-
-2.目标及原理
-SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha，就能求出权重向量w。
-每次循环中选择两个alpha进行优化处理">
+<meta name="twitter:title" content="Duncan's Blog">
+<meta name="twitter:description" content="write something useful">
 
 
 
@@ -136,13 +120,13 @@ SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha�
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2016/12/14/SVM(Extension)/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/page/2/"/>
 
 
 
 
 
-  <title> 支持向量机(Support Vector Machine)学习（补充） | Duncan's Blog </title>
+  <title> Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -163,7 +147,9 @@ SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha�
     
   
 
-  <div class="container one-collumn sidebar-position-left page-post-detail ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -242,9 +228,9 @@ SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha�
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <div id="posts" class="posts-expand">
+  <section id="posts" class="posts-expand">
     
+      
 
   
 
@@ -253,7 +239,7 @@ SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2016/12/14/SVM(Extension)/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2016/11/01/springmvc-mybatis/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -277,7 +263,10 @@ SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha�
             
             
               
-                支持向量机(Support Vector Machine)学习（补充）
+                
+                <a class="post-title-link" href="/2016/11/01/springmvc-mybatis/" itemprop="url">
+                  springmvc-mybatis
+                </a>
               
             
           </h1>
@@ -290,8 +279,8 @@ SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha�
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-14T10:17:10+08:00">
-                2016-12-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-01T20:13:18+08:00">
+                2016-11-01
               </time>
             
 
@@ -326,32 +315,71 @@ SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha�
       
 
       
-        <h1 id="SMO算法-Sequential-Minimal-Optimization"><a href="#SMO算法-Sequential-Minimal-Optimization" class="headerlink" title="SMO算法(Sequential Minimal Optimization)"></a>SMO算法(Sequential Minimal Optimization)</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h2><blockquote>
-<p>SMO算法用于训练SVM，将大优化问题分解为多个小优化问题。这些小优化问题往往很容易求解，并且对它们进行顺序求解的结构与将它们作为整体来求解的结果是完全一致。</p>
+        
+          
+            <blockquote>
+<p>SpringMVC+Mybatis配置（基于Maven构建，编辑器Intellij）</p>
 </blockquote>
-<h2 id="2-目标及原理"><a href="#2-目标及原理" class="headerlink" title="2.目标及原理"></a>2.目标及原理</h2><blockquote>
-<p>SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha，就能求出权重向量w。</p>
-<p>每次循环中选择两个alpha进行优化处理。一旦找到一对合适的alpha，那么就增大其中一个同时减少另一个。这里所谓的“合适”就是指两个alpha必须要符合一定的条件，条件之一就是这两个alpha必须在间隔边界之外，而其第二个条件则是这两个alpha还没有进行过区间化处理或者不在边界上。</p>
-</blockquote>
-<h2 id="3-调参"><a href="#3-调参" class="headerlink" title="3.调参"></a>3.调参</h2><blockquote>
-<p>SVM中有两个参数<font color="red">C</font>和<font color="red">K1</font>，其中C是惩罚系数，即对误差的宽容度。C越高，说明越不能容忍出误差，容易过拟合。C越小，容易欠拟合。</p>
-<p>k1是参数是RBF函数作为核函数后，该函数自带的一个参数，隐含的决定了数据映射到新的特征空间后的分布，k1越大，支持向量越少，k1越小，支持向量越多。支持向量的个数影响训练与预测的速度。</p>
-</blockquote>
+<p>本文基于原文<a href="http://doc.okbase.net/fengshizty/archive/126397.html配置环境。" target="_blank" rel="external">http://doc.okbase.net/fengshizty/archive/126397.html配置环境。</a><br>首先说说几个问题<br>1.关于Mybatis-Request processing failed; nested exception is org.apache.ibatis.binding.BindingException: Invalid bound statement (not found):<br>    数据映射xml文件最好在resources下建立mapper文件夹，并将mapper文件夹也设置为resources格式</p>
+<p>2.当在Controller中通过ModelMap返回给视图数据时，如果在jsp页面中使用${}这样的EL语言获取值时，需要在&lt;%@ page contentType=”text/html;charset=UTF-8” language=”java” isELIgnored=”false” %&gt;中添加isELIgnored值为false。</p>
+<p>3.如果使用Mybatis自动生成dao、mapping、model层文件时，尤其是mapping xml文件里的路径一定要注意正确，否则会给你的项目调试带来很大的麻烦。</p>
+<p>4.原文中使用了SpringJUnit4ClassRunner测试，在完成这个步骤时遇到的问题是，这边测试时，Spring的配置并没有加载好，所以在注入dao层的mapper时报错，所以最后是在整个demo完成时再测试的。测试代码如下：</p>
+<pre><code>import com.alibaba.fastjson.JSON;
+import com.duncan.user.model.UserInfo;
+import com.duncan.user.service.UserService;
+import org.apache.log4j.Logger;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import java.util.List;
+/**
+ * Created by DuncanZhou on 2016/10/31.
+ */
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = { &quot;classpath:spring.xml&quot;,
+        &quot;classpath:spring-mybatis.xml&quot; })
+public class TestUserService {
+    private static final Logger LOGGER = Logger
+            .getLogger(TestUserService.class);
+    @Autowired
+    private UserService userService;
+    @Test
+    public void testQueryById1() {
+        UserInfo userInfo = userService.getUserById(1);
+        LOGGER.info(JSON.toJSON(userInfo));
+    }
 
+//    @Test
+//    public void testQueryAll() {
+//        List&lt;UserInfo&gt; userInfos = userService.getUsers();
+//        LOGGER.info(JSON.toJSON(userInfos));
+//    }
+
+    @Test
+    public void testInsert() {
+        UserInfo userInfo = new UserInfo();
+        userInfo.setName(&quot;xiaoming&quot;);
+        userInfo.setSex(&quot;man&quot;);
+        userInfo.setAge(23);
+        userInfo.setPasswd(&quot;123&quot;);
+        int result = userService.insert(userInfo);
+        System.out.println(result);
+    }
+}
+</code></pre><p>工程目录结构如下<br><img src="http://ww1.sinaimg.cn/large/006BtUvSjw1f9curjlyyaj309z0gg75t.jpg" alt=""> </p>
+
+          
+        
       
     </div>
 
     <div>
       
-        
-
-      
     </div>
 
     <div>
-      
-        
-
       
     </div>
 
@@ -360,38 +388,23 @@ SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha�
       
 
       
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2016/12/12/SVM-Support vector Machine/" rel="next" title="支持向量机(Support Vector Machine)学习">
-                <i class="fa fa-chevron-left"></i> 支持向量机(Support Vector Machine)学习
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/15/BackTrackingNote/" rel="prev" title="回溯法笔记">
-                回溯法笔记 <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
 
       
+      
+        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
+    
+  </section>
 
-    <div class="post-spread">
-      
-    </div>
-  </div>
+  
+  <nav class="pagination">
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+  </nav>
+
 
 
           </div>
@@ -399,10 +412,6 @@ SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha�
 
 
           
-  <div class="comments" id="comments">
-    
-  </div>
-
 
         </div>
         
@@ -422,17 +431,8 @@ SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha�
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview sidebar-panel">
+      <section class="site-overview sidebar-panel sidebar-panel-active">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg"
@@ -471,22 +471,6 @@ SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha�
 
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#SMO算法-Sequential-Minimal-Optimization"><span class="nav-number">1.</span> <span class="nav-text">SMO算法(Sequential Minimal Optimization)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-定义"><span class="nav-number">1.1.</span> <span class="nav-text">1.定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-目标及原理"><span class="nav-number">1.2.</span> <span class="nav-text">2.目标及原理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-调参"><span class="nav-number">1.3.</span> <span class="nav-text">3.调参</span></a></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
     </div>
@@ -585,10 +569,6 @@ SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha�
   
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
-
-
 
   
 
