@@ -84,24 +84,19 @@
 
 
 
-<meta name="description" content="SpringMVC+Mybatis配置（基于Maven构建，编辑器Intellij）
-
-本文基于原文http://doc.okbase.net/fengshizty/archive/126397.html配置环境。首先说说几个问题1.关于Mybatis-Request processing failed; nested exception is org.apache.ibatis.binding">
+<meta name="description" content="step1:安装mpi4py所需要的依赖包(python2.7版本/Cpython/Openmpi)1.源码包安装Python2.7版本123./configure prefix=&amp;quot;#python安装目录(绝对路径)&amp;quot;makemake install
+2.安装Cpython使用当前用户目录下的python版本来进行安装1/home/XXX/python27/bin/python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springmvc-mybatis">
-<meta property="og:url" content="https://github.com/DuncanZhou/2016/11/01/springmvc-mybatis/index.html">
+<meta property="og:title" content="在非root用户下安装mpi4py">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/05/16/No-Root Install mpi4py/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="SpringMVC+Mybatis配置（基于Maven构建，编辑器Intellij）
-
-本文基于原文http://doc.okbase.net/fengshizty/archive/126397.html配置环境。首先说说几个问题1.关于Mybatis-Request processing failed; nested exception is org.apache.ibatis.binding">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006BtUvSjw1f9curjlyyaj309z0gg75t.jpg">
-<meta property="og:updated_time" content="2016-12-09T05:21:36.235Z">
+<meta property="og:description" content="step1:安装mpi4py所需要的依赖包(python2.7版本/Cpython/Openmpi)1.源码包安装Python2.7版本123./configure prefix=&amp;quot;#python安装目录(绝对路径)&amp;quot;makemake install
+2.安装Cpython使用当前用户目录下的python版本来进行安装1/home/XXX/python27/bin/python">
+<meta property="og:updated_time" content="2017-05-16T01:52:51.630Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="springmvc-mybatis">
-<meta name="twitter:description" content="SpringMVC+Mybatis配置（基于Maven构建，编辑器Intellij）
-
-本文基于原文http://doc.okbase.net/fengshizty/archive/126397.html配置环境。首先说说几个问题1.关于Mybatis-Request processing failed; nested exception is org.apache.ibatis.binding">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006BtUvSjw1f9curjlyyaj309z0gg75t.jpg">
+<meta name="twitter:title" content="在非root用户下安装mpi4py">
+<meta name="twitter:description" content="step1:安装mpi4py所需要的依赖包(python2.7版本/Cpython/Openmpi)1.源码包安装Python2.7版本123./configure prefix=&amp;quot;#python安装目录(绝对路径)&amp;quot;makemake install
+2.安装Cpython使用当前用户目录下的python版本来进行安装1/home/XXX/python27/bin/python">
 
 
 
@@ -129,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2016/11/01/springmvc-mybatis/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/05/16/No-Root Install mpi4py/"/>
 
 
 
 
 
-  <title> springmvc-mybatis | Duncan's Blog </title>
+  <title> 在非root用户下安装mpi4py | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -246,7 +241,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2016/11/01/springmvc-mybatis/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/05/16/No-Root Install mpi4py/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -270,7 +265,7 @@
             
             
               
-                springmvc-mybatis
+                在非root用户下安装mpi4py
               
             
           </h1>
@@ -283,8 +278,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-01T20:13:18+08:00">
-                2016-11-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-16T09:52:51+08:00">
+                2017-05-16
               </time>
             
 
@@ -319,58 +314,11 @@
       
 
       
-        <blockquote>
-<p>SpringMVC+Mybatis配置（基于Maven构建，编辑器Intellij）</p>
-</blockquote>
-<p>本文基于原文<a href="http://doc.okbase.net/fengshizty/archive/126397.html配置环境。" target="_blank" rel="external">http://doc.okbase.net/fengshizty/archive/126397.html配置环境。</a><br>首先说说几个问题<br>1.关于Mybatis-Request processing failed; nested exception is org.apache.ibatis.binding.BindingException: Invalid bound statement (not found):<br>    数据映射xml文件最好在resources下建立mapper文件夹，并将mapper文件夹也设置为resources格式</p>
-<p>2.当在Controller中通过ModelMap返回给视图数据时，如果在jsp页面中使用${}这样的EL语言获取值时，需要在&lt;%@ page contentType=”text/html;charset=UTF-8” language=”java” isELIgnored=”false” %&gt;中添加isELIgnored值为false。</p>
-<p>3.如果使用Mybatis自动生成dao、mapping、model层文件时，尤其是mapping xml文件里的路径一定要注意正确，否则会给你的项目调试带来很大的麻烦。</p>
-<p>4.原文中使用了SpringJUnit4ClassRunner测试，在完成这个步骤时遇到的问题是，这边测试时，Spring的配置并没有加载好，所以在注入dao层的mapper时报错，所以最后是在整个demo完成时再测试的。测试代码如下：</p>
-<pre><code>import com.alibaba.fastjson.JSON;
-import com.duncan.user.model.UserInfo;
-import com.duncan.user.service.UserService;
-import org.apache.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import java.util.List;
-/**
- * Created by DuncanZhou on 2016/10/31.
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { &quot;classpath:spring.xml&quot;,
-        &quot;classpath:spring-mybatis.xml&quot; })
-public class TestUserService {
-    private static final Logger LOGGER = Logger
-            .getLogger(TestUserService.class);
-    @Autowired
-    private UserService userService;
-    @Test
-    public void testQueryById1() {
-        UserInfo userInfo = userService.getUserById(1);
-        LOGGER.info(JSON.toJSON(userInfo));
-    }
-
-//    @Test
-//    public void testQueryAll() {
-//        List&lt;UserInfo&gt; userInfos = userService.getUsers();
-//        LOGGER.info(JSON.toJSON(userInfos));
-//    }
-
-    @Test
-    public void testInsert() {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setName(&quot;xiaoming&quot;);
-        userInfo.setSex(&quot;man&quot;);
-        userInfo.setAge(23);
-        userInfo.setPasswd(&quot;123&quot;);
-        int result = userService.insert(userInfo);
-        System.out.println(result);
-    }
-}
-</code></pre><p>工程目录结构如下<br><img src="http://ww1.sinaimg.cn/large/006BtUvSjw1f9curjlyyaj309z0gg75t.jpg" alt=""> </p>
+        <h3 id="step1"><a href="#step1" class="headerlink" title="step1:"></a>step1:</h3><p>安装mpi4py所需要的依赖包(python2.7版本/Cpython/Openmpi)<br>1.源码包安装Python2.7版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./configure prefix=&quot;#python安装目录(绝对路径)&quot;</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure></p>
+<p>2.安装Cpython<br>使用当前用户目录下的python版本来进行安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/XXX/python27/bin/python setup.py install</div></pre></td></tr></table></figure></p>
+<p>3.安装openmpi<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./configure prefix=&quot;#openmpi安装目录(绝对路径)&quot;</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure></p>
+<h3 id="step3"><a href="#step3" class="headerlink" title="step3:"></a>step3:</h3><p>配置openmpi环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vim ~/.bashrc</div><div class="line"># ~/.bashrc末尾添加</div><div class="line">export PATH=#openmpi的绝对路径/bin:$PATH</div><div class="line">soucre ~/.bashrc</div></pre></td></tr></table></figure></p>
+<h3 id="step4"><a href="#step4" class="headerlink" title="step4:"></a>step4:</h3><p>安装mpi4py包(同Cpython包安装方法)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/XXX/python27/bin/python setup.py install</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -397,15 +345,15 @@ public class TestUserService {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/05/11/neo4j-developer-document/" rel="next" title="neo4j官方开发文档阅读记录">
+                <i class="fa fa-chevron-left"></i> neo4j官方开发文档阅读记录
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/09/ubuntu-sublime/" rel="prev" title="ubuntu下sublime中文输入问题">
-                ubuntu下sublime中文输入问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -452,8 +400,17 @@ public class TestUserService {
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg"
@@ -492,6 +449,22 @@ public class TestUserService {
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#step1"><span class="nav-number">1.</span> <span class="nav-text">step1:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step3"><span class="nav-number">2.</span> <span class="nav-text">step3:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#step4"><span class="nav-number">3.</span> <span class="nav-text">step4:</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>

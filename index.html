@@ -239,6 +239,127 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/05/16/No-Root Install mpi4py/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/16/No-Root Install mpi4py/" itemprop="url">
+                  在非root用户下安装mpi4py
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-16T09:52:51+08:00">
+                2017-05-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="step1"><a href="#step1" class="headerlink" title="step1:"></a>step1:</h3><p>安装mpi4py所需要的依赖包(python2.7版本/Cpython/Openmpi)<br>1.源码包安装Python2.7版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./configure prefix=&quot;#python安装目录(绝对路径)&quot;</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure></p>
+<p>2.安装Cpython<br>使用当前用户目录下的python版本来进行安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/XXX/python27/bin/python setup.py install</div></pre></td></tr></table></figure></p>
+<p>3.安装openmpi<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./configure prefix=&quot;#openmpi安装目录(绝对路径)&quot;</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure></p>
+<h3 id="step3"><a href="#step3" class="headerlink" title="step3:"></a>step3:</h3><p>配置openmpi环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vim ~/.bashrc</div><div class="line"># ~/.bashrc末尾添加</div><div class="line">export PATH=#openmpi的绝对路径/bin:$PATH</div><div class="line">soucre ~/.bashrc</div></pre></td></tr></table></figure></p>
+<h3 id="step4"><a href="#step4" class="headerlink" title="step4:"></a>step4:</h3><p>安装mpi4py包(同Cpython包安装方法)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/XXX/python27/bin/python setup.py install</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/05/11/neo4j-developer-document/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1437,133 +1558,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2016/12/09/ubuntu-sublime/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/09/ubuntu-sublime/" itemprop="url">
-                  ubuntu下sublime中文输入问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T13:28:29+08:00">
-                2016-12-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="ubuntu下安装的sublime-text中文不能输入问题："><a href="#ubuntu下安装的sublime-text中文不能输入问题：" class="headerlink" title="ubuntu下安装的sublime text中文不能输入问题："></a>ubuntu下安装的sublime text中文不能输入问题：</h1><h2 id="a-保存下面的代码到文件sublime-imfix-c-位于-目录"><a href="#a-保存下面的代码到文件sublime-imfix-c-位于-目录" class="headerlink" title="a.保存下面的代码到文件sublime_imfix.c(位于~目录)"></a>a.保存下面的代码到文件sublime_imfix.c(位于~目录)</h2><p>#include”gtk/gtkimcontext.h”<br>void gtk_im_context_set_client_window (GtkIMContext <em>context, GdkWindow  </em>window)<br>{<br>GtkIMContextClass *klass;<br>g_return_if_fail (GTK_IS_IM_CONTEXT (context));<br>klass = GTK_IM_CONTEXT_GET_CLASS (context);<br>if (klass-&gt;set_client_window)<br>klass-&gt;set_client_window (context, window);<br>g_object_set_data(G_OBJECT(context),”window”,window);<br>if(!GDK_IS_WINDOW (window))<br>return;<br>int width = gdk_window_get_width(window);<br>int height = gdk_window_get_height(window);<br>if(width != 0 &amp;&amp; height !=0)<br>gtk_im_context_focus_in(context);<br>}</p>
-<h2 id="b-将上一步的代码编译成共享库libsublime-imfix-so，命令"><a href="#b-将上一步的代码编译成共享库libsublime-imfix-so，命令" class="headerlink" title="b.将上一步的代码编译成共享库libsublime-imfix.so，命令"></a>b.将上一步的代码编译成共享库libsublime-imfix.so，命令</h2><p>gcc -shared -o libsublime-imfix.so sublime_imfix.c  <code>pkg-config --libs --cflags gtk+-2.0</code> -fPIC<br>    注意：如果提示 gtk/gtkimcontext.h：没有那个文件或目录，那就是没有相关的依赖软件，安装命令：</p>
-<p>sudo apt-get install build-essential libgtk2.0-dev</p>
-<h2 id="c-将libsublime-imfix-so拷贝到sublime-text所在文件夹"><a href="#c-将libsublime-imfix-so拷贝到sublime-text所在文件夹" class="headerlink" title="c.将libsublime-imfix.so拷贝到sublime_text所在文件夹"></a>c.将libsublime-imfix.so拷贝到sublime_text所在文件夹</h2><p>sudo mv libsublime-imfix.so /opt/sublime_text/</p>
-<h2 id="d-修改文件-usr-bin-subl的内容"><a href="#d-修改文件-usr-bin-subl的内容" class="headerlink" title="d.修改文件/usr/bin/subl的内容"></a>d.修改文件/usr/bin/subl的内容</h2><p>sudo gedit /usr/bin/subl<br>将</p>
-<p>#!/bin/sh</p>
-<p>exec /opt/sublime_text/sublime_text “$@”</p>
-<p>修改为</p>
-<p>#!/bin/sh</p>
-<p>LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so exec /opt/sublime_text/sublime_text “$@”</p>
-<p>原文链接：<a href="http://www.jianshu.com/p/1f3a3e4f4e92" target="_blank" rel="external">http://www.jianshu.com/p/1f3a3e4f4e92</a></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1609,7 +1603,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">11</span>
+              <span class="site-state-item-count">12</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
