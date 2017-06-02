@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/01/concept-of-ml/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/02/concept-of-ml/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/01/concept-of-ml/" itemprop="url">
+                <a class="post-title-link" href="/2017/06/02/concept-of-ml/" itemprop="url">
                   准确率和召回率
                 </a>
               
@@ -279,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-01T22:47:03+08:00">
-                2017-06-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-02T10:21:17+08:00">
+                2017-06-02
               </time>
             
 
@@ -330,6 +330,9 @@
 <p>对于多分类或者n个二分类混淆矩阵上综合考察查准率(precision)和查全率(recall)<br>1.一种直接的做法是现在各混淆矩阵上分别计算出查准率和查全率,记为(P1,R1),…,(Pn,Rn),再计算平均值,这样就得到”宏查全率”(macro-P),”宏查全率”(macro-R),以及相应的”宏F1”(macro-F1):<br>\(macro-P = \frac{1}{n}\sum_{i=1}^{n}Pi\)</p>
 <p>\(macro-R=\frac{1}{n}\sum_{i=1}^{n}Ri\)</p>
 <p>\(macro-F1=\frac{2*macro-P*macro-R}{macro-P+macro-R}\)</p>
+<p>2.还可先将各混淆矩阵对应元素进行平均,得到TP/FP/TN/FN的平均值,分别记为ATP,AFP,ATN,AFN,再基于这些平均值计算出”微查准率(micro-P)”/“微查全率”(micro-R)和”微F1”(micro-F1):<br>\(micro-P = \frac{ATP}{ATP + AFP}\)</p>
+<p>\(micro-R=\frac{ATP}{ATP + AFN}\)</p>
+<p>\(micro-F1=\frac{2*micro-P*micro-R}{micro-P+micro-R}\)</p>
 
           
         
