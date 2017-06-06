@@ -84,19 +84,25 @@
 
 
 
-<meta name="description" content="简要本篇主要记录三种求最优解的算法:动态规划(dynamic programming),贪心算法和平摊分析.
-动态规划1.动态规划是通过组合子问题的解而解决整个问题的.分治法算法是指将问题划分成一些独立的子问题, 递归地求解各个子问题,然后合并子问题的解而得到原问题的解.与此不同,动态规划适用于子问题不是独立的情况,也就是各个子问题包含公共的子子问题.在这种情况下,若用分治法则会做许多不必要的工作">
+<meta name="description" content="综述目前推荐上研究的方向有这样几个方向:1.Temporal Context-Aware Recommendation2.Spatial Recommendation for Out-of-Town Users3.Location-based and Real-time Recommendation4.Efficiency of Online Recommendation
+补充学习:
+
+onlin">
 <meta property="og:type" content="article">
-<meta property="og:title" content="求最优解算法学习">
-<meta property="og:url" content="https://github.com/DuncanZhou/2017/06/06/Alogorithms_Learning/index.html">
+<meta property="og:title" content="Recommendation方向学习">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/06/06/RecommendationLearning/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="简要本篇主要记录三种求最优解的算法:动态规划(dynamic programming),贪心算法和平摊分析.
-动态规划1.动态规划是通过组合子问题的解而解决整个问题的.分治法算法是指将问题划分成一些独立的子问题, 递归地求解各个子问题,然后合并子问题的解而得到原问题的解.与此不同,动态规划适用于子问题不是独立的情况,也就是各个子问题包含公共的子子问题.在这种情况下,若用分治法则会做许多不必要的工作">
-<meta property="og:updated_time" content="2017-06-06T03:23:59.281Z">
+<meta property="og:description" content="综述目前推荐上研究的方向有这样几个方向:1.Temporal Context-Aware Recommendation2.Spatial Recommendation for Out-of-Town Users3.Location-based and Real-time Recommendation4.Efficiency of Online Recommendation
+补充学习:
+
+onlin">
+<meta property="og:updated_time" content="2017-06-06T11:45:24.576Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="求最优解算法学习">
-<meta name="twitter:description" content="简要本篇主要记录三种求最优解的算法:动态规划(dynamic programming),贪心算法和平摊分析.
-动态规划1.动态规划是通过组合子问题的解而解决整个问题的.分治法算法是指将问题划分成一些独立的子问题, 递归地求解各个子问题,然后合并子问题的解而得到原问题的解.与此不同,动态规划适用于子问题不是独立的情况,也就是各个子问题包含公共的子子问题.在这种情况下,若用分治法则会做许多不必要的工作">
+<meta name="twitter:title" content="Recommendation方向学习">
+<meta name="twitter:description" content="综述目前推荐上研究的方向有这样几个方向:1.Temporal Context-Aware Recommendation2.Spatial Recommendation for Out-of-Town Users3.Location-based and Real-time Recommendation4.Efficiency of Online Recommendation
+补充学习:
+
+onlin">
 
 
 
@@ -124,13 +130,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2017/06/06/Alogorithms_Learning/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/06/06/RecommendationLearning/"/>
 
 
 
 
 
-  <title> 求最优解算法学习 | Duncan's Blog </title>
+  <title> Recommendation方向学习 | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -241,7 +247,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/06/Alogorithms_Learning/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/06/RecommendationLearning/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -265,7 +271,7 @@
             
             
               
-                求最优解算法学习
+                Recommendation方向学习
               
             
           </h1>
@@ -278,7 +284,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-06T11:23:59+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-06T19:45:24+08:00">
                 2017-06-06
               </time>
             
@@ -314,15 +320,14 @@
       
 
       
-        <h3 id="简要"><a href="#简要" class="headerlink" title="简要"></a>简要</h3><p>本篇主要记录三种求最优解的算法:<strong>动态规划(dynamic programming)</strong>,<strong>贪心算法</strong>和<strong>平摊分析</strong>.</p>
-<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>1.动态规划是通过组合子问题的解而解决整个问题的.分治法算法是指将问题划分成一些<font color="red">独立</font>的子问题, <font color="red">递归地求解</font>各个子问题,然后<font color="red">合并子问题的解</font>而得到原问题的解.与此不同,动态规划适用于<font color="red">子问题不是独立</font>的情况,也就是各个子问题包含公共的子子问题.在这种情况下,若用分治法则会做许多不必要的工作,即重复地求解公共的子子问题.</p>
-<p>动态规划算法的设计可以分为以下四个步骤:</p>
+        <h3 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h3><p>目前推荐上研究的方向有这样几个方向:<br>1.Temporal Context-Aware Recommendation<br>2.Spatial Recommendation for Out-of-Town Users<br>3.Location-based and Real-time Recommendation<br>4.Efficiency of Online Recommendation</p>
+<p>补充学习:</p>
 <blockquote>
-<p>1.描述最优解的结构<br>2.递归定义最优解的值<br>3.按自底向上的方式计算最优解的值<br>4.由计算出的结果构造一个最优解</p>
+<p>online learning强调的是学习是实时的，流式的，每次训练不用使用全部样本，而是以之前训练好的模型为基础，每来一个样本就更新一次模型，这种方法叫做OGD（online gradient descent）。</p>
+<p>batch learning或者叫offline learning强调的是每次训练都需要使用全量的样本，因而可能会面临数据量过大的问题。</p>
 </blockquote>
-<p><font color="red"><strong>能否运用动态规划方法的标志之一:</strong></font>一个问题的最优解包含了子问题的一个最优解.这个性质为最优子结构.</p>
-<p>适合采用动态规划的最优化问题的两个要素:<font color="red"><strong>最优子结构</strong></font>和<font color="red"><strong>重叠子问题</strong></font></p>
-<h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><h3 id="平摊分析"><a href="#平摊分析" class="headerlink" title="平摊分析"></a>平摊分析</h3><p>(未完-待续)</p>
+<p>传统的推荐系统广泛都使用了<font color="blue">协同过滤</font>和<font color="blue">基于内容过滤技术</font></p>
+<p>Context-Aware Recommender Systems(CARS)包含三种范例:contextual pre-filtering,contextual post-filtering and contextual modeling.</p>
 
       
     </div>
@@ -349,8 +354,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/02/concept-of-ml/" rel="next" title="准确率和召回率">
-                <i class="fa fa-chevron-left"></i> 准确率和召回率
+              <a href="/2017/06/06/Alogorithms_Learning/" rel="next" title="求最优解算法学习">
+                <i class="fa fa-chevron-left"></i> 求最优解算法学习
               </a>
             
           </div>
@@ -358,10 +363,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/06/RecommendationLearning/" rel="prev" title="Recommendation方向学习">
-                Recommendation方向学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -474,7 +475,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简要"><span class="nav-number">1.</span> <span class="nav-text">简要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划"><span class="nav-number">2.</span> <span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪心算法"><span class="nav-number">3.</span> <span class="nav-text">贪心算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平摊分析"><span class="nav-number">4.</span> <span class="nav-text">平摊分析</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#综述"><span class="nav-number">1.</span> <span class="nav-text">综述</span></a></li></ol></div>
             
 
           </div>
