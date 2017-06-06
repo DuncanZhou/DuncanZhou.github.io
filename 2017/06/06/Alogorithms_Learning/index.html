@@ -84,22 +84,19 @@
 
 
 
-<meta name="description" content="准确率是预测正确数量 / 总数量
-精确率(precision)是针对预测结果而言,它表示的是预测为正的样本中有多少是真正的正样本.预测为正有两种可能,一种就是把正类预测为正类(TP),另一种就是把负类预测为正类(FP),P = TP / (TP + FP)
-召回率(recall)是针对原来的样本而言的，它表示的是样本中的正例有多少被预测正确了。那也有两种可能，一种是把原来的正类预测成正类(T">
+<meta name="description" content="简要本篇主要记录三种求最优解的算法:动态规划(dynamic programming),贪心算法和平摊分析.
+动态规划1.动态规划是通过组合子问题的解而解决整个问题的.分治法算法是指将问题划分成一些独立的子问题, 递归地求解各个子问题,然后合并子问题的解而得到原问题的解.与此不同,动态规划适用于子问题不是独立的情况,也就是各个子问题包含公共的子子问题.在这种情况下,若用分治法则会做许多不必要的工作">
 <meta property="og:type" content="article">
-<meta property="og:title" content="准确率和召回率">
-<meta property="og:url" content="https://github.com/DuncanZhou/2017/06/02/concept-of-ml/index.html">
+<meta property="og:title" content="求最优解算法学习">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/06/06/Alogorithms_Learning/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="准确率是预测正确数量 / 总数量
-精确率(precision)是针对预测结果而言,它表示的是预测为正的样本中有多少是真正的正样本.预测为正有两种可能,一种就是把正类预测为正类(TP),另一种就是把负类预测为正类(FP),P = TP / (TP + FP)
-召回率(recall)是针对原来的样本而言的，它表示的是样本中的正例有多少被预测正确了。那也有两种可能，一种是把原来的正类预测成正类(T">
-<meta property="og:updated_time" content="2017-06-02T02:21:17.832Z">
+<meta property="og:description" content="简要本篇主要记录三种求最优解的算法:动态规划(dynamic programming),贪心算法和平摊分析.
+动态规划1.动态规划是通过组合子问题的解而解决整个问题的.分治法算法是指将问题划分成一些独立的子问题, 递归地求解各个子问题,然后合并子问题的解而得到原问题的解.与此不同,动态规划适用于子问题不是独立的情况,也就是各个子问题包含公共的子子问题.在这种情况下,若用分治法则会做许多不必要的工作">
+<meta property="og:updated_time" content="2017-06-06T03:23:59.281Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="准确率和召回率">
-<meta name="twitter:description" content="准确率是预测正确数量 / 总数量
-精确率(precision)是针对预测结果而言,它表示的是预测为正的样本中有多少是真正的正样本.预测为正有两种可能,一种就是把正类预测为正类(TP),另一种就是把负类预测为正类(FP),P = TP / (TP + FP)
-召回率(recall)是针对原来的样本而言的，它表示的是样本中的正例有多少被预测正确了。那也有两种可能，一种是把原来的正类预测成正类(T">
+<meta name="twitter:title" content="求最优解算法学习">
+<meta name="twitter:description" content="简要本篇主要记录三种求最优解的算法:动态规划(dynamic programming),贪心算法和平摊分析.
+动态规划1.动态规划是通过组合子问题的解而解决整个问题的.分治法算法是指将问题划分成一些独立的子问题, 递归地求解各个子问题,然后合并子问题的解而得到原问题的解.与此不同,动态规划适用于子问题不是独立的情况,也就是各个子问题包含公共的子子问题.在这种情况下,若用分治法则会做许多不必要的工作">
 
 
 
@@ -127,13 +124,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2017/06/02/concept-of-ml/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/06/06/Alogorithms_Learning/"/>
 
 
 
 
 
-  <title> 准确率和召回率 | Duncan's Blog </title>
+  <title> 求最优解算法学习 | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -244,7 +241,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/02/concept-of-ml/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/06/Alogorithms_Learning/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -268,7 +265,7 @@
             
             
               
-                准确率和召回率
+                求最优解算法学习
               
             
           </h1>
@@ -281,8 +278,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-02T10:21:17+08:00">
-                2017-06-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-06T11:23:59+08:00">
+                2017-06-06
               </time>
             
 
@@ -317,22 +314,15 @@
       
 
       
-        <p><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script></p>
+        <h3 id="简要"><a href="#简要" class="headerlink" title="简要"></a>简要</h3><p>本篇主要记录三种求最优解的算法:<strong>动态规划(dynamic programming)</strong>,<strong>贪心算法</strong>和<strong>平摊分析</strong>.</p>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>1.动态规划是通过组合子问题的解而解决整个问题的.分治法算法是指将问题划分成一些<font color="red">独立</font>的子问题, <font color="red">递归地求解</font>各个子问题,然后<font color="red">合并子问题的解</font>而得到原问题的解.与此不同,动态规划适用于<font color="red">子问题不是独立</font>的情况,也就是各个子问题包含公共的子子问题.在这种情况下,若用分治法则会做许多不必要的工作,即重复地求解公共的子子问题.</p>
+<p>动态规划算法的设计可以分为以下四个步骤:</p>
 <blockquote>
-<p>准确率是预测正确数量 / 总数量</p>
-<p>精确率(precision)是针对<font color="red">预测结果</font>而言,它表示的是预测为正的样本中有多少是真正的正样本.预测为正有两种可能,一种就是把正类预测为正类(TP),另一种就是把负类预测为正类(FP),P = TP / (TP + FP)</p>
-<p>召回率(recall)是针对<font color="red">原来的样本</font>而言的，它表示的是样本中的正例有多少被预测正确了。那也有两种可能，一种是把原来的正类预测成正类(TP)，另一种就是把原来的正类预测为负类(FN)。R = TP / (TP + FN)</p>
+<p>1.描述最优解的结构<br>2.递归定义最优解的值<br>3.按自底向上的方式计算最优解的值<br>4.由计算出的结果构造一个最优解</p>
 </blockquote>
-<p>精确率 = 提取出的正确信息条数 / 提取出的信息条数<br>召回率 = 提取出的正确信息条数 / 样本中的信息条数</p>
-<blockquote>
-<p>F值 = 精确率 * 召回率 * 2 / (精确率 + 召回率)</p>
-</blockquote>
-<p>对于多分类或者n个二分类混淆矩阵上综合考察查准率(precision)和查全率(recall)<br>1.一种直接的做法是现在各混淆矩阵上分别计算出查准率和查全率,记为(P1,R1),…,(Pn,Rn),再计算平均值,这样就得到”宏查全率”(macro-P),”宏查全率”(macro-R),以及相应的”宏F1”(macro-F1):<br>\(macro-P = \frac{1}{n}\sum_{i=1}^{n}Pi\)</p>
-<p>\(macro-R=\frac{1}{n}\sum_{i=1}^{n}Ri\)</p>
-<p>\(macro-F1=\frac{2*macro-P*macro-R}{macro-P+macro-R}\)</p>
-<p>2.还可先将各混淆矩阵对应元素进行平均,得到TP/FP/TN/FN的平均值,分别记为ATP,AFP,ATN,AFN,再基于这些平均值计算出”微查准率(micro-P)”/“微查全率”(micro-R)和”微F1”(micro-F1):<br>\(micro-P = \frac{ATP}{ATP + AFP}\)</p>
-<p>\(micro-R=\frac{ATP}{ATP + AFN}\)</p>
-<p>\(micro-F1=\frac{2*micro-P*micro-R}{micro-P+micro-R}\)</p>
+<p><font color="red"><strong>能否运用动态规划方法的标志之一:</strong></font>一个问题的最优解包含了子问题的一个最优解.这个性质为最优子结构.</p>
+<p>适合采用动态规划的最优化问题的两个要素:<font color="red"><strong>最优子结构</strong></font>和<font color="red"><strong>重叠子问题</strong></font></p>
+<h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><h3 id="平摊分析"><a href="#平摊分析" class="headerlink" title="平摊分析"></a>平摊分析</h3><p>(未完-待续)</p>
 
       
     </div>
@@ -359,8 +349,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/25/RESTful-web-service/" rel="next" title="RESTful web service">
-                <i class="fa fa-chevron-left"></i> RESTful web service
+              <a href="/2017/06/02/concept-of-ml/" rel="next" title="准确率和召回率">
+                <i class="fa fa-chevron-left"></i> 准确率和召回率
               </a>
             
           </div>
@@ -368,10 +358,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/06/06/Alogorithms_Learning/" rel="prev" title="求最优解算法学习">
-                求最优解算法学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -418,8 +404,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg"
@@ -465,6 +460,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#简要"><span class="nav-number">1.</span> <span class="nav-text">简要</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#动态规划"><span class="nav-number">2.</span> <span class="nav-text">动态规划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#贪心算法"><span class="nav-number">3.</span> <span class="nav-text">贪心算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#平摊分析"><span class="nav-number">4.</span> <span class="nav-text">平摊分析</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
