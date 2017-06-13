@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/06/RecommendationLearning/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/13/Alogorithms_Learning/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,131 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/06/RecommendationLearning/" itemprop="url">
-                  Recommendation方向学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-06T19:45:24+08:00">
-                2017-06-06
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h3><p>目前推荐上研究的方向有这样几个方向:<br>1.Temporal Context-Aware Recommendation<br>2.Spatial Recommendation for Out-of-Town Users<br>3.Location-based and Real-time Recommendation<br>4.Efficiency of Online Recommendation</p>
-<p>补充学习:</p>
-<blockquote>
-<p>online learning强调的是学习是实时的，流式的，每次训练不用使用全部样本，而是以之前训练好的模型为基础，每来一个样本就更新一次模型，这种方法叫做OGD（online gradient descent）。</p>
-<p>batch learning或者叫offline learning强调的是每次训练都需要使用全量的样本，因而可能会面临数据量过大的问题。</p>
-</blockquote>
-<p>传统的推荐系统广泛都使用了<font color="blue">协同过滤</font>和<font color="blue">基于内容过滤技术</font></p>
-<p>Context-Aware Recommender Systems(CARS)包含三种范例:contextual pre-filtering,contextual post-filtering and contextual modeling.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/06/Alogorithms_Learning/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/06/Alogorithms_Learning/" itemprop="url">
+                <a class="post-title-link" href="/2017/06/13/Alogorithms_Learning/" itemprop="url">
                   求最优解算法学习
                 </a>
               
@@ -403,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-06T11:23:59+08:00">
-                2017-06-06
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-13T20:16:12+08:00">
+                2017-06-13
               </time>
             
 
@@ -449,7 +325,138 @@
 </blockquote>
 <p><font color="red"><strong>能否运用动态规划方法的标志之一:</strong></font>一个问题的最优解包含了子问题的一个最优解.这个性质为最优子结构.</p>
 <p>适合采用动态规划的最优化问题的两个要素:<font color="red"><strong>最优子结构</strong></font>和<font color="red"><strong>重叠子问题</strong></font></p>
-<h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><h3 id="平摊分析"><a href="#平摊分析" class="headerlink" title="平摊分析"></a>平摊分析</h3><p>(未完-待续)</p>
+<h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><p>1.贪心算法是使所做的选择看起来都是当前最佳的,期望通过所做的局部最优选择来产生出一个全局最优解.</p>
+<p>2.贪心算法的每一次操作都对结果产生直接影响,而动态规划不是.贪心算法对每个子问题的解决方案做出选择,不能回退;动态规划则会根据之前的选择结果对当前进行选择,有回退功能.动态规划主要运用于二维或三维问题,而贪心一般是一维问题.</p>
+<p>3.贪心算法要经过证明才能运用到算法中.</p>
+<h3 id="平摊分析"><a href="#平摊分析" class="headerlink" title="平摊分析"></a>平摊分析</h3><p>(未完-待续)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/07/RecommendationLearning/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/06/07/RecommendationLearning/" itemprop="url">
+                  Recommendation方向学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-07T16:12:49+08:00">
+                2017-06-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h3><p>目前推荐上研究的方向有这样几个方向:<br>1.Temporal Context-Aware Recommendation<br>2.Spatial Recommendation for Out-of-Town Users<br>3.Location-based and Real-time Recommendation<br>4.Efficiency of Online Recommendation</p>
+<p>补充学习:</p>
+<blockquote>
+<p>online learning强调的是学习是实时的，流式的，每次训练不用使用全部样本，而是以之前训练好的模型为基础，每来一个样本就更新一次模型，这种方法叫做OGD（online gradient descent）。</p>
+<p>batch learning或者叫offline learning强调的是每次训练都需要使用全量的样本，因而可能会面临数据量过大的问题。</p>
+</blockquote>
+<p>传统的推荐系统广泛都使用了<font color="blue">协同过滤</font>和<font color="blue">基于内容过滤技术</font></p>
+<p>协同过滤分为</p>
+<blockquote>
+<p>基于内存的推荐和基于模型的推荐(矩阵分解)</p>
+</blockquote>
+<p>Context-Aware Recommender Systems(CARS)包含三种范例:contextual pre-filtering,contextual post-filtering and contextual modeling.</p>
 
           
         
