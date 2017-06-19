@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/18/TwitterUsersDataProfiling/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/19/TwitterUsersDataProfiling/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/18/TwitterUsersDataProfiling/" itemprop="url">
+                <a class="post-title-link" href="/2017/06/19/TwitterUsersDataProfiling/" itemprop="url">
                   Twitter用户数据Profiling
                 </a>
               
@@ -279,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-18T21:32:14+08:00">
-                2017-06-18
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-19T11:09:48+08:00">
+                2017-06-19
               </time>
             
 
@@ -317,7 +317,7 @@
       
         
           
-            <h3 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h3><blockquote>
+            <h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><blockquote>
 <p>数据摘要:One of the crucial requirements before comsuming datasets for any application is to understand the dataset at hand and its metadata.[1]<br>Data profiling is the set of activities and processes to determine the meta-data about a given dataset.[1]</p>
 <p>总体地说,数据概要可以描述为是能够描述原样本数据的一个子集或者结果.比较简单地一种方式是计算平均值,总和或者统计频率最高的一些值等等方式.而较为有挑战性的是,在多列数据中找出其之间的相互函数或次序依赖等等关系.</p>
 </blockquote>
@@ -327,8 +327,17 @@
 <p>Data profiling is an important preparatory task to determine which data to mine, how to import data into various tools, and how to interpret the results.[1]</p>
 </blockquote>
 <p><img src="http://i1.buimg.com/1949/2fc64d8931d34670.png" alt="Data Profiling"></p>
-<h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><p>1.依赖关系数据库,使用SQL语句查询返回结果(不能够找出所有属性列的依赖)<br>2.</p>
-<h3 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h3><p>Data Profiling-A Tutorial SIGMOD 2017</p>
+<h3 id="2-方法"><a href="#2-方法" class="headerlink" title="2.方法"></a>2.方法</h3><p>1.依赖关系数据库,使用SQL语句查询返回结果(不能够找出所有属性列的依赖)<br>  单列和多列分析<br>2.</p>
+<h3 id="3-twitter数据集人物特征选取"><a href="#3-twitter数据集人物特征选取" class="headerlink" title="3.twitter数据集人物特征选取"></a>3.twitter数据集人物特征选取</h3><ul>
+<li>地理位置特征(反映了用户的时空分布,对于POI的推荐是有用的)</li>
+<li>活跃度特征(可用于聚类分析)</li>
+<li>影响力特征(可用于聚类分析)</li>
+<li>推文特征(反映了用户的兴趣爱好,对于推荐系统是有用的)</li>
+<li>时域特征</li>
+</ul>
+<h4 id="特征处理"><a href="#特征处理" class="headerlink" title="特征处理"></a>特征处理</h4><p>1.提取<br>2.正则化</p>
+<p>特征选取原因:该特征代表了用户的…,对于…工作是有用的.</p>
+<h3 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4.参考文献"></a>4.参考文献</h3><p>Data Profiling-A Tutorial SIGMOD 2017</p>
 
           
         
