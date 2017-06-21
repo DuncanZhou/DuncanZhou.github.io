@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/20/TwitterUsersDataProfiling/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/21/TwitterUsersDataProfiling/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/20/TwitterUsersDataProfiling/" itemprop="url">
+                <a class="post-title-link" href="/2017/06/21/TwitterUsersDataProfiling/" itemprop="url">
                   Twitter用户数据Profiling
                 </a>
               
@@ -279,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-20T20:30:48+08:00">
-                2017-06-20
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-21T21:30:03+08:00">
+                2017-06-21
               </time>
             
 
@@ -327,8 +327,18 @@
 <p>Data profiling is an important preparatory task to determine which data to mine, how to import data into various tools, and how to interpret the results.[1]</p>
 </blockquote>
 <p><img src="http://i1.buimg.com/1949/2fc64d8931d34670.png" alt="Data Profiling"></p>
-<h3 id="2-方法"><a href="#2-方法" class="headerlink" title="2.方法"></a>2.方法</h3><p>1.依赖关系数据库,使用SQL语句查询返回结果(不能够找出所有属性列的依赖)<br>  单列和多列分析<br>2.搜索最优解:启发式算法<br>  启发式算法是一种技术,使得<strong>可接受的计算成本内</strong>去搜寻最好的解,但<strong>不一定能保证所得到的可行解和最优解</strong>,甚至在多数情况下,无法阐述所得解同最优解的近似程度.<br>3.聚类算法–&gt;筛选<br>4.按每一维动态规划找出子集</p>
-<h3 id="3-twitter数据集人物特征选取"><a href="#3-twitter数据集人物特征选取" class="headerlink" title="3.twitter数据集人物特征选取"></a>3.twitter数据集人物特征选取</h3><ul>
+<h3 id="2-动机或用例"><a href="#2-动机或用例" class="headerlink" title="2.动机或用例"></a>2.动机或用例</h3><blockquote>
+<p>Data Profiling的目的:</p>
+<ul>
+<li>Data Exploration</li>
+<li>Database management</li>
+<li>Database reverse engineering</li>
+<li>Data integration</li>
+<li>Big data analytics</li>
+</ul>
+</blockquote>
+<h3 id="3-方法"><a href="#3-方法" class="headerlink" title="3.方法"></a>3.方法</h3><p>1.依赖关系数据库,使用SQL语句查询返回结果(不能够找出所有属性列的依赖)<br>  单列和多列分析<br>2.搜索最优解:启发式算法<br>  启发式算法是一种技术,使得<strong>可接受的计算成本内</strong>去搜寻最好的解,但<strong>不一定能保证所得到的可行解和最优解</strong>,甚至在多数情况下,无法阐述所得解同最优解的近似程度.<br>3.聚类算法–&gt;筛选<br>4.按每一维动态规划找出子集</p>
+<h3 id="4-twitter数据集人物特征选取"><a href="#4-twitter数据集人物特征选取" class="headerlink" title="4.twitter数据集人物特征选取"></a>4.twitter数据集人物特征选取</h3><ul>
 <li>地理位置特征(反映了用户的时空分布,对于POI的推荐是有用的)</li>
 <li>活跃度特征(可用于聚类分析)</li>
 <li>影响力特征(可用于聚类分析)</li>
@@ -350,7 +360,7 @@
 </ul>
 </blockquote>
 <p>特征选取原因:该特征代表了用户的…,对于…工作是有用的.</p>
-<h3 id="4-参考文献"><a href="#4-参考文献" class="headerlink" title="4.参考文献"></a>4.参考文献</h3><p>Data Profiling-A Tutorial SIGMOD 2017</p>
+<h3 id="5-参考文献"><a href="#5-参考文献" class="headerlink" title="5.参考文献"></a>5.参考文献</h3><p>Data Profiling-A Tutorial SIGMOD 2017</p>
 
           
         
