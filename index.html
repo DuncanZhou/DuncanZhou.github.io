@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/22/TwitterUsersDataProfiling/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/25/TwitterUsersDataProfiling/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/06/22/TwitterUsersDataProfiling/" itemprop="url">
+                <a class="post-title-link" href="/2017/06/25/TwitterUsersDataProfiling/" itemprop="url">
                   Twitter用户数据Profiling
                 </a>
               
@@ -279,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-22T21:54:42+08:00">
-                2017-06-22
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T21:08:55+08:00">
+                2017-06-25
               </time>
             
 
@@ -361,7 +361,14 @@
 </ul>
 </blockquote>
 <p>特征选取原因:该特征代表了用户的…,对于…工作是有用的.</p>
-<h3 id="5-twitter-data-profiling思路"><a href="#5-twitter-data-profiling思路" class="headerlink" title="5.twitter data profiling思路"></a>5.twitter data profiling思路</h3><p><strong>度量准则:</strong><br><img src="https://ooo.0o0.ooo/2017/06/22/594bcb6c616ec.png" alt=""><br><strong>特征提取</strong><br>直接:location(时区),Followers/Following,category<br>间接:Activity,Influence,<em>InterestTags<br><strong>距离定义</strong><br>有序属性:闵可夫斯基距离<br>无序属性:VDM<br><em>*方法</em></em><br>1.聚类方法(LVQ)</p>
+<h3 id="5-twitter-data-profiling思路"><a href="#5-twitter-data-profiling思路" class="headerlink" title="5.twitter data profiling思路"></a>5.twitter data profiling思路</h3><p><strong>度量准则:</strong><br><img src="https://ooo.0o0.ooo/2017/06/22/594bcb6c616ec.png" alt=""><br><strong>特征提取</strong><br>直接:location(时区),Followers/Following,category<br>间接:Activity,Influence,<em>InterestTags<br><strong>距离定义</strong><br>有序属性:闵可夫斯基距离(p=2时为欧式距离)<br>无序属性:VDM<br><em>*方法</em></em><br>1.聚类方法(LVQ)</p>
+<p><strong>Challenge-挑战</strong></p>
+<ul>
+<li>a.原集和profile子集的代表性度量准则的定义</li>
+<li>b.ProfileSet的大小,k的确定</li>
+<li>c.寻找ProfileSet</li>
+<li>d.优化搜索算法</li>
+</ul>
 <h3 id="5-参考文献"><a href="#5-参考文献" class="headerlink" title="5.参考文献"></a>5.参考文献</h3><p>Data Profiling-A Tutorial SIGMOD 2017</p>
 
           
