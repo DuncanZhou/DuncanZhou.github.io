@@ -94,7 +94,7 @@
 数据摘要:One of the crucial requirements before comsuming datasets for any application is to understand the dataset at hand and its metadata.[1]Data profiling is the set of activities and processes t">
 <meta property="og:image" content="http://i1.buimg.com/1949/2fc64d8931d34670.png">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/06/22/594bcb6c616ec.png">
-<meta property="og:updated_time" content="2017-06-25T13:08:55.173Z">
+<meta property="og:updated_time" content="2017-06-25T14:05:24.449Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Twitter用户数据Profiling">
 <meta name="twitter:description" content="1.概念
@@ -281,7 +281,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T21:08:55+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T22:05:24+08:00">
                 2017-06-25
               </time>
             
@@ -361,15 +361,26 @@
 </ul>
 </blockquote>
 <p>特征选取原因:该特征代表了用户的…,对于…工作是有用的.</p>
-<h3 id="5-twitter-data-profiling思路"><a href="#5-twitter-data-profiling思路" class="headerlink" title="5.twitter data profiling思路"></a>5.twitter data profiling思路</h3><p><strong>度量准则:</strong><br><img src="https://ooo.0o0.ooo/2017/06/22/594bcb6c616ec.png" alt=""><br><strong>特征提取</strong><br>直接:location(时区),Followers/Following,category<br>间接:Activity,Influence,<em>InterestTags<br><strong>距离定义</strong><br>有序属性:闵可夫斯基距离(p=2时为欧式距离)<br>无序属性:VDM<br><em>*方法</em></em><br>1.聚类方法(LVQ)</p>
+<h3 id="5-twitter-data-profiling思路"><a href="#5-twitter-data-profiling思路" class="headerlink" title="5.twitter data profiling思路"></a><font color="red">5.twitter data profiling思路</font></h3><p><strong>Motivation</strong><br>聚类结果的代表性:</p>
+<blockquote>
+<p>Even though the construction of a cluster representation is an important step in decision making, it has not been examined closely by researchers.</p>
+</blockquote>
+<p><strong>度量准则:</strong><br><img src="https://ooo.0o0.ooo/2017/06/22/594bcb6c616ec.png" alt=""></p>
+<p><strong>特征提取</strong><br>直接:location(时区),Followers/Following,category<br>间接:Activity,Influence,*InterestTags</p>
+<p><strong>距离定义</strong><br>有序属性:闵可夫斯基距离(p=2时为欧式距离)<br>无序属性:VDM</p>
+<p><strong>方法</strong></p>
+<ul>
+<li>1.聚类方法(LVQ)</li>
+<li>2.定义图结构来搜索</li>
+</ul>
 <p><strong>Challenge-挑战</strong></p>
 <ul>
 <li>a.原集和profile子集的代表性度量准则的定义</li>
 <li>b.ProfileSet的大小,k的确定</li>
-<li>c.寻找ProfileSet</li>
+<li>c.寻找ProfileSet(Representation of Clustering[2])</li>
 <li>d.优化搜索算法</li>
 </ul>
-<h3 id="5-参考文献"><a href="#5-参考文献" class="headerlink" title="5.参考文献"></a>5.参考文献</h3><p>Data Profiling-A Tutorial SIGMOD 2017</p>
+<h3 id="5-参考文献"><a href="#5-参考文献" class="headerlink" title="5.参考文献"></a>5.参考文献</h3><p>1.Data Profiling-A Tutorial SIGMOD 2017<br>2.Data Clustering: A Review IEEE Computer Society</p>
 
       
     </div>
@@ -405,6 +416,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/11/python-minHeap/" rel="prev" title="python构建小顶堆">
+                python构建小顶堆 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -472,7 +487,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">21</span>
+              <span class="site-state-item-count">22</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
