@@ -84,24 +84,28 @@
 
 
 
-<meta name="description" content="SpringMVC+Mybatis配置（基于Maven构建，编辑器Intellij）
-
-本文基于原文http://doc.okbase.net/fengshizty/archive/126397.html配置环境。首先说说几个问题1.关于Mybatis-Request processing failed; nested exception is org.apache.ibatis.binding">
+<meta name="description" content="为什么要做这个问题一.从社会应用角度
+在HCI(人机交互)中,实施调查和去获得用户的反馈都是主要针对有代表性的用户.
+代表性人物的行为习惯和关注点可以折射出整体用户的兴趣偏向和关注点,对于广告投放,物品推荐是有助的. 
+对于目前日益增长的社交网络用户,从大量的社交网络用户中抽取一个具有代表性的子集才是Human-readable的,有益于数据分析,相当于一个数据摘要.二.从科研方法的角度
+从大量模">
 <meta property="og:type" content="article">
-<meta property="og:title" content="springmvc-mybatis">
-<meta property="og:url" content="https://github.com/DuncanZhou/2016/11/01/springmvc-mybatis/index.html">
+<meta property="og:title" content="社交网络中抽取有代表性的用户">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/07/19/Representatives/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="SpringMVC+Mybatis配置（基于Maven构建，编辑器Intellij）
-
-本文基于原文http://doc.okbase.net/fengshizty/archive/126397.html配置环境。首先说说几个问题1.关于Mybatis-Request processing failed; nested exception is org.apache.ibatis.binding">
-<meta property="og:image" content="http://ww1.sinaimg.cn/large/006BtUvSjw1f9curjlyyaj309z0gg75t.jpg">
-<meta property="og:updated_time" content="2016-12-09T05:21:36.235Z">
+<meta property="og:description" content="为什么要做这个问题一.从社会应用角度
+在HCI(人机交互)中,实施调查和去获得用户的反馈都是主要针对有代表性的用户.
+代表性人物的行为习惯和关注点可以折射出整体用户的兴趣偏向和关注点,对于广告投放,物品推荐是有助的. 
+对于目前日益增长的社交网络用户,从大量的社交网络用户中抽取一个具有代表性的子集才是Human-readable的,有益于数据分析,相当于一个数据摘要.二.从科研方法的角度
+从大量模">
+<meta property="og:updated_time" content="2017-07-19T14:23:54.238Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="springmvc-mybatis">
-<meta name="twitter:description" content="SpringMVC+Mybatis配置（基于Maven构建，编辑器Intellij）
-
-本文基于原文http://doc.okbase.net/fengshizty/archive/126397.html配置环境。首先说说几个问题1.关于Mybatis-Request processing failed; nested exception is org.apache.ibatis.binding">
-<meta name="twitter:image" content="http://ww1.sinaimg.cn/large/006BtUvSjw1f9curjlyyaj309z0gg75t.jpg">
+<meta name="twitter:title" content="社交网络中抽取有代表性的用户">
+<meta name="twitter:description" content="为什么要做这个问题一.从社会应用角度
+在HCI(人机交互)中,实施调查和去获得用户的反馈都是主要针对有代表性的用户.
+代表性人物的行为习惯和关注点可以折射出整体用户的兴趣偏向和关注点,对于广告投放,物品推荐是有助的. 
+对于目前日益增长的社交网络用户,从大量的社交网络用户中抽取一个具有代表性的子集才是Human-readable的,有益于数据分析,相当于一个数据摘要.二.从科研方法的角度
+从大量模">
 
 
 
@@ -129,13 +133,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2016/11/01/springmvc-mybatis/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/07/19/Representatives/"/>
 
 
 
 
 
-  <title> springmvc-mybatis | Duncan's Blog </title>
+  <title> 社交网络中抽取有代表性的用户 | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -246,7 +250,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2016/11/01/springmvc-mybatis/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/07/19/Representatives/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -270,7 +274,7 @@
             
             
               
-                springmvc-mybatis
+                社交网络中抽取有代表性的用户
               
             
           </h1>
@@ -283,8 +287,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-01T20:13:18+08:00">
-                2016-11-01
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-19T22:23:54+08:00">
+                2017-07-19
               </time>
             
 
@@ -319,59 +323,18 @@
       
 
       
-        <blockquote>
-<p>SpringMVC+Mybatis配置（基于Maven构建，编辑器Intellij）</p>
+        <h3 id="为什么要做这个问题"><a href="#为什么要做这个问题" class="headerlink" title="为什么要做这个问题"></a>为什么要做这个问题</h3><h4 id="一-从社会应用角度"><a href="#一-从社会应用角度" class="headerlink" title="一.从社会应用角度"></a>一.从社会应用角度</h4><ul>
+<li>在HCI(人机交互)中,实施调查和去获得用户的反馈都是主要针对有代表性的用户.</li>
+<li>代表性人物的行为习惯和关注点可以折射出整体用户的兴趣偏向和关注点,对于广告投放,物品推荐是有助的. </li>
+<li>对于目前日益增长的社交网络用户,从大量的社交网络用户中抽取一个具有代表性的子集才是Human-readable的,有益于数据分析,相当于一个数据摘要.<h4 id="二-从科研方法的角度"><a href="#二-从科研方法的角度" class="headerlink" title="二.从科研方法的角度"></a>二.从科研方法的角度</h4></li>
+<li>从大量模型或数据点中抽取一个保留了原数据集的特征是机器学习/计算机视觉领域数据分析和推荐系统领域都是一个重要的问题.</li>
+<li>机器学习领域,找原型子集来辅助分类算法.</li>
+</ul>
+<h3 id="怎样定义代表性"><a href="#怎样定义代表性" class="headerlink" title="怎样定义代表性"></a>怎样定义代表性</h3><blockquote>
+<p>Note:和在社交网络中寻找影响力最大化的问题不同,找出具有代表性的用户的目的是抽取一些”平均”的用户,他们能够在统计上代表原来所有用户的特征.</p>
 </blockquote>
-<p>本文基于原文<a href="http://doc.okbase.net/fengshizty/archive/126397.html配置环境。" target="_blank" rel="external">http://doc.okbase.net/fengshizty/archive/126397.html配置环境。</a><br>首先说说几个问题<br>1.关于Mybatis-Request processing failed; nested exception is org.apache.ibatis.binding.BindingException: Invalid bound statement (not found):<br>    数据映射xml文件最好在resources下建立mapper文件夹，并将mapper文件夹也设置为resources格式</p>
-<p>2.当在Controller中通过ModelMap返回给视图数据时，如果在jsp页面中使用${}这样的EL语言获取值时，需要在&lt;%@ page contentType=”text/html;charset=UTF-8” language=”java” isELIgnored=”false” %&gt;中添加isELIgnored值为false。</p>
-<p>3.如果使用Mybatis自动生成dao、mapping、model层文件时，尤其是mapping xml文件里的路径一定要注意正确，否则会给你的项目调试带来很大的麻烦。</p>
-<p>4.原文中使用了SpringJUnit4ClassRunner测试，在完成这个步骤时遇到的问题是，这边测试时，Spring的配置并没有加载好，所以在注入dao层的mapper时报错，所以最后是在整个demo完成时再测试的。测试代码如下：</p>
-<pre><code>import com.alibaba.fastjson.JSON;
-import com.duncan.user.model.UserInfo;
-import com.duncan.user.service.UserService;
-import org.apache.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import java.util.List;
-/**
- * Created by DuncanZhou on 2016/10/31.
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { &quot;classpath:spring.xml&quot;,
-        &quot;classpath:spring-mybatis.xml&quot; })
-public class TestUserService {
-    private static final Logger LOGGER = Logger
-            .getLogger(TestUserService.class);
-    @Autowired
-    private UserService userService;
-    @Test
-    public void testQueryById1() {
-        UserInfo userInfo = userService.getUserById(1);
-        LOGGER.info(JSON.toJSON(userInfo));
-    }
-
-//    @Test
-//    public void testQueryAll() {
-//        List&lt;UserInfo&gt; userInfos = userService.getUsers();
-//        LOGGER.info(JSON.toJSON(userInfos));
-//    }
-
-    @Test
-    public void testInsert() {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setName(&quot;xiaoming&quot;);
-        userInfo.setSex(&quot;man&quot;);
-        userInfo.setAge(23);
-        userInfo.setPasswd(&quot;123&quot;);
-        int result = userService.insert(userInfo);
-        System.out.println(result);
-    }
-}
-</code></pre><p>工程目录结构如下<br><img src="http://ww1.sinaimg.cn/large/006BtUvSjw1f9curjlyyaj309z0gg75t.jpg" alt=""> </p>
-
+<p>将用户以各个属性构建向量,以向量之间的距离来定义人物之间的代表性.<br>以Twitter社交拓扑为例,当A用户关注了B用户,将会有A指向B的一条有向边,</p>
+<h3 id="如何评价子集的代表性"><a href="#如何评价子集的代表性" class="headerlink" title="如何评价子集的代表性"></a>如何评价子集的代表性</h3><h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3>
       
     </div>
 
@@ -397,15 +360,15 @@ public class TestUserService {
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2017/07/11/python-minHeap/" rel="next" title="python构建小顶堆">
+                <i class="fa fa-chevron-left"></i> python构建小顶堆
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/09/ubuntu-sublime/" rel="prev" title="ubuntu下sublime中文输入问题">
-                ubuntu下sublime中文输入问题 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -452,8 +415,17 @@ public class TestUserService {
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg"
@@ -499,6 +471,22 @@ public class TestUserService {
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#为什么要做这个问题"><span class="nav-number">1.</span> <span class="nav-text">为什么要做这个问题</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一-从社会应用角度"><span class="nav-number">1.1.</span> <span class="nav-text">一.从社会应用角度</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二-从科研方法的角度"><span class="nav-number">1.2.</span> <span class="nav-text">二.从科研方法的角度</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#怎样定义代表性"><span class="nav-number">2.</span> <span class="nav-text">怎样定义代表性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何评价子集的代表性"><span class="nav-number">3.</span> <span class="nav-text">如何评价子集的代表性</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法"><span class="nav-number">4.</span> <span class="nav-text">方法</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
