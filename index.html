@@ -279,7 +279,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-20T14:52:38+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-20T22:12:48+08:00">
                 2017-07-20
               </time>
             
@@ -329,18 +329,25 @@
 <h3 id="2-怎样定义代表性"><a href="#2-怎样定义代表性" class="headerlink" title="2.怎样定义代表性"></a>2.怎样定义代表性</h3><blockquote>
 <p>Note:和在社交网络中寻找影响力最大化的问题不同,找出具有代表性的用户的目的是抽取一些”平均”的用户,他们能够在统计上代表原来所有用户的特征.</p>
 </blockquote>
-<h4 id="2-1-代表性用户具备的条件"><a href="#2-1-代表性用户具备的条件" class="headerlink" title="2.1 代表性用户具备的条件:"></a>2.1 代表性用户具备的条件:</h4><ul>
-<li>1.从<font color="green">特征角度</font>上,他们很好的代表了原数据集用户的属性特征(行为习惯/性格特征/领域情况等等),即,与原数据集用户具有<strong><font color="red">较少的特征损耗</font></strong></li>
-<li>2.从<font color="green">分布角度</font>,代表性子集应尽可能服从原数据集的样本分布,并q且能够更突出表示原数据集的分布特征;从科研角度上来说,也就是他们能够很好地辅助分类,提高分类精度和分类效率,即,代表性人物有一定的<strong><font color="red">稀疏性</font></strong>.<br>-note:如果仅仅要求特征损耗最小,可能会导致代表性子集都聚集在人数较多较相似的团体中,以致于原数据集的分布丢失.</li>
+<h4 id="2-1-代表性用户具备的条件"><a href="#2-1-代表性用户具备的条件" class="headerlink" title="2.1 代表性用户具备的条件:"></a>2.1 代表性用户具备的条件:</h4><p><font color="blue">版本一.</font></p>
+<ul>
+<li>1.从<font color="green">属性特征角度</font>上,他们很好的代表了原数据集用户的属性特征(行为习惯/性格特征/领域情况等等),即,与原数据集用户具有<strong><font color="red">较少的特征损耗</font></strong></li>
+<li>2.从<font color="green">分布特征角度</font>,代表性子集应尽可能拟合原数据集的样本分布,即,与原数据集具有<strong><font color="red">较少的分布损耗</font></strong>(类似于原数据集中每个领域的人物分布,代表性子集能够拟合原数据集每个领域的人物分布)</li>
 </ul>
+<p><font color="blue">版本二.</font></p>
+<ul>
+<li>1.从<font color="green">特征角度</font>上,他们很好的代表了原数据集用户的属性特征(行为习惯/性格特征/领域情况等等),即,与原数据集用户具有<strong><font color="red">较少的特征损耗</font></strong></li>
+<li>2.从<font color="green">分布角度</font>,代表性子集在满足(1)条件下应尽可能的分散或稀疏,使得子集可以尽可能地还原原数据集的分布,即,P具有<strong><font color="red">具有稀疏性</font></strong>;<br>-note:如果仅仅要求<strong>特征损耗最小</strong>,可能会导致代表性子集都聚集在人数较多较相似的团体中,以致于原数据集的分布丢失.</li>
+</ul>
+<p>目前倾向于版本一.</p>
 <h4 id="2-2-问题定义"><a href="#2-2-问题定义" class="headerlink" title="2.2 问题定义:"></a>2.2 问题定义:</h4><p>在原数据集人物集合中寻找这样的代表性子集P</p>
 <ul>
 <li>a)P能够满足以上代表性的定义</li>
-<li>b)P的大小不是通过先验条件设定的,而是更合理地求出的</li>
+<li>b)P是数量最小的那个代表性集合</li>
 </ul>
 <h4 id="2-3-Novel之处或者contibution"><a href="#2-3-Novel之处或者contibution" class="headerlink" title="2.3 Novel之处或者contibution:"></a>2.3 Novel之处或者contibution:</h4><ul>
 <li>1.代表性人物包含了两种情况的综合考虑,之前论文中大多考虑单一方面</li>
-<li>2.代表性人物的大小不是通过先验条件设定的,而是更自然地得到,避免了丢失元素.</li>
+<li>2.代表性人物的大小不需要先验设定.</li>
 </ul>
 <p>将用户以各个属性构建向量,以向量之间的距离来定义人物之间的代表性.<br>以Twitter社交拓扑为例,当A用户关注了B用户,将会有A指向B的一条有向边,</p>
 <h3 id="3-如何具体评价子集的代表性"><a href="#3-如何具体评价子集的代表性" class="headerlink" title="3.如何具体评价子集的代表性"></a>3.如何具体评价子集的代表性</h3><h3 id="4-方法"><a href="#4-方法" class="headerlink" title="4.方法"></a>4.方法</h3>
