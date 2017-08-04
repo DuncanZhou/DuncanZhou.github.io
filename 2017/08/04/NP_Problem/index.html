@@ -84,19 +84,31 @@
 
 
 
-<meta name="description" content="1.连接数据库(三种方式相等)123graph_1 = Graph()graph_2 = Graph(host=&amp;quot;localhost&amp;quot;)graph_3 = Graph(&amp;quot;http://localhost:7474/db/data&amp;quot;)
-2.事务操作a)直接返回结果1graph.data(&amp;quot;MATCH (a:Person) RETURN a.name,">
+<meta name="description" content="近日,论文中涉及到NP-Hard问题,写下笔记对以上问题进行区分.
+
+P问题:在多项式时间内可以求解的问题.
+NP问题:在多项时间内不能求解,在多项式时间内可以验证的问题.
+NP-Hard问题:所有的NP问题在多项式时间内可以归约到该问题,该问题为NP-Hard问题.
+NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python与neo-4j交互(对py2neo包做的笔记)">
-<meta property="og:url" content="https://github.com/DuncanZhou/2017/05/10/py2neo/index.html">
+<meta property="og:title" content="P问题/NP问题/NP-Hard问题/NP-Complete问题">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/08/04/NP_Problem/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="1.连接数据库(三种方式相等)123graph_1 = Graph()graph_2 = Graph(host=&amp;quot;localhost&amp;quot;)graph_3 = Graph(&amp;quot;http://localhost:7474/db/data&amp;quot;)
-2.事务操作a)直接返回结果1graph.data(&amp;quot;MATCH (a:Person) RETURN a.name,">
-<meta property="og:updated_time" content="2017-05-10T14:50:12.817Z">
+<meta property="og:description" content="近日,论文中涉及到NP-Hard问题,写下笔记对以上问题进行区分.
+
+P问题:在多项式时间内可以求解的问题.
+NP问题:在多项时间内不能求解,在多项式时间内可以验证的问题.
+NP-Hard问题:所有的NP问题在多项式时间内可以归约到该问题,该问题为NP-Hard问题.
+NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
+<meta property="og:updated_time" content="2017-08-04T11:57:49.997Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python与neo-4j交互(对py2neo包做的笔记)">
-<meta name="twitter:description" content="1.连接数据库(三种方式相等)123graph_1 = Graph()graph_2 = Graph(host=&amp;quot;localhost&amp;quot;)graph_3 = Graph(&amp;quot;http://localhost:7474/db/data&amp;quot;)
-2.事务操作a)直接返回结果1graph.data(&amp;quot;MATCH (a:Person) RETURN a.name,">
+<meta name="twitter:title" content="P问题/NP问题/NP-Hard问题/NP-Complete问题">
+<meta name="twitter:description" content="近日,论文中涉及到NP-Hard问题,写下笔记对以上问题进行区分.
+
+P问题:在多项式时间内可以求解的问题.
+NP问题:在多项时间内不能求解,在多项式时间内可以验证的问题.
+NP-Hard问题:所有的NP问题在多项式时间内可以归约到该问题,该问题为NP-Hard问题.
+NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
 
 
 
@@ -124,13 +136,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2017/05/10/py2neo/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/08/04/NP_Problem/"/>
 
 
 
 
 
-  <title> python与neo-4j交互(对py2neo包做的笔记) | Duncan's Blog </title>
+  <title> P问题/NP问题/NP-Hard问题/NP-Complete问题 | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -241,7 +253,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/05/10/py2neo/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/08/04/NP_Problem/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -265,7 +277,7 @@
             
             
               
-                python与neo-4j交互(对py2neo包做的笔记)
+                P问题/NP问题/NP-Hard问题/NP-Complete问题
               
             
           </h1>
@@ -278,8 +290,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-10T22:50:12+08:00">
-                2017-05-10
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-04T19:57:50+08:00">
+                2017-08-04
               </time>
             
 
@@ -314,14 +326,13 @@
       
 
       
-        <p>1.连接数据库(三种方式相等)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">graph_1 = Graph()</div><div class="line">graph_2 = Graph(host=&quot;localhost&quot;)</div><div class="line">graph_3 = Graph(&quot;http://localhost:7474/db/data&quot;)</div></pre></td></tr></table></figure></p>
-<p>2.事务操作<br>a)直接返回结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">graph.data(&quot;MATCH (a:Person) RETURN a.name, a.born LIMIT 4&quot;)</div></pre></td></tr></table></figure></p>
-<p>b)以pandas格式返回结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DataFrame(graph.data(&quot;MATCH (a:Person) RETURN a.name, a.born LIMIT 4&quot;))</div></pre></td></tr></table></figure></p>
-<p>事务操作样例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">from py2neo import Graph, Node, Relationship</div><div class="line">g = Graph()</div><div class="line">tx = g.begin()</div><div class="line">a = Node(&quot;Person&quot;, name=&quot;Alice&quot;)</div><div class="line">tx.create(a)</div><div class="line">b = Node(&quot;Person&quot;, name=&quot;Bob&quot;)</div><div class="line">ab = Relationship(a, &quot;KNOWS&quot;, b)</div><div class="line">tx.create(ab)</div><div class="line">tx.commit()</div><div class="line">g.exists(ab)</div></pre></td></tr></table></figure></p>
-<p>3.匹配关系<br>查找alice的所有朋友<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for rel in graph.match(start_node=alice,rel_type=&quot;FRIEND&quot;):</div><div class="line">	print(rel.end_node()[&apos;name&apos;])</div></pre></td></tr></table></figure></p>
-<p>4.带参数查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from py2neo import Graph</div><div class="line">g = Graph()</div><div class="line"># evaluate()返回结果的第一个值</div><div class="line">g.run(&quot;&quot;MATCH (a) WHERE a.email=&#123;x&#125; RETURN a.name&quot;,x=&quot;bob@acme.com&quot;).evaluate()</div><div class="line">g.run(&quot;&quot;MATCH (a) WHERE a.email=&#123;x&#125; RETURN a.name&quot;,x=&quot;bob@acme.com&quot;).data()</div></pre></td></tr></table></figure></p>
-<p>5.NodeSelector使用,可以使用Cypher语言的where部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">from py2neo import Graph,NodeSelector</div><div class="line">graph = Graph()</div><div class="line">selector = NodeSelector(graph)</div><div class="line">slected = selector.select(&quot;Person&quot;,name=&quot;Keanu Reeves&quot;)</div><div class="line">list(selected)</div><div class="line">selected = selector.select(&quot;Person&quot;).where(&quot;_.name =~ &apos;J.*&apos;&quot;,&quot;1960 &lt;= _.born &lt; 1970&quot;)</div><div class="line">list(selected)</div></pre></td></tr></table></figure></p>
-<p>6.删除操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 删除所有的</div><div class="line">graph.delete_all()</div></pre></td></tr></table></figure></p>
+        <p>近日,论文中涉及到NP-Hard问题,写下笔记对以上问题进行区分.</p>
+<blockquote>
+<p>P问题:在多项式时间内可以求解的问题.</p>
+<p>NP问题:在多项时间内不能求解,在多项式时间内可以验证的问题.</p>
+<p>NP-Hard问题:所有的NP问题在多项式时间内可以归约到该问题,该问题为NP-Hard问题.</p>
+<p>NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.</p>
+</blockquote>
 
       
     </div>
@@ -348,8 +359,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/05/08/Python-MPI/" rel="next" title="python-MPI安装命令">
-                <i class="fa fa-chevron-left"></i> python-MPI安装命令
+              <a href="/2017/07/30/GraphAndTree/" rel="next" title="判断无向图是否是一颗树">
+                <i class="fa fa-chevron-left"></i> 判断无向图是否是一颗树
               </a>
             
           </div>
@@ -357,10 +368,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/05/11/neo4j-developer-document/" rel="prev" title="neo4j官方开发文档阅读记录">
-                neo4j官方开发文档阅读记录 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
