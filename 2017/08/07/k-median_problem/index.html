@@ -100,7 +100,7 @@ k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它
 
 2 方法
 近似方法分为两种:近似算法(Approximate Algorithms)和启发式算法(Heuristic Algorithms).近似算法通常有质量保证的解.然而启发式算法通常可找到在传统解决问题的经验中找到寻求一种面向问题的策略,之后用这种策略来在可行时间内寻找一个相">
-<meta property="og:updated_time" content="2017-08-07T14:18:49.619Z">
+<meta property="og:updated_time" content="2017-08-07T14:20:35.147Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="NP-Hard问题(重点关注k-median问题)">
 <meta name="twitter:description" content="1 介绍例子:
@@ -290,7 +290,7 @@ k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-07T22:18:49+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-07T22:20:35+08:00">
                 2017-08-07
               </time>
             
@@ -349,6 +349,7 @@ k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它
 <li>step2:设置一个退火温度参数T,假设当前解X,他的邻居解X’与其目标函数差值为f(X)-f(X’),如果邻居解比其差,则需要以概率T来接受邻居解</li>
 </ul>
 <h3 id="3-2-3-蚁群算法-Ant-Colony-Optimization-ACO"><a href="#3-2-3-蚁群算法-Ant-Colony-Optimization-ACO" class="headerlink" title="3.2.3 蚁群算法(Ant Colony Optimization,ACO)"></a>3.2.3 蚁群算法(Ant Colony Optimization,ACO)</h3><h3 id="3-2-4-禁忌搜索-Tabu-Search"><a href="#3-2-4-禁忌搜索-Tabu-Search" class="headerlink" title="3.2.4 禁忌搜索(Tabu Search)"></a>3.2.4 禁忌搜索(Tabu Search)</h3><p>禁忌搜索在局部搜索算法中加入了禁忌周期,使得搜索领域里的解分成了两种类型:禁忌的解和非禁忌的解,这样帮助了搜索过程”跳坑”,扩大了搜索领域,避免了局部最优,增强了解的疏散性.</p>
+<p>思路:<br>（1）给定一个禁忌表（Tabu List）H=null,并选定一个初始解X_now.<br>（2）如果满足停止规则，则停止计算，输出结果；否则，在X_now的领域中选出满足不受禁忌的候选集N(X_now).在N(X_now)中选择一个评价值最贱的解X_next，X_next：=X_now；更新历史记录H, 重复步骤（2）.</p>
 
       
     </div>
