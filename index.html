@@ -279,7 +279,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-07T22:20:35+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-07T22:34:15+08:00">
                 2017-08-07
               </time>
             
@@ -340,7 +340,7 @@
 <li>step2:设置一个退火温度参数T,假设当前解X,他的邻居解X’与其目标函数差值为f(X)-f(X’),如果邻居解比其差,则需要以概率T来接受邻居解</li>
 </ul>
 <h3 id="3-2-3-蚁群算法-Ant-Colony-Optimization-ACO"><a href="#3-2-3-蚁群算法-Ant-Colony-Optimization-ACO" class="headerlink" title="3.2.3 蚁群算法(Ant Colony Optimization,ACO)"></a>3.2.3 蚁群算法(Ant Colony Optimization,ACO)</h3><h3 id="3-2-4-禁忌搜索-Tabu-Search"><a href="#3-2-4-禁忌搜索-Tabu-Search" class="headerlink" title="3.2.4 禁忌搜索(Tabu Search)"></a>3.2.4 禁忌搜索(Tabu Search)</h3><p>禁忌搜索在局部搜索算法中加入了禁忌周期,使得搜索领域里的解分成了两种类型:禁忌的解和非禁忌的解,这样帮助了搜索过程”跳坑”,扩大了搜索领域,避免了局部最优,增强了解的疏散性.</p>
-<p>思路:<br>（1）给定一个禁忌表（Tabu List）H=null,并选定一个初始解X_now.<br>（2）如果满足停止规则，则停止计算，输出结果；否则，在X_now的领域中选出满足不受禁忌的候选集N(X_now).在N(X_now)中选择一个评价值最贱的解X_next，X_next：=X_now；更新历史记录H, 重复步骤（2）.</p>
+<p>思路:<br>（1）给定一个禁忌表（Tabu List）H=null,并选定一个初始解X_now.<br>（2）如果满足停止规则，则停止计算，输出结果；否则，在X_now的领域中选出满足不受禁忌的候选集N(X_now).在N(X_now)中选择一个评价值最佳的解X_next，X_now:=X_next;更新历史记录H, 重复步骤（2）.</p>
 
           
         
