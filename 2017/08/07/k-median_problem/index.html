@@ -84,31 +84,40 @@
 
 
 
-<meta name="description" content="近日,论文中涉及到NP-Hard问题,写下笔记对以上问题进行区分.
+<meta name="description" content="1 介绍
+k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它最近工厂的加权距离总和最小.
 
-P问题:在多项式时间内可以求解的问题.
-NP问题:在多项时间内不能求解,在多项式时间内可以验证的问题.
-NP-Hard问题:所有的NP问题在多项式时间内可以归约到该问题,该问题为NP-Hard问题.
-NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
+2 方法工厂选址问题已经形成了多种求解方法,大致可以分为定性和定量两类方法.
+
+定性的方法主要是结合层次分析法和模糊综合法对各方案进行指标评价,找出最优选址.
+定量的常用方法包括松弛算法和启发式式算法以及两者的结合.
+
+启发式搜索在状态空间中对每一个要搜索的位置按照某种方式进行评估,得到最">
 <meta property="og:type" content="article">
-<meta property="og:title" content="P问题/NP问题/NP-Hard问题/NP-Complete问题">
-<meta property="og:url" content="https://github.com/DuncanZhou/2017/08/04/NP_Problem/index.html">
+<meta property="og:title" content="选址问题(重点关注k-median问题)">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/08/07/k-median_problem/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="近日,论文中涉及到NP-Hard问题,写下笔记对以上问题进行区分.
+<meta property="og:description" content="1 介绍
+k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它最近工厂的加权距离总和最小.
 
-P问题:在多项式时间内可以求解的问题.
-NP问题:在多项时间内不能求解,在多项式时间内可以验证的问题.
-NP-Hard问题:所有的NP问题在多项式时间内可以归约到该问题,该问题为NP-Hard问题.
-NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
-<meta property="og:updated_time" content="2017-08-04T11:57:49.997Z">
+2 方法工厂选址问题已经形成了多种求解方法,大致可以分为定性和定量两类方法.
+
+定性的方法主要是结合层次分析法和模糊综合法对各方案进行指标评价,找出最优选址.
+定量的常用方法包括松弛算法和启发式式算法以及两者的结合.
+
+启发式搜索在状态空间中对每一个要搜索的位置按照某种方式进行评估,得到最">
+<meta property="og:updated_time" content="2017-08-07T13:22:58.518Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="P问题/NP问题/NP-Hard问题/NP-Complete问题">
-<meta name="twitter:description" content="近日,论文中涉及到NP-Hard问题,写下笔记对以上问题进行区分.
+<meta name="twitter:title" content="选址问题(重点关注k-median问题)">
+<meta name="twitter:description" content="1 介绍
+k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它最近工厂的加权距离总和最小.
 
-P问题:在多项式时间内可以求解的问题.
-NP问题:在多项时间内不能求解,在多项式时间内可以验证的问题.
-NP-Hard问题:所有的NP问题在多项式时间内可以归约到该问题,该问题为NP-Hard问题.
-NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
+2 方法工厂选址问题已经形成了多种求解方法,大致可以分为定性和定量两类方法.
+
+定性的方法主要是结合层次分析法和模糊综合法对各方案进行指标评价,找出最优选址.
+定量的常用方法包括松弛算法和启发式式算法以及两者的结合.
+
+启发式搜索在状态空间中对每一个要搜索的位置按照某种方式进行评估,得到最">
 
 
 
@@ -136,13 +145,13 @@ NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2017/08/04/NP_Problem/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/08/07/k-median_problem/"/>
 
 
 
 
 
-  <title> P问题/NP问题/NP-Hard问题/NP-Complete问题 | Duncan's Blog </title>
+  <title> 选址问题(重点关注k-median问题) | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -253,7 +262,7 @@ NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/08/04/NP_Problem/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/08/07/k-median_problem/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -277,7 +286,7 @@ NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
             
             
               
-                P问题/NP问题/NP-Hard问题/NP-Complete问题
+                选址问题(重点关注k-median问题)
               
             
           </h1>
@@ -290,8 +299,8 @@ NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-04T19:57:50+08:00">
-                2017-08-04
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-07T21:22:58+08:00">
+                2017-08-07
               </time>
             
 
@@ -326,14 +335,25 @@ NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
       
 
       
-        <p>近日,论文中涉及到NP-Hard问题,写下笔记对以上问题进行区分.</p>
-<blockquote>
-<p>P问题:在多项式时间内可以求解的问题.</p>
-<p>NP问题:在多项时间内不能求解,在多项式时间内可以验证的问题.</p>
-<p>NP-Hard问题:所有的NP问题在多项式时间内可以归约到该问题,该问题为NP-Hard问题.</p>
-<p>NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.</p>
+        <h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h3><blockquote>
+<p>k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它最近工厂的加权距离总和最小.</p>
 </blockquote>
-
+<h3 id="2-方法"><a href="#2-方法" class="headerlink" title="2 方法"></a>2 方法</h3><p>工厂选址问题已经形成了多种求解方法,大致可以分为定性和定量两类方法.</p>
+<ul>
+<li>定性的方法主要是结合层次分析法和模糊综合法对各方案进行指标评价,找出最优选址.</li>
+<li>定量的常用方法包括<strong>松弛算法和启发式式算法</strong>以及两者的结合.</li>
+</ul>
+<p>启发式搜索在状态空间中对每一个要搜索的位置按照某种方式进行评估,得到最优的位置,再从这个位置进行搜索直到达到目标.常用的<strong>启发式算法包括:禁忌搜索/遗传算法/进化算法/模拟退火算法/蚁群算法/人工神经网络</strong>等等.</p>
+<p>Note:<br>Metric问题:指距离函数上是对称的且满足三角形不等式.</p>
+<h2 id="3-求解NP-Hard问题常用方法"><a href="#3-求解NP-Hard问题常用方法" class="headerlink" title="3 求解NP-Hard问题常用方法"></a>3 求解NP-Hard问题常用方法</h2><h3 id="3-1-贪心算法-Greedy-Algorithm"><a href="#3-1-贪心算法-Greedy-Algorithm" class="headerlink" title="3.1 贪心算法(Greedy Algorithm)"></a>3.1 贪心算法(Greedy Algorithm)</h3><h3 id="3-2-遗传算法-Genetic-Algorithm"><a href="#3-2-遗传算法-Genetic-Algorithm" class="headerlink" title="3.2 遗传算法(Genetic Algorithm)"></a>3.2 遗传算法(Genetic Algorithm)</h3><ul>
+<li>交叉:对非公共部分进行单点交叉,若交叉过后,子代对于父代有改进,则用子代替换父代.</li>
+<li>变异:基于种群中所有个体的概率,通过轮盘赌选择一个个体i进行变异:对个体i进行局部搜索,若有改进则取代种群中的最差个体.</li>
+</ul>
+<h3 id="3-3-模拟退火算法-SA算法"><a href="#3-3-模拟退火算法-SA算法" class="headerlink" title="3.3 模拟退火算法(SA算法)"></a>3.3 模拟退火算法(SA算法)</h3><ul>
+<li>step1:贪心或随机构造初始解</li>
+<li>step2:设置一个退火温度参数T,假设当前解X,他的邻居解X’与其目标函数差值为f(X)-f(X’),如果邻居解比其差,则需要以概率T来接受邻居解</li>
+</ul>
+<h3 id="3-4-蚁群算法-Ant-Colony-Optimization-ACO"><a href="#3-4-蚁群算法-Ant-Colony-Optimization-ACO" class="headerlink" title="3.4 蚁群算法(Ant Colony Optimization,ACO)"></a>3.4 蚁群算法(Ant Colony Optimization,ACO)</h3>
       
     </div>
 
@@ -359,8 +379,8 @@ NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/07/30/GraphAndTree/" rel="next" title="判断无向图是否是一颗树">
-                <i class="fa fa-chevron-left"></i> 判断无向图是否是一颗树
+              <a href="/2017/08/04/NP_Problem/" rel="next" title="P问题/NP问题/NP-Hard问题/NP-Complete问题">
+                <i class="fa fa-chevron-left"></i> P问题/NP问题/NP-Hard问题/NP-Complete问题
               </a>
             
           </div>
@@ -368,10 +388,6 @@ NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/08/07/k-median_problem/" rel="prev" title="选址问题(重点关注k-median问题)">
-                选址问题(重点关注k-median问题) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -418,8 +434,17 @@ NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg"
@@ -465,6 +490,22 @@ NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.">
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-介绍"><span class="nav-number">1.</span> <span class="nav-text">1 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-方法"><span class="nav-number">2.</span> <span class="nav-text">2 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-求解NP-Hard问题常用方法"><span class="nav-number"></span> <span class="nav-text">3 求解NP-Hard问题常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-贪心算法-Greedy-Algorithm"><span class="nav-number">1.</span> <span class="nav-text">3.1 贪心算法(Greedy Algorithm)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-遗传算法-Genetic-Algorithm"><span class="nav-number">2.</span> <span class="nav-text">3.2 遗传算法(Genetic Algorithm)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-模拟退火算法-SA算法"><span class="nav-number">3.</span> <span class="nav-text">3.3 模拟退火算法(SA算法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-蚁群算法-Ant-Colony-Optimization-ACO"><span class="nav-number">4.</span> <span class="nav-text">3.4 蚁群算法(Ant Colony Optimization,ACO)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>
