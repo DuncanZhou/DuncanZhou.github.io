@@ -279,7 +279,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-07T21:22:58+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-07T22:08:37+08:00">
                 2017-08-07
               </time>
             
@@ -320,22 +320,26 @@
             <h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h3><blockquote>
 <p>k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它最近工厂的加权距离总和最小.</p>
 </blockquote>
-<h3 id="2-方法"><a href="#2-方法" class="headerlink" title="2 方法"></a>2 方法</h3><p>工厂选址问题已经形成了多种求解方法,大致可以分为定性和定量两类方法.</p>
+<h3 id="2-方法"><a href="#2-方法" class="headerlink" title="2 方法"></a>2 方法</h3><blockquote>
+<p>近似方法分为两种:近似算法(Approximate Algorithms)和启发式算法(Heuristic Algorithms).近似算法通常有质量保证的解.然而启发式算法通常可找到在传统解决问题的经验中找到寻求一种面向问题的策略,之后用这种策略来在可行时间内寻找一个相对比较好的解,但对解的质量没有保证.</p>
+</blockquote>
+<p>工厂选址问题已经形成了多种求解方法,大致可以分为定性和定量两类方法.</p>
 <ul>
 <li>定性的方法主要是结合层次分析法和模糊综合法对各方案进行指标评价,找出最优选址.</li>
 <li>定量的常用方法包括<strong>松弛算法和启发式式算法</strong>以及两者的结合.</li>
 </ul>
 <p>启发式搜索在状态空间中对每一个要搜索的位置按照某种方式进行评估,得到最优的位置,再从这个位置进行搜索直到达到目标.常用的<strong>启发式算法包括:禁忌搜索/遗传算法/进化算法/模拟退火算法/蚁群算法/人工神经网络</strong>等等.</p>
 <p>Note:<br>Metric问题:指距离函数上是对称的且满足三角形不等式.</p>
-<h2 id="3-求解NP-Hard问题常用方法"><a href="#3-求解NP-Hard问题常用方法" class="headerlink" title="3 求解NP-Hard问题常用方法"></a>3 求解NP-Hard问题常用方法</h2><h3 id="3-1-贪心算法-Greedy-Algorithm"><a href="#3-1-贪心算法-Greedy-Algorithm" class="headerlink" title="3.1 贪心算法(Greedy Algorithm)"></a>3.1 贪心算法(Greedy Algorithm)</h3><h3 id="3-2-遗传算法-Genetic-Algorithm"><a href="#3-2-遗传算法-Genetic-Algorithm" class="headerlink" title="3.2 遗传算法(Genetic Algorithm)"></a>3.2 遗传算法(Genetic Algorithm)</h3><ul>
+<h2 id="3-求解NP-Hard问题常用方法"><a href="#3-求解NP-Hard问题常用方法" class="headerlink" title="3 求解NP-Hard问题常用方法"></a>3 求解NP-Hard问题常用方法</h2><h3 id="3-1-近似算法"><a href="#3-1-近似算法" class="headerlink" title="3.1 近似算法"></a>3.1 近似算法</h3><h3 id="3-1-1-贪心算法-Greedy-Algorithm"><a href="#3-1-1-贪心算法-Greedy-Algorithm" class="headerlink" title="3.1.1 贪心算法(Greedy Algorithm)"></a>3.1.1 贪心算法(Greedy Algorithm)</h3><h3 id="3-2-启发式算法"><a href="#3-2-启发式算法" class="headerlink" title="3.2 启发式算法"></a>3.2 启发式算法</h3><h3 id="3-2-1-遗传算法-Genetic-Algorithm"><a href="#3-2-1-遗传算法-Genetic-Algorithm" class="headerlink" title="3.2.1 遗传算法(Genetic Algorithm)"></a>3.2.1 遗传算法(Genetic Algorithm)</h3><ul>
 <li>交叉:对非公共部分进行单点交叉,若交叉过后,子代对于父代有改进,则用子代替换父代.</li>
 <li>变异:基于种群中所有个体的概率,通过轮盘赌选择一个个体i进行变异:对个体i进行局部搜索,若有改进则取代种群中的最差个体.</li>
 </ul>
-<h3 id="3-3-模拟退火算法-SA算法"><a href="#3-3-模拟退火算法-SA算法" class="headerlink" title="3.3 模拟退火算法(SA算法)"></a>3.3 模拟退火算法(SA算法)</h3><ul>
+<h3 id="3-2-2-模拟退火算法-SA算法"><a href="#3-2-2-模拟退火算法-SA算法" class="headerlink" title="3.2.2 模拟退火算法(SA算法)"></a>3.2.2 模拟退火算法(SA算法)</h3><ul>
 <li>step1:贪心或随机构造初始解</li>
 <li>step2:设置一个退火温度参数T,假设当前解X,他的邻居解X’与其目标函数差值为f(X)-f(X’),如果邻居解比其差,则需要以概率T来接受邻居解</li>
 </ul>
-<h3 id="3-4-蚁群算法-Ant-Colony-Optimization-ACO"><a href="#3-4-蚁群算法-Ant-Colony-Optimization-ACO" class="headerlink" title="3.4 蚁群算法(Ant Colony Optimization,ACO)"></a>3.4 蚁群算法(Ant Colony Optimization,ACO)</h3>
+<h3 id="3-2-3-蚁群算法-Ant-Colony-Optimization-ACO"><a href="#3-2-3-蚁群算法-Ant-Colony-Optimization-ACO" class="headerlink" title="3.2.3 蚁群算法(Ant Colony Optimization,ACO)"></a>3.2.3 蚁群算法(Ant Colony Optimization,ACO)</h3><h3 id="3-2-4-禁忌搜索-Tabu-Search"><a href="#3-2-4-禁忌搜索-Tabu-Search" class="headerlink" title="3.2.4 禁忌搜索(Tabu Search)"></a>3.2.4 禁忌搜索(Tabu Search)</h3><p>禁忌搜索在局部搜索算法中加入了禁忌周期,使得搜索领域里的解分成了两种类型:禁忌的解和非禁忌的解,这样帮助了搜索过程”跳坑”,扩大了搜索领域,避免了局部最优,增强了解的疏散性.</p>
+
           
         
       
