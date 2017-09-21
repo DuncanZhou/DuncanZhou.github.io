@@ -98,7 +98,7 @@
 2.欠拟合:学习能力低下造成的,解决办法:在决策树学习中扩展分支/在神经网络学习中增加训练轮数等.
 3.评估方法:
 3.1 测试集应该尽可能与训练">
-<meta property="og:updated_time" content="2017-09-21T05:29:04.000Z">
+<meta property="og:updated_time" content="2017-09-21T06:36:41.350Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="西瓜书阅读">
 <meta name="twitter:description" content="西瓜书阅读记录=============================================
@@ -287,7 +287,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-21T13:29:04+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-21T14:36:41+08:00">
                 2017-09-21
               </time>
             
@@ -354,8 +354,12 @@
 </tr>
 </tbody>
 </table>
-<p>$$P = TP / (TP  + FP)$$<br>$$R = TP / (TP + FN)$$</p>
-<p>4.3 </p>
+<p>$$P(查准率) = TP / (TP  + FP)$$<br>$$R(查全率) = TP / (TP + FN)$$</p>
+<p>4.3 P-R图:以查准率为纵坐标,以查全率为横坐标.在进行比较时,若一个学习器的P-R曲线被另一个学习器的曲线完全”包住”,则可断言后者的性能优于前者. “平衡点”(BEP):当查准率 = 查全率时的取值,即为平衡点.</p>
+<p>4.4 F1-measure:<br>$$F1 = 2 * TP / (样例总数 + TP - TN)$$</p>
+<p>4.5 查准率和查全率的应用目的区别:例如在商品推荐系统中,为了尽可能少打扰用户,更希望推荐内容的确是用户感兴趣的,此时查准率更重要;而在逃犯信息检索系统中,更希望尽可能少漏掉逃犯,此时查全率更重要.</p>
+<p>4.6 对于多分类考察查准率和查全率,基于两种方式:a)先在各个混淆矩阵上计算(P<sub>1</sub>,R<sub>1</sub>),(P<sub>2</sub>,R<sub>2</sub>),…,(P<sub>n</sub>,R<sub>n</sub>),然后再计算平均值得到”宏查准率”和”宏查全率”.b)先将各混淆矩阵上的对应元素计算平均,再基于这些平均值计算出”微查准率”和”微查全率”.</p>
+<p>4.7 ROC和AUC: ROC体现了综合考虑学习器在不同任务下的”期望泛化性能”的好坏,或者说,”一般情况下”泛化性能的好坏.ROC曲线的纵轴是”真正例率(TPR)”,横轴是”假正例率(FPR)”,两者分别定义为TPR=TP / (TP + FN), FPR=FP / (TN + FP). 和P-R图相似,若一个学习器的ROC曲线被另一个学习器的曲线完全”包住”,则可断言后者性能优于前者.若两个学习器的ROC曲线发生交叉,则难以一般性地断言两者孰优孰劣,此时如果一定要进行比较,则较为合理的判据是比较ROC曲线下的面积,即AUC.<br>$$AUC = \frac{1}{2}\sum_{i=1}^{m-1}(x_{i+1} - x_i) \cdot(y_i + y_{i+1})$$.</p>
 
       
     </div>
