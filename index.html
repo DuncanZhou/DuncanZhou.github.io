@@ -239,6 +239,135 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/09/24/Expression/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/09/24/Expression/" itemprop="url">
+                  四则运算表达式求值
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-24T21:34:44+08:00">
+                2017-09-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="表达式求值"><a href="#表达式求值" class="headerlink" title="表达式求值"></a>表达式求值</h3><blockquote>
+<p>对于表达式的求值,一般使用中缀表达式转后缀表达式后,对后缀表达式求值,因为对于后缀或者前缀表达式计算,计算的顺序都是唯一的.</p>
+</blockquote>
+<h4 id="中缀表达式转后缀表达式的方法："><a href="#中缀表达式转后缀表达式的方法：" class="headerlink" title="中缀表达式转后缀表达式的方法："></a>中缀表达式转后缀表达式的方法：</h4><ul>
+<li>1.遇到操作数：直接输出（添加到后缀表达式中）</li>
+<li>2.栈为空时，遇到运算符，直接入栈</li>
+<li>3.遇到左括号：将其入栈</li>
+<li>4.遇到右括号：执行出栈操作，并将出栈的元素输出，直到弹出栈的是左括号，左括号不输出。</li>
+<li>5.遇到其他运算符：加减乘除：弹出所有优先级大于或者等于该运算符的栈顶元素，然后将该运算符入栈</li>
+<li>6.最终将栈中的元素依次出栈，输出。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public ArrayList&lt;String&gt; SuffixExpression(ArrayList&lt;String&gt; string)&#123;</div><div class="line">        ArrayList&lt;String&gt; suffix = new ArrayList&lt;&gt;();</div><div class="line">        Stack&lt;String&gt; stack = new Stack&lt;&gt;();</div><div class="line">        for(int i = 0; i &lt; string.size(); i++)&#123;</div><div class="line">            if(string.get(i).equals(&quot;*&quot;) || string.get(i).equals(&quot;/&quot;) || string.get(i).equals(&quot;(&quot;))&#123;</div><div class="line">                //push</div><div class="line">                stack.push(string.get(i));</div><div class="line">            &#125;</div><div class="line">            else if(string.get(i).equals(&quot;+&quot;) || string.get(i).equals(&quot;-&quot;))&#123;</div><div class="line">                while(!stack.isEmpty() &amp;&amp; (stack.peek().equals(&quot;*&quot;) || stack.peek().equals(&quot;/&quot;)))</div><div class="line">                &#123;</div><div class="line">                        suffix.add(stack.pop());</div><div class="line">                &#125;</div><div class="line">                //push</div><div class="line">                stack.push(string.get(i));</div><div class="line">            &#125;</div><div class="line">            else if(string.get(i).equals(&quot;)&quot;))</div><div class="line">            &#123;</div><div class="line">                while(!stack.isEmpty() &amp;&amp; !stack.peek().equals(&quot;(&quot;))</div><div class="line">                    suffix.add(stack.pop());</div><div class="line">                //pop (</div><div class="line">                stack.pop();</div><div class="line">            &#125;else&#123;</div><div class="line">                suffix.add(string.get(i));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //push all elements in stack</div><div class="line">        while(!stack.isEmpty())</div><div class="line">            suffix.add(stack.pop());</div><div class="line">        return suffix;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="计算后缀表达式"><a href="#计算后缀表达式" class="headerlink" title="计算后缀表达式"></a>计算后缀表达式</h3><p>遇到操作数压入栈,否则弹出两个操作数进行操作后再压入栈中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public int CalaculateSuffix(ArrayList&lt;String&gt; suffix)&#123;</div><div class="line">        //when meet operator, pop two elements to calaculate</div><div class="line">        Stack&lt;String&gt; stack = new Stack&lt;&gt;();</div><div class="line">        for(int i = 0; i &lt; suffix.size(); i++)&#123;</div><div class="line">            if(!(suffix.get(i).equals(&quot;+&quot;) || suffix.get(i).equals(&quot;-&quot;) || suffix.get(i).equals(&quot;*&quot;) || suffix.get(i).equals(&quot;/&quot;)))</div><div class="line">                //push into stack</div><div class="line">                stack.push(suffix.get(i));</div><div class="line">            else&#123;</div><div class="line">                //calucate</div><div class="line">                String operator = suffix.get(i);</div><div class="line">                String b = stack.pop();</div><div class="line">                String a = stack.pop();</div><div class="line">                String temp = String.valueOf(operate(a,b,operator));</div><div class="line">                stack.push(temp);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return Integer.valueOf(stack.pop());</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/09/21/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -279,7 +408,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-21T15:01:24+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-21T15:02:15+08:00">
                 2017-09-21
               </time>
             
@@ -1485,134 +1614,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/06/07/RecommendationLearning/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/06/07/RecommendationLearning/" itemprop="url">
-                  Recommendation方向学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-07T16:12:49+08:00">
-                2017-06-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h3><p>目前推荐上研究的方向有这样几个方向:<br>1.Temporal Context-Aware Recommendation<br>2.Spatial Recommendation for Out-of-Town Users<br>3.Location-based and Real-time Recommendation<br>4.Efficiency of Online Recommendation</p>
-<p>补充学习:</p>
-<blockquote>
-<p>online learning强调的是学习是实时的，流式的，每次训练不用使用全部样本，而是以之前训练好的模型为基础，每来一个样本就更新一次模型，这种方法叫做OGD（online gradient descent）。</p>
-<p>batch learning或者叫offline learning强调的是每次训练都需要使用全量的样本，因而可能会面临数据量过大的问题。</p>
-</blockquote>
-<p>传统的推荐系统广泛都使用了<font color="blue">协同过滤</font>和<font color="blue">基于内容过滤技术</font></p>
-<p>协同过滤分为</p>
-<blockquote>
-<p>基于内存的推荐和基于模型的推荐(矩阵分解)</p>
-</blockquote>
-<p>Context-Aware Recommender Systems(CARS)包含三种范例:contextual pre-filtering,contextual post-filtering and contextual modeling.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1658,7 +1659,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">27</span>
+              <span class="site-state-item-count">28</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -1668,7 +1669,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
