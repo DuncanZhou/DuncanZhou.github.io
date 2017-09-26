@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="-MachineLearning," />
 
 
 
@@ -84,31 +84,28 @@
 
 
 
-<meta name="description" content="1 介绍例子:
-
-k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它最近工厂的加权距离总和最小.
-
-2 方法
-近似方法分为两种:近似算法(Approximate Algorithms)和启发式算法(Heuristic Algorithms).近似算法通常有质量保证的解.然而启发式算法通常可找到在传统解决问题的经验中找到寻求一种面向问题的策略,之后用这种策略来在可行时间内寻找一个相">
+<meta name="description" content="西瓜书阅读记录=============================================
+第二章.模型评估与选择1.过拟合:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所有潜在样本都会具有的一般性质.
+2.欠拟合:学习能力低下造成的,解决办法:在决策树学习中扩展分支/在神经网络学习中增加训练轮数等.
+3.评估方法:
+3.1 测试集应该尽可能与训练">
 <meta property="og:type" content="article">
-<meta property="og:title" content="NP-Hard问题(重点关注k-median问题)">
-<meta property="og:url" content="https://github.com/DuncanZhou/2017/08/08/k-median_problem/index.html">
+<meta property="og:title" content="西瓜书阅读">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/09/26/MachineLearningNotes/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="1 介绍例子:
-
-k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它最近工厂的加权距离总和最小.
-
-2 方法
-近似方法分为两种:近似算法(Approximate Algorithms)和启发式算法(Heuristic Algorithms).近似算法通常有质量保证的解.然而启发式算法通常可找到在传统解决问题的经验中找到寻求一种面向问题的策略,之后用这种策略来在可行时间内寻找一个相">
-<meta property="og:updated_time" content="2017-08-08T06:31:52.800Z">
+<meta property="og:description" content="西瓜书阅读记录=============================================
+第二章.模型评估与选择1.过拟合:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所有潜在样本都会具有的一般性质.
+2.欠拟合:学习能力低下造成的,解决办法:在决策树学习中扩展分支/在神经网络学习中增加训练轮数等.
+3.评估方法:
+3.1 测试集应该尽可能与训练">
+<meta property="og:updated_time" content="2017-09-26T08:55:38.384Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="NP-Hard问题(重点关注k-median问题)">
-<meta name="twitter:description" content="1 介绍例子:
-
-k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它最近工厂的加权距离总和最小.
-
-2 方法
-近似方法分为两种:近似算法(Approximate Algorithms)和启发式算法(Heuristic Algorithms).近似算法通常有质量保证的解.然而启发式算法通常可找到在传统解决问题的经验中找到寻求一种面向问题的策略,之后用这种策略来在可行时间内寻找一个相">
+<meta name="twitter:title" content="西瓜书阅读">
+<meta name="twitter:description" content="西瓜书阅读记录=============================================
+第二章.模型评估与选择1.过拟合:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所有潜在样本都会具有的一般性质.
+2.欠拟合:学习能力低下造成的,解决办法:在决策树学习中扩展分支/在神经网络学习中增加训练轮数等.
+3.评估方法:
+3.1 测试集应该尽可能与训练">
 
 
 
@@ -136,13 +133,13 @@ k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2017/08/08/k-median_problem/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/09/26/MachineLearningNotes/"/>
 
 
 
 
 
-  <title> NP-Hard问题(重点关注k-median问题) | Duncan's Blog </title>
+  <title> 西瓜书阅读 | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -253,7 +250,7 @@ k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/08/08/k-median_problem/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/09/26/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -277,7 +274,7 @@ k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它
             
             
               
-                NP-Hard问题(重点关注k-median问题)
+                西瓜书阅读
               
             
           </h1>
@@ -290,8 +287,8 @@ k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-08T14:31:52+08:00">
-                2017-08-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T16:55:38+08:00">
+                2017-09-26
               </time>
             
 
@@ -326,30 +323,48 @@ k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它
       
 
       
-        <h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h3><p>例子:</p>
-<blockquote>
-<p>k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它最近工厂的加权距离总和最小.</p>
-</blockquote>
-<h3 id="2-方法"><a href="#2-方法" class="headerlink" title="2 方法"></a>2 方法</h3><blockquote>
-<p>近似方法分为两种:近似算法(Approximate Algorithms)和启发式算法(Heuristic Algorithms).近似算法通常有质量保证的解.然而启发式算法通常可找到在传统解决问题的经验中找到寻求一种面向问题的策略,之后用这种策略来在可行时间内寻找一个相对比较好的解,但对解的质量没有保证.</p>
-</blockquote>
-<p>工厂选址问题已经形成了多种求解方法,大致可以分为定性和定量两类方法.</p>
-<ul>
-<li>定性的方法主要是结合层次分析法和模糊综合法对各方案进行指标评价,找出最优选址.</li>
-<li>定量的常用方法包括<strong>松弛算法和启发式式算法</strong>以及两者的结合.</li>
-</ul>
-<p>启发式搜索在状态空间中对每一个要搜索的位置按照某种方式进行评估,得到最优的位置,再从这个位置进行搜索直到达到目标.常用的<strong>启发式算法包括:禁忌搜索/遗传算法/进化算法/模拟退火算法/蚁群算法/人工神经网络</strong>等等.</p>
-<p>Note:<br>Metric问题:指距离函数上是对称的且满足三角形不等式.</p>
-<h2 id="3-求解NP-Hard问题常用方法"><a href="#3-求解NP-Hard问题常用方法" class="headerlink" title="3 求解NP-Hard问题常用方法"></a>3 求解NP-Hard问题常用方法</h2><h3 id="3-1-近似算法-Approximate-Algorithms-含近似比"><a href="#3-1-近似算法-Approximate-Algorithms-含近似比" class="headerlink" title="3.1 近似算法(Approximate Algorithms,含近似比)"></a>3.1 近似算法(Approximate Algorithms,含近似比)</h3><h3 id="3-1-1-贪心算法-Greedy-Algorithm"><a href="#3-1-1-贪心算法-Greedy-Algorithm" class="headerlink" title="3.1.1 贪心算法(Greedy Algorithm)"></a>3.1.1 贪心算法(Greedy Algorithm)</h3><h3 id="3-1-2-局部搜索-Local-Search"><a href="#3-1-2-局部搜索-Local-Search" class="headerlink" title="3.1.2 局部搜索(Local Search)"></a>3.1.2 局部搜索(Local Search)</h3><h3 id="3-2-启发式算法-Heuristic-Algorithms-不能保证解的质量"><a href="#3-2-启发式算法-Heuristic-Algorithms-不能保证解的质量" class="headerlink" title="3.2 启发式算法(Heuristic Algorithms,不能保证解的质量)"></a>3.2 启发式算法(Heuristic Algorithms,不能保证解的质量)</h3><h3 id="3-2-1-遗传算法-Genetic-Algorithm"><a href="#3-2-1-遗传算法-Genetic-Algorithm" class="headerlink" title="3.2.1 遗传算法(Genetic Algorithm)"></a>3.2.1 遗传算法(Genetic Algorithm)</h3><ul>
-<li>交叉:对非公共部分进行单点交叉,若交叉过后,子代对于父代有改进,则用子代替换父代.</li>
-<li>变异:基于种群中所有个体的概率,通过轮盘赌选择一个个体i进行变异:对个体i进行局部搜索,若有改进则取代种群中的最差个体.</li>
-</ul>
-<h3 id="3-2-2-模拟退火算法-SA算法"><a href="#3-2-2-模拟退火算法-SA算法" class="headerlink" title="3.2.2 模拟退火算法(SA算法)"></a>3.2.2 模拟退火算法(SA算法)</h3><ul>
-<li>step1:贪心或随机构造初始解</li>
-<li>step2:设置一个退火温度参数T,假设当前解X,他的邻居解X’与其目标函数差值为f(X)-f(X’),如果邻居解比其差,则需要以概率T来接受邻居解</li>
-</ul>
-<h3 id="3-2-3-蚁群算法-Ant-Colony-Optimization-ACO"><a href="#3-2-3-蚁群算法-Ant-Colony-Optimization-ACO" class="headerlink" title="3.2.3 蚁群算法(Ant Colony Optimization,ACO)"></a>3.2.3 蚁群算法(Ant Colony Optimization,ACO)</h3><h3 id="3-2-4-禁忌搜索-Tabu-Search"><a href="#3-2-4-禁忌搜索-Tabu-Search" class="headerlink" title="3.2.4 禁忌搜索(Tabu Search)"></a>3.2.4 禁忌搜索(Tabu Search)</h3><p>禁忌搜索在局部搜索(基于领域搜索)算法中加入了禁忌周期,使得搜索领域里的解分成了两种类型:禁忌的解和非禁忌的解,这样帮助了搜索过程”跳坑”,扩大了搜索领域,避免了局部最优,增强了解的疏散性.</p>
-<p>思路:<br>（1）给定一个禁忌表（Tabu List）H=null,并选定一个初始解X_now.<br>（2）如果满足停止规则，则停止计算，输出结果；否则，在X_now的领域中选出满足不受禁忌的候选集N(X_now).在N(X_now)中选择一个评价值最佳的解X_next，X_now:=X_next;更新历史记录H, 重复步骤（2）.</p>
+        <h2 id="西瓜书阅读记录"><a href="#西瓜书阅读记录" class="headerlink" title="西瓜书阅读记录"></a>西瓜书阅读记录</h2><p>=============================================</p>
+<h3 id="第二章-模型评估与选择"><a href="#第二章-模型评估与选择" class="headerlink" title="第二章.模型评估与选择"></a>第二章.模型评估与选择</h3><p>1.<strong>过拟合</strong>:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所有潜在样本都会具有的一般性质.</p>
+<p>2.<strong>欠拟合</strong>:学习能力低下造成的,解决办法:在决策树学习中扩展分支/在神经网络学习中增加训练轮数等.</p>
+<p><strong>3.评估方法</strong>:</p>
+<p>3.1 测试集应该尽可能与训练集互斥,即测试样本尽量不再训练集中出现,未在训练过程中使用过.</p>
+<p>3.2 划分训练集和测试集的方法: a)<strong>留出法</strong>,直接将数据集划分为互斥的两个集合;b)<strong>交叉验证法(k-fold validation)</strong>,先将数据集D划分为k个大小相似的互斥子集,每个子集都尽可能保持数据分布的一致性.然后,每次用k-1个子集的并集作为训练集,余下的那个子集作为测试集,进行k次训练和测试,最终返回这k个测试结果的均值.(k的通常取值为10,并且通常对k-fold validation做多次,一般为10次10折交叉验证法).c)<strong>自助法(bootstrapping)</strong>,给定包含m个样本的数据集D,对它进行采样产生数据集D’:每次随即从D中挑选一个样本,将其拷贝放入D’,然后再将该样本放回初始数据集D中,使得该样本在下次采样时仍有可能被采到;这个过程重复执行m次后,我们就得到了包含m个样本的数据集D’.</p>
+<p>3.3 调参参数类型:<strong>算法参数</strong>和<strong>模型参数</strong>.</p>
+<p><strong>4. 性能度量</strong>:</p>
+<p>4.1 回归任务最常用的性能度量是”均方误差”:<br>$$E(f;D)=\frac{1}{m}\sum_{i=1}^{m}(f(x_i)-y_i)^2$$.</p>
+<p>4.2  评价标准: 错误率与精度,查全率和查准率.错误率和精度指多少样本被判错,多少样本被判错;查全率和查准率指模型判断为正例中有多少比例是真正的正例,模型判断为反例中有多少为真正的反例.(两种评价标准对应的需求不一样)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">真实情况</th>
+<th style="text-align:center">预测结果正例</th>
+<th style="text-align:center">预测结果反例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">正例</td>
+<td style="text-align:center">TP(真正例)</td>
+<td style="text-align:center">FN(反正例)</td>
+</tr>
+<tr>
+<td style="text-align:center">反例</td>
+<td style="text-align:center">FP(假正例)</td>
+<td style="text-align:center">TN(真正例)</td>
+</tr>
+</tbody>
+</table>
+<p>$$P(查准率) = TP / (TP  + FP)$$<br>$$R(查全率) = TP / (TP + FN)$$</p>
+<p>4.3 P-R图:以查准率为纵坐标,以查全率为横坐标.在进行比较时,若一个学习器的P-R曲线被另一个学习器的曲线完全”包住”,则可断言后者的性能优于前者. “平衡点”(BEP):当查准率 = 查全率时的取值,即为平衡点.</p>
+<p>4.4 F1-measure:<br>$$F1 = 2 * TP / (样例总数 + TP - TN)$$</p>
+<p>4.5 查准率和查全率的应用目的区别:例如在商品推荐系统中,为了尽可能少打扰用户,更希望推荐内容的确是用户感兴趣的,此时查准率更重要;而在逃犯信息检索系统中,更希望尽可能少漏掉逃犯,此时查全率更重要.</p>
+<p>4.6 对于多分类考察查准率和查全率,基于两种方式:a)先在各个混淆矩阵上计算(P<sub>1</sub>,R<sub>1</sub>),(P<sub>2</sub>,R<sub>2</sub>),…,(P<sub>n</sub>,R<sub>n</sub>),然后再计算平均值得到”宏查准率”和”宏查全率”.b)先将各混淆矩阵上的对应元素计算平均,再基于这些平均值计算出”微查准率”和”微查全率”.</p>
+<p>4.7 ROC和AUC: ROC体现了综合考虑学习器在不同任务下的”期望泛化性能”的好坏,或者说,”一般情况下”泛化性能的好坏.ROC曲线的纵轴是”真正例率(TPR)”,横轴是”假正例率(FPR)”,两者分别定义为TPR=TP / (TP + FN), FPR=FP / (TN + FP). 和P-R图相似,若一个学习器的ROC曲线被另一个学习器的曲线完全”包住”,则可断言后者性能优于前者.若两个学习器的ROC曲线发生交叉,则难以一般性地断言两者孰优孰劣,此时如果一定要进行比较,则较为合理的判据是比较ROC曲线下的面积,即AUC.<br>$$AUC = \frac{1}{2}\sum_{i=1}^{m-1}(x_{i+1} - x_i) \cdot(y_i + y_{i+1})$$.</p>
+<p><strong>5.比较检验(待丰富)</strong>:假设检验/交叉验证t检验/McNemar检验/Friedman检验与Nemenyi后续检验</p>
+<p><strong>6.偏差与方差</strong>:</p>
+<p>6.1 泛化误差可分为偏差/方差与噪声之和.<strong>偏差</strong>度量了学习算法的期望预测与真实结果的偏离程度,即刻画了学习算法本身的拟合能力;<strong>方差</strong>度量了同样大小的训练集的变动所导致的学习性能的变化,即刻画了数据扰动所造成的影响;<strong>噪声</strong>则表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界,即刻画了学习问题本身的难度.</p>
+<hr>
+<h3 id="第三章-线性模型"><a href="#第三章-线性模型" class="headerlink" title="第三章.线性模型"></a>第三章.线性模型</h3><p>1.线性模型:给定由d个属性描述的示例X=(x<sub>1</sub>;x<sub>2</sub>;…;x<sub>d</sub>),其中x<sub>i</sub>是X在第i个属性上的取值,线性模型试图<strong>学得一个通过属性的线性组合来进行预测的函数</strong>,即<br>$$f(\textbf{x})=w_1x_1+w_2x_2+…+w_dx_d+b$$<br>写成向量形式:<br>$$f(\textbf{x})=\textbf{w}^T+b$$<br>其中,<strong>w</strong>=(w<sub>1</sub>;w<sub>2</sub>;…;w<sub>d</sub>).<strong>w</strong>和b学得之后,模型就得以确定.</p>
 
       
     </div>
@@ -371,13 +386,19 @@ k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/MachineLearning/" rel="tag"># -MachineLearning</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/04/NP_Problem/" rel="next" title="P问题/NP问题/NP-Hard问题/NP-Complete问题">
-                <i class="fa fa-chevron-left"></i> P问题/NP问题/NP-Hard问题/NP-Complete问题
+              <a href="/2017/09/24/Expression/" rel="next" title="四则运算表达式求值">
+                <i class="fa fa-chevron-left"></i> 四则运算表达式求值
               </a>
             
           </div>
@@ -385,10 +406,6 @@ k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/24/Expression/" rel="prev" title="四则运算表达式求值">
-                四则运算表达式求值 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -501,7 +518,7 @@ k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-介绍"><span class="nav-number">1.</span> <span class="nav-text">1 介绍</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-方法"><span class="nav-number">2.</span> <span class="nav-text">2 方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-求解NP-Hard问题常用方法"><span class="nav-number"></span> <span class="nav-text">3 求解NP-Hard问题常用方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-近似算法-Approximate-Algorithms-含近似比"><span class="nav-number">1.</span> <span class="nav-text">3.1 近似算法(Approximate Algorithms,含近似比)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-贪心算法-Greedy-Algorithm"><span class="nav-number">2.</span> <span class="nav-text">3.1.1 贪心算法(Greedy Algorithm)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-局部搜索-Local-Search"><span class="nav-number">3.</span> <span class="nav-text">3.1.2 局部搜索(Local Search)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-启发式算法-Heuristic-Algorithms-不能保证解的质量"><span class="nav-number">4.</span> <span class="nav-text">3.2 启发式算法(Heuristic Algorithms,不能保证解的质量)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-遗传算法-Genetic-Algorithm"><span class="nav-number">5.</span> <span class="nav-text">3.2.1 遗传算法(Genetic Algorithm)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-模拟退火算法-SA算法"><span class="nav-number">6.</span> <span class="nav-text">3.2.2 模拟退火算法(SA算法)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-3-蚁群算法-Ant-Colony-Optimization-ACO"><span class="nav-number">7.</span> <span class="nav-text">3.2.3 蚁群算法(Ant Colony Optimization,ACO)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-4-禁忌搜索-Tabu-Search"><span class="nav-number">8.</span> <span class="nav-text">3.2.4 禁忌搜索(Tabu Search)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#西瓜书阅读记录"><span class="nav-number">1.</span> <span class="nav-text">西瓜书阅读记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第二章-模型评估与选择"><span class="nav-number">1.1.</span> <span class="nav-text">第二章.模型评估与选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-线性模型"><span class="nav-number">1.2.</span> <span class="nav-text">第三章.线性模型</span></a></li></ol></li></ol></div>
             
 
           </div>
