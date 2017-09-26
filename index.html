@@ -279,7 +279,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T16:55:38+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-26T20:36:13+08:00">
                 2017-09-26
               </time>
             
@@ -359,6 +359,17 @@
 <p>6.1 泛化误差可分为偏差/方差与噪声之和.<strong>偏差</strong>度量了学习算法的期望预测与真实结果的偏离程度,即刻画了学习算法本身的拟合能力;<strong>方差</strong>度量了同样大小的训练集的变动所导致的学习性能的变化,即刻画了数据扰动所造成的影响;<strong>噪声</strong>则表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界,即刻画了学习问题本身的难度.</p>
 <hr>
 <h3 id="第三章-线性模型"><a href="#第三章-线性模型" class="headerlink" title="第三章.线性模型"></a>第三章.线性模型</h3><p>1.线性模型:给定由d个属性描述的示例X=(x<sub>1</sub>;x<sub>2</sub>;…;x<sub>d</sub>),其中x<sub>i</sub>是X在第i个属性上的取值,线性模型试图<strong>学得一个通过属性的线性组合来进行预测的函数</strong>,即<br>$$f(\textbf{x})=w_1x_1+w_2x_2+…+w_dx_d+b$$<br>写成向量形式:<br>$$f(\textbf{x})=\textbf{w}^T+b$$<br>其中,<strong>w</strong>=(w<sub>1</sub>;w<sub>2</sub>;…;w<sub>d</sub>).<strong>w</strong>和b学得之后,模型就得以确定.</p>
+<p><strong>2.线性回归</strong></p>
+<p>2.1 概念:线性回归试图学得一个线性模型以尽可能准确地预测实值输出标记.</p>
+<p>2.2 均方误差是回归任务中最常用的性能度量.</p>
+<p>2.3 对于多元线性回归,可以利用最小二乘法来对<strong>w</strong>和b进行估计.</p>
+<p>2.4 对数线性回归: 认为示例所对应的输出标记是在指数尺度上变化.<br>$$lny=\textbf{w}^T+b$$<br>实际上是试图让$$e^{w^Tx}+b$$逼近y.</p>
+<p>2.5 广义线性模型: $$y=g^{-1}(\textbf{w}^T+b)$$</p>
+<p><strong>3.对数几率回归</strong></p>
+<p>3.1 对数几率回归是一种”Sigmoid函数”.进而将回归问题转化为分类问题.</p>
+<p><strong>4.线性判别分析</strong></p>
+<p>4.1 线性判别分析(Linear Discriminant Analysis),简称LDA,是一种经典的线性学习方法.LDA:给定训练样例集,设法将样例集投影到一条直线上,使得同类样例的投影点尽可能近/异类样例的投影点尽可能远;在对新样本进行分类时,将其投影到同样的这条直线上,再根据投影点的位置来确定新样本的类别.即,欲使同类样例的投影点尽可能接近,可以让同类样例投影点的协方差尽可能小;而欲使异类样例的投影点尽可能远离,可以让类中心之间的距离尽可能大.</p>
+<p>4.2 奇异值: 特征值分解是提取矩阵特针很不错的方法,但是它只是针对方针而言的,对于非方阵矩阵,使用奇异值分解能适用于任何形式的矩阵.分解形式为:<br>$$A_{m*n}=U_{m*m}\Sigma_{m*n}{V_{n*n}}^T(\Sigma_{m*n}为对角矩阵)$$</p>
 
           
         
