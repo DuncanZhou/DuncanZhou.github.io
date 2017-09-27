@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Stack," />
+  <meta name="keywords" content="算法," />
 
 
 
@@ -84,40 +84,40 @@
 
 
 
-<meta name="description" content="表达式求值
-对于表达式的求值,一般使用中缀表达式转后缀表达式后,对后缀表达式求值,因为对于后缀或者前缀表达式计算,计算的顺序都是唯一的.
+<meta name="description" content="###后缀树学习
 
-中缀表达式转后缀表达式的方法：
-1.遇到操作数：直接输出（添加到后缀表达式中）
-2.栈为空时，遇到运算符，直接入栈
-3.遇到左括号：将其入栈
-4.遇到右括号：执行出栈操作，并将出栈的元素输出，直到弹出栈的是左括号，左括号不输出。
-5.遇到其他运算符：加减乘除：">
+概念: 后缀树是一种PAT树(检索树),它描述了给定字符串的所要后缀,许多重要的字符串操作都能够在后缀树上快速地实现.
+
+定义: 一个长度为n的字符串s,它的后缀树定义为一棵满足如下条件的树:
+
+1.从根到树叶的路径与s的后缀一一对应.即每条路径唯一代表了s的一个后缀；
+每条边都代表一个非空的字符串；
+所有内部节点(除根节点)都至少两个子节点.由于并非所有的字符串都存在这样的树">
 <meta property="og:type" content="article">
-<meta property="og:title" content="四则运算表达式求值">
-<meta property="og:url" content="https://github.com/DuncanZhou/2017/09/24/Expression/index.html">
+<meta property="og:title" content="后缀树">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/09/27/SuffixTree/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="表达式求值
-对于表达式的求值,一般使用中缀表达式转后缀表达式后,对后缀表达式求值,因为对于后缀或者前缀表达式计算,计算的顺序都是唯一的.
+<meta property="og:description" content="###后缀树学习
 
-中缀表达式转后缀表达式的方法：
-1.遇到操作数：直接输出（添加到后缀表达式中）
-2.栈为空时，遇到运算符，直接入栈
-3.遇到左括号：将其入栈
-4.遇到右括号：执行出栈操作，并将出栈的元素输出，直到弹出栈的是左括号，左括号不输出。
-5.遇到其他运算符：加减乘除：">
-<meta property="og:updated_time" content="2017-09-24T13:34:44.000Z">
+概念: 后缀树是一种PAT树(检索树),它描述了给定字符串的所要后缀,许多重要的字符串操作都能够在后缀树上快速地实现.
+
+定义: 一个长度为n的字符串s,它的后缀树定义为一棵满足如下条件的树:
+
+1.从根到树叶的路径与s的后缀一一对应.即每条路径唯一代表了s的一个后缀；
+每条边都代表一个非空的字符串；
+所有内部节点(除根节点)都至少两个子节点.由于并非所有的字符串都存在这样的树">
+<meta property="og:updated_time" content="2017-09-27T05:37:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="四则运算表达式求值">
-<meta name="twitter:description" content="表达式求值
-对于表达式的求值,一般使用中缀表达式转后缀表达式后,对后缀表达式求值,因为对于后缀或者前缀表达式计算,计算的顺序都是唯一的.
+<meta name="twitter:title" content="后缀树">
+<meta name="twitter:description" content="###后缀树学习
 
-中缀表达式转后缀表达式的方法：
-1.遇到操作数：直接输出（添加到后缀表达式中）
-2.栈为空时，遇到运算符，直接入栈
-3.遇到左括号：将其入栈
-4.遇到右括号：执行出栈操作，并将出栈的元素输出，直到弹出栈的是左括号，左括号不输出。
-5.遇到其他运算符：加减乘除：">
+概念: 后缀树是一种PAT树(检索树),它描述了给定字符串的所要后缀,许多重要的字符串操作都能够在后缀树上快速地实现.
+
+定义: 一个长度为n的字符串s,它的后缀树定义为一棵满足如下条件的树:
+
+1.从根到树叶的路径与s的后缀一一对应.即每条路径唯一代表了s的一个后缀；
+每条边都代表一个非空的字符串；
+所有内部节点(除根节点)都至少两个子节点.由于并非所有的字符串都存在这样的树">
 
 
 
@@ -145,13 +145,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2017/09/24/Expression/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/09/27/SuffixTree/"/>
 
 
 
 
 
-  <title> 四则运算表达式求值 | Duncan's Blog </title>
+  <title> 后缀树 | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -262,7 +262,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/09/24/Expression/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/09/27/SuffixTree/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -286,7 +286,7 @@
             
             
               
-                四则运算表达式求值
+                后缀树
               
             
           </h1>
@@ -299,8 +299,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-24T21:34:44+08:00">
-                2017-09-24
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-27T13:37:54+08:00">
+                2017-09-27
               </time>
             
 
@@ -335,19 +335,17 @@
       
 
       
-        <h3 id="表达式求值"><a href="#表达式求值" class="headerlink" title="表达式求值"></a>表达式求值</h3><blockquote>
-<p>对于表达式的求值,一般使用中缀表达式转后缀表达式后,对后缀表达式求值,因为对于后缀或者前缀表达式计算,计算的顺序都是唯一的.</p>
+        <p>###后缀树学习</p>
+<blockquote>
+<p>概念: 后缀树是一种PAT树(检索树),它描述了给定字符串的所要后缀,许多重要的字符串操作都能够在后缀树上快速地实现.</p>
 </blockquote>
-<h4 id="中缀表达式转后缀表达式的方法："><a href="#中缀表达式转后缀表达式的方法：" class="headerlink" title="中缀表达式转后缀表达式的方法："></a>中缀表达式转后缀表达式的方法：</h4><ul>
-<li>1.遇到操作数：直接输出（添加到后缀表达式中）</li>
-<li>2.栈为空时，遇到运算符，直接入栈</li>
-<li>3.遇到左括号：将其入栈</li>
-<li>4.遇到右括号：执行出栈操作，并将出栈的元素输出，直到弹出栈的是左括号，左括号不输出。</li>
-<li>5.遇到其他运算符：加减乘除：弹出所有优先级大于或者等于该运算符的栈顶元素，然后将该运算符入栈</li>
-<li>6.最终将栈中的元素依次出栈，输出。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public ArrayList&lt;String&gt; SuffixExpression(ArrayList&lt;String&gt; string)&#123;</div><div class="line">        ArrayList&lt;String&gt; suffix = new ArrayList&lt;&gt;();</div><div class="line">        Stack&lt;String&gt; stack = new Stack&lt;&gt;();</div><div class="line">        for(int i = 0; i &lt; string.size(); i++)&#123;</div><div class="line">            if(string.get(i).equals(&quot;*&quot;) || string.get(i).equals(&quot;/&quot;) || string.get(i).equals(&quot;(&quot;))&#123;</div><div class="line">                //push</div><div class="line">                stack.push(string.get(i));</div><div class="line">            &#125;</div><div class="line">            else if(string.get(i).equals(&quot;+&quot;) || string.get(i).equals(&quot;-&quot;))&#123;</div><div class="line">                while(!stack.isEmpty() &amp;&amp; (stack.peek().equals(&quot;*&quot;) || stack.peek().equals(&quot;/&quot;)))</div><div class="line">                &#123;</div><div class="line">                        suffix.add(stack.pop());</div><div class="line">                &#125;</div><div class="line">                //push</div><div class="line">                stack.push(string.get(i));</div><div class="line">            &#125;</div><div class="line">            else if(string.get(i).equals(&quot;)&quot;))</div><div class="line">            &#123;</div><div class="line">                while(!stack.isEmpty() &amp;&amp; !stack.peek().equals(&quot;(&quot;))</div><div class="line">                    suffix.add(stack.pop());</div><div class="line">                //pop (</div><div class="line">                stack.pop();</div><div class="line">            &#125;else&#123;</div><div class="line">                suffix.add(string.get(i));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //push all elements in stack</div><div class="line">        while(!stack.isEmpty())</div><div class="line">            suffix.add(stack.pop());</div><div class="line">        return suffix;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-</li>
+<p>定义: 一个长度为n的字符串s,它的后缀树定义为一棵满足如下条件的树:</p>
+<ul>
+<li>1.从根到树叶的路径与s的后缀一一对应.即每条路径唯一代表了s的一个后缀；</li>
+<li>每条边都代表一个非空的字符串；</li>
+<li>所有内部节点(除根节点)都至少两个子节点.由于并非所有的字符串都存在这样的树,因此s通常使用一个终止符进行填充(通常使用$).</li>
 </ul>
-<h3 id="计算后缀表达式"><a href="#计算后缀表达式" class="headerlink" title="计算后缀表达式"></a>计算后缀表达式</h3><p>遇到操作数压入栈,否则弹出两个操作数进行操作后再压入栈中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public int CalaculateSuffix(ArrayList&lt;String&gt; suffix)&#123;</div><div class="line">        //when meet operator, pop two elements to calaculate</div><div class="line">        Stack&lt;String&gt; stack = new Stack&lt;&gt;();</div><div class="line">        for(int i = 0; i &lt; suffix.size(); i++)&#123;</div><div class="line">            if(!(suffix.get(i).equals(&quot;+&quot;) || suffix.get(i).equals(&quot;-&quot;) || suffix.get(i).equals(&quot;*&quot;) || suffix.get(i).equals(&quot;/&quot;)))</div><div class="line">                //push into stack</div><div class="line">                stack.push(suffix.get(i));</div><div class="line">            else&#123;</div><div class="line">                //calucate</div><div class="line">                String operator = suffix.get(i);</div><div class="line">                String b = stack.pop();</div><div class="line">                String a = stack.pop();</div><div class="line">                String temp = String.valueOf(operate(a,b,operator));</div><div class="line">                stack.push(temp);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return Integer.valueOf(stack.pop());</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<h3 id="计算最长回文字串"><a href="#计算最长回文字串" class="headerlink" title="计算最长回文字串"></a>计算最长回文字串</h3><p>Manacher算法: 用一个辅助数组Len,Len[i表示以字符T[i]为中心的最长回文串最友字符到T[i]的长度.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//Manacher算法计算过程  </div><div class="line">int MANACHER(String str)  </div><div class="line">&#123;  </div><div class="line">     int mx=0,ans=0,po=0;//mx即为当前计算回文串最右边字符的最大值  </div><div class="line">     for(int i=1;i&lt;=str.len;i++)  </div><div class="line">     &#123;  </div><div class="line">         if(mx&gt;i)  </div><div class="line">         Len[i]=min(mx-i,Len[2*po-i]);//在Len[j]和mx-i中取个小  </div><div class="line">         else  </div><div class="line">         Len[i]=1;//如果i&gt;=mx，要从头开始匹配  </div><div class="line">         while(st[i-Len[i]]==st[i+Len[i]])  </div><div class="line">         Len[i]++;  </div><div class="line">         if(Len[i]+i&gt;mx)//若新计算的回文串右端点位置大于mx，要更新po和mx的值  </div><div class="line">         &#123;  </div><div class="line">             mx=Len[i]+i;  </div><div class="line">             po=i;  </div><div class="line">         &#125;  </div><div class="line">         ans=max(ans,Len[i]);  </div><div class="line">     &#125;  </div><div class="line">     return ans-1;//返回Len[i]中的最大值-1即为原串的最长回文子串额长度   </div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -371,7 +369,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Stack/" rel="tag"># Stack</a>
+            <a href="/tags/算法/" rel="tag"># 算法</a>
           
         </div>
       
@@ -380,8 +378,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/08/08/k-median_problem/" rel="next" title="NP-Hard问题(重点关注k-median问题)">
-                <i class="fa fa-chevron-left"></i> NP-Hard问题(重点关注k-median问题)
+              <a href="/2017/09/26/MachineLearningNotes/" rel="next" title="西瓜书阅读">
+                <i class="fa fa-chevron-left"></i> 西瓜书阅读
               </a>
             
           </div>
@@ -389,10 +387,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/09/26/MachineLearningNotes/" rel="prev" title="西瓜书阅读">
-                西瓜书阅读 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -505,7 +499,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#表达式求值"><span class="nav-number">1.</span> <span class="nav-text">表达式求值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#中缀表达式转后缀表达式的方法："><span class="nav-number">1.1.</span> <span class="nav-text">中缀表达式转后缀表达式的方法：</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#计算后缀表达式"><span class="nav-number">2.</span> <span class="nav-text">计算后缀表达式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算最长回文字串"><span class="nav-number">1.</span> <span class="nav-text">计算最长回文字串</span></a></li></ol></div>
             
 
           </div>
