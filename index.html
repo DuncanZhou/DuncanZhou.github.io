@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/09/27/MachineLearningNotes/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/09/28/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/09/27/MachineLearningNotes/" itemprop="url">
+                <a class="post-title-link" href="/2017/09/28/MachineLearningNotes/" itemprop="url">
                   西瓜书阅读
                 </a>
               
@@ -279,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-27T15:56:12+08:00">
-                2017-09-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-28T10:49:56+08:00">
+                2017-09-28
               </time>
             
 
@@ -389,7 +389,12 @@
 <p>4.7.2 缺失值处理: 简单来讲,通过样本中无缺失值样本来估计同一个有属性值缺失的样本被划入不同子结点的概率.<br>$$Gain(D,a)=\rho*Gain(\tilde{D},a)=\rho*(Ent(\tilde{D}-\sum_{v=1}^{V}\tilde{r_{v}}Ent(\tilde{D}^v)))$$<br>其中,$$Ent(\tilde{D})=-\sum_{k=1}^{|Y|}\tilde{p}_{k}log_2\tilde{p}_k$$.(参考西瓜书Page86)</p>
 <p>4.8 多变量决策树: 实现斜划分甚至更复杂的决策树.在多变量决策树的学习过程中,不是为每个非叶结点寻找一个最优划分属性,而是试图建立一个合适线性分类器.</p>
 <hr>
-<h3 id="第五章-神经网络"><a href="#第五章-神经网络" class="headerlink" title="第五章 神经网络"></a>第五章 神经网络</h3>
+<h3 id="第五章-神经网络"><a href="#第五章-神经网络" class="headerlink" title="第五章 神经网络"></a>第五章 神经网络</h3><p>1 神经网络的学习过程就是根据训练数据来调整神经元之间的<strong>连接权</strong>以及每个功能神经元的<strong>阈值</strong>.</p>
+<p>2 感知机: 由两层神经元组成,输入层接受外界输入信号后传递给输出层,输出层是M-P神经元,亦称”阈值逻辑单元”. 对于非线性问题,需要考虑使用多层功能神经元.</p>
+<p>3 误逆差传播算法(亦称反向传播算法,BP算法):BP算法是基于梯度下降策略,以目标的负梯度方向对参数进行调整.</p>
+<p>4 累积BP算法的目标是最小化训练集D上的累积误差$$E=\frac{1}{m}\sum_{k=1}^{m}E_k$$.标准BP算法每次更新只针对单个样例,参数更新得非常频繁,而对不同样例进行更新的效果可能出现”抵消”现象.因此为了达到同样的累积误差极小点,标准BP算法往往需要进行更多次数的迭代.累积BP算法直接针对累积误差最小化,它在读取整个训练集D一遍后才对参数进行更新,其参数更新的频率低得多,但在很多任务中,累积误差下降到一定程度后,进一步下降会非常缓慢,这时标准BP往往会更快获得较好的解,尤其是在训练集D非常大时更明显.</p>
+<p>5 BP神经网络经常遭遇过拟合,两种策略解决: <strong>a)早停</strong>,将数据分成训练集和验证集,训练集用来计算梯度/更新连接权和阈值,验证集用来估计误差,若训练集误差降低但验证集误差升高,则停止训练,同时返回具有最小验证集误差的连接权和阈值. <strong>b)正则化</strong>,</p>
+
           
         
       
