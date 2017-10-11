@@ -186,7 +186,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -196,7 +196,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/09/MachineLearningNotes/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/11/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/10/09/MachineLearningNotes/" itemprop="url">
+                <a class="post-title-link" href="/2017/10/11/MachineLearningNotes/" itemprop="url">
                   西瓜书阅读
                 </a>
               
@@ -278,9 +278,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-09T11:19:13+08:00">
-                2017-10-09
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-11T10:01:25+08:00">
+                2017-10-11
               </time>
             
 
@@ -413,7 +413,7 @@
 <p>8.1 卷积: 说白了,卷积操作就是一种加权求和.在卷积层中,通常包含若干个特征平面,每个特征平面由一些矩形排列的神经元组成,同一特征平面的神经共享单元共享权值,共享的权值就是卷积核.卷积核带来的直接好处减少网络各层之间的连接,同时降低了过拟合的风险.</p>
 <p>8.2 池化: 也叫子采样,降维处理,减少了模型的参数.</p>
 <hr>
-<h3 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h3><p>1.划分超平面:在样本空间中,划分超平面可通过如下线性方程来描述:<br>$$w^Tx+b=0$$,<br>其中,$$w=(w_1;w_2;…;w_d)$$为法向量;b为位移项,决定了超平面与原点之间的距离.将超平面记为(<strong>w</strong>,b),样本空间中任意点x到超平面(<strong>w</strong>,b)的距离为$$r=\frac{|w^T+b|}{||w||}$$.</p>
+<h3 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h3><h4 id="第六章-西瓜书"><a href="#第六章-西瓜书" class="headerlink" title="第六章 西瓜书"></a>第六章 西瓜书</h4><p>1.划分超平面:在样本空间中,划分超平面可通过如下线性方程来描述:<br>$$w^Tx+b=0$$,<br>其中,$$w=(w_1;w_2;…;w_d)$$为法向量;b为位移项,决定了超平面与原点之间的距离.将超平面记为(<strong>w</strong>,b),样本空间中任意点x到超平面(<strong>w</strong>,b)的距离为$$r=\frac{|w^T+b|}{||w||}$$.</p>
 <p>2.<strong>支持向量</strong>:假设超平面(<strong>w</strong>,b)能将训练样本正确分类,即对于$$(x_i,y_i)\in{D}$$,若y<sub>i</sub>=+1,则有$$w^T+b&gt;0$$;若y<sub>i</sub>=-1,则有$$w^T+b&lt;0$$.令$$w^T+b\geq{+1},y_i=+1;w^T+b\leq{+1},y_i=-1$$.距离超平面最近的这几个训练样本点使上述等号成立,它们被称为”支持向量”.两个异类支持向量到超平面的距离之和为$$\gamma=\frac{2}{||w||}$$.它们被称为”间隔”.</p>
 <p>3.<strong>支持向量机</strong>:$$min_{w,b}\frac{1}{2}||w||^2,s.t. y_i(w^Tx_i+b)\geq{1},i=1,2,3,…,m.$$.</p>
 <p>4.正定矩阵:实对称矩阵</p>
@@ -437,6 +437,23 @@
 <li>指数损失</li>
 <li>对率损失</li>
 </ul>
+<h4 id="第六章-统计学习方法"><a href="#第六章-统计学习方法" class="headerlink" title="第六章 统计学习方法"></a>第六章 统计学习方法</h4><p>1.支持向量机学习方法包含构建由简至繁的模型:线性可分支持向量机,线性支持向量机及非线性支持向量机.当<strong>训练数据线性可分时</strong>,通过<strong>硬间隔最大化</strong>学习一个线性的分类器,即<strong>线性可分支持向量机</strong>,又称为硬间隔支持向量机;当<strong>训练数据近似线性可分时</strong>,通过<strong>软间隔最大化</strong>,也学习一个线性的分类器,即<strong>线性支持向量机</strong>,又称为软间隔支持向量机;当<strong>训练数据线性不可分时</strong>,通过<strong>核技巧及软间隔最大化</strong>,学习<strong>非线性支持向量机</strong>.</p>
+<p><strong>2.空间概念</strong></p>
+<p>2.1 线性空间(向量空间)</p>
+<blockquote>
+<p>线性空间又称作向量空间,对于一个线性空间,知道”基”(相当于三维空间中的坐标系)便可确定空间中元素的坐标(即位置).<strong>线性空间之定义了加法和数乘元算</strong>.</p>
+</blockquote>
+<p>2.2 赋范线性空间</p>
+<blockquote>
+<p>定义了范数的线性空间(为了了解<strong>向量的长度</strong>)</p>
+</blockquote>
+<p>2.3 内积空间</p>
+<blockquote>
+<p>定义了内积的线性空间(为了了解<strong>向量的夹角</strong>)</p>
+</blockquote>
+<p>2.4 </p>
+<p>2.2 欧式空间:定义了内积的实线性空间V为实内积空间或欧几里德空间.</p>
+<p>2.3 希尔伯特空间:希尔伯特空间是欧几里德空间的一个推广,其不再局限于有限维的情形.与欧几里德空间相仿,希尔伯特空间也是内积空间,其上有距离和角的概念,此外,希尔伯特空间还是一个完备的空间,其上所有的柯西序列等价于收敛序列,从而微积分中的大部分概念都可以无障碍地推广到希尔伯特空间中.</p>
 
           
         
@@ -514,7 +531,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-27T13:37:54+08:00">
                 2017-09-27
               </time>
@@ -641,7 +658,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-24T21:34:44+08:00">
                 2017-09-24
               </time>
@@ -770,7 +787,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-08T14:31:52+08:00">
                 2017-08-08
               </time>
@@ -910,7 +927,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-04T19:57:50+08:00">
                 2017-08-04
               </time>
@@ -1033,7 +1050,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-30T16:51:12+08:00">
                 2017-07-30
               </time>
@@ -1154,7 +1171,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-21T10:59:19+08:00">
                 2017-07-21
               </time>
@@ -1304,7 +1321,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-11T10:08:50+08:00">
                 2017-07-11
               </time>
@@ -1421,7 +1438,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T22:05:24+08:00">
                 2017-06-25
               </time>
@@ -1601,7 +1618,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-15T19:55:12+08:00">
                 2017-06-15
               </time>
@@ -1738,7 +1755,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">29</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1748,7 +1765,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -1796,7 +1813,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
