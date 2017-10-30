@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/12/JVM/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/30/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,126 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/10/12/JVM/" itemprop="url">
-                  JAVA虚拟机了解
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T11:32:06+08:00">
-                2017-10-12
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-走进JAVA"><a href="#1-走进JAVA" class="headerlink" title="1.走进JAVA"></a>1.走进JAVA</h3><p>1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.</p>
-<p>2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.</p>
-<h3 id="2-JAVA内存区域与内存溢出异常"><a href="#2-JAVA内存区域与内存溢出异常" class="headerlink" title="2.JAVA内存区域与内存溢出异常"></a>2.JAVA内存区域与内存溢出异常</h3><p><strong>先放一张jvm运行时数据区分配情况图</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png" alt="jvm运行时数据区"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/11/MachineLearningNotes/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/10/11/MachineLearningNotes/" itemprop="url">
+                <a class="post-title-link" href="/2017/10/30/MachineLearningNotes/" itemprop="url">
                   西瓜书阅读
                 </a>
               
@@ -398,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-11T14:59:45+08:00">
-                2017-10-11
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-30T11:40:50+08:00">
+                2017-10-30
               </time>
             
 
@@ -582,6 +463,136 @@
 <blockquote>
 <p>希尔伯特空间是欧几里德空间的一个推广,其不再局限于有限维的情形.与欧几里德空间相仿,希尔伯特空间也是内积空间,其上有距离和角的概念,此外,希尔伯特空间还是一个完备的空间,其上所有的柯西序列等价于收敛序列,从而微积分中的大部分概念都可以无障碍地推广到希尔伯特空间中.<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/ML-01.jpg" alt="空间的一些数学概念"></p>
 </blockquote>
+<h3 id="第七章-提升方法-boosting"><a href="#第七章-提升方法-boosting" class="headerlink" title="第七章 提升方法(boosting)"></a>第七章 提升方法(boosting)</h3><ol>
+<li><p>提升方法是一种常用的统计学习方法,在分类问题中,它通过<strong>改变训练样本的权重</strong>,学习多个分类器,并将这些<strong>分类器进行线性组合</strong>,提升分类的性能.\</p>
+</li>
+<li><p><strong>提升树</strong>是以<strong>分类树</strong>或<strong>回归树</strong>为基本分类器的提升方法. 以决策树为基函数的提升方法称为提升树,对分类问题决策树是二叉分类树,对回归问题决策树是二叉回归树.</p>
+</li>
+<li><p>提升树算法采用前向分步算法.</p>
+</li>
+<li><p>提升树利用加法模型与前向分步算法实现学习的优化过程,当损失函数是平方损失和指数损失函数时,每一步的优化是简单的.但对一般的损失函数而言,往往每一步优化并不容易,这里可以使用梯度提升算法. <strong>其关键是利用损失函数的负梯度在当前模型的值作为回归问题提升树算法中的残差的近似值</strong>,拟合一个回归树.</p>
+</li>
+<li></li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/12/JVM/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/10/12/JVM/" itemprop="url">
+                  JAVA虚拟机了解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T11:32:06+08:00">
+                2017-10-12
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-走进JAVA"><a href="#1-走进JAVA" class="headerlink" title="1.走进JAVA"></a>1.走进JAVA</h3><p>1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.</p>
+<p>2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.</p>
+<h3 id="2-JAVA内存区域与内存溢出异常"><a href="#2-JAVA内存区域与内存溢出异常" class="headerlink" title="2.JAVA内存区域与内存溢出异常"></a>2.JAVA内存区域与内存溢出异常</h3><p><strong>先放一张jvm运行时数据区分配情况图</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png" alt="jvm运行时数据区"></p>
 
           
         
