@@ -1,0 +1,802 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="-MachineLearning," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="西瓜书阅读记录=============================================
+第二章.模型评估与选择1.过拟合:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所有潜在样本都会具有的一般性质.
+2.欠拟合:学习能力低下造成的,解决办法:在决策树学习中扩展分支/在神经网络学习中增加训练轮数等.
+3.评估方法:
+3.1 测试集应该尽可能与训练">
+<meta property="og:type" content="article">
+<meta property="og:title" content="西瓜书阅读">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/10/31/MachineLearningNotes/index.html">
+<meta property="og:site_name" content="Duncan's Blog">
+<meta property="og:description" content="西瓜书阅读记录=============================================
+第二章.模型评估与选择1.过拟合:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所有潜在样本都会具有的一般性质.
+2.欠拟合:学习能力低下造成的,解决办法:在决策树学习中扩展分支/在神经网络学习中增加训练轮数等.
+3.评估方法:
+3.1 测试集应该尽可能与训练">
+<meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/ML-01.jpg">
+<meta property="og:updated_time" content="2017-10-31T02:08:45.220Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="西瓜书阅读">
+<meta name="twitter:description" content="西瓜书阅读记录=============================================
+第二章.模型评估与选择1.过拟合:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所有潜在样本都会具有的一般性质.
+2.欠拟合:学习能力低下造成的,解决办法:在决策树学习中扩展分支/在神经网络学习中增加训练轮数等.
+3.评估方法:
+3.1 测试集应该尽可能与训练">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/ML-01.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/10/31/MachineLearningNotes/"/>
+
+
+
+
+
+  <title> 西瓜书阅读 | Duncan's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Duncan's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/31/MachineLearningNotes/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                西瓜书阅读
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T10:08:45+08:00">
+                2017-10-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="西瓜书阅读记录"><a href="#西瓜书阅读记录" class="headerlink" title="西瓜书阅读记录"></a>西瓜书阅读记录</h2><p>=============================================</p>
+<h3 id="第二章-模型评估与选择"><a href="#第二章-模型评估与选择" class="headerlink" title="第二章.模型评估与选择"></a>第二章.模型评估与选择</h3><p>1.<strong>过拟合</strong>:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所有潜在样本都会具有的一般性质.</p>
+<p>2.<strong>欠拟合</strong>:学习能力低下造成的,解决办法:在决策树学习中扩展分支/在神经网络学习中增加训练轮数等.</p>
+<p><strong>3.评估方法</strong>:</p>
+<p>3.1 测试集应该尽可能与训练集互斥,即测试样本尽量不再训练集中出现,未在训练过程中使用过.</p>
+<p>3.2 划分训练集和测试集的方法: a)<strong>留出法</strong>,直接将数据集划分为互斥的两个集合;b)<strong>交叉验证法(k-fold validation)</strong>,先将数据集D划分为k个大小相似的互斥子集,每个子集都尽可能保持数据分布的一致性.然后,每次用k-1个子集的并集作为训练集,余下的那个子集作为测试集,进行k次训练和测试,最终返回这k个测试结果的均值.(k的通常取值为10,并且通常对k-fold validation做多次,一般为10次10折交叉验证法).c)<strong>自助法(bootstrapping)</strong>,给定包含m个样本的数据集D,对它进行采样产生数据集D’:每次随即从D中挑选一个样本,将其拷贝放入D’,然后再将该样本放回初始数据集D中,使得该样本在下次采样时仍有可能被采到;这个过程重复执行m次后,我们就得到了包含m个样本的数据集D’.</p>
+<p>3.3 调参参数类型:<strong>算法参数</strong>和<strong>模型参数</strong>.</p>
+<p><strong>4. 性能度量</strong>:</p>
+<p>4.1 回归任务最常用的性能度量是”均方误差”:<br>$$E(f;D)=\frac{1}{m}\sum_{i=1}^{m}(f(x_i)-y_i)^2$$.</p>
+<p>4.2  评价标准: 错误率与精度,查全率和查准率.错误率和精度指多少样本被判错,多少样本被判错;查全率和查准率指模型判断为正例中有多少比例是真正的正例,模型判断为反例中有多少为真正的反例.(两种评价标准对应的需求不一样)</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">真实情况</th>
+<th style="text-align:center">预测结果正例</th>
+<th style="text-align:center">预测结果反例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">正例</td>
+<td style="text-align:center">TP(真正例)</td>
+<td style="text-align:center">FN(反正例)</td>
+</tr>
+<tr>
+<td style="text-align:center">反例</td>
+<td style="text-align:center">FP(假正例)</td>
+<td style="text-align:center">TN(真正例)</td>
+</tr>
+</tbody>
+</table>
+<p>$$P(查准率) = TP / (TP  + FP)$$<br>$$R(查全率) = TP / (TP + FN)$$</p>
+<p>4.3 P-R图:以查准率为纵坐标,以查全率为横坐标.在进行比较时,若一个学习器的P-R曲线被另一个学习器的曲线完全”包住”,则可断言后者的性能优于前者. “平衡点”(BEP):当查准率 = 查全率时的取值,即为平衡点.</p>
+<p>4.4 F1-measure:<br>$$F1 = 2 * TP / (样例总数 + TP - TN)$$</p>
+<p>4.5 查准率和查全率的应用目的区别:例如在商品推荐系统中,为了尽可能少打扰用户,更希望推荐内容的确是用户感兴趣的,此时查准率更重要;而在逃犯信息检索系统中,更希望尽可能少漏掉逃犯,此时查全率更重要.</p>
+<p>4.6 对于多分类考察查准率和查全率,基于两种方式:a)先在各个混淆矩阵上计算(P<sub>1</sub>,R<sub>1</sub>),(P<sub>2</sub>,R<sub>2</sub>),…,(P<sub>n</sub>,R<sub>n</sub>),然后再计算平均值得到”宏查准率”和”宏查全率”.b)先将各混淆矩阵上的对应元素计算平均,再基于这些平均值计算出”微查准率”和”微查全率”.</p>
+<p>4.7 ROC和AUC: ROC体现了综合考虑学习器在不同任务下的”期望泛化性能”的好坏,或者说,”一般情况下”泛化性能的好坏.ROC曲线的纵轴是”真正例率(TPR)”,横轴是”假正例率(FPR)”,两者分别定义为TPR=TP / (TP + FN), FPR=FP / (TN + FP). 和P-R图相似,若一个学习器的ROC曲线被另一个学习器的曲线完全”包住”,则可断言后者性能优于前者.若两个学习器的ROC曲线发生交叉,则难以一般性地断言两者孰优孰劣,此时如果一定要进行比较,则较为合理的判据是比较ROC曲线下的面积,即AUC.<br>$$AUC = \frac{1}{2}\sum_{i=1}^{m-1}(x_{i+1} - x_i) \cdot(y_i + y_{i+1})$$.</p>
+<p><strong>5.比较检验(待丰富)</strong>:假设检验/交叉验证t检验/McNemar检验/Friedman检验与Nemenyi后续检验</p>
+<p><strong>6.偏差与方差</strong>:</p>
+<p>6.1 泛化误差可分为偏差/方差与噪声之和.<strong>偏差</strong>度量了学习算法的期望预测与真实结果的偏离程度,即刻画了学习算法本身的拟合能力;<strong>方差</strong>度量了同样大小的训练集的变动所导致的学习性能的变化,即刻画了数据扰动所造成的影响;<strong>噪声</strong>则表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界,即刻画了学习问题本身的难度.</p>
+<hr>
+<h3 id="第三章-线性模型"><a href="#第三章-线性模型" class="headerlink" title="第三章.线性模型"></a>第三章.线性模型</h3><p>1.线性模型:给定由d个属性描述的示例X=(x<sub>1</sub>;x<sub>2</sub>;…;x<sub>d</sub>),其中x<sub>i</sub>是X在第i个属性上的取值,线性模型试图<strong>学得一个通过属性的线性组合来进行预测的函数</strong>,即<br>$$f(\textbf{x})=w_1x_1+w_2x_2+…+w_dx_d+b$$<br>写成向量形式:<br>$$f(\textbf{x})=\textbf{w}^T+b$$<br>其中,<strong>w</strong>=(w<sub>1</sub>;w<sub>2</sub>;…;w<sub>d</sub>).<strong>w</strong>和b学得之后,模型就得以确定.</p>
+<p><strong>2.线性回归</strong></p>
+<p>2.1 概念:线性回归试图学得一个线性模型以尽可能准确地预测实值输出标记.</p>
+<p>2.2 均方误差是回归任务中最常用的性能度量.</p>
+<p>2.3 对于多元线性回归,可以利用最小二乘法来对<strong>w</strong>和b进行估计.</p>
+<p>2.4 对数线性回归: 认为示例所对应的输出标记是在指数尺度上变化.<br>$$lny=\textbf{w}^T+b$$<br>实际上是试图让$$e^{w^Tx}+b$$逼近y.</p>
+<p>2.5 广义线性模型: $$y=g^{-1}(\textbf{w}^T+b)$$</p>
+<p><strong>3.对数几率回归</strong></p>
+<p>3.1 对数几率回归是一种”Sigmoid函数”.进而将回归问题转化为分类问题.</p>
+<p><strong>4.线性判别分析(待温故)</strong></p>
+<p>4.1 线性判别分析(Linear Discriminant Analysis),简称LDA,是一种经典的线性学习方法.LDA:给定训练样例集,设法将样例集投影到一条直线上,使得同类样例的投影点尽可能近/异类样例的投影点尽可能远;在对新样本进行分类时,将其投影到同样的这条直线上,再根据投影点的位置来确定新样本的类别.即,欲使同类样例的投影点尽可能接近,可以让同类样例投影点的协方差尽可能小;而欲使异类样例的投影点尽可能远离,可以让类中心之间的距离尽可能大.</p>
+<p>4.2 奇异值: 特征值分解是提取矩阵特针很不错的方法,但是它只是针对方针而言的,对于非方阵矩阵,使用奇异值分解能适用于任何形式的矩阵.分解形式为:<br>$$A_{m*n}=U_{m*m}\Sigma_{m*n}{V_{n*n}}^T(\Sigma_{m*n}为对角矩阵)$$</p>
+<p><strong>5.多分类学习</strong></p>
+<p>5.1 多分类学习的基本思路是”拆解法”,即将多分类任务拆分为若干个二分类任务求解.最经典的拆分策略有三种:”一对一(One vs. One OvO)”,”一对其余(One vs. Rest,OvR)”和”多对多(Many vs. Many,简称MvM)”.</p>
+<p>5.2 类别不平衡问题(待丰富)</p>
+<hr>
+<h3 id="第四章-决策树"><a href="#第四章-决策树" class="headerlink" title="第四章 决策树"></a>第四章 决策树</h3><p>4.1 <strong>信息熵</strong>是度量样本集合纯度最常用的一种指标.假定当前样本集合D中第k类样本所占的比例为p<sub>k</sub>(k=1,2,…,|Y|),则D的信息熵为<br>$$Ent(D)=-\sum_{k=1}^{|Y|}p_klog_2p_k$$<br>Ent(D)的值越小,则D的纯度越高.</p>
+<p>4.2 假定离散属性a有V个可能的取值{a<sup>1</sup>,a<sup>2</sup>,…,a<sup>V</sup>},若使用a对样本集D进行划分,则会产生V个分支结点,其中第v个分支结点包含了D中所有在属性a上取值为a<sup>v</sup>,记为D<sup>v</sup>.于是可以计算出用属性a对样本集D进行划分所获得的<strong>信息增益</strong><br>$$Gain(D,a)=Ent(D)-\sum_{v=1}^{V}\frac{|D|^v}{|D|}Ent(D^v)$$.<br>一般而言,信息增益越大,则意味着使用属性a来进行划分所获得的”纯度提升”越大.因此,可利用信息增益来进行决策树的划分属性选择.</p>
+<p>4.3 <strong>ID3</strong>决策树学习算法就是以信息增益为准则来选择划分属性.</p>
+<p>4.4 <strong>C4.5</strong>决策树算法不直接使用信息增益,而是使用”<strong>增益率</strong>“来选择最优划分属性.增益率定义为:<br>$$GainRatio(D,a)=\frac{Gain(D,a)}{IV(a)}$$,其中,<br>$$IV(a)=-\sum_{v=1}^{V}\frac{|D|^v}{|D|}log_2\frac{|D|^v}{|D|}$$,IV(a)称为属性a的”固有值”.增益率对属性数目偏少的属性有所偏好.</p>
+<p>4.5 <strong>CART决策树</strong>使用”基尼指数”来选择划分属性.</p>
+<p><strong>4.6 剪枝处理</strong></p>
+<p>4.6.1 剪枝是决策树学习算法对付”过拟合”的一个重要手段.</p>
+<p>4.6.2 剪枝策略包括:<strong>预剪枝</strong>和<strong>后剪枝</strong>.</p>
+<p>4.6.3 <strong>预剪枝</strong>是在决策树生成过程中,对每个结点在划分前先进行估计,若当前结点的划分不能带来决策树泛化性能的提升,则停止划分并将当前结点标记为叶结点;<strong>后剪枝</strong>则是先从训练集生成一棵完整的决策树,然后自底向上地对非叶结点进行考察,若将该结点对应的子树替换为叶结点能带来决策树泛化性能提升,则将该子树替换为叶结点.</p>
+<p>4.6.3 后剪枝决策树通常比预剪枝决策树保留了更多的分支.一般情形下,后剪枝决策树的欠拟合风险很小,泛化性能往往优于预剪枝决策树.但其训练时间开销比未剪枝决策树和预剪枝决策树都要大得多.</p>
+<p><strong>4.7 连续与缺失值</strong></p>
+<p>4.7.1 连续值处理: 二分法.(也是基于信息增益来选择划分点)</p>
+<p>4.7.2 缺失值处理: 简单来讲,通过样本中无缺失值样本来估计同一个有属性值缺失的样本被划入不同子结点的概率.<br>$$Gain(D,a)=\rho*Gain(\tilde{D},a)=\rho*(Ent(\tilde{D}-\sum_{v=1}^{V}\tilde{r_{v}}Ent(\tilde{D}^v)))$$<br>其中,$$Ent(\tilde{D})=-\sum_{k=1}^{|Y|}\tilde{p}_{k}log_2\tilde{p}_k$$.(参考西瓜书Page86)</p>
+<p>4.8 多变量决策树: 实现斜划分甚至更复杂的决策树.在多变量决策树的学习过程中,不是为每个非叶结点寻找一个最优划分属性,而是试图建立一个合适线性分类器.</p>
+<hr>
+<h3 id="第五章-神经网络"><a href="#第五章-神经网络" class="headerlink" title="第五章 神经网络"></a>第五章 神经网络</h3><p>1 神经网络的学习过程就是根据训练数据来调整神经元之间的<strong>连接权</strong>以及每个功能神经元的<strong>阈值</strong>.</p>
+<p>2 感知机: 由两层神经元组成,输入层接受外界输入信号后传递给输出层,输出层是M-P神经元,亦称”阈值逻辑单元”. 对于非线性问题,需要考虑使用多层功能神经元.</p>
+<p>3 误逆差传播算法(亦称反向传播算法,BP算法):BP算法是基于梯度下降策略,以目标的负梯度方向对参数进行调整.</p>
+<p>4 累积BP算法的目标是最小化训练集D上的累积误差$$E=\frac{1}{m}\sum_{k=1}^{m}E_k$$.标准BP算法每次更新只针对单个样例,参数更新得非常频繁,而对不同样例进行更新的效果可能出现”抵消”现象.因此为了达到同样的累积误差极小点,标准BP算法往往需要进行更多次数的迭代.累积BP算法直接针对累积误差最小化,它在读取整个训练集D一遍后才对参数进行更新,其参数更新的频率低得多,但在很多任务中,累积误差下降到一定程度后,进一步下降会非常缓慢,这时标准BP往往会更快获得较好的解,尤其是在训练集D非常大时更明显.</p>
+<p>5 BP神经网络经常遭遇过拟合,两种策略解决: <strong>a)早停</strong>,将数据分成训练集和验证集,训练集用来计算梯度/更新连接权和阈值,验证集用来估计误差,若训练集误差降低但验证集误差升高,则停止训练,同时返回具有最小验证集误差的连接权和阈值. <strong>b)正则化</strong>,其基本思想是在误差目标函数中增加一个用于描述网络负责度的部分.</p>
+<p>6 神经网络采用一下策略”跳出”局部极小:</p>
+<ul>
+<li><strong>以多组不同参数值初始化多个神经网络</strong>,按标准方法训练后,<strong>取其中误差最小的解作为最终参数</strong>.</li>
+<li>使用”<strong>模拟退火</strong>“,即以一定概率接受比当前解更差的结果.</li>
+<li>使用<strong>随机梯度下降</strong>.与标准梯度下降精确计算梯度不同,随即梯度下降法在计算梯度时加入了随即因素,于是,即使陷入局部极小点,它计算出的梯度仍可能不为0,这样有机会跳出局部极小点继续搜索.</li>
+</ul>
+<p>7 其他常见神经网络</p>
+<ul>
+<li>RBF网络(使用径向基函数作为隐层神经元激活函数,而输出层是对隐层神经元输出的线性组合.)</li>
+<li>ART网络(竞争型学习是神经网络中一种常用的无监督学习策略,在使用该策略时,网络的输出神经元相互竞争,每一时刻仅有一个竞争获胜的神经元被激活,其他的神经元的状态被抑制.ART网络有比较层/识别层/识别阈值和重置模块构成.比较层负责接收输入样本,并将其传递给识别层神经元.识别层每个神经元对应一个模式类,神经元数目可在训练过程中动态增长以增加新的模式类)</li>
+<li>SOM网络(一种竞争学习型的无监督神经网络,它能将高维输入数据映射到低维空间,同时保持输入数据在高维空间的拓扑结构.)</li>
+<li>级联相关网络</li>
+<li>Elman网络</li>
+<li>Boltzmann机</li>
+</ul>
+<p>8 深度学习:一般地，CNN的基本结构包括两层，其一为特征提取层，每个神经元的输入与前一层的局部接受域相连，并提取该局部的特征。一旦该局部特征被提取后，它与其它特征间的位置关系也随之确定下来；其二是特征映射层，网络的每个计算层由多个特征映射组成，每个特征映射是一个平面，平面上所有神经元的权值相等。特征映射结构采用影响函数核小的sigmoid函数作为卷积网络的激活函数，使得特征映射具有位移不变性。此外，由于一个映射面上的神经元共享权值，因而减少了网络自由参数的个数。卷积神经网络中的每一个卷积层都紧跟着一个用来求局部平均与二次提取的计算层，这种特有的两次特征提取结构减小了特征分辨率。CNN主要用来识别位移、缩放及其他形式扭曲不变性的二维图形.</p>
+<p>8.1 卷积: 说白了,卷积操作就是一种加权求和.在卷积层中,通常包含若干个特征平面,每个特征平面由一些矩形排列的神经元组成,同一特征平面的神经共享单元共享权值,共享的权值就是卷积核.卷积核带来的直接好处减少网络各层之间的连接,同时降低了过拟合的风险.</p>
+<p>8.2 池化: 也叫子采样,降维处理,减少了模型的参数.</p>
+<hr>
+<h3 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h3><h4 id="第六章-西瓜书"><a href="#第六章-西瓜书" class="headerlink" title="第六章 西瓜书"></a>第六章 西瓜书</h4><p>1.划分超平面:在样本空间中,划分超平面可通过如下线性方程来描述:<br>$$w^Tx+b=0$$,<br>其中,$$w=(w_1;w_2;…;w_d)$$为法向量;b为位移项,决定了超平面与原点之间的距离.将超平面记为(<strong>w</strong>,b),样本空间中任意点x到超平面(<strong>w</strong>,b)的距离为$$r=\frac{|w^T+b|}{||w||}$$.</p>
+<p>2.<strong>支持向量</strong>:假设超平面(<strong>w</strong>,b)能将训练样本正确分类,即对于$$(x_i,y_i)\in{D}$$,若y<sub>i</sub>=+1,则有$$w^T+b&gt;0$$;若y<sub>i</sub>=-1,则有$$w^T+b&lt;0$$.令$$w^T+b\geq{+1},y_i=+1;w^T+b\leq{+1},y_i=-1$$.距离超平面最近的这几个训练样本点使上述等号成立,它们被称为”支持向量”.两个异类支持向量到超平面的距离之和为$$\gamma=\frac{2}{||w||}$$.它们被称为”间隔”.</p>
+<p>3.<strong>支持向量机</strong>:$$min_{w,b}\frac{1}{2}||w||^2,s.t. y_i(w^Tx_i+b)\geq{1},i=1,2,3,…,m.$$.</p>
+<p>4.正定矩阵:实对称矩阵</p>
+<p>5.二次规划问题:给定一个目标函数,找到n维的向量x,使得<br>$$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩阵,那么该问题就是<strong>凸二次规划问题</strong>.凸二次规划问题,如果至少一个向量满足约束并且在可行域有下界,则凸二次规划问题就有一个全局最小值.如果Q是正定的,则这类二次规划为严格的凸二次规划问题,那么全局最小值就是唯一的.</p>
+<p>6.对于凸二次规划问题解法:拉格朗日方法/Lemke方法,内点法,有效集法,椭球法等.</p>
+<p>7.对偶问题:任何一个求极大化的线性规划问题都有一个求极小化的线性规划问题与之对应,反之亦然.如果我们把其中一个叫原问题,则另一个就叫做它的对偶问题,并称这一对互相联系的两个问题为一对<strong>对偶问题</strong>.</p>
+<p>8.核函数:当样本在原始样本空间中线性不可分时,可以将样本映射到更高维的特征空间中,使得样本在这个特征空间内线性可分.如果原始空间是有限维,那么一定存在一个高维特征空间使样本可分.即x<sub>i</sub>与x<sub>j</sub>在特征空间的内积等于它们在原始样本空间中通过函数<em>k(.,.)</em>计算的结果,这里的<em>k(.,.)</em>就是<strong>核函数</strong>.有了这样的函数,就不必计算高维甚至无穷维特征空间中的内积.</p>
+<p>9.核函数类型:</p>
+<ul>
+<li>线性核</li>
+<li>多项式核</li>
+<li>高斯核(RBF核)</li>
+<li>拉普拉斯核</li>
+<li>Sigmoid核</li>
+</ul>
+<p><strong>10.软间隔和正则化</strong></p>
+<p>10.1 软间隔:在现实任务中往往很难确定合适的核函数使得训练样本在特征空间中线性可分;退一步说,即便恰好找到了某个核函数使训练集在特征空间中可分,也很难判定这个”线性可分”是不是由过拟合造成的.缓解该问题的一个方法是允许支持向量机在一些样本上出错.支持向量机形式要求所有样本均满足约束,即所有样本都必须划分正确,这称为<strong>“硬间隔”</strong>.而<strong>软间隔</strong>允许某些样本不满足约束.</p>
+<p>11.损失函数:</p>
+<ul>
+<li>hinge损失</li>
+<li>指数损失</li>
+<li>对率损失</li>
+</ul>
+<h4 id="第六章-统计学习方法"><a href="#第六章-统计学习方法" class="headerlink" title="第六章 统计学习方法"></a>第六章 统计学习方法</h4><p>1.支持向量机学习方法包含构建由简至繁的模型:线性可分支持向量机,线性支持向量机及非线性支持向量机.当<strong>训练数据线性可分时</strong>,通过<strong>硬间隔最大化</strong>学习一个线性的分类器,即<strong>线性可分支持向量机</strong>,又称为硬间隔支持向量机;当<strong>训练数据近似线性可分时</strong>,通过<strong>软间隔最大化</strong>,也学习一个线性的分类器,即<strong>线性支持向量机</strong>,又称为软间隔支持向量机;当<strong>训练数据线性不可分时</strong>,通过<strong>核技巧及软间隔最大化</strong>,学习<strong>非线性支持向量机</strong>.</p>
+<p><strong>2.空间概念</strong></p>
+<p>2.1 线性空间(向量空间)</p>
+<blockquote>
+<p>线性空间又称作向量空间,对于一个线性空间,知道”基”(相当于三维空间中的坐标系)便可确定空间中元素的坐标(即位置).<strong>线性空间之定义了加法和数乘元算</strong>.</p>
+</blockquote>
+<p>2.2 赋范线性空间</p>
+<blockquote>
+<p>定义了范数的线性空间(为了了解<strong>向量的长度</strong>)</p>
+</blockquote>
+<p>2.3 内积空间</p>
+<blockquote>
+<p>定义了内积的线性空间(为了了解<strong>向量的夹角</strong>)</p>
+</blockquote>
+<p>2.4 欧式空间</p>
+<blockquote>
+<p>定义了内积的实线性空间V为实内积空间或欧几里德空间.</p>
+</blockquote>
+<p>2.5 Banach空间</p>
+<blockquote>
+<p>完备的赋范线性空间</p>
+</blockquote>
+<p>2.6 希尔伯特空间</p>
+<blockquote>
+<p>希尔伯特空间是欧几里德空间的一个推广,其不再局限于有限维的情形.与欧几里德空间相仿,希尔伯特空间也是内积空间,其上有距离和角的概念,此外,希尔伯特空间还是一个完备的空间,其上所有的柯西序列等价于收敛序列,从而微积分中的大部分概念都可以无障碍地推广到希尔伯特空间中.<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/ML-01.jpg" alt="空间的一些数学概念"></p>
+</blockquote>
+<h3 id="第七章-提升方法-boosting"><a href="#第七章-提升方法-boosting" class="headerlink" title="第七章 提升方法(boosting)"></a>第七章 提升方法(boosting)</h3><ol>
+<li><p>提升方法是一种常用的统计学习方法,在分类问题中,它通过<strong>改变训练样本的权重</strong>,学习多个分类器,并将这些<strong>分类器进行线性组合</strong>,提升分类的性能.\</p>
+</li>
+<li><p><strong>提升树</strong>是以<strong>分类树</strong>或<strong>回归树</strong>为基本分类器的提升方法. 以决策树为基函数的提升方法称为提升树,对分类问题决策树是二叉分类树,对回归问题决策树是二叉回归树.</p>
+</li>
+<li><p>提升树算法采用前向分步算法.</p>
+</li>
+<li><p>提升树利用加法模型与前向分步算法实现学习的优化过程,当损失函数是平方损失和指数损失函数时,每一步的优化是简单的.但对一般的损失函数而言,往往每一步优化并不容易,这里可以使用梯度提升算法. <strong>其关键是利用损失函数的负梯度在当前模型的值作为回归问题提升树算法中的残差的近似值</strong>,拟合一个回归树.</p>
+</li>
+</ol>
+<h3 id="第八章-贝叶斯分类器"><a href="#第八章-贝叶斯分类器" class="headerlink" title="第八章 贝叶斯分类器"></a>第八章 贝叶斯分类器</h3><ol>
+<li><p>对分类任务来说,在所有相关概率都已知的理想情形下,贝叶斯决策论考虑如何基于这些概率和误判损失来选择最优的类别标记.</p>
+</li>
+<li><p>贝叶斯判定准则: 为了最小化总体风险,只需在每个样本上选择那个是条件风险最小的类别标记.(条件风险=期望损失).</p>
+</li>
+<li><p>估算后验概率,两种策略: 1) 给定样本x,可通过直接建模P(c|x)来预测c(从为x的类别标记),这样得到的是”判别式模型”; 2) 也可以先对联合概率分布P(x,c)建模,然后由此获得P(c|x),这样得到的是”生成式模型”;</p>
+<blockquote>
+<p>判别式模型常见的主要有：<br>　　　　Logistic Regression<br>　　　　SVM<br>　　　　Traditional Neural Networks<br>　　　　Nearest Neighbor<br>　　　　CRF<br>　　　　Linear Discriminant Analysis<br>　　　　Boosting<br>　　　　Linear Regression<br>产生式模型常见的主要有：</p>
+<pre><code>Gaussians
+Naive Bayes
+Mixtures of Multinomials
+Mixtures of Gaussians
+Mixtures of Experts
+HMMs
+</code></pre><p>　   Sigmoidal Belief Networks, Bayesian Networks<br>　   Markov Random Fields<br>　   Latent Dirichlet Allocation</p>
+</blockquote>
+</li>
+</ol>
+<p>(判别式模型和生成式模型:<a href="http://www.cnblogs.com/fanyabo/p/4067295.html" target="_blank" rel="external">http://www.cnblogs.com/fanyabo/p/4067295.html</a>)</p>
+<ol>
+<li></li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MachineLearning/" rel="tag"># -MachineLearning</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/10/31/JVM/" rel="next" title="JAVA虚拟机了解">
+                <i class="fa fa-chevron-left"></i> JAVA虚拟机了解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg"
+               alt="duncan" />
+          <p class="site-author-name" itemprop="name">duncan</p>
+          <p class="site-description motion-element" itemprop="description">write something useful</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#西瓜书阅读记录"><span class="nav-number">1.</span> <span class="nav-text">西瓜书阅读记录</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#第二章-模型评估与选择"><span class="nav-number">1.1.</span> <span class="nav-text">第二章.模型评估与选择</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第三章-线性模型"><span class="nav-number">1.2.</span> <span class="nav-text">第三章.线性模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第四章-决策树"><span class="nav-number">1.3.</span> <span class="nav-text">第四章 决策树</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第五章-神经网络"><span class="nav-number">1.4.</span> <span class="nav-text">第五章 神经网络</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第六章-支持向量机"><span class="nav-number">1.5.</span> <span class="nav-text">第六章 支持向量机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#第六章-西瓜书"><span class="nav-number">1.5.1.</span> <span class="nav-text">第六章 西瓜书</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#第六章-统计学习方法"><span class="nav-number">1.5.2.</span> <span class="nav-text">第六章 统计学习方法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第七章-提升方法-boosting"><span class="nav-number">1.6.</span> <span class="nav-text">第七章 提升方法(boosting)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#第八章-贝叶斯分类器"><span class="nav-number">1.7.</span> <span class="nav-text">第八章 贝叶斯分类器</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">duncan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>

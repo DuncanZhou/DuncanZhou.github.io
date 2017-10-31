@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="算法," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,40 +84,30 @@
 
 
 
-<meta name="description" content="###后缀树学习
+<meta name="description" content="1.走进JAVA1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.
+2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.
+2.JAVA内存区域与内存溢出异常先放一张jvm运行时数据区分配情况图
 
-概念: 后缀树是一种PAT树(检索树),它描述了给定字符串的所要后缀,许多重要的字符串操作都能够在后缀树上快速地实现.
-
-定义: 一个长度为n的字符串s,它的后缀树定义为一棵满足如下条件的树:
-
-1.从根到树叶的路径与s的后缀一一对应.即每条路径唯一代表了s的一个后缀；
-每条边都代表一个非空的字符串；
-所有内部节点(除根节点)都至少两个子节点.由于并非所有的字符串都存在这样的树">
+Java堆中分配">
 <meta property="og:type" content="article">
-<meta property="og:title" content="后缀树">
-<meta property="og:url" content="https://github.com/DuncanZhou/2017/09/27/SuffixTree/index.html">
+<meta property="og:title" content="JAVA虚拟机了解">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/10/31/JVM/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="###后缀树学习
+<meta property="og:description" content="1.走进JAVA1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.
+2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.
+2.JAVA内存区域与内存溢出异常先放一张jvm运行时数据区分配情况图
 
-概念: 后缀树是一种PAT树(检索树),它描述了给定字符串的所要后缀,许多重要的字符串操作都能够在后缀树上快速地实现.
-
-定义: 一个长度为n的字符串s,它的后缀树定义为一棵满足如下条件的树:
-
-1.从根到树叶的路径与s的后缀一一对应.即每条路径唯一代表了s的一个后缀；
-每条边都代表一个非空的字符串；
-所有内部节点(除根节点)都至少两个子节点.由于并非所有的字符串都存在这样的树">
-<meta property="og:updated_time" content="2017-09-27T05:37:54.000Z">
+Java堆中分配">
+<meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png">
+<meta property="og:updated_time" content="2017-10-31T01:59:15.406Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="后缀树">
-<meta name="twitter:description" content="###后缀树学习
+<meta name="twitter:title" content="JAVA虚拟机了解">
+<meta name="twitter:description" content="1.走进JAVA1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.
+2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.
+2.JAVA内存区域与内存溢出异常先放一张jvm运行时数据区分配情况图
 
-概念: 后缀树是一种PAT树(检索树),它描述了给定字符串的所要后缀,许多重要的字符串操作都能够在后缀树上快速地实现.
-
-定义: 一个长度为n的字符串s,它的后缀树定义为一棵满足如下条件的树:
-
-1.从根到树叶的路径与s的后缀一一对应.即每条路径唯一代表了s的一个后缀；
-每条边都代表一个非空的字符串；
-所有内部节点(除根节点)都至少两个子节点.由于并非所有的字符串都存在这样的树">
+Java堆中分配">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png">
 
 
 
@@ -145,13 +135,13 @@
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2017/09/27/SuffixTree/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/10/31/JVM/"/>
 
 
 
 
 
-  <title> 后缀树 | Duncan's Blog </title>
+  <title> JAVA虚拟机了解 | Duncan's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -262,7 +252,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/09/27/SuffixTree/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/31/JVM/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -286,7 +276,7 @@
             
             
               
-                后缀树
+                JAVA虚拟机了解
               
             
           </h1>
@@ -299,8 +289,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-27T13:37:54+08:00">
-                2017-09-27
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T09:59:15+08:00">
+                2017-10-31
               </time>
             
 
@@ -335,17 +325,16 @@
       
 
       
-        <p>###后缀树学习</p>
-<blockquote>
-<p>概念: 后缀树是一种PAT树(检索树),它描述了给定字符串的所要后缀,许多重要的字符串操作都能够在后缀树上快速地实现.</p>
-</blockquote>
-<p>定义: 一个长度为n的字符串s,它的后缀树定义为一棵满足如下条件的树:</p>
-<ul>
-<li>1.从根到树叶的路径与s的后缀一一对应.即每条路径唯一代表了s的一个后缀；</li>
-<li>每条边都代表一个非空的字符串；</li>
-<li>所有内部节点(除根节点)都至少两个子节点.由于并非所有的字符串都存在这样的树,因此s通常使用一个终止符进行填充(通常使用$).</li>
-</ul>
-<h3 id="计算最长回文字串"><a href="#计算最长回文字串" class="headerlink" title="计算最长回文字串"></a>计算最长回文字串</h3><p>Manacher算法: 用一个辅助数组Len,Len[i表示以字符T[i]为中心的最长回文串最友字符到T[i]的长度.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">//Manacher算法计算过程  </div><div class="line">int MANACHER(String str)  </div><div class="line">&#123;  </div><div class="line">     int mx=0,ans=0,po=0;//mx即为当前计算回文串最右边字符的最大值  </div><div class="line">     for(int i=1;i&lt;=str.len;i++)  </div><div class="line">     &#123;  </div><div class="line">         if(mx&gt;i)  </div><div class="line">         Len[i]=min(mx-i,Len[2*po-i]);//在Len[j]和mx-i中取个小  </div><div class="line">         else  </div><div class="line">         Len[i]=1;//如果i&gt;=mx，要从头开始匹配  </div><div class="line">         while(st[i-Len[i]]==st[i+Len[i]])  </div><div class="line">         Len[i]++;  </div><div class="line">         if(Len[i]+i&gt;mx)//若新计算的回文串右端点位置大于mx，要更新po和mx的值  </div><div class="line">         &#123;  </div><div class="line">             mx=Len[i]+i;  </div><div class="line">             po=i;  </div><div class="line">         &#125;  </div><div class="line">         ans=max(ans,Len[i]);  </div><div class="line">     &#125;  </div><div class="line">     return ans-1;//返回Len[i]中的最大值-1即为原串的最长回文子串额长度   </div><div class="line">  &#125;</div></pre></td></tr></table></figure></p>
+        <h3 id="1-走进JAVA"><a href="#1-走进JAVA" class="headerlink" title="1.走进JAVA"></a>1.走进JAVA</h3><p>1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.</p>
+<p>2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.</p>
+<h3 id="2-JAVA内存区域与内存溢出异常"><a href="#2-JAVA内存区域与内存溢出异常" class="headerlink" title="2.JAVA内存区域与内存溢出异常"></a>2.JAVA内存区域与内存溢出异常</h3><p><strong>先放一张jvm运行时数据区分配情况图</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png" alt="jvm运行时数据区"></p>
+<ol>
+<li><p>Java堆中分配内存方式:如果Java堆中的内存是绝对规整的,所有用过的内存都放在一边,空闲的内存放在另一边,中间放着一个指针作为分界点的指示器,那所分配内存就是仅仅把那个指针向空闲空间那边挪动一段与对象大小相等的距离,这种分配方式称为<strong>指针碰撞(Bump the pointer)</strong>;如果Java堆中的内存并不是规整的,已使用内存和空闲的内存相互交错,虚拟机就必须维护一个列表,记录上哪些内存块是可用的,在分配的时候从列表中找到一块足够大的空间划分给对象,并更新列表上的记录,这种分配方式称为<strong>空闲列表(Free List)</strong>;</p>
+</li>
+<li><p>划分内存过程需要考虑同步问题,两种方式:1)对分配内存空间的动作进行同步处理(CAS配上失败重试的方式保证更新操作的原子性);2)每个线程在Java堆中预先分配一小块内存,为<strong>本地线程分配缓冲(Thread Local Allocation Buffer)</strong>,当TLAB分配完了之后再做同步操作.</p>
+</li>
+<li></li>
+</ol>
 
       
     </div>
@@ -367,19 +356,13 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/算法/" rel="tag"># 算法</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/24/Expression/" rel="next" title="四则运算表达式求值">
-                <i class="fa fa-chevron-left"></i> 四则运算表达式求值
+              <a href="/2017/09/27/SuffixTree/" rel="next" title="后缀树">
+                <i class="fa fa-chevron-left"></i> 后缀树
               </a>
             
           </div>
@@ -388,8 +371,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/31/JVM/" rel="prev" title="JAVA虚拟机了解">
-                JAVA虚拟机了解 <i class="fa fa-chevron-right"></i>
+              <a href="/2017/10/31/MachineLearningNotes/" rel="prev" title="西瓜书阅读">
+                西瓜书阅读 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -503,7 +486,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#计算最长回文字串"><span class="nav-number">1.</span> <span class="nav-text">计算最长回文字串</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-走进JAVA"><span class="nav-number">1.</span> <span class="nav-text">1.走进JAVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-JAVA内存区域与内存溢出异常"><span class="nav-number">2.</span> <span class="nav-text">2.JAVA内存区域与内存溢出异常</span></a></li></ol></div>
             
 
           </div>

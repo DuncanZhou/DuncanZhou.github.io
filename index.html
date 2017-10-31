@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/30/MachineLearningNotes/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/31/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/10/30/MachineLearningNotes/" itemprop="url">
+                <a class="post-title-link" href="/2017/10/31/MachineLearningNotes/" itemprop="url">
                   西瓜书阅读
                 </a>
               
@@ -279,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-30T11:40:50+08:00">
-                2017-10-30
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T10:08:45+08:00">
+                2017-10-31
               </time>
             
 
@@ -472,6 +472,27 @@
 </li>
 <li><p>提升树利用加法模型与前向分步算法实现学习的优化过程,当损失函数是平方损失和指数损失函数时,每一步的优化是简单的.但对一般的损失函数而言,往往每一步优化并不容易,这里可以使用梯度提升算法. <strong>其关键是利用损失函数的负梯度在当前模型的值作为回归问题提升树算法中的残差的近似值</strong>,拟合一个回归树.</p>
 </li>
+</ol>
+<h3 id="第八章-贝叶斯分类器"><a href="#第八章-贝叶斯分类器" class="headerlink" title="第八章 贝叶斯分类器"></a>第八章 贝叶斯分类器</h3><ol>
+<li><p>对分类任务来说,在所有相关概率都已知的理想情形下,贝叶斯决策论考虑如何基于这些概率和误判损失来选择最优的类别标记.</p>
+</li>
+<li><p>贝叶斯判定准则: 为了最小化总体风险,只需在每个样本上选择那个是条件风险最小的类别标记.(条件风险=期望损失).</p>
+</li>
+<li><p>估算后验概率,两种策略: 1) 给定样本x,可通过直接建模P(c|x)来预测c(从为x的类别标记),这样得到的是”判别式模型”; 2) 也可以先对联合概率分布P(x,c)建模,然后由此获得P(c|x),这样得到的是”生成式模型”;</p>
+<blockquote>
+<p>判别式模型常见的主要有：<br>　　　　Logistic Regression<br>　　　　SVM<br>　　　　Traditional Neural Networks<br>　　　　Nearest Neighbor<br>　　　　CRF<br>　　　　Linear Discriminant Analysis<br>　　　　Boosting<br>　　　　Linear Regression<br>产生式模型常见的主要有：</p>
+<pre><code>Gaussians
+Naive Bayes
+Mixtures of Multinomials
+Mixtures of Gaussians
+Mixtures of Experts
+HMMs
+</code></pre><p>　   Sigmoidal Belief Networks, Bayesian Networks<br>　   Markov Random Fields<br>　   Latent Dirichlet Allocation</p>
+</blockquote>
+</li>
+</ol>
+<p>(判别式模型和生成式模型:<a href="http://www.cnblogs.com/fanyabo/p/4067295.html" target="_blank" rel="external">http://www.cnblogs.com/fanyabo/p/4067295.html</a>)</p>
+<ol>
 <li></li>
 </ol>
 
@@ -512,7 +533,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/12/JVM/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/31/JVM/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -537,7 +558,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/10/12/JVM/" itemprop="url">
+                <a class="post-title-link" href="/2017/10/31/JVM/" itemprop="url">
                   JAVA虚拟机了解
                 </a>
               
@@ -552,8 +573,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-12T11:32:06+08:00">
-                2017-10-12
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T09:59:15+08:00">
+                2017-10-31
               </time>
             
 
@@ -593,6 +614,13 @@
             <h3 id="1-走进JAVA"><a href="#1-走进JAVA" class="headerlink" title="1.走进JAVA"></a>1.走进JAVA</h3><p>1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.</p>
 <p>2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.</p>
 <h3 id="2-JAVA内存区域与内存溢出异常"><a href="#2-JAVA内存区域与内存溢出异常" class="headerlink" title="2.JAVA内存区域与内存溢出异常"></a>2.JAVA内存区域与内存溢出异常</h3><p><strong>先放一张jvm运行时数据区分配情况图</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png" alt="jvm运行时数据区"></p>
+<ol>
+<li><p>Java堆中分配内存方式:如果Java堆中的内存是绝对规整的,所有用过的内存都放在一边,空闲的内存放在另一边,中间放着一个指针作为分界点的指示器,那所分配内存就是仅仅把那个指针向空闲空间那边挪动一段与对象大小相等的距离,这种分配方式称为<strong>指针碰撞(Bump the pointer)</strong>;如果Java堆中的内存并不是规整的,已使用内存和空闲的内存相互交错,虚拟机就必须维护一个列表,记录上哪些内存块是可用的,在分配的时候从列表中找到一块足够大的空间划分给对象,并更新列表上的记录,这种分配方式称为<strong>空闲列表(Free List)</strong>;</p>
+</li>
+<li><p>划分内存过程需要考虑同步问题,两种方式:1)对分配内存空间的动作进行同步处理(CAS配上失败重试的方式保证更新操作的原子性);2)每个线程在Java堆中预先分配一小块内存,为<strong>本地线程分配缓冲(Thread Local Allocation Buffer)</strong>,当TLAB分配完了之后再做同步操作.</p>
+</li>
+<li></li>
+</ol>
 
           
         
