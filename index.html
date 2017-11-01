@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/10/31/MachineLearningNotes/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/11/01/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/10/31/MachineLearningNotes/" itemprop="url">
+                <a class="post-title-link" href="/2017/11/01/MachineLearningNotes/" itemprop="url">
                   西瓜书阅读
                 </a>
               
@@ -279,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T10:08:45+08:00">
-                2017-10-31
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-01T14:59:12+08:00">
+                2017-11-01
               </time>
             
 
@@ -492,8 +492,15 @@ HMMs
 </li>
 </ol>
 <p>(判别式模型和生成式模型:<a href="http://www.cnblogs.com/fanyabo/p/4067295.html" target="_blank" rel="external">http://www.cnblogs.com/fanyabo/p/4067295.html</a>)</p>
-<ol>
-<li></li>
+<h3 id="第九章-集成学习-提升方法"><a href="#第九章-集成学习-提升方法" class="headerlink" title="第九章 集成学习(提升方法)"></a>第九章 集成学习(提升方法)</h3><ol>
+<li><p>集成学习方法大致分为两类: 1) 个体学习器之间存在强依赖关系,必须串行化生成的序列化方法; 2) 个体学习器间不存在强依赖关系,可同时生成的并行化方法. <strong>1)的代表是Boosting</strong>;<strong>2)的代表是Bagging和”随机森林”</strong>;</p>
+</li>
+<li><p>Bagging是并行集成学习方法最著名的代表,训练基于<strong>自助采样法</strong>.</p>
+</li>
+<li><p>Bagging通常对分类任务使用简单投票法,对回归任务使用简单平均法.</p>
+</li>
+<li><p>随机森林(Random Forest)是Bagging的一个扩展变体,RF在以决策树为基学习器构建Bagging集成的基础上,进一步在决策树的训练过程中引入了随机属性选择.</p>
+</li>
 </ol>
 
           
@@ -573,7 +580,7 @@ HMMs
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T09:59:15+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T21:57:33+08:00">
                 2017-10-31
               </time>
             
@@ -619,7 +626,8 @@ HMMs
 </li>
 <li><p>划分内存过程需要考虑同步问题,两种方式:1)对分配内存空间的动作进行同步处理(CAS配上失败重试的方式保证更新操作的原子性);2)每个线程在Java堆中预先分配一小块内存,为<strong>本地线程分配缓冲(Thread Local Allocation Buffer)</strong>,当TLAB分配完了之后再做同步操作.</p>
 </li>
-<li></li>
+<li><p>对象的访问定位:<strong>使用句柄和直接指针</strong></p>
+</li>
 </ol>
 
           

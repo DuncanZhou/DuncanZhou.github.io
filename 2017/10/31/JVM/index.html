@@ -99,7 +99,7 @@ Java堆中分配">
 
 Java堆中分配">
 <meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png">
-<meta property="og:updated_time" content="2017-10-31T01:59:15.406Z">
+<meta property="og:updated_time" content="2017-10-31T13:57:33.047Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JAVA虚拟机了解">
 <meta name="twitter:description" content="1.走进JAVA1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.
@@ -289,7 +289,7 @@ Java堆中分配">
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T09:59:15+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T21:57:33+08:00">
                 2017-10-31
               </time>
             
@@ -333,7 +333,8 @@ Java堆中分配">
 </li>
 <li><p>划分内存过程需要考虑同步问题,两种方式:1)对分配内存空间的动作进行同步处理(CAS配上失败重试的方式保证更新操作的原子性);2)每个线程在Java堆中预先分配一小块内存,为<strong>本地线程分配缓冲(Thread Local Allocation Buffer)</strong>,当TLAB分配完了之后再做同步操作.</p>
 </li>
-<li></li>
+<li><p>对象的访问定位:<strong>使用句柄和直接指针</strong></p>
+</li>
 </ol>
 
       
@@ -371,7 +372,7 @@ Java堆中分配">
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/10/31/MachineLearningNotes/" rel="prev" title="西瓜书阅读">
+              <a href="/2017/11/01/MachineLearningNotes/" rel="prev" title="西瓜书阅读">
                 西瓜书阅读 <i class="fa fa-chevron-right"></i>
               </a>
             
