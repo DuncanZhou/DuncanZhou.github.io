@@ -186,7 +186,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -196,7 +196,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/11/01/MachineLearningNotes/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/11/02/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/11/01/MachineLearningNotes/" itemprop="url">
+                <a class="post-title-link" href="/2017/11/02/MachineLearningNotes/" itemprop="url">
                   西瓜书阅读
                 </a>
               
@@ -278,9 +278,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-01T15:44:03+08:00">
-                2017-11-01
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-02T16:55:02+08:00">
+                2017-11-02
               </time>
             
 
@@ -503,6 +503,17 @@ HMMs
 <p>2.1 平均法<br>包括简单平均法和加权平均法.加权平均法的权重一般是从训练数据中学习而得,但是加权平均法未必一定优于简单平均法.<strong>一般而言,在个体学习器性能相差较大时宜使用加权平均法,而在个体学习器性能相近是宜使用简单平均法.</strong></p>
 <p>2.2 投票法<br>包括绝对多数投票法,相对多数投票法及加权投票法.</p>
 <p>2.3 学习法<br>当训练数据很多时,一种更为强大的结合策略是使用”学习法”,即通过另一个学习器来进行结合.<strong>Stacking是学习法的典型代表</strong>.Stacking先从初始数据集训练出初级学习器,然后”生成”一个新数据集用于训练次级学习器.在这个新数据集中,初级学习器的输出被当做样例输入特征,而初始样本的标记仍被当作样例标记.</p>
+<h3 id="第十章-聚类"><a href="#第十章-聚类" class="headerlink" title="第十章 聚类"></a>第十章 聚类</h3><p><strong>1.性能度量</strong></p>
+<p>1.1 聚类性能的度量有两类: 一类是将聚类结果与某个”参考模型”进行比较,称为”外部指标”.另一类是直接考察聚类结果而不利用任何参考模型,称为”内部指标”.</p>
+<p><strong>1.1 外部指标</strong></p>
+<p>1.2 a = |SS|,b=|SD|,c=|DS|,d=|DD|(关于SS,SD,DS和DD的解释参考书Page198),常用的三种性能度量:</p>
+<ul>
+<li>Jaccard系数: $$JC=\frac{a}{a+b+c}$$</li>
+<li>FM指数: FMI=\sqrt{\frac{a}{a+b}\frac{a}{a+c}}</li>
+<li>RI=\frac{2(a+d)}{m(m-1)}<br>上述性能度量的结果均在[0,1]区间,值越大越好.</li>
+</ul>
+<p><strong>1.2内部指标</strong><br><strong>DBI指数和DI指数</strong>(DBI值越小越好,而DI值越大越好.)</p>
+<p><strong>2.聚类算法</strong><br>2.1 <strong>原型聚类</strong>:k-means聚类,学习向量量化(LVQ),高斯混合聚类<br>2.2 <strong>密度聚类</strong>:DBSACN<br>2.3 <strong>层次聚类</strong>:Hierarchical clustering</p>
 
           
         
@@ -580,7 +591,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-10-31T21:57:33+08:00">
                 2017-10-31
               </time>
@@ -707,7 +718,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-27T13:37:54+08:00">
                 2017-09-27
               </time>
@@ -834,7 +845,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-24T21:34:44+08:00">
                 2017-09-24
               </time>
@@ -963,7 +974,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-08T14:31:52+08:00">
                 2017-08-08
               </time>
@@ -1103,7 +1114,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-04T19:57:50+08:00">
                 2017-08-04
               </time>
@@ -1226,7 +1237,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-30T16:51:12+08:00">
                 2017-07-30
               </time>
@@ -1347,7 +1358,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-21T10:59:19+08:00">
                 2017-07-21
               </time>
@@ -1497,7 +1508,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-11T10:08:50+08:00">
                 2017-07-11
               </time>
@@ -1614,7 +1625,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T22:05:24+08:00">
                 2017-06-25
               </time>
@@ -1792,7 +1803,7 @@ HMMs
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">30</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1802,7 +1813,7 @@ HMMs
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -1850,7 +1861,7 @@ HMMs
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
