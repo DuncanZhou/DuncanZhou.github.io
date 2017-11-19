@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/11/17/MachineLearningNotes/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/11/19/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/11/17/MachineLearningNotes/" itemprop="url">
+                <a class="post-title-link" href="/2017/11/19/MachineLearningNotes/" itemprop="url">
                   西瓜书阅读
                 </a>
               
@@ -279,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-17T10:39:55+08:00">
-                2017-11-17
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-19T21:04:10+08:00">
+                2017-11-19
               </time>
             
 
@@ -573,6 +573,21 @@ HMMs
 <li>基于分歧的方法(与上述三个不同的是,基于分歧的方法使用多学习器,而学习器之间的”分歧”对未标记数据的利用至关重要.)</li>
 <li>半监督聚类</li>
 </ul>
+<h3 id="第十四章-概率图模型"><a href="#第十四章-概率图模型" class="headerlink" title="第十四章 概率图模型"></a>第十四章 概率图模型</h3><p><strong>1.概念</strong><br>1.假定所关心的变量集合为Y,可观测变量集合为O,其他变量的集合为R,”生成式”模型考虑联合分布P(Y,R,O),”判别式”模型考虑条件分布P(Y,R|O).给定一组观测变量值,推断就是要由P(Y,R,O)或P(Y,R|O)得到条件概率分布P(Y|O).</p>
+<p>2.概率图模型是一类用图来表达变量相关关系的概率模型.它以图为表示工具,最常见的是用一个结点表示一个或一组随即变量,结点之间的边表示变量间的概率相关关系,即”变量关系图”.</p>
+<p>3.概率图模型大致分为两类:</p>
+<ul>
+<li>使用有向无环图表示变量之间的依赖关系,称为<strong>有向图模型或贝叶斯网</strong>.</li>
+<li>使用无向图表示变量间的相关关系,称为<strong>无向图模型或马尔可夫网</strong>.</li>
+</ul>
+<p>4.隐马尔可夫模型是结构最简单的动态贝叶斯网.(主要用于时序数据建模,在语音识别/自然语言处理等领域有广泛应用.)</p>
+<p>5.确定一个隐马尔可夫模型需要以下三组参数:</p>
+<ul>
+<li>状态转移概率(状态转移矩阵)</li>
+<li>输出观测概率(输出观测矩阵)</li>
+<li>初始状态概率</li>
+</ul>
+<p><strong>2.马尔可夫随机场(MRF)</strong></p>
 
           
         
