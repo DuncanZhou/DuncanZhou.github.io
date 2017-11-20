@@ -186,7 +186,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -196,7 +196,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/11/19/MachineLearningNotes/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/11/20/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/11/19/MachineLearningNotes/" itemprop="url">
+                <a class="post-title-link" href="/2017/11/20/MachineLearningNotes/" itemprop="url">
                   西瓜书阅读
                 </a>
               
@@ -278,9 +278,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-19T21:04:10+08:00">
-                2017-11-19
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-20T10:37:44+08:00">
+                2017-11-20
               </time>
             
 
@@ -573,7 +573,7 @@ HMMs
 <li>基于分歧的方法(与上述三个不同的是,基于分歧的方法使用多学习器,而学习器之间的”分歧”对未标记数据的利用至关重要.)</li>
 <li>半监督聚类</li>
 </ul>
-<h3 id="第十四章-概率图模型"><a href="#第十四章-概率图模型" class="headerlink" title="第十四章 概率图模型"></a>第十四章 概率图模型</h3><p><strong>1.概念</strong><br>1.假定所关心的变量集合为Y,可观测变量集合为O,其他变量的集合为R,”生成式”模型考虑联合分布P(Y,R,O),”判别式”模型考虑条件分布P(Y,R|O).给定一组观测变量值,推断就是要由P(Y,R,O)或P(Y,R|O)得到条件概率分布P(Y|O).</p>
+<h3 id="第十四章-概率图模型"><a href="#第十四章-概率图模型" class="headerlink" title="第十四章 概率图模型"></a>第十四章 概率图模型</h3><p><strong>1.隐马尔可夫模型</strong><br>1.假定所关心的变量集合为Y,可观测变量集合为O,其他变量的集合为R,”生成式”模型考虑联合分布P(Y,R,O),”判别式”模型考虑条件分布P(Y,R|O).给定一组观测变量值,推断就是要由P(Y,R,O)或P(Y,R|O)得到条件概率分布P(Y|O).</p>
 <p>2.概率图模型是一类用图来表达变量相关关系的概率模型.它以图为表示工具,最常见的是用一个结点表示一个或一组随即变量,结点之间的边表示变量间的概率相关关系,即”变量关系图”.</p>
 <p>3.概率图模型大致分为两类:</p>
 <ul>
@@ -587,7 +587,15 @@ HMMs
 <li>输出观测概率(输出观测矩阵)</li>
 <li>初始状态概率</li>
 </ul>
-<p><strong>2.马尔可夫随机场(MRF)</strong></p>
+<p><strong>2.马尔可夫随机场(MRF)</strong><br>2.1 全局马尔可夫性:给定两个变量子集的分离集,则这两个变量子集条件独立.</p>
+<p>2.2 由全局马尔可夫性得到两个有用的推论:</p>
+<ul>
+<li><strong>局部马尔可夫性</strong>:给定某变量的邻接变量,则该变量条件独立于其他变量.</li>
+<li><strong>成对马尔可夫性</strong>:给定所有其他变量,两个非邻接变量条件独立.</li>
+</ul>
+<p>2.3 指数函数常被用于定义势函数.</p>
+<p><strong>3.条件随机场</strong><br>3.1 条件随机场是一种判别式无向图模型.</p>
+<p>3.2 生成式模型是直接对联合分布进行建模,而判别式模型则是对条件分布进行建模.(隐马尔可夫模型和马尔可夫随机场都是生成式模型,条件随机场是判别式模型.)</p>
 
           
         
@@ -665,7 +673,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-15T22:11:37+08:00">
                 2017-11-15
               </time>
@@ -799,7 +807,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-27T13:37:54+08:00">
                 2017-09-27
               </time>
@@ -926,7 +934,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-24T21:34:44+08:00">
                 2017-09-24
               </time>
@@ -1055,7 +1063,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-08T14:31:52+08:00">
                 2017-08-08
               </time>
@@ -1195,7 +1203,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-08-04T19:57:50+08:00">
                 2017-08-04
               </time>
@@ -1318,7 +1326,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-30T16:51:12+08:00">
                 2017-07-30
               </time>
@@ -1439,7 +1447,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-21T10:59:19+08:00">
                 2017-07-21
               </time>
@@ -1589,7 +1597,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-07-11T10:08:50+08:00">
                 2017-07-11
               </time>
@@ -1706,7 +1714,7 @@ HMMs
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-06-25T22:05:24+08:00">
                 2017-06-25
               </time>
@@ -1884,7 +1892,7 @@ HMMs
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">30</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1894,7 +1902,7 @@ HMMs
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -1942,7 +1950,7 @@ HMMs
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
