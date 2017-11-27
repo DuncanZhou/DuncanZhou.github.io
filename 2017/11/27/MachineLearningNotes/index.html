@@ -99,7 +99,7 @@
 3.评估方法:
 3.1 测试集应该尽可能与训练">
 <meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/ML-01.jpg">
-<meta property="og:updated_time" content="2017-11-27T07:36:52.661Z">
+<meta property="og:updated_time" content="2017-11-27T07:41:20.593Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="西瓜书阅读">
 <meta name="twitter:description" content="西瓜书阅读记录=============================================
@@ -289,7 +289,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-27T15:36:52+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-27T15:41:20+08:00">
                 2017-11-27
               </time>
             
@@ -445,6 +445,7 @@
 <li>指数损失</li>
 <li>对率损失</li>
 </ul>
+<hr>
 <h4 id="第六章-统计学习方法"><a href="#第六章-统计学习方法" class="headerlink" title="第六章 统计学习方法"></a>第六章 统计学习方法</h4><p>1.支持向量机学习方法包含构建由简至繁的模型:线性可分支持向量机,线性支持向量机及非线性支持向量机.当<strong>训练数据线性可分时</strong>,通过<strong>硬间隔最大化</strong>学习一个线性的分类器,即<strong>线性可分支持向量机</strong>,又称为硬间隔支持向量机;当<strong>训练数据近似线性可分时</strong>,通过<strong>软间隔最大化</strong>,也学习一个线性的分类器,即<strong>线性支持向量机</strong>,又称为软间隔支持向量机;当<strong>训练数据线性不可分时</strong>,通过<strong>核技巧及软间隔最大化</strong>,学习<strong>非线性支持向量机</strong>.</p>
 <p><strong>2.空间概念</strong></p>
 <p>2.1 线性空间(向量空间)</p>
@@ -470,8 +471,9 @@
 <p>2.6 希尔伯特空间</p>
 <blockquote>
 <p>希尔伯特空间是欧几里德空间的一个推广,其不再局限于有限维的情形.与欧几里德空间相仿,希尔伯特空间也是内积空间,其上有距离和角的概念,此外,希尔伯特空间还是一个完备的空间,其上所有的柯西序列等价于收敛序列,从而微积分中的大部分概念都可以无障碍地推广到希尔伯特空间中.<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/ML-01.jpg" alt="空间的一些数学概念"></p>
-</blockquote>
-<h3 id="第七章-提升方法-boosting"><a href="#第七章-提升方法-boosting" class="headerlink" title="第七章 提升方法(boosting)"></a>第七章 提升方法(boosting)</h3><ol>
+<hr>
+<h3 id="第七章-提升方法-boosting"><a href="#第七章-提升方法-boosting" class="headerlink" title="第七章 提升方法(boosting)"></a>第七章 提升方法(boosting)</h3></blockquote>
+<ol>
 <li><p>提升方法是一种常用的统计学习方法,在分类问题中,它通过<strong>改变训练样本的权重</strong>,学习多个分类器,并将这些<strong>分类器进行线性组合</strong>,提升分类的性能.\</p>
 </li>
 <li><p><strong>提升树</strong>是以<strong>分类树</strong>或<strong>回归树</strong>为基本分类器的提升方法. 以决策树为基函数的提升方法称为提升树,对分类问题决策树是二叉分类树,对回归问题决策树是二叉回归树.</p>
@@ -481,6 +483,7 @@
 <li><p>提升树利用加法模型与前向分步算法实现学习的优化过程,当损失函数是平方损失和指数损失函数时,每一步的优化是简单的.但对一般的损失函数而言,往往每一步优化并不容易,这里可以使用梯度提升算法. <strong>其关键是利用损失函数的负梯度在当前模型的值作为回归问题提升树算法中的残差的近似值</strong>,拟合一个回归树.</p>
 </li>
 </ol>
+<hr>
 <h3 id="第八章-贝叶斯分类器"><a href="#第八章-贝叶斯分类器" class="headerlink" title="第八章 贝叶斯分类器"></a>第八章 贝叶斯分类器</h3><ol>
 <li><p>对分类任务来说,在所有相关概率都已知的理想情形下,贝叶斯决策论考虑如何基于这些概率和误判损失来选择最优的类别标记.</p>
 </li>
@@ -488,18 +491,15 @@
 </li>
 <li><p>估算后验概率,两种策略: 1) 给定样本x,可通过直接建模P(c|x)来预测c(从为x的类别标记),这样得到的是”判别式模型”; 2) 也可以先对联合概率分布P(x,c)建模,然后由此获得P(c|x),这样得到的是”生成式模型”;</p>
 <blockquote>
-<p>判别式模型常见的主要有：<br>　　　　Logistic Regression<br>　　　　SVM<br>　　　　Traditional Neural Networks<br>　　　　Nearest Neighbor<br>　　　　CRF<br>　　　　Linear Discriminant Analysis<br>　　　　Boosting<br>　　　　Linear Regression<br>产生式模型常见的主要有：</p>
-<pre><code>Gaussians
-Naive Bayes
-Mixtures of Multinomials
-Mixtures of Gaussians
-Mixtures of Experts
-HMMs
-</code></pre><p>　   Sigmoidal Belief Networks, Bayesian Networks<br>　   Markov Random Fields<br>　   Latent Dirichlet Allocation</p>
+<p>判别式模型常见的主要有：<br>　　　　Logistic Regression<br>　　　　SVM<br>　　　　Traditional Neural Networks<br>　　　　Nearest Neighbor<br>　　　　CRF<br>　　　　Linear Discriminant Analysis<br>　　　　Boosting<br>　　　　Linear Regression</p>
 </blockquote>
 </li>
 </ol>
+<blockquote>
+<p>产生式模型常见的主要有：<br>    Gaussians<br>    Naive Bayes<br>    Mixtures of Multinomials<br>    Mixtures of Gaussians<br>    Mixtures of Experts<br>    HMMs<br>　   Sigmoidal Belief Networks, Bayesian Networks<br>　   Markov Random Fields<br>　   Latent Dirichlet Allocation</p>
+</blockquote>
 <p>(判别式模型和生成式模型:<a href="http://www.cnblogs.com/fanyabo/p/4067295.html" target="_blank" rel="external">http://www.cnblogs.com/fanyabo/p/4067295.html</a>)</p>
+<hr>
 <h3 id="第九章-集成学习-提升方法"><a href="#第九章-集成学习-提升方法" class="headerlink" title="第九章 集成学习(提升方法)"></a>第九章 集成学习(提升方法)</h3><p><strong>1.概念介绍</strong></p>
 <ol>
 <li>1 集成学习方法大致分为两类: 1) 个体学习器之间存在强依赖关系,必须串行化生成的序列化方法; 2) 个体学习器间不存在强依赖关系,可同时生成的并行化方法. <strong>1)的代表是Boosting</strong>;<strong>2)的代表是Bagging和”随机森林”</strong>;</li>
@@ -511,6 +511,7 @@ HMMs
 <p>2.1 平均法<br>包括简单平均法和加权平均法.加权平均法的权重一般是从训练数据中学习而得,但是加权平均法未必一定优于简单平均法.<strong>一般而言,在个体学习器性能相差较大时宜使用加权平均法,而在个体学习器性能相近是宜使用简单平均法.</strong></p>
 <p>2.2 投票法<br>包括绝对多数投票法,相对多数投票法及加权投票法.</p>
 <p>2.3 学习法<br>当训练数据很多时,一种更为强大的结合策略是使用”学习法”,即通过另一个学习器来进行结合.<strong>Stacking是学习法的典型代表</strong>.Stacking先从初始数据集训练出初级学习器,然后”生成”一个新数据集用于训练次级学习器.在这个新数据集中,初级学习器的输出被当做样例输入特征,而初始样本的标记仍被当作样例标记.</p>
+<hr>
 <h3 id="第十章-聚类"><a href="#第十章-聚类" class="headerlink" title="第十章 聚类"></a>第十章 聚类</h3><p><strong>1.性能度量</strong></p>
 <p>1.1 聚类性能的度量有两类: 一类是将聚类结果与某个”参考模型”进行比较,称为”外部指标”.另一类是直接考察聚类结果而不利用任何参考模型,称为”内部指标”.</p>
 <p><strong>1.1 外部指标</strong></p>
@@ -522,6 +523,7 @@ HMMs
 </ul>
 <p><strong>1.2内部指标</strong><br><strong>DBI指数和DI指数</strong>(DBI值越小越好,而DI值越大越好.)</p>
 <p><strong>2.聚类算法</strong><br>2.1 <strong>原型聚类</strong>:k-means聚类,学习向量量化(LVQ),高斯混合聚类<br>2.2 <strong>密度聚类</strong>:DBSACN<br>2.3 <strong>层次聚类</strong>:Hierarchical clustering</p>
+<hr>
 <h3 id="第十一章-降维与度量学习"><a href="#第十一章-降维与度量学习" class="headerlink" title="第十一章 降维与度量学习"></a>第十一章 降维与度量学习</h3><p><strong>1.降维</strong><br>1.1 为什么要降维?因为在高维情形下出现的数据样本稀疏,距离计算困难等问题,是所有机器学习方法共同面临的严重障碍.</p>
 <p>1.2 为什么能进行降维?因为在很多时候,人们观测或收集到的数据样本虽然是高维的,但与学习任务密切相关的也许仅仅是某个低维分布,即高维空间中的一个低维”嵌入”.</p>
 <p>1.3 降维方法:</p>
@@ -540,6 +542,7 @@ HMMs
 </li>
 <li>度量学习(Metric Learning)(通过学习的方式,学到一种转换维度的距离度量的方式)</li>
 </ul>
+<hr>
 <h3 id="第十二章-特征选择与稀疏学习"><a href="#第十二章-特征选择与稀疏学习" class="headerlink" title="第十二章 特征选择与稀疏学习"></a>第十二章 特征选择与稀疏学习</h3><p><strong>1.概念和意义</strong><br>1.1 特征选择：从给定的特征集合中选择出相关特征子集的过程，成为”特征选择”;</p>
 <p>1.2 特征选择的原因:</p>
 <ul>
@@ -562,6 +565,7 @@ HMMs
 <p><strong>3.3 嵌入式</strong><br>嵌入式选择是将特征选择过程与学习器训练过程融为一体，两者在同一个优化过程中完成，即在学习器训练过程中自动地进行了特征选择。<br>具体做法：将过拟合中的正则项中的L2范数替换为L1范数，L1范数和L2范数都有助于降低过拟合的风险，但L1范数还会带来一个额外的好处，它比后者更易于获得”稀疏”解。</p>
 <p><strong>4.稀疏表示与字典学习</strong><br>4.1 将样本转化为合适的稀疏表示形式，从而使学习任务得以简化，模型复杂度得以降低，通常称为”字典学习”，亦称”稀疏编码”。</p>
 <p><strong>5.压缩感知</strong><br>压缩感知关注的是如何利用信号本身所具有的稀疏性，从部分观测样本中恢复原信号。通常认为，压缩感知分为”感知测量”和”重构恢复”这两个阶段。”感知测量”关注如何对原始信号进行处理以获得稀疏样本表示;”重构恢复”关注的使如何基于洗属性从少量观测中恢复原信号，这是压缩感知的精髓。</p>
+<hr>
 <h3 id="第十三章-半监督学习"><a href="#第十三章-半监督学习" class="headerlink" title="第十三章 半监督学习"></a>第十三章 半监督学习</h3><p><strong>1.概念</strong><br>在只有少量的标注样本,而有大量的未标注样本,让学习器不依赖外界交互,自动地利用未标记样本来提升学习性能,就是半监督学习.</p>
 <p><strong>2.方法</strong><br><strong>2.1 假设</strong></p>
 <ul>
@@ -581,6 +585,7 @@ HMMs
 <li>基于分歧的方法(与上述三个不同的是,基于分歧的方法使用多学习器,而学习器之间的”分歧”对未标记数据的利用至关重要.)</li>
 <li>半监督聚类</li>
 </ul>
+<hr>
 <h3 id="第十四章-概率图模型"><a href="#第十四章-概率图模型" class="headerlink" title="第十四章 概率图模型"></a>第十四章 概率图模型</h3><p><strong>1.隐马尔可夫模型</strong><br>1.假定所关心的变量集合为Y,可观测变量集合为O,其他变量的集合为R,”生成式”模型考虑联合分布P(Y,R,O),”判别式”模型考虑条件分布P(Y,R|O).给定一组观测变量值,推断就是要由P(Y,R,O)或P(Y,R|O)得到条件概率分布P(Y|O).</p>
 <p>2.概率图模型是一类用图来表达变量相关关系的概率模型.它以图为表示工具,最常见的是用一个结点表示一个或一组随即变量,结点之间的边表示变量间的概率相关关系,即”变量关系图”.</p>
 <p>3.概率图模型大致分为两类:</p>
@@ -604,10 +609,12 @@ HMMs
 <p>2.3 指数函数常被用于定义势函数.</p>
 <p><strong>3.条件随机场</strong><br>3.1 条件随机场是一种判别式无向图模型.</p>
 <p>3.2 生成式模型是直接对联合分布进行建模,而判别式模型则是对条件分布进行建模.(隐马尔可夫模型和马尔可夫随机场都是生成式模型,条件随机场是判别式模型.)</p>
+<hr>
 <h3 id="第十五章-规则学习"><a href="#第十五章-规则学习" class="headerlink" title="第十五章 规则学习"></a>第十五章 规则学习</h3><p><strong>1.基本概念</strong><br>1.1 规则分为两类: <strong>“命题规则”</strong>和<strong>“一阶规则”</strong>,前者由是”原子命题”和逻辑连接词”与,或,非”和”蕴含”构成的简单陈述句.后者的基本成分是能描述事物的属性或关系的”原子公式”.</p>
 <p><strong>2.方法</strong><br>2.1 序贯覆盖</p>
 <p>2.2 剪枝优化(预剪枝和后剪枝)</p>
 <p>2.3 一阶规则学习<br>受限于命题逻辑表达能力,命题规则学习难以处理对象之间的”关系”,而关系信息在很多任务中非常重要.例如,我们在现实世界挑选西瓜时,通常很难把水果摊上所有西瓜的特征用属性值描述出来,因为我们很难判断:色泽看起来多深才叫”色泽青绿”?敲起来声音多低才叫”敲声沉闷”?比较现实的做法是将西瓜进行相互比较,例如,”瓜1的颜色比瓜2更深,并且瓜1的根蒂比瓜2更蜷”,因此”瓜1比瓜2更好”.</p>
+<hr>
 <h3 id="第十六章-强化学习"><a href="#第十六章-强化学习" class="headerlink" title="第十六章 强化学习"></a>第十六章 强化学习</h3><p><strong>1.基本概念</strong><br><strong>1)</strong>强化学习任务通常用<strong>马尔可夫决策过程(MDP-Markov Decision Process)</strong>来描述:机器处于<strong>环境E</strong>中,<strong>状态空间为X</strong>,其中每个状态x是机器感知到的环境的描述.机器能采取的动作构成了<strong>动作空间A</strong>.若某个动作a作用在当前状态x上,则潜在的<strong>转移函数P</strong>将使得环境从当前状态按某种概率转移到另一个状态.在转移到另一个状态的同时,环境会根据潜在的<strong>“奖赏”函数R</strong>反馈给机器一个奖赏.</p>
 <p><strong>2)</strong>强化学习任务对应了四元组<strong>E=<x,a,p,r></x,a,p,r></strong>,其中P:X*A*X-&gt;R指定了状态转移概率,R:X*A*X-&gt;R指定了奖赏;在有的应用中,奖赏函数可能仅与状态转移有关,即R:X*X-&gt;R;</p>
 <p><strong>3)</strong>机器要做的是通过在环境中不断尝试而学得一个<strong>“策略”Pi</strong>,根据这个策略,在状态x下,就能得知要执行的动作<strong>a=Pi(x)</strong>.</p>
