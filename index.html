@@ -239,7 +239,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/11/21/MachineLearningNotes/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/11/27/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -264,7 +264,7 @@
             
               
                 
-                <a class="post-title-link" href="/2017/11/21/MachineLearningNotes/" itemprop="url">
+                <a class="post-title-link" href="/2017/11/27/MachineLearningNotes/" itemprop="url">
                   西瓜书阅读
                 </a>
               
@@ -279,8 +279,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T10:38:15+08:00">
-                2017-11-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-27T15:36:52+08:00">
+                2017-11-27
               </time>
             
 
@@ -600,6 +600,34 @@ HMMs
 <p><strong>2.方法</strong><br>2.1 序贯覆盖</p>
 <p>2.2 剪枝优化(预剪枝和后剪枝)</p>
 <p>2.3 一阶规则学习<br>受限于命题逻辑表达能力,命题规则学习难以处理对象之间的”关系”,而关系信息在很多任务中非常重要.例如,我们在现实世界挑选西瓜时,通常很难把水果摊上所有西瓜的特征用属性值描述出来,因为我们很难判断:色泽看起来多深才叫”色泽青绿”?敲起来声音多低才叫”敲声沉闷”?比较现实的做法是将西瓜进行相互比较,例如,”瓜1的颜色比瓜2更深,并且瓜1的根蒂比瓜2更蜷”,因此”瓜1比瓜2更好”.</p>
+<h3 id="第十六章-强化学习"><a href="#第十六章-强化学习" class="headerlink" title="第十六章 强化学习"></a>第十六章 强化学习</h3><p><strong>1.基本概念</strong><br><strong>1)</strong>强化学习任务通常用<strong>马尔可夫决策过程(MDP-Markov Decision Process)</strong>来描述:机器处于<strong>环境E</strong>中,<strong>状态空间为X</strong>,其中每个状态x是机器感知到的环境的描述.机器能采取的动作构成了<strong>动作空间A</strong>.若某个动作a作用在当前状态x上,则潜在的<strong>转移函数P</strong>将使得环境从当前状态按某种概率转移到另一个状态.在转移到另一个状态的同时,环境会根据潜在的<strong>“奖赏”函数R</strong>反馈给机器一个奖赏.</p>
+<p><strong>2)</strong>强化学习任务对应了四元组<strong>E=<x,a,p,r></x,a,p,r></strong>,其中P:X*A*X-&gt;R指定了状态转移概率,R:X*A*X-&gt;R指定了奖赏;在有的应用中,奖赏函数可能仅与状态转移有关,即R:X*X-&gt;R;</p>
+<p><strong>3)</strong>机器要做的是通过在环境中不断尝试而学得一个<strong>“策略”Pi</strong>,根据这个策略,在状态x下,就能得知要执行的动作<strong>a=Pi(x)</strong>.</p>
+<p>策略有两种方法:</p>
+<ul>
+<li>一种是将策略表示为函数<strong>Pi:X-&gt;A,确定性策略</strong>常用这种表示.</li>
+<li>另一种是概率表示<strong>Pi:X*A-&gt;R,随机性策略</strong>常用这种表示,Pi(x,a)为状态x下选择动作a的概率,动作概率之和为1.</li>
+</ul>
+<p><strong>总结</strong>:在强化学习任务中,学习的目的就是要找到能使长期累积奖赏最大化的策略.</p>
+<ul>
+<li>T步累积奖赏</li>
+<li>r折扣累积奖赏</li>
+</ul>
+<p><strong>4)</strong>强化学习和监督学习的差别和联系<br>|强化学习    |监督学习    |<br>|:————-:|:————-:|<br>|状态(x)    |示例(x)    |<br>|动作(a)    |标记(y)    |<br>|策略(Pi)    |分类器或回归器    |</p>
+<blockquote>
+<p>与一般监督学习不同,强化学习任务的最终奖赏是在多步动作之后才能观察到的.</p>
+</blockquote>
+<p><strong>2.应用</strong><br>2.1 K-摇臂赌博机</p>
+<ul>
+<li>若仅为获知<strong>每个摇臂的期望奖赏</strong>,则<strong>可采用”仅探索”法</strong>,将所有<strong>尝试机会平均分配</strong>给每个摇臂,最后以每个摇臂各自的平均吐币概率作为其奖赏期望的近似估计.</li>
+<li>若仅为执行<strong>奖赏最大的动作</strong>下,则<strong>可采用”仅利用”法</strong>,,按下目前最优的(即到目前为止平均奖赏最大的)摇臂.</li>
+</ul>
+<p><strong>总结</strong>:”探索”和”利用”两者是矛盾的,因为尝试次数有限,加强了一方则会自然削弱另一方.这就是强化学习所面临的”探索-利用窘境”.显然,欲累积奖赏最大,则必须在探索和利用之间达成较好的折中.</p>
+<p>策略:</p>
+<ul>
+<li>epsilon-贪心:基于一个概率来对探索和利用进行折中,每次尝试时,以epsilon的概率进行探索,以均匀概率选取一个摇臂,以1-epsilon的概率进行利用,即选择当前平均奖赏最高的摇臂.</li>
+<li>Softmax:基于当前已知的摇臂平均奖赏来对探索和利用进行折中.若各摇臂的平均奖赏相当,则选取各摇臂的概率也相当;若某些摇臂的平均奖赏明显高于其他摇臂,则它们被选取的概率也明显更高.</li>
+</ul>
 
           
         
@@ -638,7 +666,7 @@ HMMs
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/11/21/JVM/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/11/22/JVM/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -663,7 +691,7 @@ HMMs
             
               
                 
-                <a class="post-title-link" href="/2017/11/21/JVM/" itemprop="url">
+                <a class="post-title-link" href="/2017/11/22/JVM/" itemprop="url">
                   JAVA虚拟机了解
                 </a>
               
@@ -678,8 +706,8 @@ HMMs
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T10:01:46+08:00">
-                2017-11-21
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-22T20:39:38+08:00">
+                2017-11-22
               </time>
             
 
@@ -763,6 +791,8 @@ HMMs
 <li>最终标记(修正在并发标记阶段标记发生改变的那部分标记记录)</li>
 <li>筛选回收(对各个Region的回收价值和成本排序)</li>
 </ul>
+<h3 id="5-内存对象收集器"><a href="#5-内存对象收集器" class="headerlink" title="5.内存对象收集器"></a>5.内存对象收集器</h3><p>1.新生代GC(Minor GC):指发生在新生代的垃圾收集动作,Minor GC非常频繁,一般回收速度也比较快.</p>
+<p>2.老年代GC(Major GC/Full GC):指发生在老年代的GC,出现了Major GC,经常会伴随至少一次的Minor GC,Major GC的速度一般会比Minor GC慢10倍以上.</p>
 
           
         
