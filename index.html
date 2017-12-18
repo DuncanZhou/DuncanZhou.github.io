@@ -279,7 +279,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T10:59:33+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T16:30:29+08:00">
                 2017-12-18
               </time>
             
@@ -327,6 +327,13 @@
 <li>2.对于类别类型特征,利用sklearn编码(one-hot, Label Encoder等)</li>
 <li>3.使用平均值填充完后再去除冗余列(方差为0,列重复)</li>
 </ul>
+<p>清洗过后,特征从原来的8000多维降到了3400多维.</p>
+<ul>
+<li>4.特征中存在全为NaN值的,也去掉这些列</li>
+</ul>
+<blockquote>
+<p>总结:数据清洗过后,总的特征维数维3342维</p>
+</blockquote>
 <p><strong>2)特征选择:</strong></p>
 <ul>
 <li>嵌入式: 根据模型来分析特征的重要性,最常见的方式为<strong>正则化</strong>来做特征选择.</li>
@@ -337,7 +344,26 @@
 <li>使用任意数值填充</li>
 <li>使用平均值填充</li>
 </ul>
-<h3 id="3-维数降维"><a href="#3-维数降维" class="headerlink" title="3.维数降维?"></a>3.维数降维?</h3><h3 id="4-模型的选择"><a href="#4-模型的选择" class="headerlink" title="4.模型的选择?"></a>4.模型的选择?</h3>
+<h3 id="3-维数降维"><a href="#3-维数降维" class="headerlink" title="3.维数降维?"></a>3.维数降维?</h3><h3 id="4-模型的选择"><a href="#4-模型的选择" class="headerlink" title="4.模型的选择?"></a>4.模型的选择?</h3><ol>
+<li>Random Forest</li>
+<li>GBDT(Gradient Boosting Decision Tree)<blockquote>
+<p>这里记录下GBDT的发展过程: Regression Decision Tree -&gt; Boosting Decision Tree -&gt; Gradient Boosting Decision Tree,GBDT利用加法模型和前向分步法实现学习的优化过程.GBDT是一个基于迭代累加的决策树算法，它通过构造一组弱的学习器（树），并把多颗决策树的结果累加起来作为最终的预测输出。 缺点:1) 计算复杂度高 2) 不适合高维稀疏特征</p>
+</blockquote>
+</li>
+</ol>
+<p>3.Xgboost</p>
+<blockquote>
+<p>xgboost是boosting Tree的一个很牛的实现:</p>
+<ul>
+<li>显示地把树模型复杂度作为正则项加到优化目标中</li>
+<li>公式推导中用到了二阶导数,用了二阶泰勒展开</li>
+<li>实现了分裂点寻找近似算法</li>
+<li>利用了特征的稀疏性</li>
+<li>并行计算</li>
+</ul>
+</blockquote>
+<p>xgboost的训练速度远远快于传统的GBDT,10倍量级.</p>
+
           
         
       
