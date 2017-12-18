@@ -186,7 +186,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -196,7 +196,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -229,6 +229,150 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/05/11/neo4j-developer-document/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2017/05/11/neo4j-developer-document/" itemprop="url">
+                  neo4j官方开发文档阅读记录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-11T21:09:13+08:00">
+                2017-05-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>重新选择neo-4j官方的与python交互包，尝试了py2neo包后发现对neo4j了解还不够，很多操作只是浅尝辄止，所以，决定阅读neo4j的官方开发驱动包，并尝试学习Cypher语言，这对以后对人物关系的挖掘是有帮助的．</p>
+</blockquote>
+<h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><p>neo-4j由两部分组成:relationship,label和property,label或者relationship中包含property,label与label之间形成关系.</p>
+<h3 id="2-语法"><a href="#2-语法" class="headerlink" title="2.语法"></a>2.语法</h3><font color="red">2.1 Node语法</font><br>Cypher语言用()代表一个节点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">()</div><div class="line">(matrix)</div><div class="line">(matrix:Movie)</div><div class="line">(matrix:Movie&#123;title:&quot;The Matrix&quot;,released:1997&#125;)</div></pre></td></tr></table></figure><br><br><font color="red">2.2 Relationship语法</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">--&gt;</div><div class="line">-[role]-&gt;</div><div class="line">-[:ACTED_IN]-&gt;</div><div class="line"># 关系的类型</div><div class="line">-[role:ACTED_IN]-&gt;</div><div class="line"># 关系的属性值,属性值可以是数组</div><div class="line">-[role:ACTED_IN &#123;role:[&quot;Neo&quot;]&#125;]-&gt;</div></pre></td></tr></table></figure><br><br><font color="red">2.3 Pattern语法</font><br>语法中有Node和Relationship<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(keanu:Person:Actor &#123;name:&quot;Keanu Reeves&quot;&#125;)</div><div class="line">-[role:ACTED_IN &#123;roles:[&quot;Neo&quot;]&#125;]-&gt;</div><div class="line">(matrix:Movie &#123;title:&quot;The matrix&quot;&#125;)</div></pre></td></tr></table></figure><br><br>保存结点关系path<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># acted_in中保存的就是path,有很多函数可以对path操作:nodes(path),rels(paht),len(path)</div><div class="line">acted_in = (:Person)-[:ACTED_IN]-&gt;(:Movie)</div></pre></td></tr></table></figure><br><br>创建数据及及结点关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">CREATE (:MOVIE &#123;title:&quot;The Matrix&quot;,released:1997&#125;)</div><div class="line">CREATE (p:Person &#123; name:&quot;Keanu Reeves&quot;, born:1964 &#125;)</div><div class="line">RETURN p</div><div class="line"># 创建关系</div><div class="line">CREATE (a:Person &#123; name:&quot;Tom Hanks&quot;,</div><div class="line">  born:1956 &#125;)-[r:ACTED_IN &#123; roles: [&quot;Forrest&quot;]&#125;]-&gt;(m:Movie &#123; title:&quot;Forrest Gump&quot;,released:1994 &#125;)</div><div class="line">CREATE (d:Person &#123; name:&quot;Robert Zemeckis&quot;, born:1951 &#125;)-[:DIRECTED]-&gt;(m)</div><div class="line">RETURN a,d,r,m</div></pre></td></tr></table></figure><br><br>匹配pattern<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">MATCH(m:Movie)</div><div class="line">RETURN m</div><div class="line">MATCH(p:Person &#123;name:&quot;duncan&quot;&#125;)</div><div class="line">RETURN p</div><div class="line"># 匹配关系</div><div class="line">MATCH (p:Person &#123; name:&quot;Tom Hanks&quot; &#125;)-[r:ACTED_IN]-&gt;(m:Movie)</div><div class="line">RETURN m.title, r.roles</div></pre></td></tr></table></figure><br><br>添加节点并添加关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MATCH (p:Person &#123; name:&quot;Tom Hanks&quot; &#125;)</div><div class="line">CREATE (m:Movie &#123; title:&quot;Cloud Atlas&quot;,released:2012 &#125;)</div><div class="line">CREATE (p)-[r:ACTED_IN &#123; roles: [&apos;Zachry&apos;]&#125;]-&gt;(m)</div><div class="line">RETURN p,r,m</div></pre></td></tr></table></figure><br><br>更新结点属性,但不确定图中是否存在一个结点时(这样做的代价是开销很大),总之,使用MERGE,它没有找到就会创建.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MERGE (m:Movie &#123; title:&quot;Cloud Atlas&quot; &#125;)</div><div class="line">ON CREATE SET m.released = 2012</div><div class="line">RETURN m</div></pre></td></tr></table></figure><br><br><font color="red">2.4 where语法</font><br>以下两种写法相同<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (m:Movie)</div><div class="line">WHERE m.title = &quot;The Matrix&quot;</div><div class="line">RETURN m</div></pre></td></tr></table></figure><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MATCH (m:Movie &#123; title: &quot;The Matrix&quot; &#125;)</div><div class="line">RETURN m</div></pre></td></tr></table></figure><br><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (p:Person)-[r:ACTED_IN]-&gt;(m:Movie)</div><div class="line">WHERE p.name =~ &quot;K.+&quot; OR m.released &gt; 2000 OR &quot;Neo&quot; IN r.roles</div><div class="line">RETURN p,r,m</div></pre></td></tr></table></figure><br><br>where子句可以用关系来判断<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (p:Person)-[:ACTED_IN]-&gt;(m)</div><div class="line">WHERE NOT (p)-[:DIRECTED]-&gt;()</div><div class="line">RETURN p,m</div></pre></td></tr></table></figure><br><br>使用别名返回值<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (p:Person)</div><div class="line">RETURN p, p.name AS name, upper(p.name), coalesce(p.nickname,&quot;n/a&quot;) AS nickname, &#123; name: p.name,</div><div class="line">  label:head(labels(p))&#125; AS person</div></pre></td></tr></table></figure><br><br>聚合函数<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MATCH (:Person)</div><div class="line">RETURN count(*) AS people</div></pre></td></tr></table></figure><br><br>排序和分页<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (a:Person)-[:ACTED_IN]-&gt;(m:Movie)</div><div class="line">RETURN a,count(*) AS appearances</div><div class="line">ORDER BY appearances DESC LIMIT 10;</div></pre></td></tr></table></figure><br><br>聚集<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MATCH (m:Movie)&lt;-[:ACTED_IN]-(a:Person)</div><div class="line">RETURN m.title AS movie, collect(a.name) AS cast, count(*) AS actors</div></pre></td></tr></table></figure><br><br>合并两个结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">MATCH (actor:Person)-[r:ACTED_IN]-&gt;(movie:Movie)</div><div class="line">RETURN actor.name AS name, type(r) AS acted_in, movie.title AS title</div><div class="line">UNION</div><div class="line">MATCH (director:Person)-[r:DIRECTED]-&gt;(movie:Movie)</div><div class="line">RETURN director.name AS name, type(r) AS acted_in, movie.title AS title</div></pre></td></tr></table></figure><br><br>with语法保留中间结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MATCH (person:Person)-[:ACTED_IN]-&gt;(m:Movie)</div><div class="line">WITH person, count(*) AS appearances, collect(m.title) AS movies</div><div class="line">WHERE appearances &gt; 1</div><div class="line">RETURN person.name, appearances, movies</div></pre></td></tr></table></figure><br><br>增加约束<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE CONSTRAINT ON (movie:Movie) ASSERT movie.title IS UNIQUE</div></pre></td></tr></table></figure><br><br>创建索引<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">CREATE INDEX ON :Actor(name)</div></pre></td></tr></table></figure><br><br><font color="red">2.4 Cypher操作</font>
+
+<p>更新操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MATCH (n &#123;name: &apos;John&apos;&#125;)-[:FRIEND]-(friend)</div><div class="line">WITH n, count(friend) AS friendsCount</div><div class="line">SET n.friendCount = friendsCount</div><div class="line">RETURN n.friendsCount</div></pre></td></tr></table></figure></p>
+<p><font color="red">2.5 Cypher语法</font></p>
+<p><font color="red">2.5.1 CASE语法</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">MATCH (n)</div><div class="line">RETURN</div><div class="line">CASE n.eyes</div><div class="line">WHEN &apos;blue&apos;</div><div class="line">THEN 1</div><div class="line">WHEN &apos;brown&apos;</div><div class="line">THEN 2</div><div class="line">ELSE 3 END AS result</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">MATCH (n)</div><div class="line">RETURN</div><div class="line">CASE</div><div class="line">WHEN n.eyes = &apos;blue&apos;</div><div class="line">THEN 1</div><div class="line">WHEN n.age &lt; 40</div><div class="line">THEN 2</div><div class="line">ELSE 3 END AS result</div></pre></td></tr></table></figure>
+<p><font color="red">2.5.2 带参数查询</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">MATCH (n:Person &#123; name: $name &#125;)</div><div class="line">RETURN n</div></pre></td></tr></table></figure></p>
+<p><font color="red">2.5.3 定义正则表达式</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">MATCH (n:Person)</div><div class="line"># regex在之前定义</div><div class="line">WHERE n.name =~ $regex</div><div class="line">RETURN n.name</div></pre></td></tr></table></figure></p>
+<p><font color="red">2.5.4</font><br>用json数据创建结点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;props&quot; : &#123;</div><div class="line"> </div><div class="line">&quot;name&quot; : &quot;Andres&quot;,</div><div class="line"> </div><div class="line">&quot;position&quot; : &quot;Developer&quot;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">CREATE ($props)</div></pre></td></tr></table></figure></p>
+<p>用json数据批量创建结点<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;props&quot; : [ &#123;</div><div class="line"> </div><div class="line">&quot;awesome&quot; : true,</div><div class="line"> </div><div class="line">&quot;name&quot; : &quot;Andres&quot;,</div><div class="line"> </div><div class="line">&quot;position&quot; : &quot;Developer&quot;</div><div class="line">  &#125;, &#123;</div><div class="line"> </div><div class="line">&quot;children&quot; : 3,</div><div class="line"> </div><div class="line">&quot;name&quot; : &quot;Michael&quot;,</div><div class="line"> </div><div class="line">&quot;position&quot; : &quot;Developer&quot;</div><div class="line">  &#125; ]</div><div class="line">&#125;</div><div class="line"></div><div class="line">UNWIND $props AS properties</div><div class="line">CREATE (n:Person)</div><div class="line">SET n = properties</div><div class="line">RETURN n</div></pre></td></tr></table></figure></p>
+<p><font color="red">2.5.5 查询关系(限定跳数)</font><br>a到b的跳数少于7跳<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">(a)-[*..7]-&gt;(b)</div></pre></td></tr></table></figure></p>
+<p><font color="red">2.5.6 Match</font><br>匹配关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 不分方向</div><div class="line">--</div><div class="line"># 带有具体关系</div><div class="line">-[r]-</div><div class="line"># 指向关系</div><div class="line">--&gt;</div><div class="line"># 带有具体关系</div><div class="line">-[r]-&gt;</div></pre></td></tr></table></figure></p>
+<p>两点之间最短长度的路径<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH (martin:Person &#123; name: &apos;Martin Sheen&apos; &#125;),(oliver:Person &#123; name: &apos;Oliver Stone&apos; &#125;), p =</div><div class="line">shortestPath((martin)-[*..15]-(oliver))</div><div class="line">RETURN p</div></pre></td></tr></table></figure></p>
+<p><font color="red">2.5.7 直接从CSV文件中批量插入结点数据</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"># CSV文件内容:</div><div class="line">&quot;1&quot;,&quot;ABBA&quot;,&quot;1992&quot;</div><div class="line">&quot;2&quot;,&quot;Roxette&quot;,&quot;1986&quot;</div><div class="line">&quot;3&quot;,&quot;Europe&quot;,&quot;1979&quot;</div><div class="line">&quot;4&quot;,&quot;The Cardigans&quot;,&quot;1992&quot;</div><div class="line"></div><div class="line"># query</div><div class="line">LOAD CSV FROM &apos;&#123;csv-dir&#125;/artists.csv&apos; AS line</div><div class="line">CREATE (:Artist &#123; name: line[1], year: toInt(line[2])&#125;)</div></pre></td></tr></table></figure></p>
+<p>当CSV文件包含大量数据时,使用USING PERIODIC COMMIT<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">USING PERIODIC COMMIT</div><div class="line">LOAD CSV FROM &apos;&#123;csv-dir&#125;/artists.csv&apos; AS line</div><div class="line">CREATE (:Artist &#123; name: line[1], year: toInt(line[2])&#125;)</div></pre></td></tr></table></figure></p>
+<p><font color="red">2.5.7 Set</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"># 更新属性</div><div class="line">MATCH (peter &#123; name: &apos;Peter&apos; &#125;)</div><div class="line">SET peter += &#123; hungry: TRUE , position: &apos;Entrepreneur&apos; &#125;</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 给结点增加标签</div><div class="line">MATCH (n &#123; name: &apos;Stefan&apos; &#125;)</div><div class="line">SET n :German</div><div class="line">RETURN n</div></pre></td></tr></table></figure>
+<p><font color="red">2.5.8 Delete</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"># 删除单节点</div><div class="line">MATCH (n:Useless)</div><div class="line">DELETE n</div><div class="line"></div><div class="line"># 删除一个结点及其所有关系</div><div class="line">MATCH (n &#123; name: &apos;Andres&apos; &#125;)</div><div class="line">DETACH DELETE n</div></pre></td></tr></table></figure></p>
+<p><font color="red">2.5.9 Remove</font><br>Remove和Delete不同之处在于,Delete用来删除结点,而Remove用来移除结点的属性和标签.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"># 移除结点的age属性</div><div class="line">MATCH (n &#123; name: &apos;Peter&apos; &#125;)</div><div class="line">REMOVE n:German</div><div class="line">RETURN n</div></pre></td></tr></table></figure></p>
+<p><font color="red">2.5.10 FOREACH</font><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">MATCH p =(begin)-[*]-&gt;(END )</div><div class="line">WHERE begin.name = &apos;A&apos; AND END .name = &apos;D&apos;</div><div class="line">FOREACH (n IN nodes(p)| SET n.marked = TRUE )</div></pre></td></tr></table></figure></p>
+<h3 id="3-neo4j-python"><a href="#3-neo4j-python" class="headerlink" title="3.neo4j-python"></a>3.neo4j-python</h3><p>安装驱动<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip install neo4j-driver==1.1.0</div></pre></td></tr></table></figure></p>
+<p>带参更新数据<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">tx.run( &quot;CREATE (person:Person &#123;name: &#123;name&#125;, title: &#123;title&#125;&#125;)&quot;,parameters( &quot;name&quot;, &quot;Arthur&quot;, &quot;title&quot;, &quot;king&quot; ) );</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">result = session.run(&quot;MATCH (weapon:Weapon) WHERE weapon.name CONTAINS &#123;term&#125; &quot;</div><div class="line"> </div><div class="line">&quot;RETURN weapon.name&quot;, &#123;&quot;term&quot;: search_term&#125;)</div></pre></td></tr></table></figure>
+<p>保存结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">session = driver.session()</div><div class="line">result = session.run(&quot;MATCH (knight:Person:Knight) WHERE knight.castle = &#123;castle&#125; &quot;</div><div class="line"> </div><div class="line">&quot;RETURN knight.name AS name&quot;, &#123;&quot;castle&quot;: &quot;Camelot&quot;&#125;)</div><div class="line">retained_result = list(result)</div><div class="line">session.close()</div><div class="line">for record in retained_result:</div><div class="line">	print(&quot;%s is a knight of Camelot&quot; % record[&quot;name&quot;])</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -278,7 +422,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-10T22:50:12+08:00">
                 2017-05-10
               </time>
@@ -402,7 +546,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-08T13:13:21+08:00">
                 2017-05-08
               </time>
@@ -523,7 +667,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-26T14:48:27+08:00">
                 2017-04-26
               </time>
@@ -655,7 +799,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-04-05T20:55:40+08:00">
                 2017-04-05
               </time>
@@ -787,7 +931,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-17T21:55:43+08:00">
                 2017-03-17
               </time>
@@ -936,7 +1080,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-15T12:32:41+08:00">
                 2016-12-15
               </time>
@@ -1077,7 +1221,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-14T10:17:10+08:00">
                 2016-12-14
               </time>
@@ -1204,7 +1348,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-12T18:54:28+08:00">
                 2016-12-12
               </time>
@@ -1341,7 +1485,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-12-09T13:28:29+08:00">
                 2016-12-09
               </time>
@@ -1420,179 +1564,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2016/11/01/springmvc-mybatis/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/01/springmvc-mybatis/" itemprop="url">
-                  springmvc-mybatis
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-01T20:13:18+08:00">
-                2016-11-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>SpringMVC+Mybatis配置（基于Maven构建，编辑器Intellij）</p>
-</blockquote>
-<p>本文基于原文<a href="http://doc.okbase.net/fengshizty/archive/126397.html配置环境。" target="_blank" rel="external">http://doc.okbase.net/fengshizty/archive/126397.html配置环境。</a><br>首先说说几个问题<br>1.关于Mybatis-Request processing failed; nested exception is org.apache.ibatis.binding.BindingException: Invalid bound statement (not found):<br>    数据映射xml文件最好在resources下建立mapper文件夹，并将mapper文件夹也设置为resources格式</p>
-<p>2.当在Controller中通过ModelMap返回给视图数据时，如果在jsp页面中使用${}这样的EL语言获取值时，需要在&lt;%@ page contentType=”text/html;charset=UTF-8” language=”java” isELIgnored=”false” %&gt;中添加isELIgnored值为false。</p>
-<p>3.如果使用Mybatis自动生成dao、mapping、model层文件时，尤其是mapping xml文件里的路径一定要注意正确，否则会给你的项目调试带来很大的麻烦。</p>
-<p>4.原文中使用了SpringJUnit4ClassRunner测试，在完成这个步骤时遇到的问题是，这边测试时，Spring的配置并没有加载好，所以在注入dao层的mapper时报错，所以最后是在整个demo完成时再测试的。测试代码如下：</p>
-<pre><code>import com.alibaba.fastjson.JSON;
-import com.duncan.user.model.UserInfo;
-import com.duncan.user.service.UserService;
-import org.apache.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import java.util.List;
-/**
- * Created by DuncanZhou on 2016/10/31.
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { &quot;classpath:spring.xml&quot;,
-        &quot;classpath:spring-mybatis.xml&quot; })
-public class TestUserService {
-    private static final Logger LOGGER = Logger
-            .getLogger(TestUserService.class);
-    @Autowired
-    private UserService userService;
-    @Test
-    public void testQueryById1() {
-        UserInfo userInfo = userService.getUserById(1);
-        LOGGER.info(JSON.toJSON(userInfo));
-    }
-
-//    @Test
-//    public void testQueryAll() {
-//        List&lt;UserInfo&gt; userInfos = userService.getUsers();
-//        LOGGER.info(JSON.toJSON(userInfos));
-//    }
-
-    @Test
-    public void testInsert() {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setName(&quot;xiaoming&quot;);
-        userInfo.setSex(&quot;man&quot;);
-        userInfo.setAge(23);
-        userInfo.setPasswd(&quot;123&quot;);
-        int result = userService.insert(userInfo);
-        System.out.println(result);
-    }
-}
-</code></pre><p>工程目录结构如下<br><img src="http://ww1.sinaimg.cn/large/006BtUvSjw1f9curjlyyaj309z0gg75t.jpg" alt=""> </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span>
+    <a class="extend prev" rel="prev" href="/page/2/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1633,8 +1609,8 @@ public class TestUserService {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">30</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">31</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -1644,7 +1620,7 @@ public class TestUserService {
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">5</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -1692,7 +1668,7 @@ public class TestUserService {
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
