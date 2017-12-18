@@ -110,7 +110,7 @@
 3.使用平均值填充完后再去除冗余列(方差为0,列重复)
 
 清洗过后,特征从原来的8000多维降到了3400多维">
-<meta property="og:updated_time" content="2017-12-18T08:30:29.613Z">
+<meta property="og:updated_time" content="2017-12-18T11:22:48.515Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="天池-半导体质量预测">
 <meta name="twitter:description" content="天池-半导体质量预测最近跟着做天池的比赛,将比赛过程中遇到的问题记录如下:
@@ -305,7 +305,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T16:30:29+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-12-18T19:22:48+08:00">
                 2017-12-18
               </time>
             
@@ -356,7 +356,7 @@
 <li>4.特征中存在全为NaN值的,也去掉这些列</li>
 </ul>
 <blockquote>
-<p>总结:数据清洗过后,总的特征维数维3342维</p>
+<p>总结:数据清洗过后,总的特征维数维3342维;随机森林MSE为:0.03612</p>
 </blockquote>
 <p><strong>2)特征选择:</strong></p>
 <ul>
@@ -387,6 +387,9 @@
 </ul>
 </blockquote>
 <p>xgboost的训练速度远远快于传统的GBDT,10倍量级.</p>
+<blockquote>
+<p>总结:重新选用xgboost模型,mse维0.0354685187554<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">params=&#123;&apos;booster&apos;:&apos;gbtree&apos;,</div><div class="line">    &apos;objective&apos;: &apos;reg:linear&apos;,</div><div class="line">    &apos;eval_metric&apos;: &apos;rmse&apos;,</div><div class="line">    &apos;max_depth&apos;:5,</div><div class="line">    &apos;lambda&apos;:10,</div><div class="line">    &apos;subsample&apos;:0.75,</div><div class="line">    &apos;colsample_bytree&apos;:0.75,</div><div class="line">    &apos;min_child_weight&apos;:2,</div><div class="line">    &apos;eta&apos;: 0.01,</div><div class="line">    &apos;seed&apos;:0,</div><div class="line">    &apos;nthread&apos;:8,</div><div class="line">     &apos;silent&apos;:0&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
 
       
     </div>
