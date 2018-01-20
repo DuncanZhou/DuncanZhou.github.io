@@ -259,6 +259,207 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/Semiconduction/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/19/Semiconduction/" itemprop="url">
+                  天池-半导体质量预测
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:43:07+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Competition/" itemprop="url" rel="index">
+                    <span itemprop="name">Competition</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="天池-半导体质量预测"><a href="#天池-半导体质量预测" class="headerlink" title="天池-半导体质量预测"></a>天池-半导体质量预测</h2><p>最近跟着做天池的比赛,将比赛过程中遇到的问题记录如下:</p>
+<h3 id="1-特征的选择"><a href="#1-特征的选择" class="headerlink" title="1.特征的选择?"></a>1.特征的选择?</h3><blockquote>
+<p><strong>特征选择的方法</strong>: 1) 嵌入式 2) 过滤式 3) 封装式</p>
+</blockquote>
+<p><strong>1)数据清洗:</strong></p>
+<ul>
+<li>1.筛选掉重复的列</li>
+<li>2.对于类别类型特征,利用sklearn编码(one-hot, Label Encoder等)</li>
+<li>3.使用平均值填充完后再去除冗余列(方差为0,列重复)</li>
+</ul>
+<p>清洗过后,特征从原来的8000多维降到了3400多维.</p>
+<ul>
+<li>4.特征中存在全为NaN值的,也去掉这些列</li>
+</ul>
+<blockquote>
+<p>总结:数据清洗过后,总的特征维数维3342维;随机森林MSE为:0.03612</p>
+</blockquote>
+<p><strong>2)特征选择:</strong></p>
+<ul>
+<li>嵌入式: 根据模型来分析特征的重要性,最常见的方式为<strong>正则化</strong>来做特征选择.</li>
+<li>过滤式: 评估单个特征和结果之间的相关程度,排序留下Top相关的特征部分.(缺点:没有考虑到特征之间的关联作用,可能把有用的关联特征误踢掉)</li>
+<li>封装式: 把特征选择看作一个特征子集搜索问题,筛选各种特征子集,用模型评估效果.</li>
+</ul>
+<blockquote>
+<p>处理方法:</p>
+<ul>
+<li>过滤式:使用单个随机森林得到的feature<em>importances</em>排序后保留了44个特征,为<br>[‘310X207’, ‘210X158’, ‘311X7’, ‘330X1132’, ‘220X13’, ‘310X149’, ‘750X883’, ‘210X207’, ‘312X144’, ‘210X192’, ‘312X61’, ‘312X66’, ‘440AX77’, ‘220X197’, ‘310X153’, ‘330X1190’, ‘344X252’, ‘310X33’, ‘210X174’, ‘440AX95’, ‘312X777’, ‘330X102’, ‘440AX187’, ‘340X161’, ‘312X55’, ‘330X590’, ‘210X89’, ‘330X1129’, ‘210X164’, ‘210X188’, ‘330X1146’, ‘310X119’, ‘360X1049’, ‘440AX182’, ‘750X640’, ‘440AX65’, ‘312X789’, ‘311X154’, ‘310X43’, ‘312X782’, ‘312X555’, ‘420X4’, ‘312X785’, ‘210X229’]</li>
+</ul>
+</blockquote>
+<ul>
+<li>包裹式:利用随机森林的性能作为评价指标筛选出200个特征<br>set([‘440AX98’, ‘310X207’, ‘210X158’, ‘261X641’, ‘261X269’, ‘312X61’, ‘312X66’, ‘220X197’, ‘520X317’, ‘400X151’, ‘400X150’, ‘400X153’, ‘330X594’, ‘330X590’, ‘210X164’, ‘210X8’, ‘420X4’, ‘330X1223’, ‘310X117’, ‘261X524’, ‘310X119’, ‘261X607’, ‘750X640’, ‘210X126’, ‘311X154’, ‘312X555’, ‘261X689’, ‘520X245’, ‘261X477’, ‘750X883’, ‘330X589’, ‘261X590’, ‘300X8’, ‘261X591’, ‘261X468’, ‘440AX77’, ‘300X3’, ‘220X179’, ‘330X1190’, ‘220X177’, ‘220X176’, ‘220X175’, ‘220X174’, ‘220X173’, ‘220X172’, ‘220X171’, ‘220X170’, ‘261X464’, ‘TOOL (#2)’, ‘330X351’, ‘330X102’, ‘330X355’, ‘330X354’, ‘330X1049’, ‘330X1042’, ‘312X57’, ‘312X55’, ‘210X89’, ‘330X1040’, ‘330X1043’, ‘330X1129’, ‘261X460’, ‘330X1044’, ‘261X462’, ‘330X1046’, ‘210X188’, ‘330X353’, ‘360X1049’, ‘440AX66’, ‘440AX67’, ‘440AX64’, ‘440AX65’, ‘330X135’, ‘330X134’, ‘312X144’, ‘330X133’, ‘330X132’, ‘330X139’, ‘312X782’, ‘210X174’, ‘312X785’, ‘312X789’, ‘261X608’, ‘261X609’, ‘520X312’, ‘520X313’, ‘520X314’, ‘330X1228’, ‘420X33’, ‘330X1132’, ‘261X600’, ‘261X601’, ‘330X641’, ‘330X1226’, ‘330X1221’, ‘330X1220’, ‘210X206’, ‘210X207’, ‘261X598’, ‘261X599’, ‘340X105’, ‘340X107’, ‘210X190’, ‘210X191’, ‘210X192’, ‘261X593’, ‘261X594’, ‘261X596’, ‘261X597’, ‘220X557’, ‘220X551’, ‘310X37’, ‘310X36’, ‘310X34’, ‘310X33’, ‘261X268’, ‘310X31’, ‘310X30’, ‘440AX95’, ‘210X3’, ‘210X4’, ‘210X5’, ‘210X6’, ‘210X7’, ‘312X777’, ‘210X9’, ‘261X260’, ‘261X261’, ‘261X266’, ‘261X267’, ‘261X264’, ‘261X265’, ‘520X246’, ‘520X247’, ‘261X736’, ‘261X737’, ‘520X242’, ‘520X243’, ‘310X153’, ‘344X252’, ‘440AX90’, ‘261X262’, ‘330X1146’, ‘440AX182’, ‘440AX187’, ‘261X687’, ‘261X688’, ‘310X43’, ‘330X157’, ‘330X404’, ‘261X512’, ‘261X513’, ‘330X401’, ‘520X55’, ‘330X403’, ‘261X517’, ‘261X518’, ‘261X519’, ‘311X7’, ‘330X409’, ‘330X159’, ‘330X158’, ‘330X461’, ‘520X333’, ‘220X13’, ‘310X149’, ‘520X244’, ‘261X338’, ‘330X1249’, ‘330X1248’, ‘300X7’, ‘261X330’, ‘261X331’, ‘340X161’, ‘261X333’, ‘330X1247’, ‘344X121’, ‘261X336’, ‘330X1244’, ‘520X240’, ‘330X1230’, ‘520X241’, ‘330X1241’, ‘261X335’, ‘220X535’, ‘210X129’, ‘210X128’, ‘220X531’, ‘220X530’, ‘210X125’, ‘210X124’, ‘210X127’, ‘261X526’, ‘210X121’, ‘210X120’, ‘210X123’, ‘261X230’, ‘261X592’, ‘440AX123’, ‘261X742’, ‘440AX99’, ‘311X83’, ‘220X178’, ‘330X535’, ‘210X229’]</li>
+</ul>
+<p>1) 提取特征后,xgboost的mse为0.0325341683406<br>2) 单个随机森林的5折交叉验证的平均mse为0.0288353227614<br>(max_depth=None,n_estimators=160,min_samples_leaf=2,max_features=n_features)</p>
+<p>使用模型的features<em>importances</em>选择的特征和rfe做交集得到的特征为:<br>[‘210X158’, ‘330X1228’, ‘330X1132’, ‘220X13’, ‘310X149’, ‘750X883’, ‘330X589’, ‘210X207’, ‘440AX77’, ‘312X66’, ‘210X192’, ‘330X1190’, ‘310X33’, ‘312X555’, ‘310X31’, ‘310X30’, ‘440AX95’, ‘210X6’, ‘210X8’, ‘330X102’, ‘340X161’, ‘312X57’, ‘310X153’, ‘330X590’, ‘210X89’, ‘330X1129’, ‘210X164’, ‘312X777’, ‘210X188’, ‘330X1146’, ‘310X119’, ‘750X640’, ‘311X7’, ‘312X144’, ‘310X43’, ‘312X782’, ‘210X174’, ‘420X4’, ‘210X229’, ‘312X785’, ‘312X789’]</p>
+<h3 id="2-缺失值的处理"><a href="#2-缺失值的处理" class="headerlink" title="2.缺失值的处理?"></a>2.缺失值的处理?</h3><ul>
+<li>使用任意数值填充</li>
+<li>使用平均值填充</li>
+</ul>
+<h3 id="3-维数降维"><a href="#3-维数降维" class="headerlink" title="3.维数降维?"></a>3.维数降维?</h3><h3 id="4-模型的选择"><a href="#4-模型的选择" class="headerlink" title="4.模型的选择?"></a>4.模型的选择?</h3><ol>
+<li>Random Forest</li>
+<li>GBDT(Gradient Boosting Decision Tree)<blockquote>
+<p>这里记录下GBDT的发展过程: Regression Decision Tree -&gt; Boosting Decision Tree -&gt; Gradient Boosting Decision Tree,GBDT利用加法模型和前向分步法实现学习的优化过程.GBDT是一个基于迭代累加的决策树算法，它通过构造一组弱的学习器（树），并把多颗决策树的结果累加起来作为最终的预测输出。 缺点:1) 计算复杂度高 2) 不适合高维稀疏特征</p>
+</blockquote>
+</li>
+</ol>
+<p>3.Xgboost</p>
+<blockquote>
+<p>xgboost是boosting Tree的一个很牛的实现:</p>
+<ul>
+<li>显示地把树模型复杂度作为正则项加到优化目标中</li>
+<li>公式推导中用到了二阶导数,用了二阶泰勒展开</li>
+<li>实现了分裂点寻找近似算法</li>
+<li>利用了特征的稀疏性</li>
+<li>并行计算</li>
+</ul>
+</blockquote>
+<p>xgboost的训练速度远远快于传统的GBDT,10倍量级.</p>
+<blockquote>
+<p>总结:重新选用xgboost模型,参数如下,mse为0.0320532717482<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">params=&#123;&apos;booster&apos;:&apos;gbtree&apos;,</div><div class="line">    &apos;objective&apos;: &apos;reg:linear&apos;,</div><div class="line">    &apos;eval_metric&apos;: &apos;rmse&apos;,</div><div class="line">    &apos;max_depth&apos;:4,</div><div class="line">    &apos;lambda&apos;:6,</div><div class="line">    &apos;subsample&apos;:0.75,</div><div class="line">    &apos;colsample_bytree&apos;:1,</div><div class="line">    &apos;min_child_weight&apos;:1,</div><div class="line">    &apos;eta&apos;: 0.04,</div><div class="line">    &apos;seed&apos;:0,</div><div class="line">    &apos;nthread&apos;:8,</div><div class="line">     &apos;silent&apos;:0&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="5-实践过程"><a href="#5-实践过程" class="headerlink" title="5.实践过程"></a>5.实践过程</h3><p>1.特征选择过程:去除全为Nan的列,去除Nan值个数大于200的列,去除object列,去除重复的列,选择Pearson相关系数&gt;0.2的列,最后共得到5600多维特征.<br>这一步很粗糙,改进: </p>
+<ul>
+<li>1) 加入object的列</li>
+<li>2)特征维数继续筛减:可以试一下PCA降维</li>
+<li>3)时间列属性的加入</li>
+</ul>
+<p>2.模型的选择:单模型线性回归线下mse:0.0388左右,而线上为0.0446.之前用随机森林回归预测,线下0.0297,而线上0.0493.从这个现象结合线下数据只有500条是否可以得出线下和线上数据并不是分布相同,或者说差异较大,而且线下训练可能存在过拟合.2017.12.24将三种回归模型加权平均融合提交结果.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/Representatives/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1576,145 +1777,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/No-Root Install mpi4py/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/19/No-Root Install mpi4py/" itemprop="url">
-                  在非root用户下安装mpi4py
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:41:24+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="step1"><a href="#step1" class="headerlink" title="step1:"></a>step1:</h3><p>安装mpi4py所需要的依赖包(python2.7版本/Cpython/Openmpi)<br>1.源码包安装Python2.7版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./configure prefix=&quot;#python安装目录(绝对路径)&quot;</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure></p>
-<p>2.安装Cpython<br>使用当前用户目录下的python版本来进行安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/XXX/python27/bin/python setup.py install</div></pre></td></tr></table></figure></p>
-<p>3.安装openmpi<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./configure prefix=&quot;#openmpi安装目录(绝对路径)&quot;</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure></p>
-<h3 id="step3"><a href="#step3" class="headerlink" title="step3:"></a>step3:</h3><p>配置openmpi环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vim ~/.bashrc</div><div class="line"># ~/.bashrc末尾添加</div><div class="line">export PATH=#openmpi的绝对路径/bin:$PATH</div><div class="line">soucre ~/.bashrc</div></pre></td></tr></table></figure></p>
-<h3 id="step4"><a href="#step4" class="headerlink" title="step4:"></a>step4:</h3><p>安装mpi4py包(同Cpython包安装方法)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/XXX/python27/bin/python setup.py install</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1760,7 +1822,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -1777,7 +1839,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">Tags</span>
               </a>
             </div>
