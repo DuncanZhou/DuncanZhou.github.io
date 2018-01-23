@@ -186,7 +186,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -196,7 +196,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -206,7 +206,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            Über
           </a>
         </li>
       
@@ -216,7 +216,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -249,6 +249,156 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/Exploring Folksonomy for Personalized Search/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/19/Exploring Folksonomy for Personalized Search/" itemprop="url">
+                  Personalized Search论文阅读笔记-08年SIGIR
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:40:01+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Paper/" itemprop="url" rel="index">
+                    <span itemprop="name">Paper</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="论文题目"><a href="#论文题目" class="headerlink" title="论文题目"></a>论文题目</h2><h3 id="Exploring-Folksonomy-for-Personalized-Search"><a href="#Exploring-Folksonomy-for-Personalized-Search" class="headerlink" title="Exploring Folksonomy for Personalized Search"></a>Exploring Folksonomy for Personalized Search</h3><h2 id="概念解释"><a href="#概念解释" class="headerlink" title="概念解释"></a>概念解释</h2><p><strong>Folksonomy:</strong></p>
+<blockquote>
+<p>该单词由folk和taxonomy组成，folk是口语中伙伴的意思，taxonomy是分类方法的意思，该词用来表示现在存在的大众分类的一种现象。目前许多应用允许用户上传资源时选择标签标注该资源。现有的应用如flickr和dogear。</p>
+</blockquote>
+<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>对于这样允许大众分类的应用，如何满足用户在搜索时尽可能准确地返回用户所需要的资源是一个有意思的问题。因为如果像传统的搜索方法仅通过查询关键词去匹配搜索结果，返回的结果可能会不满足用户的初衷。而且，不同的用户在搜索不同的资源时有可能会使用同样的关键词，比如，爱好运动和爱好喝咖啡的用户在搜索杯子的时候使用的关键词都可能是“杯子”，而返回的结果对于爱好运动的用户来说应该尽可能是运动型杯子，对于爱好喝咖啡的用户来说应该尽可能是咖啡杯子。所以，这里的问题都归结于Personalized Search。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>根据之前的工作，解决这样问题的方法有两类:<font color="red">Query Refinement</font>和<font color="red">Result Processing</font> </p>
+<blockquote>
+<p>1)对于查询术语进行替换和扩展，替换成其他的术语或者用其他的术语来填充<br>2)对查询返回的结果再排序或者结果聚类等方法<br>使用较为普遍的是Result Processing，该篇论文中使用的也是第二种方法。</p>
+</blockquote>
+<p>本文中提出的方法分为三个步骤：<br>1)Query中的terms先求结果排序得到Ranklist<br>2)通过User的Interest Vector和资源的Topic Vector求相似性得到Ranklist<br>3)聚合两个list得到最终的Ranklist<br>(具体在实验过程中，为了提高效率，第二步求Ranklist只对第一步中的前N个再去求排序)</p>
+<h2 id="Details-Of-Methods"><a href="#Details-Of-Methods" class="headerlink" title="Details-Of-Methods"></a>Details-Of-Methods</h2><p><font color="red"><strong>Step1：</strong></font><br>对于Query中的terms去求资源排序，本文中采用<strong>BM25</strong>和<strong>Language Model for IR(LMIR)</strong>这两种文本检索模型。<br>先通过基本的文本检索去得到第一步的Ranklist。</p>
+<p><font color="red"><strong>Step2：</strong></font><br>第二步是本文的核心。关键在于建立Topic Space,因为建立了Topic Space后，才能对用户建立兴趣向量，才能对资源建立主题向量，然后再去计算两者之间的相似性。</p>
+<p>1.本文中的主题空间使用了Folksonomy的方法，以标注的tag作为向量的每一维，每个维的值的计算方法可以通过tfidf或者BM25来计算，从而构成用户和资源的兴趣和topic向量。<br>此外，本文中以ODP分好类的web pages的topic space作为baseline方法。</p>
+<p>2.当分别构建好用户和资源的向量后，本文通过类PageRank算法来迭代形成最终的用户和资源的矩阵。R矩阵行代表用户，列代表兴趣。T矩阵行代表资源，列代表topic。</p>
+<p><font color="red"><strong>Step3：</strong></font><br>本文中聚合两个list的方法是通过简单的WBF方法去得到最终的Ranklist</p>
+<h2 id="Evaluation-Methods"><a href="#Evaluation-Methods" class="headerlink" title="Evaluation-Methods"></a>Evaluation-Methods</h2><p>本文基于一个假设：用户收藏过或标注过的资源即为用户相关资源，以此来通过检索评价标准来评价Personalized Search。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -298,7 +448,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:39:52+08:00">
                 2018-01-19
               </time>
@@ -315,7 +465,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -455,7 +605,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:39:48+08:00">
                 2018-01-19
               </time>
@@ -472,7 +622,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -614,7 +764,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:39:32+08:00">
                 2018-01-19
               </time>
@@ -631,7 +781,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -760,7 +910,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-25T20:32:39+08:00">
                 2017-05-25
               </time>
@@ -777,7 +927,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -899,7 +1049,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T10:09:04+08:00">
                 2017-05-23
               </time>
@@ -916,7 +1066,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1038,7 +1188,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-22T12:07:54+08:00">
                 2017-05-22
               </time>
@@ -1158,7 +1308,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-22T11:22:12+08:00">
                 2017-05-22
               </time>
@@ -1274,7 +1424,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-01T20:13:18+08:00">
                 2016-11-01
               </time>
@@ -1291,7 +1441,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -1457,8 +1607,8 @@ public class TestUserService {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">38</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">39</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1466,7 +1616,7 @@ public class TestUserService {
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
           
@@ -1475,7 +1625,7 @@ public class TestUserService {
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -1523,7 +1673,7 @@ public class TestUserService {
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
