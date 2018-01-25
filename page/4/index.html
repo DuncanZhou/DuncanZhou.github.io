@@ -259,6 +259,145 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/GraphAndTree/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/19/GraphAndTree/" itemprop="url">
+                  判断无向图是否是一颗树
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:40:11+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这是一个基本概念,且很重要,记录一下.</p>
+<blockquote>
+<p>树的定义:用图的知识来表示即为,无环的连通图或者边数等于顶点数减1.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">package questionCheckisTree;</div><div class="line"></div><div class="line">import java.util.Scanner;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by duncan on 17-7-30.</div><div class="line"> */</div><div class="line"></div><div class="line">//本题为判断一个无向图是否是一颗树</div><div class="line">    //树为无环的连通图或者边数等于顶点数-1</div><div class="line">class Graph&#123;</div><div class="line">    //邻接矩阵,从1开始存储</div><div class="line">    int[][] graph = new int[501][501];</div><div class="line">    //顶点数和边数</div><div class="line">    int nodes,edges;</div><div class="line">&#125;</div><div class="line">public class Main &#123;</div><div class="line">    //判断是否是连通图,并且顶点数-1是否是边数</div><div class="line">    //判断是否是连通图深度遍历一遍,都遍历到了即为连通图</div><div class="line">    public void DFS(int[] visited,Graph graph,int start)&#123;</div><div class="line">        //如果该顶点没有访问过</div><div class="line">        if(visited[start] == 0)&#123;</div><div class="line">            visited[start] = 1;</div><div class="line">            //继续访问与其相连的顶点</div><div class="line">            for(int i = 1; i &lt;= graph.nodes; i++)&#123;</div><div class="line">                if(graph.graph[start][i] == 1)</div><div class="line">                    DFS(visited,graph,i);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        Main solution = new Main();</div><div class="line">        Scanner in = new Scanner(System.in);</div><div class="line">        int num = in.nextInt();</div><div class="line">        for(int i = 0; i &lt; num; i++)&#123;</div><div class="line">            //输入顶点数和边数</div><div class="line">            Graph graph = new Graph();</div><div class="line">            graph.nodes = in.nextInt();</div><div class="line">            graph.edges = in.nextInt();</div><div class="line">            //初始化邻接矩阵</div><div class="line">            for(int j = 0; j &lt; graph.edges; j++)&#123;</div><div class="line">                int a = in.nextInt();</div><div class="line">                int b = in.nextInt();</div><div class="line">                graph.graph[a][b] = 1;</div><div class="line">                graph.graph[b][a] = 1;</div><div class="line">            &#125;</div><div class="line">            if(graph.edges != graph.nodes - 1)</div><div class="line">            &#123;</div><div class="line">                System.out.println(&quot;NO&quot;);</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            //判断是否连通</div><div class="line">            //初始化一个顶点访问数组,从1开始存储</div><div class="line">            int[] visited = new int[graph.nodes+1];</div><div class="line">            solution.DFS(visited,graph,1);</div><div class="line">            //对visited数组判断</div><div class="line">            boolean flag = true;</div><div class="line">            for(int j = 1; j &lt; graph.nodes; j++) &#123;</div><div class="line">                if (visited[j] == 0) &#123;</div><div class="line">                    flag = false;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            if(flag)</div><div class="line">                System.out.println(&quot;YES&quot;);</div><div class="line">            else</div><div class="line">                System.out.println(&quot;NO&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/Expression/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1523,197 +1662,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2016/11/01/springmvc-mybatis/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/11/01/springmvc-mybatis/" itemprop="url">
-                  springmvc-mybatis
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-01T20:13:18+08:00">
-                2016-11-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>SpringMVC+Mybatis配置（基于Maven构建，编辑器Intellij）</p>
-</blockquote>
-<p>本文基于原文<a href="http://doc.okbase.net/fengshizty/archive/126397.html配置环境。" target="_blank" rel="external">http://doc.okbase.net/fengshizty/archive/126397.html配置环境。</a><br>首先说说几个问题<br>1.关于Mybatis-Request processing failed; nested exception is org.apache.ibatis.binding.BindingException: Invalid bound statement (not found):<br>    数据映射xml文件最好在resources下建立mapper文件夹，并将mapper文件夹也设置为resources格式</p>
-<p>2.当在Controller中通过ModelMap返回给视图数据时，如果在jsp页面中使用${}这样的EL语言获取值时，需要在&lt;%@ page contentType=”text/html;charset=UTF-8” language=”java” isELIgnored=”false” %&gt;中添加isELIgnored值为false。</p>
-<p>3.如果使用Mybatis自动生成dao、mapping、model层文件时，尤其是mapping xml文件里的路径一定要注意正确，否则会给你的项目调试带来很大的麻烦。</p>
-<p>4.原文中使用了SpringJUnit4ClassRunner测试，在完成这个步骤时遇到的问题是，这边测试时，Spring的配置并没有加载好，所以在注入dao层的mapper时报错，所以最后是在整个demo完成时再测试的。测试代码如下：</p>
-<pre><code>import com.alibaba.fastjson.JSON;
-import com.duncan.user.model.UserInfo;
-import com.duncan.user.service.UserService;
-import org.apache.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import java.util.List;
-/**
- * Created by DuncanZhou on 2016/10/31.
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { &quot;classpath:spring.xml&quot;,
-        &quot;classpath:spring-mybatis.xml&quot; })
-public class TestUserService {
-    private static final Logger LOGGER = Logger
-            .getLogger(TestUserService.class);
-    @Autowired
-    private UserService userService;
-    @Test
-    public void testQueryById1() {
-        UserInfo userInfo = userService.getUserById(1);
-        LOGGER.info(JSON.toJSON(userInfo));
-    }
-
-//    @Test
-//    public void testQueryAll() {
-//        List&lt;UserInfo&gt; userInfos = userService.getUsers();
-//        LOGGER.info(JSON.toJSON(userInfos));
-//    }
-
-    @Test
-    public void testInsert() {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setName(&quot;xiaoming&quot;);
-        userInfo.setSex(&quot;man&quot;);
-        userInfo.setAge(23);
-        userInfo.setPasswd(&quot;123&quot;);
-        int result = userService.insert(userInfo);
-        System.out.println(result);
-    }
-}
-</code></pre><p>工程目录结构如下<br><img src="http://ww1.sinaimg.cn/large/006BtUvSjw1f9curjlyyaj309z0gg75t.jpg" alt=""> </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1754,7 +1707,7 @@ public class TestUserService {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">40</span>
+              <span class="site-state-item-count">41</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
