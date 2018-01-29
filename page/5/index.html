@@ -186,7 +186,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -196,7 +196,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -206,7 +206,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            Über
           </a>
         </li>
       
@@ -216,7 +216,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -249,6 +249,152 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/Alogorithms_Learning/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/19/Alogorithms_Learning/" itemprop="url">
+                  求最优解算法学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:39:32+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="简要"><a href="#简要" class="headerlink" title="简要"></a>简要</h3><p>本篇主要记录三种求最优解的算法:<strong>动态规划(dynamic programming)</strong>,<strong>贪心算法</strong>和<strong>平摊分析</strong>.</p>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>1.动态规划是通过组合子问题的解而解决整个问题的.分治法算法是指将问题划分成一些<font color="red">独立</font>的子问题, <font color="red">递归地求解</font>各个子问题,然后<font color="red">合并子问题的解</font>而得到原问题的解.与此不同,动态规划适用于<font color="red">子问题不是独立</font>的情况,也就是各个子问题包含公共的子子问题.在这种情况下,若用分治法则会做许多不必要的工作,即重复地求解公共的子子问题.</p>
+<p>动态规划算法的设计可以分为以下四个步骤:</p>
+<blockquote>
+<p>1.描述最优解的结构<br>2.递归定义最优解的值<br>3.按自底向上的方式计算最优解的值<br>4.由计算出的结果构造一个最优解</p>
+</blockquote>
+<p><font color="red"><strong>能否运用动态规划方法的标志之一:</strong></font>一个问题的最优解包含了子问题的一个最优解.这个性质为最优子结构.</p>
+<p>适合采用动态规划的最优化问题的两个要素:<font color="red"><strong>最优子结构</strong></font>和<font color="red"><strong>重叠子问题</strong></font></p>
+<h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><p>1.贪心算法是使所做的选择看起来都是当前最佳的,期望通过所做的局部最优选择来产生出一个全局最优解.</p>
+<p>2.贪心算法的每一次操作都对结果产生直接影响,而动态规划不是.贪心算法对每个子问题的解决方案做出选择,不能回退;动态规划则会根据之前的选择结果对当前进行选择,有回退功能.动态规划主要运用于二维或三维问题,而贪心一般是一维问题.</p>
+<p>3.贪心算法要经过证明才能运用到算法中.</p>
+<h3 id="平摊分析"><a href="#平摊分析" class="headerlink" title="平摊分析"></a>平摊分析</h3><p>(未完-待续)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -298,7 +444,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-25T20:32:39+08:00">
                 2017-05-25
               </time>
@@ -315,7 +461,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -437,7 +583,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T10:09:04+08:00">
                 2017-05-23
               </time>
@@ -454,7 +600,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -576,7 +722,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-22T12:07:54+08:00">
                 2017-05-22
               </time>
@@ -696,7 +842,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-22T11:22:12+08:00">
                 2017-05-22
               </time>
@@ -812,7 +958,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-11-01T20:13:18+08:00">
                 2016-11-01
               </time>
@@ -829,7 +975,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -995,8 +1141,8 @@ public class TestUserService {
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">45</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">46</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1004,7 +1150,7 @@ public class TestUserService {
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
           
@@ -1013,7 +1159,7 @@ public class TestUserService {
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -1072,7 +1218,7 @@ public class TestUserService {
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
