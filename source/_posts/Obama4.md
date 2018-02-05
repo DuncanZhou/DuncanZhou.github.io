@@ -1,0 +1,90 @@
+---
+title: Obama-就职演说
+date: 2018-01-24 15:11:13
+tags: English
+categories: Life
+---
+
+MR. OBAMA: Thank you. Thank you so much. Vice President Biden, Mr. Chief Justice, Members of the United States Congress, distinguished guests, and fellow citizens:
+谢谢，非常感谢大家。拜登副总统、首席大法官先生、国会议员们、尊敬的各位嘉宾、亲爱的公民们。
+
+Each time we gather to inaugurate a president, we bear witness to the enduring strength of our Constitution. We affirm the promise of our democracy. We recall that what binds this nation together is not the colors of our skin or the tenets of our faith or the origins of our names. What makes us exceptional – what makes us American – is our allegiance to an idea, articulated in a declaration made more than two centuries ago:
+每一次我们集会庆祝总统就职都是在见证美国宪法的持久力量。我们都是在肯定美国民主的承诺。我们重申，将这个国家紧密联系在一起的不是我们的肤色，也不是 我们信仰的教条，更不是我们名字的来源。让我们与众不同，让我们成为美国人的是我们对于一种理念的恪守。200多年前，这一理念在一篇宣言中被清晰阐述：
+
+“We hold these truths to be self-evident, that all men are created equal, that they are endowed by their Creator with certain unalienable rights, that among these are Life, Liberty, and the pursuit of Happiness.”
+“我们认为下述真理是不言而喻的，人人生而平等。造物主赋予他们若干不可剥夺的权利，包括生存、自由和追求幸福的权利。”
+
+Today we continue a never-ending journey, to bridge the meaning of those words with the realities of our time. For history tells us that while these truths may be self-evident, they have never been self-executing; that while freedom is a gift from God, it must be secured by His people here on Earth. The patriots of 1776 did not fight to replace the tyranny of a king with the privileges of a few or the rule of a mob. They gave to us a Republic, a government of, and by, and for the people, entrusting each generation to keep safe our founding creed.
+今天，我们继续着这一未竟的征程，架起这些理念与我们时代现实之间的桥梁。因为历史告诉我们，即便这些真理是不言而喻的，它们也从来不会自动生效。因为虽然自由是上帝赋予的礼物，但仍需要世间的子民去捍卫。1776年，美国的爱国先驱们不是只为了推翻国王的暴政而战，也不是为赢得少数人的特权，建立暴民的统治。先驱们留给我们一个共和国，一个民有、民治、民享的政府。他们委托每一代美国人捍卫我们的建国信条。
+
+For more than two hundred years, we have.
+在过去的200多年里，我们做到了。
+
+Through blood drawn by lash and blood drawn by sword, we learned that no union founded on the principles of liberty and equality could survive half-slave and half-free. We made ourselves anew, and vowed to move forward together.
+从奴役的血腥枷锁和刀剑的血光厮杀中我们懂得了，建立在自由与平等原则之上的联邦不能永远维持半奴隶和半自由的状态。我们赢得了新生，誓言共同前进。
+
+Together, we determined that a modern economy requires railroads and highways to speed travel and commerce; schools and colleges to train our workers。
+我们共同努力，建立起现代的经济体系。架设铁路与高速公路，加速了旅行和商业交流。建立学校与大学，培训我们的工人。
+
+Together, we discovered that a free market only thrives when there are rules to ensure competition and fair play.
+我们一起发现，自由市场的繁荣只能建立在保障竞争与公平竞争的原则之上。
+
+Together, we resolved that a great nation must care for the vulnerable, and protect its people from life’s worst hazards and misfortune.
+我们共同决定让这个伟大的国家远离危险，保护她的人民不受生命威胁和不幸的侵扰。
+
+Through it all, we have never relinquished our skepticism of central authority, nor have we succumbed to the fiction that all society’s ills can be cured through government alone. Our celebration of initiative and enterprise; our insistence on hard work and personal responsibility, these are constants in our character.
+一路走来，我们从未放弃对集权的质疑。我们同样不屈服于这一谎言：一切的社会弊端都能够只靠政府来解决。我们对积极向上与奋发进取的赞扬，我们对努力工作与个人责任的坚持，这些都是美国精神的基本要义。
+
+But we have always understood that when times change, so must we; that fidelity to our founding principles requires new responses to new challenges; that preserving our individual freedoms ultimately requires collective action. For the American people can no more meet the demands of today’s world by acting alone than American soldiers could have met the forces of fascism or communism with muskets and militias. No single person can train all the math and science teachers we’ll need to equip our children for the future, or build the roads and networks and research labs that will bring new jobs and businesses to our shores. Now, more than ever, we must do these things together, as one nation, and one people.
+我们也理解，时代在变化，我们同样需要变革。对建国精神的忠诚，需要我们肩负起新的责任，迎接新的挑战。保护我们的个人自由，最终需要所有人的共同努力。 因为美国人不能再独力迎接当今世界的挑战，正如美国士兵们不能再像先辈一样，用步枪和民兵同敌人(法西斯主义与共产主义)作战。一个人无法培训所有的数学 与科学老师，我们需要他们为了未来去教育孩子们。一个人无法建设道路、铺设网络、建立实验室来为国内带来新的工作岗位和商业机会。现在，与以往任何时候相比，我们都更需要团结合作。作为一个国家，一个民族团结起来。
+
+This generation of Americans has been tested by crisis that steeled our resolve and proved our resilience. A decade of war is now ending. An economic recovery has begun. America’s possibilities are limitless, for we possess all the qualities that this world without boundaries demands: youth and drive; diversity and openness; an endless capacity for risk and a gift for reinvention. My fellow Americans, we are made for this moment, and we will seize it – so long as we seize it together.
+这一代美国人经历了危机的考验，经济危机坚定了我们的决心，证明了我们的恢复力。长达十年的战争正在结束，经济的复苏已经开始。美国的可能性是无限的，因为我们拥有当今没有边界的世界所需要的所有品质：年轻与活力、多样性与开放、无穷的冒险精神以及创造的天赋才能。我亲爱的同胞们，我们正是为此刻而生，我们更要在此刻团结一致，抓住当下的机会。
+
+For we, the people, understand that our country cannot succeed when a shrinking few do very well and a growing many barely make it. We believe that America’s prosperity must rest upon the broad shoulders of a rising middle class. We know that America thrives when every person can find independence and pride in their work; when the wages of honest labor liberate families from the brink of hardship. We are true to our creed when a little girl born into the bleakest poverty knows that she has the same chance to succeed as anybody else, because she is an American, she is free, and she is equal, not just in the eyes of God but also in our own.
+因为我们，美国人民，清楚如果只有不断萎缩的少数人群体获得成功，而大多数人不能成功，我们的国家就无法成功。我们相信，美国的繁荣必须建立在不断上升的中产阶级的宽阔臂膀之上，我们知道美国的繁荣只有这样才能实现。只有当每个人都能找到工作中的自立与自豪时才能实现。只有当诚实劳动获得的薪水足够让家庭 摆脱困苦的悬崖时才能实现。我们忠诚于我们的事业，保证让一个出生于最贫穷环境中的小女孩都能知道，她有同其他所有人一样的成功机会。因为她是一个美国人，她是自由的、平等的。她的自由平等不仅由上帝来见证，更由我们亲手保护。
+
+We understand that outworn programs are inadequate to the needs of our time. We must harness new ideas and technology to remake our government, revamp our tax code, reform our schools, and empower our citizens with the skills they need to work harder, learn more, and reach higher. But while the means will change, our purpose endures: a nation that rewards the effort and determination of every single American. That is what this moment requires. That is what will give real meaning to our creed.
+我们知道，我们已然陈旧的程序不足以满足时代的需要。我们必须应用新理念和新技术重塑我们的政府，改进我们的税法，改革我们的学校，让我们的公民拥有他们所需要的技能，更加努力地工作，学更多的知识，向更高处发展。这意味着变革，我们的目标是：国家可以奖励每个美国人的努力和果断。这是现在需要的。这将给我们的信条赋予真正的意义。
+
+We, the people, still believe that every citizen deserves a basic measure of security and dignity. We must make the hard choices to reduce the cost of health care and the size of our deficit. But we reject the belief that America must choose between caring for the generation that built this country and investing in the generation that will build its future. For we remember the lessons of our past, when twilight years were spent in poverty, and parents of a child with a disability had nowhere to turn. We do not believe that in this country, freedom is reserved for the lucky, or happiness for the few. We recognize that no matter how responsibly we live our lives, any one of us, at any time, may face a job loss, or a sudden illness, or a home swept away in a terrible storm. The commitments we make to each other – through Medicare, and Medicaid, and Social Security – these things do not sap our initiative; they strengthen us. They do not make us a nation of takers; they free us to take the risks that make this country great.
+我们，人民，仍然认为，每个公民都应当获得基本的安全和尊严。我们必须做出艰难抉择，降低医疗成本，缩减赤字规模。但我们拒绝在照顾建设国家的这一代和投 资即将建设国家的下一代间做出选择。因为我们记得过去的教训：老年人的夕阳时光在贫困中度过，家有残障儿童的父母无处求助。我们相信，在这个国家，自由不只是那些幸运儿的专属，或者说幸福只属于少数人。我们知道，不管我们怎样负责任地生活，我们任何人在任何时候都可能面临失业、突发疾病或住房被可怕的飓风摧毁的风险。　我们通过医疗保险、联邦医疗补助计划、社会保障项目向每个人做出承诺，这些不会让我们的创造力衰竭，而是会让我们更强大。这些不会让我们成为充满不劳而获者的国度，这些让我们敢于承担风险，让国家伟大。
+
+We, the people, still believe that our obligations as Americans are not just to ourselves, but to all posterity. We will respond to the threat of climate change, knowing that the failure to do so would betray our children and future generations. Some may still deny the overwhelming judgment of science, but none can avoid the devastating impact of raging fires, and crippling drought, and more powerful storms. The path towards sustainable energy sources will be long and sometimes difficult. But America cannot resist this transition; we must lead it. We cannot cede to other nations the technology that will power new jobs and new industries – we must claim its promise. That is how we will maintain our economic vitality and our national treasure – our forests and waterways; our croplands and snowcapped peaks. That is how we will preserve our planet, commanded to our care by God. That’s what will lend meaning to the creed our fathers once declared.
+我们，人民，仍然相信，我们作为美国人的义务不只是对我们自己而言，还包括对子孙后代。我们将应对气候变化的威胁，认识到不采取措施应对气候变化就是对我 们的孩子和后代的背叛。一些人可能仍在否定科学界的压倒性判断，但没有人能够避免熊熊火灾、严重旱灾、更强力风暴带来的灾难性打击。通向可再生能源利用的 道路是漫长的，有时是困难的。但美国不能抵制这种趋势，我们必须引领这种趋势。我们不能把制造新就业机会和新行业的技术让给其他国家，我们必须明确这一承 诺。这是我们保持经济活力和国家财富（我们的森林和航道，我们的农田与雪峰）的方法。这将是我们保护我们星球的办法，上帝把这个星球托付给我们。这将给我们的建国之父们曾宣布的信条赋予意义。
+
+We, the people, still believe that enduring security and lasting peace do not require perpetual war. Our brave men and women in uniform, tempered by the flames of battle, are unmatched in skill and courage. Our citizens, seared by the memory of those we have lost, know too well the price that is paid for liberty. The knowledge of their sacrifice will keep us forever vigilant against those who would do us harm. But we are also heirs to those who won the peace and not just the war, who turned sworn enemies into the surest of friends, and we must carry those lessons into this time as well.
+我们，人民，仍然相信持久的安全与和平，不需要持续的战争。我们勇敢的士兵经受了战火的考验，他们的技能和勇气是无可匹敌的。我们的公民依然铭记着那些阵亡者，他们非常清楚我们为自由付出的代价。明白他们的牺牲将让我们永远对那些试图伤害我们的势力保持警惕。但我们也是那些赢得和平而不只是战争的人们的后代，他们将仇敌转变成最可靠的朋友，我们也必须把这些经验带到这个时代。
+
+We will defend our people and uphold our values through strength of arms and rule of law. We will show the courage to try and resolve our differences with other nations peacefully – not because we are naïve about the dangers we face, but because engagement can more durably lift suspicion and fear. America will remain the anchor of strong alliances in every corner of the globe; and we will renew those institutions that extend our capacity to manage crisis abroad, for no one has a greater stake in a peaceful world than its most powerful nation. We will support democracy from Asia to Africa; from the Americas to the Middle East, because our interests and our conscience compel us to act on behalf of those who long for freedom. And we must be a source of hope to the poor, the sick, the marginalized, the victims of prejudice – not out of mere charity, but because peace in our time requires the constant advance of those principles that our common creed describes: tolerance and opportunity; human dignity and justice.
+我们将通过强大的军力和法制保护我们的人民，捍卫我们的价值观。我们将展现试图和平解决与其它国家分歧的勇气，但这不是因为我们对面临的危险持幼稚的态 度，而是因为接触能够更持久地化解疑虑和恐惧。美国将在全球保持强大的联盟，我们将更新这些能扩展我们应对海外危机能力的机制。因为作为世界上最强大的国家，我们在世界和平方面拥有最大的利益。我们将支持从亚洲到非洲、从美洲至中东的民主国家，因为我们的利益和良心驱使我们代表那些想获得自由的人们采取行 动。我们必须成为贫困者、病患者、被边缘化的人士、异见受害者的希望来源，不仅仅是出于慈善，也是因为这个时代的和平需要不断推进我们共同信念中的原则： 宽容和机遇，人类尊严与正义。
+
+We, the people, declare today that the most evident of truths – that all of us are created equal – is the star that guides us still; just as it guided our forebears through Seneca Falls, and Selma, and Stonewall; just as it guided all those men and women, sung and unsung, who left footprints along this great Mall, to hear a preacher say that we cannot walk alone; to hear a King proclaim that our individual freedom is inextricably bound to the freedom of every soul on Earth.
+我们，人民，今天昭示的最明白的事实是——我们所有人都是生而平等的，这是依然引领我们的恒星。它引领我们的先辈穿越纽约塞尼卡瀑布城（女权抗议事件）、 塞尔马（黑人权力事件）和石墙骚乱（同性恋与警察发生的暴力事件），引领着所有的男性和女性，留下姓名和没留姓名的人。在伟大的征程中，一路上留下足迹的 人。曾经听一位牧师说，我们不能独自前行。马丁-路德-金说，我们个人的自由与地球上每个灵魂的自由不可分割。
+
+It is now our generation’s task to carry on what those pioneers began. For our journey is not complete until our wives, our mothers, and daughters can earn a living equal to their efforts. Our journey is not complete until our gay brothers and sisters are treated like anyone else under the law – for if we are truly created equal, then surely the love we commit to one another must be equal as well. Our journey is not complete until no citizen is forced to wait for hours to exercise the right to vote. Our journey is not complete until we find a better way to welcome the striving, hopeful immigrants who still see America as a land of opportunity; until bright young students and engineers are enlisted in our workforce rather than expelled from our country. Our journey is not complete until all our children, from the streets of Detroit to the hills of Appalachia to the quiet lanes of Newtown, know that they are cared for, and cherished, and always safe from harm.
+继续先辈开创的事业是我们这代人的任务。直到我们的妻子、母亲和女儿的回报能够与她们的努力相称，我们的征途才会结束。我们的征途不会终结，我们要让同性恋的兄弟姐妹在法律之下得到与其他人同样的待遇。如果我们真正是生而平等的，那么我们对彼此的爱也应该是平等的。我们的征途没有结束，直到没有公民需要等待数个小时去行使投票权。我们的征途不会结束，直到我们找到更好的方法迎接努力、有憧憬的移民，他们依旧视美国是一块充满机会的土地。直到聪颖年轻的学生 和工程师为我们所用，而不是被逐出美国。我们的征途不会结束，直到我们所有的儿童，从底特律的街道到阿巴拉契亚的山岭，再到康涅狄格州纽镇安静的小巷，直到他们得到关心和珍视，永远避免受到伤害。
+
+That is our generation’s task – to make these words, these rights, these values – of Life, and Liberty, and the Pursuit of Happiness – real for every American. Being true to our founding documents does not require us to agree on every contour of life; it does not mean we will all define liberty in exactly the same way, or follow the same precise path to happiness. Progress does not compel us to settle centuries-long debates about the role of government for all time – but it does require us to act in our time.
+那是我们这一代的任务——让生存、自由和追求幸福的言语、权力和价值切实体现在每个美国人的身上。我们的立国根本没有要求我们将每个人的生活一致化。这并不意味着，我们会以完全一样的方式去定义自由，沿着同样的道路通向幸福。进步不会终止几个世纪以来一直纠结的关于政府角色的争论，但这要求我们现在就采取行动。
+
+For now decisions are upon us, and we cannot afford delay. We cannot mistake absolutism for principle, or substitute spectacle for politics, or treat name-calling as reasoned debate. We must act, knowing that our work will be imperfect. We must act, knowing that today’s victories will be only partial, and that it will be up to those who stand here in four years, and forty years, and four hundred years hence to advance the timeless spirit once conferred to us in a spare Philadelphia hall.
+目前是由我们决策，我们不能拖延。我们不能将绝对主义当作原则，或者以表象代替政治，或将中伤视作理性的辩论。我们必须行动，要意识到我们的工作并不完美。我们必须行动，意识到今天的胜利是并不完全的。这些将有赖于未来4年、40年或是400年致力于这项事业的人，去推进当年在费城制宪会议大厅传承给我们的永恒精神。
+
+My fellow Americans, the oath I have sworn before you today, like the one recited by others who serve in this Capitol, was an oath to God and country, not party or faction – and we must faithfully execute that pledge during the duration of our service. But the words I spoke today are not so different from the oath that is taken each time a soldier signs up for duty, or an immigrant realizes her dream. My oath is not so different from the pledge we all make to the flag that waves above and that fills our hearts with pride.
+我的美国同胞，我今天在你们面前宣读的誓词，如同在国会山服务的其他人曾宣读过的誓词一样，是对上帝和国家的誓词，不是对党派或是派别的，我们必须在任期 内忠实地履行这些承诺。但我今天宣读的誓词与士兵报名参军或者是移民实现梦想时所宣读的誓词没有多少差别。我的誓词与我们所有的人向我们头顶飘扬的、让我们心怀自豪的国旗所表达的誓言没有多大差别。
+
+They are the words of citizens, and they represent our greatest hope.
+这些是公民的誓词，代表着我们最伟大的希望。
+
+You and I, as citizens, have the power to set this country’s course.
+你和我，作为公民，都有为这个国家设定道路的权力。
+
+You and I, as citizens, have the obligation to shape the debates of our time – not only with the votes we cast, but with the voices we lift in defense of our most ancient values and enduring ideals.
+你和我，作为公民，有义务塑造我们时代的辩题，不仅是通过我们的选票，而且要为捍卫悠久的价值观和持久的理想发声。
+
+Let each of us now embrace, with solemn duty and awesome joy, what is our lasting birthright. With common effort and common purpose, with passion and dedication, let us answer the call of history, and carry into an uncertain future that precious light of freedom.
+现在让我们相互拥抱，怀着庄严的职责和无比的快乐，这是我们永恒的与生俱来的权利。有共同的努力和共同的目标，用热情与奉献，让我们回应历史的召唤，将珍贵的自由之光带入并不确定的未来。
+
+Thank you, God Bless you, and may He forever bless these United States of America.
+感谢你们，上帝保佑你们，愿上帝永远保佑美利坚合众国。

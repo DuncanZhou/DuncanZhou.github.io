@@ -1,0 +1,672 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="1.走进JAVA1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.
+2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.
+2.JAVA内存区域与内存溢出异常先放一张jvm运行时数据区分配情况图
+
+Java堆中分配">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JAVA虚拟机了解">
+<meta property="og:url" content="https://github.com/DuncanZhou/2017/11/22/JVM/index.html">
+<meta property="og:site_name" content="Duncan's Blog">
+<meta property="og:description" content="1.走进JAVA1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.
+2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.
+2.JAVA内存区域与内存溢出异常先放一张jvm运行时数据区分配情况图
+
+Java堆中分配">
+<meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-02.png">
+<meta property="og:updated_time" content="2017-11-22T12:39:38.529Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JAVA虚拟机了解">
+<meta name="twitter:description" content="1.走进JAVA1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.
+2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.
+2.JAVA内存区域与内存溢出异常先放一张jvm运行时数据区分配情况图
+
+Java堆中分配">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/DuncanZhou/2017/11/22/JVM/"/>
+
+
+
+
+
+  <title> JAVA虚拟机了解 | Duncan's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Duncan's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/11/22/JVM/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                JAVA虚拟机了解
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-22T20:39:38+08:00">
+                2017-11-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="1-走进JAVA"><a href="#1-走进JAVA" class="headerlink" title="1.走进JAVA"></a>1.走进JAVA</h3><p>1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.</p>
+<p>2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.</p>
+<h3 id="2-JAVA内存区域与内存溢出异常"><a href="#2-JAVA内存区域与内存溢出异常" class="headerlink" title="2.JAVA内存区域与内存溢出异常"></a>2.JAVA内存区域与内存溢出异常</h3><p><strong>先放一张jvm运行时数据区分配情况图</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png" alt="jvm运行时数据区"></p>
+<ol>
+<li><p>Java堆中分配内存方式:如果Java堆中的内存是绝对规整的,所有用过的内存都放在一边,空闲的内存放在另一边,中间放着一个指针作为分界点的指示器,那所分配内存就是仅仅把那个指针向空闲空间那边挪动一段与对象大小相等的距离,这种分配方式称为<strong>指针碰撞(Bump the pointer)</strong>;如果Java堆中的内存并不是规整的,已使用内存和空闲的内存相互交错,虚拟机就必须维护一个列表,记录上哪些内存块是可用的,在分配的时候从列表中找到一块足够大的空间划分给对象,并更新列表上的记录,这种分配方式称为<strong>空闲列表(Free List)</strong>;</p>
+</li>
+<li><p>划分内存过程需要考虑同步问题,两种方式:1)对分配内存空间的动作进行同步处理(CAS配上失败重试的方式保证更新操作的原子性);2)每个线程在Java堆中预先分配一小块内存,为<strong>本地线程分配缓冲(Thread Local Allocation Buffer)</strong>,当TLAB分配完了之后再做同步操作.</p>
+</li>
+<li><p>对象的访问定位:<strong>使用句柄和直接指针</strong></p>
+</li>
+</ol>
+<h3 id="3-垃圾收集算法"><a href="#3-垃圾收集算法" class="headerlink" title="3.垃圾收集算法"></a>3.垃圾收集算法</h3><ul>
+<li>标记-清除算法:首先标记出所有需要回收的对象,在标记完成后一次性回收所有被标记的对象.</li>
+<li>复制算法:将可用内存分为两块,每次只使用其中一块,当着一块内存用完了,就将还存活的对象复制到另一块上,然后把已使用的内存空间一次清理掉.</li>
+<li>标记-整理算法:首先标记出所有需要回收的对象,让所有存活的对象都向一端移动,然后直接清理掉端界外的内存.\</li>
+<li>分代收集法:将堆分为新生代和老年代,根据每个代的特点选择合适的垃圾回收算法.</li>
+</ul>
+<h3 id="4-垃圾收集器"><a href="#4-垃圾收集器" class="headerlink" title="4.垃圾收集器"></a>4.垃圾收集器</h3><p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-02.png" alt="jvm垃圾收集器"></p>
+<ol>
+<li><p>Serial收集器<br>这个收集器是一个单线程的收集器,但它的”单线程”的意义并不仅仅说明它只会使用一个CPU或一条收集线程去完成垃圾收集工作,更重要的是在它进行垃圾收集时,必须暂停其他所有的工作线程,直到它收集结束.(Client模式下默认的垃圾收集器)</p>
+</li>
+<li><p>ParNew收集器<br>ParNew收集器就是Serial收集器的多线程版本,除了使用多条线程进行垃圾收集之外,其余行为包括Serial收集器可用的所有控制参数,收集算法,Stop the world,对象分配规则,回收策略等都与Serial收集器完全一样.(Server模式下的垃圾收集器)</p>
+</li>
+<li><p>Parallel Scavenge收集器<br>Parallel Scavenge收集器更多关注于控制吞吐量(吞吐量=运行用户代码时间/(运行用户代码时间+垃圾收集时间)).</p>
+</li>
+<li><p>Serial Old收集器</p>
+</li>
+<li><p>Parallel Old收集器</p>
+</li>
+<li><p>CMS收集器<br>CMS收集器是一种以<strong>获取最短回收停顿时间为目标</strong>的收集器.目前很大一部分的Java应用集中在互联网站或者B/S系统的服务端上.<br>CMS收集器是基于”标记-清除”算法实现的,运作过程分为4个步骤:</p>
+</li>
+</ol>
+<ul>
+<li>初始标记</li>
+<li>并发标记</li>
+<li>重新标记</li>
+<li>并发清除</li>
+</ul>
+<ol>
+<li>G1收集器<br>运作大致分为:</li>
+</ol>
+<ul>
+<li>初始标记(标记GC Roots直接关联到的对象)</li>
+<li>并发标记(GC Roots可达性分析)</li>
+<li>最终标记(修正在并发标记阶段标记发生改变的那部分标记记录)</li>
+<li>筛选回收(对各个Region的回收价值和成本排序)</li>
+</ul>
+<h3 id="5-内存对象收集器"><a href="#5-内存对象收集器" class="headerlink" title="5.内存对象收集器"></a>5.内存对象收集器</h3><p>1.新生代GC(Minor GC):指发生在新生代的垃圾收集动作,Minor GC非常频繁,一般回收速度也比较快.</p>
+<p>2.老年代GC(Major GC/Full GC):指发生在老年代的GC,出现了Major GC,经常会伴随至少一次的Minor GC,Major GC的速度一般会比Minor GC慢10倍以上.</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/27/SuffixTree/" rel="next" title="后缀树">
+                <i class="fa fa-chevron-left"></i> 后缀树
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/27/MachineLearningNotes/" rel="prev" title="西瓜书阅读">
+                西瓜书阅读 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="http://ww1.sinaimg.cn/large/0060lm7Tgw1fakgrchk2xj303d03dmx4.jpg"
+               alt="duncan" />
+          <p class="site-author-name" itemprop="name">duncan</p>
+          <p class="site-description motion-element" itemprop="description">write something useful</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">30</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">Tags</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-走进JAVA"><span class="nav-number">1.</span> <span class="nav-text">1.走进JAVA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-JAVA内存区域与内存溢出异常"><span class="nav-number">2.</span> <span class="nav-text">2.JAVA内存区域与内存溢出异常</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-垃圾收集算法"><span class="nav-number">3.</span> <span class="nav-text">3.垃圾收集算法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-垃圾收集器"><span class="nav-number">4.</span> <span class="nav-text">4.垃圾收集器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-内存对象收集器"><span class="nav-number">5.</span> <span class="nav-text">5.内存对象收集器</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">duncan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
