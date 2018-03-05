@@ -103,7 +103,7 @@
 2.NEL定理(No Free Lunch):脱离具体问题,空泛的谈论”什么学习算法更好”毫无意义.
 第二章.模型评估与选择1.过拟合:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所有潜在样本">
 <meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/ML-01.jpg">
-<meta property="og:updated_time" content="2018-03-04T12:29:30.447Z">
+<meta property="og:updated_time" content="2018-03-05T14:57:20.273Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="西瓜书阅读">
 <meta name="twitter:description" content="西瓜书阅读记录(2.0)2018年1月19日提交1.0
@@ -205,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Startseite
+            Home
           </a>
         </li>
       
@@ -215,7 +215,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Kategorien
+            Categories
           </a>
         </li>
       
@@ -225,7 +225,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            Über
+            About
           </a>
         </li>
       
@@ -235,7 +235,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archiv
+            Archives
           </a>
         </li>
       
@@ -314,7 +314,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-02T18:58:32+08:00">
                 2018-03-02
               </time>
@@ -331,7 +331,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -482,6 +482,12 @@
 <li>使用”<strong>模拟退火</strong>“,即以一定概率接受比当前解更差的结果.</li>
 <li>使用<strong>随机梯度下降</strong>.与标准梯度下降精确计算梯度不同,随即梯度下降法在计算梯度时加入了随即因素,于是,即使陷入局部极小点,它计算出的梯度仍可能不为0,这样有机会跳出局部极小点继续搜索.</li>
 </ul>
+<p><strong>(补充)</strong>:梯度下降:</p>
+<ul>
+<li>1)批量梯度下降:每次使用全量的训练集样本来更新模型参数</li>
+<li>2)随机梯度下降:每次从训练集中随机选择一个样本来进行学习</li>
+<li>3)小批量梯度下降:每次更新速度与更新次数中间取得一个平衡，其每次更新从训练集中随机选择 m (m小于n) 个样本进行学习</li>
+</ul>
 <p>7 其他常见神经网络</p>
 <ul>
 <li>RBF网络(使用径向基函数作为隐层神经元激活函数,而输出层是对隐层神经元输出的线性组合.)</li>
@@ -494,6 +500,7 @@
 <p>8 深度学习:一般地，CNN的基本结构包括两层，其一为特征提取层，每个神经元的输入与前一层的局部接受域相连，并提取该局部的特征。一旦该局部特征被提取后，它与其它特征间的位置关系也随之确定下来；其二是特征映射层，网络的每个计算层由多个特征映射组成，每个特征映射是一个平面，平面上所有神经元的权值相等。特征映射结构采用影响函数核小的sigmoid函数作为卷积网络的激活函数，使得特征映射具有位移不变性。此外，由于一个映射面上的神经元共享权值，因而减少了网络自由参数的个数。卷积神经网络中的每一个卷积层都紧跟着一个用来求局部平均与二次提取的计算层，这种特有的两次特征提取结构减小了特征分辨率。CNN主要用来识别位移、缩放及其他形式扭曲不变性的二维图形.</p>
 <p>8.1 卷积: 说白了,卷积操作就是一种加权求和.在卷积层中,通常包含若干个特征平面,每个特征平面由一些矩形排列的神经元组成,同一特征平面的神经共享单元共享权值,共享的权值就是卷积核.卷积核带来的直接好处减少网络各层之间的连接,同时降低了过拟合的风险.</p>
 <p>8.2 池化: 也叫子采样,降维处理,减少了模型的参数.</p>
+<p><strong>(补充)</strong>:神经网络的误差反向传播算法的推导需要重新看.</p>
 <hr>
 <h3 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h3><h4 id="第六章-西瓜书"><a href="#第六章-西瓜书" class="headerlink" title="第六章 西瓜书"></a>第六章 西瓜书</h4><p>1.划分超平面:在样本空间中,划分超平面可通过如下线性方程来描述:<br>$$w^Tx+b=0$$,<br>其中,$$w=(w_1;w_2;…;w_d)$$为法向量;b为位移项,决定了超平面与原点之间的距离.将超平面记为(<strong>w</strong>,b),样本空间中任意点x到超平面(<strong>w</strong>,b)的距离为$$r=\frac{|w^T+b|}{||w||}$$.</p>
 <p>2.<strong>支持向量</strong>:假设超平面(<strong>w</strong>,b)能将训练样本正确分类,即对于$$(x_i,y_i)\in{D}$$,若y<sub>i</sub>=+1,则有$$w^T+b&gt;0$$;若y<sub>i</sub>=-1,则有$$w^T+b&lt;0$$.令$$w^T+b\geq{+1},y_i=+1;w^T+b\leq{+1},y_i=-1$$.距离超平面最近的这几个训练样本点使上述等号成立,它们被称为”支持向量”.两个异类支持向量到超平面的距离之和为$$\gamma=\frac{2}{||w||}$$.它们被称为”间隔”.</p>
@@ -828,10 +835,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -848,7 +855,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">49</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -856,7 +863,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">categories</span>
               </a>
             </div>
           
@@ -865,7 +872,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               </a>
             </div>
           
@@ -970,7 +977,7 @@
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
