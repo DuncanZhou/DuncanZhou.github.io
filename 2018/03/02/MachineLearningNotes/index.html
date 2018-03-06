@@ -103,7 +103,7 @@
 2.NEL定理(No Free Lunch):脱离具体问题,空泛的谈论”什么学习算法更好”毫无意义.
 第二章.模型评估与选择1.过拟合:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所有潜在样本">
 <meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/ML-01.jpg">
-<meta property="og:updated_time" content="2018-03-05T14:57:20.273Z">
+<meta property="og:updated_time" content="2018-03-06T14:31:52.283Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="西瓜书阅读">
 <meta name="twitter:description" content="西瓜书阅读记录(2.0)2018年1月19日提交1.0
@@ -205,7 +205,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -215,7 +215,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -225,7 +225,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            Über
           </a>
         </li>
       
@@ -235,7 +235,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -314,7 +314,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-02T18:58:32+08:00">
                 2018-03-02
               </time>
@@ -331,7 +331,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -440,7 +440,7 @@
 <p>4.2 奇异值: 特征值分解是提取矩阵特针很不错的方法,但是它只是针对方针而言的,对于非方阵矩阵,使用奇异值分解能适用于任何形式的矩阵.分解形式为:<br>$$A_{m*n}=U_{m*m}\Sigma_{m*n}{V_{n*n}}^T(\Sigma_{m*n}为对角矩阵)$$</p>
 <p><strong>5.多分类学习</strong></p>
 <p>5.1 多分类学习的基本思路是”拆解法”,即将多分类任务拆分为若干个二分类任务求解.最经典的拆分策略有三种:”一对一(One vs. One OvO)”,”一对其余(One vs. Rest,OvR)”和”多对多(Many vs. Many,简称MvM)”.</p>
-<p><strong>(补充)</strong><br>5.2 类别不平衡问题:指的是分类任务中不同类别的训练样例数目差别很大的情况.<br>基本策略:<br>$$\frac{y^’}{1-y^’}=\frac{y}{1-y}\times\frac{m^-}{m^+}$$</p>
+<p><strong>(补充)</strong><br>5.2 类别不平衡问题:指的是分类任务中不同类别的训练样例数目差别很大的情况.<br>基本策略:<br>$$\frac{y^{‘}}{1-y^{‘}}=\frac{y}{1-y}\times\frac{m^{-}}{m^{+}}$$</p>
 <p>解决方案:</p>
 <ul>
 <li>1.直接对训练集里的反例样例进行”欠采样”(下采样),即去除一些反例使得正/反例数目接近,然后进行学习</li>
@@ -503,8 +503,13 @@
 <p><strong>(补充)</strong>:神经网络的误差反向传播算法的推导需要重新看.</p>
 <hr>
 <h3 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h3><h4 id="第六章-西瓜书"><a href="#第六章-西瓜书" class="headerlink" title="第六章 西瓜书"></a>第六章 西瓜书</h4><p>1.划分超平面:在样本空间中,划分超平面可通过如下线性方程来描述:<br>$$w^Tx+b=0$$,<br>其中,$$w=(w_1;w_2;…;w_d)$$为法向量;b为位移项,决定了超平面与原点之间的距离.将超平面记为(<strong>w</strong>,b),样本空间中任意点x到超平面(<strong>w</strong>,b)的距离为$$r=\frac{|w^T+b|}{||w||}$$.</p>
-<p>2.<strong>支持向量</strong>:假设超平面(<strong>w</strong>,b)能将训练样本正确分类,即对于$$(x_i,y_i)\in{D}$$,若y<sub>i</sub>=+1,则有$$w^T+b&gt;0$$;若y<sub>i</sub>=-1,则有$$w^T+b&lt;0$$.令$$w^T+b\geq{+1},y_i=+1;w^T+b\leq{+1},y_i=-1$$.距离超平面最近的这几个训练样本点使上述等号成立,它们被称为”支持向量”.两个异类支持向量到超平面的距离之和为$$\gamma=\frac{2}{||w||}$$.它们被称为”间隔”.</p>
-<p>3.<strong>支持向量机</strong>:$$min_{w,b}\frac{1}{2}||w||^2,s.t. y_i(w^Tx_i+b)\geq{1},i=1,2,3,…,m.$$.</p>
+<p>2.<strong>支持向量</strong>:假设超平面(<strong>w</strong>,b)能将训练样本正确分类,即对于$$(x_i,y_i)\in{D}$$,若y<sub>i</sub>=+1,则有$$w^T+b&gt;0$$;若y<sub>i</sub>=-1,则有$$w^T+b&lt;0$$.令$$w^T+b\geq{+1},y_i\=1$$;$w^T+b\leq{+1},y_i\=-1$.距离超平面最近的这几个训练样本点使上述等号成立,它们被称为”支持向量”.两个异类支持向量到超平面的距离之和为$$\gamma\=\frac{2}{||w||}$$.它们被称为”间隔”.</p>
+<p>3.<strong>支持向量机</strong>:$$min_{w,b}\frac{1}{2}||w||^2,s.t. y_i(w^Tx_i+b)\geq{1},i\=1,2,3,…,m.$$.</p>
+<p><strong>(补充:)</strong>SMO算法:</p>
+<ul>
+<li>选取一对需要更新的变量$\alpha_{i}$和$\alpha_{j}$</li>
+<li>固定$\alpha_{i}$和$\alpha_{j}$以外的参数,求解拉格朗日函数后更新$\alpha_{i}$和$\alpha_{j}$<br>SMO算法先选取违背KKT条件程度最大的变量,第二个变量本应选择一个使目标函数值减小最快的变量,但由于比较各变量所对应的目标函数值减幅的复杂度过高,<font color="red"><strong>因此SMO采用了一个启发式:使选取的两变量所对应样本之间的间隔最大.</strong></font></li>
+</ul>
 <p>4.正定矩阵:实对称矩阵</p>
 <p>5.二次规划问题:给定一个目标函数,找到n维的向量x,使得<br>$$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩阵,那么该问题就是<strong>凸二次规划问题</strong>.凸二次规划问题,如果至少一个向量满足约束并且在可行域有下界,则凸二次规划问题就有一个全局最小值.如果Q是正定的,则这类二次规划为严格的凸二次规划问题,那么全局最小值就是唯一的.</p>
 <p>6.对于凸二次规划问题解法:拉格朗日方法/Lemke方法,内点法,有效集法,椭球法等.</p>
@@ -518,13 +523,25 @@
 <li>拉普拉斯核</li>
 <li>Sigmoid核</li>
 </ul>
+<p><strong>(补充)</strong>:核函数的组合形式($k_1(x)$为核函数):</p>
+<ul>
+<li>1.核函数的线性组合还是核函数</li>
+<li>2.核函数的直积还是核函数$k_1\times{k_2}(x,z)=k_1(x,z)k_2(z)$仍是核函数</li>
+<li>3.对任意函数$g(x)$,$k(x,z)=g(x)k_1(x,z)g(z)$仍是核函数</li>
+</ul>
 <p><strong>10.软间隔和正则化</strong></p>
 <p>10.1 软间隔:在现实任务中往往很难确定合适的核函数使得训练样本在特征空间中线性可分;退一步说,即便恰好找到了某个核函数使训练集在特征空间中可分,也很难判定这个”线性可分”是不是由过拟合造成的.缓解该问题的一个方法是允许支持向量机在一些样本上出错.支持向量机形式要求所有样本均满足约束,即所有样本都必须划分正确,这称为<strong>“硬间隔”</strong>.而<strong>软间隔</strong>允许某些样本不满足约束.</p>
+<p><strong>补充</strong>:软间隔线性支持向量机优化目标为:<br>1.$$min_{w,b}\frac{1}{2}{||w||}^2+C\sum_{i=1}^{m}l_{0/1}(y_i(w^T+b)-1)$$<br>2.C为惩罚参数,当C无穷大时,则迫使所有样本都满足约束.当C取有限值时,则允许有一些样本不满足约束.<br>3.$l_{0/1}$为0/1损失函数.<br>4.硬间隔和软间隔区别在于:前者是$0\leqslant{\alpha_i}\leqslant{C}$,后者是$0\leqslant{\alpha_i}$.<br>5.支持向量机模型都由两项构成:结构风险和经验风险.结构风险用于描述模型的某些性质,经验风险用于描述模型与训练数据的契合程度.为了降低模型复杂度和防止过拟合,通过$L_p$范数来正则化结构风险.</p>
 <p>11.损失函数:</p>
 <ul>
 <li>hinge损失</li>
 <li>指数损失</li>
 <li>对率损失</li>
+</ul>
+<p><strong>补充</strong>:SVR-支持向量回归</p>
+<ul>
+<li>1)容忍$f(x)$与真实输出$y$之间有$\epsilon$的误差,通过这种方式来最大限度的包容尽可能多的点在内</li>
+<li>2)目标函数的优化,依然用拉格朗日乘子法.</li>
 </ul>
 <hr>
 <h4 id="第六章-统计学习方法"><a href="#第六章-统计学习方法" class="headerlink" title="第六章 统计学习方法"></a>第六章 统计学习方法</h4><p>1.支持向量机学习方法包含构建由简至繁的模型:线性可分支持向量机,线性支持向量机及非线性支持向量机.当<strong>训练数据线性可分时</strong>,通过<strong>硬间隔最大化</strong>学习一个线性的分类器,即<strong>线性可分支持向量机</strong>,又称为硬间隔支持向量机;当<strong>训练数据近似线性可分时</strong>,通过<strong>软间隔最大化</strong>,也学习一个线性的分类器,即<strong>线性支持向量机</strong>,又称为软间隔支持向量机;当<strong>训练数据线性不可分时</strong>,通过<strong>核技巧及软间隔最大化</strong>,学习<strong>非线性支持向量机</strong>.</p>
@@ -835,10 +852,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -855,7 +872,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/archives">
               <span class="site-state-item-count">49</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -863,7 +880,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
           
@@ -872,7 +889,7 @@
             <div class="site-state-item site-state-tags">
               <a href="/tags">
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -977,7 +994,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
