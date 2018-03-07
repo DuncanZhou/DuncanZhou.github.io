@@ -752,14 +752,31 @@
 </li>
 <li><p>贝叶斯判定准则: 为了最小化总体风险,只需在每个样本上选择那个是条件风险最小的类别标记.(条件风险=期望损失).</p>
 </li>
-<li><p>估算后验概率,两种策略: 1) 给定样本x,可通过直接建模P(c|x)来预测c(从为x的类别标记),这样得到的是”判别式模型”; 2) 也可以先对联合概率分布P(x,c)建模,然后由此获得P(c|x),这样得到的是”生成式模型”;</p>
+<li><p>极大似然估算后验概率,两种策略: 1) 给定样本x,可通过直接建模P(c|x)来预测c(从为x的类别标记),这样得到的是”判别式模型”; 2) 也可以先对联合概率分布P(x,c)建模,然后由此获得P(c|x),这样得到的是”生成式模型”;</p>
 </li>
 </ol>
+<p>4.求解贝叶斯分类器:朴素贝叶斯分类器.基于一个假设:所有属性之间相互独立</p>
+<ul>
+<li>对于离散性属性:$P(x_i|c)=\frac{D_{c,x_i}}{D_c}$</li>
+<li>对于连续性属性:$p(x_i|c)=\frac{1}{\sqrt{2\pi}\sigma_{c,i}}exp(-\frac{({x_i-\mu_{c,i}})^2}{2{\sigma_{c,i}}^2})$</li>
+</ul>
+<p>5.为了避免其他属性携带的信息被训练集中未出现的属性值”抹去”,在估计概率值时通常要进行”平滑”,<strong>常用”拉普拉斯修正”</strong>.令N表示训练集D中可能的类别数,$N_i$表示第i个属性可能的取值数,则修正为:</p>
+<ul>
+<li>$P(c)=\frac{|D_c|+1}{|D|+N}$</li>
+<li>$P(x_i|c)=\frac{|D_{c,x_i}|+1}{|D_c|+N_i}$</li>
+</ul>
+<p>6.如果任务对预测速度要求较高,则针对训练集将朴素贝叶斯分类器涉及的所有概率估值事先计算好存储起来.如果任务数据更替频繁,则可事先不进行任何训练,待收到预测请求时再根据当前数据集进行概率估值.如果数据不断增加,则可在现有估值的基础上,仅对新增样本的属性值所涉及的概率估值进行计数修正即可实现增量学习.</p>
 <blockquote>
 <p>判别式模型常见的主要有：<br>Logistic Regression<br>SVM<br>Traditional Neural Networks<br>Nearest Neighbor<br>CRF<br>Linear Discriminant Analysis<br>Boosting<br>Linear Regression</p>
 <p>产生式模型常见的主要有：<br>Gaussians<br>Naive Bayes<br>Mixtures of Multinomials<br>Mixtures of Gaussians<br>Mixtures of Experts<br>HMMs<br>Sigmoidal Belief Networks, Bayesian Networks<br>Markov Random Fields<br>Latent Dirichlet Allocation</p>
 </blockquote>
 <p>(判别式模型和生成式模型:<a href="http://www.cnblogs.com/fanyabo/p/4067295.html" target="_blank" rel="external">http://www.cnblogs.com/fanyabo/p/4067295.html</a>)</p>
+<p><strong>补充:</strong>:<br>1.贝叶斯最优分类器为:$h^*=argmax_{c\in{y}}P(c|x)$.要用贝叶斯判定准则来最小化决策风险,首先要获得后验概率$P(c|x)$,而这在现实生活中是难以直接获得的,机器学习所要实现的是基于有限的训练样本集尽可能准确地估计出后验概率.有两种策略:判别式模型和生成式模型.</p>
+<p>2.判别式模型和生成式模型比较:<br>定义单个测试数据为$(c_0,x_0)$,$c_0$为测试数据的label,$x_0$为测试数据的feature</p>
+<ul>
+<li>判别式模型(注重条件概率):它是训练完毕后,输入测试数据,判别模型直接给出的是$P(c|x_0)$.实际上是我们看了训练过的数据之后,学习到了对数据分步的后验知识,然后根据这个认识和测试样本的feature来决策.判别模型求解的思路是：条件分布——&gt;模型参数后验概率最大——-&gt;（似然函数\cdot 参数先验）最大——-&gt;最大似然</li>
+<li>生成式模型(注重联合分布概率):给定输入$x_0$,生成式模型可以给出输入和输出的联合分布$P(x_0,c_0)$.生成模型的求解思路是：联合分布——-&gt;求解类别先验概率和类别条件概率</li>
+</ul>
 <hr>
 <h3 id="第九章-集成学习-提升方法"><a href="#第九章-集成学习-提升方法" class="headerlink" title="第九章 集成学习(提升方法)"></a>第九章 集成学习(提升方法)</h3><p><strong>1.概念介绍</strong></p>
 <ol>
