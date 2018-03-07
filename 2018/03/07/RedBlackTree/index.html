@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Algorithm," />
 
 
 
@@ -84,28 +84,50 @@
 
 
 
-<meta name="description" content="在Ubuntu下安装MPI环境(python环境)Step1:安装python环境
-Step2:sudo apt-get install openmpi-bin
-Step3:sudo apt-get install libopenmpi-dev
-Step4:sudo apt-get install python-mpi4py
-(第三步不要忽略)">
+<meta name="description" content="1.定义1.红黑树是每个节点都带有颜色属性的二叉查找树，颜色或红色或黑色.并且有如下性质:
+
+1)性质1. 节点是红色或黑色。
+
+2)性质2. 根节点是黑色。
+
+3)性质3 每个叶节点（null节点，空节点）是黑色的。
+
+4)性质4 每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)
+
+5)性质5.从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python-MPI安装命令">
-<meta property="og:url" content="https://github.com/DuncanZhou/2018/01/19/Python-MPI/index.html">
+<meta property="og:title" content="红黑树学习">
+<meta property="og:url" content="https://github.com/DuncanZhou/2018/03/07/RedBlackTree/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="在Ubuntu下安装MPI环境(python环境)Step1:安装python环境
-Step2:sudo apt-get install openmpi-bin
-Step3:sudo apt-get install libopenmpi-dev
-Step4:sudo apt-get install python-mpi4py
-(第三步不要忽略)">
-<meta property="og:updated_time" content="2018-01-19T03:42:23.983Z">
+<meta property="og:description" content="1.定义1.红黑树是每个节点都带有颜色属性的二叉查找树，颜色或红色或黑色.并且有如下性质:
+
+1)性质1. 节点是红色或黑色。
+
+2)性质2. 根节点是黑色。
+
+3)性质3 每个叶节点（null节点，空节点）是黑色的。
+
+4)性质4 每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)
+
+5)性质5.从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。">
+<meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/leftrotate.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/rightrotate.jpg">
+<meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/delete.png">
+<meta property="og:updated_time" content="2018-03-07T02:32:56.346Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python-MPI安装命令">
-<meta name="twitter:description" content="在Ubuntu下安装MPI环境(python环境)Step1:安装python环境
-Step2:sudo apt-get install openmpi-bin
-Step3:sudo apt-get install libopenmpi-dev
-Step4:sudo apt-get install python-mpi4py
-(第三步不要忽略)">
+<meta name="twitter:title" content="红黑树学习">
+<meta name="twitter:description" content="1.定义1.红黑树是每个节点都带有颜色属性的二叉查找树，颜色或红色或黑色.并且有如下性质:
+
+1)性质1. 节点是红色或黑色。
+
+2)性质2. 根节点是黑色。
+
+3)性质3 每个叶节点（null节点，空节点）是黑色的。
+
+4)性质4 每个红色节点的两个子节点都是黑色。(从每个叶子到根的所有路径上不能有两个连续的红色节点)
+
+5)性质5.从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/leftrotate.jpg">
 
 
 
@@ -133,13 +155,13 @@ Step4:sudo apt-get install python-mpi4py
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2018/01/19/Python-MPI/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2018/03/07/RedBlackTree/"/>
 
 
 
 
 
-  <title> python-MPI安装命令 | Duncan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title> 红黑树学习 | Duncan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="">
@@ -270,7 +292,7 @@ Step4:sudo apt-get install python-mpi4py
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/Python-MPI/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/07/RedBlackTree/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -294,7 +316,7 @@ Step4:sudo apt-get install python-mpi4py
             
             
               
-                python-MPI安装命令
+                红黑树学习
               
             
           </h1>
@@ -307,8 +329,8 @@ Step4:sudo apt-get install python-mpi4py
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:42:24+08:00">
-                2018-01-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T09:23:03+08:00">
+                2018-03-07
               </time>
             
 
@@ -326,8 +348,8 @@ Step4:sudo apt-get install python-mpi4py
               <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
                   </a>
                 </span>
 
@@ -363,11 +385,49 @@ Step4:sudo apt-get install python-mpi4py
       
 
       
-        <h3 id="在Ubuntu下安装MPI环境-python环境"><a href="#在Ubuntu下安装MPI环境-python环境" class="headerlink" title="在Ubuntu下安装MPI环境(python环境)"></a>在Ubuntu下安装MPI环境(python环境)</h3><p><font color="red">Step1:</font>安装python环境<br></p>
-<p><font color="red">Step2:</font>sudo apt-get install openmpi-bin<br></p>
-<p><font color="red">Step3:</font>sudo apt-get install libopenmpi-dev<br></p>
-<p><font color="red">Step4:</font>sudo apt-get install python-mpi4py<br></p>
-<p><strong>(第三步不要忽略)</strong></p>
+        <h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h3><p>1.红黑树是每个节点都带有颜色属性的<strong>二叉查找树</strong>，颜色或红色或黑色.并且有如下性质:</p>
+<ul>
+<li><p>1)性质1. 节点是红色或黑色。</p>
+</li>
+<li><p>2)性质2. <strong>根节点是黑色</strong>。</p>
+</li>
+<li><p>3)性质3 每个<strong>叶节点（null节点，空节点）是黑色的</strong>。</p>
+</li>
+<li><p>4)性质4 每个红色节点的两个子节点都是黑色。(<strong>从每个叶子到根的所有路径上不能有两个连续的红色节点</strong>)</p>
+</li>
+<li><p>5)性质5.<strong>从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点</strong>。</p>
+</li>
+</ul>
+<blockquote>
+<p>特性:从根到叶子结点最长的可能路径不多于最短的可能路径的两倍长.</p>
+</blockquote>
+<h3 id="2-操作"><a href="#2-操作" class="headerlink" title="2.操作"></a>2.操作</h3><p>1.左旋<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/leftrotate.jpg" alt="图片来自慕课"></p>
+<p>2.右旋<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/rightrotate.jpg" alt="图片来自慕课"></p>
+<p>3.插入(5种情况)</p>
+<ul>
+<li>1)情况1:插入的是根结点<ul>
+<li>对策:直接把该结点涂黑</li>
+</ul>
+</li>
+<li>2)情况2:插入的结点的父结点是黑色<ul>
+<li>对策:Do nothing</li>
+</ul>
+</li>
+<li>3)当前结点的父结点是红色且祖父结点的另一个子结点(叔叔结点)是红色<ul>
+<li>对策:将当前节点的父节点和叔叔节点涂黑，祖父节点涂红，把当前节点指向祖父节点，从新的当前节点重新开始算法。</li>
+</ul>
+</li>
+<li>4)当前结点的父结点是红色,叔叔结点是黑色,当前结点是其父结点的右孩子<ul>
+<li>对策:当前节点的父节点做为新的当前节点，以新当前节点为支点左旋。</li>
+</ul>
+</li>
+<li>5)当前结点的父结点是红色,叔叔结点是黑色,当前结点是其父结点的左孩子<ul>
+<li>对策:父节点变为黑色，祖父节点变为红色，在祖父节点为支点右旋</li>
+</ul>
+</li>
+</ul>
+<p>4.删除<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/delete.png" alt="删除操作"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">private void fixAfterDeletion(Entry&lt;K,V&gt; x) &#123;</div><div class="line">    while (x != root &amp;&amp; colorOf(x) == BLACK) &#123;</div><div class="line">        if (x == leftOf(parentOf(x))) &#123;</div><div class="line">            Entry&lt;K,V&gt; sib = rightOf(parentOf(x));</div><div class="line">            if (colorOf(sib) == RED) &#123;</div><div class="line">                setColor(sib, BLACK);                   // 情况1</div><div class="line">                setColor(parentOf(x), RED);             // 情况1</div><div class="line">                rotateLeft(parentOf(x));                // 情况1</div><div class="line">                sib = rightOf(parentOf(x));             // 情况1</div><div class="line">            &#125;</div><div class="line">            if (colorOf(leftOf(sib))  == BLACK &amp;&amp;</div><div class="line">                colorOf(rightOf(sib)) == BLACK) &#123;</div><div class="line">                setColor(sib, RED);                     // 情况2</div><div class="line">                x = parentOf(x);                        // 情况2</div><div class="line">            &#125; else &#123;</div><div class="line">                if (colorOf(rightOf(sib)) == BLACK) &#123;</div><div class="line">                    setColor(leftOf(sib), BLACK);       // 情况3</div><div class="line">                    setColor(sib, RED);                 // 情况3</div><div class="line">                    rotateRight(sib);                   // 情况3</div><div class="line">                    sib = rightOf(parentOf(x));         // 情况3</div><div class="line">                &#125;</div><div class="line">                setColor(sib, colorOf(parentOf(x)));    // 情况4</div><div class="line">                setColor(parentOf(x), BLACK);           // 情况4</div><div class="line">                setColor(rightOf(sib), BLACK);          // 情况4</div><div class="line">                rotateLeft(parentOf(x));                // 情况4</div><div class="line">                x = root;                               // 情况4</div><div class="line">            &#125;</div><div class="line">        &#125; else &#123; // 跟前四种情况对称</div><div class="line">            Entry&lt;K,V&gt; sib = leftOf(parentOf(x));</div><div class="line">            if (colorOf(sib) == RED) &#123;</div><div class="line">                setColor(sib, BLACK);                   // 情况5</div><div class="line">                setColor(parentOf(x), RED);             // 情况5</div><div class="line">                rotateRight(parentOf(x));               // 情况5</div><div class="line">                sib = leftOf(parentOf(x));              // 情况5</div><div class="line">            &#125;</div><div class="line">            if (colorOf(rightOf(sib)) == BLACK &amp;&amp;</div><div class="line">                colorOf(leftOf(sib)) == BLACK) &#123;</div><div class="line">                setColor(sib, RED);                     // 情况6</div><div class="line">                x = parentOf(x);                        // 情况6</div><div class="line">            &#125; else &#123;</div><div class="line">                if (colorOf(leftOf(sib)) == BLACK) &#123;</div><div class="line">                    setColor(rightOf(sib), BLACK);      // 情况7</div><div class="line">                    setColor(sib, RED);                 // 情况7</div><div class="line">                    rotateLeft(sib);                    // 情况7</div><div class="line">                    sib = leftOf(parentOf(x));          // 情况7</div><div class="line">                &#125;</div><div class="line">                setColor(sib, colorOf(parentOf(x)));    // 情况8</div><div class="line">                setColor(parentOf(x), BLACK);           // 情况8</div><div class="line">                setColor(leftOf(sib), BLACK);           // 情况8</div><div class="line">                rotateRight(parentOf(x));               // 情况8</div><div class="line">                x = root;                               // 情况8</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    setColor(x, BLACK);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>(具体插入和删除操作见 <a href="http://www.imooc.com/article/11715" target="_blank" rel="external">http://www.imooc.com/article/11715</a>)</p>
 
       
     </div>
@@ -389,13 +449,19 @@ Step4:sudo apt-get install python-mpi4py
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/Algorithm/" rel="tag"># Algorithm</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/01/19/python-minHeap/" rel="next" title="python构建小顶堆">
-                <i class="fa fa-chevron-left"></i> python构建小顶堆
+              <a href="/2018/03/02/MachineLearningNotes/" rel="next" title="西瓜书阅读">
+                <i class="fa fa-chevron-left"></i> 西瓜书阅读
               </a>
             
           </div>
@@ -403,10 +469,6 @@ Step4:sudo apt-get install python-mpi4py
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/01/19/RecommendationLearning/" rel="prev" title="Recommendation方向学习">
-                Recommendation方向学习 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -565,7 +627,7 @@ Step4:sudo apt-get install python-mpi4py
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#在Ubuntu下安装MPI环境-python环境"><span class="nav-number">1.</span> <span class="nav-text">在Ubuntu下安装MPI环境(python环境)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-定义"><span class="nav-number">1.</span> <span class="nav-text">1.定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-操作"><span class="nav-number">2.</span> <span class="nav-text">2.操作</span></a></li></ol></div>
             
 
           </div>

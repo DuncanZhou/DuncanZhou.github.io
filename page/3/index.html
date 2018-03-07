@@ -186,7 +186,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -196,7 +196,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            Kategorien
           </a>
         </li>
       
@@ -206,7 +206,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            Über
           </a>
         </li>
       
@@ -216,7 +216,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -249,6 +249,153 @@
           <div id="content" class="content">
             
   <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/ubuntu-sublime/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/19/ubuntu-sublime/" itemprop="url">
+                  ubuntu下sublime中文输入问题
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:44:06+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="ubuntu下安装的sublime-text中文不能输入问题："><a href="#ubuntu下安装的sublime-text中文不能输入问题：" class="headerlink" title="ubuntu下安装的sublime text中文不能输入问题："></a>ubuntu下安装的sublime text中文不能输入问题：</h1><h2 id="a-保存下面的代码到文件sublime-imfix-c-位于-目录"><a href="#a-保存下面的代码到文件sublime-imfix-c-位于-目录" class="headerlink" title="a.保存下面的代码到文件sublime_imfix.c(位于~目录)"></a>a.保存下面的代码到文件sublime_imfix.c(位于~目录)</h2><p>#include”gtk/gtkimcontext.h”<br>void gtk_im_context_set_client_window (GtkIMContext <em>context, GdkWindow  </em>window)<br>{<br>GtkIMContextClass *klass;<br>g_return_if_fail (GTK_IS_IM_CONTEXT (context));<br>klass = GTK_IM_CONTEXT_GET_CLASS (context);<br>if (klass-&gt;set_client_window)<br>klass-&gt;set_client_window (context, window);<br>g_object_set_data(G_OBJECT(context),”window”,window);<br>if(!GDK_IS_WINDOW (window))<br>return;<br>int width = gdk_window_get_width(window);<br>int height = gdk_window_get_height(window);<br>if(width != 0 &amp;&amp; height !=0)<br>gtk_im_context_focus_in(context);<br>}</p>
+<h2 id="b-将上一步的代码编译成共享库libsublime-imfix-so，命令"><a href="#b-将上一步的代码编译成共享库libsublime-imfix-so，命令" class="headerlink" title="b.将上一步的代码编译成共享库libsublime-imfix.so，命令"></a>b.将上一步的代码编译成共享库libsublime-imfix.so，命令</h2><p>gcc -shared -o libsublime-imfix.so sublime_imfix.c  <code>pkg-config --libs --cflags gtk+-2.0</code> -fPIC<br>    注意：如果提示 gtk/gtkimcontext.h：没有那个文件或目录，那就是没有相关的依赖软件，安装命令：</p>
+<p>sudo apt-get install build-essential libgtk2.0-dev</p>
+<h2 id="c-将libsublime-imfix-so拷贝到sublime-text所在文件夹"><a href="#c-将libsublime-imfix-so拷贝到sublime-text所在文件夹" class="headerlink" title="c.将libsublime-imfix.so拷贝到sublime_text所在文件夹"></a>c.将libsublime-imfix.so拷贝到sublime_text所在文件夹</h2><p>sudo mv libsublime-imfix.so /opt/sublime_text/</p>
+<h2 id="d-修改文件-usr-bin-subl的内容"><a href="#d-修改文件-usr-bin-subl的内容" class="headerlink" title="d.修改文件/usr/bin/subl的内容"></a>d.修改文件/usr/bin/subl的内容</h2><p>sudo gedit /usr/bin/subl<br>将</p>
+<p>#!/bin/sh</p>
+<p>exec /opt/sublime_text/sublime_text “$@”</p>
+<p>修改为</p>
+<p>#!/bin/sh</p>
+<p>LD_PRELOAD=/opt/sublime_text/libsublime-imfix.so exec /opt/sublime_text/sublime_text “$@”</p>
+<p>原文链接：<a href="http://www.jianshu.com/p/1f3a3e4f4e92" target="_blank" rel="external">http://www.jianshu.com/p/1f3a3e4f4e92</a></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
     
       
 
@@ -298,7 +445,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:43:59+08:00">
                 2018-01-19
               </time>
@@ -315,7 +462,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Paper/" itemprop="url" rel="index">
@@ -498,7 +645,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:43:51+08:00">
                 2018-01-19
               </time>
@@ -515,7 +662,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Seminar/" itemprop="url" rel="index">
@@ -655,7 +802,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:43:42+08:00">
                 2018-01-19
               </time>
@@ -672,7 +819,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -802,7 +949,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:43:36+08:00">
                 2018-01-19
               </time>
@@ -819,7 +966,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -949,7 +1096,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:43:07+08:00">
                 2018-01-19
               </time>
@@ -966,7 +1113,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Competition/" itemprop="url" rel="index">
@@ -1152,7 +1299,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:42:40+08:00">
                 2018-01-19
               </time>
@@ -1169,7 +1316,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Paper/" itemprop="url" rel="index">
@@ -1322,7 +1469,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:42:32+08:00">
                 2018-01-19
               </time>
@@ -1339,7 +1486,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Paper/" itemprop="url" rel="index">
@@ -1470,7 +1617,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:42:24+08:00">
                 2018-01-19
               </time>
@@ -1487,7 +1634,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -1611,7 +1758,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:42:15+08:00">
                 2018-01-19
               </time>
@@ -1628,7 +1775,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -1671,150 +1818,6 @@
         
           
             <p>近日实验中需要用到小顶堆,记录下来,便于日后参考.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">import heapq</div><div class="line"># 定义一个小顶堆</div><div class="line">class MinHeap(object):</div><div class="line"></div><div class="line">    # 允许传入tuple,按照第二个元素比较</div><div class="line">    def __init__(self, initial=None, key=lambda x:x[1]):</div><div class="line">        self.key = key</div><div class="line">        if initial:</div><div class="line">            self._data = [(key(item), item) for item in initial]</div><div class="line">            heapq.heapify(self._data)</div><div class="line">        else:</div><div class="line">            self._data = []</div><div class="line"></div><div class="line">    def push(self, item):</div><div class="line">        heapq.heappush(self._data, (self.key(item), item))</div><div class="line"></div><div class="line">    def pop(self):</div><div class="line">        return heapq.heappop(self._data)[1]</div><div class="line"></div><div class="line">    def size(self):</div><div class="line">        return len(self._data)</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/py2neo/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/19/py2neo/" itemprop="url">
-                  python与neo-4j交互(对py2neo包做的笔记)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:42:07+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.连接数据库(三种方式相等)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">graph_1 = Graph()</div><div class="line">graph_2 = Graph(host=&quot;localhost&quot;)</div><div class="line">graph_3 = Graph(&quot;http://localhost:7474/db/data&quot;)</div></pre></td></tr></table></figure></p>
-<p>2.事务操作<br>a)直接返回结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">graph.data(&quot;MATCH (a:Person) RETURN a.name, a.born LIMIT 4&quot;)</div></pre></td></tr></table></figure></p>
-<p>b)以pandas格式返回结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DataFrame(graph.data(&quot;MATCH (a:Person) RETURN a.name, a.born LIMIT 4&quot;))</div></pre></td></tr></table></figure></p>
-<p>事务操作样例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">from py2neo import Graph, Node, Relationship</div><div class="line">g = Graph()</div><div class="line">tx = g.begin()</div><div class="line">a = Node(&quot;Person&quot;, name=&quot;Alice&quot;)</div><div class="line">tx.create(a)</div><div class="line">b = Node(&quot;Person&quot;, name=&quot;Bob&quot;)</div><div class="line">ab = Relationship(a, &quot;KNOWS&quot;, b)</div><div class="line">tx.create(ab)</div><div class="line">tx.commit()</div><div class="line">g.exists(ab)</div></pre></td></tr></table></figure></p>
-<p>3.匹配关系<br>查找alice的所有朋友<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for rel in graph.match(start_node=alice,rel_type=&quot;FRIEND&quot;):</div><div class="line">	print(rel.end_node()[&apos;name&apos;])</div></pre></td></tr></table></figure></p>
-<p>4.带参数查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from py2neo import Graph</div><div class="line">g = Graph()</div><div class="line"># evaluate()返回结果的第一个值</div><div class="line">g.run(&quot;&quot;MATCH (a) WHERE a.email=&#123;x&#125; RETURN a.name&quot;,x=&quot;bob@acme.com&quot;).evaluate()</div><div class="line">g.run(&quot;&quot;MATCH (a) WHERE a.email=&#123;x&#125; RETURN a.name&quot;,x=&quot;bob@acme.com&quot;).data()</div></pre></td></tr></table></figure></p>
-<p>5.NodeSelector使用,可以使用Cypher语言的where部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">from py2neo import Graph,NodeSelector</div><div class="line">graph = Graph()</div><div class="line">selector = NodeSelector(graph)</div><div class="line">slected = selector.select(&quot;Person&quot;,name=&quot;Keanu Reeves&quot;)</div><div class="line">list(selected)</div><div class="line">selected = selector.select(&quot;Person&quot;).where(&quot;_.name =~ &apos;J.*&apos;&quot;,&quot;1960 &lt;= _.born &lt; 1970&quot;)</div><div class="line">list(selected)</div></pre></td></tr></table></figure></p>
-<p>6.删除操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 删除所有的</div><div class="line">graph.delete_all()</div></pre></td></tr></table></figure></p>
 
           
         
@@ -1889,8 +1892,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">49</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1898,7 +1901,7 @@
             <div class="site-state-item site-state-categories">
               <a href="/categories">
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               </a>
             </div>
           
@@ -1906,8 +1909,8 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">Tags</span>
               </a>
             </div>
           
@@ -1996,7 +1999,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
