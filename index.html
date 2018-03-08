@@ -259,7 +259,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/07/RedBlackTree/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/09/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -284,186 +284,7 @@
             
               
                 
-                <a class="post-title-link" href="/2018/03/07/RedBlackTree/" itemprop="url">
-                  红黑树学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T09:23:03+08:00">
-                2018-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h3><p>1.红黑树是每个节点都带有颜色属性的<strong>二叉查找树</strong>，颜色或红色或黑色.并且有如下性质:</p>
-<ul>
-<li><p>1)性质1. 节点是红色或黑色。</p>
-</li>
-<li><p>2)性质2. <strong>根节点是黑色</strong>。</p>
-</li>
-<li><p>3)性质3 每个<strong>叶节点（null节点，空节点）是黑色的</strong>。</p>
-</li>
-<li><p>4)性质4 每个红色节点的两个子节点都是黑色。(<strong>从每个叶子到根的所有路径上不能有两个连续的红色节点</strong>)</p>
-</li>
-<li><p>5)性质5.<strong>从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点</strong>。</p>
-</li>
-</ul>
-<blockquote>
-<p>特性:从根到叶子结点最长的可能路径不多于最短的可能路径的两倍长.</p>
-</blockquote>
-<h3 id="2-操作"><a href="#2-操作" class="headerlink" title="2.操作"></a>2.操作</h3><p>1.左旋<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/leftrotate.jpg" alt="图片来自慕课"></p>
-<p>2.右旋<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/rightrotate.jpg" alt="图片来自慕课"></p>
-<p>3.插入(5种情况)</p>
-<ul>
-<li>1)情况1:插入的是根结点<ul>
-<li>对策:直接把该结点涂黑</li>
-</ul>
-</li>
-<li>2)情况2:插入的结点的父结点是黑色<ul>
-<li>对策:Do nothing</li>
-</ul>
-</li>
-<li>3)当前结点的父结点是红色且祖父结点的另一个子结点(叔叔结点)是红色<ul>
-<li>对策:将当前节点的父节点和叔叔节点涂黑，祖父节点涂红，把当前节点指向祖父节点，从新的当前节点重新开始算法。</li>
-</ul>
-</li>
-<li>4)当前结点的父结点是红色,叔叔结点是黑色,当前结点是其父结点的右孩子<ul>
-<li>对策:当前节点的父节点做为新的当前节点，以新当前节点为支点左旋。</li>
-</ul>
-</li>
-<li>5)当前结点的父结点是红色,叔叔结点是黑色,当前结点是其父结点的左孩子<ul>
-<li>对策:父节点变为黑色，祖父节点变为红色，在祖父节点为支点右旋</li>
-</ul>
-</li>
-</ul>
-<p>4.删除<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/delete.png" alt="删除操作"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">private void fixAfterDeletion(Entry&lt;K,V&gt; x) &#123;</div><div class="line">    while (x != root &amp;&amp; colorOf(x) == BLACK) &#123;</div><div class="line">        if (x == leftOf(parentOf(x))) &#123;</div><div class="line">            Entry&lt;K,V&gt; sib = rightOf(parentOf(x));</div><div class="line">            if (colorOf(sib) == RED) &#123;</div><div class="line">                setColor(sib, BLACK);                   // 情况1</div><div class="line">                setColor(parentOf(x), RED);             // 情况1</div><div class="line">                rotateLeft(parentOf(x));                // 情况1</div><div class="line">                sib = rightOf(parentOf(x));             // 情况1</div><div class="line">            &#125;</div><div class="line">            if (colorOf(leftOf(sib))  == BLACK &amp;&amp;</div><div class="line">                colorOf(rightOf(sib)) == BLACK) &#123;</div><div class="line">                setColor(sib, RED);                     // 情况2</div><div class="line">                x = parentOf(x);                        // 情况2</div><div class="line">            &#125; else &#123;</div><div class="line">                if (colorOf(rightOf(sib)) == BLACK) &#123;</div><div class="line">                    setColor(leftOf(sib), BLACK);       // 情况3</div><div class="line">                    setColor(sib, RED);                 // 情况3</div><div class="line">                    rotateRight(sib);                   // 情况3</div><div class="line">                    sib = rightOf(parentOf(x));         // 情况3</div><div class="line">                &#125;</div><div class="line">                setColor(sib, colorOf(parentOf(x)));    // 情况4</div><div class="line">                setColor(parentOf(x), BLACK);           // 情况4</div><div class="line">                setColor(rightOf(sib), BLACK);          // 情况4</div><div class="line">                rotateLeft(parentOf(x));                // 情况4</div><div class="line">                x = root;                               // 情况4</div><div class="line">            &#125;</div><div class="line">        &#125; else &#123; // 跟前四种情况对称</div><div class="line">            Entry&lt;K,V&gt; sib = leftOf(parentOf(x));</div><div class="line">            if (colorOf(sib) == RED) &#123;</div><div class="line">                setColor(sib, BLACK);                   // 情况5</div><div class="line">                setColor(parentOf(x), RED);             // 情况5</div><div class="line">                rotateRight(parentOf(x));               // 情况5</div><div class="line">                sib = leftOf(parentOf(x));              // 情况5</div><div class="line">            &#125;</div><div class="line">            if (colorOf(rightOf(sib)) == BLACK &amp;&amp;</div><div class="line">                colorOf(leftOf(sib)) == BLACK) &#123;</div><div class="line">                setColor(sib, RED);                     // 情况6</div><div class="line">                x = parentOf(x);                        // 情况6</div><div class="line">            &#125; else &#123;</div><div class="line">                if (colorOf(leftOf(sib)) == BLACK) &#123;</div><div class="line">                    setColor(rightOf(sib), BLACK);      // 情况7</div><div class="line">                    setColor(sib, RED);                 // 情况7</div><div class="line">                    rotateLeft(sib);                    // 情况7</div><div class="line">                    sib = leftOf(parentOf(x));          // 情况7</div><div class="line">                &#125;</div><div class="line">                setColor(sib, colorOf(parentOf(x)));    // 情况8</div><div class="line">                setColor(parentOf(x), BLACK);           // 情况8</div><div class="line">                setColor(leftOf(sib), BLACK);           // 情况8</div><div class="line">                rotateRight(parentOf(x));               // 情况8</div><div class="line">                x = root;                               // 情况8</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    setColor(x, BLACK);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>(具体插入和删除操作见 <a href="http://www.imooc.com/article/11715" target="_blank" rel="external">http://www.imooc.com/article/11715</a>)</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/02/MachineLearningNotes/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/02/MachineLearningNotes/" itemprop="url">
+                <a class="post-title-link" href="/2018/03/09/MachineLearningNotes/" itemprop="url">
                   西瓜书阅读
                 </a>
               
@@ -478,8 +299,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-02T18:58:32+08:00">
-                2018-03-02
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-09T18:58:32+08:00">
+                2018-03-09
               </time>
             
 
@@ -538,7 +359,7 @@
           
             <p><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
 <h2 id="西瓜书阅读记录-2-0"><a href="#西瓜书阅读记录-2-0" class="headerlink" title="西瓜书阅读记录(2.0)"></a>西瓜书阅读记录(2.0)</h2><p>2018年1月19日提交1.0</p>
-<h1 id="2018年3月1日重新更新"><a href="#2018年3月1日重新更新" class="headerlink" title="2018年3月1日重新更新"></a>2018年3月1日重新更新</h1><h3 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h3><p>1.归纳偏好</p>
+<h1 id="2018年3月1日重新持续更新2-0"><a href="#2018年3月1日重新持续更新2-0" class="headerlink" title="2018年3月1日重新持续更新2.0"></a>2018年3月1日重新持续更新2.0</h1><h3 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h3><p>1.归纳偏好</p>
 <ul>
 <li><strong>奥卡姆剃刀:</strong>若有多个假设与观察一致,则选择最简单的那个.</li>
 </ul>
@@ -777,6 +598,18 @@
 <li>判别式模型(注重条件概率):它是训练完毕后,输入测试数据,判别模型直接给出的是$P(c|x_0)$.实际上是我们看了训练过的数据之后,学习到了对数据分步的后验知识,然后根据这个认识和测试样本的feature来决策.判别模型求解的思路是：条件分布——&gt;模型参数后验概率最大——-&gt;（似然函数\cdot 参数先验）最大——-&gt;最大似然</li>
 <li>生成式模型(注重联合分布概率):给定输入$x_0$,生成式模型可以给出输入和输出的联合分布$P(x_0,c_0)$.生成模型的求解思路是：联合分布——-&gt;求解类别先验概率和类别条件概率</li>
 </ul>
+<p>3.<strong>半朴素贝叶斯分类器</strong><br>3.1 目的:为了降低贝叶斯公式中的后验概率$P(c|x)$的困难,朴素贝叶斯分类器采用了属性条件独立的假设,但在现实任务中这个假设很难成立.<br>3.2 做法:适当考虑一部分属性间的相互依赖信息<br>3.3 策略:独依赖估计(One-Dependent Estimator)-ODE,就是<strong>假设每个属性在类别之外最多依赖于一个其他属性</strong>.$P(c|x)\propto{P(c)\prod_{i=1}^{d}P(x_i|c,pa_i))}$.相比朴素贝叶斯分类器,$x_i$多了一个依赖.$pa_i$为属性$x_i$所依赖的属性.<br>3.4 问题的关键就在于:如何确定每个属性的父属性,也就是所依赖的属性.<br>方案:</p>
+<ul>
+<li>1.<strong>SPODE</strong>-所有的属性都依赖于同一个属性,称为”超父”,然后通过交叉验证等模型选择方法来确定超父属性</li>
+<li>2.<strong>TAN</strong>-在最大带权生成树算法的基础上,将属性间依赖关系约简到一种树形结构.<ul>
+<li>1.计算任意两个结点的互信息$I(x_i,x_j|y)=\sum_{x_i,x_j;c\in{y}}P(x_i,x_j|c)log\frac{P(x_i,x_j|c)}{P(x_i|c)P(x_j|c)}$</li>
+<li>2.以属性为结点构建完全图,任意两个结点之间边的<strong>权重设为$I(x_i,x_j|y)$</strong></li>
+<li>3.构建此完全图的<strong>最大带权生成树</strong>,挑选根变量,将边置为有向</li>
+<li>4.加入类别结点y,增加从y到每个属性的有向边</li>
+</ul>
+</li>
+<li>3.<strong>AODE</strong>-一种基于集成学习机制,更为强大的独依赖分类器.AODE尝试将每个属性作为超父来构建SPODE,然后将那些具有足够训练数据支撑的<strong>SPODE集成</strong>起来作为最终结果.</li>
+</ul>
 <hr>
 <h3 id="第九章-集成学习-提升方法"><a href="#第九章-集成学习-提升方法" class="headerlink" title="第九章 集成学习(提升方法)"></a>第九章 集成学习(提升方法)</h3><p><strong>1.概念介绍</strong></p>
 <ol>
@@ -943,6 +776,185 @@
 <li>epsilon-贪心:基于一个概率来对探索和利用进行折中,每次尝试时,以epsilon的概率进行探索,以均匀概率选取一个摇臂,以1-epsilon的概率进行利用,即选择当前平均奖赏最高的摇臂.</li>
 <li>Softmax:基于当前已知的摇臂平均奖赏来对探索和利用进行折中.若各摇臂的平均奖赏相当,则选取各摇臂的概率也相当;若某些摇臂的平均奖赏明显高于其他摇臂,则它们被选取的概率也明显更高.</li>
 </ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/07/RedBlackTree/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/07/RedBlackTree/" itemprop="url">
+                  红黑树学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T09:23:03+08:00">
+                2018-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h3><p>1.红黑树是每个节点都带有颜色属性的<strong>二叉查找树</strong>，颜色或红色或黑色.并且有如下性质:</p>
+<ul>
+<li><p>1)性质1. 节点是红色或黑色。</p>
+</li>
+<li><p>2)性质2. <strong>根节点是黑色</strong>。</p>
+</li>
+<li><p>3)性质3 每个<strong>叶节点（null节点，空节点）是黑色的</strong>。</p>
+</li>
+<li><p>4)性质4 每个红色节点的两个子节点都是黑色。(<strong>从每个叶子到根的所有路径上不能有两个连续的红色节点</strong>)</p>
+</li>
+<li><p>5)性质5.<strong>从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点</strong>。</p>
+</li>
+</ul>
+<blockquote>
+<p>特性:从根到叶子结点最长的可能路径不多于最短的可能路径的两倍长.</p>
+</blockquote>
+<h3 id="2-操作"><a href="#2-操作" class="headerlink" title="2.操作"></a>2.操作</h3><p>1.左旋<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/leftrotate.jpg" alt="图片来自慕课"></p>
+<p>2.右旋<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/rightrotate.jpg" alt="图片来自慕课"></p>
+<p>3.插入(5种情况)</p>
+<ul>
+<li>1)情况1:插入的是根结点<ul>
+<li>对策:直接把该结点涂黑</li>
+</ul>
+</li>
+<li>2)情况2:插入的结点的父结点是黑色<ul>
+<li>对策:Do nothing</li>
+</ul>
+</li>
+<li>3)当前结点的父结点是红色且祖父结点的另一个子结点(叔叔结点)是红色<ul>
+<li>对策:将当前节点的父节点和叔叔节点涂黑，祖父节点涂红，把当前节点指向祖父节点，从新的当前节点重新开始算法。</li>
+</ul>
+</li>
+<li>4)当前结点的父结点是红色,叔叔结点是黑色,当前结点是其父结点的右孩子<ul>
+<li>对策:当前节点的父节点做为新的当前节点，以新当前节点为支点左旋。</li>
+</ul>
+</li>
+<li>5)当前结点的父结点是红色,叔叔结点是黑色,当前结点是其父结点的左孩子<ul>
+<li>对策:父节点变为黑色，祖父节点变为红色，在祖父节点为支点右旋</li>
+</ul>
+</li>
+</ul>
+<p>4.删除<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/delete.png" alt="删除操作"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">private void fixAfterDeletion(Entry&lt;K,V&gt; x) &#123;</div><div class="line">    while (x != root &amp;&amp; colorOf(x) == BLACK) &#123;</div><div class="line">        if (x == leftOf(parentOf(x))) &#123;</div><div class="line">            Entry&lt;K,V&gt; sib = rightOf(parentOf(x));</div><div class="line">            if (colorOf(sib) == RED) &#123;</div><div class="line">                setColor(sib, BLACK);                   // 情况1</div><div class="line">                setColor(parentOf(x), RED);             // 情况1</div><div class="line">                rotateLeft(parentOf(x));                // 情况1</div><div class="line">                sib = rightOf(parentOf(x));             // 情况1</div><div class="line">            &#125;</div><div class="line">            if (colorOf(leftOf(sib))  == BLACK &amp;&amp;</div><div class="line">                colorOf(rightOf(sib)) == BLACK) &#123;</div><div class="line">                setColor(sib, RED);                     // 情况2</div><div class="line">                x = parentOf(x);                        // 情况2</div><div class="line">            &#125; else &#123;</div><div class="line">                if (colorOf(rightOf(sib)) == BLACK) &#123;</div><div class="line">                    setColor(leftOf(sib), BLACK);       // 情况3</div><div class="line">                    setColor(sib, RED);                 // 情况3</div><div class="line">                    rotateRight(sib);                   // 情况3</div><div class="line">                    sib = rightOf(parentOf(x));         // 情况3</div><div class="line">                &#125;</div><div class="line">                setColor(sib, colorOf(parentOf(x)));    // 情况4</div><div class="line">                setColor(parentOf(x), BLACK);           // 情况4</div><div class="line">                setColor(rightOf(sib), BLACK);          // 情况4</div><div class="line">                rotateLeft(parentOf(x));                // 情况4</div><div class="line">                x = root;                               // 情况4</div><div class="line">            &#125;</div><div class="line">        &#125; else &#123; // 跟前四种情况对称</div><div class="line">            Entry&lt;K,V&gt; sib = leftOf(parentOf(x));</div><div class="line">            if (colorOf(sib) == RED) &#123;</div><div class="line">                setColor(sib, BLACK);                   // 情况5</div><div class="line">                setColor(parentOf(x), RED);             // 情况5</div><div class="line">                rotateRight(parentOf(x));               // 情况5</div><div class="line">                sib = leftOf(parentOf(x));              // 情况5</div><div class="line">            &#125;</div><div class="line">            if (colorOf(rightOf(sib)) == BLACK &amp;&amp;</div><div class="line">                colorOf(leftOf(sib)) == BLACK) &#123;</div><div class="line">                setColor(sib, RED);                     // 情况6</div><div class="line">                x = parentOf(x);                        // 情况6</div><div class="line">            &#125; else &#123;</div><div class="line">                if (colorOf(leftOf(sib)) == BLACK) &#123;</div><div class="line">                    setColor(rightOf(sib), BLACK);      // 情况7</div><div class="line">                    setColor(sib, RED);                 // 情况7</div><div class="line">                    rotateLeft(sib);                    // 情况7</div><div class="line">                    sib = leftOf(parentOf(x));          // 情况7</div><div class="line">                &#125;</div><div class="line">                setColor(sib, colorOf(parentOf(x)));    // 情况8</div><div class="line">                setColor(parentOf(x), BLACK);           // 情况8</div><div class="line">                setColor(leftOf(sib), BLACK);           // 情况8</div><div class="line">                rotateRight(parentOf(x));               // 情况8</div><div class="line">                x = root;                               // 情况8</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    setColor(x, BLACK);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>(具体插入和删除操作见 <a href="http://www.imooc.com/article/11715" target="_blank" rel="external">http://www.imooc.com/article/11715</a>)</p>
 
           
         
