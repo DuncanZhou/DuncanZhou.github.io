@@ -259,6 +259,150 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/py2neo/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/19/py2neo/" itemprop="url">
+                  python与neo-4j交互(对py2neo包做的笔记)
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:42:07+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1.连接数据库(三种方式相等)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">graph_1 = Graph()</div><div class="line">graph_2 = Graph(host=&quot;localhost&quot;)</div><div class="line">graph_3 = Graph(&quot;http://localhost:7474/db/data&quot;)</div></pre></td></tr></table></figure></p>
+<p>2.事务操作<br>a)直接返回结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">graph.data(&quot;MATCH (a:Person) RETURN a.name, a.born LIMIT 4&quot;)</div></pre></td></tr></table></figure></p>
+<p>b)以pandas格式返回结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DataFrame(graph.data(&quot;MATCH (a:Person) RETURN a.name, a.born LIMIT 4&quot;))</div></pre></td></tr></table></figure></p>
+<p>事务操作样例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">from py2neo import Graph, Node, Relationship</div><div class="line">g = Graph()</div><div class="line">tx = g.begin()</div><div class="line">a = Node(&quot;Person&quot;, name=&quot;Alice&quot;)</div><div class="line">tx.create(a)</div><div class="line">b = Node(&quot;Person&quot;, name=&quot;Bob&quot;)</div><div class="line">ab = Relationship(a, &quot;KNOWS&quot;, b)</div><div class="line">tx.create(ab)</div><div class="line">tx.commit()</div><div class="line">g.exists(ab)</div></pre></td></tr></table></figure></p>
+<p>3.匹配关系<br>查找alice的所有朋友<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for rel in graph.match(start_node=alice,rel_type=&quot;FRIEND&quot;):</div><div class="line">	print(rel.end_node()[&apos;name&apos;])</div></pre></td></tr></table></figure></p>
+<p>4.带参数查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from py2neo import Graph</div><div class="line">g = Graph()</div><div class="line"># evaluate()返回结果的第一个值</div><div class="line">g.run(&quot;&quot;MATCH (a) WHERE a.email=&#123;x&#125; RETURN a.name&quot;,x=&quot;bob@acme.com&quot;).evaluate()</div><div class="line">g.run(&quot;&quot;MATCH (a) WHERE a.email=&#123;x&#125; RETURN a.name&quot;,x=&quot;bob@acme.com&quot;).data()</div></pre></td></tr></table></figure></p>
+<p>5.NodeSelector使用,可以使用Cypher语言的where部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">from py2neo import Graph,NodeSelector</div><div class="line">graph = Graph()</div><div class="line">selector = NodeSelector(graph)</div><div class="line">slected = selector.select(&quot;Person&quot;,name=&quot;Keanu Reeves&quot;)</div><div class="line">list(selected)</div><div class="line">selected = selector.select(&quot;Person&quot;).where(&quot;_.name =~ &apos;J.*&apos;&quot;,&quot;1960 &lt;= _.born &lt; 1970&quot;)</div><div class="line">list(selected)</div></pre></td></tr></table></figure></p>
+<p>6.删除操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 删除所有的</div><div class="line">graph.delete_all()</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/pip_changeSource/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1654,160 +1798,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/Expression/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/19/Expression/" itemprop="url">
-                  四则运算表达式求值
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:40:06+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="表达式求值"><a href="#表达式求值" class="headerlink" title="表达式求值"></a>表达式求值</h3><blockquote>
-<p>对于表达式的求值,一般使用中缀表达式转后缀表达式后,对后缀表达式求值,因为对于后缀或者前缀表达式计算,计算的顺序都是唯一的.</p>
-</blockquote>
-<h4 id="中缀表达式转后缀表达式的方法："><a href="#中缀表达式转后缀表达式的方法：" class="headerlink" title="中缀表达式转后缀表达式的方法："></a>中缀表达式转后缀表达式的方法：</h4><ul>
-<li>1.遇到操作数：直接输出（添加到后缀表达式中）</li>
-<li>2.栈为空时，遇到运算符，直接入栈</li>
-<li>3.遇到左括号：将其入栈</li>
-<li>4.遇到右括号：执行出栈操作，并将出栈的元素输出，直到弹出栈的是左括号，左括号不输出。</li>
-<li>5.遇到其他运算符：加减乘除：弹出所有优先级大于或者等于该运算符的栈顶元素，然后将该运算符入栈</li>
-<li>6.最终将栈中的元素依次出栈，输出。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public ArrayList&lt;String&gt; SuffixExpression(ArrayList&lt;String&gt; string)&#123;</div><div class="line">        ArrayList&lt;String&gt; suffix = new ArrayList&lt;&gt;();</div><div class="line">        Stack&lt;String&gt; stack = new Stack&lt;&gt;();</div><div class="line">        for(int i = 0; i &lt; string.size(); i++)&#123;</div><div class="line">            if(string.get(i).equals(&quot;*&quot;) || string.get(i).equals(&quot;/&quot;) || string.get(i).equals(&quot;(&quot;))&#123;</div><div class="line">                //push</div><div class="line">                stack.push(string.get(i));</div><div class="line">            &#125;</div><div class="line">            else if(string.get(i).equals(&quot;+&quot;) || string.get(i).equals(&quot;-&quot;))&#123;</div><div class="line">                while(!stack.isEmpty() &amp;&amp; (stack.peek().equals(&quot;*&quot;) || stack.peek().equals(&quot;/&quot;)))</div><div class="line">                &#123;</div><div class="line">                        suffix.add(stack.pop());</div><div class="line">                &#125;</div><div class="line">                //push</div><div class="line">                stack.push(string.get(i));</div><div class="line">            &#125;</div><div class="line">            else if(string.get(i).equals(&quot;)&quot;))</div><div class="line">            &#123;</div><div class="line">                while(!stack.isEmpty() &amp;&amp; !stack.peek().equals(&quot;(&quot;))</div><div class="line">                    suffix.add(stack.pop());</div><div class="line">                //pop (</div><div class="line">                stack.pop();</div><div class="line">            &#125;else&#123;</div><div class="line">                suffix.add(string.get(i));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //push all elements in stack</div><div class="line">        while(!stack.isEmpty())</div><div class="line">            suffix.add(stack.pop());</div><div class="line">        return suffix;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h3 id="计算后缀表达式"><a href="#计算后缀表达式" class="headerlink" title="计算后缀表达式"></a>计算后缀表达式</h3><p>遇到操作数压入栈,否则弹出两个操作数进行操作后再压入栈中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public int CalaculateSuffix(ArrayList&lt;String&gt; suffix)&#123;</div><div class="line">        //when meet operator, pop two elements to calaculate</div><div class="line">        Stack&lt;String&gt; stack = new Stack&lt;&gt;();</div><div class="line">        for(int i = 0; i &lt; suffix.size(); i++)&#123;</div><div class="line">            if(!(suffix.get(i).equals(&quot;+&quot;) || suffix.get(i).equals(&quot;-&quot;) || suffix.get(i).equals(&quot;*&quot;) || suffix.get(i).equals(&quot;/&quot;)))</div><div class="line">                //push into stack</div><div class="line">                stack.push(suffix.get(i));</div><div class="line">            else&#123;</div><div class="line">                //calucate</div><div class="line">                String operator = suffix.get(i);</div><div class="line">                String b = stack.pop();</div><div class="line">                String a = stack.pop();</div><div class="line">                String temp = String.valueOf(operate(a,b,operator));</div><div class="line">                stack.push(temp);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return Integer.valueOf(stack.pop());</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/page/3/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1848,7 +1843,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">50</span>
+              <span class="site-state-item-count">51</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -1865,7 +1860,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">Tags</span>
               
             </div>
