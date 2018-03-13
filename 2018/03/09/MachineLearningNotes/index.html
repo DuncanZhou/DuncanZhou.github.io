@@ -103,7 +103,7 @@
 2.NEL定理(No Free Lunch):脱离具体问题,空泛的谈论”什么学习算法更好”毫无意义.
 第二章.模型评估与选择1.过拟合:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所">
 <meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/ML-01.jpg">
-<meta property="og:updated_time" content="2018-03-13T09:22:45.794Z">
+<meta property="og:updated_time" content="2018-03-13T10:34:11.356Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="西瓜书阅读">
 <meta name="twitter:description" content="西瓜书阅读记录(2.0)2018年1月19日提交1.0
@@ -468,7 +468,7 @@
 <li>2)给定划分属性,若样本在该属性上的值缺失,如何对样本进行划分?</li>
 </ul>
 <p>对于第一个问题,还是沿用信息增益来进行划分,借助无缺失值的样本.<br>$$Gain(D,a)=\rho*Gain(\tilde{D},a)=\rho*(Ent(\tilde{D}-\sum_{v=1}^{V}\tilde{r_{v}}Ent(\tilde{D}^v)))$$<br>其中,$$Ent(\tilde{D})=-\sum_{k=1}^{|Y|}\tilde{p}_{k}log_2\tilde{p}_k$$.(参考西瓜书Page86)</p>
-<p>对于第二个问题,若样本x在划分属性a上的取值已知,则将x划入与其取值对应的子结点,且样本权值在子结点中保持为$W_x$.若样本x在划分属性a上的取值未知,则将x同时划入所有子结点,且样本权值在与属性值$a^v$对应的子结点调整为$\tilder{r_v}\cdot{w_x}$.</p>
+<p>对于第二个问题,若样本x在划分属性a上的取值已知,则将x划入与其取值对应的子结点,且样本权值在子结点中保持为$W_x$.若样本x在划分属性a上的取值未知,则将x同时划入所有子结点,且样本权值在与属性值$a^v$对应的子结点调整为$\tilde{r_v}\cdot{w_x}$.</p>
 <p>4.8 多变量决策树: 实现斜划分甚至更复杂的决策树.<strong>在多变量决策树的学习过程中,不是为每个非叶结点寻找一个最优划分属性,而是试图建立一个合适线性分类器.</strong></p>
 <hr>
 <h3 id="第五章-神经网络"><a href="#第五章-神经网络" class="headerlink" title="第五章 神经网络"></a>第五章 神经网络</h3><p>1 神经网络的学习过程就是根据训练数据来调整神经元之间的<strong>连接权</strong>以及每个功能神经元的<strong>阈值</strong>.</p>
@@ -503,8 +503,8 @@
 <p><strong>(补充)</strong>:神经网络的误差反向传播算法的推导需要重新看.</p>
 <hr>
 <h3 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h3><h4 id="第六章-西瓜书"><a href="#第六章-西瓜书" class="headerlink" title="第六章 西瓜书"></a>第六章 西瓜书</h4><p>1.划分超平面:在样本空间中,划分超平面可通过如下线性方程来描述:<br>$$w^Tx+b=0$$,<br>其中,$$w=(w_1;w_2;…;w_d)$$为法向量;b为位移项,决定了超平面与原点之间的距离.将超平面记为(<strong>w</strong>,b),样本空间中任意点x到超平面(<strong>w</strong>,b)的距离为$$r=\frac{|w^T+b|}{||w||}$$.</p>
-<p>2.<strong>支持向量</strong>:假设超平面(<strong>w</strong>,b)能将训练样本正确分类,即对于$$(x_i,y_i)\in{D}$$,若y<sub>i</sub>=+1,则有$$w^T+b&gt;0$$;若y<sub>i</sub>=-1,则有$$w^T+b&lt;0$$.令$$w^T+b\geq{+1},y_i\=1$$;$w^T+b\leq{+1},y_i\=-1$.距离超平面最近的这几个训练样本点使上述等号成立,它们被称为”支持向量”.两个异类支持向量到超平面的距离之和为$$\gamma\=\frac{2}{||w||}$$.它们被称为”间隔”.</p>
-<p>3.<strong>支持向量机</strong>:$$min_{w,b}\frac{1}{2}||w||^2,s.t. y_i(w^Tx_i+b)\geq{1},i\=1,2,3,…,m.$$.</p>
+<p>2.<strong>支持向量</strong>:假设超平面(<strong>w</strong>,b)能将训练样本正确分类,即对于$$(x_i,y_i)\in{D}$$,若y<sub>i</sub>=+1,则有$$w^T+b&gt;0$$;若y<sub>i</sub>=-1,则有$w^T+b&lt;0$.令$w^T+b\geq{+1},y_i=1$;$w^T+b\leq{+1},y_i=-1$.距离超平面最近的这几个训练样本点使上述等号成立,它们被称为”支持向量”.两个异类支持向量到超平面的距离之和为$$\gamma=\frac{2}{||w||}$$.它们被称为”间隔”.</p>
+<p>3.<strong>支持向量机</strong>:$min_{w,b}\frac{1}{2}||w||^2,s.t. y_i(w^Tx_i+b)\geq{1},i=1,2,3,…,m.$.</p>
 <p><strong>(补充:)</strong>SMO算法:</p>
 <ul>
 <li>选取一对需要更新的变量$\alpha_{i}$和$\alpha_{j}$</li>
@@ -531,7 +531,7 @@
 </ul>
 <p><strong>10.软间隔和正则化</strong></p>
 <p>10.1 软间隔:在现实任务中往往很难确定合适的核函数使得训练样本在特征空间中线性可分;退一步说,即便恰好找到了某个核函数使训练集在特征空间中可分,也很难判定这个”线性可分”是不是由过拟合造成的.缓解该问题的一个方法是允许支持向量机在一些样本上出错.支持向量机形式要求所有样本均满足约束,即所有样本都必须划分正确,这称为<strong>“硬间隔”</strong>.而<strong>软间隔</strong>允许某些样本不满足约束.</p>
-<p><strong>补充</strong>:软间隔线性支持向量机优化目标为:<br>1.$$min_{w,b}\frac{1}{2}{||w||}^2+C\sum_{i=1}^{m}l_{0/1}(y_i(w^T+b)-1)$$<br>2.C为惩罚参数,当C无穷大时,则迫使所有样本都满足约束.当C取有限值时,则允许有一些样本不满足约束.<br>3.$l_{0/1}$为0/1损失函数.<br>4.硬间隔和软间隔区别在于:前者是$0\leqslant{\alpha_i}\leqslant{C}$,后者是$0\leqslant{\alpha_i}$.<br>5.支持向量机模型都由两项构成:结构风险和经验风险.结构风险用于描述模型的某些性质,经验风险用于描述模型与训练数据的契合程度.为了降低模型复杂度和防止过拟合,通过$L_p$范数来正则化结构风险.</p>
+<p><strong>补充</strong>:软间隔线性支持向量机优化目标为:<br>1.$$min_{w,b}\frac{1}{2}{||w||}^2+C\sum_{i=1}^{m}l_{0/1}(y_i(w^T+b)-1)$$<br>2.C为惩罚参数,当C无穷大时,则迫使所有样本都满足约束.当C取有限值时,则允许有一些样本不满足约束.<br>3.$l_{0/1}$为0/1损失函数.<br>4.硬间隔和软间隔区别在于:前者是$0\leq{\alpha_i}\leq{C}$,后者是$0\leq{\alpha_i}$.<br>5.支持向量机模型都由两项构成:结构风险和经验风险.结构风险用于描述模型的某些性质,经验风险用于描述模型与训练数据的契合程度.为了降低模型复杂度和防止过拟合,通过$L_p$范数来正则化结构风险.</p>
 <p>11.损失函数:</p>
 <ul>
 <li>hinge损失</li>
@@ -622,7 +622,7 @@
 <li>4.加入类别结点y,增加从y到每个属性的有向边</li>
 </ul>
 </li>
-<li>3.<strong>AODE</strong>-一种基于集成学习机制,更为强大的独依赖分类器.AODE尝试将每个属性作为超父来构建SPODE,然后将那些具有足够训练数据支撑的<strong>SPODE集成</strong>起来作为最终结果.即$P(c|x)\propto{\sum_{i=1,|D_{x_i}|\geqslant{m^{‘}}}^{d}P(c,x_i)\prod_{j=1}^{d}P(x_j|c,x_i))}$</li>
+<li>3.<strong>AODE</strong>-一种基于集成学习机制,更为强大的独依赖分类器.AODE尝试将每个属性作为超父来构建SPODE,然后将那些具有足够训练数据支撑的<strong>SPODE集成</strong>起来作为最终结果.即$P(c|x)\propto{\sum_{i=1,|D_{x_i}|\geq{m^{‘}}}^{d}P(c,x_i)\prod_{j=1}^{d}P(x_j|c,x_i))}$</li>
 </ul>
 <p>4.<strong>贝叶斯网</strong><br>4.1 概念:借助有向无环图来刻画属性之间的依赖关系,并使用条件概率表来描述属性的联合概率分布.一个贝叶斯网B由结构G和参数$\theta$两部分构成,$\theta$定量描述变量的依赖关系.<br>4.2 结构:给定父结点集,贝叶斯网假设每个属性与它的非后裔属性独立,于是$B=&lt;G,\theta&gt;$将属性$x_1,x_2,…,x_d$的联合概率分布定义为$P_B(x_1,x_2,…,x_d)=\prod_{i=1}^{d}P_B(x_i|\pi_i)=\prod_{i=1}^{d}\theta_{x_i|\pi_i}$</p>
 <hr>
