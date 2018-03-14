@@ -93,7 +93,7 @@
 第二章.模型评估与选择1.过拟合:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所">
 <meta property="og:type" content="article">
 <meta property="og:title" content="西瓜书阅读">
-<meta property="og:url" content="https://github.com/DuncanZhou/2018/03/09/MachineLearningNotes/index.html">
+<meta property="og:url" content="https://github.com/DuncanZhou/2018/03/14/MachineLearningNotes/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
 <meta property="og:description" content="西瓜书阅读记录(2.0)2018年1月19日提交1.0
 2018年3月1日重新持续更新2.0第一章 绪论1.归纳偏好
@@ -103,7 +103,7 @@
 2.NEL定理(No Free Lunch):脱离具体问题,空泛的谈论”什么学习算法更好”毫无意义.
 第二章.模型评估与选择1.过拟合:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所">
 <meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/ML-01.jpg">
-<meta property="og:updated_time" content="2018-03-13T10:34:11.356Z">
+<meta property="og:updated_time" content="2018-03-14T03:33:30.037Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="西瓜书阅读">
 <meta name="twitter:description" content="西瓜书阅读记录(2.0)2018年1月19日提交1.0
@@ -141,7 +141,7 @@
 
 
 
-  <link rel="canonical" href="https://github.com/DuncanZhou/2018/03/09/MachineLearningNotes/"/>
+  <link rel="canonical" href="https://github.com/DuncanZhou/2018/03/14/MachineLearningNotes/"/>
 
 
 
@@ -278,7 +278,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/09/MachineLearningNotes/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/14/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -315,8 +315,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-09T18:58:32+08:00">
-                2018-03-09
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-14T18:58:32+08:00">
+                2018-03-14
               </time>
             
 
@@ -660,8 +660,28 @@
 <li>FM指数: FMI=\sqrt{\frac{a}{a+b}\frac{a}{a+c}}</li>
 <li>RI=\frac{2(a+d)}{m(m-1)}<br>上述性能度量的结果均在[0,1]区间,值越大越好.</li>
 </ul>
-<p><strong>1.2内部指标</strong><br><strong>DBI指数和DI指数</strong>(DBI值越小越好,而DI值越大越好.)</p>
-<p><strong>2.聚类算法</strong><br>2.1 <strong>原型聚类</strong>:k-means聚类,学习向量量化(LVQ),高斯混合聚类<br>2.2 <strong>密度聚类</strong>:DBSACN<br>2.3 <strong>层次聚类</strong>:Hierarchical clustering</p>
+<p><strong>1.2内部指标</strong><br><strong>补充:</strong>通过考虑聚类结果的簇之间的距离<br><strong>DBI指数和DI指数</strong>(DBI值越小越好,而DI值越大越好.)</p>
+<p><strong>2.聚类算法</strong><br>2.1 <strong>原型聚类</strong>:k-means聚类,学习向量量化(LVQ)-有标记聚类,高斯混合聚类<br>2.2 <strong>密度聚类</strong>:DBSACN:1.找到所有的核心对象;2.从核心对象出发将密度可达点加入生成聚类簇<br>2.3 <strong>层次聚类</strong>:Hierarchical clustering:先将数据集中的每个样本看作一个初始聚类簇,然后在算法运行的每一步中找出距离最近的两个聚类簇进行合并,不断重复,直到达到预设的聚类簇个数.</p>
+<p><strong>补充:3距离计算</strong><br>3.1 距离度量函数满足以下性质:</p>
+<ul>
+<li>非负性</li>
+<li>同一性</li>
+<li>对称性</li>
+<li>直递性</li>
+</ul>
+<p>3.2 常用的距离度量函数</p>
+<ul>
+<li>Minkowski distance(闵可夫斯基距离)$dist_{mk}(x_i,x_j)=(\sum_{n}^{u=1}|x_{iu}-x_{ju}|^p)^\frac{1}{p}$</li>
+<li>Euclidean distance(欧式距离) 当闵可夫斯基距离中的p=2时,即为欧式距离</li>
+<li>Manhattan distance(曼哈顿距离) 当闵可夫斯基距离中的p=1时,即为曼哈顿距离</li>
+</ul>
+<p>3.3 无序属性的处理</p>
+<ul>
+<li><p>对<strong>无序属性可采用VDM</strong>(Value Difference Metric).令$m_{u,a}$表示在属性u上取值为a的样本数,$m_{u,a,i}$表示在第i个样本簇中的属性u上取值为a的样本数,k为样本簇数,则属性u上两个离散值a和b之间的VDM距离为$VDM_p(a,b)=\sum_{i=1}^{k}|\frac{m_{u,a,i}}{m_{u,a}}-\frac{m_{u,b,i}}{m_{u,b}}|^p$.</p>
+</li>
+<li><p>将闵可夫斯基距离和VDM结合即可处理混合属性.假定有$n_c$个有序属性,$n-n_c$个无序属性,则$MinkovDM_p(x_i,x_j)=(\sum_{u=1}^{n_c}|x_{iu}-x_{ju}|^p+\sum_{u=n_c+1}^{n}VDM_p(x_{iu},x_{ju}))^\frac{1}{p}$</p>
+</li>
+</ul>
 <hr>
 <h3 id="第十一章-降维与度量学习"><a href="#第十一章-降维与度量学习" class="headerlink" title="第十一章 降维与度量学习"></a>第十一章 降维与度量学习</h3><p><strong>1.降维</strong><br>1.1 为什么要降维?因为在高维情形下出现的数据样本稀疏,距离计算困难等问题,是所有机器学习方法共同面临的严重障碍.</p>
 <p>1.2 为什么能进行降维?因为在很多时候,人们观测或收集到的数据样本虽然是高维的,但与学习任务密切相关的也许仅仅是某个低维分布,即高维空间中的一个低维”嵌入”.</p>
@@ -836,8 +856,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/03/07/RedBlackTree/" rel="next" title="红黑树学习">
-                <i class="fa fa-chevron-left"></i> 红黑树学习
+              <a href="/2018/03/13/Interview/" rel="next" title="面试细节">
+                <i class="fa fa-chevron-left"></i> 面试细节
               </a>
             
           </div>
@@ -845,10 +865,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/03/13/Interview/" rel="prev" title="面试细节">
-                面试细节 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
