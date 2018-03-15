@@ -259,7 +259,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/14/MachineLearningNotes/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/15/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -284,7 +284,7 @@
             
               
                 
-                <a class="post-title-link" href="/2018/03/14/MachineLearningNotes/" itemprop="url">
+                <a class="post-title-link" href="/2018/03/15/MachineLearningNotes/" itemprop="url">
                   西瓜书阅读
                 </a>
               
@@ -299,8 +299,8 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-14T18:58:32+08:00">
-                2018-03-14
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T18:58:32+08:00">
+                2018-03-15
               </time>
             
 
@@ -358,8 +358,8 @@
         
           
             <p><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
-<h2 id="西瓜书阅读记录-2-0"><a href="#西瓜书阅读记录-2-0" class="headerlink" title="西瓜书阅读记录(2.0)"></a>西瓜书阅读记录(2.0)</h2><p>2018年1月19日提交1.0</p>
-<h1 id="2018年3月1日重新持续更新2-0"><a href="#2018年3月1日重新持续更新2-0" class="headerlink" title="2018年3月1日重新持续更新2.0"></a>2018年3月1日重新持续更新2.0</h1><h3 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h3><p>1.归纳偏好</p>
+<h2 id="西瓜书阅读记录-2-0"><a href="#西瓜书阅读记录-2-0" class="headerlink" title="西瓜书阅读记录(2.0)"></a>西瓜书阅读记录(2.0)</h2><p>2018年1月19日提交1.0<br>2018年3月1日重新持续更新2.0</p>
+<h1 id="2018年3月15日完成1-11章的阅读-开始阅读-lt-统计学习方法-gt"><a href="#2018年3月15日完成1-11章的阅读-开始阅读-lt-统计学习方法-gt" class="headerlink" title="2018年3月15日完成1-11章的阅读,开始阅读&lt;统计学习方法&gt;"></a>2018年3月15日完成1-11章的阅读,开始阅读&lt;统计学习方法&gt;</h1><h3 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h3><p>1.归纳偏好</p>
 <ul>
 <li><strong>奥卡姆剃刀:</strong>若有多个假设与观察一致,则选择最简单的那个.</li>
 </ul>
@@ -696,21 +696,21 @@
 <h3 id="第十二章-特征选择与稀疏学习"><a href="#第十二章-特征选择与稀疏学习" class="headerlink" title="第十二章 特征选择与稀疏学习"></a>第十二章 特征选择与稀疏学习</h3><p><strong>1.概念和意义</strong><br>1.1 特征选择：从给定的特征集合中选择出相关特征子集的过程，成为”特征选择”;</p>
 <p>1.2 特征选择的原因:</p>
 <ul>
-<li>在现实任务中经常会遇到维数灾难的问题,这是由于属性过多造成的，如果能从中选择出重要的特征，使得后续的学习过程仅需在一部分特征上构建模型,则维数灾难问题会大为减轻。</li>
-<li>去除不相关特征往往会降低学习任务的难度。</li>
+<li>在现实任务中经常会遇到<strong>维数灾难</strong>的问题,这是由于属性过多造成的，如果能从中选择出重要的特征，使得后续的学习过程仅需在一部分特征上构建模型,则维数灾难问题会大为减轻。</li>
+<li><strong>去除不相关特征</strong>往往会降低学习任务的难度。</li>
 </ul>
 <p><strong>2.如何特征选择</strong><br>分为两步:</p>
 <ul>
 <li>“子集搜索”:前向搜索，每次向特征集合中添加，直到结果不再优为止;或者后向搜索，从完整的特征候选集合中减少特征（类似于贪心算法）。</li>
-<li>“子集评价”:基于信息增益计算属性特征的贡献。</li>
+<li>“子集评价”:基于<strong>信息增益</strong>计算属性特征的贡献。对于属性子集A,假定根据其取值将D分成了V个子集{D^1,D^2,…,D^V},每个子集中的样本在A上取值相同,于是我们可计算属性子集A的信息增益.信息增益越大,意味着特征子集A包含的有助于分类的信息越多.基于每个属性子集的信息增益作为评价准则.</li>
 </ul>
 <p><strong>3.特征选择的方法</strong><br><strong>3.1 过滤式</strong><br>过滤式选择不考虑后续学习器。</p>
 <blockquote>
-<p>Relief是一种著名的过滤式特征选择方法，该方法设计了一个”相关统计量”来度量特征的重要性。（是为二分类问题设计的。扩展变体Relief-F能处理多分类的问题。）</p>
+<p>Relief是一种著名的过滤式特征选择方法，该方法设计了一个”相关统计量”来度量特征的重要性。（是为二分类问题设计的。扩展变体Relief-F能处理多分类的问题。）可以设定相关统计量的<strong>阈值</strong>或者设定选择<strong>特征的个数K</strong>.</p>
 </blockquote>
-<p><strong>3.2 包裹式</strong><br>与过滤式选择不考虑后续学习器不同，包裹式选择直接把最终将要使用的学习器的性能作为特征子集的评价准则。In other words，包裹式选择的目的就是为给定学习器选择最有利于其性能的特征子集。包裹式选择方法直接针对给定学习器进行优化。</p>
+<p><strong>3.2 包裹式</strong><br>与过滤式选择不考虑后续学习器不同，包裹式选择<strong>直接把最终将要使用的学习器的性能作为特征子集的评价准则</strong>。In other words，包裹式选择的目的就是为给定学习器选择最有利于其性能的特征子集。包裹式选择方法直接针对给定学习器进行优化。</p>
 <blockquote>
-<p>LWW(Las Vegas Wrapper)是一个典型的包裹式特征选择方法，它在拉斯维加斯方法框架下使用<strong>随机策略</strong>来进行子集搜索，并<strong>以最终分类器的误差为特征子集评价准则</strong>。</p>
+<p>LWW(Las Vegas Wrapper)是一个典型的包裹式特征选择方法，它在拉斯维加斯方法框架下使用<strong>随机策略</strong>来进行子集搜索，并<strong>以最终分类器的误差为特征子集评价准则</strong>。-交叉验证</p>
 </blockquote>
 <p><strong>3.3 嵌入式</strong><br>嵌入式选择是将特征选择过程与学习器训练过程融为一体，两者在同一个优化过程中完成，即在学习器训练过程中自动地进行了特征选择。<br>具体做法：将过拟合中的正则项中的L2范数替换为L1范数，L1范数和L2范数都有助于降低过拟合的风险，但L1范数还会带来一个额外的好处，它比后者更易于获得”稀疏”解。</p>
 <p><strong>4.稀疏表示与字典学习</strong><br>4.1 将样本转化为合适的稀疏表示形式，从而使学习任务得以简化，模型复杂度得以降低，通常称为”字典学习”，亦称”稀疏编码”。</p>
