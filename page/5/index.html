@@ -259,6 +259,200 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/JVM/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/19/JVM/" itemprop="url">
+                  JAVA虚拟机了解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:40:20+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-走进JAVA"><a href="#1-走进JAVA" class="headerlink" title="1.走进JAVA"></a>1.走进JAVA</h3><p>1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.</p>
+<p>2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.</p>
+<h3 id="2-JAVA内存区域与内存溢出异常"><a href="#2-JAVA内存区域与内存溢出异常" class="headerlink" title="2.JAVA内存区域与内存溢出异常"></a>2.JAVA内存区域与内存溢出异常</h3><p><strong>先放一张jvm运行时数据区分配情况图</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png" alt="jvm运行时数据区"></p>
+<ol>
+<li><p>Java堆中分配内存方式:如果Java堆中的内存是绝对规整的,所有用过的内存都放在一边,空闲的内存放在另一边,中间放着一个指针作为分界点的指示器,那所分配内存就是仅仅把那个指针向空闲空间那边挪动一段与对象大小相等的距离,这种分配方式称为<strong>指针碰撞(Bump the pointer)</strong>;如果Java堆中的内存并不是规整的,已使用内存和空闲的内存相互交错,虚拟机就必须维护一个列表,记录上哪些内存块是可用的,在分配的时候从列表中找到一块足够大的空间划分给对象,并更新列表上的记录,这种分配方式称为<strong>空闲列表(Free List)</strong>;</p>
+</li>
+<li><p>划分内存过程需要考虑同步问题,两种方式:1)对分配内存空间的动作进行同步处理(CAS配上失败重试的方式保证更新操作的原子性);2)每个线程在Java堆中预先分配一小块内存,为<strong>本地线程分配缓冲(Thread Local Allocation Buffer)</strong>,当TLAB分配完了之后再做同步操作.</p>
+</li>
+<li><p>对象的访问定位:<strong>使用句柄和直接指针</strong></p>
+</li>
+</ol>
+<h3 id="3-垃圾收集算法"><a href="#3-垃圾收集算法" class="headerlink" title="3.垃圾收集算法"></a>3.垃圾收集算法</h3><ul>
+<li>标记-清除算法:首先标记出所有需要回收的对象,在标记完成后一次性回收所有被标记的对象.</li>
+<li>复制算法:将可用内存分为两块,每次只使用其中一块,当着一块内存用完了,就将还存活的对象复制到另一块上,然后把已使用的内存空间一次清理掉.</li>
+<li>标记-整理算法:首先标记出所有需要回收的对象,让所有存活的对象都向一端移动,然后直接清理掉端界外的内存.\</li>
+<li>分代收集法:将堆分为新生代和老年代,根据每个代的特点选择合适的垃圾回收算法.</li>
+</ul>
+<h3 id="4-垃圾收集器"><a href="#4-垃圾收集器" class="headerlink" title="4.垃圾收集器"></a>4.垃圾收集器</h3><p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-02.png" alt="jvm垃圾收集器"></p>
+<ol>
+<li><p>Serial收集器<br>这个收集器是一个单线程的收集器,但它的”单线程”的意义并不仅仅说明它只会使用一个CPU或一条收集线程去完成垃圾收集工作,更重要的是在它进行垃圾收集时,必须暂停其他所有的工作线程,直到它收集结束.(Client模式下默认的垃圾收集器)</p>
+</li>
+<li><p>ParNew收集器<br>ParNew收集器就是Serial收集器的多线程版本,除了使用多条线程进行垃圾收集之外,其余行为包括Serial收集器可用的所有控制参数,收集算法,Stop the world,对象分配规则,回收策略等都与Serial收集器完全一样.(Server模式下的垃圾收集器)</p>
+</li>
+<li><p>Parallel Scavenge收集器<br>Parallel Scavenge收集器更多关注于控制吞吐量(吞吐量=运行用户代码时间/(运行用户代码时间+垃圾收集时间)).</p>
+</li>
+<li><p>Serial Old收集器</p>
+</li>
+<li><p>Parallel Old收集器</p>
+</li>
+<li><p>CMS收集器<br>CMS收集器是一种以<strong>获取最短回收停顿时间为目标</strong>的收集器.目前很大一部分的Java应用集中在互联网站或者B/S系统的服务端上.<br>CMS收集器是基于”标记-清除”算法实现的,运作过程分为4个步骤:</p>
+</li>
+</ol>
+<ul>
+<li>初始标记</li>
+<li>并发标记</li>
+<li>重新标记</li>
+<li>并发清除</li>
+</ul>
+<ol>
+<li>G1收集器<br>运作大致分为:</li>
+</ol>
+<ul>
+<li>初始标记(标记GC Roots直接关联到的对象)</li>
+<li>并发标记(GC Roots可达性分析)</li>
+<li>最终标记(修正在并发标记阶段标记发生改变的那部分标记记录)</li>
+<li>筛选回收(对各个Region的回收价值和成本排序)</li>
+</ul>
+<h3 id="5-内存对象收集器"><a href="#5-内存对象收集器" class="headerlink" title="5.内存对象收集器"></a>5.内存对象收集器</h3><p>1.新生代GC(Minor GC):指发生在新生代的垃圾收集动作,Minor GC非常频繁,一般回收速度也比较快.</p>
+<p>2.老年代GC(Major GC/Full GC):指发生在老年代的GC,出现了Major GC,经常会伴随至少一次的Minor GC,Major GC的速度一般会比Minor GC慢10倍以上.</p>
+<h3 id="6-虚拟机性能监控与故障处理工具"><a href="#6-虚拟机性能监控与故障处理工具" class="headerlink" title="6.虚拟机性能监控与故障处理工具"></a>6.虚拟机性能监控与故障处理工具</h3><ul>
+<li>jps:虚拟机进程状况工具</li>
+<li>jstat:虚拟机统计信息监视工具</li>
+<li>jinfo:Java配置信息工具(实时地查看和调整虚拟机各项参数)</li>
+<li>jmap:Java内存映像工具</li>
+<li>jhat:虚拟机堆转储快照分析工具</li>
+<li>jstack:Java堆栈跟踪工具</li>
+<li>JConsole和VisualVM(可视化工具)</li>
+</ul>
+<h3 id="7-虚拟机执行子系统"><a href="#7-虚拟机执行子系统" class="headerlink" title="7.虚拟机执行子系统"></a>7.虚拟机执行子系统</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/GraphAndTree/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -298,7 +492,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:40:11+08:00">
                 2018-01-19
               </time>
@@ -315,7 +509,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -439,7 +633,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:40:06+08:00">
                 2018-01-19
               </time>
@@ -456,7 +650,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -588,7 +782,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:40:01+08:00">
                 2018-01-19
               </time>
@@ -605,7 +799,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Paper/" itemprop="url" rel="index">
@@ -740,7 +934,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:39:52+08:00">
                 2018-01-19
               </time>
@@ -757,7 +951,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -899,7 +1093,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:39:48+08:00">
                 2018-01-19
               </time>
@@ -916,7 +1110,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1060,7 +1254,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:39:32+08:00">
                 2018-01-19
               </time>
@@ -1077,7 +1271,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1208,7 +1402,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-09-23T00:00:00+08:00">
                 2017-09-23
               </time>
@@ -1225,7 +1419,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1355,7 +1549,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-25T20:32:39+08:00">
                 2017-05-25
               </time>
@@ -1372,7 +1566,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -1496,7 +1690,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T10:09:04+08:00">
                 2017-05-23
               </time>
@@ -1513,7 +1707,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1589,128 +1783,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2017/05/22/OpenMPILearning/OpenMPILearning/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2017/05/22/OpenMPILearning/OpenMPILearning/" itemprop="url">
-                  OpenMPI学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-22T12:07:54+08:00">
-                2017-05-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>由于学校服务器上不允许随便装其他环境，所以用自己pc跑了程序.<br>学校服务器配置:10台物理机 每台机子2个核<br>PC:4核</p>
-<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>1.OpenMPI<br>2.Python环境<br>3.nltk包安装<br>4.numpy环境<br>5.mpi4py</p>
-<h3 id="代码程序"><a href="#代码程序" class="headerlink" title="代码程序"></a>代码程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line">#-*-coding:utf-8-*-</div><div class="line">&apos;&apos;&apos;@author:duncan&apos;&apos;&apos;</div><div class="line">import re</div><div class="line">import os</div><div class="line">import math</div><div class="line">import time</div><div class="line">import sys</div><div class="line">reload(sys)</div><div class="line">sys.setdefaultencoding(&apos;utf-8&apos;)</div><div class="line">import nltk</div><div class="line">from nltk.tokenize import word_tokenize</div><div class="line">from nltk.corpus import stopwords</div><div class="line">from nltk.stem import WordNetLemmatizer</div><div class="line">from mpi4py import MPI</div><div class="line">tweets_path = &apos;TestTweets/&apos;</div><div class="line"></div><div class="line">tags = 10</div><div class="line"></div><div class="line"></div><div class="line"># 公共通信变量</div><div class="line">comm = MPI.COMM_WORLD</div><div class="line"># 当前进程获取当前进程的id</div><div class="line">comm_rank = comm.Get_rank()</div><div class="line"># 获取整个通信结点的数量</div><div class="line">comm_size = comm.Get_size()</div><div class="line"></div><div class="line"># 计算一段文本中的tags,返回tag列表</div><div class="line">def GetTags(text):</div><div class="line">    twitter_stop_words = [&quot;from&quot;,&quot;TO&quot;,&quot;to&quot;,&quot;https&quot;,&quot;RT&quot;,&quot;URL&quot;,&quot;in&quot;,&quot;re&quot;,&quot;thank&quot;,&quot;thanks&quot;,&quot;today&quot;,&quot;yesterday&quot;,&quot;tomorrow&quot;,&quot;night&quot;,&quot;tonight&quot;,&quot;day&quot;,&quot;year&quot;,&quot;last&quot;,&quot;oh&quot;,&quot;yeah&quot;,&quot;amp&quot;]</div><div class="line">    &apos;&apos;&apos;</div><div class="line"></div><div class="line">    :param text: 文本</div><div class="line">    :return: 返回tag列表</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    # 首先针对推文中去除其他符号</div><div class="line">    text = re.sub(r&apos;[@|#][\d|\w|_]+|http[\w|:|.|/|\d]+&apos;,&quot;&quot;,text)</div><div class="line">    wordslist = []</div><div class="line">    if text == &quot;&quot; or text == None:</div><div class="line">        return []</div><div class="line"></div><div class="line">    # 利用nltk分词</div><div class="line">    words = word_tokenize(text)</div><div class="line">    for word in words:</div><div class="line">        # 去除停用词</div><div class="line">        if word not in (stopwords.words(&quot;english&quot;) and twitter_stop_words):</div><div class="line">            if(len(word) &gt; 2 and word.isalpha()):</div><div class="line">                wordslist.append(word.lower())</div><div class="line">    # 继续对词性进行标注</div><div class="line">    try:</div><div class="line">        pos = nltk.pos_tag(wordslist)</div><div class="line">    except Exception as e:</div><div class="line">        pos = []</div><div class="line">    if(len(pos) &lt; 1):</div><div class="line">        return []</div><div class="line">    tags = []</div><div class="line">    lemmatizer = WordNetLemmatizer()</div><div class="line">    for w in pos:</div><div class="line">        word = &quot;&quot;</div><div class="line">        # 是动词,做词性还原</div><div class="line">        if(w[1][0] == &apos;V&apos;):</div><div class="line">            word = lemmatizer.lemmatize(w[0],&apos;v&apos;)</div><div class="line">            tags.append(word)</div><div class="line">        # 是名词做词性还原</div><div class="line">        elif(w[1][0] == &quot;N&quot;):</div><div class="line">            word = lemmatizer.lemmatize(w[0])</div><div class="line">            tags.append(word)</div><div class="line">    i = 0</div><div class="line">    multicandidates = []</div><div class="line">    while(i &lt; len(pos) - 2):</div><div class="line">        phase = &quot;&quot;</div><div class="line">        # 动名词 | 动词 + 形容词 +名词</div><div class="line">        if (pos[i])[1][0] == &apos;V&apos; and (pos[i + 1][1][0] == &apos;N&apos; or (pos[i + 1][1][0] == &quot;J&quot; and pos[i + 2][1][0] == &quot;N&quot;)):</div><div class="line">            if pos[i + 1][1][0] == &apos;N&apos;:</div><div class="line">                suffix = lemmatizer.lemmatize(pos[i + 1][0],&apos;a&apos;)</div><div class="line">            else:</div><div class="line">                suffix = lemmatizer.lemmatize(pos[i + 1][0],&apos;n&apos;)</div><div class="line">            phase += lemmatizer.lemmatize((pos[i])[0],&apos;v&apos;) + &quot; &quot; + suffix</div><div class="line">            i = i + 2</div><div class="line">            while(i &lt; len(pos) and (pos[i])[1][0] == &apos;N&apos;):</div><div class="line">                phase += &quot; &quot; + lemmatizer.lemmatize((pos[i])[0])</div><div class="line">                i += 1</div><div class="line"></div><div class="line">            multicandidates.append(phase)</div><div class="line">        # 形容词　+ 名词</div><div class="line">        elif(pos[i][1][0] == &quot;J&quot; and pos[i + 1][1][0] == &quot;N&quot;):</div><div class="line">            if((i !=0 and pos[i - 1 ][1][0] != &quot;V&quot;) or i == 0):</div><div class="line">                phase +=lemmatizer.lemmatize((pos[i])[0],&quot;a&quot;) + &quot; &quot; + lemmatizer.lemmatize((pos[i + 1])[0])</div><div class="line">                i += 2</div><div class="line">                while(i &lt; len(pos) and (pos[i])[1][0] == &apos;N&apos;):</div><div class="line">                    phase += &quot; &quot; + lemmatizer.lemmatize((pos[i])[0],&quot;n&quot;)</div><div class="line">                    i += 1</div><div class="line">            multicandidates.append(phase)</div><div class="line">        else:</div><div class="line">            i += 1</div><div class="line">    if len(multicandidates) != 0:</div><div class="line">        tags += multicandidates</div><div class="line">    return tags</div><div class="line"></div><div class="line"></div><div class="line"># 计算words列表中词频</div><div class="line">def CalcTF(words,number):</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    :param number: 限制返回的tag数量</div><div class="line">    :param words: 传入words的list列表</div><div class="line">    :return: 返回对应字典形式 &#123;tag:TF&#125;,最终返回列表</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    worddic = &#123;&#125;</div><div class="line">    # 先转换成集合</div><div class="line">    dic = set(words)</div><div class="line">    for word in dic:</div><div class="line">        TF = words.count(word)</div><div class="line">        worddic[word] = TF</div><div class="line">    # 将字典按照词频排序,取前10个</div><div class="line">    worddic = sorted(worddic.items(),key = lambda val:val[1],reverse=True)</div><div class="line">    return worddic[:number]</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    # text = &quot;how do i love you? Beautiful girls like eating cakes. I like dancing and swimming. How about you?he loves me? all we eat cakes.&quot;</div><div class="line">    # print CalcTF(GetTags(text),10)</div><div class="line"></div><div class="line">    flag = False</div><div class="line">    # 获取文件夹中用户总数及名称</div><div class="line">    names_list = os.listdir(tweets_path)</div><div class="line">    users_number = len(names_list)</div><div class="line">    if(comm_rank == 0):</div><div class="line">        print &quot;共%d个用户&quot; % users_number</div><div class="line">    block_size = math.ceil(users_number * 1.0 / comm_size)</div><div class="line">    # print &quot;block_size大小%d&quot; % block_size</div><div class="line">    start = i = int(comm_rank * block_size)</div><div class="line">    users_tags = []</div><div class="line">    start_time = time.time()</div><div class="line">    while(i &lt; block_size + start and i &lt; users_number):</div><div class="line">        with open(tweets_path + names_list[i],&apos;r&apos;) as f:</div><div class="line">            text = f.read()</div><div class="line">        # 得到某一用户的前n个tags,并有词频</div><div class="line">        user_tags = CalcTF(GetTags(text.decode(&quot;utf-8&quot;)),tags)</div><div class="line">        # print user_tags</div><div class="line">        users_tags += user_tags</div><div class="line">        i += 1</div><div class="line">        print &quot;已处理%d个用户&quot; % i</div><div class="line"></div><div class="line">    if(comm_rank == 0):</div><div class="line">        i = 1</div><div class="line">        while(i &lt; comm_size):</div><div class="line">            rev_tags = comm.recv(source=i)</div><div class="line">            # 合并起来</div><div class="line">            users_tags += rev_tags</div><div class="line">            i += 1</div><div class="line">            # print users_tags</div><div class="line">        # 写入文件</div><div class="line">        with open(&quot;/home/duncan/tags_tf&quot;,&quot;w&quot;) as f:</div><div class="line">            # 使得从第一行开始写</div><div class="line">            for tag in users_tags:</div><div class="line">                f.write(tag[0])</div><div class="line">                f.write(&quot;\t&quot;)</div><div class="line">                f.write(str(tag[1]))</div><div class="line">                f.write(&quot;\n&quot;)</div><div class="line">        print &quot;TF值写入完成&quot;</div><div class="line">        # 当对文件写入完成时发送广播</div><div class="line">        flag = True</div><div class="line">        comm.bcast(flag,root=0)</div><div class="line">    else:</div><div class="line">        # 除了0号进程外,其他进程发送数据,先发送自己的进程id</div><div class="line">        comm.send(users_tags,dest=0)</div><div class="line"></div><div class="line">    if(comm_rank != 0):</div><div class="line">        flag = comm.bcast(None,root=0)</div><div class="line"></div><div class="line">    # 当flag为True时继续向下计算</div><div class="line">    if(flag == True):</div><div class="line">        print &quot;process %d 开始计算idf&quot; % comm_rank</div><div class="line">        # 对保存好的文件中的TF词频tags继续计算IDF</div><div class="line">        with open(&quot;/home/duncan/tags_tf&quot;,&quot;r&quot;) as f:</div><div class="line">            lines = f.readlines()</div><div class="line">        # 每个进程结点需要处理的tags数</div><div class="line">        block_size = (int)(math.ceil(users_number * 1.0 / comm_size)) * tags</div><div class="line">        start = lineid = comm_rank * block_size</div><div class="line">        tags_tfidf = []</div><div class="line">        while(lineid &lt; block_size + start and lineid &lt; users_number * tags):</div><div class="line"></div><div class="line">            # 对lines[i]去计算它的idf,在其他用户tags中搜寻</div><div class="line">            user_id = int(math.ceil((lineid + 1) * 1.0 / tags))</div><div class="line">            # 所以该用户tags行标在[(user_id - 1) * tags,user_id * tags - 1]</div><div class="line">            search_rowid = 0</div><div class="line">            count = 1</div><div class="line">            while(search_rowid &lt; users_number * tags):</div><div class="line">                # 当在其中一个用户的tags中搜寻到后直接跳至下一个用户的tags</div><div class="line">                if(search_rowid &lt; (user_id - 1) * tags or search_rowid &gt; user_id * tags - 1):</div><div class="line">                    if((lines[search_rowid].split(&quot;\t&quot;))[0] == (lines[lineid].split(&quot;\t&quot;))[0]):</div><div class="line">                        count += 1</div><div class="line">                        # 跳到下一个用户tags开始处</div><div class="line">                        current_user_id = int(math.ceil((search_rowid + 1) * 1.0 / tags))</div><div class="line">                        search_rowid = current_user_id * tags</div><div class="line">                    else:</div><div class="line">                        search_rowid += 1</div><div class="line">                else:</div><div class="line">                    # 在所需要判断的用户的tags范围内,则跳出</div><div class="line">                    search_rowid = user_id * tags</div><div class="line">            idf = math.log(users_number * 1.0 / count,2)</div><div class="line">            # print count,idf</div><div class="line">            tags_tfidf.append(((lines[lineid].split(&quot;\t&quot;))[0],idf * int((lines[lineid].split(&quot;\t&quot;))[1])))</div><div class="line">            lineid += 1</div><div class="line"></div><div class="line">        end_time = time.time()</div><div class="line">        # 每个结点都处理完自己的用户推文</div><div class="line">        print &quot;process %d cost %f&quot; % (comm_rank,end_time - start_time)</div><div class="line"></div><div class="line">        # 该进程计算完其下所有用户的tags的tfidf</div><div class="line">        if(comm_rank == 0):</div><div class="line">            # 收集tags_tfidf</div><div class="line">            i = 1</div><div class="line">            while(i &lt; comm_size):</div><div class="line">                recv_tags = comm.recv(source = i)</div><div class="line">                tags_tfidf += recv_tags</div><div class="line">                i += 1</div><div class="line">            # 最终结果写入文件</div><div class="line">            with open(&quot;/home/duncan/tags_tfidf&quot;,&quot;w&quot;) as f:</div><div class="line">                for tag in tags_tfidf:</div><div class="line">                    f.write(tag[0])</div><div class="line">                    f.write(&quot;\t&quot;)</div><div class="line">                    f.write(str(tag[1]))</div><div class="line">                    f.write(&quot;\n&quot;)</div><div class="line">        else:</div><div class="line">            comm.send(tags_tfidf,dest=0)</div></pre></td></tr></table></figure>
-<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>1.48个用户,每个用户10个标签  加速比1.6左右(单核:365s;4核:226s)<br>3.100个用户,每个用户10个标签,加速比1.7左右(单核:781s;4核:457s)<br>3.1000个用户,每个用户10个标签,加速比(1.8左右)(单核:5706s;4核:3108s)<br>4.10000个用户,每个用户10个标签,加速比(2左右)(单核:69299s;4核:34643s)<br><img src="http://ww4.sinaimg.cn/large/006HJ39wgy1fftzigg1rxj30m80go0t5.jpg" alt="实验结果图"></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1756,8 +1828,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">52</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">53</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -1765,7 +1837,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">7</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -1774,7 +1846,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">8</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -1863,7 +1935,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
