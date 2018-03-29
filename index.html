@@ -403,7 +403,16 @@
 <li>难以实行并行化</li>
 <li>模型复杂度较高,深入分析和调优有一定难度</li>
 </ul>
-<h3 id="2-XgBoost-Extreme-Gradient-Boosting"><a href="#2-XgBoost-Extreme-Gradient-Boosting" class="headerlink" title="2.XgBoost(Extreme Gradient Boosting)"></a><font color="red">2.XgBoost(Extreme Gradient Boosting)</font></h3><h3 id="3-SVM-Support-Vector-Machine"><a href="#3-SVM-Support-Vector-Machine" class="headerlink" title="3.SVM(Support Vector Machine)"></a><font color="red">3.SVM(Support Vector Machine)</font></h3><h3 id="4-CNN-Convolutional-Neural-Network"><a href="#4-CNN-Convolutional-Neural-Network" class="headerlink" title="4.CNN(Convolutional Neural Network)"></a><font color="red">4.CNN(Convolutional Neural Network)</font></h3>
+<h3 id="2-XgBoost-Extreme-Gradient-Boosting"><a href="#2-XgBoost-Extreme-Gradient-Boosting" class="headerlink" title="2.XgBoost(Extreme Gradient Boosting)"></a><font color="red">2.XgBoost(Extreme Gradient Boosting)</font></h3><p><strong>1.xgboost和GBDT区别</strong></p>
+<ul>
+<li>传统GBDT以CART作为基分类器,<strong>xgboost还支持线性分类器.</strong></li>
+<li>传统GBDT在优化时只用到<strong>一阶导数信息</strong>,而<strong>xgboost进行了二阶泰勒展开</strong></li>
+<li>xgboost在代价函数中<strong>加入了正则项</strong></li>
+<li>对于<strong>缺失值的处理</strong>,xgboost可以自动学习出它的分裂方向</li>
+<li>xgboost支持并行,<strong>并行过程是在确定最佳分割点时</strong>,每一轮的训练还是前向分步法,这个过程不能并行.选择最佳分割点时使用近似直方图算法</li>
+</ul>
+<h3 id="3-SVM-Support-Vector-Machine"><a href="#3-SVM-Support-Vector-Machine" class="headerlink" title="3.SVM(Support Vector Machine)"></a><font color="red">3.SVM(Support Vector Machine)</font></h3><p>参考该篇博客: <a href="https://blog.csdn.net/szlcw1/article/details/52259668" target="_blank" rel="external">https://blog.csdn.net/szlcw1/article/details/52259668</a> (谢谢作者整理)</p>
+<h3 id="4-CNN-Convolutional-Neural-Network"><a href="#4-CNN-Convolutional-Neural-Network" class="headerlink" title="4.CNN(Convolutional Neural Network)"></a><font color="red">4.CNN(Convolutional Neural Network)</font></h3>
           
         
       
