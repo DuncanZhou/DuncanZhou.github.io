@@ -391,7 +391,7 @@
 <p><strong>2.关键点</strong></p>
 <p><strong>2.1 gbdt 的算法的流程？</strong><br>gbdt通过多轮迭代,每轮迭代生成一个弱分类器,每个分类器在上一轮分类器的残差基础上进行训练.(<strong>弱分类器一般会选择CART TREE - 分类回归树</strong>)</p>
 <p><strong>最终的总分类器是将每轮训练得到的弱分类器加权求和得到. - 加法模型</strong></p>
-<p>模型最终可描述为:$F_M(x)=\sum_{m=1}^{M}T(x;\theta_{m})$<br>模型一共训练M轮,每轮产生一个弱分类器$T(x;\theta_m)$,弱分类器的损失函数$$\hat{\theta}_m=argmin_{\theta_m}\sum_{i=1}^{N}L{y_i,F_{m-1}(x_i)+T_m(x_i;\theta_m)}$$</p>
+<p>模型最终可描述为:$F_M(x)=\sum_{m=1}^{M}T(x;\theta_{m})$<br>模型一共训练M轮,每轮产生一个弱分类器$T(x;\theta_m)$,弱分类器的损失函数<script type="math/tex">\hat{\theta}\_m=argmin\_{\theta\_m}\sum\_{i=1}^{N}L\{y\_i,F\_{m-1}(x\_i)+T\_m(x\_i;\theta\_m)\}</script></p>
 <p>gbdt在每轮迭代的时候,都去拟合损失函数在当前模型下的负梯度.<br><strong>2.2 gbdt 如何选择特征 ？</strong><br>原始的gbdt做法非常暴力,首先<strong>遍历每个特征</strong>,然后<strong>对每个特征遍历它所有可能的切分点</strong>,找到最优特征m的最优切分点j.</p>
 <p><strong>2.3 gbdt 如何构建特征 ？</strong><br>工业界做法是和<strong>逻辑回归结合</strong>,得到组合特征.</p>
 <p><strong>2.4 gbdt 如何用于分类？</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/gbdt-multiclassifier.png" alt="gbdt多分类"></p>
@@ -777,24 +777,7 @@
   
 
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 
 
 

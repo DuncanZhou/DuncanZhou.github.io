@@ -409,7 +409,8 @@
 <p>5.<strong>ID3算法/C4.5算法</strong>参考&lt;西瓜书&gt;,西瓜书上讲得略微好一点</p>
 <p>6.<strong>CART算法</strong>:<strong>最小二乘法生成回归树</strong>,<strong>基于基尼系数生成回归树</strong></p>
 <p>7.剪枝策略:预剪枝和后剪枝 (参考西瓜书上) 将数据集分为训练集和验证集,用验证集来进行剪枝操作.</p>
-<h3 id="第六章-Logistic回归和最大熵模型"><a href="#第六章-Logistic回归和最大熵模型" class="headerlink" title="第六章 Logistic回归和最大熵模型"></a>第六章 Logistic回归和最大熵模型</h3><p>1.X服从Logistic分布是指X具有以下分布函数和密度函数:<br>$$F(x)=P(X\leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma }}$$<br>$$f(x)=F’(x)=\frac{e^{-(x-\mu)/\gamma}}{\gamma (1+e^{-(x-\mu)/\gamma})^2}$$<br>式中,$\mu$为位置参数,$\gamma&gt;0$为形状参数.</p>
+<h3 id="第六章-Logistic回归和最大熵模型"><a href="#第六章-Logistic回归和最大熵模型" class="headerlink" title="第六章 Logistic回归和最大熵模型"></a>第六章 Logistic回归和最大熵模型</h3><p>1.X服从Logistic分布是指X具有以下分布函数和密度函数:</p>
+<script type="math/tex; mode=display">F(x)=P(X\leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma }}</script><script type="math/tex; mode=display">f(x)=F'(x)=\frac{e^{-(x-\mu)/\gamma}}{\gamma (1+e^{-(x-\mu)/\gamma})^2}</script><p>式中,$\mu$为位置参数,$\gamma&gt;0$为形状参数.</p>
 <p>2.logistic回归策略:<strong>构造极大似然函数</strong>,使用<strong>梯度下降方法或拟牛顿法</strong>求解优化.</p>
 <p>3.最大熵模型(待完善)</p>
 <h3 id="第七章-SVM"><a href="#第七章-SVM" class="headerlink" title="第七章 SVM"></a>第七章 SVM</h3><p>其他略,已经复习过</p>
@@ -818,24 +819,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

@@ -373,21 +373,28 @@
 </ul>
 <h3 id="第三章-分布"><a href="#第三章-分布" class="headerlink" title="第三章 分布"></a>第三章 分布</h3><p>1.<strong>离散型分布</strong></p>
 <ul>
-<li><p>1.0-1分布 $X\sim B(1,p)$<br>$$P(X=k)=p^k(1-p)^{1-k}(0&lt;p&lt;1,k=0,1)$$</p>
-</li>
-<li><p>2.二项分布 $X \sim B(n,p)$<br>$$P(X=k)=C_n^kp^kq^{n-k}(k=0,1,2,…,n)(0&lt;p&lt;1,q=1-p)$$</p>
-</li>
-<li><p>3.泊松分布 $X \sim P(\lambda)$<br>$$P(X=k)=\frac{\lambda^ke^{-\lambda}}{k!}(k=0,1,2,…)$$</p>
-</li>
+<li><p>1.0-1分布 $X\sim B(1,p)$</p>
+<script type="math/tex; mode=display">P(X=k)=p^k(1-p)^{1-k}(0<p<1,k=0,1)</script></li>
+<li><p>2.二项分布 $X \sim B(n,p)$</p>
+<script type="math/tex; mode=display">P(X=k)=C\_n^kp^kq^{n-k}(k=0,1,2,...,n)(0<p<1,q=1-p)</script></li>
+<li><p>3.泊松分布 $X \sim P(\lambda)$</p>
+<script type="math/tex; mode=display">P(X=k)=\frac{\lambda^ke^{-\lambda}}{k!}(k=0,1,2,...)</script></li>
 </ul>
 <p>2.<strong>连续型分布</strong></p>
 <ul>
-<li><p>1.均匀分布 $X \sim U[a,b]$<br>$$f(x)=\begin{cases}<br>\frac{1}{b-a} &amp; a\leq x\leq b \<br>0 &amp; others<br>\end{cases}$$</p>
+<li><p>1.均匀分布 $X \sim U[a,b]$</p>
+<script type="math/tex; mode=display">f(x)=\begin{cases}
+\frac{1}{b-a} & a\leq x\leq b \\ 
+0 & others
+\end{cases}</script></li>
+<li><p>2.指数分布 $X \sim E(\lambda)$</p>
+<script type="math/tex; mode=display">f(x)=\begin{cases}
+\lambda e^{-\lambda x} & x > 0 \\ 
+0 & x \leq 0
+\end{cases}</script><p>$\lambda&gt;0$</p>
 </li>
-<li><p>2.指数分布 $X \sim E(\lambda)$<br>$$f(x)=\begin{cases}<br>\lambda e^{-\lambda x} &amp; x &gt; 0 \<br>0 &amp; x \leq 0<br>\end{cases}$$<br>$\lambda&gt;0$</p>
-</li>
-<li><p>3.正态分布 $X\sim N(\mu,\sigma^2)$<br>$$f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},-\infty &lt; x &lt; +\infty$$</p>
-</li>
+<li><p>3.正态分布 $X\sim N(\mu,\sigma^2)$</p>
+<script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},-\infty < x < +\infty</script></li>
 </ul>
 <h3 id="第四章-随机变量的特征"><a href="#第四章-随机变量的特征" class="headerlink" title="第四章 随机变量的特征"></a>第四章 随机变量的特征</h3><p>1.<strong>期望概念</strong></p>
 <ul>
@@ -421,12 +428,12 @@
 <li>若X,Y相互独立,则$\rho_{XY}=0$</li>
 <li>$\rho_{XY}=\pm$的充要条件是存在两个常数a,b,且$a\neq0$,使得$P{Y=aX+b}=1$.</li>
 </ul>
-<h3 id="第五章-大数定律和中心极限定理"><a href="#第五章-大数定律和中心极限定理" class="headerlink" title="第五章 大数定律和中心极限定理"></a>第五章 大数定律和中心极限定理</h3><p>1.<strong>契比雪夫不等式</strong>: 设随机变量X的数学期望为E(X)=a,方差为D(X),则对于给定的数$\epsilon&gt;0$,有<br>$$P{|X-a|\geq \epsilon}\leq \frac{D(X)}{\epsilon^2}$$</p>
-<p>2.<strong>大数定律</strong>: 设{X<sub>n</sub>}为一随机变量序列,a为一个常数,如果对任何给定的正数$\epsilon$,有$\lim_{n \to \infty}P{|X_n-a|\geq \epsilon}=0$,则称随机变量序列{X<sub>n</sub>}依概率收敛于a,记为$$X_n \overset{P}{\rightarrow}a(n \to \infty)$$.</p>
-<p>3.<strong>契比雪夫大数定律</strong>: 设{X<sub>n</sub>}为一随机变量序列,若对于所有的自然数n,数学期望E(X<sub>n</sub>)及方差D(X<sub>n</sub>)均存在,且存在某常数M&gt;0,使得D(X<sub>n</sub>)$\leq M$,则有$$\frac{1}{n}\sum_{i=1}^{n}[X_i-E(X_i)]\overset{P}{\rightarrow}0$$.</p>
-<p>4.<strong>贝努里大数定律</strong>: 在n次重复独立试验中,设Y<sub>n</sub>为事件A发生的次数,每次试验事件A发生的概率为P,则$$\frac{Y_n}{n} \overset{P}{\rightarrow}P(n \to \infty)$$.</p>
-<p>5.<strong>辛钦大数定律</strong>: 设{X<sub>n</sub>}为独立同分布的随机变量序列,且具有数学期望E(X<sub>i</sub>)=$\mu,i=1,2,…$,则$$\frac{1}{n}\sum_{i=1}^{n}X_i\overset{P}{\rightarrow}\mu(n \to \infty)$$.</p>
-<p>6.<strong>中心极限定理</strong>: 设{X<sub>n</sub>}为独立同分布的随机变量序列,且E(X<sub>i</sub>)=$\mu$,D(X<sub>i</sub>)=$\sigma^2\neq0,i=1,2,…$,则当n充分大时,$\frac{\sum_{i=1}^{n}X_i-E(\sum_{i=1}^{n}X_i)}{\sqrt{D(\sum_{k=1}^{n}X_k)}}$近似地服从标准正态分布,记作$$\frac{\sum_{i=1}^{n}X_i-E(\sum_{i=1}^{n}X_i)}{\sqrt{D(\sum_{k=1}^{n}X_k)}}=\frac{\sum_{i=1}^{n}X_k-n\mu}{\sqrt{n}\sigma}\sim N(0,1)$$.</p>
+<h3 id="第五章-大数定律和中心极限定理"><a href="#第五章-大数定律和中心极限定理" class="headerlink" title="第五章 大数定律和中心极限定理"></a>第五章 大数定律和中心极限定理</h3><p>1.<strong>契比雪夫不等式</strong>: 设随机变量X的数学期望为E(X)=a,方差为D(X),则对于给定的数$\epsilon&gt;0$,有</p>
+<script type="math/tex; mode=display">P\{|X-a|\geq \epsilon\}\leq \frac{D(X)}{\epsilon^2}</script><p>2.<strong>大数定律</strong>: 设{X<sub>n</sub>}为一随机变量序列,a为一个常数,如果对任何给定的正数$\epsilon$,有$\lim_{n \to \infty}P{|X_n-a|\geq \epsilon}=0$,则称随机变量序列{X<sub>n</sub>}依概率收敛于a,记为<script type="math/tex">X\_n \overset{P}{\rightarrow}a(n \to \infty)</script>.</p>
+<p>3.<strong>契比雪夫大数定律</strong>: 设{X<sub>n</sub>}为一随机变量序列,若对于所有的自然数n,数学期望E(X<sub>n</sub>)及方差D(X<sub>n</sub>)均存在,且存在某常数M&gt;0,使得D(X<sub>n</sub>)$\leq M$,则有<script type="math/tex">\frac{1}{n}\sum\_{i=1}^{n}[X\_i-E(X\_i)]\overset{P}{\rightarrow}0</script>.</p>
+<p>4.<strong>贝努里大数定律</strong>: 在n次重复独立试验中,设Y<sub>n</sub>为事件A发生的次数,每次试验事件A发生的概率为P,则<script type="math/tex">\frac{Y\_n}{n} \overset{P}{\rightarrow}P(n \to \infty)</script>.</p>
+<p>5.<strong>辛钦大数定律</strong>: 设{X<sub>n</sub>}为独立同分布的随机变量序列,且具有数学期望E(X<sub>i</sub>)=$\mu,i=1,2,…$,则<script type="math/tex">\frac{1}{n}\sum\_{i=1}^{n}X\_i\overset{P}{\rightarrow}\mu(n \to \infty)</script>.</p>
+<p>6.<strong>中心极限定理</strong>: 设{X<sub>n</sub>}为独立同分布的随机变量序列,且E(X<sub>i</sub>)=$\mu$,D(X<sub>i</sub>)=$\sigma^2\neq0,i=1,2,…$,则当n充分大时,$\frac{\sum_{i=1}^{n}X_i-E(\sum_{i=1}^{n}X_i)}{\sqrt{D(\sum_{k=1}^{n}X_k)}}$近似地服从标准正态分布,记作<script type="math/tex">\frac{\sum\_{i=1}^{n}X\_i-E(\sum\_{i=1}^{n}X\_i)}{\sqrt{D(\sum\_{k=1}^{n}X\_k)}}=\frac{\sum\_{i=1}^{n}X\_k-n\mu}{\sqrt{n}\sigma}\sim N(0,1)</script>.</p>
 <h3 id="第六章-数理统计概念"><a href="#第六章-数理统计概念" class="headerlink" title="第六章 数理统计概念"></a>第六章 数理统计概念</h3><p>1.<strong>统计量</strong></p>
 <ul>
 <li>样本均值: $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i$</li>
@@ -597,7 +604,7 @@
 <p><strong>2.关键点</strong></p>
 <p><strong>2.1 gbdt 的算法的流程？</strong><br>gbdt通过多轮迭代,每轮迭代生成一个弱分类器,每个分类器在上一轮分类器的残差基础上进行训练.(<strong>弱分类器一般会选择CART TREE - 分类回归树</strong>)</p>
 <p><strong>最终的总分类器是将每轮训练得到的弱分类器加权求和得到. - 加法模型</strong></p>
-<p>模型最终可描述为:$F_M(x)=\sum_{m=1}^{M}T(x;\theta_{m})$<br>模型一共训练M轮,每轮产生一个弱分类器$T(x;\theta_m)$,弱分类器的损失函数$$\hat{\theta}_m=argmin_{\theta_m}\sum_{i=1}^{N}L{y_i,F_{m-1}(x_i)+T_m(x_i;\theta_m)}$$</p>
+<p>模型最终可描述为:$F_M(x)=\sum_{m=1}^{M}T(x;\theta_{m})$<br>模型一共训练M轮,每轮产生一个弱分类器$T(x;\theta_m)$,弱分类器的损失函数<script type="math/tex">\hat{\theta}\_m=argmin\_{\theta\_m}\sum\_{i=1}^{N}L\{y\_i,F\_{m-1}(x\_i)+T\_m(x\_i;\theta\_m)\}</script></p>
 <p>gbdt在每轮迭代的时候,都去拟合损失函数在当前模型下的负梯度.<br><strong>2.2 gbdt 如何选择特征 ？</strong><br>原始的gbdt做法非常暴力,首先<strong>遍历每个特征</strong>,然后<strong>对每个特征遍历它所有可能的切分点</strong>,找到最优特征m的最优切分点j.</p>
 <p><strong>2.3 gbdt 如何构建特征 ？</strong><br>工业界做法是和<strong>逻辑回归结合</strong>,得到组合特征.</p>
 <p><strong>2.4 gbdt 如何用于分类？</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/gbdt-multiclassifier.png" alt="gbdt多分类"></p>
@@ -960,7 +967,8 @@
 <p>5.<strong>ID3算法/C4.5算法</strong>参考&lt;西瓜书&gt;,西瓜书上讲得略微好一点</p>
 <p>6.<strong>CART算法</strong>:<strong>最小二乘法生成回归树</strong>,<strong>基于基尼系数生成回归树</strong></p>
 <p>7.剪枝策略:预剪枝和后剪枝 (参考西瓜书上) 将数据集分为训练集和验证集,用验证集来进行剪枝操作.</p>
-<h3 id="第六章-Logistic回归和最大熵模型"><a href="#第六章-Logistic回归和最大熵模型" class="headerlink" title="第六章 Logistic回归和最大熵模型"></a>第六章 Logistic回归和最大熵模型</h3><p>1.X服从Logistic分布是指X具有以下分布函数和密度函数:<br>$$F(x)=P(X\leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma }}$$<br>$$f(x)=F’(x)=\frac{e^{-(x-\mu)/\gamma}}{\gamma (1+e^{-(x-\mu)/\gamma})^2}$$<br>式中,$\mu$为位置参数,$\gamma&gt;0$为形状参数.</p>
+<h3 id="第六章-Logistic回归和最大熵模型"><a href="#第六章-Logistic回归和最大熵模型" class="headerlink" title="第六章 Logistic回归和最大熵模型"></a>第六章 Logistic回归和最大熵模型</h3><p>1.X服从Logistic分布是指X具有以下分布函数和密度函数:</p>
+<script type="math/tex; mode=display">F(x)=P(X\leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma }}</script><script type="math/tex; mode=display">f(x)=F'(x)=\frac{e^{-(x-\mu)/\gamma}}{\gamma (1+e^{-(x-\mu)/\gamma})^2}</script><p>式中,$\mu$为位置参数,$\gamma&gt;0$为形状参数.</p>
 <p>2.logistic回归策略:<strong>构造极大似然函数</strong>,使用<strong>梯度下降方法或拟牛顿法</strong>求解优化.</p>
 <p>3.最大熵模型(待完善)</p>
 <h3 id="第七章-SVM"><a href="#第七章-SVM" class="headerlink" title="第七章 SVM"></a>第七章 SVM</h3><p>其他略,已经复习过</p>
@@ -1141,92 +1149,108 @@
 <li>算法参数是算法中的参数,是模型外部的配置,如:神经网络中的学习速率,支持向量机中的C和sigma参数.</li>
 </ul>
 <p><strong>4.性能度量</strong>:</p>
-<p>4.1 回归任务最常用的性能度量是”均方误差”:<br>$$E(f;D)=\frac{1}{m}\sum_{i=1}^{m}(f(x_i)-y_i)^2$$.</p>
-<p>4.2  评价标准: 错误率与精度,查全率和查准率.错误率和精度指多少样本被判错,多少样本被判错;查全率和查准率指模型判断为正例中有多少比例是真正的正例,模型判断为反例中有多少为真正的反例.(两种评价标准对应的需求不一样)</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">真实情况</th>
-<th style="text-align:center">预测结果正例</th>
-<th style="text-align:center">预测结果反例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">正例</td>
-<td style="text-align:center">TP(真正例)</td>
-<td style="text-align:center">FN(反正例)</td>
-</tr>
-<tr>
-<td style="text-align:center">反例</td>
-<td style="text-align:center">FP(假正例)</td>
-<td style="text-align:center">TN(真正例)</td>
-</tr>
-</tbody>
-</table>
-<p>$$P(查准率) = TP / (TP  + FP)$$<br>$$R(查全率) = TP / (TP + FN)$$</p>
-<p>4.3 P-R图:以查准率为纵坐标,以查全率为横坐标.在进行比较时,若一个学习器的P-R曲线被另一个学习器的曲线完全”包住”,则可断言后者的性能优于前者. “平衡点”(BEP):当查准率 = 查全率时的取值,即为平衡点.当两个曲线有交点时,可通过比较平衡点的取值.</p>
-<p>4.4 F1-measure:<br>$$F1 = 2 * TP / (样例总数 + TP - TN)$$</p>
-<p>(<strong>补充</strong>):$$F_\beta = \frac{1+\beta^2\times{P}\times{R}}{\beta^2\times{P}+R}$$,当$\beta=1$时,退化为标准的F1;$\beta&gt;1$时查全率有更大影响;$\beta$&amp;lt1时查准率有更大影响.</p>
+<p>4.1 回归任务最常用的性能度量是”均方误差”: </p>
+<script type="math/tex; mode=display">E(f;D)=\frac{1}{m}\sum\_{i=1}^{m}(f(x\_i)-y\_i)^2$$.
+
+4.2  评价标准: 错误率与精度,查全率和查准率.错误率和精度指多少样本被判错,多少样本被判错;查全率和查准率指模型判断为正例中有多少比例是真正的正例,模型判断为反例中有多少为真正的反例.(两种评价标准对应的需求不一样)
+
+|   真实情况  | 预测结果正例  |   预测结果反例  |
+|   :--:  |  :--:   |   :--:    |
+|   正例  |   TP(真正例) |   FN(反正例) |
+|   反例  |   FP(假正例) |   TN(真正例) |
+$$P(查准率) = TP / (TP  + FP)</script><script type="math/tex; mode=display">R(查全率) = TP / (TP + FN)</script><p>4.3 P-R图:以查准率为纵坐标,以查全率为横坐标.在进行比较时,若一个学习器的P-R曲线被另一个学习器的曲线完全”包住”,则可断言后者的性能优于前者. “平衡点”(BEP):当查准率 = 查全率时的取值,即为平衡点.当两个曲线有交点时,可通过比较平衡点的取值.</p>
+<p>4.4 F1-measure:</p>
+<script type="math/tex; mode=display">F1 = 2 * TP / (样例总数 + TP - TN)</script><p>(<strong>补充</strong>):<script type="math/tex">F_\beta = \frac{1+\beta^2\times{P}\times{R}}{\beta^2\times{P}+R}</script>,当$\beta=1$时,退化为标准的F1;$\beta&gt;1$时查全率有更大影响;$\beta$&amp;lt1时查准率有更大影响.</p>
 <p>4.5 查准率和查全率的应用目的区别:例如在商品推荐系统中,为了尽可能少打扰用户,更希望推荐内容的确是用户感兴趣的,此时查准率更重要;而在逃犯信息检索系统中,更希望尽可能少漏掉逃犯,此时查全率更重要.</p>
 <p>4.6 对于多分类考察查准率和查全率,基于两种方式:a)先在各个混淆矩阵上计算(P<sub>1</sub>,R<sub>1</sub>),(P<sub>2</sub>,R<sub>2</sub>),…,(P<sub>n</sub>,R<sub>n</sub>),然后再计算平均值得到”宏查准率”和”宏查全率”.b)先将各混淆矩阵上的对应元素计算平均,再基于这些平均值计算出”微查准率”和”微查全率”.</p>
-<p>4.7 ROC和AUC: <strong>ROC体现了综合考虑学习器在不同任务下的”期望泛化性能”的好坏,或者说,”一般情况下”泛化性能的好坏</strong>.ROC曲线的纵轴是”真正例率(TPR)”,横轴是”假正例率(FPR)”,两者分别定义为TPR=TP / (TP + FN), FPR=FP / (TN + FP). 和P-R图相似,若一个学习器的ROC曲线被另一个学习器的曲线完全”包住”,则可断言后者性能优于前者.若两个学习器的ROC曲线发生交叉,则难以一般性地断言两者孰优孰劣,此时如果一定要进行比较,则较为合理的判据是比较ROC曲线下的面积,即AUC.<br>$$AUC = \frac{1}{2}\sum_{i=1}^{m-1}(x_{i+1} - x_i) \cdot(y_i + y_{i+1})$$.</p>
-<p><strong>5.比较检验(待丰富)</strong>:假设检验/交叉验证t检验/McNemar检验/Friedman检验与Nemenyi后续检验</p>
-<p><strong>6.偏差与方差</strong>:</p>
-<p>6.1 泛化误差可分为偏差/方差与噪声之和.<strong>偏差</strong>度量了学习算法的期望预测与真实结果的偏离程度,即刻画了学习算法本身的拟合能力;<strong>方差</strong>度量了同样大小的训练集的变动所导致的学习性能的变化,即刻画了数据扰动所造成的影响;<strong>噪声</strong>则表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界,即刻画了学习问题本身的难度.</p>
-<p><strong>(2.0补充)</strong><br>7.训练误差(经验误差):学习器在训练集上的误差</p>
-<p>8.泛化误差:学习器在新样本上的误差</p>
-<hr>
-<h3 id="第三章-线性模型"><a href="#第三章-线性模型" class="headerlink" title="第三章.线性模型"></a>第三章.线性模型</h3><p>1.线性模型:给定由d个属性描述的示例X=(x<sub>1</sub>;x<sub>2</sub>;…;x<sub>d</sub>),其中x<sub>i</sub>是X在第i个属性上的取值,线性模型试图<strong>学得一个通过属性的线性组合来进行预测的函数</strong>,即<br>$$f(\textbf{x})=w_1x_1+w_2x_2+…+w_dx_d+b$$<br>写成向量形式:<br>$$f(\textbf{x})=\textbf{w}^T+b$$<br>其中,<strong>w</strong>=(w<sub>1</sub>;w<sub>2</sub>;…;w<sub>d</sub>).<strong>w</strong>和b学得之后,模型就得以确定.</p>
+<p>4.7 ROC和AUC: <strong>ROC体现了综合考虑学习器在不同任务下的”期望泛化性能”的好坏,或者说,”一般情况下”泛化性能的好坏</strong>.ROC曲线的纵轴是”真正例率(TPR)”,横轴是”假正例率(FPR)”,两者分别定义为TPR=TP / (TP + FN), FPR=FP / (TN + FP). 和P-R图相似,若一个学习器的ROC曲线被另一个学习器的曲线完全”包住”,则可断言后者性能优于前者.若两个学习器的ROC曲线发生交叉,则难以一般性地断言两者孰优孰劣,此时如果一定要进行比较,则较为合理的判据是比较ROC曲线下的面积,即AUC.</p>
+<script type="math/tex; mode=display">AUC = \frac{1}{2}\sum\_{i=1}^{m-1}(x\_{i+1} - x\_i) \cdot(y\_i + y\_{i+1})$$.
+
+**5.比较检验(待丰富)**:假设检验/交叉验证t检验/McNemar检验/Friedman检验与Nemenyi后续检验
+
+**6.偏差与方差**:
+
+6.1 泛化误差可分为偏差/方差与噪声之和.**偏差**度量了学习算法的期望预测与真实结果的偏离程度,即刻画了学习算法本身的拟合能力;**方差**度量了同样大小的训练集的变动所导致的学习性能的变化,即刻画了数据扰动所造成的影响;**噪声**则表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界,即刻画了学习问题本身的难度.
+
+**(2.0补充)**
+7.训练误差(经验误差):学习器在训练集上的误差
+
+8.泛化误差:学习器在新样本上的误差
+
+***
+### 第三章.线性模型
+1.线性模型:给定由d个属性描述的示例X=(x<sub>1</sub>;x<sub>2</sub>;...;x<sub>d</sub>),其中x<sub>i</sub>是X在第i个属性上的取值,线性模型试图**学得一个通过属性的线性组合来进行预测的函数**,即
+$$f(\textbf{x})=w\_1x\_1+w\_2x\_2+...+w\_dx\_d+b</script><p>写成向量形式:</p>
+<script type="math/tex; mode=display">f(\textbf{x})=\textbf{w}^T+b</script><p>其中,<strong>w</strong>=(w<sub>1</sub>;w<sub>2</sub>;…;w<sub>d</sub>).<strong>w</strong>和b学得之后,模型就得以确定.</p>
 <p><strong>2.线性回归</strong></p>
 <p>2.1 概念:线性回归试图学得一个线性模型以尽可能准确地预测实值输出标记.</p>
 <p>2.2 <strong>均方误差</strong>是回归任务中最常用的性能度量.基于均方误差来求解模型的方法成为<strong>最小二乘法</strong>.</p>
 <p>2.3 对于多元线性回归,可以利用最小二乘法来对<strong>w</strong>和b进行估计.</p>
-<p>2.4 对数线性回归: 认为示例所对应的输出标记是在指数尺度上变化.<br>$$lny=\textbf{w}^T+b$$<br>实际上是试图让$$e^{w^Tx}+b$$逼近y.</p>
-<p>2.5 广义线性模型: $$y=g^{-1}(\textbf{w}^T+b)$$(将输入空间上的真实值到输出空间上预测值的非线性函数映射)</p>
+<p>2.4 对数线性回归: 认为示例所对应的输出标记是在指数尺度上变化.</p>
+<script type="math/tex; mode=display">lny=\textbf{w}^T+b</script><p>实际上是试图让<script type="math/tex">e^{w^Tx}+b</script>逼近y.</p>
+<p>2.5 广义线性模型: <script type="math/tex">y=g^{-1}(\textbf{w}^T+b)</script>(将输入空间上的真实值到输出空间上预测值的非线性函数映射)</p>
 <p><strong>3.对数几率回归</strong></p>
 <p>3.1 对数几率回归是一种”Sigmoid函数”.进而将回归问题转化为分类问题.</p>
 <p><strong>(补充)</strong>:优化方法:极大似然估计;先构造极大似然函数,再利用梯度下降或牛顿法进行优化函数.</p>
 <p><strong>4.线性判别分析(待温故)</strong></p>
 <p>4.1 线性判别分析(Linear Discriminant Analysis),简称LDA,是一种经典的线性学习方法.LDA:给定训练样例集,设法将样例集投影到一条直线上,使得同类样例的投影点尽可能近/异类样例的投影点尽可能远;在对新样本进行分类时,将其投影到同样的这条直线上,再根据投影点的位置来确定新样本的类别.即,欲使同类样例的投影点尽可能接近,可以让同类样例投影点的协方差尽可能小;而欲使异类样例的投影点尽可能远离,可以让类中心之间的距离尽可能大.</p>
-<p>4.2 奇异值: 特征值分解是提取矩阵特针很不错的方法,但是它只是针对方针而言的,对于非方阵矩阵,使用奇异值分解能适用于任何形式的矩阵.分解形式为:<br>$$A_{m*n}=U_{m*m}\Sigma_{m*n}{V_{n*n}}^T(\Sigma_{m*n}为对角矩阵)$$</p>
-<p><strong>5.多分类学习</strong></p>
+<p>4.2 奇异值: 特征值分解是提取矩阵特针很不错的方法,但是它只是针对方针而言的,对于非方阵矩阵,使用奇异值分解能适用于任何形式的矩阵.分解形式为:</p>
+<script type="math/tex; mode=display">A\_{m\*n}=U\_{m\*m}\Sigma\_{m\*n}{V\_{n\*n}}^T(\Sigma\_{m\*n}为对角矩阵)</script><p><strong>5.多分类学习</strong></p>
 <p>5.1 多分类学习的基本思路是”拆解法”,即将多分类任务拆分为若干个二分类任务求解.最经典的拆分策略有三种:”一对一(One vs. One OvO)”,”一对其余(One vs. Rest,OvR)”和”多对多(Many vs. Many,简称MvM)”.</p>
-<p><strong>(补充)</strong><br>5.2 类别不平衡问题:指的是分类任务中不同类别的训练样例数目差别很大的情况.<br>基本策略:<br>$$\frac{y^{‘}}{1-y^{‘}}=\frac{y}{1-y}\times\frac{m^{-}}{m^{+}}$$</p>
-<p>解决方案:</p>
+<p><strong>(补充)</strong><br>5.2 类别不平衡问题:指的是分类任务中不同类别的训练样例数目差别很大的情况.<br>基本策略:</p>
+<script type="math/tex; mode=display">\frac{y^{'}}{1-y^{'}}=\frac{y}{1-y}\times\frac{m^{-}}{m^{+}}</script><p>解决方案:</p>
 <ul>
 <li>1.直接对训练集里的反例样例进行”欠采样”(下采样),即去除一些反例使得正/反例数目接近,然后进行学习</li>
 <li>2.对训练集里的正类样例进行”过采样”(上采样),即增加一些正例使得正/反例数目接近,然后再进行学习</li>
 <li>3.直接基于原始训练集进行学习,但在用训练好的分类器进行预测时,将基本策略公式嵌入到决策过程中,称为”阈值移动”</li>
 </ul>
 <hr>
-<h3 id="第四章-决策树"><a href="#第四章-决策树" class="headerlink" title="第四章 决策树"></a>第四章 决策树</h3><p>4.1 <strong>信息熵</strong>是度量样本集合纯度最常用的一种指标.假定当前样本集合D中第k类样本所占的比例为p<sub>k</sub>(k=1,2,…,|Y|),则D的信息熵为<br>$$Ent(D)=-\sum_{k=1}^{|Y|}p_klog_2p_k$$<br>Ent(D)的值越小,则D的纯度越高.</p>
-<p>4.2 假定离散属性a有V个可能的取值{a<sup>1</sup>,a<sup>2</sup>,…,a<sup>V</sup>},若使用a对样本集D进行划分,则会产生V个分支结点,其中第v个分支结点包含了D中所有在属性a上取值为a<sup>v</sup>,记为D<sup>v</sup>.于是可以计算出用属性a对样本集D进行划分所获得的<strong>信息增益</strong><br>$$Gain(D,a)=Ent(D)-\sum_{v=1}^{V}\frac{|D|^v}{|D|}Ent(D^v)$$.<br>一般而言,信息增益越大,则意味着使用属性a来进行划分所获得的”纯度提升”越大.因此,可利用信息增益来进行决策树的划分属性选择.</p>
-<p>4.3 <strong>ID3</strong>决策树学习算法就是以<strong>信息增益</strong>为准则来选择划分属性.(信息增益准则对可取值数目较多的属性有所偏好)</p>
-<p>4.4 <strong>C4.5</strong>决策树算法不直接使用信息增益,而是使用”<strong>增益率</strong>“来选择最优划分属性.增益率定义为:<br>$$GainRatio(D,a)=\frac{Gain(D,a)}{IV(a)}$$,其中,<br>$$IV(a)=-\sum_{v=1}^{V}\frac{|D|^v}{|D|}log_2\frac{|D|^v}{|D|}$$,IV(a)称为属性a的”固有值”.增益率对属性数目偏少的属性有所偏好.</p>
-<p>(<strong>补充</strong>):C4.5算法并不是直接选择增益率最大的候选划分属性,而是使用了启发式算法:<strong>先从候选划分属性中找出信息增益高于平均水平的属性,然后再从中选择增益率最高的.</strong></p>
-<p>4.5 <strong>CART决策树</strong>使用”基尼指数”来选择划分属性.</p>
-<p><strong>4.6 剪枝处理</strong></p>
-<p>4.6.1 剪枝是决策树学习算法对付”过拟合”的一个重要手段.</p>
-<p>4.6.2 剪枝策略包括:<strong>预剪枝</strong>和<strong>后剪枝</strong>.</p>
-<p>4.6.3 <strong>预剪枝</strong>是在决策树生成过程中,对每个结点在划分前先进行估计,若当前结点的划分不能带来决策树泛化性能的提升,则停止划分并将当前结点标记为叶结点;<strong>后剪枝</strong>则是先从训练集生成一棵完整的决策树,然后自底向上地对非叶结点进行考察,若将该结点对应的子树替换为叶结点能带来决策树泛化性能提升,则将该子树替换为叶结点.</p>
-<p>4.6.3 后剪枝决策树通常比预剪枝决策树保留了更多的分支.一般情形下,后剪枝决策树的欠拟合风险很小,泛化性能往往优于预剪枝决策树.但其训练时间开销比未剪枝决策树和预剪枝决策树都要大得多.</p>
-<p><strong>(如何判断决策树泛化性能能否提升?)</strong>:采用留出法,即预留一部分数据用作”验证集”以进行性能评估.</p>
-<p><strong>4.7 连续与缺失值</strong></p>
-<p>4.7.1 连续值处理: 二分法.(也是基于信息增益来选择划分点).二分法切分出n-1个划分点,然后从这些划分点中选择信息增益最大的划分点.</p>
-<p>4.7.2 缺失值处理: 简单来讲,通过样本中无缺失值样本来估计同一个有属性值缺失的样本被划入不同子结点的概率.<br><strong>(补充)</strong>:解决两个问题:</p>
-<ul>
-<li>1)如何在属性值缺失的情况下进行划分属性选择?</li>
-<li>2)给定划分属性,若样本在该属性上的值缺失,如何对样本进行划分?</li>
-</ul>
-<p>对于第一个问题,还是沿用信息增益来进行划分,借助无缺失值的样本.<br>$$Gain(D,a)=\rho*Gain(\tilde{D},a)=\rho*(Ent(\tilde{D}-\sum_{v=1}^{V}\tilde{r_{v}}Ent(\tilde{D}^v)))$$<br>其中,$$Ent(\tilde{D})=-\sum_{k=1}^{|Y|}\tilde{p}_{k}log_2\tilde{p}_k$$.(参考西瓜书Page86)</p>
+<h3 id="第四章-决策树"><a href="#第四章-决策树" class="headerlink" title="第四章 决策树"></a>第四章 决策树</h3><p>4.1 <strong>信息熵</strong>是度量样本集合纯度最常用的一种指标.假定当前样本集合D中第k类样本所占的比例为p<sub>k</sub>(k=1,2,…,|Y|),则D的信息熵为</p>
+<script type="math/tex; mode=display">Ent(D)=-\sum\_{k=1}^{|Y|}p\_klog\_2p\_k</script><p>Ent(D)的值越小,则D的纯度越高.</p>
+<p>4.2 假定离散属性a有V个可能的取值{a<sup>1</sup>,a<sup>2</sup>,…,a<sup>V</sup>},若使用a对样本集D进行划分,则会产生V个分支结点,其中第v个分支结点包含了D中所有在属性a上取值为a<sup>v</sup>,记为D<sup>v</sup>.于是可以计算出用属性a对样本集D进行划分所获得的<strong>信息增益</strong></p>
+<script type="math/tex; mode=display">Gain(D,a)=Ent(D)-\sum\_{v=1}^{V}\frac{|D|^v}{|D|}Ent(D^v)$$.
+一般而言,信息增益越大,则意味着使用属性a来进行划分所获得的"纯度提升"越大.因此,可利用信息增益来进行决策树的划分属性选择.
+
+4.3 **ID3**决策树学习算法就是以**信息增益**为准则来选择划分属性.(信息增益准则对可取值数目较多的属性有所偏好)
+
+4.4 **C4.5**决策树算法不直接使用信息增益,而是使用"**增益率**"来选择最优划分属性.增益率定义为:
+$$GainRatio(D,a)=\frac{Gain(D,a)}{IV(a)}$$,其中,
+$$IV(a)=-\sum\_{v=1}^{V}\frac{|D|^v}{|D|}log\_2\frac{|D|^v}{|D|}$$,IV(a)称为属性a的"固有值".增益率对属性数目偏少的属性有所偏好.
+
+(**补充**):C4.5算法并不是直接选择增益率最大的候选划分属性,而是使用了启发式算法:**先从候选划分属性中找出信息增益高于平均水平的属性,然后再从中选择增益率最高的.**
+
+4.5 **CART决策树**使用"基尼指数"来选择划分属性.
+
+**4.6 剪枝处理**
+
+4.6.1 剪枝是决策树学习算法对付"过拟合"的一个重要手段.
+
+4.6.2 剪枝策略包括:**预剪枝**和**后剪枝**.
+
+4.6.3 **预剪枝**是在决策树生成过程中,对每个结点在划分前先进行估计,若当前结点的划分不能带来决策树泛化性能的提升,则停止划分并将当前结点标记为叶结点;**后剪枝**则是先从训练集生成一棵完整的决策树,然后自底向上地对非叶结点进行考察,若将该结点对应的子树替换为叶结点能带来决策树泛化性能提升,则将该子树替换为叶结点.
+
+4.6.3 后剪枝决策树通常比预剪枝决策树保留了更多的分支.一般情形下,后剪枝决策树的欠拟合风险很小,泛化性能往往优于预剪枝决策树.但其训练时间开销比未剪枝决策树和预剪枝决策树都要大得多.
+
+**(如何判断决策树泛化性能能否提升?)**:采用留出法,即预留一部分数据用作"验证集"以进行性能评估.
+
+**4.7 连续与缺失值**
+
+4.7.1 连续值处理: 二分法.(也是基于信息增益来选择划分点).二分法切分出n-1个划分点,然后从这些划分点中选择信息增益最大的划分点.
+
+4.7.2 缺失值处理: 简单来讲,通过样本中无缺失值样本来估计同一个有属性值缺失的样本被划入不同子结点的概率.
+**(补充)**:解决两个问题:
+* 1)如何在属性值缺失的情况下进行划分属性选择?
+* 2)给定划分属性,若样本在该属性上的值缺失,如何对样本进行划分?
+
+对于第一个问题,还是沿用信息增益来进行划分,借助无缺失值的样本.
+$$Gain(D,a)=\rho\*Gain(\tilde{D},a)=\rho\*(Ent(\tilde{D}-\sum\_{v=1}^{V}\tilde{r\_{v}}Ent(\tilde{D}^v)))</script><p>其中,<script type="math/tex">Ent(\tilde{D})=-\sum\_{k=1}^{|Y|}\tilde{p}\_{k}log\_2\tilde{p}\_k</script>.(参考西瓜书Page86)</p>
 <p>对于第二个问题,若样本x在划分属性a上的取值已知,则将x划入与其取值对应的子结点,且样本权值在子结点中保持为$W_x$.若样本x在划分属性a上的取值未知,则将x同时划入所有子结点,且样本权值在与属性值$a^v$对应的子结点调整为$\tilde{r_v}\cdot{w_x}$.</p>
 <p>4.8 多变量决策树: 实现斜划分甚至更复杂的决策树.<strong>在多变量决策树的学习过程中,不是为每个非叶结点寻找一个最优划分属性,而是试图建立一个合适线性分类器.</strong></p>
 <hr>
 <h3 id="第五章-神经网络"><a href="#第五章-神经网络" class="headerlink" title="第五章 神经网络"></a>第五章 神经网络</h3><p>1 神经网络的学习过程就是根据训练数据来调整神经元之间的<strong>连接权</strong>以及每个功能神经元的<strong>阈值</strong>.</p>
 <p>2 感知机: 由两层神经元组成,输入层接受外界输入信号后传递给输出层,输出层是M-P神经元,亦称”阈值逻辑单元”. 对于非线性问题,需要考虑使用多层功能神经元.</p>
 <p>3 误逆差传播算法(亦称反向传播算法,BP算法):BP算法是基于梯度下降策略,以目标的负梯度方向对参数进行调整.</p>
-<p>4 累积BP算法的目标是最小化训练集D上的累积误差$$E=\frac{1}{m}\sum_{k=1}^{m}E_k$$.标准BP算法每次更新只针对单个样例,参数更新得非常频繁,而对不同样例进行更新的效果可能出现”抵消”现象.因此为了达到同样的累积误差极小点,标准BP算法往往需要进行更多次数的迭代.累积BP算法直接针对累积误差最小化,它在读取整个训练集D一遍后才对参数进行更新,其参数更新的频率低得多,但在很多任务中,累积误差下降到一定程度后,进一步下降会非常缓慢,这时标准BP往往会更快获得较好的解,尤其是在训练集D非常大时更明显.</p>
+<p>4 累积BP算法的目标是最小化训练集D上的累积误差<script type="math/tex">E=\frac{1}{m}\sum\_{k=1}^{m}E\_k</script>.标准BP算法每次更新只针对单个样例,参数更新得非常频繁,而对不同样例进行更新的效果可能出现”抵消”现象.因此为了达到同样的累积误差极小点,标准BP算法往往需要进行更多次数的迭代.累积BP算法直接针对累积误差最小化,它在读取整个训练集D一遍后才对参数进行更新,其参数更新的频率低得多,但在很多任务中,累积误差下降到一定程度后,进一步下降会非常缓慢,这时标准BP往往会更快获得较好的解,尤其是在训练集D非常大时更明显.</p>
 <p>5 BP神经网络经常遭遇过拟合,两种策略解决: <strong>a)早停</strong>,将数据分成训练集和验证集,训练集用来计算梯度/更新连接权和阈值,验证集用来估计误差,若训练集误差降低但验证集误差升高,则停止训练,同时返回具有最小验证集误差的连接权和阈值. <strong>b)正则化</strong>,其基本思想是在误差目标函数中增加一个用于描述网络负责度的部分.</p>
 <p>6 神经网络采用一下策略”跳出”局部极小:</p>
 <ul>
@@ -1254,36 +1278,48 @@
 <p>8.2 池化: 也叫子采样,降维处理,减少了模型的参数.</p>
 <p><strong>(补充)</strong>:神经网络的误差反向传播算法的推导需要重新看.</p>
 <hr>
-<h3 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h3><h4 id="第六章-西瓜书"><a href="#第六章-西瓜书" class="headerlink" title="第六章 西瓜书"></a>第六章 西瓜书</h4><p>1.划分超平面:在样本空间中,划分超平面可通过如下线性方程来描述:<br>$$w^Tx+b=0$$,<br>其中,$$w=(w_1;w_2;…;w_d)$$为法向量;b为位移项,决定了超平面与原点之间的距离.将超平面记为(<strong>w</strong>,b),样本空间中任意点x到超平面(<strong>w</strong>,b)的距离为$$r=\frac{|w^T+b|}{||w||}$$.</p>
-<p>2.<strong>支持向量</strong>:假设超平面(<strong>w</strong>,b)能将训练样本正确分类,即对于$$(x_i,y_i)\in{D}$$,若y<sub>i</sub>=+1,则有$$w^T+b&gt;0$$;若y<sub>i</sub>=-1,则有$w^T+b&lt;0$.令$w^T+b\geq{+1},y_i=1$;$w^T+b\leq{+1},y_i=-1$.距离超平面最近的这几个训练样本点使上述等号成立,它们被称为”支持向量”.两个异类支持向量到超平面的距离之和为$$\gamma=\frac{2}{||w||}$$.它们被称为”间隔”.</p>
-<p>3.<strong>支持向量机</strong>:$min_{w,b}\frac{1}{2}||w||^2,s.t. y_i(w^Tx_i+b)\geq{1},i=1,2,3,…,m.$.</p>
-<p><strong>(补充:)</strong>SMO算法:</p>
-<ul>
-<li>选取一对需要更新的变量$\alpha_{i}$和$\alpha_{j}$</li>
-<li>固定$\alpha_{i}$和$\alpha_{j}$以外的参数,求解拉格朗日函数后更新$\alpha_{i}$和$\alpha_{j}$<br>SMO算法先选取违背KKT条件程度最大的变量,第二个变量本应选择一个使目标函数值减小最快的变量,但由于比较各变量所对应的目标函数值减幅的复杂度过高,<font color="red"><strong>因此SMO采用了一个启发式:使选取的两变量所对应样本之间的间隔最大.</strong></font></li>
-</ul>
-<p>4.正定矩阵:实对称矩阵</p>
-<p>5.二次规划问题:给定一个目标函数,找到n维的向量x,使得<br>$$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩阵,那么该问题就是<strong>凸二次规划问题</strong>.凸二次规划问题,如果至少一个向量满足约束并且在可行域有下界,则凸二次规划问题就有一个全局最小值.如果Q是正定的,则这类二次规划为严格的凸二次规划问题,那么全局最小值就是唯一的.</p>
-<p>6.对于凸二次规划问题解法:拉格朗日方法/Lemke方法,内点法,有效集法,椭球法等.</p>
-<p>7.对偶问题:任何一个求极大化的线性规划问题都有一个求极小化的线性规划问题与之对应,反之亦然.如果我们把其中一个叫原问题,则另一个就叫做它的对偶问题,并称这一对互相联系的两个问题为一对<strong>对偶问题</strong>.</p>
-<p>8.核函数:当样本在原始样本空间中线性不可分时,可以将样本映射到更高维的特征空间中,使得样本在这个特征空间内线性可分.如果原始空间是有限维,那么一定存在一个高维特征空间使样本可分.即x<sub>i</sub>与x<sub>j</sub>在特征空间的内积等于它们在原始样本空间中通过函数<em>k(.,.)</em>计算的结果,这里的<em>k(.,.)</em>就是<strong>核函数</strong>.有了这样的函数,就不必计算高维甚至无穷维特征空间中的内积.</p>
-<p>9.核函数类型:</p>
-<ul>
-<li>线性核</li>
-<li>多项式核</li>
-<li>高斯核(RBF核)</li>
-<li>拉普拉斯核</li>
-<li>Sigmoid核</li>
-</ul>
-<p><strong>(补充)</strong>:核函数的组合形式($k_1(x)$为核函数):</p>
-<ul>
-<li>1.核函数的线性组合还是核函数</li>
-<li>2.核函数的直积还是核函数$k_1\times{k_2}(x,z)=k_1(x,z)k_2(z)$仍是核函数</li>
-<li>3.对任意函数$g(x)$,$k(x,z)=g(x)k_1(x,z)g(z)$仍是核函数</li>
-</ul>
-<p><strong>10.软间隔和正则化</strong></p>
-<p>10.1 软间隔:在现实任务中往往很难确定合适的核函数使得训练样本在特征空间中线性可分;退一步说,即便恰好找到了某个核函数使训练集在特征空间中可分,也很难判定这个”线性可分”是不是由过拟合造成的.缓解该问题的一个方法是允许支持向量机在一些样本上出错.支持向量机形式要求所有样本均满足约束,即所有样本都必须划分正确,这称为<strong>“硬间隔”</strong>.而<strong>软间隔</strong>允许某些样本不满足约束.</p>
-<p><strong>补充</strong>:软间隔线性支持向量机优化目标为:<br>1.$$min_{w,b}\frac{1}{2}{||w||}^2+C\sum_{i=1}^{m}l_{0/1}(y_i(w^T+b)-1)$$<br>2.C为惩罚参数,当C无穷大时,则迫使所有样本都满足约束.当C取有限值时,则允许有一些样本不满足约束.<br>3.$l_{0/1}$为0/1损失函数.<br>4.硬间隔和软间隔区别在于:前者是$0\leq{\alpha_i}\leq{C}$,后者是$0\leq{\alpha_i}$.<br>5.支持向量机模型都由两项构成:结构风险和经验风险.结构风险用于描述模型的某些性质,经验风险用于描述模型与训练数据的契合程度.为了降低模型复杂度和防止过拟合,通过$L_p$范数来正则化结构风险.</p>
+<h3 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h3><h4 id="第六章-西瓜书"><a href="#第六章-西瓜书" class="headerlink" title="第六章 西瓜书"></a>第六章 西瓜书</h4><p>1.划分超平面:在样本空间中,划分超平面可通过如下线性方程来描述:</p>
+<script type="math/tex; mode=display">w^Tx+b=0$$,
+其中,$$w=(w\_1;w\_2;...;w\_d)$$为法向量;b为位移项,决定了超平面与原点之间的距离.将超平面记为(**w**,b),样本空间中任意点x到超平面(**w**,b)的距离为$$r=\frac{|w^T+b|}{||w||}$$.
+
+2.**支持向量**:假设超平面(**w**,b)能将训练样本正确分类,即对于$$(x\_i,y\_i)\in{D}$$,若y<sub>i</sub>=+1,则有$$w^T+b>0$$;若y<sub>i</sub>=-1,则有$w^T+b<0$.令$w^T+b\geq{+1},y\_i=1$;$w^T+b\leq{+1},y\_i=-1$.距离超平面最近的这几个训练样本点使上述等号成立,它们被称为"支持向量".两个异类支持向量到超平面的距离之和为$$\gamma=\frac{2}{||w||}$$.它们被称为"间隔".
+
+3.**支持向量机**:$min\_{w,b}\frac{1}{2}||w||^2,s.t. y\_i(w^Tx\_i+b)\geq{1},i=1,2,3,...,m.$.
+
+**(补充:)**SMO算法:
+* 选取一对需要更新的变量$\alpha\_{i}$和$\alpha\_{j}$
+* 固定$\alpha\_{i}$和$\alpha\_{j}$以外的参数,求解拉格朗日函数后更新$\alpha\_{i}$和$\alpha\_{j}$
+SMO算法先选取违背KKT条件程度最大的变量,第二个变量本应选择一个使目标函数值减小最快的变量,但由于比较各变量所对应的目标函数值减幅的复杂度过高,<font color='red'>**因此SMO采用了一个启发式:使选取的两变量所对应样本之间的间隔最大.**</font>
+
+4.正定矩阵:实对称矩阵
+
+5.二次规划问题:给定一个目标函数,找到n维的向量x,使得
+$$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩阵,那么该问题就是**凸二次规划问题**.凸二次规划问题,如果至少一个向量满足约束并且在可行域有下界,则凸二次规划问题就有一个全局最小值.如果Q是正定的,则这类二次规划为严格的凸二次规划问题,那么全局最小值就是唯一的.
+
+6.对于凸二次规划问题解法:拉格朗日方法/Lemke方法,内点法,有效集法,椭球法等.
+
+7.对偶问题:任何一个求极大化的线性规划问题都有一个求极小化的线性规划问题与之对应,反之亦然.如果我们把其中一个叫原问题,则另一个就叫做它的对偶问题,并称这一对互相联系的两个问题为一对**对偶问题**.
+
+8.核函数:当样本在原始样本空间中线性不可分时,可以将样本映射到更高维的特征空间中,使得样本在这个特征空间内线性可分.如果原始空间是有限维,那么一定存在一个高维特征空间使样本可分.即x<sub>i</sub>与x<sub>j</sub>在特征空间的内积等于它们在原始样本空间中通过函数*k(.,.)*计算的结果,这里的*k(.,.)*就是**核函数**.有了这样的函数,就不必计算高维甚至无穷维特征空间中的内积.
+
+9.核函数类型:
+* 线性核
+* 多项式核
+* 高斯核(RBF核)
+* 拉普拉斯核
+* Sigmoid核
+
+**(补充)**:核函数的组合形式($k\_1(x)$为核函数):
+* 1.核函数的线性组合还是核函数
+* 2.核函数的直积还是核函数$k\_1\times{k\_2}(x,z)=k\_1(x,z)k\_2(z)$仍是核函数
+* 3.对任意函数$g(x)$,$k(x,z)=g(x)k\_1(x,z)g(z)$仍是核函数
+
+**10.软间隔和正则化**
+
+10.1 软间隔:在现实任务中往往很难确定合适的核函数使得训练样本在特征空间中线性可分;退一步说,即便恰好找到了某个核函数使训练集在特征空间中可分,也很难判定这个"线性可分"是不是由过拟合造成的.缓解该问题的一个方法是允许支持向量机在一些样本上出错.支持向量机形式要求所有样本均满足约束,即所有样本都必须划分正确,这称为**"硬间隔"**.而**软间隔**允许某些样本不满足约束.
+
+**补充**:软间隔线性支持向量机优化目标为:
+1.$$min\_{w,b}\frac{1}{2}{||w||}^2+C\sum\_{i=1}^{m}l\_{0/1}(y\_i(w^T+b)-1)</script><p>2.C为惩罚参数,当C无穷大时,则迫使所有样本都满足约束.当C取有限值时,则允许有一些样本不满足约束.<br>3.$l_{0/1}$为0/1损失函数.<br>4.硬间隔和软间隔区别在于:前者是$0\leq{\alpha_i}\leq{C}$,后者是$0\leq{\alpha_i}$.<br>5.支持向量机模型都由两项构成:结构风险和经验风险.结构风险用于描述模型的某些性质,经验风险用于描述模型与训练数据的契合程度.为了降低模型复杂度和防止过拟合,通过$L_p$范数来正则化结构风险.</p>
 <p>11.损失函数:</p>
 <ul>
 <li>hinge损失</li>
@@ -1361,8 +1397,8 @@
 <p><strong>补充:</strong>:<br>1.贝叶斯最优分类器为:$h^*=argmax_{c\in{y}}P(c|x)$.要用贝叶斯判定准则来最小化决策风险,首先要获得后验概率$P(c|x)$,而这在现实生活中是难以直接获得的,机器学习所要实现的是基于有限的训练样本集尽可能准确地估计出后验概率.有两种策略:判别式模型和生成式模型.</p>
 <p>2.判别式模型和生成式模型比较:<br>定义单个测试数据为$(c_0,x_0)$,$c_0$为测试数据的label,$x_0$为测试数据的feature</p>
 <ul>
-<li>判别式模型(注重条件概率):它是训练完毕后,输入测试数据,判别模型直接给出的是$P(c|x_0)$.实际上是我们看了训练过的数据之后,学习到了对数据分步的后验知识,然后根据这个认识和测试样本的feature来决策.判别模型求解的思路是：条件分布——&gt;模型参数后验概率最大——-&gt;（似然函数\cdot 参数先验）最大——-&gt;最大似然</li>
-<li>生成式模型(注重联合分布概率):给定输入$x_0$,生成式模型可以给出输入和输出的联合分布$P(x_0,c_0)$.生成模型的求解思路是：联合分布——-&gt;求解类别先验概率和类别条件概率</li>
+<li>判别式模型(注重条件概率):它是训练完毕后,输入测试数据,判别模型直接给出的是$P(c|x_0)$.实际上是我们看了训练过的数据之后,学习到了对数据分步的后验知识,然后根据这个认识和测试样本的feature来决策.判别模型求解的思路是：条件分布———&gt;模型参数后验概率最大———-&gt;（似然函数\cdot 参数先验）最大———-&gt;最大似然</li>
+<li>生成式模型(注重联合分布概率):给定输入$x_0$,生成式模型可以给出输入和输出的联合分布$P(x_0,c_0)$.生成模型的求解思路是：联合分布———-&gt;求解类别先验概率和类别条件概率</li>
 </ul>
 <p>3.<strong>半朴素贝叶斯分类器</strong><br>3.1 目的:为了降低贝叶斯公式中的后验概率$P(c|x)$的困难,朴素贝叶斯分类器采用了属性条件独立的假设,但在现实任务中这个假设很难成立.<br>3.2 做法:适当考虑一部分属性间的相互依赖信息<br>3.3 策略:独依赖估计(One-Dependent Estimator)-ODE,就是<strong>假设每个属性在类别之外最多依赖于一个其他属性</strong>.$P(c|x)\propto{P(c)\prod_{i=1}^{d}P(x_i|c,pa_i))}$.相比朴素贝叶斯分类器,$x_i$多了一个依赖.$pa_i$为属性$x_i$所依赖的属性.<br>3.4 问题的关键就在于:如何确定每个属性的父属性,也就是所依赖的属性.<br>方案:</p>
 <ul>
@@ -1408,8 +1444,8 @@
 <p><strong>1.1 外部指标</strong></p>
 <p>1.2 a = |SS|,b=|SD|,c=|DS|,d=|DD|(关于SS,SD,DS和DD的解释参考书Page198),常用的三种性能度量:</p>
 <ul>
-<li>Jaccard系数: $$JC=\frac{a}{a+b+c}$$</li>
-<li>FM指数: $$FMI=\sqrt{\frac{a}{a+b}\frac{a}{a+c}}$$</li>
+<li>Jaccard系数: <script type="math/tex">JC=\frac{a}{a+b+c}</script></li>
+<li>FM指数: <script type="math/tex">FMI=\sqrt{\frac{a}{a+b}\frac{a}{a+c}}</script></li>
 <li>$RI=\frac{2(a+d)}{m(m-1)}$<br>上述性能度量的结果均在[0,1]区间,值越大越好.</li>
 </ul>
 <p><strong>1.2内部指标</strong><br><strong>补充:</strong>通过考虑聚类结果的簇之间的距离<br><strong>DBI指数和DI指数</strong>(DBI值越小越好,而DI值越大越好.)</p>
@@ -1545,6 +1581,7 @@
 <li>r折扣累积奖赏</li>
 </ul>
 <p><strong>4)</strong>强化学习和监督学习的差别和联系</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1567,6 +1604,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <blockquote>
 <p>与一般监督学习不同,强化学习任务的最终奖赏是在多步动作之后才能观察到的.</p>
 </blockquote>
@@ -1765,7 +1803,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="6-interviewee提问环节"><a href="#6-interviewee提问环节" class="headerlink" title="6.interviewee提问环节"></a>6.interviewee提问环节</h2><font color="red">Don’t talk about pay!</font>
+<h2 id="6-interviewee提问环节"><a href="#6-interviewee提问环节" class="headerlink" title="6.interviewee提问环节"></a>6.interviewee提问环节</h2><font color="red">Don't talk about pay!</font>
 
 
 
@@ -2089,8 +2127,7 @@
 <li>BP神经网络(Back Propagation Networks-反向传播网络)</li>
 <li>RBF Network-径向基函数神经网络<br>求解凸函数方法:梯度下降法. 凸函数的定义:</li>
 </ul>
-<p>$$f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_2)}{2}}$$</p>
-<p>把残差函Loss数描述成待定的若干个w所描述的凸函数-Loss(w),那么就可以用梯度下降法,更新w的各个维度,最后找到满足Loss(w)极值点的位置.</p>
+<script type="math/tex; mode=display">f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_2)}{2}}</script><p>把残差函Loss数描述成待定的若干个w所描述的凸函数-Loss(w),那么就可以用梯度下降法,更新w的各个维度,最后找到满足Loss(w)极值点的位置.</p>
 <h2 id="2-第五章-手写板功能"><a href="#2-第五章-手写板功能" class="headerlink" title="2.第五章 手写板功能"></a>2.第五章 手写板功能</h2><p>直接上手了.</p>
 <h3 id="1-传统机器学习与深度学习对比"><a href="#1-传统机器学习与深度学习对比" class="headerlink" title="1.传统机器学习与深度学习对比"></a>1.传统机器学习与深度学习对比</h3><p>1.1 传统的机器学习中的监督学习方法概括：</p>
 <ul>
@@ -2136,33 +2173,34 @@
 <blockquote>
 <p>卷积：在泛函分析中，卷积(convolution)是一种函数的定义。它是通过两个函数f和g生成第三个函数的一种数学算子，表征函数f与g经过翻转和平移的重叠部分的面积。</p>
 </blockquote>
-<p>卷积的数学定义：<br>$$h(x)=f(x)*g(x)=\int^{+\infty}_{-\infty}f(t)g(x-t)dt$$.</p>
-<p>卷积过程可以看成是特征的一种压缩过程，一般卷积函数后可能还会跟一个激励函数ReLu函数等。</p>
-<p>2.2 卷积层其他参数</p>
-<ul>
-<li><p>Padding：边界填充</p>
-<ul>
-<li>保持边界信息</li>
-<li>如果输入图片有差异，可以通过Padding来进行填充，使得输入尺寸一致</li>
-</ul>
-</li>
-<li><p>Stride：步幅，Stride可以理解为每次滑动的单位。</p>
-</li>
-</ul>
-<h3 id="3-池化"><a href="#3-池化" class="headerlink" title="3.池化"></a>3.池化</h3><p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/pooling.jpg" alt="池化操作"><br>3.1 常见的池化处理有两种方式：</p>
-<ul>
-<li>Max Pooling：最大化，在前面输出过来的数据上做一个取最大值的处理</li>
-<li>Mean Pooling：平均值，同理求平均</li>
-</ul>
-<p>3.2 池化层有这样几个功能：</p>
-<ul>
-<li>它又进行了一次特征提取，所以肯定是能够减小下一层数据的处理量的。</li>
-<li>由于这个特征的提取，能够有更大的可能性进一步<strong>获取更为抽象的信息</strong>，从而防止过拟合，或者说提高一定的<strong>泛化性</strong>。</li>
-<li>由于这种抽象性，所以<strong>能够对输入的微小变化产生更大的容忍，</strong>也就是保持其不变性。(容忍包括图形的<strong>少量平移、旋转以及缩放</strong>等变化)</li>
-</ul>
-<h3 id="4-SoftMax函数"><a href="#4-SoftMax函数" class="headerlink" title="4.SoftMax函数"></a>4.SoftMax函数</h3><p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/Softmax.png" alt="Softmax函数"><br>4.1 Softmax函数数学定义：</p>
-<p>$$\sigma_i(z)=\frac{e^{z<em>i}}{\sum</em>{j=1}^{m}e^{z_j}}$$</p>
-<p>从Softmax函数的定义可以看出，最后一层的结点的输出值加和都是1.</p>
+<p>卷积的数学定义：</p>
+<script type="math/tex; mode=display">h(x)=f(x)*g(x)=\int^{+\infty}_{-\infty}f(t)g(x-t)dt$$.
+
+卷积过程可以看成是特征的一种压缩过程，一般卷积函数后可能还会跟一个激励函数ReLu函数等。
+
+2.2 卷积层其他参数
+* Padding：边界填充
+    - 保持边界信息
+    - 如果输入图片有差异，可以通过Padding来进行填充，使得输入尺寸一致
+
+* Stride：步幅，Stride可以理解为每次滑动的单位。
+
+### 3.池化
+![池化操作](https://raw.githubusercontent.com/DuncanZhou/images/master/pooling.jpg)
+3.1 常见的池化处理有两种方式：
+* Max Pooling：最大化，在前面输出过来的数据上做一个取最大值的处理
+* Mean Pooling：平均值，同理求平均
+
+3.2 池化层有这样几个功能：
+* 它又进行了一次特征提取，所以肯定是能够减小下一层数据的处理量的。
+* 由于这个特征的提取，能够有更大的可能性进一步**获取更为抽象的信息**，从而防止过拟合，或者说提高一定的**泛化性**。
+* 由于这种抽象性，所以**能够对输入的微小变化产生更大的容忍，**也就是保持其不变性。(容忍包括图形的**少量平移、旋转以及缩放**等变化)
+
+### 4.SoftMax函数
+![Softmax函数](https://raw.githubusercontent.com/DuncanZhou/images/master/Softmax.png)
+4.1 Softmax函数数学定义：
+
+$$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数的定义可以看出，最后一层的结点的输出值加和都是1.</p>
 <p>4.2 交叉熵<br>Softmax这种激励函数使用的损失函数看上去比较特殊，叫做交叉熵(cross entropy)损失函数。</p>
 <h3 id="5-典型的CNN网络"><a href="#5-典型的CNN网络" class="headerlink" title="5.典型的CNN网络"></a>5.典型的CNN网络</h3><h2 id="第七章-综合问题-即一些笼统地都会出现的问题"><a href="#第七章-综合问题-即一些笼统地都会出现的问题" class="headerlink" title="第七章 综合问题(即一些笼统地都会出现的问题)"></a>第七章 综合问题(即一些笼统地都会出现的问题)</h2><p>本书将这一章安排在第七章，可我总觉这一章貌似应该放在讲完几种神经网络更靠后的位置。</p>
 <p>下面罗列一些知识点，供之后再汇过来补充。</p>
@@ -2515,30 +2553,30 @@
         
           
             <p>Vice President Johnson, Mr. Speaker, Mr. Chief Justice, President Eisenhower, Vice President Nixon, President Truman, reverend clergy, fellow citizens:<br>约翰逊副总统、议长先生、首席大法官、艾森豪威尔总统、尼克松副总统、楚门总统、尊敬的神父以及同胞们：</p>
-<p>We observe today not a victory of party, but a celebration of freedom – symbolizing an end, as well as a beginning – signifying renewal, as well as change. For I have sworn before you and Almighty God the same solemn oath our forebears prescribed nearly a century and three-quarters ago.<br>今天我们庆祝的不是政党的胜利，而是自由的胜利。这象征着一个结束，也象征着一个开端；意味着延续也意味着变革。因为我已在你们和全能的上帝面前，宣读了我们的先辈在170多年前拟定的庄严誓言。</p>
-<p>The world is very different now. For man holds in his mortal hands the power to abolish all forms of human poverty and all forms of human life. And yet the same revolutionary beliefs for which our forebears fought are still at issue around the globe – the belief that the rights of man come not from the generosity of the state, but from the hand of God.<br>现在的世界已大不相同了。人类的巨手掌握着既能消灭人间的各种贫困，又能毁灭人间的各种生活的力量。但我们的先辈为之奋斗的那些革命信念，在世界各地仍然有着争论。这个信念就是：人的权利并非来自国家的慷慨，而是来自上帝恩赐。</p>
-<p>We dare not forget today that we are the heirs of that first revolution. Let the word go forth from this time and place, to friend and foe alike, that the torch has been passed to a new generation of Americans – born in this century, tempered by war, disciplined by a hard and bitter peace, proud of our ancient heritage, and unwilling to witness or permit the slow undoing of those human rights to which this nation has always been committed, and to which we are committed today at home and around the world.<br>今天，我们不敢忘记我们是第一次革命的继承者。让我们的朋友和敌人同样听见我此时此地的讲话：火炬已经传给新一代美国人。这一代人在本世纪诞生，在战争中受过锻炼，在艰难困苦的和平时期受过陶冶，他们为我国悠久的传统感到自豪－－他们不愿目睹或听任我国一向保证的、今天仍在国内外作出保证的人权渐趋毁灭。</p>
+<p>We observe today not a victory of party, but a celebration of freedom — symbolizing an end, as well as a beginning — signifying renewal, as well as change. For I have sworn before you and Almighty God the same solemn oath our forebears prescribed nearly a century and three-quarters ago.<br>今天我们庆祝的不是政党的胜利，而是自由的胜利。这象征着一个结束，也象征着一个开端；意味着延续也意味着变革。因为我已在你们和全能的上帝面前，宣读了我们的先辈在170多年前拟定的庄严誓言。</p>
+<p>The world is very different now. For man holds in his mortal hands the power to abolish all forms of human poverty and all forms of human life. And yet the same revolutionary beliefs for which our forebears fought are still at issue around the globe — the belief that the rights of man come not from the generosity of the state, but from the hand of God.<br>现在的世界已大不相同了。人类的巨手掌握着既能消灭人间的各种贫困，又能毁灭人间的各种生活的力量。但我们的先辈为之奋斗的那些革命信念，在世界各地仍然有着争论。这个信念就是：人的权利并非来自国家的慷慨，而是来自上帝恩赐。</p>
+<p>We dare not forget today that we are the heirs of that first revolution. Let the word go forth from this time and place, to friend and foe alike, that the torch has been passed to a new generation of Americans — born in this century, tempered by war, disciplined by a hard and bitter peace, proud of our ancient heritage, and unwilling to witness or permit the slow undoing of those human rights to which this nation has always been committed, and to which we are committed today at home and around the world.<br>今天，我们不敢忘记我们是第一次革命的继承者。让我们的朋友和敌人同样听见我此时此地的讲话：火炬已经传给新一代美国人。这一代人在本世纪诞生，在战争中受过锻炼，在艰难困苦的和平时期受过陶冶，他们为我国悠久的传统感到自豪－－他们不愿目睹或听任我国一向保证的、今天仍在国内外作出保证的人权渐趋毁灭。</p>
 <p>Let every nation know, whether it wishes us well or ill, that we shall pay any price, bear any burden, meet any hardship, support any friend, oppose any foe, to assure the survival and the success of liberty.<br>让每个国家都知道－－不论它希望我们繁荣还是希望我们衰落－－为确保自由的存在和自由的胜利，我们将付出任何代价，承受任何负担，应付任何艰难，支持任何朋友，反抗任何敌人。</p>
-<p>This much we pledge – and more.<br>这些就是我们的保证－－而且还有更多的保证。</p>
-<p>To those old allies whose cultural and spiritual origins we share, we pledge the loyalty of faithful friends. United there is little we cannot do in a host of cooperative ventures. Divided there is little we can do – for we dare not meet a powerful challenge at odds and split asunder.<br>对那些和我们有着共同文化和精神渊源的老盟友、我们保证待以诚实朋友那样的忠诚。我们如果团结一致，就能在许多合作事业中无往不胜；我们如果分歧对立，就会一事无成－－因为我们不敢在争吵不休、四分五裂时迎接强大的挑战。</p>
-<p>To those new states whom we welcome to the ranks of the free, we pledge our word that one form of colonial control shall not have passed away merely to be replaced by a far more iron tyranny. We shall not always expect to find them supporting our view. But we shall always hope to find them strongly supporting their own freedom – and to remember that, in the past, those who foolishly sought power by riding the back of the tiger ended up inside.<br>对那些我们欢迎其加入到自由行列中来的新国家，我们格守我们的誓言：决不让一种更为残酷的暴政来取代一种消失的殖民统治。我们并不总是指望他们会支持我们的观点。但我们始终希望看到他们坚强地维护自己的自由－－而且要记住，在历史上，凡愚蠢地狐假虎威者，终必葬身虎口。</p>
-<p>To those people in the huts and villages of half the globe struggling to break the bonds of mass misery, we pledge our best efforts to help them help themselves, for whatever period is required – not because the Communists may be doing it, not because we seek their votes, but because it is right. If a free society cannot help the many who are poor, it cannot save the few who are rich.<br>对世界各地身居茅舍和乡村、为摆脱普遍贫困而斗争的人们，我们保证尽最大努力帮助他们自立，不管需要花多长时间－－之所以这样做，并不是因为共产党可能正在这样做，也不是因为我们需要他们的选票，而是因为这样做是正确的。自由社会如果不能帮助众多的穷人，也就无法挽救少数富人。</p>
+<p>This much we pledge — and more.<br>这些就是我们的保证－－而且还有更多的保证。</p>
+<p>To those old allies whose cultural and spiritual origins we share, we pledge the loyalty of faithful friends. United there is little we cannot do in a host of cooperative ventures. Divided there is little we can do — for we dare not meet a powerful challenge at odds and split asunder.<br>对那些和我们有着共同文化和精神渊源的老盟友、我们保证待以诚实朋友那样的忠诚。我们如果团结一致，就能在许多合作事业中无往不胜；我们如果分歧对立，就会一事无成－－因为我们不敢在争吵不休、四分五裂时迎接强大的挑战。</p>
+<p>To those new states whom we welcome to the ranks of the free, we pledge our word that one form of colonial control shall not have passed away merely to be replaced by a far more iron tyranny. We shall not always expect to find them supporting our view. But we shall always hope to find them strongly supporting their own freedom — and to remember that, in the past, those who foolishly sought power by riding the back of the tiger ended up inside.<br>对那些我们欢迎其加入到自由行列中来的新国家，我们格守我们的誓言：决不让一种更为残酷的暴政来取代一种消失的殖民统治。我们并不总是指望他们会支持我们的观点。但我们始终希望看到他们坚强地维护自己的自由－－而且要记住，在历史上，凡愚蠢地狐假虎威者，终必葬身虎口。</p>
+<p>To those people in the huts and villages of half the globe struggling to break the bonds of mass misery, we pledge our best efforts to help them help themselves, for whatever period is required — not because the Communists may be doing it, not because we seek their votes, but because it is right. If a free society cannot help the many who are poor, it cannot save the few who are rich.<br>对世界各地身居茅舍和乡村、为摆脱普遍贫困而斗争的人们，我们保证尽最大努力帮助他们自立，不管需要花多长时间－－之所以这样做，并不是因为共产党可能正在这样做，也不是因为我们需要他们的选票，而是因为这样做是正确的。自由社会如果不能帮助众多的穷人，也就无法挽救少数富人。</p>
 <p>To our sister republics south of our border, we offer a special pledge: to convert our good words into good deeds, in a new alliance for progress, to assist free men and free governments in casting off the chains of poverty. But this peaceful revolution of hope cannot become the prey of hostile powers. Let all our neighbors know that we shall join with them to oppose aggression or subversion anywhere in the Americas. And let every other power know that this hemisphere intends to remain the master of its own house.<br>对我国南面的姐妹共和国，我们提出一项特殊的保证－－在争取进步的新同盟中，把我们善意的话变为善意的行动，帮助自由的人们和自由的政府摆脱贫困的枷锁。但是，这种充满希望的和平革命决不可以成为敌对国家的牺牲品。我们要让所有邻国都知道，我们将和他们在一起，反对在美洲任何地区进行侵略和颠覆活动。让所有其他国家都知道，本半球的人仍然想做自己家园的主人。</p>
-<p>To that world assembly of sovereign states, the United Nations, our last best hope in an age where the instruments of war have far outpaced the instruments of peace, we renew our pledge of support – to prevent it from becoming merely a forum for invective, to strengthen its shield of the new and the weak, and to enlarge the area in which its writ may run.<br>对联合国，主权国家的世界性议事机构，我们在战争手段大大超过和平手段的时代里最后的、最美好的希望所在，我们重申予以支持：防止它仅仅成为谩骂的场所；加强它对新生国家和弱小国家的保护；扩大它的行使法令的管束范围。</p>
+<p>To that world assembly of sovereign states, the United Nations, our last best hope in an age where the instruments of war have far outpaced the instruments of peace, we renew our pledge of support — to prevent it from becoming merely a forum for invective, to strengthen its shield of the new and the weak, and to enlarge the area in which its writ may run.<br>对联合国，主权国家的世界性议事机构，我们在战争手段大大超过和平手段的时代里最后的、最美好的希望所在，我们重申予以支持：防止它仅仅成为谩骂的场所；加强它对新生国家和弱小国家的保护；扩大它的行使法令的管束范围。</p>
 <p>Finally, to those nations who would make themselves our adversary, we offer not a pledge but a request: that both sides begin anew the quest for peace, before the dark powers of destruction unleashed by science engulf all humanity in planned or accidental self-destruction.<br>最后，对那些与我们作对的国家，我们提出一个要求而不是一项保证：在科学释放出可怕的破坏力量，把全人类卷入预谋的或意外的自我毁灭的深渊之前，让我们双方重新开始寻求和平。</p>
 <p>We dare not tempt them with weakness. For only when our arms are sufficient beyond doubt can we be certain beyond doubt that they will never be employed.<br>我们不敢以怯弱来引诱他们。因为只有当我们毫无疑问地拥有足够的军备，我们才能毫无疑问地确信永远不会使用这些军备。</p>
-<p>But neither can two great and powerful groups of nations take comfort from our present course – both sides overburdened by the cost of modern weapons, both rightly alarmed by the steady spread of the deadly atom, yet both racing to alter that uncertain balance of terror that stays the hand of mankind’s final war.<br>但是，这两个强大的国家集团都无法从目前所走的道路中得到安慰－－发展现代武器所需的费用使双方负担过重，致命的原子武器的不断扩散理所当然使双方忧心忡忡，但是，双方却争着改变那制止人类发动最后战争的不稳定的恐怖均势。</p>
-<p>So let us begin anew – remembering on both sides that civility is not a sign of weakness, and sincerity is always subject to proof. Let us never negotiate out of fear, but let us never fear to negotiate.<br>因此，让我们双方重新开始－－双方都要牢记，礼貌并不意味着怯弱，诚意永远有待于验证。让我们决不要由于畏惧而谈判。但我们决不能畏惧谈判。</p>
+<p>But neither can two great and powerful groups of nations take comfort from our present course — both sides overburdened by the cost of modern weapons, both rightly alarmed by the steady spread of the deadly atom, yet both racing to alter that uncertain balance of terror that stays the hand of mankind’s final war.<br>但是，这两个强大的国家集团都无法从目前所走的道路中得到安慰－－发展现代武器所需的费用使双方负担过重，致命的原子武器的不断扩散理所当然使双方忧心忡忡，但是，双方却争着改变那制止人类发动最后战争的不稳定的恐怖均势。</p>
+<p>So let us begin anew — remembering on both sides that civility is not a sign of weakness, and sincerity is always subject to proof. Let us never negotiate out of fear, but let us never fear to negotiate.<br>因此，让我们双方重新开始－－双方都要牢记，礼貌并不意味着怯弱，诚意永远有待于验证。让我们决不要由于畏惧而谈判。但我们决不能畏惧谈判。</p>
 <p>Let both sides explore what problems unite us instead of belaboring those problems which divide us.<br>让双方都来探讨使我们团结起来的问题，而不要操劳那些使我们分裂的问题。</p>
 <p>Let both sides, for the first time, formulate serious and precise proposals for the inspection and control of arms, and bring the absolute power to destroy other nations under the absolute control of all nations.<br>让双方首次为军备检查和军备控制制订认真而又明确的提案，把毁灭他国的绝对力量置于所有国家的绝对控制之下。</p>
 <p>Let both sides seek to invoke the wonders of science instead of its terrors. Together let us explore the stars, conquer the deserts, eradicate disease, tap the ocean depths, and encourage the arts and commerce.<br>让双方寻求利用科学的奇迹，而不是乞灵于科学造成的恐怖。让我们一起探索星球，征服沙漠，根除疾患，开发深海，并鼓励艺术和商业的发展。</p>
-<p>Let both sides unite to heed, in all corners of the earth, the command of Isaiah – to “undo the heavy burdens, and [to] let the oppressed go free.”¹<br>让双方团结起来，在全世界各个角落倾听以赛亚的训令－－“解下轭上的索，使被欺压的得自由。”（注：《圣经·旧约全书·以塞亚书》第58章6节。）</p>
-<p>And, if a beachhead of cooperation may push back the jungle of suspicion, let both sides join in creating a new endeavor – not a new balance of power, but a new world of law – where the strong are just, and the weak secure, and the peace preserved.<br>如果合作的滩头阵地能逼退猜忌的丛林，那么就让双方共同作一次新的努力；不是建立一种新的均势，而是创造一个新的法治世界，在这个世界中，强者公正，弱者安全、和平将得到维护。</p>
+<p>Let both sides unite to heed, in all corners of the earth, the command of Isaiah — to “undo the heavy burdens, and [to] let the oppressed go free.”¹<br>让双方团结起来，在全世界各个角落倾听以赛亚的训令－－“解下轭上的索，使被欺压的得自由。”（注：《圣经·旧约全书·以塞亚书》第58章6节。）</p>
+<p>And, if a beachhead of cooperation may push back the jungle of suspicion, let both sides join in creating a new endeavor — not a new balance of power, but a new world of law — where the strong are just, and the weak secure, and the peace preserved.<br>如果合作的滩头阵地能逼退猜忌的丛林，那么就让双方共同作一次新的努力；不是建立一种新的均势，而是创造一个新的法治世界，在这个世界中，强者公正，弱者安全、和平将得到维护。</p>
 <p>All this will not be finished in the first one hundred days. Nor will it be finished in the first one thousand days; nor in the life of this Administration; nor even perhaps in our lifetime on this planet. But let us begin.<br>所有这一切不可能在今后一百天内完成，也不可能在今后一千天或者在本届政府任期内完成，甚至也许不可能在我们居住在这个星球上的有生之年内完成。但是，让我们开始吧。</p>
 <p>In your hands, my fellow citizens, more than mine, will rest the final success or failure of our course. Since this country was founded, each generation of Americans has been summoned to give testimony to its national loyalty. The graves of young Americans who answered the call to service surround the globe.<br>公民们，我们方针的最终成败与其说掌握在我手中，不如说掌握在你们手中。自从合众国建立以来，每一代美国人都曾受到召唤去证明他们对国家的忠诚。响应召唤而献身的美国青年的坟墓遍及全球。</p>
-<p>Now the trumpet summons us again – not as a call to bear arms, though arms we need – not as a call to battle, though embattled we are – but a call to bear the burden of a long twilight struggle, year in and year out, “rejoicing in hope; patient in tribulation,”² a struggle against the common enemies of man: tyranny, poverty, disease, and war itself.<br>现在，号角已再次吹响－－不是召唤我们拿起武器，虽然我们需要武器；不是召唤我们去作战，虽然我们严阵以待。它召唤我们为迎接黎明而肩负起漫长斗争的重任，年复一年，从希望中得到欢乐，在磨难中保持耐性，对付人类共同的敌人－－专制、社团、疾病和战争本身。</p>
+<p>Now the trumpet summons us again — not as a call to bear arms, though arms we need — not as a call to battle, though embattled we are — but a call to bear the burden of a long twilight struggle, year in and year out, “rejoicing in hope; patient in tribulation,”² a struggle against the common enemies of man: tyranny, poverty, disease, and war itself.<br>现在，号角已再次吹响－－不是召唤我们拿起武器，虽然我们需要武器；不是召唤我们去作战，虽然我们严阵以待。它召唤我们为迎接黎明而肩负起漫长斗争的重任，年复一年，从希望中得到欢乐，在磨难中保持耐性，对付人类共同的敌人－－专制、社团、疾病和战争本身。</p>
 <p>Can we forge against these enemies a grand and global alliance, North and South, East and West, that can assure a more fruitful life for all mankind? Will you join in that historic effort?<br>为反对这些敌人，确保人类更为丰裕的生活，我们能够组成一个包括东西南北各方的全球大联盟吗？你们愿意参加这一历史性的努力吗？</p>
-<p>In the long history of the world, only a few generations have been granted the role of defending freedom in its hour of maximum danger. I do not shrink from this responsibility – I welcome it. I do not believe that any of us would exchange places with any other people or any other generation. The energy, the faith, the devotion which we bring to this endeavor will light our country and all who serve it. And the glow from that fire can truly light the world.<br>在漫长的世界历史中，只有少数几代人在自由处于最危急的时刻被赋予保卫自由的责任。我不会推卸这一责任，我欢迎这一责任。我不相信我们中间有人想同其他人或其他时代的人交换位置。我们为这一努力所奉献的精力、信念和忠诚，将照亮我们的国家和所有为国效劳的人，而这火焰发出的光芒定能照亮全世界。</p>
+<p>In the long history of the world, only a few generations have been granted the role of defending freedom in its hour of maximum danger. I do not shrink from this responsibility — I welcome it. I do not believe that any of us would exchange places with any other people or any other generation. The energy, the faith, the devotion which we bring to this endeavor will light our country and all who serve it. And the glow from that fire can truly light the world.<br>在漫长的世界历史中，只有少数几代人在自由处于最危急的时刻被赋予保卫自由的责任。我不会推卸这一责任，我欢迎这一责任。我不相信我们中间有人想同其他人或其他时代的人交换位置。我们为这一努力所奉献的精力、信念和忠诚，将照亮我们的国家和所有为国效劳的人，而这火焰发出的光芒定能照亮全世界。</p>
 <p>And so, my fellow Americans, ask not what your country can do for you; ask what you can do for your country.<br>因此，美国同胞们，不要问国家能为你们做些什么，而要问你们能为国家做些什么。</p>
 <p>My fellow citizens of the world, ask not what America will do for you, but what together we can do for the freedom of man.<br>全世界的公民们，不要问美国将为你们做些什么，而要问我们共同能为人类的自由做些什么。</p>
 <p>Finally, whether you are citizens of America or citizens of the world, ask of us here the same high standards of strength and sacrifice which we ask of you. With a good conscience our only sure reward, with history the final judge of our deeds, let us go forth to lead the land we love, asking His blessing and His help, but knowing that here on earth God’s work must truly be our own.<br>最后，不论你们是美国公民还是其他国家的公民，你们应要求我们献出我们同样要求于你们的高度力量和牺牲。问心无愧是我们唯一可靠的奖赏，历史是我们行动的最终裁判，让我们走向前去，引导我们所热爱的国家。我们祈求上帝的福佑和帮助，但我们知道，确切地说，上帝在尘世的工作必定是我们自己的工作。</p>
@@ -2852,24 +2890,7 @@
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

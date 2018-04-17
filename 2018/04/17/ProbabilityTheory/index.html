@@ -385,21 +385,28 @@ P(A-B">
 </ul>
 <h3 id="第三章-分布"><a href="#第三章-分布" class="headerlink" title="第三章 分布"></a>第三章 分布</h3><p>1.<strong>离散型分布</strong></p>
 <ul>
-<li><p>1.0-1分布 $X\sim B(1,p)$<br>$$P(X=k)=p^k(1-p)^{1-k}(0&lt;p&lt;1,k=0,1)$$</p>
-</li>
-<li><p>2.二项分布 $X \sim B(n,p)$<br>$$P(X=k)=C_n^kp^kq^{n-k}(k=0,1,2,…,n)(0&lt;p&lt;1,q=1-p)$$</p>
-</li>
-<li><p>3.泊松分布 $X \sim P(\lambda)$<br>$$P(X=k)=\frac{\lambda^ke^{-\lambda}}{k!}(k=0,1,2,…)$$</p>
-</li>
+<li><p>1.0-1分布 $X\sim B(1,p)$</p>
+<script type="math/tex; mode=display">P(X=k)=p^k(1-p)^{1-k}(0<p<1,k=0,1)</script></li>
+<li><p>2.二项分布 $X \sim B(n,p)$</p>
+<script type="math/tex; mode=display">P(X=k)=C\_n^kp^kq^{n-k}(k=0,1,2,...,n)(0<p<1,q=1-p)</script></li>
+<li><p>3.泊松分布 $X \sim P(\lambda)$</p>
+<script type="math/tex; mode=display">P(X=k)=\frac{\lambda^ke^{-\lambda}}{k!}(k=0,1,2,...)</script></li>
 </ul>
 <p>2.<strong>连续型分布</strong></p>
 <ul>
-<li><p>1.均匀分布 $X \sim U[a,b]$<br>$$f(x)=\begin{cases}<br>\frac{1}{b-a} &amp; a\leq x\leq b \<br>0 &amp; others<br>\end{cases}$$</p>
+<li><p>1.均匀分布 $X \sim U[a,b]$</p>
+<script type="math/tex; mode=display">f(x)=\begin{cases}
+\frac{1}{b-a} & a\leq x\leq b \\ 
+0 & others
+\end{cases}</script></li>
+<li><p>2.指数分布 $X \sim E(\lambda)$</p>
+<script type="math/tex; mode=display">f(x)=\begin{cases}
+\lambda e^{-\lambda x} & x > 0 \\ 
+0 & x \leq 0
+\end{cases}</script><p>$\lambda&gt;0$</p>
 </li>
-<li><p>2.指数分布 $X \sim E(\lambda)$<br>$$f(x)=\begin{cases}<br>\lambda e^{-\lambda x} &amp; x &gt; 0 \<br>0 &amp; x \leq 0<br>\end{cases}$$<br>$\lambda&gt;0$</p>
-</li>
-<li><p>3.正态分布 $X\sim N(\mu,\sigma^2)$<br>$$f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},-\infty &lt; x &lt; +\infty$$</p>
-</li>
+<li><p>3.正态分布 $X\sim N(\mu,\sigma^2)$</p>
+<script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},-\infty < x < +\infty</script></li>
 </ul>
 <h3 id="第四章-随机变量的特征"><a href="#第四章-随机变量的特征" class="headerlink" title="第四章 随机变量的特征"></a>第四章 随机变量的特征</h3><p>1.<strong>期望概念</strong></p>
 <ul>
@@ -433,12 +440,12 @@ P(A-B">
 <li>若X,Y相互独立,则$\rho_{XY}=0$</li>
 <li>$\rho_{XY}=\pm$的充要条件是存在两个常数a,b,且$a\neq0$,使得$P{Y=aX+b}=1$.</li>
 </ul>
-<h3 id="第五章-大数定律和中心极限定理"><a href="#第五章-大数定律和中心极限定理" class="headerlink" title="第五章 大数定律和中心极限定理"></a>第五章 大数定律和中心极限定理</h3><p>1.<strong>契比雪夫不等式</strong>: 设随机变量X的数学期望为E(X)=a,方差为D(X),则对于给定的数$\epsilon&gt;0$,有<br>$$P{|X-a|\geq \epsilon}\leq \frac{D(X)}{\epsilon^2}$$</p>
-<p>2.<strong>大数定律</strong>: 设{X<sub>n</sub>}为一随机变量序列,a为一个常数,如果对任何给定的正数$\epsilon$,有$\lim_{n \to \infty}P{|X_n-a|\geq \epsilon}=0$,则称随机变量序列{X<sub>n</sub>}依概率收敛于a,记为$$X_n \overset{P}{\rightarrow}a(n \to \infty)$$.</p>
-<p>3.<strong>契比雪夫大数定律</strong>: 设{X<sub>n</sub>}为一随机变量序列,若对于所有的自然数n,数学期望E(X<sub>n</sub>)及方差D(X<sub>n</sub>)均存在,且存在某常数M&gt;0,使得D(X<sub>n</sub>)$\leq M$,则有$$\frac{1}{n}\sum_{i=1}^{n}[X_i-E(X_i)]\overset{P}{\rightarrow}0$$.</p>
-<p>4.<strong>贝努里大数定律</strong>: 在n次重复独立试验中,设Y<sub>n</sub>为事件A发生的次数,每次试验事件A发生的概率为P,则$$\frac{Y_n}{n} \overset{P}{\rightarrow}P(n \to \infty)$$.</p>
-<p>5.<strong>辛钦大数定律</strong>: 设{X<sub>n</sub>}为独立同分布的随机变量序列,且具有数学期望E(X<sub>i</sub>)=$\mu,i=1,2,…$,则$$\frac{1}{n}\sum_{i=1}^{n}X_i\overset{P}{\rightarrow}\mu(n \to \infty)$$.</p>
-<p>6.<strong>中心极限定理</strong>: 设{X<sub>n</sub>}为独立同分布的随机变量序列,且E(X<sub>i</sub>)=$\mu$,D(X<sub>i</sub>)=$\sigma^2\neq0,i=1,2,…$,则当n充分大时,$\frac{\sum_{i=1}^{n}X_i-E(\sum_{i=1}^{n}X_i)}{\sqrt{D(\sum_{k=1}^{n}X_k)}}$近似地服从标准正态分布,记作$$\frac{\sum_{i=1}^{n}X_i-E(\sum_{i=1}^{n}X_i)}{\sqrt{D(\sum_{k=1}^{n}X_k)}}=\frac{\sum_{i=1}^{n}X_k-n\mu}{\sqrt{n}\sigma}\sim N(0,1)$$.</p>
+<h3 id="第五章-大数定律和中心极限定理"><a href="#第五章-大数定律和中心极限定理" class="headerlink" title="第五章 大数定律和中心极限定理"></a>第五章 大数定律和中心极限定理</h3><p>1.<strong>契比雪夫不等式</strong>: 设随机变量X的数学期望为E(X)=a,方差为D(X),则对于给定的数$\epsilon&gt;0$,有</p>
+<script type="math/tex; mode=display">P\{|X-a|\geq \epsilon\}\leq \frac{D(X)}{\epsilon^2}</script><p>2.<strong>大数定律</strong>: 设{X<sub>n</sub>}为一随机变量序列,a为一个常数,如果对任何给定的正数$\epsilon$,有$\lim_{n \to \infty}P{|X_n-a|\geq \epsilon}=0$,则称随机变量序列{X<sub>n</sub>}依概率收敛于a,记为<script type="math/tex">X\_n \overset{P}{\rightarrow}a(n \to \infty)</script>.</p>
+<p>3.<strong>契比雪夫大数定律</strong>: 设{X<sub>n</sub>}为一随机变量序列,若对于所有的自然数n,数学期望E(X<sub>n</sub>)及方差D(X<sub>n</sub>)均存在,且存在某常数M&gt;0,使得D(X<sub>n</sub>)$\leq M$,则有<script type="math/tex">\frac{1}{n}\sum\_{i=1}^{n}[X\_i-E(X\_i)]\overset{P}{\rightarrow}0</script>.</p>
+<p>4.<strong>贝努里大数定律</strong>: 在n次重复独立试验中,设Y<sub>n</sub>为事件A发生的次数,每次试验事件A发生的概率为P,则<script type="math/tex">\frac{Y\_n}{n} \overset{P}{\rightarrow}P(n \to \infty)</script>.</p>
+<p>5.<strong>辛钦大数定律</strong>: 设{X<sub>n</sub>}为独立同分布的随机变量序列,且具有数学期望E(X<sub>i</sub>)=$\mu,i=1,2,…$,则<script type="math/tex">\frac{1}{n}\sum\_{i=1}^{n}X\_i\overset{P}{\rightarrow}\mu(n \to \infty)</script>.</p>
+<p>6.<strong>中心极限定理</strong>: 设{X<sub>n</sub>}为独立同分布的随机变量序列,且E(X<sub>i</sub>)=$\mu$,D(X<sub>i</sub>)=$\sigma^2\neq0,i=1,2,…$,则当n充分大时,$\frac{\sum_{i=1}^{n}X_i-E(\sum_{i=1}^{n}X_i)}{\sqrt{D(\sum_{k=1}^{n}X_k)}}$近似地服从标准正态分布,记作<script type="math/tex">\frac{\sum\_{i=1}^{n}X\_i-E(\sum\_{i=1}^{n}X\_i)}{\sqrt{D(\sum\_{k=1}^{n}X\_k)}}=\frac{\sum\_{i=1}^{n}X\_k-n\mu}{\sqrt{n}\sigma}\sim N(0,1)</script>.</p>
 <h3 id="第六章-数理统计概念"><a href="#第六章-数理统计概念" class="headerlink" title="第六章 数理统计概念"></a>第六章 数理统计概念</h3><p>1.<strong>统计量</strong></p>
 <ul>
 <li>样本均值: $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i$</li>
@@ -841,24 +848,7 @@ P(A-B">
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

@@ -886,50 +886,50 @@
 <p>2.当在Controller中通过ModelMap返回给视图数据时，如果在jsp页面中使用${}这样的EL语言获取值时，需要在&lt;%@ page contentType=”text/html;charset=UTF-8” language=”java” isELIgnored=”false” %&gt;中添加isELIgnored值为false。</p>
 <p>3.如果使用Mybatis自动生成dao、mapping、model层文件时，尤其是mapping xml文件里的路径一定要注意正确，否则会给你的项目调试带来很大的麻烦。</p>
 <p>4.原文中使用了SpringJUnit4ClassRunner测试，在完成这个步骤时遇到的问题是，这边测试时，Spring的配置并没有加载好，所以在注入dao层的mapper时报错，所以最后是在整个demo完成时再测试的。测试代码如下：</p>
-<pre><code>import com.alibaba.fastjson.JSON;
-import com.duncan.user.model.UserInfo;
-import com.duncan.user.service.UserService;
-import org.apache.log4j.Logger;
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import java.util.List;
-/**
- * Created by DuncanZhou on 2016/10/31.
- */
-@RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = { &quot;classpath:spring.xml&quot;,
-        &quot;classpath:spring-mybatis.xml&quot; })
-public class TestUserService {
-    private static final Logger LOGGER = Logger
-            .getLogger(TestUserService.class);
-    @Autowired
-    private UserService userService;
-    @Test
-    public void testQueryById1() {
-        UserInfo userInfo = userService.getUserById(1);
-        LOGGER.info(JSON.toJSON(userInfo));
-    }
+<pre><code>    import com.alibaba.fastjson.JSON;
+    import com.duncan.user.model.UserInfo;
+    import com.duncan.user.service.UserService;
+    import org.apache.log4j.Logger;
+    import org.junit.Test;
+    import org.junit.runner.RunWith;
+    import org.springframework.beans.factory.annotation.Autowired;
+    import org.springframework.test.context.ContextConfiguration;
+    import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+    import java.util.List;
+    /**
+     * Created by DuncanZhou on 2016/10/31.
+     */
+    @RunWith(SpringJUnit4ClassRunner.class)
+    @ContextConfiguration(locations = { &quot;classpath:spring.xml&quot;,
+            &quot;classpath:spring-mybatis.xml&quot; })
+    public class TestUserService {
+        private static final Logger LOGGER = Logger
+                .getLogger(TestUserService.class);
+        @Autowired
+        private UserService userService;
+        @Test
+        public void testQueryById1() {
+            UserInfo userInfo = userService.getUserById(1);
+            LOGGER.info(JSON.toJSON(userInfo));
+        }
 
-//    @Test
-//    public void testQueryAll() {
-//        List&lt;UserInfo&gt; userInfos = userService.getUsers();
-//        LOGGER.info(JSON.toJSON(userInfos));
-//    }
+    //    @Test
+    //    public void testQueryAll() {
+    //        List&lt;UserInfo&gt; userInfos = userService.getUsers();
+    //        LOGGER.info(JSON.toJSON(userInfos));
+    //    }
 
-    @Test
-    public void testInsert() {
-        UserInfo userInfo = new UserInfo();
-        userInfo.setName(&quot;xiaoming&quot;);
-        userInfo.setSex(&quot;man&quot;);
-        userInfo.setAge(23);
-        userInfo.setPasswd(&quot;123&quot;);
-        int result = userService.insert(userInfo);
-        System.out.println(result);
+        @Test
+        public void testInsert() {
+            UserInfo userInfo = new UserInfo();
+            userInfo.setName(&quot;xiaoming&quot;);
+            userInfo.setSex(&quot;man&quot;);
+            userInfo.setAge(23);
+            userInfo.setPasswd(&quot;123&quot;);
+            int result = userService.insert(userInfo);
+            System.out.println(result);
+        }
     }
-}
 </code></pre><p>工程目录结构如下<br><img src="http://ww1.sinaimg.cn/large/006BtUvSjw1f9curjlyyaj309z0gg75t.jpg" alt=""> </p>
 
           
@@ -1241,24 +1241,7 @@ public class TestUserService {
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 

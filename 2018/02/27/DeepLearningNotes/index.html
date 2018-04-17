@@ -89,7 +89,7 @@
 BP神经网络(Back Propagation Networks-反向传播网络)
 RBF Network-径向基函数神经网络求解凸函数方法:梯度下降法. 凸函数的定义:
 
-$$f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_">
+f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_2)">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DeepLearningNotes">
 <meta property="og:url" content="https://github.com/DuncanZhou/2018/02/27/DeepLearningNotes/index.html">
@@ -99,10 +99,8 @@ $$f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_">
 BP神经网络(Back Propagation Networks-反向传播网络)
 RBF Network-径向基函数神经网络求解凸函数方法:梯度下降法. 凸函数的定义:
 
-$$f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_">
+f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_2)">
 <meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/Convolution.gif">
-<meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/pooling.jpg">
-<meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/Softmax.png">
 <meta property="og:updated_time" content="2018-04-17T08:07:39.474Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DeepLearningNotes">
@@ -111,7 +109,7 @@ $$f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_">
 BP神经网络(Back Propagation Networks-反向传播网络)
 RBF Network-径向基函数神经网络求解凸函数方法:梯度下降法. 凸函数的定义:
 
-$$f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_">
+f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_2)">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/Convolution.gif">
 
 
@@ -376,8 +374,7 @@ $$f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_">
 <li>BP神经网络(Back Propagation Networks-反向传播网络)</li>
 <li>RBF Network-径向基函数神经网络<br>求解凸函数方法:梯度下降法. 凸函数的定义:</li>
 </ul>
-<p>$$f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_2)}{2}}$$</p>
-<p>把残差函Loss数描述成待定的若干个w所描述的凸函数-Loss(w),那么就可以用梯度下降法,更新w的各个维度,最后找到满足Loss(w)极值点的位置.</p>
+<script type="math/tex; mode=display">f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_2)}{2}}</script><p>把残差函Loss数描述成待定的若干个w所描述的凸函数-Loss(w),那么就可以用梯度下降法,更新w的各个维度,最后找到满足Loss(w)极值点的位置.</p>
 <h2 id="2-第五章-手写板功能"><a href="#2-第五章-手写板功能" class="headerlink" title="2.第五章 手写板功能"></a>2.第五章 手写板功能</h2><p>直接上手了.</p>
 <h3 id="1-传统机器学习与深度学习对比"><a href="#1-传统机器学习与深度学习对比" class="headerlink" title="1.传统机器学习与深度学习对比"></a>1.传统机器学习与深度学习对比</h3><p>1.1 传统的机器学习中的监督学习方法概括：</p>
 <ul>
@@ -423,33 +420,34 @@ $$f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_">
 <blockquote>
 <p>卷积：在泛函分析中，卷积(convolution)是一种函数的定义。它是通过两个函数f和g生成第三个函数的一种数学算子，表征函数f与g经过翻转和平移的重叠部分的面积。</p>
 </blockquote>
-<p>卷积的数学定义：<br>$$h(x)=f(x)*g(x)=\int^{+\infty}_{-\infty}f(t)g(x-t)dt$$.</p>
-<p>卷积过程可以看成是特征的一种压缩过程，一般卷积函数后可能还会跟一个激励函数ReLu函数等。</p>
-<p>2.2 卷积层其他参数</p>
-<ul>
-<li><p>Padding：边界填充</p>
-<ul>
-<li>保持边界信息</li>
-<li>如果输入图片有差异，可以通过Padding来进行填充，使得输入尺寸一致</li>
-</ul>
-</li>
-<li><p>Stride：步幅，Stride可以理解为每次滑动的单位。</p>
-</li>
-</ul>
-<h3 id="3-池化"><a href="#3-池化" class="headerlink" title="3.池化"></a>3.池化</h3><p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/pooling.jpg" alt="池化操作"><br>3.1 常见的池化处理有两种方式：</p>
-<ul>
-<li>Max Pooling：最大化，在前面输出过来的数据上做一个取最大值的处理</li>
-<li>Mean Pooling：平均值，同理求平均</li>
-</ul>
-<p>3.2 池化层有这样几个功能：</p>
-<ul>
-<li>它又进行了一次特征提取，所以肯定是能够减小下一层数据的处理量的。</li>
-<li>由于这个特征的提取，能够有更大的可能性进一步<strong>获取更为抽象的信息</strong>，从而防止过拟合，或者说提高一定的<strong>泛化性</strong>。</li>
-<li>由于这种抽象性，所以<strong>能够对输入的微小变化产生更大的容忍，</strong>也就是保持其不变性。(容忍包括图形的<strong>少量平移、旋转以及缩放</strong>等变化)</li>
-</ul>
-<h3 id="4-SoftMax函数"><a href="#4-SoftMax函数" class="headerlink" title="4.SoftMax函数"></a>4.SoftMax函数</h3><p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/Softmax.png" alt="Softmax函数"><br>4.1 Softmax函数数学定义：</p>
-<p>$$\sigma_i(z)=\frac{e^{z<em>i}}{\sum</em>{j=1}^{m}e^{z_j}}$$</p>
-<p>从Softmax函数的定义可以看出，最后一层的结点的输出值加和都是1.</p>
+<p>卷积的数学定义：</p>
+<script type="math/tex; mode=display">h(x)=f(x)*g(x)=\int^{+\infty}_{-\infty}f(t)g(x-t)dt$$.
+
+卷积过程可以看成是特征的一种压缩过程，一般卷积函数后可能还会跟一个激励函数ReLu函数等。
+
+2.2 卷积层其他参数
+* Padding：边界填充
+    - 保持边界信息
+    - 如果输入图片有差异，可以通过Padding来进行填充，使得输入尺寸一致
+
+* Stride：步幅，Stride可以理解为每次滑动的单位。
+
+### 3.池化
+![池化操作](https://raw.githubusercontent.com/DuncanZhou/images/master/pooling.jpg)
+3.1 常见的池化处理有两种方式：
+* Max Pooling：最大化，在前面输出过来的数据上做一个取最大值的处理
+* Mean Pooling：平均值，同理求平均
+
+3.2 池化层有这样几个功能：
+* 它又进行了一次特征提取，所以肯定是能够减小下一层数据的处理量的。
+* 由于这个特征的提取，能够有更大的可能性进一步**获取更为抽象的信息**，从而防止过拟合，或者说提高一定的**泛化性**。
+* 由于这种抽象性，所以**能够对输入的微小变化产生更大的容忍，**也就是保持其不变性。(容忍包括图形的**少量平移、旋转以及缩放**等变化)
+
+### 4.SoftMax函数
+![Softmax函数](https://raw.githubusercontent.com/DuncanZhou/images/master/Softmax.png)
+4.1 Softmax函数数学定义：
+
+$$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数的定义可以看出，最后一层的结点的输出值加和都是1.</p>
 <p>4.2 交叉熵<br>Softmax这种激励函数使用的损失函数看上去比较特殊，叫做交叉熵(cross entropy)损失函数。</p>
 <h3 id="5-典型的CNN网络"><a href="#5-典型的CNN网络" class="headerlink" title="5.典型的CNN网络"></a>5.典型的CNN网络</h3><h2 id="第七章-综合问题-即一些笼统地都会出现的问题"><a href="#第七章-综合问题-即一些笼统地都会出现的问题" class="headerlink" title="第七章 综合问题(即一些笼统地都会出现的问题)"></a>第七章 综合问题(即一些笼统地都会出现的问题)</h2><p>本书将这一章安排在第七章，可我总觉这一章貌似应该放在讲完几种神经网络更靠后的位置。</p>
 <p>下面罗列一些知识点，供之后再汇过来补充。</p>
@@ -710,7 +708,7 @@ $$f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_">
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#阅读-lt-白话深度学习与Tensorflow-gt-记"><span class="nav-number">1.</span> <span class="nav-text">阅读<白话深度学习与Tensorflow>记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-第四章-前馈神经网络"><span class="nav-number">1.1.</span> <span class="nav-text">1.第四章 前馈神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-第五章-手写板功能"><span class="nav-number">1.2.</span> <span class="nav-text">2.第五章 手写板功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-传统机器学习与深度学习对比"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.传统机器学习与深度学习对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数据集的划分"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.数据集的划分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-卷积神经网络"><span class="nav-number">1.3.</span> <span class="nav-text">第六章 卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-卷积"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-池化"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.池化</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-SoftMax函数"><span class="nav-number">1.3.4.</span> <span class="nav-text">4.SoftMax函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-典型的CNN网络"><span class="nav-number">1.3.5.</span> <span class="nav-text">5.典型的CNN网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章-综合问题-即一些笼统地都会出现的问题"><span class="nav-number">1.4.</span> <span class="nav-text">第七章 综合问题(即一些笼统地都会出现的问题)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八章-循环神经网络（Recurrent-Neural-Networks）"><span class="nav-number">1.5.</span> <span class="nav-text">第八章 循环神经网络（Recurrent Neural Networks）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-引入"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-循环神经网络"><span class="nav-number">1.5.2.</span> <span class="nav-text">2.循环神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-LSTM-长短期记忆网络"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">3.LSTM(长短期记忆网络)</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#阅读-lt-白话深度学习与Tensorflow-gt-记"><span class="nav-number">1.</span> <span class="nav-text">阅读<白话深度学习与Tensorflow>记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-第四章-前馈神经网络"><span class="nav-number">1.1.</span> <span class="nav-text">1.第四章 前馈神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-概念"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1 概念</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-第五章-手写板功能"><span class="nav-number">1.2.</span> <span class="nav-text">2.第五章 手写板功能</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-传统机器学习与深度学习对比"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.传统机器学习与深度学习对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-数据集的划分"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.数据集的划分</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第六章-卷积神经网络"><span class="nav-number">1.3.</span> <span class="nav-text">第六章 卷积神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念"><span class="nav-number">1.3.1.</span> <span class="nav-text">1.概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-卷积"><span class="nav-number">1.3.2.</span> <span class="nav-text">2.卷积</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-典型的CNN网络"><span class="nav-number">1.3.3.</span> <span class="nav-text">5.典型的CNN网络</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第七章-综合问题-即一些笼统地都会出现的问题"><span class="nav-number">1.4.</span> <span class="nav-text">第七章 综合问题(即一些笼统地都会出现的问题)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第八章-循环神经网络（Recurrent-Neural-Networks）"><span class="nav-number">1.5.</span> <span class="nav-text">第八章 循环神经网络（Recurrent Neural Networks）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-引入"><span class="nav-number">1.5.1.</span> <span class="nav-text">1.引入</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-循环神经网络"><span class="nav-number">1.5.2.</span> <span class="nav-text">2.循环神经网络</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-LSTM-长短期记忆网络"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">3.LSTM(长短期记忆网络)</span></a></li></ol></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -875,24 +873,7 @@ $$f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_">
         }
       });
     </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
-</script>
-
-<script type="text/x-mathjax-config">
-  MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-      all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-  });
-</script>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
-</script>
-<!-- End: Injected MathJax -->
-<!-- hexo-inject:end -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
