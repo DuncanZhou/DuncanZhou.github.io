@@ -298,7 +298,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T11:22:39+08:00">
                 2018-05-23
               </time>
@@ -383,126 +383,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/05/04/gunplot/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/05/04/gunplot/" itemprop="url">
-                  gunplot
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-04T14:53:32+08:00">
-                2018-05-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>论文实验结果图需要绘制,使用gnuplot,记录一下使用过程</p>
-<hr>
-<h3 id="ubuntu自带"><a href="#ubuntu自带" class="headerlink" title="ubuntu自带"></a>ubuntu自带</h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/04/25/Crawler/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -542,7 +422,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T10:06:44+08:00">
                 2018-04-25
               </time>
@@ -559,7 +439,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Crawler/" itemprop="url" rel="index">
@@ -601,7 +481,11 @@
       
         
           
-            <h2 id="gt-由于论文需要补充数据集-现抓取微博上演员-歌手-导演-运动员和普通用户共1w个-包括他们的基本信息和粉丝和朋友关系"><a href="#gt-由于论文需要补充数据集-现抓取微博上演员-歌手-导演-运动员和普通用户共1w个-包括他们的基本信息和粉丝和朋友关系" class="headerlink" title="&gt; 由于论文需要补充数据集,现抓取微博上演员,歌手,导演,运动员和普通用户共1w个.包括他们的基本信息和粉丝和朋友关系."></a>&gt; 由于论文需要补充数据集,现抓取微博上演员,歌手,导演,运动员和普通用户共1w个.包括他们的基本信息和粉丝和朋友关系.</h2><h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>(不考虑多线程)</p>
+            <blockquote>
+<p>由于论文需要补充数据集,现抓取微博上演员,歌手,导演,运动员和普通用户共1w个.包括他们的基本信息和粉丝和朋友关系.</p>
+</blockquote>
+<hr>
+<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>(不考虑多线程)</p>
 <ul>
 <li><p>1.安装依赖的库: <strong>requests,selenium,BeautifulSoup</strong></p>
 </li>
@@ -611,6 +495,10 @@
 </li>
 <li><p>4.抓取到用户id后,可通过weibo API抓取其基本信息和关系信息.</p>
 </li>
+</ul>
+<p>(在抓取用户的关注时,使用多线程)</p>
+<ul>
+<li>5.python多线程模块threading,因为是I/O密集型,所以用多线程</li>
 </ul>
 
           
@@ -689,7 +577,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T10:03:51+08:00">
                 2018-04-17
               </time>
@@ -706,7 +594,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Mining/" itemprop="url" rel="index">
@@ -925,7 +813,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-29T09:35:21+08:00">
                 2018-03-29
               </time>
@@ -942,7 +830,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1116,7 +1004,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-20T23:26:03+08:00">
                 2018-03-20
               </time>
@@ -1133,7 +1021,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1253,7 +1141,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-17T15:49:11+08:00">
                 2018-03-17
               </time>
@@ -1270,7 +1158,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1462,7 +1350,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T18:58:32+08:00">
                 2018-03-15
               </time>
@@ -1479,7 +1367,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -2087,7 +1975,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T00:00:00+08:00">
                 2018-03-13
               </time>
@@ -2104,7 +1992,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -2274,7 +2162,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T09:23:03+08:00">
                 2018-03-07
               </time>
@@ -2291,7 +2179,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -2405,6 +2293,264 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
 
 
     
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/02/27/DeepLearningNotes/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/02/27/DeepLearningNotes/" itemprop="url">
+                  DeepLearningNotes
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-27T10:30:32+08:00">
+                2018-02-27
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
+<h1 id="阅读-lt-白话深度学习与Tensorflow-gt-记"><a href="#阅读-lt-白话深度学习与Tensorflow-gt-记" class="headerlink" title="阅读&lt;白话深度学习与Tensorflow&gt;记"></a>阅读&lt;白话深度学习与Tensorflow&gt;记</h1><p>因为前几章都是介绍,不做记录了.近期更新中</p>
+<h2 id="1-第四章-前馈神经网络"><a href="#1-第四章-前馈神经网络" class="headerlink" title="1.第四章 前馈神经网络"></a>1.第四章 前馈神经网络</h2><h3 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h3><ul>
+<li>BP神经网络(Back Propagation Networks-反向传播网络)</li>
+<li>RBF Network-径向基函数神经网络<br>求解凸函数方法:梯度下降法. 凸函数的定义:</li>
+</ul>
+<script type="math/tex; mode=display">f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_2)}{2}}</script><p>把残差函Loss数描述成待定的若干个w所描述的凸函数-Loss(w),那么就可以用梯度下降法,更新w的各个维度,最后找到满足Loss(w)极值点的位置.</p>
+<h2 id="2-第五章-手写板功能"><a href="#2-第五章-手写板功能" class="headerlink" title="2.第五章 手写板功能"></a>2.第五章 手写板功能</h2><p>直接上手了.</p>
+<h3 id="1-传统机器学习与深度学习对比"><a href="#1-传统机器学习与深度学习对比" class="headerlink" title="1.传统机器学习与深度学习对比"></a>1.传统机器学习与深度学习对比</h3><p>1.1 传统的机器学习中的监督学习方法概括：</p>
+<ul>
+<li><p>1 朴素贝叶斯</p>
+<ul>
+<li>实现的是概率量化计算的模型</li>
+<li>解释：通过对样本的统计，然后算出某件事A发生的概率和某件事B发生的概率之间的量化关系。</li>
+</ul>
+</li>
+<li><p>2 决策树</p>
+<ul>
+<li>通过选择合适的维度来增加约束条件降低分类的信息熵。</li>
+</ul>
+</li>
+<li><p>3 回归模型</p>
+<ul>
+<li>通过建模和拟合来确定待定系数，通过不断调整待定系数的大小来降低残差的大小，也就是降低模型预测值与训练目标的差距。</li>
+</ul>
+</li>
+<li><p>4 SVM（支持向量机）</p>
+<ul>
+<li>通过超平面来分割空间中不同的分类向量，让它们到超平面的距离尽可能远（以保证超平面的鲁棒性）</li>
+</ul>
+<p>而深度学习与此不同的是，它通过大量的线性分类器或非线性分类器、可导或不可导的激励函数，以及池化层（卷积网络中会用到这种设计）等功能对观测对象的特征进行自动化的提取。<br>然而存在的问题：</p>
+</li>
+<li><p>1.在神经网络中，一般网络是比较负责的，如此多的权重值w已经早就没有了统计学中的权值权重的意义，无法得到清晰的物理解释，也无法有效地进行逆向研究。</p>
+</li>
+<li>2.这种拥有极高的VC维的网络能够学到很多东西，但这种学习能力通常会导致泛化能力下降。</li>
+</ul>
+<h3 id="2-数据集的划分"><a href="#2-数据集的划分" class="headerlink" title="2.数据集的划分"></a>2.数据集的划分</h3><p> 深度学习中数据的切分：</p>
+<ul>
+<li>1.训练集：训练得到模型参数</li>
+<li><strong>2.验证集</strong>：用来调整分类器的参数的样本集，在训练过程中，网络模型会立刻在验证集进行验证。用来调整模型参数，我们可以在模型训练过程就可以观察到模型的效果，而不用等到训练结束。并且，有助于验证模型的泛化能力，预防过拟合，是深度学习的标配。</li>
+<li>3.测试集：测试集则是在训练后为测试模型的能力（主要是分类能力）而设置的一部分数据集合。</li>
+</ul>
+<h2 id="第六章-卷积神经网络"><a href="#第六章-卷积神经网络" class="headerlink" title="第六章 卷积神经网络"></a>第六章 卷积神经网络</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><p>1.1 同样是一种前馈神经网络，卷积神经网络的两个特点：</p>
+<ul>
+<li>卷积网络有至少一个<strong>卷积层</strong>，用来提取特征。</li>
+<li>卷积网络的卷积层通过<strong>权值共享</strong>的方式进行工作，大大减少权值w的数量，使得在训练中在达到同样识别率的情况下收敛速度明显快于全连接BP网络。</li>
+</ul>
+<p>1.2 用途<br>卷积网络主要用来识别位移、缩放及其他形式扭曲不变性的二维图形。</p>
+<h3 id="2-卷积"><a href="#2-卷积" class="headerlink" title="2.卷积"></a>2.卷积</h3><p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/Convolution.gif" alt="卷积操作"><br>2.1 解释</p>
+<blockquote>
+<p>卷积：在泛函分析中，卷积(convolution)是一种函数的定义。它是通过两个函数f和g生成第三个函数的一种数学算子，表征函数f与g经过翻转和平移的重叠部分的面积。</p>
+</blockquote>
+<p>卷积的数学定义：</p>
+<script type="math/tex; mode=display">h(x)=f(x)*g(x)=\int^{+\infty}_{-\infty}f(t)g(x-t)dt$$.
+
+卷积过程可以看成是特征的一种压缩过程，一般卷积函数后可能还会跟一个激励函数ReLu函数等。
+
+2.2 卷积层其他参数
+* Padding：边界填充
+    - 保持边界信息
+    - 如果输入图片有差异，可以通过Padding来进行填充，使得输入尺寸一致
+
+* Stride：步幅，Stride可以理解为每次滑动的单位。
+
+### 3.池化
+![池化操作](https://raw.githubusercontent.com/DuncanZhou/images/master/pooling.jpg)
+3.1 常见的池化处理有两种方式：
+* Max Pooling：最大化，在前面输出过来的数据上做一个取最大值的处理
+* Mean Pooling：平均值，同理求平均
+
+3.2 池化层有这样几个功能：
+* 它又进行了一次特征提取，所以肯定是能够减小下一层数据的处理量的。
+* 由于这个特征的提取，能够有更大的可能性进一步**获取更为抽象的信息**，从而防止过拟合，或者说提高一定的**泛化性**。
+* 由于这种抽象性，所以**能够对输入的微小变化产生更大的容忍，**也就是保持其不变性。(容忍包括图形的**少量平移、旋转以及缩放**等变化)
+
+### 4.SoftMax函数
+![Softmax函数](https://raw.githubusercontent.com/DuncanZhou/images/master/Softmax.png)
+4.1 Softmax函数数学定义：
+
+$$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数的定义可以看出，最后一层的结点的输出值加和都是1.</p>
+<p>4.2 交叉熵<br>Softmax这种激励函数使用的损失函数看上去比较特殊，叫做交叉熵(cross entropy)损失函数。</p>
+<h3 id="5-典型的CNN网络"><a href="#5-典型的CNN网络" class="headerlink" title="5.典型的CNN网络"></a>5.典型的CNN网络</h3><h2 id="第七章-综合问题-即一些笼统地都会出现的问题"><a href="#第七章-综合问题-即一些笼统地都会出现的问题" class="headerlink" title="第七章 综合问题(即一些笼统地都会出现的问题)"></a>第七章 综合问题(即一些笼统地都会出现的问题)</h2><p>本书将这一章安排在第七章，可我总觉这一章貌似应该放在讲完几种神经网络更靠后的位置。</p>
+<p>下面罗列一些知识点，供之后再汇过来补充。</p>
+<ul>
+<li>1.为了加快训练速度，使用<strong>GPU</strong>并行计算。</li>
+<li>2.在TensorFlow中指定一个Batch的Size来规定每次被随机选择参与归纳的样本数量，完成<strong>随机梯度下降</strong>。</li>
+<li>3.梯度消失问题解决方案：<ul>
+<li>初始化一个合适的w</li>
+<li><strong>选择一个合适的激励函数(</strong>ReLU-“热鲁函数”,Rectified Linear Units-线性修正单元激励函数)</li>
+</ul>
+</li>
+<li>4.数据预处理：归一化<ul>
+<li>线性函数归一化</li>
+<li>0均值标准化</li>
+</ul>
+</li>
+<li>5.参数初始化：权值w的初始化。业界比较认可的说法是<strong>把整个网络中所有的w初始化成以0为均值,以一个很小的值为标准差的正态分布的方式效果会比较好。即N(0,1)正态分布。</strong></li>
+<li>6.正则化:在损失函数中加入正则项。带有正则项的损失函数前半部分的损失函数称为”经验风险”，后半部分称为”结构风险”。引入正则化的目的是:<strong>防止过拟合</strong>。</li>
+<li>7.其他超参数。什么是超参数:通常指那些在机器学习算法训练的步骤开始之前设定的一些参数值，这些参数没法通过算法本身来学会的。所以，超参的设定可能更多的是经验了。</li>
+<li>8.DropOut：在一轮的训练阶段丢弃一部分网络节点，在一定程度上降低了VC维的数量，减小过拟合的风险。</li>
+</ul>
+<h2 id="第八章-循环神经网络（Recurrent-Neural-Networks）"><a href="#第八章-循环神经网络（Recurrent-Neural-Networks）" class="headerlink" title="第八章 循环神经网络（Recurrent Neural Networks）"></a>第八章 循环神经网络（Recurrent Neural Networks）</h2><h3 id="1-引入"><a href="#1-引入" class="headerlink" title="1.引入"></a>1.引入</h3><p>1.1 隐马尔可夫模型:训练一个HMM模型是比较容易的,<strong>输入为</strong>:状态序列$X_i$和输出序列$O_i$,得到的模型由两个矩阵构成,一个是状态X之间的表示隐含状态转移关系的矩阵,一个是X到O之间的输出概率矩阵.</p>
+<h3 id="2-循环神经网络"><a href="#2-循环神经网络" class="headerlink" title="2.循环神经网络"></a>2.循环神经网络</h3><p>2.1 输入:$X_t$向量,输出:$Y$,需要训练的待定系数$W_X$和$W_H$.前面一次的输入缓存在$H_t$中,每次$W_X$和输入$X_t$做乘积,然后与另一部分H<sub>t-1</sub>和$W_H$乘积共同参与运算得到$Y$.最后训练得到的就是$W_X$和$W_H$系数矩阵.</p>
+<p>2.2 训练过程:传统的RNN在训练过程中的效果不理想,改进后的出现了LSTM算法.</p>
+<h4 id="3-LSTM-长短期记忆网络"><a href="#3-LSTM-长短期记忆网络" class="headerlink" title="3.LSTM(长短期记忆网络)"></a>3.LSTM(长短期记忆网络)</h4><p>3.1 LSTM与传统的RNN网络相比多了一个非常有用的机制,忘记门(forget gate).</p>
+<p>3.2 优点:减少训练的时间复杂度,消除梯度爆炸</p>
+<p>3.3 构造</p>
+<ul>
+<li>在t时刻,<strong>LSTM的输入</strong>有三个:当前时刻网络的输入值X<sub>t</sub>,上一时刻LSTM的输出值H<sub>t-1</sub>,以及上一时刻的单元状态C<sub>t-1</sub>.<strong>LSTM的输出</strong>有两个:当前时刻LSTM输出值$H_t$和当前时刻单元状态$C_t$.</li>
+<li>LSTM使用门来控制长期状态,门其实就是一层全连接层,输入是一个向量,输出是一个0到1之间的实数(Sigmoid层).<ul>
+<li>当门输出为0时,任何向量与之相乘都会得到0向量,就是什么都不能通过.</li>
+<li>当门输出为1时,任何向量与之相乘都不会有任何改变,相当于什么都可以通过.</li>
+</ul>
+</li>
+<li>LSTM前向计算中有三个门<ul>
+<li><strong>遗忘门</strong>:用来控制上一时刻的单元状态C<sub>t-1</sub>有多少能保留到当前时刻$C_t$</li>
+<li><strong>输入门</strong>:用来控制即时时刻网络的输入$X_t$有多少能保存到单元状态$C_t$.</li>
+<li><strong>输出门</strong>:控制单元状态$C_t$有多少能保留到LSTM的当前输出值$H_t$.</li>
+</ul>
+</li>
+</ul>
+<p>3.4 LSTM和传统的RNN对比:<br>传统的RNN只有一个状态,对短期的输入非常敏感,而LSTM增加了一个状态C,用来保存长期的状态</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
   </section>
 
   
@@ -2450,8 +2596,8 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">58</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">57</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -2459,7 +2605,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">categories</span>
               
             </div>
           
@@ -2467,8 +2613,8 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-count">10</span>
+                <span class="site-state-item-name">tags</span>
               
             </div>
           
@@ -2557,7 +2703,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
