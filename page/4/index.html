@@ -259,6 +259,513 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/SVM-Support vector Machine/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/19/SVM-Support vector Machine/" itemprop="url">
+                  支持向量机(Support Vector Machine)学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:43:51+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Seminar/" itemprop="url" rel="index">
+                    <span itemprop="name">Seminar</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="支持向量机-SVM-Support-Vector-Machine-："><a href="#支持向量机-SVM-Support-Vector-Machine-：" class="headerlink" title="支持向量机(SVM-Support Vector Machine)："></a>支持向量机(SVM-Support Vector Machine)：</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>1.SVM是一种分类算法，是一种<em>二类分类模型</em>,用于解决分类和回归问题。通过寻求结构化风险最小来提高学习机泛化能力，实现经验风险和置信范围最小化，从而达到在统计样本量较少的情况下，亦能获得良好统计规律的目的。</p>
+<blockquote>
+<p><em>i.e.</em><font color="red">给定一个包含正例和反例的样本集合，svm的目的是寻找一个超平面来对样本进行分割，把样本中的正例面和反例面分开，但不是简单的分开，原则是使正例和反例之间的间隔最大，鲁棒性最好。</font></p>
+</blockquote>
+<p>2.<em>基本公式</em>：在样本空间中，划分超平面的线性方程：<img src="https://github.com/DuncanZhou/images/raw/master/1.PNG" alt="线性方程"><br>样本空间中任意点x到超平面（w，b）距离为<img src="https://github.com/DuncanZhou/images/raw/master/2.PNG" alt="距离"><br>假设正确分类，<img src="https://github.com/DuncanZhou/images/raw/master/3.PNG" alt="">“间隔”为<img src="https://github.com/DuncanZhou/images/raw/master/4.PNG" alt=""><br>所以，现在的目标是求得<em>“最大间隔”</em><img src="https://github.com/DuncanZhou/images/raw/master/5.PNG" alt=""><br>这就是SVM的基本型。</p>
+<p>3.求“最大间隔”过程中的问题转化（转换成对偶问题）</p>
+<blockquote>
+<p>最大 -&gt; 最小 -&gt; 凸二次规划|<font color="red">拉格朗日乘子法</font></p>
+</blockquote>
+<h2 id="线性划分-gt-非线性划分"><a href="#线性划分-gt-非线性划分" class="headerlink" title="线性划分 -&gt; 非线性划分"></a>线性划分 -&gt; 非线性划分</h2><h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h3><p><img src="https://github.com/DuncanZhou/images/raw/master/6.PNG" alt=""><br>之前的讨论是假设样本是线性可分的，然而现实生活任务中，原始样本空间也许并不存在一个能正确划分两类样本的超平面。(如“异或问题”)，<font color="red">对于这样的问题，可以将原始样本空间映射到一个更高维的特征空间。</font>（Fortunately,如果原始空间是有限集，那么一定存在一个高维特征空间是样本可分。）</p>
+<h3 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2.解决方案"></a>2.解决方案</h3><p>映射后求解“最大间隔”的解<br><img src="https://github.com/DuncanZhou/images/raw/master/7.PNG" alt=""></p>
+<h3 id="3-涉及到的问题"><a href="#3-涉及到的问题" class="headerlink" title="3.涉及到的问题"></a>3.涉及到的问题</h3><p>在求解过程中涉及计算样本Xi与Xi映射到特征空间之后的内积。由于特征空间维数可能很高，甚至可能是无穷维，因此直接计算内积通常是困难的，为了避开这个问题，设想这样一个函数-核函数<img src="https://github.com/DuncanZhou/images/raw/master/8.PNG" alt=""><br>求解后得到<img src="https://github.com/DuncanZhou/images/raw/master/9.PNG" alt=""></p>
+<h3 id="4-常用的核函数"><a href="#4-常用的核函数" class="headerlink" title="4.常用的核函数"></a>4.常用的核函数</h3><p><img src="https://github.com/DuncanZhou/images/raw/master/10.PNG" alt=""></p>
+<h2 id="软间隔与正则化"><a href="#软间隔与正则化" class="headerlink" title="软间隔与正则化"></a>软间隔与正则化</h2><blockquote>
+<p><em>软间隔</em>：现实任务中往往很难确定合适的核函数使训练集在特征空间中线性可分，即使恰好找到了某个核函数使训练集在特征空间中线性可分，也很难判定这个貌似线性可分的结果不是由于过拟合所造成的。</p>
+</blockquote>
+<p><em>解决该问题的一个方法是允许svm在一些样本上出错</em>。如<img src="https://github.com/DuncanZhou/images/raw/master/11.PNG" alt=""></p>
+<p>也就是在求解最大化间隔时，同时使不满足约束的样本尽可能少。<img src="https://github.com/DuncanZhou/images/raw/master/15.PNG" alt=""></p>
+<p>三种常用的替代损失函数：<img src="https://github.com/DuncanZhou/images/raw/master/12.PNG" alt=""></p>
+<p>共性：<img src="https://github.com/DuncanZhou/images/raw/master/13.PNG" alt=""></p>
+<h2 id="支持向量回归（Support-Vector-Regression）"><a href="#支持向量回归（Support-Vector-Regression）" class="headerlink" title="支持向量回归（Support Vector Regression）"></a>支持向量回归（Support Vector Regression）</h2><p>给定样本D={(x1,y1),(x2,y2),…},希望学得一个回归模型，使得f(x)与y尽可能接近，w和b是待确定参数。<br>传统回归模型通常直接基于模型输出f(x)与真实输出y之间的差别来计算损失，当且仅当f(x)与y完全相同时，损失才为0.与次不同，SVR假设我们能容忍f(x)与y之间最多有e的偏差，小于等于e的都算0误差。SVR问题形式化为<img src="https://github.com/DuncanZhou/images/raw/master/14.PNG" alt=""></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/SVM(Extension)/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/19/SVM(Extension)/" itemprop="url">
+                  支持向量机(Support Vector Machine)学习（补充）
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:43:42+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="SMO算法-Sequential-Minimal-Optimization"><a href="#SMO算法-Sequential-Minimal-Optimization" class="headerlink" title="SMO算法(Sequential Minimal Optimization)"></a>SMO算法(Sequential Minimal Optimization)</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h2><blockquote>
+<p>SMO算法用于训练SVM，将大优化问题分解为多个小优化问题。这些小优化问题往往很容易求解，并且对它们进行顺序求解的结构与将它们作为整体来求解的结果是完全一致。</p>
+</blockquote>
+<h2 id="2-目标及原理"><a href="#2-目标及原理" class="headerlink" title="2.目标及原理"></a>2.目标及原理</h2><blockquote>
+<p>SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha，就能求出权重向量w。</p>
+<p>每次循环中选择两个alpha进行优化处理。一旦找到一对合适的alpha，那么就增大其中一个同时减少另一个。这里所谓的“合适”就是指两个alpha必须要符合一定的条件，条件之一就是这两个alpha必须在间隔边界之外，而其第二个条件则是这两个alpha还没有进行过区间化处理或者不在边界上。</p>
+</blockquote>
+<h2 id="3-调参"><a href="#3-调参" class="headerlink" title="3.调参"></a>3.调参</h2><blockquote>
+<p>SVM中有两个参数<font color="red">C</font>和<font color="red">K1</font>，其中C是惩罚系数，即对误差的宽容度。C越高，说明越不能容忍出误差，容易过拟合。C越小，容易欠拟合。</p>
+<p>k1是参数是RBF函数作为核函数后，该函数自带的一个参数，隐含的决定了数据映射到新的特征空间后的分布，k1越大，支持向量越少，k1越小，支持向量越多。支持向量的个数影响训练与预测的速度。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/Semiconduction/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/01/19/Semiconduction/" itemprop="url">
+                  天池-半导体质量预测
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:43:07+08:00">
+                2018-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Competition/" itemprop="url" rel="index">
+                    <span itemprop="name">Competition</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="天池-半导体质量预测"><a href="#天池-半导体质量预测" class="headerlink" title="天池-半导体质量预测"></a>天池-半导体质量预测</h2><p>最近跟着做天池的比赛,将比赛过程中遇到的问题记录如下:</p>
+<h3 id="1-特征的选择"><a href="#1-特征的选择" class="headerlink" title="1.特征的选择?"></a>1.特征的选择?</h3><blockquote>
+<p><strong>特征选择的方法</strong>: 1) 嵌入式 2) 过滤式 3) 封装式</p>
+</blockquote>
+<p><strong>1)数据清洗:</strong></p>
+<ul>
+<li>1.筛选掉重复的列</li>
+<li>2.对于类别类型特征,利用sklearn编码(one-hot, Label Encoder等)</li>
+<li>3.使用平均值填充完后再去除冗余列(方差为0,列重复)</li>
+</ul>
+<p>清洗过后,特征从原来的8000多维降到了3400多维.</p>
+<ul>
+<li>4.特征中存在全为NaN值的,也去掉这些列</li>
+</ul>
+<blockquote>
+<p>总结:数据清洗过后,总的特征维数维3342维;随机森林MSE为:0.03612</p>
+</blockquote>
+<p><strong>2)特征选择:</strong></p>
+<ul>
+<li>嵌入式: 根据模型来分析特征的重要性,最常见的方式为<strong>正则化</strong>来做特征选择.</li>
+<li>过滤式: 评估单个特征和结果之间的相关程度,排序留下Top相关的特征部分.(缺点:没有考虑到特征之间的关联作用,可能把有用的关联特征误踢掉)</li>
+<li>封装式: 把特征选择看作一个特征子集搜索问题,筛选各种特征子集,用模型评估效果.</li>
+</ul>
+<blockquote>
+<p>处理方法:</p>
+<ul>
+<li>过滤式:使用单个随机森林得到的feature<em>importances</em>排序后保留了44个特征,为<br>[‘310X207’, ‘210X158’, ‘311X7’, ‘330X1132’, ‘220X13’, ‘310X149’, ‘750X883’, ‘210X207’, ‘312X144’, ‘210X192’, ‘312X61’, ‘312X66’, ‘440AX77’, ‘220X197’, ‘310X153’, ‘330X1190’, ‘344X252’, ‘310X33’, ‘210X174’, ‘440AX95’, ‘312X777’, ‘330X102’, ‘440AX187’, ‘340X161’, ‘312X55’, ‘330X590’, ‘210X89’, ‘330X1129’, ‘210X164’, ‘210X188’, ‘330X1146’, ‘310X119’, ‘360X1049’, ‘440AX182’, ‘750X640’, ‘440AX65’, ‘312X789’, ‘311X154’, ‘310X43’, ‘312X782’, ‘312X555’, ‘420X4’, ‘312X785’, ‘210X229’]</li>
+</ul>
+</blockquote>
+<ul>
+<li>包裹式:利用随机森林的性能作为评价指标筛选出200个特征<br>set([‘440AX98’, ‘310X207’, ‘210X158’, ‘261X641’, ‘261X269’, ‘312X61’, ‘312X66’, ‘220X197’, ‘520X317’, ‘400X151’, ‘400X150’, ‘400X153’, ‘330X594’, ‘330X590’, ‘210X164’, ‘210X8’, ‘420X4’, ‘330X1223’, ‘310X117’, ‘261X524’, ‘310X119’, ‘261X607’, ‘750X640’, ‘210X126’, ‘311X154’, ‘312X555’, ‘261X689’, ‘520X245’, ‘261X477’, ‘750X883’, ‘330X589’, ‘261X590’, ‘300X8’, ‘261X591’, ‘261X468’, ‘440AX77’, ‘300X3’, ‘220X179’, ‘330X1190’, ‘220X177’, ‘220X176’, ‘220X175’, ‘220X174’, ‘220X173’, ‘220X172’, ‘220X171’, ‘220X170’, ‘261X464’, ‘TOOL (#2)’, ‘330X351’, ‘330X102’, ‘330X355’, ‘330X354’, ‘330X1049’, ‘330X1042’, ‘312X57’, ‘312X55’, ‘210X89’, ‘330X1040’, ‘330X1043’, ‘330X1129’, ‘261X460’, ‘330X1044’, ‘261X462’, ‘330X1046’, ‘210X188’, ‘330X353’, ‘360X1049’, ‘440AX66’, ‘440AX67’, ‘440AX64’, ‘440AX65’, ‘330X135’, ‘330X134’, ‘312X144’, ‘330X133’, ‘330X132’, ‘330X139’, ‘312X782’, ‘210X174’, ‘312X785’, ‘312X789’, ‘261X608’, ‘261X609’, ‘520X312’, ‘520X313’, ‘520X314’, ‘330X1228’, ‘420X33’, ‘330X1132’, ‘261X600’, ‘261X601’, ‘330X641’, ‘330X1226’, ‘330X1221’, ‘330X1220’, ‘210X206’, ‘210X207’, ‘261X598’, ‘261X599’, ‘340X105’, ‘340X107’, ‘210X190’, ‘210X191’, ‘210X192’, ‘261X593’, ‘261X594’, ‘261X596’, ‘261X597’, ‘220X557’, ‘220X551’, ‘310X37’, ‘310X36’, ‘310X34’, ‘310X33’, ‘261X268’, ‘310X31’, ‘310X30’, ‘440AX95’, ‘210X3’, ‘210X4’, ‘210X5’, ‘210X6’, ‘210X7’, ‘312X777’, ‘210X9’, ‘261X260’, ‘261X261’, ‘261X266’, ‘261X267’, ‘261X264’, ‘261X265’, ‘520X246’, ‘520X247’, ‘261X736’, ‘261X737’, ‘520X242’, ‘520X243’, ‘310X153’, ‘344X252’, ‘440AX90’, ‘261X262’, ‘330X1146’, ‘440AX182’, ‘440AX187’, ‘261X687’, ‘261X688’, ‘310X43’, ‘330X157’, ‘330X404’, ‘261X512’, ‘261X513’, ‘330X401’, ‘520X55’, ‘330X403’, ‘261X517’, ‘261X518’, ‘261X519’, ‘311X7’, ‘330X409’, ‘330X159’, ‘330X158’, ‘330X461’, ‘520X333’, ‘220X13’, ‘310X149’, ‘520X244’, ‘261X338’, ‘330X1249’, ‘330X1248’, ‘300X7’, ‘261X330’, ‘261X331’, ‘340X161’, ‘261X333’, ‘330X1247’, ‘344X121’, ‘261X336’, ‘330X1244’, ‘520X240’, ‘330X1230’, ‘520X241’, ‘330X1241’, ‘261X335’, ‘220X535’, ‘210X129’, ‘210X128’, ‘220X531’, ‘220X530’, ‘210X125’, ‘210X124’, ‘210X127’, ‘261X526’, ‘210X121’, ‘210X120’, ‘210X123’, ‘261X230’, ‘261X592’, ‘440AX123’, ‘261X742’, ‘440AX99’, ‘311X83’, ‘220X178’, ‘330X535’, ‘210X229’]</li>
+</ul>
+<p>1) 提取特征后,xgboost的mse为0.0325341683406<br>2) 单个随机森林的5折交叉验证的平均mse为0.0288353227614<br>(max_depth=None,n_estimators=160,min_samples_leaf=2,max_features=n_features)</p>
+<p>使用模型的features<em>importances</em>选择的特征和rfe做交集得到的特征为:<br>[‘210X158’, ‘330X1228’, ‘330X1132’, ‘220X13’, ‘310X149’, ‘750X883’, ‘330X589’, ‘210X207’, ‘440AX77’, ‘312X66’, ‘210X192’, ‘330X1190’, ‘310X33’, ‘312X555’, ‘310X31’, ‘310X30’, ‘440AX95’, ‘210X6’, ‘210X8’, ‘330X102’, ‘340X161’, ‘312X57’, ‘310X153’, ‘330X590’, ‘210X89’, ‘330X1129’, ‘210X164’, ‘312X777’, ‘210X188’, ‘330X1146’, ‘310X119’, ‘750X640’, ‘311X7’, ‘312X144’, ‘310X43’, ‘312X782’, ‘210X174’, ‘420X4’, ‘210X229’, ‘312X785’, ‘312X789’]</p>
+<h3 id="2-缺失值的处理"><a href="#2-缺失值的处理" class="headerlink" title="2.缺失值的处理?"></a>2.缺失值的处理?</h3><ul>
+<li>使用任意数值填充</li>
+<li>使用平均值填充</li>
+</ul>
+<h3 id="3-维数降维"><a href="#3-维数降维" class="headerlink" title="3.维数降维?"></a>3.维数降维?</h3><h3 id="4-模型的选择"><a href="#4-模型的选择" class="headerlink" title="4.模型的选择?"></a>4.模型的选择?</h3><ol>
+<li>Random Forest</li>
+<li>GBDT(Gradient Boosting Decision Tree)<blockquote>
+<p>这里记录下GBDT的发展过程: Regression Decision Tree -&gt; Boosting Decision Tree -&gt; Gradient Boosting Decision Tree,GBDT利用加法模型和前向分步法实现学习的优化过程.GBDT是一个基于迭代累加的决策树算法，它通过构造一组弱的学习器（树），并把多颗决策树的结果累加起来作为最终的预测输出。 缺点:1) 计算复杂度高 2) 不适合高维稀疏特征</p>
+</blockquote>
+</li>
+</ol>
+<p>3.Xgboost</p>
+<blockquote>
+<p>xgboost是boosting Tree的一个很牛的实现:</p>
+<ul>
+<li>显示地把树模型复杂度作为正则项加到优化目标中</li>
+<li>公式推导中用到了二阶导数,用了二阶泰勒展开</li>
+<li>实现了分裂点寻找近似算法</li>
+<li>利用了特征的稀疏性</li>
+<li>并行计算</li>
+</ul>
+</blockquote>
+<p>xgboost的训练速度远远快于传统的GBDT,10倍量级.</p>
+<blockquote>
+<p>总结:重新选用xgboost模型,参数如下,mse为0.0320532717482<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">params=&#123;&apos;booster&apos;:&apos;gbtree&apos;,</div><div class="line">    &apos;objective&apos;: &apos;reg:linear&apos;,</div><div class="line">    &apos;eval_metric&apos;: &apos;rmse&apos;,</div><div class="line">    &apos;max_depth&apos;:4,</div><div class="line">    &apos;lambda&apos;:6,</div><div class="line">    &apos;subsample&apos;:0.75,</div><div class="line">    &apos;colsample_bytree&apos;:1,</div><div class="line">    &apos;min_child_weight&apos;:1,</div><div class="line">    &apos;eta&apos;: 0.04,</div><div class="line">    &apos;seed&apos;:0,</div><div class="line">    &apos;nthread&apos;:8,</div><div class="line">     &apos;silent&apos;:0&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="5-实践过程"><a href="#5-实践过程" class="headerlink" title="5.实践过程"></a>5.实践过程</h3><p>1.特征选择过程:去除全为Nan的列,去除Nan值个数大于200的列,去除object列,去除重复的列,选择Pearson相关系数&gt;0.2的列,最后共得到5600多维特征.<br>这一步很粗糙,改进: </p>
+<ul>
+<li>1) 加入object的列</li>
+<li>2)特征维数继续筛减:可以试一下PCA降维</li>
+<li>3)时间列属性的加入</li>
+</ul>
+<p>2.模型的选择:单模型线性回归线下mse:0.0388左右,而线上为0.0446.之前用随机森林回归预测,线下0.0297,而线上0.0493.从这个现象结合线下数据只有500条是否可以得出线下和线上数据并不是分布相同,或者说差异较大,而且线下训练可能存在过拟合.2017.12.24将三种回归模型加权平均融合提交结果.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/Representatives/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1282,459 +1789,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/Personalized Search by Tag-based in Collaborative Tagging Systems/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/19/Personalized Search by Tag-based in Collaborative Tagging Systems/" itemprop="url">
-                  Personalized Search论文阅读笔记
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:41:44+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Paper/" itemprop="url" rel="index">
-                    <span itemprop="name">Paper</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="论文题目"><a href="#论文题目" class="headerlink" title="论文题目"></a>论文题目</h2><h3 id="Personalized-Search-by-Tag-based-User-Profiling-and-Resource-Profile-in-Collaborative-Tagging-Systems"><a href="#Personalized-Search-by-Tag-based-User-Profiling-and-Resource-Profile-in-Collaborative-Tagging-Systems" class="headerlink" title="Personalized Search by Tag-based User Profiling and Resource Profile in Collaborative Tagging Systems"></a>Personalized Search by Tag-based User Profiling and Resource Profile in Collaborative Tagging Systems</h3><h2 id="Concept"><a href="#Concept" class="headerlink" title="Concept"></a>Concept</h2><blockquote>
-<p><strong>Collaboative Tagging Systems</strong>:协标签系统，类似于YouTube、Flickr这样一类系统，允许用户使用标签对资源进行标注，而得出用户的标签；所以，用户具有标签，资源也有标签，这样称为协同标签。</p>
-<p><strong>folksonomy</strong>:大众分类的。如上所说的一些系统中允许用户去标注资源，即，利用大众的力量去分类资源。</p>
-<p><strong>personalized search</strong>:个性化搜索，在返回和查询相关的结果时不仅考虑和搜索的关键词相关，并且考虑用户的profile(偏好)。</p>
-</blockquote>
-<h2 id="About-this-paper"><a href="#About-this-paper" class="headerlink" title="About this paper"></a>About this paper</h2><p>论文中首先总结了之前的工作中对用户和资源的profile构建的方法，用户和资源的profile的tag的权重计算方法有TF、TF-IDF、BM25，以及用户兴趣和资源相似性的计算方法，但这些方法都存在一定的局限性。<br><strong>TF方法</strong>：对于标注比较频繁或者比较活跃的用户，经常使用某些tag标注。如果使用TF计算tag的权重，那么，对于不经常标注资源的用户，其偏好的标签权重必定比活跃的用户tag小很多。</p>
-<p><font color="green">举个例子:</font></p>
-<blockquote>
-<p>Tom = {(tag1:300;tag2:200;tag3:280)}; Jerry = {(tag1:50;tag2:30;tag3:10)} 对于，Tom和Jerry来说，tag1都是其偏好的，但是如果以TF来计算，tag1对于Tom的偏好程度是大于Jerry的，而其实，tag1对Jerry是更为感兴趣的。同理，对于资源标签权重计算方法也存在相似问题。</p>
-</blockquote>
-<p><strong>TF-IDF方法</strong>：这里为TF-IDF的演变版，TF-IUF和TF-IRF。TF-IDF用来表示一个tag能否表示该实体的程度，同理，TF-IUF和TF-IRF表示一个标签能否表示该用户和资源。但是，这里存在的问题是，标签的权值并不能表示用户对于该标签的偏好程度。</p>
-<p><font color="green">举个例子:</font></p>
-<blockquote>
-<p>Tom的标签使用频率如下:[tag1:500;tag2:400;…;tagn:1]。如果使用TF-IDF方法来计算标签权重，那么，tagn的TF-IDF权重是最大的，但是，tagn并不是用户最感兴趣的。同理，对于资源标签权重计算方法也存在相似问题。</p>
-</blockquote>
-<p><strong>BM25</strong>:BM25方法是以TF和TF-IDF的值作为变量，所以BM25方法也存在以上的局限性。</p>
-<p><strong>用户兴趣与资源相似性计算方法</strong>:一般计算该相似度采用的方法是余弦相似性等相似性计算法方法，这存在一些问题。因为现在用户的标签的权值代表的是用户对该tag的感兴趣程度，而不是与目标资源的相关程度，所以用一般相似性计算方法是不合理的。</p>
-<p><font color="green">举个例子:</font></p>
-<blockquote>
-<p>Resource1 = {(tag1:0.9;tag2:0.95;tag3:0.85)}; Resource2 = {(tag1:0.9;tag2:0.1;tag3:0.01)}; User = {(tag1:0.8;tag2:0.5;…;tag3:0.25)}。如果用一般方法计算相似度，那么R1相似性小于R2，而与用户偏好相似的更多是R1。是因为用户对tag1，tag2，tag3都是偏好的，而R2只是对tag1更符合一些。</p>
-</blockquote>
-<p>所以，基于以上方法的不合理之处，该论文提出了计算user和resource标签权值及计算用户兴趣和资源相关性的方法。</p>
-<h2 id="论文提出的方法"><a href="#论文提出的方法" class="headerlink" title="论文提出的方法"></a>论文提出的方法</h2><h3 id="User-Profiles-Modeling"><a href="#User-Profiles-Modeling" class="headerlink" title="User Profiles Modeling"></a>User Profiles Modeling</h3><blockquote>
-<p>某用户中标签的权值 = 该标签被用来标注的次数 / 该用户标签总标注次数</p>
-</blockquote>
-<h3 id="Resources-Profiles-Modeling"><a href="#Resources-Profiles-Modeling" class="headerlink" title="Resources Profiles Modeling"></a>Resources Profiles Modeling</h3><blockquote>
-<p>某资源中标签的权值 = 使用该标签标注该资源的用户数 / 标注该资源的总用户数</p>
-</blockquote>
-<h3 id="Personalized-Search"><a href="#Personalized-Search" class="headerlink" title="Personalized Search"></a>Personalized Search</h3><p>分为查询相似性计算和用户兴趣与查询相似性计算。相关公式见论文。<br>最后，将两个相似性分数融合得到相似性分数。</p>
-<h2 id="实验结果准确性度量标准"><a href="#实验结果准确性度量标准" class="headerlink" title="实验结果准确性度量标准"></a>实验结果准确性度量标准</h2><p>数据集：MovieLens数据集和该论文自己的一个demo系统。</p>
-<p><font color="red">1.标准1</font>:imp = 1 / rp - 1 / rb;rp为新方法对目标资源的等级，rb为baseline方法对目标资源的等级。</p>
-<p><font color="red">2.标准2</font>:HR：命中率计算方法</p>
-<p><font color="red">3.标准3</font>:MRR：平均倒数评级 </p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/NP_Problem/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/19/NP_Problem/" itemprop="url">
-                  P问题/NP问题/NP-Hard问题/NP-Complete问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:41:29+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>近日,论文中涉及到NP-Hard问题,写下笔记对以上问题进行区分.</p>
-<blockquote>
-<p>P问题:在多项式时间内可以求解的问题.</p>
-<p>NP问题:在多项时间内不能求解,在多项式时间内可以验证的问题.</p>
-<p>NP-Hard问题:所有的NP问题在多项式时间内可以归约到该问题,该问题为NP-Hard问题.</p>
-<p>NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/19/No-Root Install mpi4py/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/19/No-Root Install mpi4py/" itemprop="url">
-                  在非root用户下安装mpi4py
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-19T11:41:24+08:00">
-                2018-01-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="step1"><a href="#step1" class="headerlink" title="step1:"></a>step1:</h3><p>安装mpi4py所需要的依赖包(python2.7版本/Cpython/Openmpi)<br>1.源码包安装Python2.7版本<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./configure prefix=&quot;#python安装目录(绝对路径)&quot;</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure></p>
-<p>2.安装Cpython<br>使用当前用户目录下的python版本来进行安装<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/XXX/python27/bin/python setup.py install</div></pre></td></tr></table></figure></p>
-<p>3.安装openmpi<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./configure prefix=&quot;#openmpi安装目录(绝对路径)&quot;</div><div class="line">make</div><div class="line">make install</div></pre></td></tr></table></figure></p>
-<h3 id="step3"><a href="#step3" class="headerlink" title="step3:"></a>step3:</h3><p>配置openmpi环境变量<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">vim ~/.bashrc</div><div class="line"># ~/.bashrc末尾添加</div><div class="line">export PATH=#openmpi的绝对路径/bin:$PATH</div><div class="line">soucre ~/.bashrc</div></pre></td></tr></table></figure></p>
-<h3 id="step4"><a href="#step4" class="headerlink" title="step4:"></a>step4:</h3><p>安装mpi4py包(同Cpython包安装方法)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/home/XXX/python27/bin/python setup.py install</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1780,7 +1834,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">55</span>
+              <span class="site-state-item-count">58</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -1788,7 +1842,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">9</span>
                 <span class="site-state-item-name">Kategorien</span>
               
             </div>
@@ -1797,7 +1851,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">Tags</span>
               
             </div>
