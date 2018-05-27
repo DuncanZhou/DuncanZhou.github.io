@@ -298,7 +298,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T11:22:39+08:00">
                 2018-05-23
               </time>
@@ -339,12 +339,18 @@
       
         
           
-            <h2 id="金融建模比赛记录"><a href="#金融建模比赛记录" class="headerlink" title="金融建模比赛记录"></a>金融建模比赛记录</h2><h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><p>对于A训练集:</p>
+            <h2 id="金融建模比赛记录"><a href="#金融建模比赛记录" class="headerlink" title="金融建模比赛记录"></a>金融建模比赛记录</h2><h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><p>对于A训练集（有标签）:</p>
 <ul>
 <li>1.数据分散在四个文件内,train_behavior,train_ccx,train_consumer,train_target,各个数据文件的解释大赛excel表格中已有.</li>
 <li>2.需要根据ccx_id将每个文件中的数据进行聚合, 聚合之前可以先在每个文件中提取特征.</li>
-<li>3.</li>
+<li>对于每个文件内</li>
 </ul>
+<ul>
+<li>train_behavior（基础信息+行为数据）:一共2270维特征，对其中(1)唯一值列去除—共去除23列;（2）对于缺失90%值的列进行去除;(3)对于包含空值且只有两种值的列进行去除;(类别值的列:’var3’, u’var4’, u’var5’, u’var6’, u’var11’, u’var12’, u’var13’, u’var14’, u’var15’, u’var18’, u’var19)。<strong>最终得到336维特征</strong>(3)去除时间列(2列)</li>
+<li>train_consumer(消费数据): 用户的消费记录,提取了\<categorical列的次数,消费次数,消费总额\></categorical列的次数,消费次数,消费总额\></li>
+<li>train_ccx(查询记录)：用户的查询记录,提取了”查询次数”以及categorical列的次数</li>
+</ul>
+<p>初步结果logisticsregression: 0.58; lightgbm: 0.63</p>
 
           
         
@@ -422,7 +428,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T10:06:44+08:00">
                 2018-04-25
               </time>
@@ -439,7 +445,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Crawler/" itemprop="url" rel="index">
@@ -577,7 +583,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T10:03:51+08:00">
                 2018-04-17
               </time>
@@ -594,7 +600,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Mining/" itemprop="url" rel="index">
@@ -813,7 +819,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-29T09:35:21+08:00">
                 2018-03-29
               </time>
@@ -830,7 +836,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1004,7 +1010,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-20T23:26:03+08:00">
                 2018-03-20
               </time>
@@ -1021,7 +1027,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1141,7 +1147,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-17T15:49:11+08:00">
                 2018-03-17
               </time>
@@ -1158,7 +1164,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1350,7 +1356,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T18:58:32+08:00">
                 2018-03-15
               </time>
@@ -1367,7 +1373,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1975,7 +1981,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T00:00:00+08:00">
                 2018-03-13
               </time>
@@ -1992,7 +1998,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -2162,7 +2168,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T09:23:03+08:00">
                 2018-03-07
               </time>
@@ -2179,7 +2185,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -2341,7 +2347,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-27T10:30:32+08:00">
                 2018-02-27
               </time>
@@ -2358,7 +2364,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -2597,7 +2603,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
           <div class="site-state-item site-state-posts">
             <a href="/">
               <span class="site-state-item-count">57</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -2605,7 +2611,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -2614,7 +2620,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -2703,7 +2709,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

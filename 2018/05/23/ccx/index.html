@@ -84,28 +84,37 @@
 
 
 
-<meta name="description" content="金融建模比赛记录数据处理对于A训练集:
+<meta name="description" content="金融建模比赛记录数据处理对于A训练集（有标签）:
 
 1.数据分散在四个文件内,train_behavior,train_ccx,train_consumer,train_target,各个数据文件的解释大赛excel表格中已有.
 2.需要根据ccx_id将每个文件中的数据进行聚合, 聚合之前可以先在每个文件中提取特征.
-3.">
+对于每个文件内
+
+
+train_behavior（基础信息+行为数据）:一共2">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ccx">
 <meta property="og:url" content="https://github.com/DuncanZhou/2018/05/23/ccx/index.html">
 <meta property="og:site_name" content="Duncan's Blog">
-<meta property="og:description" content="金融建模比赛记录数据处理对于A训练集:
+<meta property="og:description" content="金融建模比赛记录数据处理对于A训练集（有标签）:
 
 1.数据分散在四个文件内,train_behavior,train_ccx,train_consumer,train_target,各个数据文件的解释大赛excel表格中已有.
 2.需要根据ccx_id将每个文件中的数据进行聚合, 聚合之前可以先在每个文件中提取特征.
-3.">
-<meta property="og:updated_time" content="2018-05-23T03:26:48.904Z">
+对于每个文件内
+
+
+train_behavior（基础信息+行为数据）:一共2">
+<meta property="og:updated_time" content="2018-05-27T14:55:28.403Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ccx">
-<meta name="twitter:description" content="金融建模比赛记录数据处理对于A训练集:
+<meta name="twitter:description" content="金融建模比赛记录数据处理对于A训练集（有标签）:
 
 1.数据分散在四个文件内,train_behavior,train_ccx,train_consumer,train_target,各个数据文件的解释大赛excel表格中已有.
 2.需要根据ccx_id将每个文件中的数据进行聚合, 聚合之前可以先在每个文件中提取特征.
-3.">
+对于每个文件内
+
+
+train_behavior（基础信息+行为数据）:一共2">
 
 
 
@@ -306,7 +315,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T11:22:39+08:00">
                 2018-05-23
               </time>
@@ -345,12 +354,18 @@
       
 
       
-        <h2 id="金融建模比赛记录"><a href="#金融建模比赛记录" class="headerlink" title="金融建模比赛记录"></a>金融建模比赛记录</h2><h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><p>对于A训练集:</p>
+        <h2 id="金融建模比赛记录"><a href="#金融建模比赛记录" class="headerlink" title="金融建模比赛记录"></a>金融建模比赛记录</h2><h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><p>对于A训练集（有标签）:</p>
 <ul>
 <li>1.数据分散在四个文件内,train_behavior,train_ccx,train_consumer,train_target,各个数据文件的解释大赛excel表格中已有.</li>
 <li>2.需要根据ccx_id将每个文件中的数据进行聚合, 聚合之前可以先在每个文件中提取特征.</li>
-<li>3.</li>
+<li>对于每个文件内</li>
 </ul>
+<ul>
+<li>train_behavior（基础信息+行为数据）:一共2270维特征，对其中(1)唯一值列去除—共去除23列;（2）对于缺失90%值的列进行去除;(3)对于包含空值且只有两种值的列进行去除;(类别值的列:’var3’, u’var4’, u’var5’, u’var6’, u’var11’, u’var12’, u’var13’, u’var14’, u’var15’, u’var18’, u’var19)。<strong>最终得到336维特征</strong>(3)去除时间列(2列)</li>
+<li>train_consumer(消费数据): 用户的消费记录,提取了\<categorical列的次数,消费次数,消费总额\></categorical列的次数,消费次数,消费总额\></li>
+<li>train_ccx(查询记录)：用户的查询记录,提取了”查询次数”以及categorical列的次数</li>
+</ul>
+<p>初步结果logisticsregression: 0.58; lightgbm: 0.63</p>
 
       
     </div>
@@ -455,10 +470,10 @@
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -475,7 +490,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/">
               <span class="site-state-item-count">57</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -483,7 +498,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -492,7 +507,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -597,7 +612,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
