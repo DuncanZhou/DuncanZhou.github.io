@@ -104,7 +104,7 @@ train_behavior（基础信息+行为数据）:一共2">
 
 
 train_behavior（基础信息+行为数据）:一共2">
-<meta property="og:updated_time" content="2018-05-28T03:33:43.982Z">
+<meta property="og:updated_time" content="2018-05-28T03:36:41.054Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ccx">
 <meta name="twitter:description" content="金融建模比赛记录数据处理对于A训练集（有标签）:
@@ -315,7 +315,7 @@ train_behavior（基础信息+行为数据）:一共2">
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T11:22:39+08:00">
                 2018-05-23
               </time>
@@ -365,7 +365,39 @@ train_behavior（基础信息+行为数据）:一共2">
 <li>train_consumer(消费数据): 用户的消费记录,提取了\<categorical列的次数,消费次数,消费总额\></categorical列的次数,消费次数,消费总额\></li>
 <li>train_ccx(查询记录)：用户的查询记录,提取了”查询次数”以及categorical列的次数</li>
 </ul>
-<p>初步结果(模型都是默认参数)<br>|  features/models(AUC)  | lightgbm |   lr  |  gbdt |<br>|:———————————:|:————:|:——-:|:——-:|<br>|        behavior        |   0.588  | 0.566 | 0.578 |<br>|   behavior+consuming   |   0.626  | 0.563 | 0.581 |<br>| behavior+consuming+ccx |   0.637  | 0.592 | 0.603 |</p>
+<p>初步结果(模型都是默认参数)</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">features/models(AUC)</th>
+<th style="text-align:center">lightgbm</th>
+<th style="text-align:center">lr</th>
+<th style="text-align:center">gbdt</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">behavior</td>
+<td style="text-align:center">0.588</td>
+<td style="text-align:center">0.566</td>
+<td style="text-align:center">0.578</td>
+</tr>
+<tr>
+<td style="text-align:center">behavior+consuming</td>
+<td style="text-align:center">0.626</td>
+<td style="text-align:center">0.563</td>
+<td style="text-align:center">0.581</td>
+</tr>
+<tr>
+<td style="text-align:center">behavior+consuming+ccx</td>
+<td style="text-align:center">0.637</td>
+<td style="text-align:center">0.592</td>
+<td style="text-align:center">0.603</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>对于B训练集(无标签)</p>
 
       
@@ -471,10 +503,10 @@ train_behavior（基础信息+行为数据）:一共2">
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Inhaltsverzeichnis
+            Table of Contents
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Übersicht
+            Overview
           </li>
         </ul>
       
@@ -491,7 +523,7 @@ train_behavior（基础信息+行为数据）:一共2">
           <div class="site-state-item site-state-posts">
             <a href="/">
               <span class="site-state-item-count">57</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -499,7 +531,7 @@ train_behavior（基础信息+行为数据）:一共2">
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">9</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">categories</span>
               
             </div>
           
@@ -508,7 +540,7 @@ train_behavior（基础信息+行为数据）:一共2">
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">10</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               
             </div>
           
@@ -613,7 +645,7 @@ train_behavior（基础信息+行为数据）:一共2">
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
