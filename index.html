@@ -350,7 +350,8 @@
 <li>train_consumer(消费数据): 用户的消费记录,提取了\<categorical列的次数,消费次数,消费总额\></categorical列的次数,消费次数,消费总额\></li>
 <li>train_ccx(查询记录)：用户的查询记录,提取了”查询次数”以及categorical列的次数</li>
 </ul>
-<p>初步结果logisticsregression: 0.58; lightgbm: 0.63</p>
+<p>初步结果(模型都是默认参数)<br>|  features/models(AUC)  | lightgbm |   lr  |  gbdt |<br>|:———————————:|:————:|:——-:|:——-:|<br>|        behavior        |   0.588  | 0.566 | 0.578 |<br>|   behavior+consuming   |   0.626  | 0.563 | 0.581 |<br>| behavior+consuming+ccx |   0.637  | 0.592 | 0.603 |</p>
+<p>对于B训练集(无标签)</p>
 
           
         
