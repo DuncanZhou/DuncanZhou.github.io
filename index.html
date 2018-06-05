@@ -347,7 +347,7 @@
 </ul>
 <ul>
 <li>train_behavior（基础信息+行为数据）:一共2270维特征，对其中(1)唯一值列去除—共去除23列;（2）对于缺失90%值的列进行去除;(3)对于包含空值且只有两种值的列进行去除;(类别值的列:’var3’, u’var4’, u’var5’, u’var6’, u’var11’, u’var12’, u’var13’, u’var14’, u’var15’, u’var18’, u’var19)。<strong>最终得到336维特征</strong>(3)去除时间列(2列)</li>
-<li>train_consumer(消费数据): 用户的消费记录,提取了\<categorical列的次数,消费次数,消费总额\></categorical列的次数,消费次数,消费总额\></li>
+<li>train_consumer(消费数据): 用户的消费记录,提取了\<categorical列的次数,消费次数,消费总额,平均每次消费金额,消费最大金额,消费最小金额,最大金额与最小金额差\></categorical列的次数,消费次数,消费总额,平均每次消费金额,消费最大金额,消费最小金额,最大金额与最小金额差\></li>
 <li>train_ccx(查询记录)：用户的查询记录,提取了”查询次数”以及categorical列的次数</li>
 </ul>
 <p>初步结果(模型都是默认参数)</p>
@@ -376,7 +376,7 @@
 </tr>
 <tr>
 <td style="text-align:center">behavior+consuming+ccx</td>
-<td style="text-align:center">0.637</td>
+<td style="text-align:center">0.639</td>
 <td style="text-align:center">0.592</td>
 <td style="text-align:center">0.603</td>
 </tr>
@@ -384,6 +384,13 @@
 </table>
 </div>
 <p>对于B训练集(无标签)</p>
+<blockquote>
+<p>该问题属于半监督学习,半监督学习分为<strong>纯半监督学习</strong>和<strong>直推学习</strong>.</p>
+</blockquote>
+<ul>
+<li><strong>纯半监督学习</strong>:是将<strong>未标记数据和有标记数据都作为训练集来训练</strong>,得到模型,来预测<strong>待测数据</strong></li>
+<li><strong>直推学习</strong>:是将<strong>未标记数据作为需要预测的对象</strong>,通过有标记数据进行训练,来预测.</li>
+</ul>
 
           
         
