@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/DuncanZhou/"/>
-  <updated>2018-08-10T09:55:19.640Z</updated>
+  <updated>2018-08-17T03:08:08.089Z</updated>
   <id>https://github.com/DuncanZhou/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>超参的搜索方法整理</title>
+    <link href="https://github.com/DuncanZhou/2018/08/17/SuperParas/"/>
+    <id>https://github.com/DuncanZhou/2018/08/17/SuperParas/</id>
+    <published>2018-08-17T02:17:27.027Z</published>
+    <updated>2018-08-17T03:08:08.089Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-网格搜索"><a href="#1-网格搜索" class="headerlink" title="1.网格搜索"></a>1.网格搜索</h3><p>网格搜索通过查找搜索范围内的所有的点，来确定最优值。它返回目标函数的最大值或损失函数的最小值。给出较大的搜索范围，以及较小的步长，网格搜索是一定可以找到全局最大值或最小值的。 </p><p>当人们实际使用网格搜索来找到最佳超参数集的时候，一般会先使用较广的搜索范围，以及较大的步长，来找到全局最大值或者最小值可能的位置。然后，人们会缩小搜索范围和步长，来达到更精确的最值。 </p><h3 id="2-随机搜索"><a href="#2-随机搜索" class="headerlink" title="2.随机搜索"></a>2.随机搜索</h3><p>随机搜索的思想和网格搜索比较相似，只是不再测试上界和下界之间的所有值，只是在搜索范围中随机取样本点。它的理论依据是，如果随即样本点集足够大，那么也可以找到全局的最大或最小值，或它们的近似值。</p><p>通过对搜索范围的随机取样，随机搜索一般会比网格搜索要快一些。但是和网格搜索的快速版（非自动版）相似，结果也是没法保证的。 </p><h3 id="3-基于梯度的优化"><a href="#3-基于梯度的优化" class="headerlink" title="3.基于梯度的优化"></a>3.基于梯度的优化</h3><h3 id="4-贝叶斯优化"><a href="#4-贝叶斯优化" class="headerlink" title="4.贝叶斯优化"></a>4.贝叶斯优化</h3><p>贝叶斯优化寻找使全局达到最值的参数时，使用了和网格搜索、随机搜索完全不同的方法。网格搜索和随机搜索在测试一个新的点时，会忽略前一个点的信息。而贝叶斯优化充分利用了这个信息。贝叶斯优化的工作方式是通过对目标函数形状的学习，找到使结果向全局最大值提升的参数。它学习目标函数形状的方法是，根据先验分布，假设一个搜集函数。在每一次使用新的采样点来测试目标函数时，它使用这个信息来更新目标函数的先验分布。然后，算法测试由后验分布给出的，全局最值最可能出现的位置的点。 </p><p>补充:</p><p><img src="/DuncanZhou/2018/08/17/SuperParas/D:/Duncan\blog\source\_posts\pics\alipsipng.png" alt="PSI"></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;1-网格搜索&quot;&gt;&lt;a href=&quot;#1-网格搜索&quot; class=&quot;headerlink&quot; title=&quot;1.网格搜索&quot;&gt;&lt;/a&gt;1.网格搜索&lt;/h3&gt;&lt;p&gt;网格搜索通过查找搜索范围内的所有的点，来确定最优值。它返回目标函数的最大值或损失函数的最小值。给出较大的搜索
+      
+    
+    </summary>
+    
+      <category term="MachineLearning" scheme="https://github.com/DuncanZhou//categories/MachineLearning/"/>
+    
+    
+      <category term="MachineLearning" scheme="https://github.com/DuncanZhou//tags/MachineLearning/"/>
+    
+  </entry>
   
   <entry>
     <title>Hive SQL 学习</title>
@@ -496,31 +521,6 @@
       
         &lt;p&gt;Mr. Vice President, Mr. Speaker, Members of the Senate, and of the House of Representatives:&lt;br&gt;副总统先生、议长先生、参众两院各位议员：&lt;/p&gt;
 &lt;p&gt;Yesterday, De
-      
-    
-    </summary>
-    
-      <category term="Life" scheme="https://github.com/DuncanZhou//categories/Life/"/>
-    
-    
-      <category term="English" scheme="https://github.com/DuncanZhou//tags/English/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Churchill-敦克尔刻撤退演讲(我们将战斗到底-摘录最后一段)</title>
-    <link href="https://github.com/DuncanZhou/2018/01/28/Obama8/"/>
-    <id>https://github.com/DuncanZhou/2018/01/28/Obama8/</id>
-    <published>2018-01-28T02:23:17.000Z</published>
-    <updated>2018-01-28T02:45:43.028Z</updated>
-    
-    <content type="html"><![CDATA[<p>We shall go on to the end, we shall fight in France, we shall fight on the seas and oceans, we shall fight with growing confidence and growing strength in the air, we shall defend our Island, whatever the cost may be, we shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets, we shall fight in the hills; we shall never surrender, and even if, which I do not for a moment believe, this Island or a large part of it were subjugated and starving, then our Empire beyond the seas, armed and guarded by the British Fleet, would carry on the struggle, until, in God’s good time, the New World, with all its power and might, steps forth to the rescue and the liberation of the old.</p><p>我们将战斗到底。我们将在法国作战，我们将在海洋中作战，我们将以越来越大的信心和越来越强的力量在空中作战，我们将不惜一切代价保卫本土，我们将在海滩作战，我们将在敌人的登陆点作战，我们将在田野和街头作战，我们将在山区作战。我们绝不投降，即使我们这个岛屿或这个岛屿的大部分被征服并陷于饥饿之中——我从来不相信会发生这种情况——我们在海外的帝国臣民，在英国舰队的武装和保护下也会继续战斗，直到新世界在上帝认为适当的时候，拿出它所有一切的力量来拯救和解放这个旧世界。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;We shall go on to the end, we shall fight in France, we shall fight on the seas and oceans, we shall fight with growing confidence and gr
       
     
     </summary>
