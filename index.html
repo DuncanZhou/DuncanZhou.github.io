@@ -300,7 +300,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-17T10:17:27+08:00">
                 2018-08-17
               </time>
@@ -317,7 +317,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/MachineLearning/" itemprop="url" rel="index">
@@ -443,7 +443,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:52:09+08:00">
                 2018-08-10
               </time>
@@ -460,7 +460,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/SQL/" itemprop="url" rel="index">
@@ -520,6 +520,16 @@
 <h4 id="g-CUME-DIST"><a href="#g-CUME-DIST" class="headerlink" title="g.CUME_DIST()"></a>g.CUME_DIST()</h4><p>​    小于等于当前值的行数/分组内总行数 </p>
 <h4 id="h-PERCENT-RANK"><a href="#h-PERCENT-RANK" class="headerlink" title="h.PERCENT_RANK ()"></a>h.PERCENT_RANK ()</h4><p>​    分组内当前行的RANK值-1/分组内总行数-1  </p>
 <h4 id="i-NTILE-n"><a href="#i-NTILE-n" class="headerlink" title="i.NTILE(n)"></a>i.NTILE(n)</h4><p>​    用于将分组数据按照顺序切分成n片，返回当前切片值，如果切片不均匀，默认增加第一个切片的分布 </p>
+<p>Note:</p>
+<ul>
+<li>From子句：执行顺序自上而下，从左到右，从后往前，所以<strong>数据量少的表尽量放后</strong></li>
+<li>where子句：执行顺序自下而上，从右到左，<strong>可以过滤掉大量记录的条件写在where子句的末尾</strong></li>
+<li>group by子句：通过将不需要的记录在group by之前过滤掉，<strong>避免使用having来过滤</strong></li>
+<li>having子句：尽量少用</li>
+<li>select子句：尽量少用*，取字段名称</li>
+<li>order by子句：执行顺序为从左到右排序</li>
+<li>join：<strong>尽量把数据量大的表放在最右边来进行关联</strong></li>
+</ul>
 
           
         
@@ -597,7 +607,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:52:09+08:00">
                 2018-08-10
               </time>
@@ -614,7 +624,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -754,7 +764,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:52:09+08:00">
                 2018-08-10
               </time>
@@ -771,7 +781,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Mining/" itemprop="url" rel="index">
@@ -910,7 +920,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:52:09+08:00">
                 2018-08-10
               </time>
@@ -927,7 +937,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1062,7 +1072,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:52:09+08:00">
                 2018-08-10
               </time>
@@ -1079,7 +1089,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Mining/" itemprop="url" rel="index">
@@ -1219,7 +1229,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/05/23/ccx/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/OpenMPILearning/OpenMPILearning/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -1244,8 +1254,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/05/23/ccx/" itemprop="url">
-                  ccx
+                <a class="post-title-link" href="/2018/08/10/OpenMPILearning/OpenMPILearning/" itemprop="url">
+                  OpenMPI学习
                 </a>
               
             
@@ -1258,9 +1268,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T11:22:39+08:00">
-                2018-05-23
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
               </time>
             
 
@@ -1269,24 +1279,6 @@
             
           </span>
 
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Competition/" itemprop="url" rel="index">
-                    <span itemprop="name">Competition</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -1317,63 +1309,10 @@
       
         
           
-            <h2 id="金融建模比赛记录"><a href="#金融建模比赛记录" class="headerlink" title="金融建模比赛记录"></a>金融建模比赛记录</h2><h3 id="数据处理"><a href="#数据处理" class="headerlink" title="数据处理"></a>数据处理</h3><p>对于A训练集（有标签）:</p>
-<ul>
-<li>1.数据分散在四个文件内,train_behavior,train_ccx,train_consumer,train_target,各个数据文件的解释大赛excel表格中已有.</li>
-<li>2.需要根据ccx_id将每个文件中的数据进行聚合, 聚合之前可以先在每个文件中提取特征.</li>
-<li>对于每个文件内</li>
-</ul>
-<ul>
-<li>train_behavior（基础信息+行为数据）:一共2270维特征，对其中(1)唯一值列去除—共去除23列;（2）对于缺失90%值的列进行去除;(3)对于包含空值且只有两种值的列进行去除;(类别值的列:’var3’, u’var4’, u’var5’, u’var6’, u’var11’, u’var12’, u’var13’, u’var14’, u’var15’, u’var18’, u’var19)。<strong>最终得到336维特征</strong>(3)去除时间列(2列)</li>
-<li>train_consumer(消费数据): 用户的消费记录,提取了\<categorical列的次数,消费次数,消费总额,平均每次消费金额,消费最大金额,消费最小金额,最大金额与最小金额差\></categorical列的次数,消费次数,消费总额,平均每次消费金额,消费最大金额,消费最小金额,最大金额与最小金额差\></li>
-<li>train_ccx(查询记录)：用户的查询记录,提取了”查询次数”以及categorical列的次数</li>
-</ul>
-<p>初步结果(模型都是默认参数)</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">features/models(AUC)</th>
-<th style="text-align:center">lightgbm</th>
-<th style="text-align:center">lr</th>
-<th style="text-align:center">gbdt</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">behavior</td>
-<td style="text-align:center">0.588</td>
-<td style="text-align:center">0.566</td>
-<td style="text-align:center">0.578</td>
-</tr>
-<tr>
-<td style="text-align:center">behavior+consuming</td>
-<td style="text-align:center">0.626</td>
-<td style="text-align:center">0.563</td>
-<td style="text-align:center">0.581</td>
-</tr>
-<tr>
-<td style="text-align:center">behavior+consuming+ccx</td>
-<td style="text-align:center">0.639</td>
-<td style="text-align:center">0.592</td>
-<td style="text-align:center">0.603</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>对于B训练集(无标签)</p>
-<blockquote>
-<p>该问题属于半监督学习,半监督学习分为<strong>纯半监督学习</strong>和<strong>直推学习</strong>.</p>
-</blockquote>
-<ul>
-<li><strong>纯半监督学习</strong>:是将<strong>未标记数据和有标记数据都作为训练集来训练</strong>,得到模型,来预测<strong>待测数据</strong></li>
-<li><strong>直推学习</strong>:是将<strong>未标记数据作为需要预测的对象</strong>,通过有标记数据进行训练,来预测.</li>
-</ul>
-<p>解决思路:</p>
-<ul>
-<li>1.<strong>聚类</strong>将A和B合并聚为两类,用该聚类簇中A标签投票标记B(否决)</li>
-<li>2.<strong>自训练方法</strong>,先训练A得到一个分类模型,然后通过分类模型分类B,将置信度高的进行标记,然后加入训练集,训练-&gt;标记置信度高的,迭代.(尝试)</li>
-</ul>
+            <h3 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h3><p>由于学校服务器上不允许随便装其他环境，所以用自己pc跑了程序.<br>学校服务器配置:10台物理机 每台机子2个核<br>PC:4核</p>
+<h3 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h3><p>1.OpenMPI<br>2.Python环境<br>3.nltk包安装<br>4.numpy环境<br>5.mpi4py</p>
+<h3 id="代码程序"><a href="#代码程序" class="headerlink" title="代码程序"></a>代码程序</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div><div class="line">150</div><div class="line">151</div><div class="line">152</div><div class="line">153</div><div class="line">154</div><div class="line">155</div><div class="line">156</div><div class="line">157</div><div class="line">158</div><div class="line">159</div><div class="line">160</div><div class="line">161</div><div class="line">162</div><div class="line">163</div><div class="line">164</div><div class="line">165</div><div class="line">166</div><div class="line">167</div><div class="line">168</div><div class="line">169</div><div class="line">170</div><div class="line">171</div><div class="line">172</div><div class="line">173</div><div class="line">174</div><div class="line">175</div><div class="line">176</div><div class="line">177</div><div class="line">178</div><div class="line">179</div><div class="line">180</div><div class="line">181</div><div class="line">182</div><div class="line">183</div><div class="line">184</div><div class="line">185</div><div class="line">186</div><div class="line">187</div><div class="line">188</div><div class="line">189</div><div class="line">190</div><div class="line">191</div><div class="line">192</div><div class="line">193</div><div class="line">194</div><div class="line">195</div><div class="line">196</div><div class="line">197</div><div class="line">198</div><div class="line">199</div><div class="line">200</div><div class="line">201</div><div class="line">202</div><div class="line">203</div><div class="line">204</div><div class="line">205</div><div class="line">206</div><div class="line">207</div><div class="line">208</div><div class="line">209</div><div class="line">210</div><div class="line">211</div><div class="line">212</div><div class="line">213</div><div class="line">214</div><div class="line">215</div><div class="line">216</div><div class="line">217</div><div class="line">218</div><div class="line">219</div><div class="line">220</div><div class="line">221</div><div class="line">222</div><div class="line">223</div><div class="line">224</div><div class="line">225</div><div class="line">226</div></pre></td><td class="code"><pre><div class="line">#!/usr/bin/python</div><div class="line">#-*-coding:utf-8-*-</div><div class="line">&apos;&apos;&apos;@author:duncan&apos;&apos;&apos;</div><div class="line">import re</div><div class="line">import os</div><div class="line">import math</div><div class="line">import time</div><div class="line">import sys</div><div class="line">reload(sys)</div><div class="line">sys.setdefaultencoding(&apos;utf-8&apos;)</div><div class="line">import nltk</div><div class="line">from nltk.tokenize import word_tokenize</div><div class="line">from nltk.corpus import stopwords</div><div class="line">from nltk.stem import WordNetLemmatizer</div><div class="line">from mpi4py import MPI</div><div class="line">tweets_path = &apos;TestTweets/&apos;</div><div class="line"></div><div class="line">tags = 10</div><div class="line"></div><div class="line"></div><div class="line"># 公共通信变量</div><div class="line">comm = MPI.COMM_WORLD</div><div class="line"># 当前进程获取当前进程的id</div><div class="line">comm_rank = comm.Get_rank()</div><div class="line"># 获取整个通信结点的数量</div><div class="line">comm_size = comm.Get_size()</div><div class="line"></div><div class="line"># 计算一段文本中的tags,返回tag列表</div><div class="line">def GetTags(text):</div><div class="line">    twitter_stop_words = [&quot;from&quot;,&quot;TO&quot;,&quot;to&quot;,&quot;https&quot;,&quot;RT&quot;,&quot;URL&quot;,&quot;in&quot;,&quot;re&quot;,&quot;thank&quot;,&quot;thanks&quot;,&quot;today&quot;,&quot;yesterday&quot;,&quot;tomorrow&quot;,&quot;night&quot;,&quot;tonight&quot;,&quot;day&quot;,&quot;year&quot;,&quot;last&quot;,&quot;oh&quot;,&quot;yeah&quot;,&quot;amp&quot;]</div><div class="line">    &apos;&apos;&apos;</div><div class="line"></div><div class="line">    :param text: 文本</div><div class="line">    :return: 返回tag列表</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    # 首先针对推文中去除其他符号</div><div class="line">    text = re.sub(r&apos;[@|#][\d|\w|_]+|http[\w|:|.|/|\d]+&apos;,&quot;&quot;,text)</div><div class="line">    wordslist = []</div><div class="line">    if text == &quot;&quot; or text == None:</div><div class="line">        return []</div><div class="line"></div><div class="line">    # 利用nltk分词</div><div class="line">    words = word_tokenize(text)</div><div class="line">    for word in words:</div><div class="line">        # 去除停用词</div><div class="line">        if word not in (stopwords.words(&quot;english&quot;) and twitter_stop_words):</div><div class="line">            if(len(word) &gt; 2 and word.isalpha()):</div><div class="line">                wordslist.append(word.lower())</div><div class="line">    # 继续对词性进行标注</div><div class="line">    try:</div><div class="line">        pos = nltk.pos_tag(wordslist)</div><div class="line">    except Exception as e:</div><div class="line">        pos = []</div><div class="line">    if(len(pos) &lt; 1):</div><div class="line">        return []</div><div class="line">    tags = []</div><div class="line">    lemmatizer = WordNetLemmatizer()</div><div class="line">    for w in pos:</div><div class="line">        word = &quot;&quot;</div><div class="line">        # 是动词,做词性还原</div><div class="line">        if(w[1][0] == &apos;V&apos;):</div><div class="line">            word = lemmatizer.lemmatize(w[0],&apos;v&apos;)</div><div class="line">            tags.append(word)</div><div class="line">        # 是名词做词性还原</div><div class="line">        elif(w[1][0] == &quot;N&quot;):</div><div class="line">            word = lemmatizer.lemmatize(w[0])</div><div class="line">            tags.append(word)</div><div class="line">    i = 0</div><div class="line">    multicandidates = []</div><div class="line">    while(i &lt; len(pos) - 2):</div><div class="line">        phase = &quot;&quot;</div><div class="line">        # 动名词 | 动词 + 形容词 +名词</div><div class="line">        if (pos[i])[1][0] == &apos;V&apos; and (pos[i + 1][1][0] == &apos;N&apos; or (pos[i + 1][1][0] == &quot;J&quot; and pos[i + 2][1][0] == &quot;N&quot;)):</div><div class="line">            if pos[i + 1][1][0] == &apos;N&apos;:</div><div class="line">                suffix = lemmatizer.lemmatize(pos[i + 1][0],&apos;a&apos;)</div><div class="line">            else:</div><div class="line">                suffix = lemmatizer.lemmatize(pos[i + 1][0],&apos;n&apos;)</div><div class="line">            phase += lemmatizer.lemmatize((pos[i])[0],&apos;v&apos;) + &quot; &quot; + suffix</div><div class="line">            i = i + 2</div><div class="line">            while(i &lt; len(pos) and (pos[i])[1][0] == &apos;N&apos;):</div><div class="line">                phase += &quot; &quot; + lemmatizer.lemmatize((pos[i])[0])</div><div class="line">                i += 1</div><div class="line"></div><div class="line">            multicandidates.append(phase)</div><div class="line">        # 形容词　+ 名词</div><div class="line">        elif(pos[i][1][0] == &quot;J&quot; and pos[i + 1][1][0] == &quot;N&quot;):</div><div class="line">            if((i !=0 and pos[i - 1 ][1][0] != &quot;V&quot;) or i == 0):</div><div class="line">                phase +=lemmatizer.lemmatize((pos[i])[0],&quot;a&quot;) + &quot; &quot; + lemmatizer.lemmatize((pos[i + 1])[0])</div><div class="line">                i += 2</div><div class="line">                while(i &lt; len(pos) and (pos[i])[1][0] == &apos;N&apos;):</div><div class="line">                    phase += &quot; &quot; + lemmatizer.lemmatize((pos[i])[0],&quot;n&quot;)</div><div class="line">                    i += 1</div><div class="line">            multicandidates.append(phase)</div><div class="line">        else:</div><div class="line">            i += 1</div><div class="line">    if len(multicandidates) != 0:</div><div class="line">        tags += multicandidates</div><div class="line">    return tags</div><div class="line"></div><div class="line"></div><div class="line"># 计算words列表中词频</div><div class="line">def CalcTF(words,number):</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    :param number: 限制返回的tag数量</div><div class="line">    :param words: 传入words的list列表</div><div class="line">    :return: 返回对应字典形式 &#123;tag:TF&#125;,最终返回列表</div><div class="line">    &apos;&apos;&apos;</div><div class="line">    worddic = &#123;&#125;</div><div class="line">    # 先转换成集合</div><div class="line">    dic = set(words)</div><div class="line">    for word in dic:</div><div class="line">        TF = words.count(word)</div><div class="line">        worddic[word] = TF</div><div class="line">    # 将字典按照词频排序,取前10个</div><div class="line">    worddic = sorted(worddic.items(),key = lambda val:val[1],reverse=True)</div><div class="line">    return worddic[:number]</div><div class="line"></div><div class="line"></div><div class="line">if __name__ == &apos;__main__&apos;:</div><div class="line">    # text = &quot;how do i love you? Beautiful girls like eating cakes. I like dancing and swimming. How about you?he loves me? all we eat cakes.&quot;</div><div class="line">    # print CalcTF(GetTags(text),10)</div><div class="line"></div><div class="line">    flag = False</div><div class="line">    # 获取文件夹中用户总数及名称</div><div class="line">    names_list = os.listdir(tweets_path)</div><div class="line">    users_number = len(names_list)</div><div class="line">    if(comm_rank == 0):</div><div class="line">        print &quot;共%d个用户&quot; % users_number</div><div class="line">    block_size = math.ceil(users_number * 1.0 / comm_size)</div><div class="line">    # print &quot;block_size大小%d&quot; % block_size</div><div class="line">    start = i = int(comm_rank * block_size)</div><div class="line">    users_tags = []</div><div class="line">    start_time = time.time()</div><div class="line">    while(i &lt; block_size + start and i &lt; users_number):</div><div class="line">        with open(tweets_path + names_list[i],&apos;r&apos;) as f:</div><div class="line">            text = f.read()</div><div class="line">        # 得到某一用户的前n个tags,并有词频</div><div class="line">        user_tags = CalcTF(GetTags(text.decode(&quot;utf-8&quot;)),tags)</div><div class="line">        # print user_tags</div><div class="line">        users_tags += user_tags</div><div class="line">        i += 1</div><div class="line">        print &quot;已处理%d个用户&quot; % i</div><div class="line"></div><div class="line">    if(comm_rank == 0):</div><div class="line">        i = 1</div><div class="line">        while(i &lt; comm_size):</div><div class="line">            rev_tags = comm.recv(source=i)</div><div class="line">            # 合并起来</div><div class="line">            users_tags += rev_tags</div><div class="line">            i += 1</div><div class="line">            # print users_tags</div><div class="line">        # 写入文件</div><div class="line">        with open(&quot;/home/duncan/tags_tf&quot;,&quot;w&quot;) as f:</div><div class="line">            # 使得从第一行开始写</div><div class="line">            for tag in users_tags:</div><div class="line">                f.write(tag[0])</div><div class="line">                f.write(&quot;\t&quot;)</div><div class="line">                f.write(str(tag[1]))</div><div class="line">                f.write(&quot;\n&quot;)</div><div class="line">        print &quot;TF值写入完成&quot;</div><div class="line">        # 当对文件写入完成时发送广播</div><div class="line">        flag = True</div><div class="line">        comm.bcast(flag,root=0)</div><div class="line">    else:</div><div class="line">        # 除了0号进程外,其他进程发送数据,先发送自己的进程id</div><div class="line">        comm.send(users_tags,dest=0)</div><div class="line"></div><div class="line">    if(comm_rank != 0):</div><div class="line">        flag = comm.bcast(None,root=0)</div><div class="line"></div><div class="line">    # 当flag为True时继续向下计算</div><div class="line">    if(flag == True):</div><div class="line">        print &quot;process %d 开始计算idf&quot; % comm_rank</div><div class="line">        # 对保存好的文件中的TF词频tags继续计算IDF</div><div class="line">        with open(&quot;/home/duncan/tags_tf&quot;,&quot;r&quot;) as f:</div><div class="line">            lines = f.readlines()</div><div class="line">        # 每个进程结点需要处理的tags数</div><div class="line">        block_size = (int)(math.ceil(users_number * 1.0 / comm_size)) * tags</div><div class="line">        start = lineid = comm_rank * block_size</div><div class="line">        tags_tfidf = []</div><div class="line">        while(lineid &lt; block_size + start and lineid &lt; users_number * tags):</div><div class="line"></div><div class="line">            # 对lines[i]去计算它的idf,在其他用户tags中搜寻</div><div class="line">            user_id = int(math.ceil((lineid + 1) * 1.0 / tags))</div><div class="line">            # 所以该用户tags行标在[(user_id - 1) * tags,user_id * tags - 1]</div><div class="line">            search_rowid = 0</div><div class="line">            count = 1</div><div class="line">            while(search_rowid &lt; users_number * tags):</div><div class="line">                # 当在其中一个用户的tags中搜寻到后直接跳至下一个用户的tags</div><div class="line">                if(search_rowid &lt; (user_id - 1) * tags or search_rowid &gt; user_id * tags - 1):</div><div class="line">                    if((lines[search_rowid].split(&quot;\t&quot;))[0] == (lines[lineid].split(&quot;\t&quot;))[0]):</div><div class="line">                        count += 1</div><div class="line">                        # 跳到下一个用户tags开始处</div><div class="line">                        current_user_id = int(math.ceil((search_rowid + 1) * 1.0 / tags))</div><div class="line">                        search_rowid = current_user_id * tags</div><div class="line">                    else:</div><div class="line">                        search_rowid += 1</div><div class="line">                else:</div><div class="line">                    # 在所需要判断的用户的tags范围内,则跳出</div><div class="line">                    search_rowid = user_id * tags</div><div class="line">            idf = math.log(users_number * 1.0 / count,2)</div><div class="line">            # print count,idf</div><div class="line">            tags_tfidf.append(((lines[lineid].split(&quot;\t&quot;))[0],idf * int((lines[lineid].split(&quot;\t&quot;))[1])))</div><div class="line">            lineid += 1</div><div class="line"></div><div class="line">        end_time = time.time()</div><div class="line">        # 每个结点都处理完自己的用户推文</div><div class="line">        print &quot;process %d cost %f&quot; % (comm_rank,end_time - start_time)</div><div class="line"></div><div class="line">        # 该进程计算完其下所有用户的tags的tfidf</div><div class="line">        if(comm_rank == 0):</div><div class="line">            # 收集tags_tfidf</div><div class="line">            i = 1</div><div class="line">            while(i &lt; comm_size):</div><div class="line">                recv_tags = comm.recv(source = i)</div><div class="line">                tags_tfidf += recv_tags</div><div class="line">                i += 1</div><div class="line">            # 最终结果写入文件</div><div class="line">            with open(&quot;/home/duncan/tags_tfidf&quot;,&quot;w&quot;) as f:</div><div class="line">                for tag in tags_tfidf:</div><div class="line">                    f.write(tag[0])</div><div class="line">                    f.write(&quot;\t&quot;)</div><div class="line">                    f.write(str(tag[1]))</div><div class="line">                    f.write(&quot;\n&quot;)</div><div class="line">        else:</div><div class="line">            comm.send(tags_tfidf,dest=0)</div></pre></td></tr></table></figure>
+<h3 id="结果"><a href="#结果" class="headerlink" title="结果"></a>结果</h3><p>1.48个用户,每个用户10个标签  加速比1.6左右(单核:365s;4核:226s)<br>3.100个用户,每个用户10个标签,加速比1.7左右(单核:781s;4核:457s)<br>3.1000个用户,每个用户10个标签,加速比(1.8左右)(单核:5706s;4核:3108s)<br>4.10000个用户,每个用户10个标签,加速比(2左右)(单核:69299s;4核:34643s)<br><img src="http://ww4.sinaimg.cn/large/006HJ39wgy1fftzigg1rxj30m80go0t5.jpg" alt="实验结果图"></p>
 
           
         
@@ -1412,7 +1351,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/04/25/Crawler/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/MartinLutherKing/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -1437,8 +1376,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/04/25/Crawler/" itemprop="url">
-                  Crawler
+                <a class="post-title-link" href="/2018/08/10/MartinLutherKing/" itemprop="url">
+                  Martin Luther King-美国黑人民权运动领袖
                 </a>
               
             
@@ -1451,9 +1390,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T10:06:44+08:00">
-                2018-04-25
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
               </time>
             
 
@@ -1468,11 +1407,11 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Crawler/" itemprop="url" rel="index">
-                    <span itemprop="name">Crawler</span>
+                  <a href="/categories/Life/" itemprop="url" rel="index">
+                    <span itemprop="name">Life</span>
                   </a>
                 </span>
 
@@ -1510,25 +1449,9 @@
       
         
           
-            <blockquote>
-<p>由于论文需要补充数据集,现抓取微博上演员,歌手,导演,运动员和普通用户共1w个.包括他们的基本信息和粉丝和朋友关系.</p>
-</blockquote>
-<hr>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>(不考虑多线程)</p>
-<ul>
-<li><p>1.安装依赖的库: <strong>requests,selenium,BeautifulSoup</strong></p>
-</li>
-<li><p>2.分析页面,从微博搜索框输入相应领域,获得分页的结果页面,从结果页面提取用户的id.</p>
-</li>
-<li><p>3.由于返回的结果页面是异步加载,通过<strong>selenium</strong>模拟浏览器访问,抓取返回的结果页面上的id.(需要对selenium<strong>添加请求头信息</strong>)</p>
-</li>
-<li><p>4.抓取到用户id后,可通过weibo API抓取其基本信息和关系信息.</p>
-</li>
-</ul>
-<p>(在抓取用户的关注时,使用多线程)</p>
-<ul>
-<li>5.python多线程模块threading,因为是I/O密集型,所以用多线程</li>
-</ul>
+            <p>I am happy to join with you today in what will go down in history as the greatest demonstration for freedom in the history of our nation.<br>Five score years ago, a great American, in whose symbolic shadow we stand today, signed the Emancipation Proclamation. This momentous decree came as a great beacon light of hope to millions of Negro slaves who had been seared in the flames of withering injustice. It came as a joyous daybreak to end the long night of bad captivity.<br>But one hundred years later, the Negro still is not free. One hundred years later, the life of the Negro is still sadly crippled by the manacles of segregation and the chains of discrimination. One hundred years later, the Negro lives on a lonely island of poverty in the midst of a vast ocean of material prosperity. One hundred years later, the Negro is still languished in the corners of American society and finds himself an exile in his own land. And so we’ve come here today to dramatize a shameful condition.<br>In a sense we’ve come to our nation’s capital to cash a check. When the architects of our republic wrote the magnificent words of the Constitution and the Declaration of Independence, they were signing a promissory note to which every American was to fall heir. This note was a promise that all men, yes, black men as well as white men, would be guaranteed the “unalienable Rights” of “Life, Liberty and the pursuit of Happiness.” It is obvious today that America has defaulted on this promissory note, insofar as her citizens of color are concerned. Instead of honoring this sacred obligation, America has given the Negro people a bad check, a check which has come back marked “insufficient funds.”<br>But we refuse to believe that the bank of justice is bankrupt. We refuse to believe that there are insufficient funds in the great vaults of opportunity of this nation. And so, we’ve come to cash this check, a check that will give us upon demand the riches of freedom and the security of justice.<br>We have also come to this hallowed spot to remind America of the fierce urgency of Now. This is no time to engage in the luxury of cooling off or to take the tranquilizing drug of gradualism. Now is the time to make real the promises of democracy. Now is the time to rise from the dark and desolate valley of segregation to the sunlit path of racial justice. Now is the time to lift our nation from the quicksands of racial injustice to the solid rock of brotherhood. Now is the time to make justice a reality for all of God’s children.<br>It would be fatal for the nation to overlook the urgency of the moment. This sweltering summer of the Negro’s legitimate discontent will not pass until there is an invigorating autumn of freedom and equality. Nineteen sixty-three is not an end, but a beginning. And those who hope that the Negro needed to blow off steam and will now be content will have a rude awakening if the nation returns to business as usual. And there will be neither rest nor tranquility in America until the Negro is granted his citizenship rights. The whirlwinds of revolt will continue to shake the foundations of our nation until the bright day of justice emerges.<br>But there is something that I must say to my people, who stand on the warm threshold which leads into the palace of justice: In the process of gaining our rightful place, we must not be guilty of wrongful deeds. Let us not seek to satisfy our thirst for freedom by drinking from the cup of bitterness and hatred. We must forever conduct our struggle on the high plane of dignity and discipline. We must not allow our creative protest to degenerate into physical violence. Again and again, we must rise to the majestic heights of meeting physical force with soul force.<br>The marvelous new militancy which has engulfed the Negro community must not lead us to a distrust of all white people, for many of our white brothers, as evidenced by their presence here today, have come to realize that their destiny is tied up with our destiny. And they have come to realize that their freedom is inextricably bound to our freedom.<br>We cannot walk alone.<br>And as we walk, we must make the pledge that we shall always march ahead.<br>We cannot turn back.<br>There are those who are asking the devotees of civil rights, “When will you be satisfied?” We can never be satisfied as long as the Negro is the victim of the unspeakable horrors of police brutality. We can never be satisfied as long as our bodies, heavy with the fatigue of travel, cannot gain lodging in the motels of the highways and the hotels of the cities. We cannot be satisfied as long as the Negro’s basic mobility is from a smaller ghetto to a larger one. We can never be satisfied as long as our children are stripped of their selfhood and robbed of their dignity by signs stating “for whites only.” We cannot be satisfied as long as a Negro in Mississippi cannot vote and a Negro in New York believes he has nothing for which to vote. No, no, we are not satisfied, and we will not be satisfied until “justice rolls down like waters, and righteousness like a mighty stream.”<br>I am not unmindful that some of you have come here out of great trials and tribulations. Some of you have come fresh from narrow jail cells. And some of you have come from areas where your quest — quest for freedom left you battered by the storms of persecution and staggered by the winds of police brutality. You have been the veterans of creative suffering. Continue to work with the faith that unearned suffering is redemptive. Go back to Mississippi, go back to Alabama, go back to South Carolina, go back to Georgia, go back to Louisiana, go back to the slums and ghettos of our northern cities, knowing that somehow this situation can and will be changed.<br>Let us not wallow in the valley of despair, I say to you today, my friends.<br>And so even though we face the difficulties of today and tomorrow, I still have a dream. It is a dream deeply rooted in the American dream.<br>I have a dream that one day this nation will rise up and live out the true meaning of its creed: “We hold these truths to be self-evident, that all men are created equal.”<font color="red"><br>I have a dream that one day on the red hills of Georgia, the sons of former slaves and the sons of former slave owners will be able to sit down together at the table of brotherhood.<br>I have a dream that one day even the state of Mississippi, a state sweltering with the heat of injustice, sweltering with the heat of oppression, will be transformed into an oasis of freedom and justice.<br>I have a dream that my four little children will one day live in a nation where they will not be judged by the color of their skin but by the content of their character.<br>I have a dream today!<br>I have a dream that one day, down in Alabama, with its vicious racists, with its governor having his lips dripping with the words of “interposition” and “nullification” — one day right there in Alabama little black boys and black girls will be able to join hands with little white boys and white girls as sisters and brothers.<br>I have a dream today!<br>I have a dream that one day every valley shall be exalted, and every hill and mountain shall be made low, the rough places will be made plain, and the crooked places will be made straight; “and the glory of the Lord shall be revealed and all flesh shall see it together.”?<br>This is our hope, and this is the faith that I go back to the South with.<br>With this faith, we will be able to hew out of the mountain of despair a stone of hope. With this faith, we will be able to transform the jarring discords of our nation into a beautiful symphony of brotherhood. With this faith, we will be able to work together, to pray together, to struggle together, to go to jail together, to stand up for freedom together, knowing that we will be free one day.</font><br>And this will be the day — this will be the day when all of God’s children will be able to sing with new meaning:<br>My country ‘tis of thee, sweet land of liberty, of thee I sing.<br>Land where my fathers died, land of the Pilgrim’s pride,<br>From every mountainside, let freedom ring!<br>And if America is to be a great nation, this must become true.<br>And so let freedom ring from the prodigious hilltops of New Hampshire.<br>Let freedom ring from the mighty mountains of New York.<br>Let freedom ring from the heightening Alleghenies of<br>Pennsylvania.<br>Let freedom ring from the snow-capped Rockies of Colorado.<br>Let freedom ring from the curvaceous slopes of California.<br>But not only that.<br>Let freedom ring from Stone Mountain of Georgia.<br>Let freedom ring from Lookout Mountain of Tennessee.<br>Let freedom ring from every hill and molehill of Mississippi.<br>From every mountainside, let freedom ring.<br>And when this happens, when we allow freedom ring, when we let it ring from every village and every hamlet, from every state and every city, we will be able to speed up that day when all of God’s children, black men and white men, Jews and Gentiles, Protestants and Catholics, will be able to join hands and sing in the words of the old Negro spiritual:<br>Free at last! Free at last!<br>Thank God Almighty, we are free at last!</p>
+<p>今天，我高兴地同大家一起参加这次将成为我国历史上为争取自由而举行的最伟大的示威集会。<br>100年前，一位伟大的美国人—今天我们就站在他的雕像前—签署了《解放黑奴宣言》。这项重要法令的颁布，对于千百万灼烤于非正义残焰中的黑奴，犹如带来希望之光的硕大灯塔，恰似结束漫漫长夜禁锢的欢畅黎明。<br>然而100年后的今天，我们必须正视黑人还没有得到自由这一悲惨的事实。100年后的今天，在种族隔离的镣铐和种族歧视的枷锁下，黑人的生活备受压榨。100年后的今天，黑人仍生活在物质充裕的海洋中一个穷困的孤岛上。100年后的今天，黑人仍然蜷缩在美国社会的角落里，并且意识到自己是故土家园中的流亡者。今天我们在这里集会，就是要把这种骇人听闻的情况公诸世人。<br>就某种意义而言，今天我们是为了要求兑现诺言而汇集到我们国家的首都来的。我们共和国的缔造者草拟宪法和独立宣言的气壮山河的词句时，曾向每一个美国人许下了诺言，他们承诺所有人—不论白人还是黑人—都享有不可让渡的生存权、自由权和追求幸福权。<br>就有色公民而论，美国显然没有实践她的诺言。美国没有履行这项神圣的义务，只是给黑人开了一张空头支票，支票上盖着“资金不足”的戳子后便退了回来。但是我们不相信正义的银行已经破产，我们不相信，在这个国家巨大的机会之库里已没有足够的储备。因此今天我们要求将支票兑现——这张支票将给予我们宝贵的自由和正义保障。<br>我们来到这个圣地也是为了提醒美国，现在是非常急迫的时刻。现在绝非奢谈冷静下来或服用渐进主义的镇静剂的时候。现在是实现民主的诺言时候。现在是从种族隔离的荒凉阴暗的深谷攀登种族平等的光明大道的时候，现在是向上帝所有的儿女开放机会之门的时候，现在是把我们的国家从种族不平等的流沙中拯救出来，置于兄弟情谊的磐石上的时候。<br>如果美国忽视时间的迫切性和低估黑人的决心，那么，这对美国来说，将是致命伤。自由和平等的爽朗秋天如不到来，黑人义愤填膺的酷暑就不会过去。1963年并不意味着斗争的结束，而是开始。有人希望，黑人只要撒撒气就会满足；如果国家安之若素，毫无反应，这些人必会大失所望的。黑人得不到公民的基本权利，美国就不可能有安宁或平静，正义的光明的一天不到来，叛乱的旋风就将继续动摇这个国家的基础。<br>但是对于等候在正义之宫门口的心急如焚的人们，有些话我是必须说的。在争取合法地位的过程中，我们不要采取错误的做法。我们不要为了满足对自由的渴望而抱着敌对和仇恨之杯痛饮。我们斗争时必须永远举止得体，纪律严明。我们不能容许我们的具有崭新内容的抗议蜕变为暴力行动。我们要不断地升华到以精神力量对付物质力量的崇高境界中去。<br>现在黑人社会充满着了不起的新的战斗精神，但是不能因此而不信任所有的白人。因为我们的许多白人兄弟已经认识到，他们的命运与我们的命运是紧密相连的，他们今天参加游行集会就是明证。他们的自由与我们的自由是息息相关的。我们不能单独行动。<br>当我们行动时，我们必须保证向前进。我们不能倒退。现在有人问热心民权运动的人，“你们什么时候才能满足？”<br>只要黑人仍然遭受警察难以形容的野蛮迫害，我们就绝不会满足。<br>只要我们在外奔波而疲乏的身躯不能在公路旁的汽车旅馆和城里的旅馆找到住宿之所，我们就绝不会满足。<br>只要黑人的基本活动范围只是从少数民族聚居的小贫民区转移到大贫民区，我们就绝不会满足。<br>只要我们的孩子被“仅限白人”的标语剥夺自我和尊严，我们就绝不会满足。<br>只要密西西比州仍然有一个黑人不能参加选举，只要纽约有一个黑人认为他投票无济于事，我们就绝不会满足。<br>不！我们现在并不满足，我们将来也不满足，除非正义和公正犹如江海之波涛，汹涌澎湃，滚滚而来。<br>我并非没有注意到，参加今天集会的人中，有些受尽苦难和折磨，有些刚刚走出窄小的牢房，有些由于寻求自由，曾在居住地惨遭疯狂迫害的打击，并在警察暴行的旋风中摇摇欲坠。你们是人为痛苦的长期受难者。坚持下去吧，要坚决相信，忍受不应得的痛苦是一种赎罪。<br>让我们回到密西西比去，回到亚拉巴马去，回到南卡罗来纳去，回到佐治亚去，回到路易斯安那去，回到我们北方城市中的贫民区和少数民族居住区去，要心中有数，这种状况是能够也必将改变的。<br>我们不要陷入绝望而不可自拔。朋友们，今天我对你们说，在此时此刻，我们虽然遭受种种困难和挫折，我仍然有一个梦想，这个梦想深深扎根于美国的梦想之中。<br>我梦想有一天，这个国家会站立起来，真正实现其信条的真谛：“我们认为真理是不言而喻，人人生而平等。”<br>我梦想有一天，在佐治亚的红山上，昔日奴隶的儿子将能够和昔日奴隶主的儿子坐在一起，共叙兄弟情谊。<br>我梦想有一天，甚至连密西西比州这个正义匿迹，压迫成风，如同沙漠般的地方，也将变成自由和正义的绿洲。<br>我梦想有一天，我的四个孩子将在一个不是以他们的肤色，而是以他们的品格优劣来评价他们的国度里生活。<br>今天，我有一个梦想。我梦想有一天，亚拉巴马州能够有所转变，尽管该州州长现在仍然满口异议，反对联邦法令，但有朝一日，那里的黑人男孩和女孩将能与白人男孩和女孩情同骨肉，携手并进。<br>今天，我有一个梦想。<br>我梦想有一天，幽谷上升，高山下降；坎坷曲折之路成坦途，圣光披露，满照人间。<br>这就是我们的希望。我怀着这种信念回到南方。有了这个信念，我们将能从绝望之岭劈出一块希望之石。有了这个信念，我们将能把这个国家刺耳的争吵声，改变成为一支洋溢手足之情的优美交响曲。<br>有了这个信念，我们将能一起工作，一起祈祷，一起斗争，一起坐牢，一起维护自由；因为我们知道，终有一天，我们是会自由的。<br>在自由到来的那一天，上帝的所有儿女们将以新的含义高唱这支歌：“我的祖国，美丽的自由之乡，我为您歌唱。您是父辈逝去的地方，您是最初移民的骄傲，让自由之声响彻每个山岗。”<br>如果美国要成为一个伟大的国家，这个梦想必须实现！</p>
+<p>让自由之声从新罕布什尔州的巍峨的崇山峻岭响起来！<br>让自由之声从纽约州的崇山峻岭响起来！<br>让自由之声从宾夕法尼亚州的阿勒格尼山响起来！<br>让自由之声从科罗拉多州冰雪覆盖的落基山响起来！<br>让自由之声从加利福尼亚州蜿蜒的群峰响起来！<br>不仅如此，还要让自由之声从佐治亚州的石岭响起来！<br>让自由之声从田纳西州的瞭望山响起来！<br>让自由之声从密西西比的每一座丘陵响起来！<br>让自由之声从每一片山坡响起来！<br>当我们让自由之声响起，让自由之声从每一个大小村庄、每一个州和每一个城市响起来时，我们将能够加速这一天的到来，那时，上帝的所有儿女，黑人和白人，犹太教徒和非犹太教徒，耶稣教徒和天主教徒，都将手携手，合唱一首古老的黑人灵歌：<br>“自由啦！自由啦！感谢全能上帝，我们终于自由啦!”</p>
 
           
         
@@ -1567,7 +1490,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/04/17/ProbabilityTheory/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/Alogorithms_Learning/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -1592,8 +1515,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/04/17/ProbabilityTheory/" itemprop="url">
-                  ProbabilityTheory
+                <a class="post-title-link" href="/2018/08/10/Alogorithms_Learning/" itemprop="url">
+                  求最优解算法学习
                 </a>
               
             
@@ -1606,9 +1529,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T10:03:51+08:00">
-                2018-04-17
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
               </time>
             
 
@@ -1623,243 +1546,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-Mining/" itemprop="url" rel="index">
-                    <span itemprop="name">Data Mining</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
-<h1 id="概率论相关公式整理如下"><a href="#概率论相关公式整理如下" class="headerlink" title="概率论相关公式整理如下:"></a>概率论相关公式整理如下:</h1><hr>
-<h3 id="第二章-基本概念"><a href="#第二章-基本概念" class="headerlink" title="第二章 基本概念"></a>第二章 基本概念</h3><ul>
-<li>交换律:A + B = B + A,AB=BA</li>
-<li>结合律:(A+B)+C=A+(B+C)=A+B+C,(AB)C=A(BC)=ABC</li>
-<li>分配律:(A+B)C=AC+BC,AB+C = (A+C)(B+C)</li>
-<li>德摩根律: $\overline{A+B}=\bar{A}\bar{B}$,$\overline{AB}=\bar{A}+\bar{B}$</li>
-<li>P(A-B) = P(A)-P(AB)</li>
-<li>P(A+B) = P(A) + P(B) - P(AB)</li>
-<li>乘法概率公式: 若P(B)&gt;0,$P(AB)=P(B)P(A|B)$.若P(A)&gt;0,$P(AB)=P(A)P(B|A)$.<br>一般地,$P(A_1A_2…A_{n-1})&gt;0$,则$P(A_1A_2…A_n)=P(A_1)P(A_2|A_1)P(A_3|A_2A_1)…P(A_n|A_1A_2…A_{n-1})$</li>
-<li>全概率公式: $P(B)=\sum_{i=1}^{n}P(A_i)P(B|A_i)$</li>
-<li>贝叶斯概率公式: $P(B|A) = \frac{P(B)P(A|B)}{P(A)}$</li>
-</ul>
-<h3 id="第三章-分布"><a href="#第三章-分布" class="headerlink" title="第三章 分布"></a>第三章 分布</h3><p>1.<strong>离散型分布</strong></p>
-<ul>
-<li><p>1.0-1分布 $X\sim B(1,p)$</p>
-<script type="math/tex; mode=display">P(X=k)=p^k(1-p)^{1-k}(0<p<1,k=0,1)</script></li>
-<li><p>2.二项分布 $X \sim B(n,p)$</p>
-<script type="math/tex; mode=display">P(X=k)=C\_n^kp^kq^{n-k}(k=0,1,2,...,n)(0<p<1,q=1-p)</script></li>
-<li><p>3.泊松分布 $X \sim P(\lambda)$</p>
-<script type="math/tex; mode=display">P(X=k)=\frac{\lambda^ke^{-\lambda}}{k!}(k=0,1,2,...)</script></li>
-</ul>
-<p>2.<strong>连续型分布</strong></p>
-<ul>
-<li><p>1.均匀分布 $X \sim U[a,b]$</p>
-<script type="math/tex; mode=display">f(x)=\begin{cases}
-\frac{1}{b-a} & a\leq x\leq b \\ 
-0 & others
-\end{cases}</script></li>
-<li><p>2.指数分布 $X \sim E(\lambda)$</p>
-<script type="math/tex; mode=display">f(x)=\begin{cases}
-\lambda e^{-\lambda x} & x > 0 \\ 
-0 & x \leq 0
-\end{cases}</script><p>$\lambda&gt;0$</p>
-</li>
-<li><p>3.正态分布 $X\sim N(\mu,\sigma^2)$</p>
-<script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},-\infty < x < +\infty</script></li>
-</ul>
-<h3 id="第四章-随机变量的特征"><a href="#第四章-随机变量的特征" class="headerlink" title="第四章 随机变量的特征"></a>第四章 随机变量的特征</h3><p>1.<strong>期望概念</strong></p>
-<ul>
-<li>离散型: $E(X)=\sum_{i=1}^{\infty}x_ip_i$</li>
-<li>连续型: 设连续型随机变量X的概率密度函数为f(x),若积分$\int_{-\infty}^{+\infty}|x|f(x)dx&lt;+\infty$存在,并称积分$\int_{-\infty}^{+\infty}xf(x)dx$为X的数学期望,记为E(X),即$E(X)=\int_{-\infty}^{+\infty}xf(x)dx$</li>
-</ul>
-<p>2.<strong>期望性质</strong></p>
-<ul>
-<li>E(c) = c, 其中c为常数</li>
-<li>E(cX) = cE(X), 其中c为常数</li>
-<li>E(X+Y) = E(X) + E(Y)</li>
-<li>若X,Y相互独立,E(XY) = E(X)E(Y)</li>
-</ul>
-<p>3.<strong>方差概念</strong><br>$D(X)=E(X^2)-[E(X)]^2$</p>
-<p>4.<strong>方差性质</strong></p>
-<ul>
-<li>D(c) = 0, 其中c为常数</li>
-<li>$D(cX) = c^2D(X)$, 其中c为常数</li>
-<li>若X,Y相互独立, D(X+Y) = D(X) + D(Y)</li>
-</ul>
-<p>5.<strong>协防差</strong><br>$Cov(X,Y) = E{[X-E(X)][Y-E(Y)]}$</p>
-<p>6.<strong>相关系数</strong><br>$\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{D(X)}\sqrt{D(Y)}}$</p>
-<p>7.<strong>协防差和相关系数性质</strong></p>
-<ul>
-<li>Cov(X,Y) = Cov(Y,X)</li>
-<li>Cov(aX,bY) = abCov(X,Y), a,b为常数</li>
-<li>$Cov(X_1+X_2,Y) = Cov(X_1,Y) + Cov(X_2,Y)$</li>
-<li>D(X+Y) = D(X) + D(Y) + 2Cov(X,Y)</li>
-<li>Cov(X,Y) = E(XY) - E(X)E(Y)</li>
-<li>$|\rho_{XY}| \leq 1$</li>
-<li>若X,Y相互独立,则$\rho_{XY}=0$</li>
-<li>$\rho_{XY}=\pm$的充要条件是存在两个常数a,b,且$a\neq0$,使得$P{Y=aX+b}=1$.</li>
-</ul>
-<h3 id="第五章-大数定律和中心极限定理"><a href="#第五章-大数定律和中心极限定理" class="headerlink" title="第五章 大数定律和中心极限定理"></a>第五章 大数定律和中心极限定理</h3><p>1.<strong>契比雪夫不等式</strong>: 设随机变量X的数学期望为E(X)=a,方差为D(X),则对于给定的数$\epsilon&gt;0$,有</p>
-<script type="math/tex; mode=display">P\{|X-a|\geq \epsilon\}\leq \frac{D(X)}{\epsilon^2}</script><p>2.<strong>大数定律</strong>: 设{X<sub>n</sub>}为一随机变量序列,a为一个常数,如果对任何给定的正数$\epsilon$,有$\lim_{n \to \infty}P{|X_n-a|\geq \epsilon}=0$,则称随机变量序列{X<sub>n</sub>}依概率收敛于a,记为<script type="math/tex">X\_n \overset{P}{\rightarrow}a(n \to \infty)</script>.</p>
-<p>3.<strong>契比雪夫大数定律</strong>: 设{X<sub>n</sub>}为一随机变量序列,若对于所有的自然数n,数学期望E(X<sub>n</sub>)及方差D(X<sub>n</sub>)均存在,且存在某常数M&gt;0,使得D(X<sub>n</sub>)$\leq M$,则有<script type="math/tex">\frac{1}{n}\sum\_{i=1}^{n}[X\_i-E(X\_i)]\overset{P}{\rightarrow}0</script>.</p>
-<p>4.<strong>贝努里大数定律</strong>: 在n次重复独立试验中,设Y<sub>n</sub>为事件A发生的次数,每次试验事件A发生的概率为P,则<script type="math/tex">\frac{Y\_n}{n} \overset{P}{\rightarrow}P(n \to \infty)</script>.</p>
-<p>5.<strong>辛钦大数定律</strong>: 设{X<sub>n</sub>}为独立同分布的随机变量序列,且具有数学期望E(X<sub>i</sub>)=$\mu,i=1,2,…$,则<script type="math/tex">\frac{1}{n}\sum\_{i=1}^{n}X\_i\overset{P}{\rightarrow}\mu(n \to \infty)</script>.</p>
-<p>6.<strong>中心极限定理</strong>: 设{X<sub>n</sub>}为独立同分布的随机变量序列,且E(X<sub>i</sub>)=$\mu$,D(X<sub>i</sub>)=$\sigma^2\neq0,i=1,2,…$,则当n充分大时,$\frac{\sum_{i=1}^{n}X_i-E(\sum_{i=1}^{n}X_i)}{\sqrt{D(\sum_{k=1}^{n}X_k)}}$近似地服从标准正态分布,记作<script type="math/tex">\frac{\sum\_{i=1}^{n}X\_i-E(\sum\_{i=1}^{n}X\_i)}{\sqrt{D(\sum\_{k=1}^{n}X\_k)}}=\frac{\sum\_{i=1}^{n}X\_k-n\mu}{\sqrt{n}\sigma}\sim N(0,1)</script>.</p>
-<h3 id="第六章-数理统计概念"><a href="#第六章-数理统计概念" class="headerlink" title="第六章 数理统计概念"></a>第六章 数理统计概念</h3><p>1.<strong>统计量</strong></p>
-<ul>
-<li>样本均值: $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i$</li>
-<li>样本方差: $S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})^2=\frac{1}{n-1}[\sum_{i=1}^{n}X_i^2-n(\bar{X})^2]$ </li>
-<li>样本标准差: $S=\sqrt{S^2}$</li>
-<li>样本k阶原点矩 $A_k=\frac{1}{n}\sum_{i=1}^{n}X_i^k(k=1,2,..)$ </li>
-<li>样本k阶中心矩 $B_k=\frac{1}{n}\sum_{i=1}^{n}(X_i-\bar{X})^k$</li>
-</ul>
-<p>2.<strong>抽样分布</strong><br>卡方分布,F分布,正态分布</p>
-<h3 id="第七章-参数估计"><a href="#第七章-参数估计" class="headerlink" title="第七章 参数估计"></a>第七章 参数估计</h3><p>1.<strong>矩估计</strong>: 概括来讲就是用样本矩估计总体矩(原点矩).<br>2.<strong>极大似然估计法</strong></p>
-<ul>
-<li>离散型:概率连乘求极大</li>
-<li>连续型:概率密度函数连乘求偏导</li>
-</ul>
-<p>3.<strong>估计量的评价标准</strong>:待完善</p>
-<p>4.<strong>区间估计</strong>:待完善</p>
-<h3 id="第八章-假设检验"><a href="#第八章-假设检验" class="headerlink" title="第八章 假设检验"></a>第八章 假设检验</h3><ul>
-<li>1.建立原假设H<sub>0</sub>(备选假设H<sub>1</sub>)</li>
-<li>2.根据检验对象,构造适当的统计量g(X<sub>1</sub>,X<sub>2</sub>,…,X<sub>n</sub>)</li>
-<li>3.在H<sub>0</sub>成立的条件下,确定统计量g(X<sub>1</sub>,X<sub>2</sub>,…,X<sub>n</sub>)的分布</li>
-<li>4.由显著性水平$\alpha$确定临界值,从而得到拒绝域或接受域</li>
-<li>5.根据样本值计算统计量的观测值,由此作出接受原假设或拒绝原假设的结论</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/29/Models/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/29/Models/" itemprop="url">
-                  记录几个经典模型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-29T09:35:21+08:00">
-                2018-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1901,62 +1588,222 @@
       
         
           
-            <p><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
-<h3 id="参考网络博客和个人理解记录如下"><a href="#参考网络博客和个人理解记录如下" class="headerlink" title="参考网络博客和个人理解记录如下:"></a>参考网络博客和个人理解记录如下:</h3><hr>
-<h3 id="1-GBDT-Gradient-Boosting-Decision-Tree"><a href="#1-GBDT-Gradient-Boosting-Decision-Tree" class="headerlink" title="1.GBDT(Gradient Boosting Decision Tree)"></a><font color="red">1.GBDT(Gradient Boosting Decision Tree)</font></h3><p><strong>1.优势</strong></p>
+            <h3 id="简要"><a href="#简要" class="headerlink" title="简要"></a>简要</h3><p>本篇主要记录三种求最优解的算法:<strong>动态规划(dynamic programming)</strong>,<strong>贪心算法</strong>和<strong>平摊分析</strong>.</p>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>1.动态规划是通过组合子问题的解而解决整个问题的.分治法算法是指将问题划分成一些<font color="red">独立</font>的子问题, <font color="red">递归地求解</font>各个子问题,然后<font color="red">合并子问题的解</font>而得到原问题的解.与此不同,动态规划适用于<font color="red">子问题不是独立</font>的情况,也就是各个子问题包含公共的子子问题.在这种情况下,若用分治法则会做许多不必要的工作,即重复地求解公共的子子问题.</p>
+<p>动态规划算法的设计可以分为以下四个步骤:</p>
+<blockquote>
+<p>1.描述最优解的结构<br>2.递归定义最优解的值<br>3.按自底向上的方式计算最优解的值<br>4.由计算出的结果构造一个最优解</p>
+</blockquote>
+<p><font color="red"><strong>能否运用动态规划方法的标志之一:</strong></font>一个问题的最优解包含了子问题的一个最优解.这个性质为最优子结构.</p>
+<p>适合采用动态规划的最优化问题的两个要素:<font color="red"><strong>最优子结构</strong></font>和<font color="red"><strong>重叠子问题</strong></font></p>
+<h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><p>1.贪心算法是使所做的选择看起来都是当前最佳的,期望通过所做的局部最优选择来产生出一个全局最优解.</p>
+<p>2.贪心算法的每一次操作都对结果产生直接影响,而动态规划不是.贪心算法对每个子问题的解决方案做出选择,不能回退;动态规划则会根据之前的选择结果对当前进行选择,有回退功能.动态规划主要运用于二维或三维问题,而贪心一般是一维问题.</p>
+<p>3.贪心算法要经过证明才能运用到算法中.</p>
+<h3 id="平摊分析"><a href="#平摊分析" class="headerlink" title="平摊分析"></a>平摊分析</h3><p>(未完-待续)</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/Semiconduction/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/08/10/Semiconduction/" itemprop="url">
+                  天池-半导体质量预测
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Competition/" itemprop="url" rel="index">
+                    <span itemprop="name">Competition</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="天池-半导体质量预测"><a href="#天池-半导体质量预测" class="headerlink" title="天池-半导体质量预测"></a>天池-半导体质量预测</h2><p>最近跟着做天池的比赛,将比赛过程中遇到的问题记录如下:</p>
+<h3 id="1-特征的选择"><a href="#1-特征的选择" class="headerlink" title="1.特征的选择?"></a>1.特征的选择?</h3><blockquote>
+<p><strong>特征选择的方法</strong>: 1) 嵌入式 2) 过滤式 3) 封装式</p>
+</blockquote>
+<p><strong>1)数据清洗:</strong></p>
 <ul>
-<li>效果还不错</li>
-<li>既可用于分类也可用于回归</li>
-<li>可以筛选特征</li>
+<li>1.筛选掉重复的列</li>
+<li>2.对于类别类型特征,利用sklearn编码(one-hot, Label Encoder等)</li>
+<li>3.使用平均值填充完后再去除冗余列(方差为0,列重复)</li>
 </ul>
-<p><strong>2.关键点</strong></p>
-<p><strong>2.1 gbdt 的算法的流程？</strong><br>gbdt通过多轮迭代,每轮迭代生成一个弱分类器,每个分类器在上一轮分类器的残差基础上进行训练.(<strong>弱分类器一般会选择CART TREE - 分类回归树</strong>)</p>
-<p><strong>最终的总分类器是将每轮训练得到的弱分类器加权求和得到. - 加法模型</strong></p>
-<p>模型最终可描述为:$F_M(x)=\sum_{m=1}^{M}T(x;\theta_{m})$<br>模型一共训练M轮,每轮产生一个弱分类器$T(x;\theta_m)$,弱分类器的损失函数<script type="math/tex">\hat{\theta}\_m=argmin\_{\theta\_m}\sum\_{i=1}^{N}L\{y\_i,F\_{m-1}(x\_i)+T\_m(x\_i;\theta\_m)\}</script></p>
-<p>gbdt在每轮迭代的时候,都去拟合损失函数在当前模型下的负梯度.<br><strong>2.2 gbdt 如何选择特征 ？</strong><br>原始的gbdt做法非常暴力,首先<strong>遍历每个特征</strong>,然后<strong>对每个特征遍历它所有可能的切分点</strong>,找到最优特征m的最优切分点j.</p>
-<p><strong>2.3 gbdt 如何构建特征 ？</strong><br>工业界做法是和<strong>逻辑回归结合</strong>,得到组合特征.</p>
-<p><strong>2.4 gbdt 如何用于分类？</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/gbdt-multiclassifier.png" alt="gbdt多分类"></p>
-<p>对于多分类任务,GBDT的做法采用<strong>一对多</strong>的策略.一共有K个类别,训练M轮,每一轮都训练K个树,训练完成后一共有M*K个树.<strong>损失函数log loss</strong></p>
-<p><strong>2.5 gbdt 通过什么方式减少误差 ？</strong><br>拟合残差,梯度下降</p>
-<p><strong>2.6 gbdt的效果相比于传统的LR，SVM效果为什么好一些 ？</strong></p>
+<p>清洗过后,特征从原来的8000多维降到了3400多维.</p>
 <ul>
-<li>1.结合了多个弱分类器,是集成学习,所以泛化能力和准确率更高</li>
-<li>2.SVM对于训练集不同的维度,数据量的大小,核函数的选择直接决定了模型的训练效果.gbdt相较于SVM和LR更不容易过拟合,因为它的超参学习能力较好,gbdt的泛化能力更多取决于数据集.</li>
+<li>4.特征中存在全为NaN值的,也去掉这些列</li>
 </ul>
-<p><strong>2.7 gbdt的参数有哪些，如何调参 ？</strong><br><strong>1.框架参数</strong></p>
+<blockquote>
+<p>总结:数据清洗过后,总的特征维数维3342维;随机森林MSE为:0.03612</p>
+</blockquote>
+<p><strong>2)特征选择:</strong></p>
 <ul>
-<li>步长 - 选择一个较大的步长</li>
-<li>迭代次数或者说学习器的个数 - 100左右</li>
-<li>学习率$\eta$</li>
-<li>损失函数 - 分类问题和回归问题不一样(分类问题有对数似然和指数似然函数;回归模型有均方误差,绝对损失,Huber损失和分位数损失)</li>
+<li>嵌入式: 根据模型来分析特征的重要性,最常见的方式为<strong>正则化</strong>来做特征选择.</li>
+<li>过滤式: 评估单个特征和结果之间的相关程度,排序留下Top相关的特征部分.(缺点:没有考虑到特征之间的关联作用,可能把有用的关联特征误踢掉)</li>
+<li>封装式: 把特征选择看作一个特征子集搜索问题,筛选各种特征子集,用模型评估效果.</li>
 </ul>
-<p><strong>2.弱学习器参数</strong></p>
+<blockquote>
+<p>处理方法:</p>
 <ul>
-<li>树的深度 - 10-100</li>
-<li>最大特征数 - 划分时考虑的最大特征数</li>
-<li>最小叶子结点样本数</li>
-<li>最大叶子结点个数 - 限制最大叶子结点数,防止过拟合</li>
+<li>过滤式:使用单个随机森林得到的feature<em>importances</em>排序后保留了44个特征,为<br>[‘310X207’, ‘210X158’, ‘311X7’, ‘330X1132’, ‘220X13’, ‘310X149’, ‘750X883’, ‘210X207’, ‘312X144’, ‘210X192’, ‘312X61’, ‘312X66’, ‘440AX77’, ‘220X197’, ‘310X153’, ‘330X1190’, ‘344X252’, ‘310X33’, ‘210X174’, ‘440AX95’, ‘312X777’, ‘330X102’, ‘440AX187’, ‘340X161’, ‘312X55’, ‘330X590’, ‘210X89’, ‘330X1129’, ‘210X164’, ‘210X188’, ‘330X1146’, ‘310X119’, ‘360X1049’, ‘440AX182’, ‘750X640’, ‘440AX65’, ‘312X789’, ‘311X154’, ‘310X43’, ‘312X782’, ‘312X555’, ‘420X4’, ‘312X785’, ‘210X229’]</li>
 </ul>
-<p><strong>2.8 gbdt的优缺点 ？</strong><br><strong>1.优点</strong></p>
+</blockquote>
 <ul>
-<li>泛化能力强,不容易过拟合</li>
-<li>不需要复杂的特征工程</li>
+<li>包裹式:利用随机森林的性能作为评价指标筛选出200个特征<br>set([‘440AX98’, ‘310X207’, ‘210X158’, ‘261X641’, ‘261X269’, ‘312X61’, ‘312X66’, ‘220X197’, ‘520X317’, ‘400X151’, ‘400X150’, ‘400X153’, ‘330X594’, ‘330X590’, ‘210X164’, ‘210X8’, ‘420X4’, ‘330X1223’, ‘310X117’, ‘261X524’, ‘310X119’, ‘261X607’, ‘750X640’, ‘210X126’, ‘311X154’, ‘312X555’, ‘261X689’, ‘520X245’, ‘261X477’, ‘750X883’, ‘330X589’, ‘261X590’, ‘300X8’, ‘261X591’, ‘261X468’, ‘440AX77’, ‘300X3’, ‘220X179’, ‘330X1190’, ‘220X177’, ‘220X176’, ‘220X175’, ‘220X174’, ‘220X173’, ‘220X172’, ‘220X171’, ‘220X170’, ‘261X464’, ‘TOOL (#2)’, ‘330X351’, ‘330X102’, ‘330X355’, ‘330X354’, ‘330X1049’, ‘330X1042’, ‘312X57’, ‘312X55’, ‘210X89’, ‘330X1040’, ‘330X1043’, ‘330X1129’, ‘261X460’, ‘330X1044’, ‘261X462’, ‘330X1046’, ‘210X188’, ‘330X353’, ‘360X1049’, ‘440AX66’, ‘440AX67’, ‘440AX64’, ‘440AX65’, ‘330X135’, ‘330X134’, ‘312X144’, ‘330X133’, ‘330X132’, ‘330X139’, ‘312X782’, ‘210X174’, ‘312X785’, ‘312X789’, ‘261X608’, ‘261X609’, ‘520X312’, ‘520X313’, ‘520X314’, ‘330X1228’, ‘420X33’, ‘330X1132’, ‘261X600’, ‘261X601’, ‘330X641’, ‘330X1226’, ‘330X1221’, ‘330X1220’, ‘210X206’, ‘210X207’, ‘261X598’, ‘261X599’, ‘340X105’, ‘340X107’, ‘210X190’, ‘210X191’, ‘210X192’, ‘261X593’, ‘261X594’, ‘261X596’, ‘261X597’, ‘220X557’, ‘220X551’, ‘310X37’, ‘310X36’, ‘310X34’, ‘310X33’, ‘261X268’, ‘310X31’, ‘310X30’, ‘440AX95’, ‘210X3’, ‘210X4’, ‘210X5’, ‘210X6’, ‘210X7’, ‘312X777’, ‘210X9’, ‘261X260’, ‘261X261’, ‘261X266’, ‘261X267’, ‘261X264’, ‘261X265’, ‘520X246’, ‘520X247’, ‘261X736’, ‘261X737’, ‘520X242’, ‘520X243’, ‘310X153’, ‘344X252’, ‘440AX90’, ‘261X262’, ‘330X1146’, ‘440AX182’, ‘440AX187’, ‘261X687’, ‘261X688’, ‘310X43’, ‘330X157’, ‘330X404’, ‘261X512’, ‘261X513’, ‘330X401’, ‘520X55’, ‘330X403’, ‘261X517’, ‘261X518’, ‘261X519’, ‘311X7’, ‘330X409’, ‘330X159’, ‘330X158’, ‘330X461’, ‘520X333’, ‘220X13’, ‘310X149’, ‘520X244’, ‘261X338’, ‘330X1249’, ‘330X1248’, ‘300X7’, ‘261X330’, ‘261X331’, ‘340X161’, ‘261X333’, ‘330X1247’, ‘344X121’, ‘261X336’, ‘330X1244’, ‘520X240’, ‘330X1230’, ‘520X241’, ‘330X1241’, ‘261X335’, ‘220X535’, ‘210X129’, ‘210X128’, ‘220X531’, ‘220X530’, ‘210X125’, ‘210X124’, ‘210X127’, ‘261X526’, ‘210X121’, ‘210X120’, ‘210X123’, ‘261X230’, ‘261X592’, ‘440AX123’, ‘261X742’, ‘440AX99’, ‘311X83’, ‘220X178’, ‘330X535’, ‘210X229’]</li>
 </ul>
-<p><strong>2.缺点</strong></p>
+<p>1) 提取特征后,xgboost的mse为0.0325341683406<br>2) 单个随机森林的5折交叉验证的平均mse为0.0288353227614<br>(max_depth=None,n_estimators=160,min_samples_leaf=2,max_features=n_features)</p>
+<p>使用模型的features<em>importances</em>选择的特征和rfe做交集得到的特征为:<br>[‘210X158’, ‘330X1228’, ‘330X1132’, ‘220X13’, ‘310X149’, ‘750X883’, ‘330X589’, ‘210X207’, ‘440AX77’, ‘312X66’, ‘210X192’, ‘330X1190’, ‘310X33’, ‘312X555’, ‘310X31’, ‘310X30’, ‘440AX95’, ‘210X6’, ‘210X8’, ‘330X102’, ‘340X161’, ‘312X57’, ‘310X153’, ‘330X590’, ‘210X89’, ‘330X1129’, ‘210X164’, ‘312X777’, ‘210X188’, ‘330X1146’, ‘310X119’, ‘750X640’, ‘311X7’, ‘312X144’, ‘310X43’, ‘312X782’, ‘210X174’, ‘420X4’, ‘210X229’, ‘312X785’, ‘312X789’]</p>
+<h3 id="2-缺失值的处理"><a href="#2-缺失值的处理" class="headerlink" title="2.缺失值的处理?"></a>2.缺失值的处理?</h3><ul>
+<li>使用任意数值填充</li>
+<li>使用平均值填充</li>
+</ul>
+<h3 id="3-维数降维"><a href="#3-维数降维" class="headerlink" title="3.维数降维?"></a>3.维数降维?</h3><h3 id="4-模型的选择"><a href="#4-模型的选择" class="headerlink" title="4.模型的选择?"></a>4.模型的选择?</h3><ol>
+<li>Random Forest</li>
+<li>GBDT(Gradient Boosting Decision Tree)<blockquote>
+<p>这里记录下GBDT的发展过程: Regression Decision Tree -&gt; Boosting Decision Tree -&gt; Gradient Boosting Decision Tree,GBDT利用加法模型和前向分步法实现学习的优化过程.GBDT是一个基于迭代累加的决策树算法，它通过构造一组弱的学习器（树），并把多颗决策树的结果累加起来作为最终的预测输出。 缺点:1) 计算复杂度高 2) 不适合高维稀疏特征</p>
+</blockquote>
+</li>
+</ol>
+<p>3.Xgboost</p>
+<blockquote>
+<p>xgboost是boosting Tree的一个很牛的实现:</p>
 <ul>
-<li>难以实行并行化</li>
-<li>模型复杂度较高,深入分析和调优有一定难度</li>
+<li>显示地把树模型复杂度作为正则项加到优化目标中</li>
+<li>公式推导中用到了二阶导数,用了二阶泰勒展开</li>
+<li>实现了分裂点寻找近似算法</li>
+<li>利用了特征的稀疏性</li>
+<li>并行计算</li>
 </ul>
-<h3 id="2-XgBoost-Extreme-Gradient-Boosting"><a href="#2-XgBoost-Extreme-Gradient-Boosting" class="headerlink" title="2.XgBoost(Extreme Gradient Boosting)"></a><font color="red">2.XgBoost(Extreme Gradient Boosting)</font></h3><p><strong>1.xgboost和GBDT区别</strong></p>
+</blockquote>
+<p>xgboost的训练速度远远快于传统的GBDT,10倍量级.</p>
+<blockquote>
+<p>总结:重新选用xgboost模型,参数如下,mse为0.0320532717482<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">params=&#123;&apos;booster&apos;:&apos;gbtree&apos;,</div><div class="line">    &apos;objective&apos;: &apos;reg:linear&apos;,</div><div class="line">    &apos;eval_metric&apos;: &apos;rmse&apos;,</div><div class="line">    &apos;max_depth&apos;:4,</div><div class="line">    &apos;lambda&apos;:6,</div><div class="line">    &apos;subsample&apos;:0.75,</div><div class="line">    &apos;colsample_bytree&apos;:1,</div><div class="line">    &apos;min_child_weight&apos;:1,</div><div class="line">    &apos;eta&apos;: 0.04,</div><div class="line">    &apos;seed&apos;:0,</div><div class="line">    &apos;nthread&apos;:8,</div><div class="line">     &apos;silent&apos;:0&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h3 id="5-实践过程"><a href="#5-实践过程" class="headerlink" title="5.实践过程"></a>5.实践过程</h3><p>1.特征选择过程:去除全为Nan的列,去除Nan值个数大于200的列,去除object列,去除重复的列,选择Pearson相关系数&gt;0.2的列,最后共得到5600多维特征.<br>这一步很粗糙,改进: </p>
 <ul>
-<li>传统GBDT以CART作为基分类器,<strong>xgboost还支持线性分类器.</strong></li>
-<li>传统GBDT在优化时只用到<strong>一阶导数信息</strong>,而<strong>xgboost进行了二阶泰勒展开</strong></li>
-<li>xgboost在代价函数中<strong>加入了正则项</strong></li>
-<li>对于<strong>缺失值的处理</strong>,xgboost可以自动学习出它的分裂方向</li>
-<li>xgboost支持并行,<strong>并行过程是在确定最佳分割点时</strong>,每一轮的训练还是前向分步法,这个过程不能并行.选择最佳分割点时使用近似直方图算法</li>
+<li>1) 加入object的列</li>
+<li>2)特征维数继续筛减:可以试一下PCA降维</li>
+<li>3)时间列属性的加入</li>
 </ul>
-<h3 id="3-SVM-Support-Vector-Machine"><a href="#3-SVM-Support-Vector-Machine" class="headerlink" title="3.SVM(Support Vector Machine)"></a><font color="red">3.SVM(Support Vector Machine)</font></h3><p>参考该篇博客: <a href="https://blog.csdn.net/szlcw1/article/details/52259668" target="_blank" rel="external">https://blog.csdn.net/szlcw1/article/details/52259668</a> (谢谢作者整理)</p>
-<h3 id="4-CNN-Convolutional-Neural-Network"><a href="#4-CNN-Convolutional-Neural-Network" class="headerlink" title="4.CNN(Convolutional Neural Network)"></a><font color="red">4.CNN(Convolutional Neural Network)</font></h3>
+<p>2.模型的选择:单模型线性回归线下mse:0.0388左右,而线上为0.0446.之前用随机森林回归预测,线下0.0297,而线上0.0493.从这个现象结合线下数据只有500条是否可以得出线下和线上数据并不是分布相同,或者说差异较大,而且线下训练可能存在过拟合.2017.12.24将三种回归模型加权平均融合提交结果.</p>
+
           
         
       
@@ -2031,7 +1878,7 @@
           <div class="site-state-item site-state-posts">
             <a href="/">
               <span class="site-state-item-count">63</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -2039,7 +1886,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -2048,7 +1895,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">13</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -2144,7 +1991,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

@@ -261,7 +261,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/20/Leetcode/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/k-median_problem/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -286,8 +286,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/03/20/Leetcode/" itemprop="url">
-                  Leetcode
+                <a class="post-title-link" href="/2018/08/10/k-median_problem/" itemprop="url">
+                  NP-Hard问题(重点关注k-median问题)
                 </a>
               
             
@@ -300,9 +300,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-20T23:26:03+08:00">
-                2018-03-20
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
               </time>
             
 
@@ -317,11 +317,11 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning</span>
+                  <a href="/categories/Paper/" itemprop="url" rel="index">
+                    <span itemprop="name">Paper</span>
                   </a>
                 </span>
 
@@ -359,7 +359,30 @@
       
         
           
-            <p>刷题leetcode题解: <a href="https://github.com/DuncanZhou/LeetCodePractice">https://github.com/DuncanZhou/LeetCodePractice</a><br>大约有300多道,如有错误,欢迎指教,邮箱链接: ymzhou@stu.suda.edu.cn</p>
+            <h3 id="1-介绍"><a href="#1-介绍" class="headerlink" title="1 介绍"></a>1 介绍</h3><p>例子:</p>
+<blockquote>
+<p>k-median问题:在备选工厂集里面选定k个工厂,使得需求点到离它最近工厂的加权距离总和最小.</p>
+</blockquote>
+<h3 id="2-方法"><a href="#2-方法" class="headerlink" title="2 方法"></a>2 方法</h3><blockquote>
+<p>近似方法分为两种:近似算法(Approximate Algorithms)和启发式算法(Heuristic Algorithms).近似算法通常有质量保证的解.然而启发式算法通常可找到在传统解决问题的经验中找到寻求一种面向问题的策略,之后用这种策略来在可行时间内寻找一个相对比较好的解,但对解的质量没有保证.</p>
+</blockquote>
+<p>工厂选址问题已经形成了多种求解方法,大致可以分为定性和定量两类方法.</p>
+<ul>
+<li>定性的方法主要是结合层次分析法和模糊综合法对各方案进行指标评价,找出最优选址.</li>
+<li>定量的常用方法包括<strong>松弛算法和启发式式算法</strong>以及两者的结合.</li>
+</ul>
+<p>启发式搜索在状态空间中对每一个要搜索的位置按照某种方式进行评估,得到最优的位置,再从这个位置进行搜索直到达到目标.常用的<strong>启发式算法包括:禁忌搜索/遗传算法/进化算法/模拟退火算法/蚁群算法/人工神经网络</strong>等等.</p>
+<p>Note:<br>Metric问题:指距离函数上是对称的且满足三角形不等式.</p>
+<h2 id="3-求解NP-Hard问题常用方法"><a href="#3-求解NP-Hard问题常用方法" class="headerlink" title="3 求解NP-Hard问题常用方法"></a>3 求解NP-Hard问题常用方法</h2><h3 id="3-1-近似算法-Approximate-Algorithms-含近似比"><a href="#3-1-近似算法-Approximate-Algorithms-含近似比" class="headerlink" title="3.1 近似算法(Approximate Algorithms,含近似比)"></a>3.1 近似算法(Approximate Algorithms,含近似比)</h3><h3 id="3-1-1-贪心算法-Greedy-Algorithm"><a href="#3-1-1-贪心算法-Greedy-Algorithm" class="headerlink" title="3.1.1 贪心算法(Greedy Algorithm)"></a>3.1.1 贪心算法(Greedy Algorithm)</h3><h3 id="3-1-2-局部搜索-Local-Search"><a href="#3-1-2-局部搜索-Local-Search" class="headerlink" title="3.1.2 局部搜索(Local Search)"></a>3.1.2 局部搜索(Local Search)</h3><h3 id="3-2-启发式算法-Heuristic-Algorithms-不能保证解的质量"><a href="#3-2-启发式算法-Heuristic-Algorithms-不能保证解的质量" class="headerlink" title="3.2 启发式算法(Heuristic Algorithms,不能保证解的质量)"></a>3.2 启发式算法(Heuristic Algorithms,不能保证解的质量)</h3><h3 id="3-2-1-遗传算法-Genetic-Algorithm"><a href="#3-2-1-遗传算法-Genetic-Algorithm" class="headerlink" title="3.2.1 遗传算法(Genetic Algorithm)"></a>3.2.1 遗传算法(Genetic Algorithm)</h3><ul>
+<li>交叉:对非公共部分进行单点交叉,若交叉过后,子代对于父代有改进,则用子代替换父代.</li>
+<li>变异:基于种群中所有个体的概率,通过轮盘赌选择一个个体i进行变异:对个体i进行局部搜索,若有改进则取代种群中的最差个体.</li>
+</ul>
+<h3 id="3-2-2-模拟退火算法-SA算法"><a href="#3-2-2-模拟退火算法-SA算法" class="headerlink" title="3.2.2 模拟退火算法(SA算法)"></a>3.2.2 模拟退火算法(SA算法)</h3><ul>
+<li>step1:贪心或随机构造初始解</li>
+<li>step2:设置一个退火温度参数T,假设当前解X,他的邻居解X’与其目标函数差值为f(X)-f(X’),如果邻居解比其差,则需要以概率T来接受邻居解</li>
+</ul>
+<h3 id="3-2-3-蚁群算法-Ant-Colony-Optimization-ACO"><a href="#3-2-3-蚁群算法-Ant-Colony-Optimization-ACO" class="headerlink" title="3.2.3 蚁群算法(Ant Colony Optimization,ACO)"></a>3.2.3 蚁群算法(Ant Colony Optimization,ACO)</h3><h3 id="3-2-4-禁忌搜索-Tabu-Search"><a href="#3-2-4-禁忌搜索-Tabu-Search" class="headerlink" title="3.2.4 禁忌搜索(Tabu Search)"></a>3.2.4 禁忌搜索(Tabu Search)</h3><p>禁忌搜索在局部搜索(基于领域搜索)算法中加入了禁忌周期,使得搜索领域里的解分成了两种类型:禁忌的解和非禁忌的解,这样帮助了搜索过程”跳坑”,扩大了搜索领域,避免了局部最优,增强了解的疏散性.</p>
+<p>思路:<br>（1）给定一个禁忌表（Tabu List）H=null,并选定一个初始解X_now.<br>（2）如果满足停止规则，则停止计算，输出结果；否则，在X_now的领域中选出满足不受禁忌的候选集N(X_now).在N(X_now)中选择一个评价值最佳的解X_next，X_now:=X_next;更新历史记录H, 重复步骤（2）.</p>
 
           
         
@@ -398,7 +421,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/17/StatisticLearning/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/JVM/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -423,8 +446,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/03/17/StatisticLearning/" itemprop="url">
-                  StatisticLearning
+                <a class="post-title-link" href="/2018/08/10/JVM/" itemprop="url">
+                  JAVA虚拟机了解
                 </a>
               
             
@@ -437,9 +460,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-17T15:49:11+08:00">
-                2018-03-17
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
               </time>
             
 
@@ -454,11 +477,11 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning</span>
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
                   </a>
                 </span>
 
@@ -496,704 +519,213 @@
       
         
           
-            <h1 id="lt-统计学习方法-gt-李航"><a href="#lt-统计学习方法-gt-李航" class="headerlink" title="&lt;统计学习方法&gt; - 李航"></a>&lt;统计学习方法&gt; - 李航</h1><hr>
-<p><strong>重在推导过程,简单记录一些细节</strong></p>
-<h3 id="第一章-统计学习方法概论"><a href="#第一章-统计学习方法概论" class="headerlink" title="第一章 统计学习方法概论"></a>第一章 统计学习方法概论</h3><p>1.泛化误差/期望损失(风险函数):是理论模型f(X)<strong>关于联合分布P(X,Y)</strong>的平均意义下的损失.</p>
-<p>2.训练误差(经验风险/经验损失):是模型f(X)关于训练数据集的平均损失</p>
-<p>3.根据大数定律,<strong>当样本容量N趋于无穷时,经验风险趋于期望风险</strong>,所以一般用经验风险估计期望风险.但现实中训练样本数目有限,所以对经验风险要进行一定的矫正.<strong>经验风险最小化和结构风险最小化(正则化)</strong></p>
-<p>4.过拟合解决方案:</p>
-<ul>
-<li>正则化</li>
-<li>交叉验证<ul>
-<li>简单交叉验证</li>
-<li>K-Fold交叉验证</li>
-<li>留一交叉验证</li>
-</ul>
-</li>
-</ul>
-<p>5.生成方法和判别方法比较</p>
-<ul>
-<li><strong>生成方法</strong>:由数据<strong>学习联合概率分布P(X,Y),然后求出条件概率分布P(Y|X)</strong>作为预测模型,即生成模型$P(Y|X)=\frac{P(X,Y)}{P(X)}$.</li>
-<li><strong>判别方法</strong>:由数据<strong>直接学习决策函数f(X)或者条件概率分布P(Y|X)</strong>作为预测的模型.</li>
-<li>两者区别:<ul>
-<li>生成方法可以还原出联合概率分布,而判别方法不能;生成方法的学习收敛速度更快.</li>
-<li>判别方法直接学习的式条件概率或决策函数,直接面对预测,往往学习的准确率更高.可以对数据进行各种程度上的抽象,定义特征并使用特征,简化学习问题.</li>
-</ul>
-</li>
-</ul>
-<p>6.回归问题按照输入变量的个数分为<strong>一元回归和多元回归</strong>;按照输入变量和输出变量之间关系的类型即模型的类型,分为<strong>线性回归和非线性回归</strong>.</p>
-<p>7.回归学习最常用的损失函数是<strong>平方损失函数</strong> - <strong>最小二乘法求解</strong>.</p>
-<h3 id="第二章-感知机"><a href="#第二章-感知机" class="headerlink" title="第二章 感知机"></a>第二章 感知机</h3><p>1.模型:$f(x)=sign(w\cdot{x}+b)$,找一个可以划分正负样例的超平面,属于判别模型</p>
-<p>2.学习策略:损失函数定义为误分类点到超平面的总距离</p>
-<p>3.学习算法:随机梯度下降</p>
-<h3 id="第三章-k近邻法"><a href="#第三章-k近邻法" class="headerlink" title="第三章 k近邻法"></a>第三章 k近邻法</h3><p>kd tree的划分方法和搜索方法参考网上资料</p>
-<h3 id="第四章-朴素贝叶斯"><a href="#第四章-朴素贝叶斯" class="headerlink" title="第四章 朴素贝叶斯"></a>第四章 朴素贝叶斯</h3><p>1.基于属性独立的强假设</p>
-<p>2.朴素贝叶斯 -&gt; 贝叶斯估计(防止有属性概率为0存在)</p>
-<p>略</p>
-<h3 id="第五章-决策树"><a href="#第五章-决策树" class="headerlink" title="第五章 决策树"></a>第五章 决策树</h3><p>1.决策树模型呈树形结构,在分类问题中,表示基于特征对实例进行分类的过程.可以认为<strong>是if-then规则的集合</strong>,也可以认为是<strong>定义在特征空间与类空间上的条件概率分布</strong>.</p>
-<p>2.决策树学习过程包含三个步骤:<strong>特征选择,决策树的生成和决策树模型的修剪</strong></p>
-<p>3.决策树的<strong>损失函数通常是正则化的极大似然函数</strong>,决策树学习的<strong>策略是以损失函数为目标函数的最小化</strong>,决策树的学习算法通常采用启发式方法,因为从所有可能的决策树中选取最优决策树是NP完全问题.</p>
-<p>4.<strong>特征选择</strong></p>
-<p>4.1 特征选择的准则通常是选择信息增益或信息增益率(基尼系数)</p>
-<p>4.2 熵:$H(p)=-\sum_{i=1}^{n}p_ilogp_i$,熵越大,不确定性越大</p>
-<p>4.3 条件熵H(Y|X)表示在已知随机变量X的条件下随机变量Y的不确定性.$H(Y|X)=\sum_{i=1}^{n}p_iH(Y|X=x_i)$</p>
-<p>4.4 <strong>信息增益</strong>:特征A对训练集D的信息增益g(D,A),定义为集合D的经验熵H(D)与特征A给定条件下D的经验条件熵H(D|A)之差,即$g(D,A)=H(D)-H(D|A)$</p>
-<p>4.5 <strong>信息增益比</strong>:特征A对训练集D的信息增益比$g_R(D,A)$定义为其信息增益$g(D,A)$与训练集D的经验熵H(D)之比为:$g_R(D,A)=\frac{g(D,A)}{H(D)}$</p>
-<p>5.<strong>ID3算法/C4.5算法</strong>参考&lt;西瓜书&gt;,西瓜书上讲得略微好一点</p>
-<p>6.<strong>CART算法</strong>:<strong>最小二乘法生成回归树</strong>,<strong>基于基尼系数生成回归树</strong></p>
-<p>7.剪枝策略:预剪枝和后剪枝 (参考西瓜书上) 将数据集分为训练集和验证集,用验证集来进行剪枝操作.</p>
-<h3 id="第六章-Logistic回归和最大熵模型"><a href="#第六章-Logistic回归和最大熵模型" class="headerlink" title="第六章 Logistic回归和最大熵模型"></a>第六章 Logistic回归和最大熵模型</h3><p>1.X服从Logistic分布是指X具有以下分布函数和密度函数:</p>
-<script type="math/tex; mode=display">F(x)=P(X\leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma }}</script><script type="math/tex; mode=display">f(x)=F'(x)=\frac{e^{-(x-\mu)/\gamma}}{\gamma (1+e^{-(x-\mu)/\gamma})^2}</script><p>式中,$\mu$为位置参数,$\gamma&gt;0$为形状参数.</p>
-<p>2.logistic回归策略:<strong>构造极大似然函数</strong>,使用<strong>梯度下降方法或拟牛顿法</strong>求解优化.</p>
-<p>3.最大熵模型(待完善)</p>
-<h3 id="第七章-SVM"><a href="#第七章-SVM" class="headerlink" title="第七章 SVM"></a>第七章 SVM</h3><p>其他略,已经复习过</p>
-<p><strong>补充</strong>:SMO(序列最小最优化算法):<br><strong>1.总体思路</strong></p>
-<ul>
-<li>选取一对需要更新的变量$\alpha_i$,$\alpha_j$</li>
-<li>固定$\alpha_i$,$\alpha_j$以外的参数,求解对偶问题</li>
-</ul>
-<p><strong>2.具体细节</strong></p>
-<ul>
-<li>First,SMO算法先选取<strong>违背KKT条件程度最大的变量</strong></li>
-<li>Second,第二个变量理应选择一个使目标函数值减小最快的变量,但由于比较各变量所对应的目标函数值减幅的复杂度过高,<strong>因此SMO采用了一个启发式:使选取的两变量所对应样本之间的间隔最大.</strong></li>
-</ul>
-<h3 id="第八章-提升方法"><a href="#第八章-提升方法" class="headerlink" title="第八章 提升方法"></a>第八章 提升方法</h3><p>1.概念:对提升方法来说,有两个问题需要回答</p>
-<ul>
-<li>在每一轮如何改变训练数据的权值或概率分布 - <strong>AdaBoost提高那些前一轮弱分类器错误分类样本的权值,而降低那些被正确分类样本的权值</strong></li>
-<li>如何将弱分类器组合成一个强分类器 - AdaBoost采取加权多数表决的方法,具体地,<strong>加大分类误差率较小的弱分类器的权值</strong>,使其表决中起较大的作用,<strong>减小分类误差率较大的弱分类器的权值</strong>,使其再表决中其较小的作用.</li>
-</ul>
-<p>2.<strong>AdaBoost</strong><br>学习样本权重$D_m$,学习分类器权重$\alpha_m$</p>
-<ul>
-<li>$D_m={w_{m1},w_{m2},…,w_{mN}}$,样本权重和上一次的分类器分类结果有关</li>
-<li>$\alpha_m=\frac{1}{2}log\frac{1-e_m}{e_m}$,$e_m$为分类误差错误率(算错误率时乘上样本权重)</li>
-</ul>
-<p>3.<strong>提升树</strong><br>前向分步法+拟合残差,在拟合残差时,如果损失函数是平方差函数或指数损失函数时,每一步优化很简单.如果是一般损失函数,则可以使用梯度提升算法.</p>
-<p>4.<strong>Bagging</strong>和<strong>Stacking</strong>见&lt;西瓜书&gt;</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/15/MachineLearningNotes/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/15/MachineLearningNotes/" itemprop="url">
-                  西瓜书阅读
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T18:58:32+08:00">
-                2018-03-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
-<h2 id="西瓜书阅读记录-2-0"><a href="#西瓜书阅读记录-2-0" class="headerlink" title="西瓜书阅读记录(2.0)"></a>西瓜书阅读记录(2.0)</h2><p>2018年1月19日提交1.0<br>2018年3月1日重新持续更新2.0<br>2018年3月15日完成1-11章的阅读,下面开始阅读&lt;统计学习方法&gt;</p>
-<p>=============================================</p>
-<h3 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h3><p>1.归纳偏好</p>
-<ul>
-<li><strong>奥卡姆剃刀:</strong>若有多个假设与观察一致,则选择最简单的那个.</li>
-</ul>
-<p>2.NEL定理(No Free Lunch):脱离具体问题,空泛的谈论”什么学习算法更好”毫无意义.</p>
-<h3 id="第二章-模型评估与选择"><a href="#第二章-模型评估与选择" class="headerlink" title="第二章.模型评估与选择"></a>第二章.模型评估与选择</h3><p>1.<strong>过拟合</strong>:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所有潜在样本都会具有的一般性质.</p>
-<p>2.<strong>欠拟合</strong>:学习能力低下造成的,解决办法:在决策树学习中扩展分支/在神经网络学习中增加训练轮数等.</p>
-<p><strong>3.评估方法</strong>:</p>
-<p>3.1 测试集应该尽可能与训练集互斥,即测试样本尽量不再训练集中出现,未在训练过程中使用过.</p>
-<p>3.2 划分训练集和测试集的方法: a)<strong>留出法</strong>,直接将数据集划分为互斥的两个集合;b)<strong>交叉验证法(k-fold validation)</strong>,先将数据集D划分为k个大小相似的互斥子集,每个子集都尽可能保持数据分布的一致性.然后,每次用k-1个子集的并集作为训练集,余下的那个子集作为测试集,进行k次训练和测试,最终返回这k个测试结果的均值.(k的通常取值为10,并且通常对k-fold validation做多次,一般为10次10折交叉验证法).c)<strong>自助法(bootstrapping)</strong>,给定包含m个样本的数据集D,对它进行采样产生数据集D’:每次随即从D中挑选一个样本,将其拷贝放入D’,然后再将该样本放回初始数据集D中,使得该样本在下次采样时仍有可能被采到;这个过程重复执行m次后,我们就得到了包含m个样本的数据集D’.</p>
-<p>3.3 调参参数类型:<strong>算法参数(超参)</strong>和<strong>模型参数</strong>.</p>
-<ul>
-<li>模型参数是学习得到的,作为模型的一部分保存</li>
-<li>算法参数是算法中的参数,是模型外部的配置,如:神经网络中的学习速率,支持向量机中的C和sigma参数.</li>
-</ul>
-<p><strong>4.性能度量</strong>:</p>
-<p>4.1 回归任务最常用的性能度量是”均方误差”: </p>
-<script type="math/tex; mode=display">E(f;D)=\frac{1}{m}\sum\_{i=1}^{m}(f(x\_i)-y\_i)^2$$.
-
-4.2  评价标准: 错误率与精度,查全率和查准率.错误率和精度指多少样本被判错,多少样本被判错;查全率和查准率指模型判断为正例中有多少比例是真正的正例,模型判断为反例中有多少为真正的反例.(两种评价标准对应的需求不一样)
-
-|   真实情况  | 预测结果正例  |   预测结果反例  |
-|   :--:  |  :--:   |   :--:    |
-|   正例  |   TP(真正例) |   FN(反正例) |
-|   反例  |   FP(假正例) |   TN(真正例) |
-$$P(查准率) = TP / (TP  + FP)</script><script type="math/tex; mode=display">R(查全率) = TP / (TP + FN)</script><p>4.3 P-R图:以查准率为纵坐标,以查全率为横坐标.在进行比较时,若一个学习器的P-R曲线被另一个学习器的曲线完全”包住”,则可断言后者的性能优于前者. “平衡点”(BEP):当查准率 = 查全率时的取值,即为平衡点.当两个曲线有交点时,可通过比较平衡点的取值.</p>
-<p>4.4 F1-measure:</p>
-<script type="math/tex; mode=display">F1 = 2 * TP / (样例总数 + TP - TN)</script><p>(<strong>补充</strong>):<script type="math/tex">F_\beta = \frac{1+\beta^2\times{P}\times{R}}{\beta^2\times{P}+R}</script>,当$\beta=1$时,退化为标准的F1;$\beta&gt;1$时查全率有更大影响;$\beta$&amp;lt1时查准率有更大影响.</p>
-<p>4.5 查准率和查全率的应用目的区别:例如在商品推荐系统中,为了尽可能少打扰用户,更希望推荐内容的确是用户感兴趣的,此时查准率更重要;而在逃犯信息检索系统中,更希望尽可能少漏掉逃犯,此时查全率更重要.</p>
-<p>4.6 对于多分类考察查准率和查全率,基于两种方式:a)先在各个混淆矩阵上计算(P<sub>1</sub>,R<sub>1</sub>),(P<sub>2</sub>,R<sub>2</sub>),…,(P<sub>n</sub>,R<sub>n</sub>),然后再计算平均值得到”宏查准率”和”宏查全率”.b)先将各混淆矩阵上的对应元素计算平均,再基于这些平均值计算出”微查准率”和”微查全率”.</p>
-<p>4.7 ROC和AUC: <strong>ROC体现了综合考虑学习器在不同任务下的”期望泛化性能”的好坏,或者说,”一般情况下”泛化性能的好坏</strong>.ROC曲线的纵轴是”真正例率(TPR)”,横轴是”假正例率(FPR)”,两者分别定义为TPR=TP / (TP + FN), FPR=FP / (TN + FP). 和P-R图相似,若一个学习器的ROC曲线被另一个学习器的曲线完全”包住”,则可断言后者性能优于前者.若两个学习器的ROC曲线发生交叉,则难以一般性地断言两者孰优孰劣,此时如果一定要进行比较,则较为合理的判据是比较ROC曲线下的面积,即AUC.</p>
-<script type="math/tex; mode=display">AUC = \frac{1}{2}\sum\_{i=1}^{m-1}(x\_{i+1} - x\_i) \cdot(y\_i + y\_{i+1})$$.
-
-**5.比较检验(待丰富)**:假设检验/交叉验证t检验/McNemar检验/Friedman检验与Nemenyi后续检验
-
-**6.偏差与方差**:
-
-6.1 泛化误差可分为偏差/方差与噪声之和.**偏差**度量了学习算法的期望预测与真实结果的偏离程度,即刻画了学习算法本身的拟合能力;**方差**度量了同样大小的训练集的变动所导致的学习性能的变化,即刻画了数据扰动所造成的影响;**噪声**则表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界,即刻画了学习问题本身的难度.
-
-**(2.0补充)**
-7.训练误差(经验误差):学习器在训练集上的误差
-
-8.泛化误差:学习器在新样本上的误差
-
-***
-### 第三章.线性模型
-1.线性模型:给定由d个属性描述的示例X=(x<sub>1</sub>;x<sub>2</sub>;...;x<sub>d</sub>),其中x<sub>i</sub>是X在第i个属性上的取值,线性模型试图**学得一个通过属性的线性组合来进行预测的函数**,即
-$$f(\textbf{x})=w\_1x\_1+w\_2x\_2+...+w\_dx\_d+b</script><p>写成向量形式:</p>
-<script type="math/tex; mode=display">f(\textbf{x})=\textbf{w}^T+b</script><p>其中,<strong>w</strong>=(w<sub>1</sub>;w<sub>2</sub>;…;w<sub>d</sub>).<strong>w</strong>和b学得之后,模型就得以确定.</p>
-<p><strong>2.线性回归</strong></p>
-<p>2.1 概念:线性回归试图学得一个线性模型以尽可能准确地预测实值输出标记.</p>
-<p>2.2 <strong>均方误差</strong>是回归任务中最常用的性能度量.基于均方误差来求解模型的方法成为<strong>最小二乘法</strong>.</p>
-<p>2.3 对于多元线性回归,可以利用最小二乘法来对<strong>w</strong>和b进行估计.</p>
-<p>2.4 对数线性回归: 认为示例所对应的输出标记是在指数尺度上变化.</p>
-<script type="math/tex; mode=display">lny=\textbf{w}^T+b</script><p>实际上是试图让<script type="math/tex">e^{w^Tx}+b</script>逼近y.</p>
-<p>2.5 广义线性模型: <script type="math/tex">y=g^{-1}(\textbf{w}^T+b)</script>(将输入空间上的真实值到输出空间上预测值的非线性函数映射)</p>
-<p><strong>3.对数几率回归</strong></p>
-<p>3.1 对数几率回归是一种”Sigmoid函数”.进而将回归问题转化为分类问题.</p>
-<p><strong>(补充)</strong>:优化方法:极大似然估计;先构造极大似然函数,再利用梯度下降或牛顿法进行优化函数.</p>
-<p><strong>4.线性判别分析(待温故)</strong></p>
-<p>4.1 线性判别分析(Linear Discriminant Analysis),简称LDA,是一种经典的线性学习方法.LDA:给定训练样例集,设法将样例集投影到一条直线上,使得同类样例的投影点尽可能近/异类样例的投影点尽可能远;在对新样本进行分类时,将其投影到同样的这条直线上,再根据投影点的位置来确定新样本的类别.即,欲使同类样例的投影点尽可能接近,可以让同类样例投影点的协方差尽可能小;而欲使异类样例的投影点尽可能远离,可以让类中心之间的距离尽可能大.</p>
-<p>4.2 奇异值: 特征值分解是提取矩阵特针很不错的方法,但是它只是针对方针而言的,对于非方阵矩阵,使用奇异值分解能适用于任何形式的矩阵.分解形式为:</p>
-<script type="math/tex; mode=display">A\_{m\*n}=U\_{m\*m}\Sigma\_{m\*n}{V\_{n\*n}}^T(\Sigma\_{m\*n}为对角矩阵)</script><p><strong>5.多分类学习</strong></p>
-<p>5.1 多分类学习的基本思路是”拆解法”,即将多分类任务拆分为若干个二分类任务求解.最经典的拆分策略有三种:”一对一(One vs. One OvO)”,”一对其余(One vs. Rest,OvR)”和”多对多(Many vs. Many,简称MvM)”.</p>
-<p><strong>(补充)</strong><br>5.2 类别不平衡问题:指的是分类任务中不同类别的训练样例数目差别很大的情况.<br>基本策略:</p>
-<script type="math/tex; mode=display">\frac{y^{'}}{1-y^{'}}=\frac{y}{1-y}\times\frac{m^{-}}{m^{+}}</script><p>解决方案:</p>
-<ul>
-<li>1.直接对训练集里的反例样例进行”欠采样”(下采样),即去除一些反例使得正/反例数目接近,然后进行学习</li>
-<li>2.对训练集里的正类样例进行”过采样”(上采样),即增加一些正例使得正/反例数目接近,然后再进行学习</li>
-<li>3.直接基于原始训练集进行学习,但在用训练好的分类器进行预测时,将基本策略公式嵌入到决策过程中,称为”阈值移动”</li>
-</ul>
-<hr>
-<h3 id="第四章-决策树"><a href="#第四章-决策树" class="headerlink" title="第四章 决策树"></a>第四章 决策树</h3><p>4.1 <strong>信息熵</strong>是度量样本集合纯度最常用的一种指标.假定当前样本集合D中第k类样本所占的比例为p<sub>k</sub>(k=1,2,…,|Y|),则D的信息熵为</p>
-<script type="math/tex; mode=display">Ent(D)=-\sum\_{k=1}^{|Y|}p\_klog\_2p\_k</script><p>Ent(D)的值越小,则D的纯度越高.</p>
-<p>4.2 假定离散属性a有V个可能的取值{a<sup>1</sup>,a<sup>2</sup>,…,a<sup>V</sup>},若使用a对样本集D进行划分,则会产生V个分支结点,其中第v个分支结点包含了D中所有在属性a上取值为a<sup>v</sup>,记为D<sup>v</sup>.于是可以计算出用属性a对样本集D进行划分所获得的<strong>信息增益</strong></p>
-<script type="math/tex; mode=display">Gain(D,a)=Ent(D)-\sum\_{v=1}^{V}\frac{|D|^v}{|D|}Ent(D^v)$$.
-一般而言,信息增益越大,则意味着使用属性a来进行划分所获得的"纯度提升"越大.因此,可利用信息增益来进行决策树的划分属性选择.
-
-4.3 **ID3**决策树学习算法就是以**信息增益**为准则来选择划分属性.(信息增益准则对可取值数目较多的属性有所偏好)
-
-4.4 **C4.5**决策树算法不直接使用信息增益,而是使用"**增益率**"来选择最优划分属性.增益率定义为:
-$$GainRatio(D,a)=\frac{Gain(D,a)}{IV(a)}$$,其中,
-$$IV(a)=-\sum\_{v=1}^{V}\frac{|D|^v}{|D|}log\_2\frac{|D|^v}{|D|}$$,IV(a)称为属性a的"固有值".增益率对属性数目偏少的属性有所偏好.
-
-(**补充**):C4.5算法并不是直接选择增益率最大的候选划分属性,而是使用了启发式算法:**先从候选划分属性中找出信息增益高于平均水平的属性,然后再从中选择增益率最高的.**
-
-4.5 **CART决策树**使用"基尼指数"来选择划分属性.
-
-**4.6 剪枝处理**
-
-4.6.1 剪枝是决策树学习算法对付"过拟合"的一个重要手段.
-
-4.6.2 剪枝策略包括:**预剪枝**和**后剪枝**.
-
-4.6.3 **预剪枝**是在决策树生成过程中,对每个结点在划分前先进行估计,若当前结点的划分不能带来决策树泛化性能的提升,则停止划分并将当前结点标记为叶结点;**后剪枝**则是先从训练集生成一棵完整的决策树,然后自底向上地对非叶结点进行考察,若将该结点对应的子树替换为叶结点能带来决策树泛化性能提升,则将该子树替换为叶结点.
-
-4.6.3 后剪枝决策树通常比预剪枝决策树保留了更多的分支.一般情形下,后剪枝决策树的欠拟合风险很小,泛化性能往往优于预剪枝决策树.但其训练时间开销比未剪枝决策树和预剪枝决策树都要大得多.
-
-**(如何判断决策树泛化性能能否提升?)**:采用留出法,即预留一部分数据用作"验证集"以进行性能评估.
-
-**4.7 连续与缺失值**
-
-4.7.1 连续值处理: 二分法.(也是基于信息增益来选择划分点).二分法切分出n-1个划分点,然后从这些划分点中选择信息增益最大的划分点.
-
-4.7.2 缺失值处理: 简单来讲,通过样本中无缺失值样本来估计同一个有属性值缺失的样本被划入不同子结点的概率.
-**(补充)**:解决两个问题:
-* 1)如何在属性值缺失的情况下进行划分属性选择?
-* 2)给定划分属性,若样本在该属性上的值缺失,如何对样本进行划分?
-
-对于第一个问题,还是沿用信息增益来进行划分,借助无缺失值的样本.
-$$Gain(D,a)=\rho\*Gain(\tilde{D},a)=\rho\*(Ent(\tilde{D}-\sum\_{v=1}^{V}\tilde{r\_{v}}Ent(\tilde{D}^v)))</script><p>其中,<script type="math/tex">Ent(\tilde{D})=-\sum\_{k=1}^{|Y|}\tilde{p}\_{k}log\_2\tilde{p}\_k</script>.(参考西瓜书Page86)</p>
-<p>对于第二个问题,若样本x在划分属性a上的取值已知,则将x划入与其取值对应的子结点,且样本权值在子结点中保持为$W_x$.若样本x在划分属性a上的取值未知,则将x同时划入所有子结点,且样本权值在与属性值$a^v$对应的子结点调整为$\tilde{r_v}\cdot{w_x}$.</p>
-<p>4.8 多变量决策树: 实现斜划分甚至更复杂的决策树.<strong>在多变量决策树的学习过程中,不是为每个非叶结点寻找一个最优划分属性,而是试图建立一个合适线性分类器.</strong></p>
-<hr>
-<h3 id="第五章-神经网络"><a href="#第五章-神经网络" class="headerlink" title="第五章 神经网络"></a>第五章 神经网络</h3><p>1 神经网络的学习过程就是根据训练数据来调整神经元之间的<strong>连接权</strong>以及每个功能神经元的<strong>阈值</strong>.</p>
-<p>2 感知机: 由两层神经元组成,输入层接受外界输入信号后传递给输出层,输出层是M-P神经元,亦称”阈值逻辑单元”. 对于非线性问题,需要考虑使用多层功能神经元.</p>
-<p>3 误逆差传播算法(亦称反向传播算法,BP算法):BP算法是基于梯度下降策略,以目标的负梯度方向对参数进行调整.</p>
-<p>4 累积BP算法的目标是最小化训练集D上的累积误差<script type="math/tex">E=\frac{1}{m}\sum\_{k=1}^{m}E\_k</script>.标准BP算法每次更新只针对单个样例,参数更新得非常频繁,而对不同样例进行更新的效果可能出现”抵消”现象.因此为了达到同样的累积误差极小点,标准BP算法往往需要进行更多次数的迭代.累积BP算法直接针对累积误差最小化,它在读取整个训练集D一遍后才对参数进行更新,其参数更新的频率低得多,但在很多任务中,累积误差下降到一定程度后,进一步下降会非常缓慢,这时标准BP往往会更快获得较好的解,尤其是在训练集D非常大时更明显.</p>
-<p>5 BP神经网络经常遭遇过拟合,两种策略解决: <strong>a)早停</strong>,将数据分成训练集和验证集,训练集用来计算梯度/更新连接权和阈值,验证集用来估计误差,若训练集误差降低但验证集误差升高,则停止训练,同时返回具有最小验证集误差的连接权和阈值. <strong>b)正则化</strong>,其基本思想是在误差目标函数中增加一个用于描述网络负责度的部分.</p>
-<p>6 神经网络采用一下策略”跳出”局部极小:</p>
-<ul>
-<li><strong>以多组不同参数值初始化多个神经网络</strong>,按标准方法训练后,<strong>取其中误差最小的解作为最终参数</strong>.</li>
-<li>使用”<strong>模拟退火</strong>“,即以一定概率接受比当前解更差的结果.</li>
-<li>使用<strong>随机梯度下降</strong>.与标准梯度下降精确计算梯度不同,随即梯度下降法在计算梯度时加入了随即因素,于是,即使陷入局部极小点,它计算出的梯度仍可能不为0,这样有机会跳出局部极小点继续搜索.</li>
-</ul>
-<p><strong>(补充)</strong>:梯度下降:</p>
-<ul>
-<li>1)批量梯度下降:每次使用全量的训练集样本来更新模型参数</li>
-<li>2)随机梯度下降:每次从训练集中随机选择一个样本来进行学习</li>
-<li>3)小批量梯度下降:每次更新速度与更新次数中间取得一个平衡，其每次更新从训练集中随机选择 m (m小于n) 个样本进行学习</li>
-</ul>
-<p>7 其他常见神经网络</p>
-<ul>
-<li>RBF网络(使用径向基函数作为隐层神经元激活函数,而输出层是对隐层神经元输出的线性组合.)</li>
-<li>ART网络(竞争型学习是神经网络中一种常用的无监督学习策略,在使用该策略时,网络的输出神经元相互竞争,每一时刻仅有一个竞争获胜的神经元被激活,其他的神经元的状态被抑制.ART网络有比较层/识别层/识别阈值和重置模块构成.比较层负责接收输入样本,并将其传递给识别层神经元.识别层每个神经元对应一个模式类,神经元数目可在训练过程中动态增长以增加新的模式类)</li>
-<li>SOM网络(一种竞争学习型的无监督神经网络,它能将高维输入数据映射到低维空间,同时保持输入数据在高维空间的拓扑结构.)</li>
-<li>级联相关网络</li>
-<li>Elman网络</li>
-<li>Boltzmann机</li>
-</ul>
-<p>8 深度学习:一般地，CNN的基本结构包括两层，其一为特征提取层，每个神经元的输入与前一层的局部接受域相连，并提取该局部的特征。一旦该局部特征被提取后，它与其它特征间的位置关系也随之确定下来；其二是特征映射层，网络的每个计算层由多个特征映射组成，每个特征映射是一个平面，平面上所有神经元的权值相等。特征映射结构采用影响函数核小的sigmoid函数作为卷积网络的激活函数，使得特征映射具有位移不变性。此外，由于一个映射面上的神经元共享权值，因而减少了网络自由参数的个数。卷积神经网络中的每一个卷积层都紧跟着一个用来求局部平均与二次提取的计算层，这种特有的两次特征提取结构减小了特征分辨率。CNN主要用来识别位移、缩放及其他形式扭曲不变性的二维图形.</p>
-<p>8.1 卷积: 说白了,卷积操作就是一种加权求和.在卷积层中,通常包含若干个特征平面,每个特征平面由一些矩形排列的神经元组成,同一特征平面的神经共享单元共享权值,共享的权值就是卷积核.卷积核带来的直接好处减少网络各层之间的连接,同时降低了过拟合的风险.</p>
-<p>8.2 池化: 也叫子采样,降维处理,减少了模型的参数.</p>
-<p><strong>(补充)</strong>:神经网络的误差反向传播算法的推导需要重新看.</p>
-<hr>
-<h3 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h3><h4 id="第六章-西瓜书"><a href="#第六章-西瓜书" class="headerlink" title="第六章 西瓜书"></a>第六章 西瓜书</h4><p>1.划分超平面:在样本空间中,划分超平面可通过如下线性方程来描述:</p>
-<script type="math/tex; mode=display">w^Tx+b=0$$,
-其中,$$w=(w\_1;w\_2;...;w\_d)$$为法向量;b为位移项,决定了超平面与原点之间的距离.将超平面记为(**w**,b),样本空间中任意点x到超平面(**w**,b)的距离为$$r=\frac{|w^T+b|}{||w||}$$.
-
-2.**支持向量**:假设超平面(**w**,b)能将训练样本正确分类,即对于$$(x\_i,y\_i)\in{D}$$,若y<sub>i</sub>=+1,则有$$w^T+b>0$$;若y<sub>i</sub>=-1,则有$w^T+b<0$.令$w^T+b\geq{+1},y\_i=1$;$w^T+b\leq{+1},y\_i=-1$.距离超平面最近的这几个训练样本点使上述等号成立,它们被称为"支持向量".两个异类支持向量到超平面的距离之和为$$\gamma=\frac{2}{||w||}$$.它们被称为"间隔".
-
-3.**支持向量机**:$min\_{w,b}\frac{1}{2}||w||^2,s.t. y\_i(w^Tx\_i+b)\geq{1},i=1,2,3,...,m.$.
-
-**(补充:)**SMO算法:
-* 选取一对需要更新的变量$\alpha\_{i}$和$\alpha\_{j}$
-* 固定$\alpha\_{i}$和$\alpha\_{j}$以外的参数,求解拉格朗日函数后更新$\alpha\_{i}$和$\alpha\_{j}$
-SMO算法先选取违背KKT条件程度最大的变量,第二个变量本应选择一个使目标函数值减小最快的变量,但由于比较各变量所对应的目标函数值减幅的复杂度过高,<font color='red'>**因此SMO采用了一个启发式:使选取的两变量所对应样本之间的间隔最大.**</font>
-
-4.正定矩阵:实对称矩阵
-
-5.二次规划问题:给定一个目标函数,找到n维的向量x,使得
-$$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩阵,那么该问题就是**凸二次规划问题**.凸二次规划问题,如果至少一个向量满足约束并且在可行域有下界,则凸二次规划问题就有一个全局最小值.如果Q是正定的,则这类二次规划为严格的凸二次规划问题,那么全局最小值就是唯一的.
-
-6.对于凸二次规划问题解法:拉格朗日方法/Lemke方法,内点法,有效集法,椭球法等.
-
-7.对偶问题:任何一个求极大化的线性规划问题都有一个求极小化的线性规划问题与之对应,反之亦然.如果我们把其中一个叫原问题,则另一个就叫做它的对偶问题,并称这一对互相联系的两个问题为一对**对偶问题**.
-
-8.核函数:当样本在原始样本空间中线性不可分时,可以将样本映射到更高维的特征空间中,使得样本在这个特征空间内线性可分.如果原始空间是有限维,那么一定存在一个高维特征空间使样本可分.即x<sub>i</sub>与x<sub>j</sub>在特征空间的内积等于它们在原始样本空间中通过函数*k(.,.)*计算的结果,这里的*k(.,.)*就是**核函数**.有了这样的函数,就不必计算高维甚至无穷维特征空间中的内积.
-
-9.核函数类型:
-* 线性核
-* 多项式核
-* 高斯核(RBF核)
-* 拉普拉斯核
-* Sigmoid核
-
-**(补充)**:核函数的组合形式($k\_1(x)$为核函数):
-* 1.核函数的线性组合还是核函数
-* 2.核函数的直积还是核函数$k\_1\times{k\_2}(x,z)=k\_1(x,z)k\_2(z)$仍是核函数
-* 3.对任意函数$g(x)$,$k(x,z)=g(x)k\_1(x,z)g(z)$仍是核函数
-
-**10.软间隔和正则化**
-
-10.1 软间隔:在现实任务中往往很难确定合适的核函数使得训练样本在特征空间中线性可分;退一步说,即便恰好找到了某个核函数使训练集在特征空间中可分,也很难判定这个"线性可分"是不是由过拟合造成的.缓解该问题的一个方法是允许支持向量机在一些样本上出错.支持向量机形式要求所有样本均满足约束,即所有样本都必须划分正确,这称为**"硬间隔"**.而**软间隔**允许某些样本不满足约束.
-
-**补充**:软间隔线性支持向量机优化目标为:
-1.$$min\_{w,b}\frac{1}{2}{||w||}^2+C\sum\_{i=1}^{m}l\_{0/1}(y\_i(w^T+b)-1)</script><p>2.C为惩罚参数,当C无穷大时,则迫使所有样本都满足约束.当C取有限值时,则允许有一些样本不满足约束.<br>3.$l_{0/1}$为0/1损失函数.<br>4.硬间隔和软间隔区别在于:前者是$0\leq{\alpha_i}\leq{C}$,后者是$0\leq{\alpha_i}$.<br>5.支持向量机模型都由两项构成:结构风险和经验风险.结构风险用于描述模型的某些性质,经验风险用于描述模型与训练数据的契合程度.为了降低模型复杂度和防止过拟合,通过$L_p$范数来正则化结构风险.</p>
-<p>11.损失函数:</p>
-<ul>
-<li>hinge损失</li>
-<li>指数损失</li>
-<li>对率损失</li>
-</ul>
-<p><strong>补充</strong>:SVR-支持向量回归</p>
-<ul>
-<li>1)容忍$f(x)$与真实输出$y$之间有$\epsilon$的误差,通过这种方式来最大限度的包容尽可能多的点在内</li>
-<li>2)目标函数的优化,依然用拉格朗日乘子法.</li>
-</ul>
-<hr>
-<h4 id="第六章-统计学习方法"><a href="#第六章-统计学习方法" class="headerlink" title="第六章 统计学习方法"></a>第六章 统计学习方法</h4><p>1.支持向量机学习方法包含构建由简至繁的模型:线性可分支持向量机,线性支持向量机及非线性支持向量机.当<strong>训练数据线性可分时</strong>,通过<strong>硬间隔最大化</strong>学习一个线性的分类器,即<strong>线性可分支持向量机</strong>,又称为硬间隔支持向量机;当<strong>训练数据近似线性可分时</strong>,通过<strong>软间隔最大化</strong>,也学习一个线性的分类器,即<strong>线性支持向量机</strong>,又称为软间隔支持向量机;当<strong>训练数据线性不可分时</strong>,通过<strong>核技巧及软间隔最大化</strong>,学习<strong>非线性支持向量机</strong>.</p>
-<p><strong>2.空间概念</strong></p>
-<p>2.1 线性空间(向量空间)</p>
-<blockquote>
-<p>线性空间又称作向量空间,对于一个线性空间,知道”基”(相当于三维空间中的坐标系)便可确定空间中元素的坐标(即位置).<strong>线性空间之定义了加法和数乘元算</strong>.</p>
-</blockquote>
-<p>2.2 赋范线性空间</p>
-<blockquote>
-<p>定义了范数的线性空间(为了了解<strong>向量的长度</strong>)</p>
-</blockquote>
-<p>2.3 内积空间</p>
-<blockquote>
-<p>定义了内积的线性空间(为了了解<strong>向量的夹角</strong>)</p>
-</blockquote>
-<p>2.4 欧式空间</p>
-<blockquote>
-<p>定义了内积的实线性空间V为实内积空间或欧几里德空间.</p>
-</blockquote>
-<p>2.5 Banach空间</p>
-<blockquote>
-<p>完备的赋范线性空间</p>
-</blockquote>
-<p>2.6 希尔伯特空间</p>
-<blockquote>
-<p>希尔伯特空间是欧几里德空间的一个推广,其不再局限于有限维的情形.与欧几里德空间相仿,希尔伯特空间也是内积空间,其上有距离和角的概念,此外,希尔伯特空间还是一个完备的空间,其上所有的柯西序列等价于收敛序列,从而微积分中的大部分概念都可以无障碍地推广到希尔伯特空间中.<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/ML-01.jpg" alt="空间的一些数学概念"></p>
-</blockquote>
-<hr>
-<h3 id="第七章-提升方法-boosting"><a href="#第七章-提升方法-boosting" class="headerlink" title="第七章 提升方法(boosting)"></a>第七章 提升方法(boosting)</h3><ol>
-<li><p>提升方法是一种常用的统计学习方法,在分类问题中,它通过<strong>改变训练样本的权重</strong>,学习多个分类器,并将这些<strong>分类器进行线性组合</strong>,提升分类的性能.\</p>
-</li>
-<li><p><strong>提升树</strong>是以<strong>分类树</strong>或<strong>回归树</strong>为基本分类器的提升方法. 以决策树为基函数的提升方法称为提升树,对分类问题决策树是二叉分类树,对回归问题决策树是二叉回归树.</p>
-</li>
-<li><p>提升树算法采用前向分步算法.</p>
-</li>
-<li><p>提升树利用加法模型与前向分步算法实现学习的优化过程,当损失函数是平方损失和指数损失函数时,每一步的优化是简单的.但对一般的损失函数而言,往往每一步优化并不容易,这里可以使用梯度提升算法. <strong>其关键是利用损失函数的负梯度在当前模型的值作为回归问题提升树算法中的残差的近似值</strong>,拟合一个回归树.</p>
-</li>
-</ol>
-<hr>
-<h3 id="第八章-贝叶斯分类器"><a href="#第八章-贝叶斯分类器" class="headerlink" title="第八章 贝叶斯分类器"></a>第八章 贝叶斯分类器</h3><ol>
-<li><p>对分类任务来说,在所有相关概率都已知的理想情形下,贝叶斯决策论考虑如何基于这些概率和误判损失来选择最优的类别标记.</p>
-</li>
-<li><p>贝叶斯判定准则: 为了最小化总体风险,只需在每个样本上选择那个是条件风险最小的类别标记.(条件风险=期望损失).</p>
-</li>
-<li><p>极大似然估算后验概率,两种策略: 1) 给定样本x,可通过直接建模P(c|x)来预测c(从为x的类别标记),这样得到的是”判别式模型”; 2) 也可以先对联合概率分布P(x,c)建模,然后由此获得P(c|x),这样得到的是”生成式模型”;</p>
-</li>
-</ol>
-<p>4.求解贝叶斯分类器:朴素贝叶斯分类器.基于一个假设:所有属性之间相互独立</p>
-<ul>
-<li>对于离散性属性:$P(x_i|c)=\frac{D_{c,x_i}}{D_c}$</li>
-<li>对于连续性属性:$p(x_i|c)=\frac{1}{\sqrt{2\pi}\sigma_{c,i}}exp(-\frac{({x_i-\mu_{c,i}})^2}{2{\sigma_{c,i}}^2})$</li>
-</ul>
-<p>5.为了避免其他属性携带的信息被训练集中未出现的属性值”抹去”,在估计概率值时通常要进行”平滑”,<strong>常用”拉普拉斯修正”</strong>.令N表示训练集D中可能的类别数,$N_i$表示第i个属性可能的取值数,则修正为:</p>
-<ul>
-<li>$P(c)=\frac{|D_c|+1}{|D|+N}$</li>
-<li>$P(x_i|c)=\frac{|D_{c,x_i}|+1}{|D_c|+N_i}$</li>
-</ul>
-<p>6.如果任务对预测速度要求较高,则针对训练集将朴素贝叶斯分类器涉及的所有概率估值事先计算好存储起来.如果任务数据更替频繁,则可事先不进行任何训练,待收到预测请求时再根据当前数据集进行概率估值.如果数据不断增加,则可在现有估值的基础上,仅对新增样本的属性值所涉及的概率估值进行计数修正即可实现增量学习.</p>
-<blockquote>
-<p>判别式模型常见的主要有：<br>Logistic Regression<br>SVM<br>Traditional Neural Networks<br>Nearest Neighbor<br>CRF<br>Linear Discriminant Analysis<br>Boosting<br>Linear Regression</p>
-<p>产生式模型常见的主要有：<br>Gaussians<br>Naive Bayes<br>Mixtures of Multinomials<br>Mixtures of Gaussians<br>Mixtures of Experts<br>HMMs<br>Sigmoidal Belief Networks, Bayesian Networks<br>Markov Random Fields<br>Latent Dirichlet Allocation</p>
-</blockquote>
-<p>(判别式模型和生成式模型:<a href="http://www.cnblogs.com/fanyabo/p/4067295.html" target="_blank" rel="external">http://www.cnblogs.com/fanyabo/p/4067295.html</a>)</p>
-<p><strong>补充:</strong>:<br>1.贝叶斯最优分类器为:$h^*=argmax_{c\in{y}}P(c|x)$.要用贝叶斯判定准则来最小化决策风险,首先要获得后验概率$P(c|x)$,而这在现实生活中是难以直接获得的,机器学习所要实现的是基于有限的训练样本集尽可能准确地估计出后验概率.有两种策略:判别式模型和生成式模型.</p>
-<p>2.判别式模型和生成式模型比较:<br>定义单个测试数据为$(c_0,x_0)$,$c_0$为测试数据的label,$x_0$为测试数据的feature</p>
-<ul>
-<li>判别式模型(注重条件概率):它是训练完毕后,输入测试数据,判别模型直接给出的是$P(c|x_0)$.实际上是我们看了训练过的数据之后,学习到了对数据分步的后验知识,然后根据这个认识和测试样本的feature来决策.判别模型求解的思路是：条件分布———&gt;模型参数后验概率最大———-&gt;（似然函数\cdot 参数先验）最大———-&gt;最大似然</li>
-<li>生成式模型(注重联合分布概率):给定输入$x_0$,生成式模型可以给出输入和输出的联合分布$P(x_0,c_0)$.生成模型的求解思路是：联合分布———-&gt;求解类别先验概率和类别条件概率</li>
-</ul>
-<p>3.<strong>半朴素贝叶斯分类器</strong><br>3.1 目的:为了降低贝叶斯公式中的后验概率$P(c|x)$的困难,朴素贝叶斯分类器采用了属性条件独立的假设,但在现实任务中这个假设很难成立.<br>3.2 做法:适当考虑一部分属性间的相互依赖信息<br>3.3 策略:独依赖估计(One-Dependent Estimator)-ODE,就是<strong>假设每个属性在类别之外最多依赖于一个其他属性</strong>.$P(c|x)\propto{P(c)\prod_{i=1}^{d}P(x_i|c,pa_i))}$.相比朴素贝叶斯分类器,$x_i$多了一个依赖.$pa_i$为属性$x_i$所依赖的属性.<br>3.4 问题的关键就在于:如何确定每个属性的父属性,也就是所依赖的属性.<br>方案:</p>
-<ul>
-<li>1.<strong>SPODE</strong>-所有的属性都依赖于同一个属性,称为”超父”,然后通过交叉验证等模型选择方法来确定超父属性</li>
-<li>2.<strong>TAN</strong>-在最大带权生成树算法的基础上,将属性间依赖关系约简到一种树形结构.<ul>
-<li>1.计算任意两个结点的互信息$I(x_i,x_j|y)=\sum_{x_i,x_j;c\in{y}}P(x_i,x_j|c)log\frac{P(x_i,x_j|c)}{P(x_i|c)P(x_j|c)}$</li>
-<li>2.以属性为结点构建完全图,任意两个结点之间边的<strong>权重设为$I(x_i,x_j|y)$</strong></li>
-<li>3.构建此完全图的<strong>最大带权生成树</strong>,挑选根变量,将边置为有向</li>
-<li>4.加入类别结点y,增加从y到每个属性的有向边</li>
-</ul>
-</li>
-<li>3.<strong>AODE</strong>-一种基于集成学习机制,更为强大的独依赖分类器.AODE尝试将每个属性作为超父来构建SPODE,然后将那些具有足够训练数据支撑的<strong>SPODE集成</strong>起来作为最终结果.即$P(c|x)\propto{\sum_{i=1,|D_{x_i}|\geq{m^{‘}}}^{d}P(c,x_i)\prod_{j=1}^{d}P(x_j|c,x_i))}$</li>
-</ul>
-<p>4.<strong>贝叶斯网</strong><br>4.1 概念:借助有向无环图来刻画属性之间的依赖关系,并使用条件概率表来描述属性的联合概率分布.一个贝叶斯网B由结构G和参数$\theta$两部分构成,$\theta$定量描述变量的依赖关系.<br>4.2 结构:给定父结点集,贝叶斯网假设每个属性与它的非后裔属性独立,于是$B=&lt;G,\theta&gt;$将属性$x_1,x_2,…,x_d$的联合概率分布定义为$P_B(x_1,x_2,…,x_d)=\prod_{i=1}^{d}P_B(x_i|\pi_i)=\prod_{i=1}^{d}\theta_{x_i|\pi_i}$</p>
-<hr>
-<h3 id="第九章-集成学习-提升方法"><a href="#第九章-集成学习-提升方法" class="headerlink" title="第九章 集成学习(提升方法)"></a>第九章 集成学习(提升方法)</h3><p><strong>1.概念介绍</strong></p>
+            <h3 id="1-走进JAVA"><a href="#1-走进JAVA" class="headerlink" title="1.走进JAVA"></a>1.走进JAVA</h3><p>1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.</p>
+<p>2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.</p>
+<h3 id="2-JAVA内存区域与内存溢出异常"><a href="#2-JAVA内存区域与内存溢出异常" class="headerlink" title="2.JAVA内存区域与内存溢出异常"></a>2.JAVA内存区域与内存溢出异常</h3><p><strong>先放一张jvm运行时数据区分配情况图</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png" alt="jvm运行时数据区"></p>
 <ol>
-<li>1 集成学习方法大致分为两类: 1) 个体学习器之间存在强依赖关系,必须串行化生成的序列化方法; 2) 个体学习器间不存在强依赖关系,可同时生成的并行化方法. <strong>1)的代表是Boosting</strong>;<strong>2)的代表是Bagging和”随机森林”</strong>;</li>
+<li><p>Java堆中分配内存方式:如果Java堆中的内存是绝对规整的,所有用过的内存都放在一边,空闲的内存放在另一边,中间放着一个指针作为分界点的指示器,那所分配内存就是仅仅把那个指针向空闲空间那边挪动一段与对象大小相等的距离,这种分配方式称为<strong>指针碰撞(Bump the pointer)</strong>;如果Java堆中的内存并不是规整的,已使用内存和空闲的内存相互交错,虚拟机就必须维护一个列表,记录上哪些内存块是可用的,在分配的时候从列表中找到一块足够大的空间划分给对象,并更新列表上的记录,这种分配方式称为<strong>空闲列表(Free List)</strong>;</p>
+</li>
+<li><p>划分内存过程需要考虑同步问题,两种方式:1)对分配内存空间的动作进行同步处理(CAS配上失败重试的方式保证更新操作的原子性);2)每个线程在Java堆中预先分配一小块内存,为<strong>本地线程分配缓冲(Thread Local Allocation Buffer)</strong>,当TLAB分配完了之后再做同步操作.</p>
+</li>
+<li><p>对象的访问定位:<strong>使用句柄和直接指针</strong></p>
+</li>
 </ol>
-<p>1.2 Bagging是并行集成学习方法最著名的代表,训练基于<strong>自助采样法</strong>.</p>
-<p>1.3 Bagging通常对分类任务使用简单投票法,对回归任务使用简单平均法.</p>
-<p>1.4 随机森林(Random Forest)是Bagging的一个扩展变体,RF在以决策树为基学习器构建Bagging集成的基础上,进一步在决策树的训练过程中引入了随机属性选择.</p>
-<p><strong>补充:</strong><br>1.5 集成中只包含同种类型的个体学习器称为”同质的”.同质集成中的学习器亦称”基学习器”,相应的学习算法称为”基学习算法”.集成也可包含不同类型的个体学习器,这样的集成是”异质的”.相应的个体学习器一般不称为基学习器,常成为组件学习器.</p>
-<p>1.6 <strong>Important:</strong>要获得好的集成,个体学习器应<strong>“好而不同”</strong>,<strong>即个体学习器要有一定的”准确性”</strong>,<strong>即学习器不能太坏,并且要有”多样性”,即学习器间具有差异</strong>.</p>
-<p>1.7 <strong>Boosting</strong>:</p>
-<p>1.7.1 概念:Boosting是一族可将弱学习器提升为强学习器的算法.</p>
-<p>1.7.1 工作机制:先从初始训练集训练出一个基学习器,再根据基学习器的表现对训练样本分布进行调整,使得先前基学习器做错的训练样本在后续受到更多关注,然后基于调整后的样本分布来训练下一个基学习器;如此重复,直至基学习器数目达到事先指定的值T,最终将这T个基学习器进行加权结合.</p>
-<p>1.7.2 代表算法AdaBoost</p>
-<ul>
-<li>推导:基于”加性模型”,即学习器的线性组合,$H(x)=\sum_{t=1}^{T}\alpha_th_t(x)$.训练T个基分类器,对上一轮分类错误的样本分配更多的权重.</li>
+<h3 id="3-垃圾收集算法"><a href="#3-垃圾收集算法" class="headerlink" title="3.垃圾收集算法"></a>3.垃圾收集算法</h3><ul>
+<li>标记-清除算法:首先标记出所有需要回收的对象,在标记完成后一次性回收所有被标记的对象.</li>
+<li>复制算法:将可用内存分为两块,每次只使用其中一块,当着一块内存用完了,就将还存活的对象复制到另一块上,然后把已使用的内存空间一次清理掉.</li>
+<li>标记-整理算法:首先标记出所有需要回收的对象,让所有存活的对象都向一端移动,然后直接清理掉端界外的内存.\</li>
+<li>分代收集法:将堆分为新生代和老年代,根据每个代的特点选择合适的垃圾回收算法.</li>
 </ul>
-<p>1.8 <strong>Bagging和随机森林</strong></p>
-<p>1.8.1 概念:Bagging是并行式集成学习方法最著名的代表.直接<strong>基于自主采样法(bootstrap sampling),有放回的采样</strong>.</p>
-<p>1.8.2 操作:Bagging对分类任务使用简单投票法,对回归任务使用简单平均法.</p>
-<p>1.8.3 随机森林:是Bagging的一个扩展变体.<strong>RF在以决策树构建Bagging集成的基础上,进一步再决策树的训练过程中引入了随机属性选择.</strong>具体来说,传统决策树在选择划分属性时是在当前结点的属性集合中选择一个属性;而在RF中,对基决策树的每个结点,先从该结点的属性集合中<strong>随机选择一个包含k个属性的子集</strong>,然后再从这个子集中<strong>选择一个最优属性用于划分</strong>.</p>
-<p><strong>2.组合策略</strong></p>
-<p>2.1 平均法<br>包括简单平均法和加权平均法.加权平均法的权重一般是从训练数据中学习而得,但是加权平均法未必一定优于简单平均法.<strong>一般而言,在个体学习器性能相差较大时宜使用加权平均法,而在个体学习器性能相近是宜使用简单平均法.</strong></p>
-<p>2.2 投票法<br>包括绝对多数投票法,相对多数投票法及加权投票法.</p>
-<p>2.3 学习法<br>当训练数据很多时,一种更为强大的结合策略是使用”学习法”,即通过另一个学习器来进行结合.<strong>Stacking是学习法的典型代表</strong>.Stacking先从初始数据集训练出初级学习器,然后”生成”一个新数据集用于训练次级学习器.在这个新数据集中,<strong>初级学习器的输出被当做样例输入特征</strong>,而初始样本的标记仍被当作样例标记.</p>
-<hr>
-<h3 id="第十章-聚类"><a href="#第十章-聚类" class="headerlink" title="第十章 聚类"></a>第十章 聚类</h3><p><strong>1.性能度量</strong></p>
-<p>1.1 聚类性能的度量有两类: 一类是将聚类结果与某个”参考模型”进行比较,称为”外部指标”.另一类是直接考察聚类结果而不利用任何参考模型,称为”内部指标”.</p>
-<p><strong>1.1 外部指标</strong></p>
-<p>1.2 a = |SS|,b=|SD|,c=|DS|,d=|DD|(关于SS,SD,DS和DD的解释参考书Page198),常用的三种性能度量:</p>
-<ul>
-<li>Jaccard系数: <script type="math/tex">JC=\frac{a}{a+b+c}</script></li>
-<li>FM指数: <script type="math/tex">FMI=\sqrt{\frac{a}{a+b}\frac{a}{a+c}}</script></li>
-<li>$RI=\frac{2(a+d)}{m(m-1)}$<br>上述性能度量的结果均在[0,1]区间,值越大越好.</li>
-</ul>
-<p><strong>1.2内部指标</strong><br><strong>补充:</strong>通过考虑聚类结果的簇之间的距离<br><strong>DBI指数和DI指数</strong>(DBI值越小越好,而DI值越大越好.)</p>
-<p><strong>2.聚类算法</strong><br>2.1 <strong>原型聚类</strong>:k-means聚类,学习向量量化(LVQ)-有标记聚类,高斯混合聚类<br>2.2 <strong>密度聚类</strong>:DBSACN:1.找到所有的核心对象;2.从核心对象出发将密度可达点加入生成聚类簇<br>2.3 <strong>层次聚类</strong>:Hierarchical clustering:先将数据集中的每个样本看作一个初始聚类簇,然后在算法运行的每一步中找出距离最近的两个聚类簇进行合并,不断重复,直到达到预设的聚类簇个数.</p>
-<p><strong>补充:3距离计算</strong><br>3.1 距离度量函数满足以下性质:</p>
-<ul>
-<li>非负性</li>
-<li>同一性</li>
-<li>对称性</li>
-<li>直递性</li>
-</ul>
-<p>3.2 常用的距离度量函数</p>
-<ul>
-<li>Minkowski distance(闵可夫斯基距离)$dist_{mk}(x_i,x_j)=(\sum_{n}^{u=1}|x_{iu}-x_{ju}|^p)^\frac{1}{p}$</li>
-<li>Euclidean distance(欧式距离) 当闵可夫斯基距离中的p=2时,即为欧式距离</li>
-<li>Manhattan distance(曼哈顿距离) 当闵可夫斯基距离中的p=1时,即为曼哈顿距离</li>
-</ul>
-<p>3.3 无序属性的处理</p>
-<ul>
-<li><p>对<strong>无序属性可采用VDM</strong>(Value Difference Metric).令$m_{u,a}$表示在属性u上取值为a的样本数,$m_{u,a,i}$表示在第i个样本簇中的属性u上取值为a的样本数,k为样本簇数,则属性u上两个离散值a和b之间的VDM距离为$VDM_p(a,b)=\sum_{i=1}^{k}|\frac{m_{u,a,i}}{m_{u,a}}-\frac{m_{u,b,i}}{m_{u,b}}|^p$.</p>
+<h3 id="4-垃圾收集器"><a href="#4-垃圾收集器" class="headerlink" title="4.垃圾收集器"></a>4.垃圾收集器</h3><p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-02.png" alt="jvm垃圾收集器"></p>
+<ol>
+<li><p>Serial收集器<br>这个收集器是一个单线程的收集器,但它的”单线程”的意义并不仅仅说明它只会使用一个CPU或一条收集线程去完成垃圾收集工作,更重要的是在它进行垃圾收集时,必须暂停其他所有的工作线程,直到它收集结束.(Client模式下默认的垃圾收集器)</p>
 </li>
-<li><p>将闵可夫斯基距离和VDM结合即可处理混合属性.假定有$n_c$个有序属性,$n-n_c$个无序属性,则$MinkovDM_p(x_i,x_j)=(\sum_{u=1}^{n_c}|x_{iu}-x_{ju}|^p+\sum_{u=n_c+1}^{n}VDM_p(x_{iu},x_{ju}))^\frac{1}{p}$</p>
+<li><p>ParNew收集器<br>ParNew收集器就是Serial收集器的多线程版本,除了使用多条线程进行垃圾收集之外,其余行为包括Serial收集器可用的所有控制参数,收集算法,Stop the world,对象分配规则,回收策略等都与Serial收集器完全一样.(Server模式下的垃圾收集器)</p>
 </li>
-</ul>
-<hr>
-<h3 id="第十一章-降维与度量学习"><a href="#第十一章-降维与度量学习" class="headerlink" title="第十一章 降维与度量学习"></a>第十一章 降维与度量学习</h3><p><strong>1.降维(维数约简)</strong><br>1.1 为什么要降维?因为在高维情形下出现的<strong>数据样本稀疏,距离计算困难</strong>等问题,是所有机器学习方法共同面临的严重障碍.</p>
-<p>1.2 为什么能进行降维?因为在很多时候,人们观测或收集到的数据样本虽然是高维的,但与学习任务密切相关的也许仅仅是某个低维分布,即高维空间中的一个低维”嵌入”.</p>
-<p>1.3 降维方法:</p>
+<li><p>Parallel Scavenge收集器<br>Parallel Scavenge收集器更多关注于控制吞吐量(吞吐量=运行用户代码时间/(运行用户代码时间+垃圾收集时间)).</p>
+</li>
+<li><p>Serial Old收集器</p>
+</li>
+<li><p>Parallel Old收集器</p>
+</li>
+<li><p>CMS收集器<br>CMS收集器是一种以<strong>获取最短回收停顿时间为目标</strong>的收集器.目前很大一部分的Java应用集中在互联网站或者B/S系统的服务端上.<br>CMS收集器是基于”标记-清除”算法实现的,运作过程分为4个步骤:</p>
+</li>
+</ol>
 <ul>
-<li><strong>多维缩放MDS</strong>(最优化问题解法:计算内积矩阵)<br><strong>补充:</strong><ul>
-<li>原样本为$R^{m\times{m}}$,降维后为$R^{d’\times{m}}$,使得任意两个样本在$d’$维空间中的欧式距离等于原始空间中的距离,即$||z_i-z_j||=dist_{ij}$.</li>
-<li>令$B=Z^TZ$,B为降维后的内积矩阵,$b_{ij}=z_i^Tz_j$,$dist_{ij}^2=||z_i||^2+||z_j||^2-2z_i^Tz_j=b_{ij}+b_{jj}-2b_{ij}$,对Z进行中心化,然后推导求出B;求出B后利用特征值分解,求得Z矩阵</li>
+<li>初始标记</li>
+<li>并发标记</li>
+<li>重新标记</li>
+<li>并发清除</li>
 </ul>
-</li>
-<li><strong>主成分分析PCA</strong>(Principal Component Analysis)(最优化问题解法:计算协方差矩阵),用一个超平面对所有样本进行恰当表达.<ul>
-<li><strong>最近重构性</strong>:样本点到这个超平面的距离都足够近</li>
-<li><strong>最大可分性</strong>:样本点在这个超平面上的投影点能尽可能分开</li>
-<li><strong>思路</strong>:将所有的样本投影到超平面上,然后求投影变换后的新坐标系,正交基向量</li>
-</ul>
-</li>
-<li><strong>核化线性降维(KPCA)</strong></li>
-<li><strong>流形学习(Manifold Learning)</strong><ul>
-<li>等度量映射(Isometric Mapping)(将多维空间中的测地线距离作为MDS算法的原始空间距离矩阵的输入,其中任意两点之间的最短路径可以用Dijkstra或者Floyd算法求)</li>
-<li>局部线性嵌入(Locally Linear Embeeding)</li>
-</ul>
-</li>
-<li><strong>度量学习(Metric Learning)</strong>(通过学习的方式,学到一种转换维度的距离度量的方式)</li>
-</ul>
-<hr>
-<h3 id="第十二章-特征选择与稀疏学习"><a href="#第十二章-特征选择与稀疏学习" class="headerlink" title="第十二章 特征选择与稀疏学习"></a>第十二章 特征选择与稀疏学习</h3><p><strong>1.概念和意义</strong><br>1.1 特征选择：从给定的特征集合中选择出相关特征子集的过程，成为”特征选择”;</p>
-<p>1.2 特征选择的原因:</p>
+<ol>
+<li>G1收集器<br>运作大致分为:</li>
+</ol>
 <ul>
-<li>在现实任务中经常会遇到<strong>维数灾难</strong>的问题,这是由于属性过多造成的，如果能从中选择出重要的特征，使得后续的学习过程仅需在一部分特征上构建模型,则维数灾难问题会大为减轻。</li>
-<li><strong>去除不相关特征</strong>往往会降低学习任务的难度。</li>
+<li>初始标记(标记GC Roots直接关联到的对象)</li>
+<li>并发标记(GC Roots可达性分析)</li>
+<li>最终标记(修正在并发标记阶段标记发生改变的那部分标记记录)</li>
+<li>筛选回收(对各个Region的回收价值和成本排序)</li>
 </ul>
-<p><strong>2.如何特征选择</strong><br>分为两步:</p>
-<ul>
-<li>“子集搜索”:前向搜索，每次向特征集合中添加，直到结果不再优为止;或者后向搜索，从完整的特征候选集合中减少特征（类似于贪心算法）。</li>
-<li>“子集评价”:基于<strong>信息增益</strong>计算属性特征的贡献。对于属性子集A,假定根据其取值将D分成了V个子集{$D^1$,$D^2$,…,$D^V$},每个子集中的样本在A上取值相同,于是我们可计算属性子集A的信息增益.信息增益越大,意味着特征子集A包含的有助于分类的信息越多.基于每个属性子集的信息增益作为评价准则.</li>
+<h3 id="5-内存对象收集器"><a href="#5-内存对象收集器" class="headerlink" title="5.内存对象收集器"></a>5.内存对象收集器</h3><p>1.新生代GC(Minor GC):指发生在新生代的垃圾收集动作,Minor GC非常频繁,一般回收速度也比较快.</p>
+<p>2.老年代GC(Major GC/Full GC):指发生在老年代的GC,出现了Major GC,经常会伴随至少一次的Minor GC,Major GC的速度一般会比Minor GC慢10倍以上.</p>
+<h3 id="6-虚拟机性能监控与故障处理工具"><a href="#6-虚拟机性能监控与故障处理工具" class="headerlink" title="6.虚拟机性能监控与故障处理工具"></a>6.虚拟机性能监控与故障处理工具</h3><ul>
+<li>jps:虚拟机进程状况工具</li>
+<li>jstat:虚拟机统计信息监视工具</li>
+<li>jinfo:Java配置信息工具(实时地查看和调整虚拟机各项参数)</li>
+<li>jmap:Java内存映像工具</li>
+<li>jhat:虚拟机堆转储快照分析工具</li>
+<li>jstack:Java堆栈跟踪工具</li>
+<li>JConsole和VisualVM(可视化工具)</li>
 </ul>
-<p><strong>3.特征选择的方法</strong><br><strong>3.1 过滤式</strong><br>过滤式选择不考虑后续学习器。</p>
-<blockquote>
-<p>Relief是一种著名的过滤式特征选择方法，该方法设计了一个”相关统计量”来度量特征的重要性。（是为二分类问题设计的。扩展变体Relief-F能处理多分类的问题。）可以设定相关统计量的<strong>阈值</strong>或者设定选择<strong>特征的个数K</strong>.</p>
+<h3 id="7-虚拟机执行子系统"><a href="#7-虚拟机执行子系统" class="headerlink" title="7.虚拟机执行子系统"></a>7.虚拟机执行子系统</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/Expression/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/08/10/Expression/" itemprop="url">
+                  四则运算表达式求值
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="表达式求值"><a href="#表达式求值" class="headerlink" title="表达式求值"></a>表达式求值</h3><blockquote>
+<p>对于表达式的求值,一般使用中缀表达式转后缀表达式后,对后缀表达式求值,因为对于后缀或者前缀表达式计算,计算的顺序都是唯一的.</p>
 </blockquote>
-<p><strong>3.2 包裹式</strong><br>与过滤式选择不考虑后续学习器不同，包裹式选择<strong>直接把最终将要使用的学习器的性能作为特征子集的评价准则</strong>。In other words，包裹式选择的目的就是为给定学习器选择最有利于其性能的特征子集。包裹式选择方法直接针对给定学习器进行优化。</p>
-<blockquote>
-<p>LWW(Las Vegas Wrapper)是一个典型的包裹式特征选择方法，它在拉斯维加斯方法框架下使用<strong>随机策略</strong>来进行子集搜索，并<strong>以最终分类器的误差为特征子集评价准则</strong>。-交叉验证</p>
-</blockquote>
-<p><strong>3.3 嵌入式</strong><br>嵌入式选择是将特征选择过程与学习器训练过程融为一体，两者在同一个优化过程中完成，即在学习器训练过程中自动地进行了特征选择。<br>具体做法：将过拟合中的正则项中的L2范数替换为L1范数，L1范数和L2范数都有助于降低过拟合的风险，但L1范数还会带来一个额外的好处，它比后者更易于获得”稀疏”解。</p>
-<p><strong>4.稀疏表示与字典学习</strong><br>4.1 将样本转化为合适的稀疏表示形式，从而使学习任务得以简化，模型复杂度得以降低，通常称为”字典学习”，亦称”稀疏编码”。</p>
-<p><strong>5.压缩感知</strong><br>压缩感知关注的是如何利用信号本身所具有的稀疏性，从部分观测样本中恢复原信号。通常认为，压缩感知分为”感知测量”和”重构恢复”这两个阶段。”感知测量”关注如何对原始信号进行处理以获得稀疏样本表示;”重构恢复”关注的使如何基于洗属性从少量观测中恢复原信号，这是压缩感知的精髓。</p>
-<hr>
-<h3 id="第十三章-半监督学习"><a href="#第十三章-半监督学习" class="headerlink" title="第十三章 半监督学习"></a>第十三章 半监督学习</h3><p><strong>1.概念</strong><br>在只有少量的标注样本,而有大量的未标注样本,让学习器不依赖外界交互,自动地利用未标记样本来提升学习性能,就是半监督学习.</p>
-<p><strong>2.方法</strong><br><strong>2.1 假设</strong></p>
-<ul>
-<li>聚类假设:假设数据存在簇结构,同一个簇的样本属于同一个类别.</li>
-<li>流形假设:假设数据分布在同一个流形结构上,邻近的样本拥有相似的输出值.”邻近”程度常用”相似”程度来刻画,因此,流形假设可看作聚类假设的推广,但流形假设对输出值没有限制,因此比聚类假设的使用范围更广.<br>其实,这两个假设本质都是<strong>“相似的样本拥有相似的输出”</strong>.</li>
+<h4 id="中缀表达式转后缀表达式的方法："><a href="#中缀表达式转后缀表达式的方法：" class="headerlink" title="中缀表达式转后缀表达式的方法："></a>中缀表达式转后缀表达式的方法：</h4><ul>
+<li>1.遇到操作数：直接输出（添加到后缀表达式中）</li>
+<li>2.栈为空时，遇到运算符，直接入栈</li>
+<li>3.遇到左括号：将其入栈</li>
+<li>4.遇到右括号：执行出栈操作，并将出栈的元素输出，直到弹出栈的是左括号，左括号不输出。</li>
+<li>5.遇到其他运算符：加减乘除：弹出所有优先级大于或者等于该运算符的栈顶元素，然后将该运算符入栈</li>
+<li>6.最终将栈中的元素依次出栈，输出。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public ArrayList&lt;String&gt; SuffixExpression(ArrayList&lt;String&gt; string)&#123;</div><div class="line">        ArrayList&lt;String&gt; suffix = new ArrayList&lt;&gt;();</div><div class="line">        Stack&lt;String&gt; stack = new Stack&lt;&gt;();</div><div class="line">        for(int i = 0; i &lt; string.size(); i++)&#123;</div><div class="line">            if(string.get(i).equals(&quot;*&quot;) || string.get(i).equals(&quot;/&quot;) || string.get(i).equals(&quot;(&quot;))&#123;</div><div class="line">                //push</div><div class="line">                stack.push(string.get(i));</div><div class="line">            &#125;</div><div class="line">            else if(string.get(i).equals(&quot;+&quot;) || string.get(i).equals(&quot;-&quot;))&#123;</div><div class="line">                while(!stack.isEmpty() &amp;&amp; (stack.peek().equals(&quot;*&quot;) || stack.peek().equals(&quot;/&quot;)))</div><div class="line">                &#123;</div><div class="line">                        suffix.add(stack.pop());</div><div class="line">                &#125;</div><div class="line">                //push</div><div class="line">                stack.push(string.get(i));</div><div class="line">            &#125;</div><div class="line">            else if(string.get(i).equals(&quot;)&quot;))</div><div class="line">            &#123;</div><div class="line">                while(!stack.isEmpty() &amp;&amp; !stack.peek().equals(&quot;(&quot;))</div><div class="line">                    suffix.add(stack.pop());</div><div class="line">                //pop (</div><div class="line">                stack.pop();</div><div class="line">            &#125;else&#123;</div><div class="line">                suffix.add(string.get(i));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //push all elements in stack</div><div class="line">        while(!stack.isEmpty())</div><div class="line">            suffix.add(stack.pop());</div><div class="line">        return suffix;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
-<p><strong>2.2 分类</strong><br>半监督学习可分为纯半监督学习和直推学习.</p>
-<ul>
-<li>纯半监督学习:假定训练数据中的未标记样本并非待预测的数据.</li>
-<li>直推学习:假定学习过程中所考虑的未标记样本恰是待预测数据.</li>
-</ul>
-<p><strong>2.3 具体方法</strong></p>
-<ul>
-<li>生成式方法</li>
-<li>半监督SVM</li>
-<li>图半监督学习</li>
-<li>基于分歧的方法(与上述三个不同的是,基于分歧的方法使用多学习器,而学习器之间的”分歧”对未标记数据的利用至关重要.)</li>
-<li>半监督聚类</li>
-</ul>
-<hr>
-<h3 id="第十四章-概率图模型"><a href="#第十四章-概率图模型" class="headerlink" title="第十四章 概率图模型"></a>第十四章 概率图模型</h3><p><strong>1.隐马尔可夫模型</strong><br>1.假定所关心的变量集合为Y,可观测变量集合为O,其他变量的集合为R,”生成式”模型考虑联合分布P(Y,R,O),”判别式”模型考虑条件分布P(Y,R|O).给定一组观测变量值,推断就是要由P(Y,R,O)或P(Y,R|O)得到条件概率分布P(Y|O).</p>
-<p>2.概率图模型是一类用图来表达变量相关关系的概率模型.它以图为表示工具,最常见的是用一个结点表示一个或一组随即变量,结点之间的边表示变量间的概率相关关系,即”变量关系图”.</p>
-<p>3.概率图模型大致分为两类:</p>
-<ul>
-<li>使用有向无环图表示变量之间的依赖关系,称为<strong>有向图模型或贝叶斯网</strong>.</li>
-<li>使用无向图表示变量间的相关关系,称为<strong>无向图模型或马尔可夫网</strong>.</li>
-</ul>
-<p>4.隐马尔可夫模型是结构最简单的动态贝叶斯网.(主要用于时序数据建模,在语音识别/自然语言处理等领域有广泛应用.)</p>
-<p>5.确定一个隐马尔可夫模型需要以下三组参数:</p>
-<ul>
-<li>状态转移概率(状态转移矩阵)</li>
-<li>输出观测概率(输出观测矩阵)</li>
-<li>初始状态概率</li>
-</ul>
-<p><strong>2.马尔可夫随机场(MRF)</strong><br>2.1 全局马尔可夫性:给定两个变量子集的分离集,则这两个变量子集条件独立.</p>
-<p>2.2 由全局马尔可夫性得到两个有用的推论:</p>
-<ul>
-<li><strong>局部马尔可夫性</strong>:给定某变量的邻接变量,则该变量条件独立于其他变量.</li>
-<li><strong>成对马尔可夫性</strong>:给定所有其他变量,两个非邻接变量条件独立.</li>
-</ul>
-<p>2.3 指数函数常被用于定义势函数.</p>
-<p><strong>3.条件随机场</strong><br>3.1 条件随机场是一种判别式无向图模型.</p>
-<p>3.2 生成式模型是直接对联合分布进行建模,而判别式模型则是对条件分布进行建模.(隐马尔可夫模型和马尔可夫随机场都是生成式模型,条件随机场是判别式模型.)</p>
-<hr>
-<h3 id="第十五章-规则学习"><a href="#第十五章-规则学习" class="headerlink" title="第十五章 规则学习"></a>第十五章 规则学习</h3><p><strong>1.基本概念</strong><br>1.1 规则分为两类: <strong>“命题规则”</strong>和<strong>“一阶规则”</strong>,前者由是”原子命题”和逻辑连接词”与,或,非”和”蕴含”构成的简单陈述句.后者的基本成分是能描述事物的属性或关系的”原子公式”.</p>
-<p><strong>2.方法</strong><br>2.1 序贯覆盖</p>
-<p>2.2 剪枝优化(预剪枝和后剪枝)</p>
-<p>2.3 一阶规则学习<br>受限于命题逻辑表达能力,命题规则学习难以处理对象之间的”关系”,而关系信息在很多任务中非常重要.例如,我们在现实世界挑选西瓜时,通常很难把水果摊上所有西瓜的特征用属性值描述出来,因为我们很难判断:色泽看起来多深才叫”色泽青绿”?敲起来声音多低才叫”敲声沉闷”?比较现实的做法是将西瓜进行相互比较,例如,”瓜1的颜色比瓜2更深,并且瓜1的根蒂比瓜2更蜷”,因此”瓜1比瓜2更好”.</p>
-<hr>
-<h3 id="第十六章-强化学习"><a href="#第十六章-强化学习" class="headerlink" title="第十六章 强化学习"></a>第十六章 强化学习</h3><p><strong>1.基本概念</strong><br><strong>1)</strong>强化学习任务通常用<strong>马尔可夫决策过程(MDP-Markov Decision Process)</strong>来描述:机器处于<strong>环境E</strong>中,<strong>状态空间为X</strong>,其中每个状态x是机器感知到的环境的描述.机器能采取的动作构成了<strong>动作空间A</strong>.若某个动作a作用在当前状态x上,则潜在的<strong>转移函数P</strong>将使得环境从当前状态按某种概率转移到另一个状态.在转移到另一个状态的同时,环境会根据潜在的<strong>“奖赏”函数R</strong>反馈给机器一个奖赏.</p>
-<p><strong>2)</strong>强化学习任务对应了四元组<strong>E=<x,a,p,r></x,a,p,r></strong>,其中P:X*A*X-&gt;R指定了状态转移概率,R:X*A*X-&gt;R指定了奖赏;在有的应用中,奖赏函数可能仅与状态转移有关,即R:X*X-&gt;R;</p>
-<p><strong>3)</strong>机器要做的是通过在环境中不断尝试而学得一个<strong>“策略”Pi</strong>,根据这个策略,在状态x下,就能得知要执行的动作<strong>a=Pi(x)</strong>.</p>
-<p>策略有两种方法:</p>
-<ul>
-<li>一种是将策略表示为函数<strong>Pi:X-&gt;A,确定性策略</strong>常用这种表示.</li>
-<li>另一种是概率表示<strong>Pi:X*A-&gt;R,随机性策略</strong>常用这种表示,Pi(x,a)为状态x下选择动作a的概率,动作概率之和为1.</li>
-</ul>
-<p><strong>总结</strong>:在强化学习任务中,学习的目的就是要找到能使长期累积奖赏最大化的策略.</p>
-<ul>
-<li>T步累积奖赏</li>
-<li>r折扣累积奖赏</li>
-</ul>
-<p><strong>4)</strong>强化学习和监督学习的差别和联系</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:center">强化学习</th>
-<th style="text-align:center">监督学习</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">状态(x)</td>
-<td style="text-align:center">示例(x)</td>
-</tr>
-<tr>
-<td style="text-align:center">动作(a)</td>
-<td style="text-align:center">标记(y)</td>
-</tr>
-<tr>
-<td style="text-align:center">策略(Pi)</td>
-<td style="text-align:center">分类器或回归器</td>
-</tr>
-</tbody>
-</table>
-</div>
-<blockquote>
-<p>与一般监督学习不同,强化学习任务的最终奖赏是在多步动作之后才能观察到的.</p>
-</blockquote>
-<p><strong>2.应用</strong><br>2.1 K-摇臂赌博机</p>
-<ul>
-<li>若仅为获知<strong>每个摇臂的期望奖赏</strong>,则<strong>可采用”仅探索”法</strong>,将所有<strong>尝试机会平均分配</strong>给每个摇臂,最后以每个摇臂各自的平均吐币概率作为其奖赏期望的近似估计.</li>
-<li>若仅为执行<strong>奖赏最大的动作</strong>下,则<strong>可采用”仅利用”法</strong>,,按下目前最优的(即到目前为止平均奖赏最大的)摇臂.</li>
-</ul>
-<p><strong>总结</strong>:”探索”和”利用”两者是矛盾的,因为尝试次数有限,加强了一方则会自然削弱另一方.这就是强化学习所面临的”探索-利用窘境”.显然,欲累积奖赏最大,则必须在探索和利用之间达成较好的折中.</p>
-<p>策略:</p>
-<ul>
-<li>epsilon-贪心:基于一个概率来对探索和利用进行折中,每次尝试时,以epsilon的概率进行探索,以均匀概率选取一个摇臂,以1-epsilon的概率进行利用,即选择当前平均奖赏最高的摇臂.</li>
-<li>Softmax:基于当前已知的摇臂平均奖赏来对探索和利用进行折中.若各摇臂的平均奖赏相当,则选取各摇臂的概率也相当;若某些摇臂的平均奖赏明显高于其他摇臂,则它们被选取的概率也明显更高.</li>
-</ul>
+<h3 id="计算后缀表达式"><a href="#计算后缀表达式" class="headerlink" title="计算后缀表达式"></a>计算后缀表达式</h3><p>遇到操作数压入栈,否则弹出两个操作数进行操作后再压入栈中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public int CalaculateSuffix(ArrayList&lt;String&gt; suffix)&#123;</div><div class="line">        //when meet operator, pop two elements to calaculate</div><div class="line">        Stack&lt;String&gt; stack = new Stack&lt;&gt;();</div><div class="line">        for(int i = 0; i &lt; suffix.size(); i++)&#123;</div><div class="line">            if(!(suffix.get(i).equals(&quot;+&quot;) || suffix.get(i).equals(&quot;-&quot;) || suffix.get(i).equals(&quot;*&quot;) || suffix.get(i).equals(&quot;/&quot;)))</div><div class="line">                //push into stack</div><div class="line">                stack.push(suffix.get(i));</div><div class="line">            else&#123;</div><div class="line">                //calucate</div><div class="line">                String operator = suffix.get(i);</div><div class="line">                String b = stack.pop();</div><div class="line">                String a = stack.pop();</div><div class="line">                String temp = String.valueOf(operate(a,b,operator));</div><div class="line">                stack.push(temp);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return Integer.valueOf(stack.pop());</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
 
           
         
@@ -1232,7 +764,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/13/Interview/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/NP_Problem/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -1257,8 +789,8 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
             
               
                 
-                <a class="post-title-link" href="/2018/03/13/Interview/" itemprop="url">
-                  面试细节
+                <a class="post-title-link" href="/2018/08/10/NP_Problem/" itemprop="url">
+                  P问题/NP问题/NP-Hard问题/NP-Complete问题
                 </a>
               
             
@@ -1271,9 +803,9 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T00:00:00+08:00">
-                2018-03-13
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
               </time>
             
 
@@ -1288,7 +820,150 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>近日,论文中涉及到NP-Hard问题,写下笔记对以上问题进行区分.</p>
+<blockquote>
+<p>P问题:在多项式时间内可以求解的问题.</p>
+<p>NP问题:在多项时间内不能求解,在多项式时间内可以验证的问题.</p>
+<p>NP-Hard问题:所有的NP问题在多项式时间内可以归约到该问题,该问题为NP-Hard问题.</p>
+<p>NP-Complete问题:一个问题即是NP-Hard问题,同时又是NP问题.</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/Python-MPI/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/08/10/Python-MPI/" itemprop="url">
+                  python-MPI安装命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -1330,57 +1005,11 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
       
         
           
-            <p>写于2018年3月,刚好在找实习,搜集了一些&lt;剑指offer&gt;上和其他关于面试的建议,记录下来.</p>
-<hr>
-<h2 id="1-着装及外貌"><a href="#1-着装及外貌" class="headerlink" title="1.着装及外貌"></a>1.着装及外貌</h2><ul>
-<li>衣服不用过于正式,整洁干净就可以了.</li>
-<li>保持思维敏捷,容光焕发</li>
-</ul>
-<h2 id="2-自我介绍"><a href="#2-自我介绍" class="headerlink" title="2.自我介绍"></a>2.自我介绍</h2><ul>
-<li><strong>时间</strong>: 30s - 1min (面试官手中已有你的简历,因此自我介绍不用过于详细)</li>
-<li><strong>内容</strong>: 主要学习,工作经历(没有工作经历就简短说一下做了什么项目)</li>
-</ul>
-<h2 id="3-项目介绍"><a href="#3-项目介绍" class="headerlink" title="3.项目介绍"></a>3.项目介绍</h2><p>建议使用<strong>STAR</strong>模型描述自己经历过的每一个项目</p>
-<ul>
-<li><strong>Situation:简短的项目背景</strong>,比如项目的规模,开发的软件的功能,目标用户等.</li>
-<li><strong>Task:自己完成的任务</strong>,在用词上注意区分”参与”和”负责”</li>
-<li><strong>Action:为了完成任务自己做了哪些工作,怎么做的</strong>.详细介绍</li>
-<li><strong>Result:自己的贡献.</strong>如果是参与功能开发,可以说按时完成了多少功能;如果做优化,可以说性能提高的百分比是多少;如果是维护,可以说修改了多少个bug.</li>
-</ul>
-<p>面试官可能会问的问题:</p>
-<ul>
-<li>你在该项目中碰到的最大的问题是什么?怎么解决的?</li>
-<li>从这个项目中你学到了什么?</li>
-<li>什么时候会和其他团队成员有什么样的冲突?怎么解决冲突的?</li>
-</ul>
-<blockquote>
-<p>note:<font color="red">介绍项目时,少讲背景,突出自己的贡献.</font></p>
-</blockquote>
-<h2 id="4-掌握的技能"><a href="#4-掌握的技能" class="headerlink" title="4.掌握的技能"></a>4.掌握的技能</h2><ul>
-<li><strong>了解:</strong>指对某一个技术只是上过课或看过书,但没有做过实际的项目.</li>
-<li><strong>熟悉:</strong>如果我们在实际项目中使用某一项技术已经有较长的时间,通过查阅相关的文档可以独立解决大部分问题,我们就熟悉它了.(在简历中我们描述技能的掌握程度大部分应该是”熟悉”).</li>
-<li><strong>精通:</strong>如果我们对一项技术使用得得心应手,在实际开发过程中我们都有信心也有能力解决,可以说精通这个技术.</li>
-</ul>
-<h2 id="5-面试官面试考察interviewee的几个方面"><a href="#5-面试官面试考察interviewee的几个方面" class="headerlink" title="5.面试官面试考察interviewee的几个方面"></a>5.面试官面试考察interviewee的几个方面</h2><ul>
-<li><strong>1.扎实的基础知识</strong>:编程语言,数据结构,算法等-<ul>
-<li>语言:至少掌握1-2门编程语言</li>
-<li>数据结构:熟练掌握<strong>链表,树,栈,队列和哈希表等</strong>数据结构和它们的操作</li>
-<li>算法:查找,排序,贪心,动规,dfs等</li>
-</ul>
-</li>
-<li><strong>2.能写高质量的代码</strong>:能写出正确,完整的,鲁棒的高质量代码;面试官会格外关注<strong>边界条件,特殊输入</strong>等看似细枝末节但实质至关重要的地方.</li>
-<li><strong>3.分析问题思路清晰</strong>:思路清晰,解决复杂问题</li>
-<li><strong>4.能优化时间效率和空间效率</strong>:能从时间,空间复杂度两方面优化算法效率</li>
-<li><strong>5.学习和沟通能力</strong>:具备优秀的沟通能力,学习能力,发散思维能力等<ul>
-<li>团队合作能力</li>
-<li>沟通能力</li>
-<li>举一反三能力</li>
-</ul>
-</li>
-</ul>
-<h2 id="6-interviewee提问环节"><a href="#6-interviewee提问环节" class="headerlink" title="6.interviewee提问环节"></a>6.interviewee提问环节</h2><font color="red">Don't talk about pay!</font>
-
-
+            <h3 id="在Ubuntu下安装MPI环境-python环境"><a href="#在Ubuntu下安装MPI环境-python环境" class="headerlink" title="在Ubuntu下安装MPI环境(python环境)"></a>在Ubuntu下安装MPI环境(python环境)</h3><p><font color="red">Step1:</font>安装python环境&lt;/br&gt;</p>
+<p><font color="red">Step2:</font>sudo apt-get install openmpi-bin&lt;/br&gt;</p>
+<p><font color="red">Step3:</font>sudo apt-get install libopenmpi-dev&lt;/br&gt;</p>
+<p><font color="red">Step4:</font>sudo apt-get install python-mpi4py&lt;/br&gt;</p>
+<p><strong>(第三步不要忽略)</strong></p>
 
           
         
@@ -1419,7 +1048,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/07/RedBlackTree/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/Representatives/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -1444,8 +1073,8 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
             
               
                 
-                <a class="post-title-link" href="/2018/03/07/RedBlackTree/" itemprop="url">
-                  红黑树学习
+                <a class="post-title-link" href="/2018/08/10/Representatives/" itemprop="url">
+                  社交网络中抽取有代表性的用户
                 </a>
               
             
@@ -1458,9 +1087,9 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T09:23:03+08:00">
-                2018-03-07
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
               </time>
             
 
@@ -1475,7 +1104,529 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Paper/" itemprop="url" rel="index">
+                    <span itemprop="name">Paper</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-为什么要做这个问题"><a href="#1-为什么要做这个问题" class="headerlink" title="1.为什么要做这个问题"></a>1.为什么要做这个问题</h3><h4 id="1-1-从社会应用角度"><a href="#1-1-从社会应用角度" class="headerlink" title="1.1 从社会应用角度"></a>1.1 从社会应用角度</h4><ul>
+<li>在HCI(人机交互)中,实施调查和去获得用户的反馈都是主要针对有代表性的用户.</li>
+<li>代表性人物的行为习惯和关注点可以折射出整体用户的兴趣偏向和关注点,对于广告投放,物品推荐是有助的. </li>
+<li>对于目前日益增长的社交网络用户,从大量的社交网络用户中抽取一个具有代表性的子集才是Human-readable的,有益于数据分析,相当于一个数据摘要.</li>
+</ul>
+<h4 id="1-2-从科研方法的角度"><a href="#1-2-从科研方法的角度" class="headerlink" title="1.2 从科研方法的角度"></a>1.2 从科研方法的角度</h4><ul>
+<li>从大量模型或数据点中抽取一个保留了原数据集的特征是机器学习/计算机视觉领域数据分析和推荐系统领域都是一个重要的问题.</li>
+<li>机器学习领域,找原型子集来辅助分类算法.</li>
+</ul>
+<h3 id="2-怎样定义代表性"><a href="#2-怎样定义代表性" class="headerlink" title="2.怎样定义代表性"></a>2.怎样定义代表性</h3><blockquote>
+<p>Note:和在社交网络中寻找影响力最大化的问题不同,找出具有代表性的用户的目的是抽取一些”平均”的用户,他们能够在统计上代表原来所有用户的特征.</p>
+</blockquote>
+<h4 id="2-1-代表性用户具备的条件"><a href="#2-1-代表性用户具备的条件" class="headerlink" title="2.1 代表性用户具备的条件:"></a>2.1 代表性用户具备的条件:</h4><p><font color="blue">版本一.</font></p>
+<ul>
+<li>1.从<font color="green">属性特征角度</font>上,他们很好的代表了原数据集用户的属性特征(行为习惯/性格特征/领域情况等等),即,与原数据集用户具有<strong><font color="red">较少的特征损耗</font></strong></li>
+<li>2.从<font color="green">分布特征角度</font>,代表性子集应尽可能拟合原数据集的样本分布,即,与原数据集具有<strong><font color="red">较少的分布损耗</font></strong>(类似于原数据集中每个领域的人物分布,代表性子集能够拟合原数据集每个领域的人物分布)</li>
+<li>3.从<font color="green">差异性角度</font>上,代表性子集需要能够作为每个领域的<font color="red"><strong>典型</strong></font>人物,所以代表性子集内部各领域之间的人物需要保持一定的差异性,即,代表性子集内部需要<strong><font color="red">较大的差异性或较小的相似性</font></strong></li>
+</ul>
+<p><font color="blue">版本二.</font></p>
+<ul>
+<li>1.从<font color="green">特征角度</font>上,他们很好的代表了原数据集用户的属性特征(行为习惯/性格特征/领域情况等等),即,与原数据集用户具有<strong><font color="red">较少的特征损耗</font></strong></li>
+<li>2.从<font color="green">分布角度</font>,代表性子集在满足(1)条件下应尽可能的分散或稀疏,使得子集可以尽可能地还原原数据集的分布,即,P具有<strong><font color="red">具有稀疏性</font></strong>;<br>-note:如果仅仅要求<strong>特征损耗最小</strong>,可能会导致代表性子集都聚集在人数较多较相似的团体中,以致于原数据集的分布丢失.</li>
+</ul>
+<p>目前倾向于版本一.</p>
+<h4 id="2-2-问题定义"><a href="#2-2-问题定义" class="headerlink" title="2.2 问题定义:"></a>2.2 问题定义:</h4><p>在原数据集人物集合中寻找这样的代表性子集P</p>
+<ul>
+<li>a)P能够满足以上代表性的定义</li>
+<li>b)P是数量最小的那个代表性集合</li>
+</ul>
+<h4 id="2-3-Novel之处或者contibution"><a href="#2-3-Novel之处或者contibution" class="headerlink" title="2.3 Novel之处或者contibution:"></a>2.3 Novel之处或者contibution:</h4><ul>
+<li>1.代表性人物包含了两种情况的综合考虑,之前论文中大多考虑单一方面</li>
+<li>2.代表性人物的大小不需要先验设定.</li>
+</ul>
+<p>将用户以各个属性构建向量,以向量之间的距离来定义人物之间的代表性.<br>以Twitter社交拓扑为例,当A用户关注了B用户,将会有A指向B的一条有向边,</p>
+<h3 id="3-如何具体评价子集的代表性"><a href="#3-如何具体评价子集的代表性" class="headerlink" title="3.如何具体评价子集的代表性"></a>3.如何具体评价子集的代表性</h3><h3 id="4-方法"><a href="#4-方法" class="headerlink" title="4.方法"></a>4.方法</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/Personalized Search泛读记录/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/08/10/Personalized Search泛读记录/" itemprop="url">
+                  Personalized Search泛读记录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Paper/" itemprop="url" rel="index">
+                    <span itemprop="name">Paper</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Backgournd"><a href="#Backgournd" class="headerlink" title="Backgournd"></a>Backgournd</h3><p>搜索在20年前就已出现在互联网，而如今搜索已经无处不在。传统的搜索像这样，用户给出Query，Query中包含1个或多个关键词，搜索引擎通过关键词去检索返回查询结果。然而，在互联网上存在的资源早已是亿万级，所以仅仅用传统的搜索方法去返回给用户查询结果势必会存在大量用户不需要的结果，根据2007年”Tag recommendations in folksonomies”一文中提出不考虑用户偏好返回的搜索结果中仅有20%-45%是用户想要的，另外,用户所想查找的内容也可能远远不在结果的前列，所以，这类问题的解决需要在传统的搜索方法上考虑context-上下文，即，<br>简要概括:1.用户搜索返回的结果大量是其所不需要的;2.不同的用户提出同一个关键词,搜索引擎返回的结果都是同样的,而不同的用户使用同一个关键词所想搜索的意图其实可能是不同的.<br>将(1)用户的行为、习惯、兴趣/历史搜索结果等等;(2)资源上下文(3)任务上下文等因素考虑进去。</p>
+<p>网络个性化用于四类:predicting web navigation, assisting personalization information, personalizing content, and personalizing search results<br>有两类方法:协同过滤和user profiles<br>协同过滤的缺点:这种方法能根据大多数人的兴趣推测什么是流行的,但不能预测某一个用户是否对新的页面是否感兴趣.</p>
+<p><strong>1.User Models</strong><br>1.1 可以用来构建用户特征的有<br>a)内容方面:查询的关键词、网页的内容、桌面索引等等<br>b)行为方面:浏览的网页、tag 活动/直接或间接的反馈等<br>c)上下文方面:性别、年龄、地理位置、时间等</p>
+<p>1.2 时间上分短期和长期兴趣(将两者结合起来,按时间分配权重)<br>1.2.1长期兴趣偏好建立方式:<br>    行为:具体的查询和URLs<br>    内容:语言模型/主题模型</p>
+<p>1.2.2短期兴趣偏好建立方式:<br>    搜索session的queries</p>
+<p>1.3 用户分个体还是某类群体</p>
+<p><strong><font color="red">Note:</font></strong><br><strong><font size="4">a</font></strong>.在用户model中还需考虑的有长期和短期的兴趣,仅仅根据用户长期的兴趣来推测用户现在想要的搜索结果会有偏差.e.g.一个人之前搜索的”java”都是关于编程语言,但不排除他下一次搜索”java”是要找”java咖啡或者java 岛”.用户的兴趣会改变的.<br><strong><font size="4">b</font></strong>.对用户可profile的信息有:Clickthrough Histories/Queries Histories/搜索过网页的Snippets/收藏过的书签<br><strong><font size="4">c</font></strong>.Domain Ontological:所谓的领域本体（domain-specific ontology）就是对学科概念的一种描述，包括学科中的概念、概念的属性、概念间的关系以及属性和关系的约束。由于知识具有显著的领域特性，所以领域本体能够更为合理而有效地进行知识的表示。<br><strong><font size="4">d</font></strong>.Folksonomy中的challenges:(1)用户标注的tags有很多的同样的拼写,不同意思的单词;有很多同义词;(2)怎么根据tags去对用户偏好建模(Tags聚类/VSM-空间向量模型/领域本体论(有一篇文章中将用户的tags映射到ODP(the Open Directionary Project)-Web topic ontology中))<br>—在Folksonomy中,用户标注的资源都是用户所感兴趣的资源,或者说用户所标注的资源都能代表用户的兴趣偏好;也就是说用户不再仅仅是web资源的消费者,同时用户可以通过承担web的一些任务同时方便其他web用户.(Folksnonomy这样一类系统代表性的有:Flickr.com/Delicious.com/Last.fm)<br><strong><font size="4">e</font></strong>.Clustering:聚类用于两个方面:切分和分层(分级).<br><strong><font size="4">f</font></strong>.<strong>Social Context</strong>:有一些预定义好的值,每个上下文的值都有具体的值.<strong>Verbal Context:</strong>历史查询/点击记录等</p>
+<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>1.可以入手的方面有三类:user model(long-term &amp; short-term)/query的替换或扩充/resource(web resource)/privacy/evaluation/查询效率<br>2.可以选择的对象有两个:Server端和Client-Side端</p>
+<p>用户相关性:<br>1.直接的显示反馈<br>2.隐式地从点击熵获得</p>
+<p>用户潜在的意图:<br>1.上下文的元数据<br>    Location/Time/Device</p>
+<p>2.过去的行为<br>    当前的session活动/长期的活动和兴趣偏好</p>
+<blockquote>
+<p>基本的方法：<br>（1）对Query做扩展或替换<br>比如，用户正在浏览的关于汽车的页面，那么当他搜索“轮廓”时，会将Query的关键词添加“汽车”关键词，使返回的结果是用户想要找的汽车轮廓结果。<br>（2）对结果排序<br>根据user profile，进行相似度匹配对结果重新排序。</p>
+</blockquote>
+<h3 id="数据集"><a href="#数据集" class="headerlink" title="数据集"></a>数据集</h3><p>1.MovieLens(notations &amp; ratings)<br>2.Delicious.com(bookmarks)<br>3.Flickr(notations)<br>4.DOMZ(ODP)—web search经常使用<br>5.BibSonomy(<a href="http://bibsonomy.org" target="_blank" rel="external">http://bibsonomy.org</a>)<br>6.CiteULike(网页书签数据)</p>
+<h3 id="泛读论文时方法总结"><a href="#泛读论文时方法总结" class="headerlink" title="泛读论文时方法总结"></a>泛读论文时方法总结</h3><p>其他方法：<br>1）2002年CIKM中将用户的Query分类<br>2）2003年”Scaling Personalized Web Search”根据用户兴趣给页面分配权重用图来计算，类似PageRank<br>3）2005年WWW”A Personalized Search Engine Based on Web-Snippet Hierarchical Clustering”对网页的Snippet做了聚类然后对结果再根据User Profile对查询结果再排序<br><strong><font color="red">(Snippet指的是网页的标题和摘要)</font></strong><br>4）2005年WWW-“CubeSVD: A Novel Approach to Personalized Web Search”将用户的点击链接历史记录(who click which web page)作为user profile部分辅助查询.通过从点击链接记录数据中发现用户的兴趣和搜索信息的模式.<br>5)2005年CIKM”Implicit User Modeling for Personalized Search”User Model方法,完成了一个客户端查询代理.针对长期兴趣可能会改变的问题,本文中利用即时的搜索上下文和隐式的反馈来user model.<br>隐式的反馈信息有着两类:1)根据之前的查询寻找合适的term去扩展现在的query;2)利用用户已经看过的文档形成摘要来对没有看过的文档重新排序<br>6)2005年WI”Personalized Serach Based on User Search History”根据用户搜索历史对用户profile,利用User Profiles来对查询或者snippets分类,然后再对搜索结果重排序<br>7)2005年WI”Personaliezed Search Results with User Interest Hierarchies Learnt from Bookmarks”建立分层的user profile来对查询结果重新排序.<br>8)2005年DATAK期刊”Category ranking for personalzied search”在ODP分类基础上根据用户profile重新选择一个子图结构分类来personalize 查询结果<br>9)2006年WWW”Automatic Identification of User Interest For Personalized Search”利用用户历史点击记录构建user profile来对查询结果重新排序.<br><strong><font color="blue">补充:2006年SIGKDD”Mining Long-Term Search History to Improve Search Accuracy”挖掘用户长期的搜索历史提出统计的语言模型</font></strong><br>10)2007年WWW”A Large-scale Evaluation and Analysis of Personalized Search Strategies”评价Personalized Search对于传统搜索是否有提高,并且揭示了Click-Based方法优于profile-based方法<br>11)2007年CIS”Personalized Web Search Using User Profile”在Client-Side构建User Profile,然后对用户的Query根据Profile进行扩充使查询更具体,将Query提交给Search Engine.<br>12)2007WWW”Privacy-Enhancing Personalized Web Search”权衡用户隐私和个性化搜索的需要,将用户无结构的个人数据整合成有结构的User Profile<br>13)2007年SIGIR”Privacy Protection in Personalized Search”在个性化搜索时同时保护用户隐私,在Client-Side保护隐私比在Server-Client要好<br>14)2007年WI”Using Personalized Web Search for Enhancing Common Sense and Folksonomy Based Intelligent Search Systems”对于大众分类标签的这样的系统中,用户检索时对于其他用户标注的内容会检索到不相关的内容,本文利用搜索历史和兴趣分类来建立用户偏好<br>15)2008年CIKM”Matching Task Profiles and User Needs in Personalized Web Search”在Client-Side,同时结合用户之前的<strong><font color="green">历史搜索结果</font></strong>和<strong><font color="green>" 当前的session上下文<="" font=""></font></strong>对用户建立不同粒度的profile.同时结合past search results(search histories)和current session context就弥补了只根据用户长期兴趣造成的缺点.<br>16)2008年WWW”Personalized Search and Exploration with MyTag”一篇DEMO完成了这样一个系统,根据flickr,YouTube和del.icio.us多个系统构造用户profile,在用户查询时完成返回多个平台的个性化资源结果.<br>17)2008年SIGIR”The Impact of History Length on Personalized Search”一篇DEMO基于任务研究web search(Task-based即限制了查询的方向,限制了查询任务),研究了搜索历史的长度对personalized search的影响.<br>18)2009年”Cluster Based Personalized Search”着手了两方面:利用文本聚类方法来Personalized Search和新的evaluation准则<br>19)2009年WSDM”Discovering and Using Groups to Improve Personalized Search”由于利用收集的个人信息来User Profile,但是由于通常User的个人信息通常不足够来构建,所以该篇文章利用其他用户来辅助收集用户个人信息.通过Query的相似性groupize一类用户<br><strong><font color="blue">20)2009年TKDE期刊”Evaluating the Effectiveness of Personalized Web Search”测试了五种personalized search算法,提出了新的评价框架来测试是否personalized search对于不同的用户提出不同的queries在不同的搜索上下文中有没有用.(五种测试方法:2种Click-based和3种Topipcal-interest-based);并且,提出了现有的personalized search的缺点:大多数提出的算法都是运用到所有的用户和查询上(对于有些很明确的查询不需要应用personalized;personalization算法的有效性会根据不同的搜索上下文而不同;现有的论文中测试personalized search的算法是基于少量的参与者积累查询数据集,很少有在真是世界中数据集做测试)</font></strong><br><strong><font color="blue">21)2009年CIKM”Personalized Social Search Based on the User’s Social Network”利用用户的三种社会关系:家庭社会关系/相似社会关系/全部的社会关系来建立user profile</font></strong><br><strong><font color="blue">22)2009年CSE”Social Tagging in Query Expansion:a New Way for Personalized Web Search”对于社交网络和协标注系统利用协标注来对Query进行扩展</font></strong><br><strong><font color="blue">23)2009年Konwl Inf syst”Towards a graph-based user profile modeling for a session-based personalized search”提出了利用图结构来user profile</font></strong><br>24)2010年WWW”Anonymizing User Profiles for Personalized Web Search”关于user profile的隐私保护<br>25)2010年”Applying Taxonomic Knowledge and Semantic Collaborative Filtering to Personalized Search: a Bayesian Belief Network based Approach”对于利用查询关键词匹配得到结果的方法而言,有些结果与查询有关而却与查询的关键字术语没有能匹配的结果往往会漏掉.该篇文章为了找出具有权威性的文本,通过语义协同过滤,用贝叶斯信念网络来代表用户的偏好,查询和相关的文本.<br><strong><font color="green">26)2010年CIKM”CiteData:A new multi-faceted dataset for evaluating personalized search performance”现在的personalized search系统使用了用户各种各样的特征数据如:文本超链接/分类标签等,将各种分类方法和社会标注结合起来,随之有分类/PageRank/协同过滤等算法来处理personalized search,但是对于这些方法的评价一直没有合适的数据集,所以该篇文章提出新的评价方法,利用多种多方面的数据来评价personalized search方法的表现.</font></strong><br><strong><font color="blue">27)2010年AMT”Folksonomy-Based Ontological User Interest Profile Modeling and Its Application in Personalized Search”在大众分类系统中,利用用户标注的tags并运用领域本体论来构建用户兴趣偏好</font></strong><br>28)2010年<strong>ICDE</strong>“Personalized Web Search with Location Preferences”文中将用户偏好概念分为了内容概念和位置概念,本文不仅从搜索结果/点击率来构建内容上的兴趣偏好,还考虑了位置概念.<br>29)2010年WIC”Personalized Search based on a User-centered Recommender Engine”提出了将<strong>推荐系统</strong>和Personalized Search结合起来<br><strong><font color="blue">30)2011年CIKM”A Framework for Personalized and Collaborative Clustering of Search Results”根据search results利用Wiki预料来聚类和协同过滤的方法来优化个性化搜索结果.</font></strong><br>30)2011年WEBIST”A Multi-factor Tag-Based Personalized Search”提出了利用用户的tag activity(浏览过的网页和对网页分配的标签)来建立用户的偏好然后再重新排序搜索结果.<br>31)2011年IS的期刊”A personalized search using a  semantic distance measure in a graph-based ranking model”用图结构(映射到ODP上)来表示文本和user profiles,基于语义距离测量来重新对搜索结果排序.<br>32)2011年UMAP”Leveraging Collaborative Filtering to Tag-Based Personalized Search”利用协同过滤的方法通过其他相似用户计算用户的潜在兴趣偏好,通过相似物品来构建物品的潜在tags.<br><strong><font color="blue">33)2011年CSC”Modeling User’s Preference in Folksonomy for Personalized Search”在大众分类系统利用标签聚类来构建user profile</font></strong><br>34)2011年Canadian AI”Normal Distribution Re-Weighting for Personalized Web Search”根据term的频率建立向量构建profile,但是同时重新对vector建立权重.因为频率大小对profile的影响是不一样的,其中,比较注重的是Mid-frequency.<br>35)2011年WWW”Personalized Search on Flickr based on Searcher’s Preference Prediction”一篇DEMO,基于Flickr系统根据用户的朋友的兴趣偏好和聚类方法来预测该用户所要找的图片.(e.g.用户搜索”长城”,返回118147张照片结果,但是,他/她所需要或想要的是哪一张或那几张需要自己去从中挑选)<br><strong><font color="blue">36)2011年FSKD”User Profile for Personalized Web Search”利用三种机器学习方法(Rocchio/K-Nearest Neighbors/SVM)来构建user profiles</font></strong><br>37)2012年ICCCI”Construction of Semantic User Profile for Personalized Web Search”完成这样一个系统,让用户输入用户名和邮件地址后从网页抓取和邮件地址相关的信息来构建user profile(使用VSM)(依据ODP).<br>38)2012年APWeb”Context-Aware Personalized Search Based on User and Resource Profiles in Folksonomies”指出了之前运用于Folksonomy系统中建立VSM后TF-IDF和BM25方法的不合理之处.<br><strong><font color="blue">39)2012年Information Systems期刊”Folksonomy-based personalized search and ranking in social media services”同时利用面向用户的tags和面向items的tags构建模型,构建user-tag矩阵/user-item矩阵/tag-item矩阵;对于查询的term没有出现在标注中的情况也能够对结果重新排序</font></strong><br>40)2012年”Multilingual User Modeling for Personalized Reranking of Multilingual Web Search Results”用多语言来构建用户模型.<br>41)2012年ADMA”Personalized Diversity Search Based on User’s Social Relationships”针对搜索引擎由于不能领会用户潜在的意图和兴趣偏好,所以不能返回给用户精确/充足,且伴随有累赘的结果.现有的方法有返回多样性的结果来满足大部分用户,并且统一地运用到所有的用户和查询中,返回的结果通常返回的是大部分用户的需求,对于某个用户的具体需求并没有被考虑进去.本文将多样性搜索和个性化搜索结合来使搜索结果对于群体和某个用户来说更加精确.<br><strong><font color="blue">42)2012年SIGMOD”Taagle:Efficient,Personalized Search in Collaborative Tagging Networks”用户带有在社交网络中的权值,items带有用户的关键词标注,用户用某一个tags来搜索返回Top-k个结果</font></strong><br>43)2013年SIGMOD”Efficient Ad-hoc Search for Personalized PageRank”对PPR做了改进<br><strong><font color="blue">44)2013年WWW”Enhancing Personalized Search by Mining and Modeling Task Behavior”提出之前在Personalized Search中都是比较依赖和用户历史查询记录相关信息,对于新的查询可能会无所适从;本文提出了Task-based(基于URLs)的方法,通过在历史搜索日志中挖掘出提出过和当前用户任务相关的用户,利用他们的on-task行为来提升web pages的排序.并将算法和Query-based进行对比</font></strong><br><strong><font color="blue">45)2013年(LiQing)WI-IAT”Finding Dominating Set from Verbal Contextual Graph for Persoanlized Search in Folksonomy”对于去挖掘用户潜在的意图和兴趣偏好,基于上下文的信息是不可或缺的,在社会语言学中上下文中分为Verbal Context(queries历史/点击历史数据)和social context(mood/weather/time).通过对比了social context之后,作者选用了verbal context语言模型,verbal context模型用图结构构造,并将重要的节点区别出来.</font></strong><br><strong><font color="blue">46)2013年SIGKDD一篇DEMO”LAICOS:An Open Source Platform Personalized Social Web Search”1.利用了文本内容来建立social context2.和之前方法一样也用了对query进行扩展的方法.当用户提出一个query,系统会根据用户experience匹配query,同时,系统还会根据其他提出过相似查询的用户来返回相似的文档</font></strong><br><strong><font color="blue">47)2013年CIKM”Personalized Models of Search Satisfaction”这篇文章通过区分不同用户的搜索行为来建立用户的满意度,从而使个性化搜索更为准确.(依赖于点击数据)</font></strong><br>48)2013年SIGIR”Personalized Ranking Model Adaptation for Web Search”针对之前搜索引擎对所有的用户都运用单一的排序模型而提出了新的排序模型(通过一系列的线性转化,缩放或者转变)<br>49)2013年ICCCSA”Personalized Semantic Search Using ODP:A Sutdy Case in Academic Domain”将文本大致分类到相应的实体ODP来完成语义搜索<br>50)2013年SIGIR”SoPRa: A New Social Personalized Ranking Function for Improving Web Search”提出了新的搜索结果等级排序函数<br>51)201年SIGIR”Using Social Annotations to Enhance Document Representation for Personalized Search”基于用户查询过的网页,不仅仅基于该用户对其的标注,而且考虑其他用户的标注.因为如果只考虑该用户的标注存在两个问题:1)忽略了他没有标注的页面2)分配的等级分数不合理<br>52)2014年WSDM”Adapting Deep RankNet for Personalized Search”:RankNet被广泛地应用在web搜索任务中,但是很少有应用在Personalized Search中.本文利用5层深度神经网络来构造RankNet运用于Personalized Search中.<br>53)2014年KDD”Personalized Search Result Diversification via Structured Learning”利用有监督学习来解决搜索结果个性化多样性的问题,既保持结果的多样性,同时结合用户的兴趣偏好<br><strong><font color="blue">54)2015年”Adaptive and Multiple Interest-aware User Profiles for Personalized Search in Folksonomy:A Simple but Effective Graph-based Profiling Model”基于图结构利用社会标注的tags构造自适应的且融合多种用户兴趣偏好的user profiles.</font></strong><br>55)2015年WWW”An Optimization Framework for Weighting Implicit Relevance Labels for Personalized Web Search”提出了之前给web document分配权重的不合理之处,另外重新提出了personalized ranking算法.<br>56)2015年”Real Time Personalized Search on Social Networks”提出了在社交网络平台中两个特点1)频繁的内容更新2)小社区群体;而现有的搜索算法都还不能解决这样两个问题,本文提出了实时的personalized top-k查询(等级排序算法融合了时间/社会相关性/文本相似性).<strong>加入了时间因素</strong><br>57)2016年SIGKDD”How to Get Them a Dream Job”主要针对Job Personalized Search.<br>58)2016年SIGIR一篇DEMO”Learning to Rank Personalized Search Results in Professional Networks”在领英中提出新的结果等级排序算法.<br>59)2016年Neurocomputing”Personalized search for social media via dominating verbal context”<strong>Qing Li</strong>同之前篇<br>60)2016年Knowledge-Based Systems”Preference recmmendation for personalized search”综合之前的user profiles模型,本文指出使用比较广泛有一个CP-nets模型,不仅能简明地表达用户定性的兴趣偏好,而且很好地定义了用户偏好的范围.现在很多基于CP-nets的搜索系统都是假设用户之前已经定义好他们的兴趣偏好范围,但是在生活中这并不现实.本文的工作一方面利用不完全的CP-nets,另一方面利用协同过滤来弥补CP-nets的不足.还有一方面,本文提出偏好推荐模式来弥补CP-nets的不足.<br>61)2016年”Topic Model based Privacy Protection in Personalized Web Search”本文在保持搜索引擎个性化的同时,通过在用户查询日志中加入控制噪声来保护用户隐私.</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/TwitterUsersDataProfiling/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/08/10/TwitterUsersDataProfiling/" itemprop="url">
+                  Twitter用户数据Profiling
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Paper/" itemprop="url" rel="index">
+                    <span itemprop="name">Paper</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><blockquote>
+<p>数据摘要:One of the crucial requirements before comsuming datasets for any application is to understand the dataset at hand and its metadata.[1]<br>Data profiling is the set of activities and processes to determine the meta-data about a given dataset.[1]</p>
+<p>总体地说,数据概要可以描述为是能够描述原样本数据的一个子集或者结果.比较简单地一种方式是计算平均值,总和或者统计频率最高的一些值等等方式.而较为有挑战性的是,在多列数据中找出其之间的相互函数或次序依赖等等关系.</p>
+</blockquote>
+<p>传统的数据摘要包括data exploration/data cleansing/data integration.而之后,data management和big data analytics也开始出现.</p>
+<p>特别地,因为大数据的数据量大,多样性等特性,传统的技术对于其查询,存储及聚合都是花费高昂的.所以,data profiling在这里就显得非常重要.</p>
+<blockquote>
+<p>Data profiling is an important preparatory task to determine which data to mine, how to import data into various tools, and how to interpret the results.[1]</p>
+</blockquote>
+<p><img src="http://i1.buimg.com/1949/2fc64d8931d34670.png" alt="Data Profiling"></p>
+<h4 id="Data-Profiling和Data-Mining的比较"><a href="#Data-Profiling和Data-Mining的比较" class="headerlink" title="Data Profiling和Data Mining的比较"></a>Data Profiling和Data Mining的比较</h4><p>1.Distinction by the object of analysis:<strong>Instance</strong> vs. <strong>schema</strong> or <strong>column</strong> vs. <strong>rows</strong><br>2.Distinction by the goal of the task:<strong>Description of existing data</strong> vs. <strong>new insights beyond existing data</strong> .</p>
+<h3 id="2-动机或用例"><a href="#2-动机或用例" class="headerlink" title="2.动机或用例"></a>2.动机或用例</h3><blockquote>
+<p>Data Profiling的目的:</p>
+<ul>
+<li>Data Exploration</li>
+<li>Database management</li>
+<li>Database reverse engineering</li>
+<li>Data integration</li>
+<li>Big data analytics</li>
+</ul>
+</blockquote>
+<h3 id="3-方法"><a href="#3-方法" class="headerlink" title="3.方法"></a>3.方法</h3><p>1.依赖关系数据库,使用SQL语句查询返回结果(不能够找出所有属性列的依赖)<br>  单列和多列分析<br>2.搜索最优解:启发式算法<br>  启发式算法是一种技术,使得<strong>可接受的计算成本内</strong>去搜寻最好的解,但<strong>不一定能保证所得到的可行解和最优解</strong>,甚至在多数情况下,无法阐述所得解同最优解的近似程度.<br>3.聚类算法—&gt;筛选<br>4.按每一维动态规划找出子集</p>
+<h3 id="4-twitter数据集人物特征选取"><a href="#4-twitter数据集人物特征选取" class="headerlink" title="4.twitter数据集人物特征选取"></a>4.twitter数据集人物特征选取</h3><ul>
+<li>地理位置特征(反映了用户的时空分布,对于POI的推荐是有用的)</li>
+<li>活跃度特征(可用于聚类分析)</li>
+<li>影响力特征(可用于聚类分析)</li>
+<li>推文特征(反映了用户的兴趣爱好,对于推荐系统是有用的)</li>
+<li>时域特征</li>
+</ul>
+<h4 id="特征处理"><a href="#特征处理" class="headerlink" title="特征处理"></a>特征处理</h4><p>1.提取<br>2.正则化(最典型的就是数据的归一化处理,即将数据统一映射到[0,1]区间)</p>
+<blockquote>
+<p><strong>常见的数据归一化方法:</strong></p>
+<ul>
+<li>min-max,对原始数据的线性变换</li>
+<li>log函数转换</li>
+<li>atan函数转换</li>
+<li>z-score标准化</li>
+<li>Decimal scaling小数定标标准化</li>
+<li>Logistic/Softmax变换</li>
+<li>Softmax函数</li>
+<li>模糊量化模式</li>
+</ul>
+</blockquote>
+<p>特征选取原因:该特征代表了用户的…,对于…工作是有用的.</p>
+<h3 id="5-twitter-data-profiling思路"><a href="#5-twitter-data-profiling思路" class="headerlink" title="5.twitter data profiling思路"></a><font color="red">5.twitter data profiling思路</font></h3><p><strong>Motivation</strong><br>聚类结果的代表性:</p>
+<blockquote>
+<p>Even though the construction of a cluster representation is an important step in decision making, it has not been examined closely by researchers.</p>
+</blockquote>
+<p><strong>度量准则:</strong><br><img src="https://ooo.0o0.ooo/2017/06/22/594bcb6c616ec.png" alt=""></p>
+<p><strong>特征提取</strong><br>直接:location(时区),Followers/Following,category<br>间接:Activity,Influence,*InterestTags</p>
+<p><strong>距离定义</strong><br>有序属性:闵可夫斯基距离(p=2时为欧式距离)<br>无序属性:VDM</p>
+<p><strong>方法</strong></p>
+<ul>
+<li>1.聚类方法(LVQ)</li>
+<li>2.定义图结构来搜索</li>
+</ul>
+<p><strong>Challenge-挑战</strong></p>
+<ul>
+<li>a.原集和profile子集的代表性度量准则的定义</li>
+<li>b.ProfileSet的大小,k的确定</li>
+<li>c.寻找ProfileSet(Representation of Clustering[2])</li>
+<li>d.优化搜索算法</li>
+</ul>
+<h3 id="5-参考文献"><a href="#5-参考文献" class="headerlink" title="5.参考文献"></a>5.参考文献</h3><p>1.Data Profiling-A Tutorial SIGMOD 2017<br>2.Data Clustering: A Review IEEE Computer Society</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/GraphAndTree/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/08/10/GraphAndTree/" itemprop="url">
+                  判断无向图是否是一颗树
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1517,49 +1668,11 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
       
         
           
-            <h3 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h3><p>1.红黑树是每个节点都带有颜色属性的<strong>二叉查找树</strong>，颜色或红色或黑色.并且有如下性质:</p>
-<ul>
-<li><p>1)性质1. 节点是红色或黑色。</p>
-</li>
-<li><p>2)性质2. <strong>根节点是黑色</strong>。</p>
-</li>
-<li><p>3)性质3 每个<strong>叶节点（null节点，空节点）是黑色的</strong>。</p>
-</li>
-<li><p>4)性质4 每个红色节点的两个子节点都是黑色。(<strong>从每个叶子到根的所有路径上不能有两个连续的红色节点</strong>)</p>
-</li>
-<li><p>5)性质5.<strong>从任一节点到其每个叶子的所有路径都包含相同数目的黑色节点</strong>。</p>
-</li>
-</ul>
+            <p>这是一个基本概念,且很重要,记录一下.</p>
 <blockquote>
-<p>特性:从根到叶子结点最长的可能路径不多于最短的可能路径的两倍长.</p>
+<p>树的定义:用图的知识来表示即为,无环的连通图或者边数等于顶点数减1.</p>
 </blockquote>
-<h3 id="2-操作"><a href="#2-操作" class="headerlink" title="2.操作"></a>2.操作</h3><p>1.左旋<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/leftrotate.jpg" alt="图片来自慕课"></p>
-<p>2.右旋<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/rightrotate.jpg" alt="图片来自慕课"></p>
-<p>3.插入(5种情况)</p>
-<ul>
-<li>1)情况1:插入的是根结点<ul>
-<li>对策:直接把该结点涂黑</li>
-</ul>
-</li>
-<li>2)情况2:插入的结点的父结点是黑色<ul>
-<li>对策:Do nothing</li>
-</ul>
-</li>
-<li>3)当前结点的父结点是红色且祖父结点的另一个子结点(叔叔结点)是红色<ul>
-<li>对策:将当前节点的父节点和叔叔节点涂黑，祖父节点涂红，把当前节点指向祖父节点，从新的当前节点重新开始算法。</li>
-</ul>
-</li>
-<li>4)当前结点的父结点是红色,叔叔结点是黑色,当前结点是其父结点的右孩子<ul>
-<li>对策:当前节点的父节点做为新的当前节点，以新当前节点为支点左旋。</li>
-</ul>
-</li>
-<li>5)当前结点的父结点是红色,叔叔结点是黑色,当前结点是其父结点的左孩子<ul>
-<li>对策:父节点变为黑色，祖父节点变为红色，在祖父节点为支点右旋</li>
-</ul>
-</li>
-</ul>
-<p>4.删除<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/delete.png" alt="删除操作"><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">private void fixAfterDeletion(Entry&lt;K,V&gt; x) &#123;</div><div class="line">    while (x != root &amp;&amp; colorOf(x) == BLACK) &#123;</div><div class="line">        if (x == leftOf(parentOf(x))) &#123;</div><div class="line">            Entry&lt;K,V&gt; sib = rightOf(parentOf(x));</div><div class="line">            if (colorOf(sib) == RED) &#123;</div><div class="line">                setColor(sib, BLACK);                   // 情况1</div><div class="line">                setColor(parentOf(x), RED);             // 情况1</div><div class="line">                rotateLeft(parentOf(x));                // 情况1</div><div class="line">                sib = rightOf(parentOf(x));             // 情况1</div><div class="line">            &#125;</div><div class="line">            if (colorOf(leftOf(sib))  == BLACK &amp;&amp;</div><div class="line">                colorOf(rightOf(sib)) == BLACK) &#123;</div><div class="line">                setColor(sib, RED);                     // 情况2</div><div class="line">                x = parentOf(x);                        // 情况2</div><div class="line">            &#125; else &#123;</div><div class="line">                if (colorOf(rightOf(sib)) == BLACK) &#123;</div><div class="line">                    setColor(leftOf(sib), BLACK);       // 情况3</div><div class="line">                    setColor(sib, RED);                 // 情况3</div><div class="line">                    rotateRight(sib);                   // 情况3</div><div class="line">                    sib = rightOf(parentOf(x));         // 情况3</div><div class="line">                &#125;</div><div class="line">                setColor(sib, colorOf(parentOf(x)));    // 情况4</div><div class="line">                setColor(parentOf(x), BLACK);           // 情况4</div><div class="line">                setColor(rightOf(sib), BLACK);          // 情况4</div><div class="line">                rotateLeft(parentOf(x));                // 情况4</div><div class="line">                x = root;                               // 情况4</div><div class="line">            &#125;</div><div class="line">        &#125; else &#123; // 跟前四种情况对称</div><div class="line">            Entry&lt;K,V&gt; sib = leftOf(parentOf(x));</div><div class="line">            if (colorOf(sib) == RED) &#123;</div><div class="line">                setColor(sib, BLACK);                   // 情况5</div><div class="line">                setColor(parentOf(x), RED);             // 情况5</div><div class="line">                rotateRight(parentOf(x));               // 情况5</div><div class="line">                sib = leftOf(parentOf(x));              // 情况5</div><div class="line">            &#125;</div><div class="line">            if (colorOf(rightOf(sib)) == BLACK &amp;&amp;</div><div class="line">                colorOf(leftOf(sib)) == BLACK) &#123;</div><div class="line">                setColor(sib, RED);                     // 情况6</div><div class="line">                x = parentOf(x);                        // 情况6</div><div class="line">            &#125; else &#123;</div><div class="line">                if (colorOf(leftOf(sib)) == BLACK) &#123;</div><div class="line">                    setColor(rightOf(sib), BLACK);      // 情况7</div><div class="line">                    setColor(sib, RED);                 // 情况7</div><div class="line">                    rotateLeft(sib);                    // 情况7</div><div class="line">                    sib = leftOf(parentOf(x));          // 情况7</div><div class="line">                &#125;</div><div class="line">                setColor(sib, colorOf(parentOf(x)));    // 情况8</div><div class="line">                setColor(parentOf(x), BLACK);           // 情况8</div><div class="line">                setColor(leftOf(sib), BLACK);           // 情况8</div><div class="line">                rotateRight(parentOf(x));               // 情况8</div><div class="line">                x = root;                               // 情况8</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    setColor(x, BLACK);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>(具体插入和删除操作见 <a href="http://www.imooc.com/article/11715" target="_blank" rel="external">http://www.imooc.com/article/11715</a>)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">package questionCheckisTree;</div><div class="line"></div><div class="line">import java.util.Scanner;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by duncan on 17-7-30.</div><div class="line"> */</div><div class="line"></div><div class="line">//本题为判断一个无向图是否是一颗树</div><div class="line">    //树为无环的连通图或者边数等于顶点数-1</div><div class="line">class Graph&#123;</div><div class="line">    //邻接矩阵,从1开始存储</div><div class="line">    int[][] graph = new int[501][501];</div><div class="line">    //顶点数和边数</div><div class="line">    int nodes,edges;</div><div class="line">&#125;</div><div class="line">public class Main &#123;</div><div class="line">    //判断是否是连通图,并且顶点数-1是否是边数</div><div class="line">    //判断是否是连通图深度遍历一遍,都遍历到了即为连通图</div><div class="line">    public void DFS(int[] visited,Graph graph,int start)&#123;</div><div class="line">        //如果该顶点没有访问过</div><div class="line">        if(visited[start] == 0)&#123;</div><div class="line">            visited[start] = 1;</div><div class="line">            //继续访问与其相连的顶点</div><div class="line">            for(int i = 1; i &lt;= graph.nodes; i++)&#123;</div><div class="line">                if(graph.graph[start][i] == 1)</div><div class="line">                    DFS(visited,graph,i);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        Main solution = new Main();</div><div class="line">        Scanner in = new Scanner(System.in);</div><div class="line">        int num = in.nextInt();</div><div class="line">        for(int i = 0; i &lt; num; i++)&#123;</div><div class="line">            //输入顶点数和边数</div><div class="line">            Graph graph = new Graph();</div><div class="line">            graph.nodes = in.nextInt();</div><div class="line">            graph.edges = in.nextInt();</div><div class="line">            //初始化邻接矩阵</div><div class="line">            for(int j = 0; j &lt; graph.edges; j++)&#123;</div><div class="line">                int a = in.nextInt();</div><div class="line">                int b = in.nextInt();</div><div class="line">                graph.graph[a][b] = 1;</div><div class="line">                graph.graph[b][a] = 1;</div><div class="line">            &#125;</div><div class="line">            if(graph.edges != graph.nodes - 1)</div><div class="line">            &#123;</div><div class="line">                System.out.println(&quot;NO&quot;);</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            //判断是否连通</div><div class="line">            //初始化一个顶点访问数组,从1开始存储</div><div class="line">            int[] visited = new int[graph.nodes+1];</div><div class="line">            solution.DFS(visited,graph,1);</div><div class="line">            //对visited数组判断</div><div class="line">            boolean flag = true;</div><div class="line">            for(int j = 1; j &lt; graph.nodes; j++) &#123;</div><div class="line">                if (visited[j] == 0) &#123;</div><div class="line">                    flag = false;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            if(flag)</div><div class="line">                System.out.println(&quot;YES&quot;);</div><div class="line">            else</div><div class="line">                System.out.println(&quot;NO&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 
           
         
@@ -1598,7 +1711,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/02/27/DeepLearningNotes/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/RecommendationLearning/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -1623,8 +1736,8 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
             
               
                 
-                <a class="post-title-link" href="/2018/02/27/DeepLearningNotes/" itemprop="url">
-                  DeepLearningNotes
+                <a class="post-title-link" href="/2018/08/10/RecommendationLearning/" itemprop="url">
+                  Recommendation方向学习
                 </a>
               
             
@@ -1637,9 +1750,9 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-27T10:30:32+08:00">
-                2018-02-27
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
+                2018-08-10
               </time>
             
 
@@ -1654,11 +1767,11 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning</span>
+                  <a href="/categories/Paper/" itemprop="url" rel="index">
+                    <span itemprop="name">Paper</span>
                   </a>
                 </span>
 
@@ -1696,787 +1809,18 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
       
         
           
-            <p><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
-<h1 id="阅读-lt-白话深度学习与Tensorflow-gt-记"><a href="#阅读-lt-白话深度学习与Tensorflow-gt-记" class="headerlink" title="阅读&lt;白话深度学习与Tensorflow&gt;记"></a>阅读&lt;白话深度学习与Tensorflow&gt;记</h1><p>因为前几章都是介绍,不做记录了.近期更新中</p>
-<h2 id="1-第四章-前馈神经网络"><a href="#1-第四章-前馈神经网络" class="headerlink" title="1.第四章 前馈神经网络"></a>1.第四章 前馈神经网络</h2><h3 id="1-1-概念"><a href="#1-1-概念" class="headerlink" title="1.1 概念"></a>1.1 概念</h3><ul>
-<li>BP神经网络(Back Propagation Networks-反向传播网络)</li>
-<li>RBF Network-径向基函数神经网络<br>求解凸函数方法:梯度下降法. 凸函数的定义:</li>
-</ul>
-<script type="math/tex; mode=display">f(\frac{x_1+x_2}{2})\leq{\frac{f(x_1)+f(x_2)}{2}}</script><p>把残差函Loss数描述成待定的若干个w所描述的凸函数-Loss(w),那么就可以用梯度下降法,更新w的各个维度,最后找到满足Loss(w)极值点的位置.</p>
-<h2 id="2-第五章-手写板功能"><a href="#2-第五章-手写板功能" class="headerlink" title="2.第五章 手写板功能"></a>2.第五章 手写板功能</h2><p>直接上手了.</p>
-<h3 id="1-传统机器学习与深度学习对比"><a href="#1-传统机器学习与深度学习对比" class="headerlink" title="1.传统机器学习与深度学习对比"></a>1.传统机器学习与深度学习对比</h3><p>1.1 传统的机器学习中的监督学习方法概括：</p>
-<ul>
-<li><p>1 朴素贝叶斯</p>
-<ul>
-<li>实现的是概率量化计算的模型</li>
-<li>解释：通过对样本的统计，然后算出某件事A发生的概率和某件事B发生的概率之间的量化关系。</li>
-</ul>
-</li>
-<li><p>2 决策树</p>
-<ul>
-<li>通过选择合适的维度来增加约束条件降低分类的信息熵。</li>
-</ul>
-</li>
-<li><p>3 回归模型</p>
-<ul>
-<li>通过建模和拟合来确定待定系数，通过不断调整待定系数的大小来降低残差的大小，也就是降低模型预测值与训练目标的差距。</li>
-</ul>
-</li>
-<li><p>4 SVM（支持向量机）</p>
-<ul>
-<li>通过超平面来分割空间中不同的分类向量，让它们到超平面的距离尽可能远（以保证超平面的鲁棒性）</li>
-</ul>
-<p>而深度学习与此不同的是，它通过大量的线性分类器或非线性分类器、可导或不可导的激励函数，以及池化层（卷积网络中会用到这种设计）等功能对观测对象的特征进行自动化的提取。<br>然而存在的问题：</p>
-</li>
-<li><p>1.在神经网络中，一般网络是比较负责的，如此多的权重值w已经早就没有了统计学中的权值权重的意义，无法得到清晰的物理解释，也无法有效地进行逆向研究。</p>
-</li>
-<li>2.这种拥有极高的VC维的网络能够学到很多东西，但这种学习能力通常会导致泛化能力下降。</li>
-</ul>
-<h3 id="2-数据集的划分"><a href="#2-数据集的划分" class="headerlink" title="2.数据集的划分"></a>2.数据集的划分</h3><p> 深度学习中数据的切分：</p>
-<ul>
-<li>1.训练集：训练得到模型参数</li>
-<li><strong>2.验证集</strong>：用来调整分类器的参数的样本集，在训练过程中，网络模型会立刻在验证集进行验证。用来调整模型参数，我们可以在模型训练过程就可以观察到模型的效果，而不用等到训练结束。并且，有助于验证模型的泛化能力，预防过拟合，是深度学习的标配。</li>
-<li>3.测试集：测试集则是在训练后为测试模型的能力（主要是分类能力）而设置的一部分数据集合。</li>
-</ul>
-<h2 id="第六章-卷积神经网络"><a href="#第六章-卷积神经网络" class="headerlink" title="第六章 卷积神经网络"></a>第六章 卷积神经网络</h2><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><p>1.1 同样是一种前馈神经网络，卷积神经网络的两个特点：</p>
-<ul>
-<li>卷积网络有至少一个<strong>卷积层</strong>，用来提取特征。</li>
-<li>卷积网络的卷积层通过<strong>权值共享</strong>的方式进行工作，大大减少权值w的数量，使得在训练中在达到同样识别率的情况下收敛速度明显快于全连接BP网络。</li>
-</ul>
-<p>1.2 用途<br>卷积网络主要用来识别位移、缩放及其他形式扭曲不变性的二维图形。</p>
-<h3 id="2-卷积"><a href="#2-卷积" class="headerlink" title="2.卷积"></a>2.卷积</h3><p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/Convolution.gif" alt="卷积操作"><br>2.1 解释</p>
+            <h3 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h3><p>目前推荐上研究的方向有这样几个方向:<br>1.Temporal Context-Aware Recommendation<br>2.Spatial Recommendation for Out-of-Town Users<br>3.Location-based and Real-time Recommendation<br>4.Efficiency of Online Recommendation</p>
+<p>补充学习:</p>
 <blockquote>
-<p>卷积：在泛函分析中，卷积(convolution)是一种函数的定义。它是通过两个函数f和g生成第三个函数的一种数学算子，表征函数f与g经过翻转和平移的重叠部分的面积。</p>
+<p>online learning强调的是学习是实时的，流式的，每次训练不用使用全部样本，而是以之前训练好的模型为基础，每来一个样本就更新一次模型，这种方法叫做OGD（online gradient descent）。</p>
+<p>batch learning或者叫offline learning强调的是每次训练都需要使用全量的样本，因而可能会面临数据量过大的问题。</p>
 </blockquote>
-<p>卷积的数学定义：</p>
-<script type="math/tex; mode=display">h(x)=f(x)*g(x)=\int^{+\infty}_{-\infty}f(t)g(x-t)dt$$.
-
-卷积过程可以看成是特征的一种压缩过程，一般卷积函数后可能还会跟一个激励函数ReLu函数等。
-
-2.2 卷积层其他参数
-* Padding：边界填充
-    - 保持边界信息
-    - 如果输入图片有差异，可以通过Padding来进行填充，使得输入尺寸一致
-
-* Stride：步幅，Stride可以理解为每次滑动的单位。
-
-### 3.池化
-![池化操作](https://raw.githubusercontent.com/DuncanZhou/images/master/pooling.jpg)
-3.1 常见的池化处理有两种方式：
-* Max Pooling：最大化，在前面输出过来的数据上做一个取最大值的处理
-* Mean Pooling：平均值，同理求平均
-
-3.2 池化层有这样几个功能：
-* 它又进行了一次特征提取，所以肯定是能够减小下一层数据的处理量的。
-* 由于这个特征的提取，能够有更大的可能性进一步**获取更为抽象的信息**，从而防止过拟合，或者说提高一定的**泛化性**。
-* 由于这种抽象性，所以**能够对输入的微小变化产生更大的容忍，**也就是保持其不变性。(容忍包括图形的**少量平移、旋转以及缩放**等变化)
-
-### 4.SoftMax函数
-![Softmax函数](https://raw.githubusercontent.com/DuncanZhou/images/master/Softmax.png)
-4.1 Softmax函数数学定义：
-
-$$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数的定义可以看出，最后一层的结点的输出值加和都是1.</p>
-<p>4.2 交叉熵<br>Softmax这种激励函数使用的损失函数看上去比较特殊，叫做交叉熵(cross entropy)损失函数。</p>
-<h3 id="5-典型的CNN网络"><a href="#5-典型的CNN网络" class="headerlink" title="5.典型的CNN网络"></a>5.典型的CNN网络</h3><h2 id="第七章-综合问题-即一些笼统地都会出现的问题"><a href="#第七章-综合问题-即一些笼统地都会出现的问题" class="headerlink" title="第七章 综合问题(即一些笼统地都会出现的问题)"></a>第七章 综合问题(即一些笼统地都会出现的问题)</h2><p>本书将这一章安排在第七章，可我总觉这一章貌似应该放在讲完几种神经网络更靠后的位置。</p>
-<p>下面罗列一些知识点，供之后再汇过来补充。</p>
-<ul>
-<li>1.为了加快训练速度，使用<strong>GPU</strong>并行计算。</li>
-<li>2.在TensorFlow中指定一个Batch的Size来规定每次被随机选择参与归纳的样本数量，完成<strong>随机梯度下降</strong>。</li>
-<li>3.梯度消失问题解决方案：<ul>
-<li>初始化一个合适的w</li>
-<li><strong>选择一个合适的激励函数(</strong>ReLU-“热鲁函数”,Rectified Linear Units-线性修正单元激励函数)</li>
-</ul>
-</li>
-<li>4.数据预处理：归一化<ul>
-<li>线性函数归一化</li>
-<li>0均值标准化</li>
-</ul>
-</li>
-<li>5.参数初始化：权值w的初始化。业界比较认可的说法是<strong>把整个网络中所有的w初始化成以0为均值,以一个很小的值为标准差的正态分布的方式效果会比较好。即N(0,1)正态分布。</strong></li>
-<li>6.正则化:在损失函数中加入正则项。带有正则项的损失函数前半部分的损失函数称为”经验风险”，后半部分称为”结构风险”。引入正则化的目的是:<strong>防止过拟合</strong>。</li>
-<li>7.其他超参数。什么是超参数:通常指那些在机器学习算法训练的步骤开始之前设定的一些参数值，这些参数没法通过算法本身来学会的。所以，超参的设定可能更多的是经验了。</li>
-<li>8.DropOut：在一轮的训练阶段丢弃一部分网络节点，在一定程度上降低了VC维的数量，减小过拟合的风险。</li>
-</ul>
-<h2 id="第八章-循环神经网络（Recurrent-Neural-Networks）"><a href="#第八章-循环神经网络（Recurrent-Neural-Networks）" class="headerlink" title="第八章 循环神经网络（Recurrent Neural Networks）"></a>第八章 循环神经网络（Recurrent Neural Networks）</h2><h3 id="1-引入"><a href="#1-引入" class="headerlink" title="1.引入"></a>1.引入</h3><p>1.1 隐马尔可夫模型:训练一个HMM模型是比较容易的,<strong>输入为</strong>:状态序列$X_i$和输出序列$O_i$,得到的模型由两个矩阵构成,一个是状态X之间的表示隐含状态转移关系的矩阵,一个是X到O之间的输出概率矩阵.</p>
-<h3 id="2-循环神经网络"><a href="#2-循环神经网络" class="headerlink" title="2.循环神经网络"></a>2.循环神经网络</h3><p>2.1 输入:$X_t$向量,输出:$Y$,需要训练的待定系数$W_X$和$W_H$.前面一次的输入缓存在$H_t$中,每次$W_X$和输入$X_t$做乘积,然后与另一部分H<sub>t-1</sub>和$W_H$乘积共同参与运算得到$Y$.最后训练得到的就是$W_X$和$W_H$系数矩阵.</p>
-<p>2.2 训练过程:传统的RNN在训练过程中的效果不理想,改进后的出现了LSTM算法.</p>
-<h4 id="3-LSTM-长短期记忆网络"><a href="#3-LSTM-长短期记忆网络" class="headerlink" title="3.LSTM(长短期记忆网络)"></a>3.LSTM(长短期记忆网络)</h4><p>3.1 LSTM与传统的RNN网络相比多了一个非常有用的机制,忘记门(forget gate).</p>
-<p>3.2 优点:减少训练的时间复杂度,消除梯度爆炸</p>
-<p>3.3 构造</p>
-<ul>
-<li>在t时刻,<strong>LSTM的输入</strong>有三个:当前时刻网络的输入值X<sub>t</sub>,上一时刻LSTM的输出值H<sub>t-1</sub>,以及上一时刻的单元状态C<sub>t-1</sub>.<strong>LSTM的输出</strong>有两个:当前时刻LSTM输出值$H_t$和当前时刻单元状态$C_t$.</li>
-<li>LSTM使用门来控制长期状态,门其实就是一层全连接层,输入是一个向量,输出是一个0到1之间的实数(Sigmoid层).<ul>
-<li>当门输出为0时,任何向量与之相乘都会得到0向量,就是什么都不能通过.</li>
-<li>当门输出为1时,任何向量与之相乘都不会有任何改变,相当于什么都可以通过.</li>
-</ul>
-</li>
-<li>LSTM前向计算中有三个门<ul>
-<li><strong>遗忘门</strong>:用来控制上一时刻的单元状态C<sub>t-1</sub>有多少能保留到当前时刻$C_t$</li>
-<li><strong>输入门</strong>:用来控制即时时刻网络的输入$X_t$有多少能保存到单元状态$C_t$.</li>
-<li><strong>输出门</strong>:控制单元状态$C_t$有多少能保留到LSTM的当前输出值$H_t$.</li>
-</ul>
-</li>
-</ul>
-<p>3.4 LSTM和传统的RNN对比:<br>传统的RNN只有一个状态,对短期的输入非常敏感,而LSTM增加了一个状态C,用来保存长期的状态</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/02/04/Spielberg/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/02/04/Spielberg/" itemprop="url">
-                  Spielberg-哈佛大学演讲
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-04T14:57:09+08:00">
-                2018-02-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Thank you, thank you, President Faust, and Paul Choi, thank you so much.<br>非常感谢Faust校长、Paul Choi校长 谢谢你们。</p>
-<p>It’s an honor and a thrill to address this group of distinguished alumni and supportive friends and kvelling parents. We’ve all gathered to share in the joy of this day, so please join me in congratulating Harvard’s Class of 2016.<br>非常荣幸能被邀请成为哈佛2016年毕业典礼的演讲嘉宾，在众位优秀的毕业生、热情的朋友和诸位家长前做演讲。今天让我们一起，祝贺2016届哈佛毕业生顺利毕业。</p>
-<p>I can remember my own college graduation, which is easy, since it was only 14 years ago. How many of you took 37 years to graduate? Because, like most of you, I began college in my teens, but sophomore year, I was offered my dream job at Universal Studios, so I dropped out. I told my parents if my movie career didn’t go well, I’d re-enroll.<br>我记得我自己的大学毕业典礼，这不难，因为就是14年以前的事情。你们当中的多少人花了37年才毕业？因为就像你们中的多数人，我在十几岁时进入大学，但是大二的时候我从环球影城获得了我的梦想工作，所以我休学了。我跟我的父母说，如果我的电影事业不顺，我会重新上学的。</p>
-<p>It went all right.<br>我的电影事业发展得还行。</p>
-<p>But eventually, I returned for one big reason. Most people go to college for an education, and some go for their parents, but I went for my kids. I’m the father of seven, and I kept insisting on the importance of going to college, but I hadn’t walked the walk. So, in my fifties, I re-enrolled at Cal State - Long Beach, and I earned my degree.<br>但是我最后还是回到了学校，主要为了一个原因。很多人为了获得教育去上大学，有的人为了父母上大学，而我是为了我的孩子去上的。我是7个孩子的爸爸，我总是不断强调上大学的重要性，可我自己都没上过。所以在我50多岁的时候，我重新进入加州州立大学长滩分校，获得了学位。</p>
-<p>I just have to add: It helped that they gave me course credit in paleontology for the work I did on Jurassic Park. That’s three units for Jurassic Park, thank you.<br>我必须补充一点，我获得学位的一个原因是学校为我在《侏罗纪公园》里所做的，给我了考古学学分。《侏罗纪公园》换得了3个学分，非常感谢。</p>
-<p>Well, I left college because I knew exactly what I wanted to do, and some of you know, too - but some of you don’t. Or maybe you thought you knew but are now questioning that choice. Maybe you’re sitting there trying to figure out how to tell your parents that you want to be a doctor and not a comedy writer.<br>我离开大学是因为我很清楚地知道我想要做什么。你们中的一些人也知道，但是有些人还没弄明白。或者你以为你知道，但是现在开始质疑这个决定。或者你坐在这里，试着想要怎么告诉你的父母，你想要成为一名医生，而不是喜剧编剧。</p>
-<p>Well, what you choose to do next is what we call in the movies the ‘character-defining moment.’ Now, these are moments you’re very familiar with, like in the last Star Wars: The Force Awakens, when Rey realizes the force is with her. Or Indiana Jones choosing mission over fear by jumping over a pile of snakes.<br>你接下来要做的事情，在我们这行叫做“定义角色的时刻”。这些是你非常熟悉的场景，例如在最近的一部《星球大战：原力觉醒》里女主角Rey发现自己拥有原力的一刻。或者在《夺宝奇兵》里印第安纳·琼斯选择战胜恐惧跳过蛇堆，继续任务的时候。</p>
-<p>Now in a two-hour movie, you get a handful of character-defining moments, but in real life, you face them every day. Life is one strong, long string of character-defining moments. And I was lucky that at 18 I knew what I exactly wanted to do. But I didn’t know who I was. How could I? And how could any of us? Because for the first 25 years of our lives, we are trained to listen to voices that are not our own. Parents and professors fill our heads with wisdom and information, and then employers and mentors take their place and explain how this world really works.<br>一部两小时的电影里有几个定义角色的时刻，但是在真实的生活中，你每天都在面对这样的时刻。生活就是一长串强大的定义角色的时刻。我非常幸运在18岁时就知道我想要做什么。但是我并不知道我是谁。我怎么可能知道呢？我们中任何人都不知道。因为在生命的头一个25年里，我们被训练去倾听除自己以外的人的声音。父母和教授们把智慧和信息塞进我们的脑袋，然后换上雇主和导师来向我们解释这个世界到底是怎么一回事。</p>
-<p>And usually these voices of authority make sense, but sometimes, doubt starts to creep into our heads and into our hearts. And even when we think, ‘that’s not quite how I see the world,’ it’s kind of easier to just to nod in agreement and go along, and for a while, I let that going along define my character. Because I was repressing my own point of view, because like in that Nilsson song, ‘Everybody was talkin’ at me, so I couldn’t hear the echoes of my mind.’<br>通常这些权威人物的声音是有道理的，但是有些时候，质疑会爬进你的脑子和心里。就算我们觉得“这好像不太是我看世界的方式”，点头表示赞同也是更容易做的事情，有段时间我就让“附和”定义了我。因为我压抑了自己的想法，因为就像尼尔森歌里唱的一样：“每个人都在对我说话，所以我听不见我思考的回声。”</p>
-<p>And at first, the internal voice I needed to listen to was hardly audible, and it was hardly noticeable - kind of like me in high school. But then I started paying more attention, and my intuition kicked in.<br>一开始，我需要倾听的内心的声音几乎一声不响，也难以察觉——就像高中时的我。但是之后我开始更加注意这些声音，然后我的直觉开始工作。</p>
-<p>And I want to be clear that your intuition is different from your conscience. They work in tandem, but here’s the distinction: Your conscience shouts, ‘here’s what you should do,’ while your intuition whispers, ‘here’s what you could do.’ Listen to that voice that tells you what you could do. Nothing will define your character more than that.<br>我想告诉你，你的直觉和你的良心是两个不同的事物。它们会协力工作，但这是它们的不同：你的良心会呼喊“你应当去做这个”，而你的直觉只会低语“你是可以这样做的”。倾听那个告诉你你能怎么去做的声音。没有什么比这更能定义你的角色的了。</p>
-<p>Because once I turned to my intuition, and I tuned into it, certain projects began to pull me into them, and others, I turned away from.<br>因为我一旦会听从我的直觉，我就会全力投入到一些项目中去，而放弃其它。</p>
-<p>And up until the 1980s, my movies were mostly, I guess what you could call ‘escapist.’ And I don’t dismiss any of these movies - not even 1941. Not even that one. And many of these early films reflected the values that I cared deeply about, and I still do. But I was in a celluloid bubble, because I’d cut my education short, my worldview was limited to what I could dream up in my head, not what the world could teach me.<br>直到19世纪80年代时，我电影中的大多数，我猜你们可以称之为“逃避现实”。我不会拒绝任何这些电影的邀约，不只是《1941》。不止那一部，很多早期电影反映了我当时内心的价值观，如今我仍然在这样做。但我当时处于自己的电影泡沫中，因为我的辍学，我受限的世界观部分来自于我的想象，而不是外界教会我的。</p>
-<p>But then I directed The Color Purple. And this one film opened my eyes to experiences that I never could have imagined, and yet were all too real. This story was filled with deep pain and deeper truths, like when Shug Avery says, ‘Everything wants to be loved.’ My gut, which was my intuition, told me that more people needed to meet these characters and experience these truths. And while making that film, I realized that a movie could also be a mission.<br>当我执导《紫色》的时候，这部电影让我体验了我从未想象过，却如此真实的一些感受。这个故事充满了深深的痛苦和更深一部的真理，就像Shug Avery说“任何一个东西都想被爱着。”我的直觉告诉我，更多的人需要来认识这样的角色，来体验这样的真理。在导演这部电影时，我突然发现一部电影也可以是一个使命。</p>
-<p>I hope all of you find that sense of mission. Don’t turn away from what’s painful. Examine it. Challenge it.<br>我希望你们所有人都能找到这样的使命感。不要避让让你痛苦的事情。研究它、挑战它。</p>
-<p>My job is to create a world that lasts two hours. Your job is to create a world that lasts forever. You are the future innovators, motivators, leaders and caretakers.<br>我的工作是要构筑一个维持两小时的世界。你的工作是要建一个会一直持续的世界。你们是未来的创新者、激励者、领导者和守护者。</p>
-<p>And the way you create a better future is by studying the past. Jurassic Park writer Michael Crichton, who graduated from both this college and this medical school, liked to quote a favorite professor of his who said that if you didn’t know history, you didn’t know anything. You were a leaf that didn’t know it was part of a tree. So history majors: Good choice, you’re in great shape…Not in the job market, but culturally.<br>你们要研究过去，才能建设一个更好的未来。《侏罗纪公园》的编剧Michael Crichton是从这所大学的医学院毕业的。他喜欢引用他最喜欢的一位教授的话，他说如果你不懂得历史，那么你一无所知。你是一片树叶，不知道自己只是树的一部分。所以主修历史的同学们，很棒的选择，你的前景不错…不是说在招聘市场上啊，从文化上来说的话。</p>
-<p>The rest of us have to make a little effort. Social media that we’re inundated and swarmed with is about the here and now. But I’ve been fighting and fighting inside my own family to get all my kids to look behind them, to look at what already has happened. Because to understand who they are is to understand who we were, and who their grandparents were, and then, what this country was like when they emigrated here. We are a nation of immigrants - at least for now.<br>我们剩下的其它人就需要努点力了。淹没和吞噬我们的社交媒体只关乎当下。但是我自己和家人都不断尝试，让我所有的孩子们能透过这些，去看过去发生过的事情。因为要知道他们是谁，就要去理解他们曾经是谁，他们的祖父母是谁，以及当他们移民到这个国家来的时候，这个国家到底是什么样。我们是一个移民国家——至少现在还是。</p>
-<p>So, to me, this means we all have to tell our own stories. We have so many stories to tell. Talk to your parents and your grandparents, if you can, and ask them about their stories. And I promise you, like I have promised my kids, you will not be bored.<br>所以对我来说，这意味着我们每个人都有自己的故事可讲，有很多故事可讲。如果可以的话，和你的父母、祖父母聊聊天，听听他们的故事。我保证，就像我向我的孩子保证的一样，一定收获颇丰，绝对不会无聊。</p>
-<p>And that’s why I so often make movies based on real-life events. I look to history not to be didactic, ‘cause that’s just a bonus, but I look because the past is filled with the greatest stories that have ever been told. Heroes and villains are not literary constructs, but they’re at the heart of all history.<br>这就是为什么我经常就会导演由真实事件改编的电影。我回顾历史并不是为了说教，这是额外的奖励，我回顾历史因为过去充满了那些从来没被讲述出来的伟大故事。英雄和坏人不是文学塑造出来的，而是在一切历史的最中心。</p>
-<p>And again, this is why it’s so important to listen to your internal whisper. It’s the same one that compelled Abraham Lincoln and Oskar Schindler to make the correct moral choices. In your defining moments, do not let your morals be swayed by convenience or expediency. Sticking to your character requires a lot of courage. And to be courageous, you’re going to need a lot of support.<br>所以，这就是为什么倾听你内心的低语非常重要。这与驱使亚伯拉罕·林肯和奥斯卡·辛德勒去做正确的道德选择的东西是一样的。在属于你的“定义角色的时刻”里，不要让你的道德被便利或者私利左右。忠于你的角色需要很多的勇气，变得勇敢，你又需要很多的支持。</p>
-<p>And if you’re lucky, you have parents like mine. I consider my mom my lucky charm. And when I was 12 years old, my father handed me a movie camera, the tool that allowed me to make sense of this world. And I am so grateful to him for that. And I am grateful that he’s here at Harvard, sitting right down there.<br>如果你足够幸运，你会有像我父母一样开明的父母。我把母亲看做我的幸运女神。12岁时，我父亲给了我一个电影摄像机，也是因为有了这个，我可以更好地去感知这个世界，我很感谢我的父亲。现在我很感激父亲也来到哈佛，坐在这里。</p>
-<p>My dad is 99 years old, which means he’s only one year younger than Widener Library. But unlike Widener, he’s had zero cosmetic work. And dad, there’s a lady behind you, also 99, and I’ll introduce you after this is over, okay?<br>我父亲今年99岁了，只比怀德纳图书馆（哈佛最大的图书馆今年100年）年轻1岁，但不像这个图书馆可以翻新，父亲已垂垂老矣。另外，父亲，在你身后有一位99岁的女士，这个之后我会介绍你给她，好吗？</p>
-<p>But look, if your family’s not always available, there’s backup. Near the end of It’s a Wonderful Life - you remember that movie, It’s a Wonderful Life? Clarence the Angel inscribes a book with this: “No man is a failure who has friends.” And I hope you hang on to the friendships you’ve made here at Harvard. And among your friends, I hope you find someone you want to share your life with. I imagine some of you in this yard may be a tad cynical, but I want to be unapologetically sentimental. I spoke about the importance of intuition and how there’s no greater voice to follow. That is, until you meet the love of your life. And this is what happened when I met and married Kate, and that became the greatest character-defining moment of my life.<br>但是，如果你的家人并不总是支持你，还有B计划。在《生活多美好》剧终前，天使Clarence在一本书上题写了这句话：“有朋友的人，不会是生活的失败者。”我希望你们会珍惜在哈佛建立的这些友谊。而在你的朋友之中，我希望你们找个能分享你生活的另一半。我猜想你们中的一些人对此会会抱有怀疑，但是我表现出的感性毫无歉意。我说了直觉的重要性，以及除了直觉没有更值得追随的声音。这是指在你遇到你一生最爱之前。我与妻子相恋并结婚的经历就是如此，这成为了我生活中最重要的“定义角色的时刻”。</p>
-<p>Love, support, courage, intuition. All of these things are in your hero’s quiver, but still, a hero needs one more thing: A hero needs a villain to vanquish. And you’re all in luck. This world is full of monsters. And there’s racism, homophobia, ethnic hatred, class hatred, there’s political hatred, and there’s religious hatred.<br>爱、支持、勇气、直觉。所有的这些都在你英雄的箭袋之中，但是英雄还需要一件东西——英雄需要一个去征服的坏人。而你们所有人都很走运，这个世界充满了怪物。有种族歧视、恐同、种族仇恨、阶级仇恨，还有政治仇恨和宗教仇恨。</p>
-<p>As a kid, I was bullied - for being Jewish. This was upsetting, but compared to what my parents and grandparents had faced, it felt tame. Because we truly believed that anti-Semitism was fading. And we were wrong. Over the last two years, nearly 20,000 Jews have left Europe to find higher ground. And earlier this year, I was at the Israeli embassy when President Obama stated the sad truth. He said: ‘We must confront the reality that around the world, anti-Semitism is on the rise. We cannot deny it.’<br>还是孩子的时候，我因为是犹太人而被起伏。这让人丧气，但是与我父母和祖父母曾经面对的事情比起来，这很平淡。我们都真正相信反犹太运动正在衰退，但我们错了。在过去两年间，有大约两万犹太人离开欧洲寻找生存之地。今年早些时候，我在以色列大使馆听奥巴马总统陈述了一个悲惨的现实。他说：“反犹太运动的增势发生在全球各地，这是我们需要面对的事实。我们不能否认它。”</p>
-<p>My own desire to confront that reality compelled me to start, in 1994, the Shoah Foundation. And since then, we’ve spoken to over 53,000 Holocaust survivors and witnesses in 63 countries and taken all their video testimonies. And we’re now gathering testimonies from genocides in Rwanda, Cambodia, Armenia and Nanking. Because we must never forget that the inconceivable doesn’t happen - it happens frequently. Atrocities are happening right now. And so we wonder not just, ‘When will this hatred end?’ but, ‘How did it begin?’<br>我正视这一事实的强烈愿望驱使我从1994年成立了大屠杀真相基金会，从那以后我们采访了63个国家5.3万名大屠杀的幸存者或目击者，录制了他们所有人的证词。现在我们还在收集卢旺达、柬埔寨、亚美尼亚以及南京大屠杀的证词。因为我们永远都不要忘记那些难以想象的罪恶会发生，并且时有发生。暴行也仍在发生。所以我们不能只去想“仇恨什么时候才会停止？”而是“它是怎么开始的？”。</p>
-<p>Now, I don’t have to tell a crowd of Red Sox fans that we are wired for tribalism. But beyond rooting for the home team, tribalism has a much darker side. Instinctively and maybe even genetically, we divide the world into ‘us’ and ‘them.’ So the burning question must be: How do all of us together find the ‘we?’ How do we do that? There’s still so much work to be done, and sometimes I feel the work hasn’t even begun. And it’s not just anti-Semitism that’s surging - Islamophobia’s on the rise, too. Because there’s no difference between anyone who is discriminated against, whether it’s the Muslims, or the Jews, or minorities on the border states, or the LGBT community - it is all big one hate.<br>我想我并不需要向一群红袜队的球迷解释我们为什么会拥抱部落文化。但是在为主队加油之外，部落文化有它更阴暗的一面。本能地或者由基因决定，我们把世界分成“我们”和“他们”。所以棘手的问题是，我们所有人能共同发现“我们”？我们应当如何去做？仍旧有许多的工作要做，有的时候我甚至觉得这一事业还没开始。这不仅仅是指反犹太运动抬头，伊斯兰恐惧症也在抬头。因为那些被歧视的人群之间是没有区别的，不管他们是穆斯林、犹太人、边境州里的弱势人群，或者是同性恋、双性恋及变性者社群——他们遭受的都是同样的仇恨。</p>
-<p>And to me, and, I think, to all of you, the only answer to more hate is more humanity. We gotta repair - we have to replace fear with curiosity. ‘Us’ and ‘them’ - we’ll find the ‘we’ by connecting with each other. And by believing that we’re members of the same tribe. And by feeling empathy for every soul - even Yalies.<br>对我来说，我想对你们也一样，只能用更多的人性来对抗更多的仇恨。我们需要修护，用好奇来替代恐惧。不排斥异己，我们通过建立人与人的联系来找到共同的“我们”。我们要相信我们是同一个部落的成员。我们对所有的人都要有同情心——哪怕对“友校”耶鲁人也要如此。</p>
-<p>My son graduated from Yale, thank you…<br>我的儿子就是从耶鲁毕业的，谢谢…</p>
-<p>But make sure this empathy isn’t just something that you feel. Make it something you act upon. That means vote. Peaceably protest. Speak up for those who can’t and speak up for those who may be shouting but aren’t being hard. Let your conscience shout as loud as it wants if you’re using it in the service of others.<br>但是你要确认你的同理心不只是你的感受。让它是你采取行动的诱因。这是指参加投票、和平地抗议、为那些不能为自己发声或者已经声嘶力竭却无法让人注意的人发声。让你的良心大声疾呼吧，如果是为了服务于他们。</p>
-<p>And as an example of action in service of others, you need to look no further than this Hollywood-worthy backdrop of Memorial Church. Its south wall bears the names of Harvard alumni - like President Faust has already mentioned - students and faculty members, who gave their lives in World War II. All told, 697 souls, who once tread the ground where stand now, were lost. And at a service in this church in late 1945, Harvard President James Conant - which President Faust also mentioned - honored the brave and called upon the community to ‘reflect the radiance of their deeds.’<br>作为为他人服务的行动榜样，你只需要看看这像好莱坞背景一般的纪念教堂。它的南墙上是哈佛校友们的名字，福斯特校长已经说过，他们是在第二次世界大战中献身的哈佛学生和教师们。697个人，他们曾经在你站着的地方逗留过，697条生命逝去。在1945年纪念教堂举行的追思会上，柯南特校长纪念这些勇敢的人们，并号召哈佛人身上要“反射出他们壮举的荣光”。</p>
-<p>Seventy years later, this message still holds true. Because their sacrifice is not a debt that can be repaid in a single generation. It must be repaid with every generation. Just as we must never forget the atrocities, we must never forget those who fought for freedom. So as you leave this college and head out into the world, continue please to ‘reflect the radiance of their deeds,’ or as Captain Miller in Saving Private Ryan would say, “Earn this.”<br>70年后，这句话仍然适用。因为他们所做出的牺牲不是一代人就能报答的。每一代人都应该报答他们。就像我们永远不该忘记那些恶行，我们永远也不应当忘记那些为自由而战的人。所以当你离开这所学校进入世界，请继续“反射出他们壮举的荣光”，或者像《拯救大兵瑞恩》里米勒上尉说的“别辜负大家”。</p>
-<p>And please stay connected. Please never lose eye contact. This may not be a lesson you want to hear from a person who creates media, but we are spending more time looking down at our devices than we are looking in each other’s eyes. So, forgive me, but let’s start right now. Everyone here, please find someone’s eyes to look into. Students, and alumni and you too, President Faust, all of you, turn to someone you don’t know or don’t know very well. They may be standing behind you, or a couple of rows ahead. Just let your eyes meet. That’s it. That emotion you’re feeling is our shared humanity mixed in with a little social discomfort.<br>此外，请保持彼此的联系，别避而不见。这可能不是你想从一个创作媒体的人这里听的一课，但是我们花越来越多的时间低头看手机，而不是注视别人的眼睛。所以请原谅我，现在所有人，请找一双眼睛深刻凝视。学生们、校友们都是，福斯特校长、你们所有人，转向一位你不认识或者不熟悉的人，对视，仅此而已。你所感受到的使我们共同拥有的人性，混进去了一丝社交不适感。</p>
-<p>But, if you remember nothing else from today, I hope you remember this moment of human connection. And I hope you all had a lot of that over the past four years. Because today you start down the path of becoming the generation on which the next generation stands. And I’ve imagined many possible futures in my films, but you will determine the actual future. And I hope that it’s filled with justice and peace.<br>如果你今天别的什么都没记住，我希望你能记住这一刻人与人之间的联系。我希望过去四年中，你们经历了很多的这样的时刻。因为从今天开始，你们会像前辈一样，托举起下一辈人。我在我的电影里幻想过很多种不同的未来，但是你们会决定未来的实际样子。我希望，这样的未来充满公正与和平。</p>
-<p>And finally, I wish you all a true, Hollywood-style happy ending. I hope you outrun the T. rex, catch the criminal and for your parents’ sake, maybe every now and then, just like E.T.: Go home. Thank you.<br>最后，我祝愿大家好莱坞式的大团圆结局成真。祝你们能跑过暴龙、抓住罪犯，为了你们的父母，也别忘了像E.T.那样常回家看看。谢谢。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/31/Kennedy/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/31/Kennedy/" itemprop="url">
-                  Kennedy-First Inaugural Address
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-31T13:48:15+08:00">
-                2018-01-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Vice President Johnson, Mr. Speaker, Mr. Chief Justice, President Eisenhower, Vice President Nixon, President Truman, reverend clergy, fellow citizens:<br>约翰逊副总统、议长先生、首席大法官、艾森豪威尔总统、尼克松副总统、楚门总统、尊敬的神父以及同胞们：</p>
-<p>We observe today not a victory of party, but a celebration of freedom — symbolizing an end, as well as a beginning — signifying renewal, as well as change. For I have sworn before you and Almighty God the same solemn oath our forebears prescribed nearly a century and three-quarters ago.<br>今天我们庆祝的不是政党的胜利，而是自由的胜利。这象征着一个结束，也象征着一个开端；意味着延续也意味着变革。因为我已在你们和全能的上帝面前，宣读了我们的先辈在170多年前拟定的庄严誓言。</p>
-<p>The world is very different now. For man holds in his mortal hands the power to abolish all forms of human poverty and all forms of human life. And yet the same revolutionary beliefs for which our forebears fought are still at issue around the globe — the belief that the rights of man come not from the generosity of the state, but from the hand of God.<br>现在的世界已大不相同了。人类的巨手掌握着既能消灭人间的各种贫困，又能毁灭人间的各种生活的力量。但我们的先辈为之奋斗的那些革命信念，在世界各地仍然有着争论。这个信念就是：人的权利并非来自国家的慷慨，而是来自上帝恩赐。</p>
-<p>We dare not forget today that we are the heirs of that first revolution. Let the word go forth from this time and place, to friend and foe alike, that the torch has been passed to a new generation of Americans — born in this century, tempered by war, disciplined by a hard and bitter peace, proud of our ancient heritage, and unwilling to witness or permit the slow undoing of those human rights to which this nation has always been committed, and to which we are committed today at home and around the world.<br>今天，我们不敢忘记我们是第一次革命的继承者。让我们的朋友和敌人同样听见我此时此地的讲话：火炬已经传给新一代美国人。这一代人在本世纪诞生，在战争中受过锻炼，在艰难困苦的和平时期受过陶冶，他们为我国悠久的传统感到自豪－－他们不愿目睹或听任我国一向保证的、今天仍在国内外作出保证的人权渐趋毁灭。</p>
-<p>Let every nation know, whether it wishes us well or ill, that we shall pay any price, bear any burden, meet any hardship, support any friend, oppose any foe, to assure the survival and the success of liberty.<br>让每个国家都知道－－不论它希望我们繁荣还是希望我们衰落－－为确保自由的存在和自由的胜利，我们将付出任何代价，承受任何负担，应付任何艰难，支持任何朋友，反抗任何敌人。</p>
-<p>This much we pledge — and more.<br>这些就是我们的保证－－而且还有更多的保证。</p>
-<p>To those old allies whose cultural and spiritual origins we share, we pledge the loyalty of faithful friends. United there is little we cannot do in a host of cooperative ventures. Divided there is little we can do — for we dare not meet a powerful challenge at odds and split asunder.<br>对那些和我们有着共同文化和精神渊源的老盟友、我们保证待以诚实朋友那样的忠诚。我们如果团结一致，就能在许多合作事业中无往不胜；我们如果分歧对立，就会一事无成－－因为我们不敢在争吵不休、四分五裂时迎接强大的挑战。</p>
-<p>To those new states whom we welcome to the ranks of the free, we pledge our word that one form of colonial control shall not have passed away merely to be replaced by a far more iron tyranny. We shall not always expect to find them supporting our view. But we shall always hope to find them strongly supporting their own freedom — and to remember that, in the past, those who foolishly sought power by riding the back of the tiger ended up inside.<br>对那些我们欢迎其加入到自由行列中来的新国家，我们格守我们的誓言：决不让一种更为残酷的暴政来取代一种消失的殖民统治。我们并不总是指望他们会支持我们的观点。但我们始终希望看到他们坚强地维护自己的自由－－而且要记住，在历史上，凡愚蠢地狐假虎威者，终必葬身虎口。</p>
-<p>To those people in the huts and villages of half the globe struggling to break the bonds of mass misery, we pledge our best efforts to help them help themselves, for whatever period is required — not because the Communists may be doing it, not because we seek their votes, but because it is right. If a free society cannot help the many who are poor, it cannot save the few who are rich.<br>对世界各地身居茅舍和乡村、为摆脱普遍贫困而斗争的人们，我们保证尽最大努力帮助他们自立，不管需要花多长时间－－之所以这样做，并不是因为共产党可能正在这样做，也不是因为我们需要他们的选票，而是因为这样做是正确的。自由社会如果不能帮助众多的穷人，也就无法挽救少数富人。</p>
-<p>To our sister republics south of our border, we offer a special pledge: to convert our good words into good deeds, in a new alliance for progress, to assist free men and free governments in casting off the chains of poverty. But this peaceful revolution of hope cannot become the prey of hostile powers. Let all our neighbors know that we shall join with them to oppose aggression or subversion anywhere in the Americas. And let every other power know that this hemisphere intends to remain the master of its own house.<br>对我国南面的姐妹共和国，我们提出一项特殊的保证－－在争取进步的新同盟中，把我们善意的话变为善意的行动，帮助自由的人们和自由的政府摆脱贫困的枷锁。但是，这种充满希望的和平革命决不可以成为敌对国家的牺牲品。我们要让所有邻国都知道，我们将和他们在一起，反对在美洲任何地区进行侵略和颠覆活动。让所有其他国家都知道，本半球的人仍然想做自己家园的主人。</p>
-<p>To that world assembly of sovereign states, the United Nations, our last best hope in an age where the instruments of war have far outpaced the instruments of peace, we renew our pledge of support — to prevent it from becoming merely a forum for invective, to strengthen its shield of the new and the weak, and to enlarge the area in which its writ may run.<br>对联合国，主权国家的世界性议事机构，我们在战争手段大大超过和平手段的时代里最后的、最美好的希望所在，我们重申予以支持：防止它仅仅成为谩骂的场所；加强它对新生国家和弱小国家的保护；扩大它的行使法令的管束范围。</p>
-<p>Finally, to those nations who would make themselves our adversary, we offer not a pledge but a request: that both sides begin anew the quest for peace, before the dark powers of destruction unleashed by science engulf all humanity in planned or accidental self-destruction.<br>最后，对那些与我们作对的国家，我们提出一个要求而不是一项保证：在科学释放出可怕的破坏力量，把全人类卷入预谋的或意外的自我毁灭的深渊之前，让我们双方重新开始寻求和平。</p>
-<p>We dare not tempt them with weakness. For only when our arms are sufficient beyond doubt can we be certain beyond doubt that they will never be employed.<br>我们不敢以怯弱来引诱他们。因为只有当我们毫无疑问地拥有足够的军备，我们才能毫无疑问地确信永远不会使用这些军备。</p>
-<p>But neither can two great and powerful groups of nations take comfort from our present course — both sides overburdened by the cost of modern weapons, both rightly alarmed by the steady spread of the deadly atom, yet both racing to alter that uncertain balance of terror that stays the hand of mankind’s final war.<br>但是，这两个强大的国家集团都无法从目前所走的道路中得到安慰－－发展现代武器所需的费用使双方负担过重，致命的原子武器的不断扩散理所当然使双方忧心忡忡，但是，双方却争着改变那制止人类发动最后战争的不稳定的恐怖均势。</p>
-<p>So let us begin anew — remembering on both sides that civility is not a sign of weakness, and sincerity is always subject to proof. Let us never negotiate out of fear, but let us never fear to negotiate.<br>因此，让我们双方重新开始－－双方都要牢记，礼貌并不意味着怯弱，诚意永远有待于验证。让我们决不要由于畏惧而谈判。但我们决不能畏惧谈判。</p>
-<p>Let both sides explore what problems unite us instead of belaboring those problems which divide us.<br>让双方都来探讨使我们团结起来的问题，而不要操劳那些使我们分裂的问题。</p>
-<p>Let both sides, for the first time, formulate serious and precise proposals for the inspection and control of arms, and bring the absolute power to destroy other nations under the absolute control of all nations.<br>让双方首次为军备检查和军备控制制订认真而又明确的提案，把毁灭他国的绝对力量置于所有国家的绝对控制之下。</p>
-<p>Let both sides seek to invoke the wonders of science instead of its terrors. Together let us explore the stars, conquer the deserts, eradicate disease, tap the ocean depths, and encourage the arts and commerce.<br>让双方寻求利用科学的奇迹，而不是乞灵于科学造成的恐怖。让我们一起探索星球，征服沙漠，根除疾患，开发深海，并鼓励艺术和商业的发展。</p>
-<p>Let both sides unite to heed, in all corners of the earth, the command of Isaiah — to “undo the heavy burdens, and [to] let the oppressed go free.”¹<br>让双方团结起来，在全世界各个角落倾听以赛亚的训令－－“解下轭上的索，使被欺压的得自由。”（注：《圣经·旧约全书·以塞亚书》第58章6节。）</p>
-<p>And, if a beachhead of cooperation may push back the jungle of suspicion, let both sides join in creating a new endeavor — not a new balance of power, but a new world of law — where the strong are just, and the weak secure, and the peace preserved.<br>如果合作的滩头阵地能逼退猜忌的丛林，那么就让双方共同作一次新的努力；不是建立一种新的均势，而是创造一个新的法治世界，在这个世界中，强者公正，弱者安全、和平将得到维护。</p>
-<p>All this will not be finished in the first one hundred days. Nor will it be finished in the first one thousand days; nor in the life of this Administration; nor even perhaps in our lifetime on this planet. But let us begin.<br>所有这一切不可能在今后一百天内完成，也不可能在今后一千天或者在本届政府任期内完成，甚至也许不可能在我们居住在这个星球上的有生之年内完成。但是，让我们开始吧。</p>
-<p>In your hands, my fellow citizens, more than mine, will rest the final success or failure of our course. Since this country was founded, each generation of Americans has been summoned to give testimony to its national loyalty. The graves of young Americans who answered the call to service surround the globe.<br>公民们，我们方针的最终成败与其说掌握在我手中，不如说掌握在你们手中。自从合众国建立以来，每一代美国人都曾受到召唤去证明他们对国家的忠诚。响应召唤而献身的美国青年的坟墓遍及全球。</p>
-<p>Now the trumpet summons us again — not as a call to bear arms, though arms we need — not as a call to battle, though embattled we are — but a call to bear the burden of a long twilight struggle, year in and year out, “rejoicing in hope; patient in tribulation,”² a struggle against the common enemies of man: tyranny, poverty, disease, and war itself.<br>现在，号角已再次吹响－－不是召唤我们拿起武器，虽然我们需要武器；不是召唤我们去作战，虽然我们严阵以待。它召唤我们为迎接黎明而肩负起漫长斗争的重任，年复一年，从希望中得到欢乐，在磨难中保持耐性，对付人类共同的敌人－－专制、社团、疾病和战争本身。</p>
-<p>Can we forge against these enemies a grand and global alliance, North and South, East and West, that can assure a more fruitful life for all mankind? Will you join in that historic effort?<br>为反对这些敌人，确保人类更为丰裕的生活，我们能够组成一个包括东西南北各方的全球大联盟吗？你们愿意参加这一历史性的努力吗？</p>
-<p>In the long history of the world, only a few generations have been granted the role of defending freedom in its hour of maximum danger. I do not shrink from this responsibility — I welcome it. I do not believe that any of us would exchange places with any other people or any other generation. The energy, the faith, the devotion which we bring to this endeavor will light our country and all who serve it. And the glow from that fire can truly light the world.<br>在漫长的世界历史中，只有少数几代人在自由处于最危急的时刻被赋予保卫自由的责任。我不会推卸这一责任，我欢迎这一责任。我不相信我们中间有人想同其他人或其他时代的人交换位置。我们为这一努力所奉献的精力、信念和忠诚，将照亮我们的国家和所有为国效劳的人，而这火焰发出的光芒定能照亮全世界。</p>
-<p>And so, my fellow Americans, ask not what your country can do for you; ask what you can do for your country.<br>因此，美国同胞们，不要问国家能为你们做些什么，而要问你们能为国家做些什么。</p>
-<p>My fellow citizens of the world, ask not what America will do for you, but what together we can do for the freedom of man.<br>全世界的公民们，不要问美国将为你们做些什么，而要问我们共同能为人类的自由做些什么。</p>
-<p>Finally, whether you are citizens of America or citizens of the world, ask of us here the same high standards of strength and sacrifice which we ask of you. With a good conscience our only sure reward, with history the final judge of our deeds, let us go forth to lead the land we love, asking His blessing and His help, but knowing that here on earth God’s work must truly be our own.<br>最后，不论你们是美国公民还是其他国家的公民，你们应要求我们献出我们同样要求于你们的高度力量和牺牲。问心无愧是我们唯一可靠的奖赏，历史是我们行动的最终裁判，让我们走向前去，引导我们所热爱的国家。我们祈求上帝的福佑和帮助，但我们知道，确切地说，上帝在尘世的工作必定是我们自己的工作。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/30/Roosevelt1/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/30/Roosevelt1/" itemprop="url">
-                  Roosevelt-First Inaugural Address
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-30T09:32:43+08:00">
-                2018-01-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>President Hoover, Mr. Chief Justice, my friends:<br>胡佛总统，首席法官先生，朋友们：</p>
-<p>This is a day of national consecration. And I am certain that on this day my fellow Americans expect that on my induction into the Presidency, I will address them with a candor and a decision which the present situation of our people impels.<br>This is preeminently the time to speak the truth, the whole truth, frankly and boldly. Nor need we shrink from honestly facing conditions in our country today. This great Nation will endure, as it has endured, will revive and will prosper.<br>今天，对我们的国家来说，是一个神圣的日子。我肯定，同胞们都期待我在就任总统时，会像我国目前形势所要求的那样，坦率而果断地向他们讲话。现在正是坦白、勇敢地说出实话，说出全部实话的最好时刻。我们不必畏首畏尾，不老老实实面对我国今天的情况。这个伟大的国家会一如既往地坚持下去，它会复兴和繁荣起来。</p>
-<p>So, first of all, let me assert my firm belief that the only thing we have to fear is fear itself — nameless, unreasoning, unjustified terror which paralyzes needed efforts to convert retreat into advance. In every dark hour of our national life, a leadership of frankness and of vigor has met with that understanding and support of the people themselves which is essential to victory. And I am convinced that you will again give that support to leadership in these critical days.<br>因此，让我首先表明我的坚定信念：我们唯一不得不害怕的就是害怕本身—一种莫名其妙、丧失理智的、毫无根据的恐惧，它把人转退为进所需的种种努力化为泡影。凡在我国生活阴云密布的时刻，坦率而有活力的领导都得到过人民的理解和支持，从而为胜利准备了必不可少的条件。我相信，在目前危急时刻，大家会再次给予同样的支持。</p>
-<p>In such a spirit on my part and on yours we face our common difficulties. They concern, thank God, only material things. Values have shrunk to fantastic levels; taxes have risen; our ability to pay has fallen; government of all kinds is faced by serious curtailment of income; the means of exchange are frozen in the currents of trade; the withered leaves of industrial enterprise lie on every side; farmers find no markets for their produce; and the savings of many years in thousands of families are gone. More important, a host of unemployed citizens face the grim problem of existence, and an equally great number toil with little return. Only a foolish optimist can deny the dark realities of the moment.<br>我和你们都要以这种精神，来面对我们共同的困难。感谢上帝，这些困难只是物质方面的。价值难以想象地贬缩了；课税增加了；我们的支付能力下降了；各级政府面临着严重的收入短缺；交换手段在贸易过程中遭到了冻结；工业企业枯萎的落叶到处可见；农场主的产品找不到销路；千家万户多年的积蓄付之东流。更重要的是，大批失业公民正面临严峻的生存问题，还有大批公民正以艰辛的劳动换取微薄的报酬。只有愚蠢的乐天派会否认当前这些阴暗的现实。</p>
-<p>And yet our distress comes from no failure of substance. We are stricken by no plague of locusts. Compared with the perils which our forefathers conquered, because they believed and were not afraid, we have still much to be thankful for. Nature still offers her bounty and human efforts have multiplied it. Plenty is at our doorstep, but a generous use of it languishes in the very sight of the supply.<br>但是，我们的苦恼决不是因为缺乏物资。我们没有遭到什么蝗虫的灾害。我们的先辈曾以信念和无畏一次次转危为安，比起他们经历过的险阻，我们仍大可感到欣慰。大自然仍在给予我们恩惠，人类的努力已使之倍增。富足的情景近在咫尺，但就在我们见到这种　情景的时候，宽裕的生活却悄然离去。</p>
-<p>Primarily, this is because the rulers of the exchange of mankind’s goods have failed, through their own stubbornness and their own incompetence, have admitted their failure, and have abdicated. Practices of the unscrupulous money changers stand indicted in the court of public opinion, rejected by the hearts and minds of men.<br>这主要是因为主宰人类物资交换的统治者们失败了，他们固执己见而又无能为力，因而已经认定失败了，并撒手不管了。贪得无厌的货币兑换商的种种行径。将受到舆论法庭的起诉，将受到人类心灵理智的唾弃。</p>
-<p>True, they have tried. But their efforts have been cast in the pattern of an outworn tradition. Faced by failure of credit, they have proposed only the lending of more money. Stripped of the lure of profit by which to induce our people to follow their false leadership, they have resorted to exhortations, pleading tearfully for restored confidence. They only know the rules of a generation of self-seekers. They have no vision, and when there is no vision the people perish.<br>是的，他们是努力过，然而他们用的是一种完全过时的方法。面对信贷的失败，他们只是提议借出更多的钱。没有了当诱饵引诱人民追随他们的错误领导的金钱，他们只得求助于讲道，含泪祈求人民重新给予他们信心。他们只知自我追求者们的处世规则。他们没有眼光，而没有眼光的人是要灭亡的。</p>
-<p>Yes, the money changers have fled from their high seats in the temple of our civilization. We may now restore that temple to the ancient truths. The measure of that restoration lies in the extent to which we apply social values more noble than mere monetary profit.<br>如今，货币兑换商已从我们文明庙宇的高处落荒而逃。我们要以千古不变的真理来重建这座庙宇。衡量这重建的尺度是我们体现比金钱利益更高尚的社会价值的程度。</p>
-<p>Happiness lies not in the mere possession of money; it lies in the joy of achievement, in the thrill of creative effort. The joy, the moral stimulation of work no longer must be forgotten in the mad chase of evanescent profits. These dark days, my friends, will be worth all they cost us if they teach us that our true destiny is not to be ministered unto but to minister to ourselves, to our fellow men.<br>幸福并不在于单纯地占有金钱；幸福还在于取得成就后的喜悦，在于创造努力时的激情。务必不能再忘记劳动带来的喜悦和激励，而去疯狂地追逐那转瞬即逝的利润。如果这些暗淡的时日能使我们认识到，我们真正的天命不是要别人侍奉，而是为自己和同胞们服务，那么，我们付出的代价就完全是值得的。</p>
-<p>Recognition of that falsity of material wealth as the standard of success goes hand in hand with the abandonment of the false belief that public office and high political position are to be valued only by the standards of pride of place and personal profit; and there must be an end to a conduct in banking and in business which too often has given to a sacred trust the likeness of callous and selfish wrongdoing. Small wonder that confidence languishes, for it thrives only on honesty, on honor, on the sacredness of obligations, on faithful protection, and on unselfish performance; without them it cannot live.<br>认识到把物质财富当作成功的标准是错误的，我们就会抛弃以地位尊严和个人收益为唯一标准，来衡量公职和高级政治地位的错误信念；我们必须制止银行界和企业界的一种行为，它常常使神圣的委托混同于无情和自私的不正当行为。难怪信心在减弱，信心，只有靠诚实、信誉、忠心维护和无私履行职责。而没有这些，就不可能有信心。</p>
-<p>Restoration calls, however, not for changes in ethics alone. This Nation is asking for action, and action now.<br>但是，复兴不仅仅只要改变伦理观念。这个国家要求行动起来，现在就行动起来。</p>
-<p>Our greatest primary task is to put people to work. This is no unsolvable problem if we face it wisely and courageously. It can be accomplished in part by direct recruiting by the Government itself, treating the task as we would treat the emergency of a war, but at the same time, through this employment, accomplishing great — greatly needed projects to stimulate and reorganize the use of our great natural resources.<br>我们最大、最基本的任务是让人民投入工作。只要我信行之以智慧和勇气，这个问题就可以解决。这可以部分由政府直接征募完成，就象对待临战的紧要关头一样，但同时，在有了人手的情况下，我们还急需能刺激并重组巨大自然资源的工程。</p>
-<p>Hand in hand with that we must frankly recognize the overbalance of population in our industrial centers and, by engaging on a national scale in a redistribution, endeavor to provide a better use of the land for those best fitted for the land.<br>我们齐心协力，但必须坦白地承认工业中心的人口失衡，我们必须在全国范围内重新分配，使土地在最适合的人手中发表挥更大作用。</p>
-<p>Yes, the task can be helped by definite efforts to raise the values of agricultural products, and with this the power to purchase the output of our cities. It can be helped by preventing realistically the tragedy of the growing loss through foreclosure of our small homes and our farms. It can be helped by insistence that the Federal, the State, and the local governments act forthwith on the demand that their cost be drastically reduced. It can be helped by the unifying of relief activities which today are often scattered, uneconomical, unequal. It can be helped by national planning for and supervision of all forms of transportation and of communications and other utilities that have a definitely public character. There are many ways in which it can be helped, but it can never be helped by merely talking about it. We must act. We must act quickly.<br>明确地为提高农产品价值并以此购买城市产品所做的努力，会有助于任务的完成。避免许多小家庭业、农场业被取消赎取抵押品的权利的悲剧也有助于任务的完成。联邦、州、各地政府立即行动回应要求降价的呼声，有助于任务的完成。将现在常常是分散不经济、不平等的救济活动统一起来有助于任务的完成。对所有公共交通运输，通讯及其他涉及公众生活的设施作全国性的计划及监督有助于任务的完成。许多事情都有助于任务完成，但这些决不包括空谈。我们必须行动，立即行动。</p>
-<p>And finally, in our progress towards a resumption of work, we require two safeguards against a return of the evils of the old order. There must be a strict supervision of all banking and credits and investments. There must be an end to speculation with other people’s money. And there must be provision for an adequate but sound currency.<br>最后，为了重新开始工作，我们需要两手防御，来抗御旧秩序恶魔卷土从来；一定要有严格监督银行业、信贷及投资的机制：一定要杜绝投机；一定要有充足而健康的货币供应。</p>
-<p>These, my friends, are the lines of attack. I shall presently urge upon a new Congress in special session detailed measures for their fulfillment, and I shall seek the immediate assistance of the 48 States.<br>以上这些，朋友们，就是施政方针。我要在特别会议上敦促新国会给予详细实施方案，并且，我要向48个州请求立即的援助。</p>
-<p>Through this program of action we address ourselves to putting our own national house in order and making income balance outgo. Our international trade relations, though vastly important, are in point of time, and necessity, secondary to the establishment of a sound national economy. I favor, as a practical policy, the putting of first things first. I shall spare no effort to restore world trade by international economic readjustment; but the emergency at home cannot wait on that accomplishment.<br>通过行动，我们将予以我们自己一个有秩序的国家大厦，使收入大于支出。我们的国际贸易，虽然很重要，但现在在时间和必要性上，次于对本国健康经济的建立。我建议，作为可行的策略、首要事务先行。虽然我将不遗余力通过国际经济重新协调所来恢复国际贸易，但我认为国内的紧急情况无法等待这重新协调的完成。</p>
-<p>The basic thought that guides these specific means of national recovery is not nationally — narrowly nationalistic. It is the insistence, as a first consideration, upon the interdependence of the various elements in and parts of the United States of America — a recognition of the old and permanently important manifestation of the American spirit of the pioneer. It is the way to recovery. It is the immediate way. It is the strongest assurance that recovery will endure.<br>指导这一特别的全国性复苏的基本思想并非狭隘的国家主义。我首先考虑的是坚持美国这一整体中各部分的相互依赖性—这是对美国式的开拓精神的古老而永恒的证明的体现。这才是复苏之路，是即时之路，是保证复苏功效持久之路。</p>
-<p>In the field of world policy, I would dedicate this Nation to the policy of the good neighbor: the neighbor who resolutely respects himself and, because he does so, respects the rights of others; the neighbor who respects his obligations and respects the sanctity of his agreements in and with a world of neighbors.<br>在国际政策方面，我将使美国采取睦邻友好的政策。做一个决心自重，因此而尊重邻国的国家。做一个履行义务，尊重与他国协约的国家。</p>
-<p>If I read the temper of our people correctly, we now realize, as we have never realized before, our interdependence on each other; that we can not merely take, but we must give as well; that if we are to go forward, we must move as a trained and loyal army willing to sacrifice for the good of a common discipline, because without such discipline no progress can be made, no leadership becomes effective.<br>如果我对人民的心情的了解正确的话，我想我们已认识到了我们从未认识的问题，我们是互相依存的，我们不可以只索取，我们还必须奉献。我们前进时，必须象一支训练有素的忠诚的军队，愿意为共同的原则而献身，因为，没有这些原则，就无法取得进步，领导就不可能得力。</p>
-<p>We are, I know, ready and willing to submit our lives and our property to such discipline, because it makes possible a leadership which aims at the larger good. This, I propose to offer, pledging that the larger purposes will bind upon us, bind upon us all as a sacred obligation with a unity of duty hitherto evoked only in times of armed strife.<br>我们都已做好准备，并愿意为此原则献出生命和财产，因为这将使志在建设更美好社会的领导成为可能。我倡议，为了更伟大的目标，我们所有的人，以一致的职责紧紧团结起来。这是神圣的义务，非战乱，不停止。</p>
-<p>With this pledge taken, I assume unhesitatingly the leadership of this great army of our people dedicated to a disciplined attack upon our common problems.<br>有了这样的誓言，我将毫不犹豫地承担领导伟大人民大军的任务，致力于对我们普遍问题的强攻。</p>
-<p>Action in this image, action to this end is feasible under the form of government which we have inherited from our ancestors. Our Constitution is so simple, so practical that it is possible always to meet extraordinary needs by changes in emphasis and arrangement without loss of essential form. That is why our constitutional system has proved itself the most superbly enduring political mechanism the modern world has ever seen.<br>这样的行动，这样的目标，在我们从祖先手中接过的政府中是可行的。我们的宪法如此简单，实在。它随时可以应付特殊情况，只需对重点和安排加以修改而不丧失中心思想，正因为如此，我们的宪法体制已自证为是最有适应性的政治体制。</p>
-<p>It has met every stress of vast expansion of territory, of foreign wars, of bitter internal strife, of world relations. And it is to be hoped that the normal balance of executive and legislative authority may be wholly equal, wholly adequate to meet the unprecedented task before us. But it may be that an unprecedented demand and need for undelayed action may call for temporary departure from that normal balance of public procedure.<br>它已应付过巨大的国土扩张、外战、内乱及国际关系所带来的压力。而我们还希望行使法律的人士做到充分的平等，能充分地担负前所未有的任务。但现在前所未有的对紧急行动的需要要求国民暂时丢弃平常生活节奏，紧迫起来。让我们正视面前的严峻岁月，怀着举国一致给我们带来的热情和勇气，怀着寻求传统的、珍贵的道德观念的明确意识，怀着老老少少都能通过克尽职守而得到的问心无愧的满足。我们的目标是要保证国民生活的圆满和长治久安。</p>
-<p>I am prepared under my constitutional duty to recommend the measures that a stricken nation in the midst of a stricken world may require. These measures, or such other measures as the Congress may build out of its experience and wisdom, I shall seek, within my constitutional authority, to bring to speedy adoption.<br>根据宪法赋予我的职责、我准备提出一些措施，而一个受灾世界上的受灾国家也许需要这些措施。对于这些措施，以及国会根据本身的经验和智慧可能制订的其他类似措施，我将在宪法赋予我的权限内，设法迅速地予以采纳。</p>
-<p>But, in the event that the Congress shall fail to take one of these two courses, in the event that the national emergency is still critical, I shall not evade the clear course of duty that will then confront me. I shall ask the Congress for the one remaining instrument to meet the crisis — broad Executive power to wage a war against the emergency, as great as the power that would be given to me if we were in fact invaded by a foreign foe.<br>但是，如果国会拒不采纳这两条路线中的一条，如果国家紧急情况依然如故，我将下回避我所面临的明确的尽责方向。我将要求国会准许我使用唯一剩下的手殷来应付危机——向非常情况开战的广泛的行政权，就像我们真的遭到外敌人侵时授予我那样的广泛权力。</p>
-<p>For the trust reposed in me, I will return the courage and the devotion that befit the time. I can do no less.<br>对大家寄予我的信任，我一定报以时代所要求的勇气和献身精神，我会竭尽全力。</p>
-<p>We face the arduous days that lie before us in the warm courage of national unity; with the clear consciousness of seeking old and precious moral values; with the clean satisfaction that comes from the stern performance of duty by old and young alike. We aim at the assurance of a rounded, a permanent national life.<br>让我们正视面前的严峻岁月，怀着举国一致给我们带来的热情和勇气，怀着寻求传统的、珍贵的道德观念的明确意识，怀着老老少少都能通过克尽职守而得到的问心无愧的满足。我们的国标是要保证国民生活的圆满和长治久安。</p>
-<p>We do not distrust the — the future of essential democracy. The people of the United States have not failed. In their need they have registered a mandate that they want direct, vigorous action. They have asked for discipline and direction under leadership. They have made me the present instrument of their wishes. In the spirit of the gift I take it.<br>我们并不怀疑基本民主制度的未来。合众国人民并没有失败。他们在困难中表达了自己的委托，即要求采取直接而有力的行动。他们要求有领导的纪律和方向。他们现在选择了我作为实现他们的愿望的工具。我接受这份厚赠。</p>
-<p>In this dedication — In this dedication of a Nation, we humbly ask the blessing of God.<br>在此举国奉献之际，我们谦卑地请求上帝赐福。愿上帝保信我们大家和每一个人，愿上帝在未来的日子里指引我。</p>
-<p>May He protect each and every one of us.</p>
-<p>May He guide me in the days to come.</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/29/Roosevelt/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/29/Roosevelt/" itemprop="url">
-                  Roosevelt-珍珠港演说
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-29T10:17:50+08:00">
-                2018-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Mr. Vice President, Mr. Speaker, Members of the Senate, and of the House of Representatives:<br>副总统先生、议长先生、参众两院各位议员：</p>
-<p>Yesterday, December 7th, 1941 — a date which will live in infamy — the United States of America was suddenly and deliberately attacked by naval and air forces of the Empire of Japan.</p>
-<p>The United States was at peace with that nation and, at the solicitation of Japan, was still in conversation with its government and its emperor looking toward the maintenance of peace in the Pacific.</p>
-<p>Indeed, one hour after Japanese air squadrons had commenced bombing in the American island of Oahu, the Japanese ambassador to the United States and his colleague delivered to our Secretary of State a formal reply to a recent American message. And while this reply stated that it seemed useless to continue the existing diplomatic negotiations, it contained no threat or hint of war or of armed attack.<br>昨天， 1941年12月7日——必须永远记住这个耻辱的日子——美利坚合众国受到了日本帝国海空军突然的蓄意的进攻。美国和日本是和平相处的，根据日本的请求仍在同它的政府和天皇进行会谈，以期维护太平洋和平。实际上，就在日本空军中队已经开始轰炸美国瓦湖岛之后的一小时，日本驻美国大使还向我们的国务卿提交了对美国最近致日方信函的正式答复。虽然复函声称继续现行外交谈判似已无用，但并未包含有关战争或武装进攻的威胁或暗示。</p>
-<p>It will be recorded that the distance of Hawaii from Japan makes it obvious that the attack was deliberately planned many days or even weeks ago. During the intervening time, the Japanese government has deliberately sought to deceive the United States by false statements and expressions of hope for continued peace.<br>历史将会证明，夏威夷距日本这么遥远，表明这次进攻是经过许多天或甚至许多个星期精心策划的。在此期间，日本政府蓄意以虚伪的声明和表示继续维护和平的愿望来欺骗美国。</p>
-<p>The attack yesterday on the Hawaiian islands has caused severe damage to American naval and military forces. I regret to tell you that very many American lives have been lost. In addition, American ships have been reported torpedoed on the high seas between San Francisco and Honolulu.<br>昨天对夏威夷岛的进攻给美国海陆军部队造成了严重的损害。我遗憾地告诉各位，很多美国人丧失了生命，此外，据报，美国船只在旧金山和火奴鲁鲁（檀香山）之间的公海上也遭到了鱼雷袭击。</p>
-<p>Yesterday, the Japanese government also launched an attack against Malaya.<br>昨天，日本政府已发动了对马来亚的进攻。</p>
-<p>Last night, Japanese forces attacked Hong Kong.<br>昨夜，日本军队进攻了香港。</p>
-<p>Last night, Japanese forces attacked Guam.<br>昨夜，日本军队进攻了关岛。</p>
-<p>Last night, Japanese forces attacked the Philippine Islands.<br>昨夜，日本军队进攻了菲律宾群岛。</p>
-<p>Last night, the Japanese attacked Wake Island.<br>昨夜，日本人进攻了威克岛。</p>
-<p>And this morning, the Japanese attacked Midway Island.<br>今晨，日本人进攻了中途岛。</p>
-<p>Japan has, therefore, undertaken a surprise offensive extending throughout the Pacific area. The facts of yesterday and today speak for themselves. The people of the United States have already formed their opinions and well understand the implications to the very life and safety of our nation.<br>因此，日本在整个太平洋区域采取了突然的攻势。昨天和今天的事实不言自明。美国的人民已经形成了自己的见解，并且十分清楚这关系到我们国家的安全和生存的本身。</p>
-<p>As commander in chief of the Army and Navy, I have directed that all measures be taken for our defense. But always will our whole nation remember the character of the onslaught against us.<br>作为陆海军，总司令，我已指示，为了我们的防务采取一切措施。</p>
-<p>No matter how long it may take us to overcome this premeditated invasion, the American people in their righteous might will win through to absolute victory.<br>但是，我们整个国家都将永远记住这次对我们进攻的性质。不论要用多长时间才能战胜这次预谋的入侵，美国人民以自己的正义力量一定要赢得绝对的胜利。</p>
-<p>I believe that I interpret the will of the Congress and of the people when I assert that we will not only defend ourselves to the uttermost, but will make it very certain that this form of treachery shall never again endanger us.<br>我们现在预言，我们不仅要做出最大的努力来保卫我们自己，我们还将确保这种形式的背信弃义永远不会再危及我们。我这样说，相信是表达了国会和人民的意志。</p>
-<p>Hostilities exist. There is no blinking at the fact that our people, our territory, and our interests are in grave danger.<br>敌对行动已经存在。无庸讳言，我国人民、我国领土和我国利益都处于严重危险之中。</p>
-<p>With confidence in our armed forces, with the unbounding determination of our people, we will gain the inevitable triumph — so help us God.<br>I ask that the Congress declare that since the unprovoked and dastardly attack by Japan on Sunday, December 7th, 1941, a state of war has existed between the United States and the Japanese empire.<br>相信我们的武装部队——依靠我国人民的坚定决心－－我们将取得必然的胜利，愿上帝帮助我们！我要求国会宣布：自1941年12月7日星期日日本发动无端的、卑鄙的进攻时起，美国和日本帝国之间已处于战争状态。</p>
+<p>传统的推荐系统广泛都使用了<font color="blue">协同过滤</font>和<font color="blue">基于内容过滤技术</font></p>
+<p>协同过滤分为</p>
+<blockquote>
+<p>基于内存的推荐和基于模型的推荐(矩阵分解)</p>
+</blockquote>
+<p>Context-Aware Recommender Systems(CARS)包含三种范例:contextual pre-filtering,contextual post-filtering and contextual modeling.</p>
 
           
         
@@ -2552,7 +1896,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
           <div class="site-state-item site-state-posts">
             <a href="/">
               <span class="site-state-item-count">63</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -2560,7 +1904,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -2569,7 +1913,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">13</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -2665,7 +2009,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

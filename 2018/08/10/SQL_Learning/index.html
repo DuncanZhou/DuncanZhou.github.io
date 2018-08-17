@@ -100,7 +100,7 @@ partition by关键字是分析性函数的一部分，它和聚合函数不同�
 
 example: 一个班有学生id，成绩，班级，现在将学生根据班级按照成绩排名。(partition by)
 1select *,row_">
-<meta property="og:updated_time" content="2018-08-10T09:55:19.640Z">
+<meta property="og:updated_time" content="2018-08-17T07:20:11.298Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hive SQL 学习">
 <meta name="twitter:description" content="partition by
@@ -308,7 +308,7 @@ example: 一个班有学生id，成绩，班级，现在将学生根据班级按
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:52:09+08:00">
                 2018-08-10
               </time>
@@ -325,7 +325,7 @@ example: 一个班有学生id，成绩，班级，现在将学生根据班级按
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/SQL/" itemprop="url" rel="index">
@@ -383,6 +383,16 @@ example: 一个班有学生id，成绩，班级，现在将学生根据班级按
 <h4 id="g-CUME-DIST"><a href="#g-CUME-DIST" class="headerlink" title="g.CUME_DIST()"></a>g.CUME_DIST()</h4><p>​    小于等于当前值的行数/分组内总行数 </p>
 <h4 id="h-PERCENT-RANK"><a href="#h-PERCENT-RANK" class="headerlink" title="h.PERCENT_RANK ()"></a>h.PERCENT_RANK ()</h4><p>​    分组内当前行的RANK值-1/分组内总行数-1  </p>
 <h4 id="i-NTILE-n"><a href="#i-NTILE-n" class="headerlink" title="i.NTILE(n)"></a>i.NTILE(n)</h4><p>​    用于将分组数据按照顺序切分成n片，返回当前切片值，如果切片不均匀，默认增加第一个切片的分布 </p>
+<p>Note:</p>
+<ul>
+<li>From子句：执行顺序自上而下，从左到右，从后往前，所以<strong>数据量少的表尽量放后</strong></li>
+<li>where子句：执行顺序自下而上，从右到左，<strong>可以过滤掉大量记录的条件写在where子句的末尾</strong></li>
+<li>group by子句：通过将不需要的记录在group by之前过滤掉，<strong>避免使用having来过滤</strong></li>
+<li>having子句：尽量少用</li>
+<li>select子句：尽量少用*，取字段名称</li>
+<li>order by子句：执行顺序为从左到右排序</li>
+<li>join：<strong>尽量把数据量大的表放在最右边来进行关联</strong></li>
+</ul>
 
       
     </div>
@@ -491,10 +501,10 @@ example: 一个班有学生id，成绩，班级，现在将学生根据班级按
       
         <ul class="sidebar-nav motion-element">
           <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
-            Table of Contents
+            Inhaltsverzeichnis
           </li>
           <li class="sidebar-nav-overview" data-target="site-overview">
-            Overview
+            Übersicht
           </li>
         </ul>
       
@@ -511,7 +521,7 @@ example: 一个班有学生id，成绩，班级，现在将学生根据班级按
           <div class="site-state-item site-state-posts">
             <a href="/">
               <span class="site-state-item-count">63</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -519,7 +529,7 @@ example: 一个班有学生id，成绩，班级，现在将学生根据班级按
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">11</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -528,7 +538,7 @@ example: 一个班有学生id，成绩，班级，现在将学生根据班级按
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">13</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -640,7 +650,7 @@ example: 一个班有学生id，成绩，班级，现在将学生根据班级按
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
