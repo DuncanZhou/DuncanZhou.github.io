@@ -96,14 +96,14 @@
 <meta property="og:description" content="1.网格搜索网格搜索通过查找搜索范围内的所有的点，来确定最优值。它返回目标函数的最大值或损失函数的最小值。给出较大的搜索范围，以及较小的步长，网格搜索是一定可以找到全局最大值或最小值的。 
 当人们实际使用网格搜索来找到最佳超参数集的时候，一般会先使用较广的搜索范围，以及较大的步长，来找到全局最大值或者最小值可能的位置。然后，人们会缩小搜索范围和步长，来达到更精确的最值。 
 2.随机搜索随机搜索的思">
-<meta property="og:image" content="https://github.com/DuncanZhou/DuncanZhou/2018/08/17/SuperParas/D:/Duncan\blog\source\_posts\pics\alipsipng.png">
-<meta property="og:updated_time" content="2018-08-17T03:08:08.089Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/alipsipng.png">
+<meta property="og:updated_time" content="2018-08-20T03:03:04.919Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="超参的搜索方法整理">
 <meta name="twitter:description" content="1.网格搜索网格搜索通过查找搜索范围内的所有的点，来确定最优值。它返回目标函数的最大值或损失函数的最小值。给出较大的搜索范围，以及较小的步长，网格搜索是一定可以找到全局最大值或最小值的。 
 当人们实际使用网格搜索来找到最佳超参数集的时候，一般会先使用较广的搜索范围，以及较大的步长，来找到全局最大值或者最小值可能的位置。然后，人们会缩小搜索范围和步长，来达到更精确的最值。 
 2.随机搜索随机搜索的思">
-<meta name="twitter:image" content="https://github.com/DuncanZhou/DuncanZhou/2018/08/17/SuperParas/D:/Duncan\blog\source\_posts\pics\alipsipng.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/alipsipng.png">
 
 
 
@@ -367,7 +367,7 @@
 <p>通过对搜索范围的随机取样，随机搜索一般会比网格搜索要快一些。但是和网格搜索的快速版（非自动版）相似，结果也是没法保证的。 </p>
 <h3 id="3-基于梯度的优化"><a href="#3-基于梯度的优化" class="headerlink" title="3.基于梯度的优化"></a>3.基于梯度的优化</h3><h3 id="4-贝叶斯优化"><a href="#4-贝叶斯优化" class="headerlink" title="4.贝叶斯优化"></a>4.贝叶斯优化</h3><p>贝叶斯优化寻找使全局达到最值的参数时，使用了和网格搜索、随机搜索完全不同的方法。网格搜索和随机搜索在测试一个新的点时，会忽略前一个点的信息。而贝叶斯优化充分利用了这个信息。贝叶斯优化的工作方式是通过对目标函数形状的学习，找到使结果向全局最大值提升的参数。它学习目标函数形状的方法是，根据先验分布，假设一个搜集函数。在每一次使用新的采样点来测试目标函数时，它使用这个信息来更新目标函数的先验分布。然后，算法测试由后验分布给出的，全局最值最可能出现的位置的点。 </p>
 <p>补充:</p>
-<p><img src="/DuncanZhou/2018/08/17/SuperParas/D:/Duncan\blog\source\_posts\pics\alipsipng.png" alt="PSI"></p>
+<p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/alipsipng.png" alt="PSI"></p>
 
       
     </div>
@@ -409,6 +409,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/08/20/RecommendationNotes/" rel="prev" title="推荐算法">
+                推荐算法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -491,7 +495,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">63</span>
+              <span class="site-state-item-count">64</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -499,7 +503,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">11</span>
+                <span class="site-state-item-count">12</span>
                 <span class="site-state-item-name">Kategorien</span>
               
             </div>
@@ -508,7 +512,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">Tags</span>
               
             </div>

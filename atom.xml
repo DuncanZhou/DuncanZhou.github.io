@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/DuncanZhou/"/>
-  <updated>2018-08-17T03:08:08.089Z</updated>
+  <updated>2018-08-20T02:55:15.905Z</updated>
   <id>https://github.com/DuncanZhou/</id>
   
   <author>
@@ -17,13 +17,38 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>推荐算法</title>
+    <link href="https://github.com/DuncanZhou/2018/08/20/RecommendationNotes/"/>
+    <id>https://github.com/DuncanZhou/2018/08/20/RecommendationNotes/</id>
+    <published>2018-08-20T01:59:02.116Z</published>
+    <updated>2018-08-20T02:55:15.905Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="算法分类"><a href="#算法分类" class="headerlink" title="算法分类"></a>算法分类</h3><h3 id="1-基于内容-用户的推荐"><a href="#1-基于内容-用户的推荐" class="headerlink" title="1.基于内容 / 用户的推荐"></a>1.基于内容 / 用户的推荐</h3><p>更多依赖相似性计算然后推荐</p><ul><li>基于<strong>用户信息</strong>进行推荐</li><li>基于<strong>内容 、物品的信息</strong>进行推荐</li></ul><h3 id="2-协同过滤"><a href="#2-协同过滤" class="headerlink" title="2.协同过滤"></a>2.协同过滤</h3><p>需要通过用户行为来计算用户或物品见的相关性</p><ul><li><p>基于<strong>用户的协同推荐</strong>: 以人为本</p><p>| 小张 | 产品经理、Google、增长   |<br>| —— | ———————————— |<br>| 小明 | 产品经理、Google、比特币 |<br>| 小吴 | 比特币、区块链、以太币   |</p><p><strong>这是一个用户关注内容的列表，显然在这个列表中，小张和小明关注的内容更为相似，那么可以给小张推荐比特币。</strong></p></li><li><p>基于<strong>物品的系统推荐</strong></p><p>以物为本建立各商品的相似度矩阵</p><p>| 产品经理 | 小张、小明 |<br>| ———— | ————— |<br>| Google   | 小张、小明 |<br>| 比特币   | 小明、小吴 |</p><p>小张和小明都不约而同地看了产品经理和Google，这可以说明产品经理和Google有相似，那么之后<strong>有看了Google相关内容的用户就可以给推荐产品经理</strong>的相关内容。     </p></li></ul><h3 id="3-基于知识的推荐"><a href="#3-基于知识的推荐" class="headerlink" title="3.基于知识的推荐"></a>3.基于知识的推荐</h3><p>某一领域的一整套规则和路线进行推荐。参照可汗学院知识树。</p><p>补充：（图片来源知乎shawn1943，感谢）</p><p><img src="https://pic1.zhimg.com/80/v2-9f88f829b59ddb4f1e0571c46c158d1c_hd.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;算法分类&quot;&gt;&lt;a href=&quot;#算法分类&quot; class=&quot;headerlink&quot; title=&quot;算法分类&quot;&gt;&lt;/a&gt;算法分类&lt;/h3&gt;&lt;h3 id=&quot;1-基于内容-用户的推荐&quot;&gt;&lt;a href=&quot;#1-基于内容-用户的推荐&quot; class=&quot;headerlink&quot; 
+      
+    
+    </summary>
+    
+      <category term="Recommendation" scheme="https://github.com/DuncanZhou//categories/Recommendation/"/>
+    
+    
+      <category term="Recommendation" scheme="https://github.com/DuncanZhou//tags/Recommendation/"/>
+    
+  </entry>
+  
+  <entry>
     <title>超参的搜索方法整理</title>
     <link href="https://github.com/DuncanZhou/2018/08/17/SuperParas/"/>
     <id>https://github.com/DuncanZhou/2018/08/17/SuperParas/</id>
     <published>2018-08-17T02:17:27.027Z</published>
-    <updated>2018-08-17T03:08:08.089Z</updated>
+    <updated>2018-08-20T03:03:04.919Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="1-网格搜索"><a href="#1-网格搜索" class="headerlink" title="1.网格搜索"></a>1.网格搜索</h3><p>网格搜索通过查找搜索范围内的所有的点，来确定最优值。它返回目标函数的最大值或损失函数的最小值。给出较大的搜索范围，以及较小的步长，网格搜索是一定可以找到全局最大值或最小值的。 </p><p>当人们实际使用网格搜索来找到最佳超参数集的时候，一般会先使用较广的搜索范围，以及较大的步长，来找到全局最大值或者最小值可能的位置。然后，人们会缩小搜索范围和步长，来达到更精确的最值。 </p><h3 id="2-随机搜索"><a href="#2-随机搜索" class="headerlink" title="2.随机搜索"></a>2.随机搜索</h3><p>随机搜索的思想和网格搜索比较相似，只是不再测试上界和下界之间的所有值，只是在搜索范围中随机取样本点。它的理论依据是，如果随即样本点集足够大，那么也可以找到全局的最大或最小值，或它们的近似值。</p><p>通过对搜索范围的随机取样，随机搜索一般会比网格搜索要快一些。但是和网格搜索的快速版（非自动版）相似，结果也是没法保证的。 </p><h3 id="3-基于梯度的优化"><a href="#3-基于梯度的优化" class="headerlink" title="3.基于梯度的优化"></a>3.基于梯度的优化</h3><h3 id="4-贝叶斯优化"><a href="#4-贝叶斯优化" class="headerlink" title="4.贝叶斯优化"></a>4.贝叶斯优化</h3><p>贝叶斯优化寻找使全局达到最值的参数时，使用了和网格搜索、随机搜索完全不同的方法。网格搜索和随机搜索在测试一个新的点时，会忽略前一个点的信息。而贝叶斯优化充分利用了这个信息。贝叶斯优化的工作方式是通过对目标函数形状的学习，找到使结果向全局最大值提升的参数。它学习目标函数形状的方法是，根据先验分布，假设一个搜集函数。在每一次使用新的采样点来测试目标函数时，它使用这个信息来更新目标函数的先验分布。然后，算法测试由后验分布给出的，全局最值最可能出现的位置的点。 </p><p>补充:</p><p><img src="/DuncanZhou/2018/08/17/SuperParas/D:/Duncan\blog\source\_posts\pics\alipsipng.png" alt="PSI"></p>]]></content>
+    <content type="html"><![CDATA[<h3 id="1-网格搜索"><a href="#1-网格搜索" class="headerlink" title="1.网格搜索"></a>1.网格搜索</h3><p>网格搜索通过查找搜索范围内的所有的点，来确定最优值。它返回目标函数的最大值或损失函数的最小值。给出较大的搜索范围，以及较小的步长，网格搜索是一定可以找到全局最大值或最小值的。 </p><p>当人们实际使用网格搜索来找到最佳超参数集的时候，一般会先使用较广的搜索范围，以及较大的步长，来找到全局最大值或者最小值可能的位置。然后，人们会缩小搜索范围和步长，来达到更精确的最值。 </p><h3 id="2-随机搜索"><a href="#2-随机搜索" class="headerlink" title="2.随机搜索"></a>2.随机搜索</h3><p>随机搜索的思想和网格搜索比较相似，只是不再测试上界和下界之间的所有值，只是在搜索范围中随机取样本点。它的理论依据是，如果随即样本点集足够大，那么也可以找到全局的最大或最小值，或它们的近似值。</p><p>通过对搜索范围的随机取样，随机搜索一般会比网格搜索要快一些。但是和网格搜索的快速版（非自动版）相似，结果也是没法保证的。 </p><h3 id="3-基于梯度的优化"><a href="#3-基于梯度的优化" class="headerlink" title="3.基于梯度的优化"></a>3.基于梯度的优化</h3><h3 id="4-贝叶斯优化"><a href="#4-贝叶斯优化" class="headerlink" title="4.贝叶斯优化"></a>4.贝叶斯优化</h3><p>贝叶斯优化寻找使全局达到最值的参数时，使用了和网格搜索、随机搜索完全不同的方法。网格搜索和随机搜索在测试一个新的点时，会忽略前一个点的信息。而贝叶斯优化充分利用了这个信息。贝叶斯优化的工作方式是通过对目标函数形状的学习，找到使结果向全局最大值提升的参数。它学习目标函数形状的方法是，根据先验分布，假设一个搜集函数。在每一次使用新的采样点来测试目标函数时，它使用这个信息来更新目标函数的先验分布。然后，算法测试由后验分布给出的，全局最值最可能出现的位置的点。 </p><p>补充:</p><p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/alipsipng.png" alt="PSI"></p>]]></content>
     
     <summary type="html">
     
@@ -479,29 +504,6 @@
     </summary>
     
       <category term="Learning" scheme="https://github.com/DuncanZhou//categories/Learning/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>Recommendation方向学习</title>
-    <link href="https://github.com/DuncanZhou/2018/08/10/RecommendationLearning/"/>
-    <id>https://github.com/DuncanZhou/2018/08/10/RecommendationLearning/</id>
-    <published>2018-08-10T09:24:49.351Z</published>
-    <updated>2018-01-19T03:42:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<h3 id="综述"><a href="#综述" class="headerlink" title="综述"></a>综述</h3><p>目前推荐上研究的方向有这样几个方向:<br>1.Temporal Context-Aware Recommendation<br>2.Spatial Recommendation for Out-of-Town Users<br>3.Location-based and Real-time Recommendation<br>4.Efficiency of Online Recommendation</p><p>补充学习:</p><blockquote><p>online learning强调的是学习是实时的，流式的，每次训练不用使用全部样本，而是以之前训练好的模型为基础，每来一个样本就更新一次模型，这种方法叫做OGD（online gradient descent）。</p><p>batch learning或者叫offline learning强调的是每次训练都需要使用全量的样本，因而可能会面临数据量过大的问题。</p></blockquote><p>传统的推荐系统广泛都使用了<font color="blue">协同过滤</font>和<font color="blue">基于内容过滤技术</font></p><p>协同过滤分为</p><blockquote><p>基于内存的推荐和基于模型的推荐(矩阵分解)</p></blockquote><p>Context-Aware Recommender Systems(CARS)包含三种范例:contextual pre-filtering,contextual post-filtering and contextual modeling.</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h3 id=&quot;综述&quot;&gt;&lt;a href=&quot;#综述&quot; class=&quot;headerlink&quot; title=&quot;综述&quot;&gt;&lt;/a&gt;综述&lt;/h3&gt;&lt;p&gt;目前推荐上研究的方向有这样几个方向:&lt;br&gt;1.Temporal Context-Aware Recommendation&lt;br&gt;2.Spa
-      
-    
-    </summary>
-    
-      <category term="Paper" scheme="https://github.com/DuncanZhou//categories/Paper/"/>
     
     
   </entry>
