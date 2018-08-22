@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://github.com/DuncanZhou/"/>
-  <updated>2018-08-20T02:55:15.905Z</updated>
+  <updated>2018-08-22T09:08:31.507Z</updated>
   <id>https://github.com/DuncanZhou/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>同步到腾讯云</title>
+    <link href="https://github.com/DuncanZhou/2018/08/22/tencentcloud/"/>
+    <id>https://github.com/DuncanZhou/2018/08/22/tencentcloud/</id>
+    <published>2018-08-22T09:08:31.301Z</published>
+    <updated>2018-08-22T09:08:31.507Z</updated>
+    
+    <content type="html"><![CDATA[<p>我的博客即将搬运同步至腾讯云+社区，邀请大家一同入驻：<a href="https://cloud.tencent.com/developer/support-plan?invite_code=cibtnefnj6my" target="_blank" rel="external">https://cloud.tencent.com/developer/support-plan?invite_code=cibtnefnj6my</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;我的博客即将搬运同步至腾讯云+社区，邀请大家一同入驻：&lt;a href=&quot;https://cloud.tencent.com/developer/support-plan?invite_code=cibtnefnj6my&quot; target=&quot;_blank&quot; rel=&quot;exter
+      
+    
+    </summary>
+    
+      <category term="Life" scheme="https://github.com/DuncanZhou//categories/Life/"/>
+    
+    
+  </entry>
   
   <entry>
     <title>推荐算法</title>
@@ -477,33 +500,6 @@
     </summary>
     
       <category term="Paper" scheme="https://github.com/DuncanZhou//categories/Paper/"/>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>判断无向图是否是一颗树</title>
-    <link href="https://github.com/DuncanZhou/2018/08/10/GraphAndTree/"/>
-    <id>https://github.com/DuncanZhou/2018/08/10/GraphAndTree/</id>
-    <published>2018-08-10T09:24:49.358Z</published>
-    <updated>2018-01-19T03:40:10.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>这是一个基本概念,且很重要,记录一下.</p><blockquote><p>树的定义:用图的知识来表示即为,无环的连通图或者边数等于顶点数减1.</p></blockquote><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">package questionCheckisTree;</div><div class="line"></div><div class="line">import java.util.Scanner;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by duncan on 17-7-30.</div><div class="line"> */</div><div class="line"></div><div class="line">//本题为判断一个无向图是否是一颗树</div><div class="line">    //树为无环的连通图或者边数等于顶点数-1</div><div class="line">class Graph&#123;</div><div class="line">    //邻接矩阵,从1开始存储</div><div class="line">    int[][] graph = new int[501][501];</div><div class="line">    //顶点数和边数</div><div class="line">    int nodes,edges;</div><div class="line">&#125;</div><div class="line">public class Main &#123;</div><div class="line">    //判断是否是连通图,并且顶点数-1是否是边数</div><div class="line">    //判断是否是连通图深度遍历一遍,都遍历到了即为连通图</div><div class="line">    public void DFS(int[] visited,Graph graph,int start)&#123;</div><div class="line">        //如果该顶点没有访问过</div><div class="line">        if(visited[start] == 0)&#123;</div><div class="line">            visited[start] = 1;</div><div class="line">            //继续访问与其相连的顶点</div><div class="line">            for(int i = 1; i &lt;= graph.nodes; i++)&#123;</div><div class="line">                if(graph.graph[start][i] == 1)</div><div class="line">                    DFS(visited,graph,i);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        Main solution = new Main();</div><div class="line">        Scanner in = new Scanner(System.in);</div><div class="line">        int num = in.nextInt();</div><div class="line">        for(int i = 0; i &lt; num; i++)&#123;</div><div class="line">            //输入顶点数和边数</div><div class="line">            Graph graph = new Graph();</div><div class="line">            graph.nodes = in.nextInt();</div><div class="line">            graph.edges = in.nextInt();</div><div class="line">            //初始化邻接矩阵</div><div class="line">            for(int j = 0; j &lt; graph.edges; j++)&#123;</div><div class="line">                int a = in.nextInt();</div><div class="line">                int b = in.nextInt();</div><div class="line">                graph.graph[a][b] = 1;</div><div class="line">                graph.graph[b][a] = 1;</div><div class="line">            &#125;</div><div class="line">            if(graph.edges != graph.nodes - 1)</div><div class="line">            &#123;</div><div class="line">                System.out.println(&quot;NO&quot;);</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            //判断是否连通</div><div class="line">            //初始化一个顶点访问数组,从1开始存储</div><div class="line">            int[] visited = new int[graph.nodes+1];</div><div class="line">            solution.DFS(visited,graph,1);</div><div class="line">            //对visited数组判断</div><div class="line">            boolean flag = true;</div><div class="line">            for(int j = 1; j &lt; graph.nodes; j++) &#123;</div><div class="line">                if (visited[j] == 0) &#123;</div><div class="line">                    flag = false;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            if(flag)</div><div class="line">                System.out.println(&quot;YES&quot;);</div><div class="line">            else</div><div class="line">                System.out.println(&quot;NO&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;这是一个基本概念,且很重要,记录一下.&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;树的定义:用图的知识来表示即为,无环的连通图或者边数等于顶点数减1.&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;
-      
-    
-    </summary>
-    
-      <category term="Learning" scheme="https://github.com/DuncanZhou//categories/Learning/"/>
     
     
   </entry>

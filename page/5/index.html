@@ -261,6 +261,631 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/15/MachineLearningNotes/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/15/MachineLearningNotes/" itemprop="url">
+                  西瓜书阅读
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T18:58:32+08:00">
+                2018-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
+<h2 id="西瓜书阅读记录-2-0"><a href="#西瓜书阅读记录-2-0" class="headerlink" title="西瓜书阅读记录(2.0)"></a>西瓜书阅读记录(2.0)</h2><p>2018年1月19日提交1.0<br>2018年3月1日重新持续更新2.0<br>2018年3月15日完成1-11章的阅读,下面开始阅读&lt;统计学习方法&gt;</p>
+<p>=============================================</p>
+<h3 id="第一章-绪论"><a href="#第一章-绪论" class="headerlink" title="第一章 绪论"></a>第一章 绪论</h3><p>1.归纳偏好</p>
+<ul>
+<li><strong>奥卡姆剃刀:</strong>若有多个假设与观察一致,则选择最简单的那个.</li>
+</ul>
+<p>2.NEL定理(No Free Lunch):脱离具体问题,空泛的谈论”什么学习算法更好”毫无意义.</p>
+<h3 id="第二章-模型评估与选择"><a href="#第二章-模型评估与选择" class="headerlink" title="第二章.模型评估与选择"></a>第二章.模型评估与选择</h3><p>1.<strong>过拟合</strong>:当学习器把训练样本学得”太好了”的时候,很可能已经把训练样本本身的一些特点当作了所有潜在样本都会具有的一般性质.</p>
+<p>2.<strong>欠拟合</strong>:学习能力低下造成的,解决办法:在决策树学习中扩展分支/在神经网络学习中增加训练轮数等.</p>
+<p><strong>3.评估方法</strong>:</p>
+<p>3.1 测试集应该尽可能与训练集互斥,即测试样本尽量不再训练集中出现,未在训练过程中使用过.</p>
+<p>3.2 划分训练集和测试集的方法: a)<strong>留出法</strong>,直接将数据集划分为互斥的两个集合;b)<strong>交叉验证法(k-fold validation)</strong>,先将数据集D划分为k个大小相似的互斥子集,每个子集都尽可能保持数据分布的一致性.然后,每次用k-1个子集的并集作为训练集,余下的那个子集作为测试集,进行k次训练和测试,最终返回这k个测试结果的均值.(k的通常取值为10,并且通常对k-fold validation做多次,一般为10次10折交叉验证法).c)<strong>自助法(bootstrapping)</strong>,给定包含m个样本的数据集D,对它进行采样产生数据集D’:每次随即从D中挑选一个样本,将其拷贝放入D’,然后再将该样本放回初始数据集D中,使得该样本在下次采样时仍有可能被采到;这个过程重复执行m次后,我们就得到了包含m个样本的数据集D’.</p>
+<p>3.3 调参参数类型:<strong>算法参数(超参)</strong>和<strong>模型参数</strong>.</p>
+<ul>
+<li>模型参数是学习得到的,作为模型的一部分保存</li>
+<li>算法参数是算法中的参数,是模型外部的配置,如:神经网络中的学习速率,支持向量机中的C和sigma参数.</li>
+</ul>
+<p><strong>4.性能度量</strong>:</p>
+<p>4.1 回归任务最常用的性能度量是”均方误差”: </p>
+<script type="math/tex; mode=display">E(f;D)=\frac{1}{m}\sum\_{i=1}^{m}(f(x\_i)-y\_i)^2$$.
+
+4.2  评价标准: 错误率与精度,查全率和查准率.错误率和精度指多少样本被判错,多少样本被判错;查全率和查准率指模型判断为正例中有多少比例是真正的正例,模型判断为反例中有多少为真正的反例.(两种评价标准对应的需求不一样)
+
+|   真实情况  | 预测结果正例  |   预测结果反例  |
+|   :--:  |  :--:   |   :--:    |
+|   正例  |   TP(真正例) |   FN(反正例) |
+|   反例  |   FP(假正例) |   TN(真正例) |
+$$P(查准率) = TP / (TP  + FP)</script><script type="math/tex; mode=display">R(查全率) = TP / (TP + FN)</script><p>4.3 P-R图:以查准率为纵坐标,以查全率为横坐标.在进行比较时,若一个学习器的P-R曲线被另一个学习器的曲线完全”包住”,则可断言后者的性能优于前者. “平衡点”(BEP):当查准率 = 查全率时的取值,即为平衡点.当两个曲线有交点时,可通过比较平衡点的取值.</p>
+<p>4.4 F1-measure:</p>
+<script type="math/tex; mode=display">F1 = 2 * TP / (样例总数 + TP - TN)</script><p>(<strong>补充</strong>):<script type="math/tex">F_\beta = \frac{1+\beta^2\times{P}\times{R}}{\beta^2\times{P}+R}</script>,当$\beta=1$时,退化为标准的F1;$\beta&gt;1$时查全率有更大影响;$\beta$&amp;lt1时查准率有更大影响.</p>
+<p>4.5 查准率和查全率的应用目的区别:例如在商品推荐系统中,为了尽可能少打扰用户,更希望推荐内容的确是用户感兴趣的,此时查准率更重要;而在逃犯信息检索系统中,更希望尽可能少漏掉逃犯,此时查全率更重要.</p>
+<p>4.6 对于多分类考察查准率和查全率,基于两种方式:a)先在各个混淆矩阵上计算(P<sub>1</sub>,R<sub>1</sub>),(P<sub>2</sub>,R<sub>2</sub>),…,(P<sub>n</sub>,R<sub>n</sub>),然后再计算平均值得到”宏查准率”和”宏查全率”.b)先将各混淆矩阵上的对应元素计算平均,再基于这些平均值计算出”微查准率”和”微查全率”.</p>
+<p>4.7 ROC和AUC: <strong>ROC体现了综合考虑学习器在不同任务下的”期望泛化性能”的好坏,或者说,”一般情况下”泛化性能的好坏</strong>.ROC曲线的纵轴是”真正例率(TPR)”,横轴是”假正例率(FPR)”,两者分别定义为TPR=TP / (TP + FN), FPR=FP / (TN + FP). 和P-R图相似,若一个学习器的ROC曲线被另一个学习器的曲线完全”包住”,则可断言后者性能优于前者.若两个学习器的ROC曲线发生交叉,则难以一般性地断言两者孰优孰劣,此时如果一定要进行比较,则较为合理的判据是比较ROC曲线下的面积,即AUC.</p>
+<script type="math/tex; mode=display">AUC = \frac{1}{2}\sum\_{i=1}^{m-1}(x\_{i+1} - x\_i) \cdot(y\_i + y\_{i+1})$$.
+
+**5.比较检验(待丰富)**:假设检验/交叉验证t检验/McNemar检验/Friedman检验与Nemenyi后续检验
+
+**6.偏差与方差**:
+
+6.1 泛化误差可分为偏差/方差与噪声之和.**偏差**度量了学习算法的期望预测与真实结果的偏离程度,即刻画了学习算法本身的拟合能力;**方差**度量了同样大小的训练集的变动所导致的学习性能的变化,即刻画了数据扰动所造成的影响;**噪声**则表达了在当前任务上任何学习算法所能达到的期望泛化误差的下界,即刻画了学习问题本身的难度.
+
+**(2.0补充)**
+7.训练误差(经验误差):学习器在训练集上的误差
+
+8.泛化误差:学习器在新样本上的误差
+
+***
+### 第三章.线性模型
+1.线性模型:给定由d个属性描述的示例X=(x<sub>1</sub>;x<sub>2</sub>;...;x<sub>d</sub>),其中x<sub>i</sub>是X在第i个属性上的取值,线性模型试图**学得一个通过属性的线性组合来进行预测的函数**,即
+$$f(\textbf{x})=w\_1x\_1+w\_2x\_2+...+w\_dx\_d+b</script><p>写成向量形式:</p>
+<script type="math/tex; mode=display">f(\textbf{x})=\textbf{w}^T+b</script><p>其中,<strong>w</strong>=(w<sub>1</sub>;w<sub>2</sub>;…;w<sub>d</sub>).<strong>w</strong>和b学得之后,模型就得以确定.</p>
+<p><strong>2.线性回归</strong></p>
+<p>2.1 概念:线性回归试图学得一个线性模型以尽可能准确地预测实值输出标记.</p>
+<p>2.2 <strong>均方误差</strong>是回归任务中最常用的性能度量.基于均方误差来求解模型的方法成为<strong>最小二乘法</strong>.</p>
+<p>2.3 对于多元线性回归,可以利用最小二乘法来对<strong>w</strong>和b进行估计.</p>
+<p>2.4 对数线性回归: 认为示例所对应的输出标记是在指数尺度上变化.</p>
+<script type="math/tex; mode=display">lny=\textbf{w}^T+b</script><p>实际上是试图让<script type="math/tex">e^{w^Tx}+b</script>逼近y.</p>
+<p>2.5 广义线性模型: <script type="math/tex">y=g^{-1}(\textbf{w}^T+b)</script>(将输入空间上的真实值到输出空间上预测值的非线性函数映射)</p>
+<p><strong>3.对数几率回归</strong></p>
+<p>3.1 对数几率回归是一种”Sigmoid函数”.进而将回归问题转化为分类问题.</p>
+<p><strong>(补充)</strong>:优化方法:极大似然估计;先构造极大似然函数,再利用梯度下降或牛顿法进行优化函数.</p>
+<p><strong>4.线性判别分析(待温故)</strong></p>
+<p>4.1 线性判别分析(Linear Discriminant Analysis),简称LDA,是一种经典的线性学习方法.LDA:给定训练样例集,设法将样例集投影到一条直线上,使得同类样例的投影点尽可能近/异类样例的投影点尽可能远;在对新样本进行分类时,将其投影到同样的这条直线上,再根据投影点的位置来确定新样本的类别.即,欲使同类样例的投影点尽可能接近,可以让同类样例投影点的协方差尽可能小;而欲使异类样例的投影点尽可能远离,可以让类中心之间的距离尽可能大.</p>
+<p>4.2 奇异值: 特征值分解是提取矩阵特针很不错的方法,但是它只是针对方针而言的,对于非方阵矩阵,使用奇异值分解能适用于任何形式的矩阵.分解形式为:</p>
+<script type="math/tex; mode=display">A\_{m\*n}=U\_{m\*m}\Sigma\_{m\*n}{V\_{n\*n}}^T(\Sigma\_{m\*n}为对角矩阵)</script><p><strong>5.多分类学习</strong></p>
+<p>5.1 多分类学习的基本思路是”拆解法”,即将多分类任务拆分为若干个二分类任务求解.最经典的拆分策略有三种:”一对一(One vs. One OvO)”,”一对其余(One vs. Rest,OvR)”和”多对多(Many vs. Many,简称MvM)”.</p>
+<p><strong>(补充)</strong><br>5.2 类别不平衡问题:指的是分类任务中不同类别的训练样例数目差别很大的情况.<br>基本策略:</p>
+<script type="math/tex; mode=display">\frac{y^{'}}{1-y^{'}}=\frac{y}{1-y}\times\frac{m^{-}}{m^{+}}</script><p>解决方案:</p>
+<ul>
+<li>1.直接对训练集里的反例样例进行”欠采样”(下采样),即去除一些反例使得正/反例数目接近,然后进行学习</li>
+<li>2.对训练集里的正类样例进行”过采样”(上采样),即增加一些正例使得正/反例数目接近,然后再进行学习</li>
+<li>3.直接基于原始训练集进行学习,但在用训练好的分类器进行预测时,将基本策略公式嵌入到决策过程中,称为”阈值移动”</li>
+</ul>
+<hr>
+<h3 id="第四章-决策树"><a href="#第四章-决策树" class="headerlink" title="第四章 决策树"></a>第四章 决策树</h3><p>4.1 <strong>信息熵</strong>是度量样本集合纯度最常用的一种指标.假定当前样本集合D中第k类样本所占的比例为p<sub>k</sub>(k=1,2,…,|Y|),则D的信息熵为</p>
+<script type="math/tex; mode=display">Ent(D)=-\sum\_{k=1}^{|Y|}p\_klog\_2p\_k</script><p>Ent(D)的值越小,则D的纯度越高.</p>
+<p>4.2 假定离散属性a有V个可能的取值{a<sup>1</sup>,a<sup>2</sup>,…,a<sup>V</sup>},若使用a对样本集D进行划分,则会产生V个分支结点,其中第v个分支结点包含了D中所有在属性a上取值为a<sup>v</sup>,记为D<sup>v</sup>.于是可以计算出用属性a对样本集D进行划分所获得的<strong>信息增益</strong></p>
+<script type="math/tex; mode=display">Gain(D,a)=Ent(D)-\sum\_{v=1}^{V}\frac{|D|^v}{|D|}Ent(D^v)$$.
+一般而言,信息增益越大,则意味着使用属性a来进行划分所获得的"纯度提升"越大.因此,可利用信息增益来进行决策树的划分属性选择.
+
+4.3 **ID3**决策树学习算法就是以**信息增益**为准则来选择划分属性.(信息增益准则对可取值数目较多的属性有所偏好)
+
+4.4 **C4.5**决策树算法不直接使用信息增益,而是使用"**增益率**"来选择最优划分属性.增益率定义为:
+$$GainRatio(D,a)=\frac{Gain(D,a)}{IV(a)}$$,其中,
+$$IV(a)=-\sum\_{v=1}^{V}\frac{|D|^v}{|D|}log\_2\frac{|D|^v}{|D|}$$,IV(a)称为属性a的"固有值".增益率对属性数目偏少的属性有所偏好.
+
+(**补充**):C4.5算法并不是直接选择增益率最大的候选划分属性,而是使用了启发式算法:**先从候选划分属性中找出信息增益高于平均水平的属性,然后再从中选择增益率最高的.**
+
+4.5 **CART决策树**使用"基尼指数"来选择划分属性.
+
+**4.6 剪枝处理**
+
+4.6.1 剪枝是决策树学习算法对付"过拟合"的一个重要手段.
+
+4.6.2 剪枝策略包括:**预剪枝**和**后剪枝**.
+
+4.6.3 **预剪枝**是在决策树生成过程中,对每个结点在划分前先进行估计,若当前结点的划分不能带来决策树泛化性能的提升,则停止划分并将当前结点标记为叶结点;**后剪枝**则是先从训练集生成一棵完整的决策树,然后自底向上地对非叶结点进行考察,若将该结点对应的子树替换为叶结点能带来决策树泛化性能提升,则将该子树替换为叶结点.
+
+4.6.3 后剪枝决策树通常比预剪枝决策树保留了更多的分支.一般情形下,后剪枝决策树的欠拟合风险很小,泛化性能往往优于预剪枝决策树.但其训练时间开销比未剪枝决策树和预剪枝决策树都要大得多.
+
+**(如何判断决策树泛化性能能否提升?)**:采用留出法,即预留一部分数据用作"验证集"以进行性能评估.
+
+**4.7 连续与缺失值**
+
+4.7.1 连续值处理: 二分法.(也是基于信息增益来选择划分点).二分法切分出n-1个划分点,然后从这些划分点中选择信息增益最大的划分点.
+
+4.7.2 缺失值处理: 简单来讲,通过样本中无缺失值样本来估计同一个有属性值缺失的样本被划入不同子结点的概率.
+**(补充)**:解决两个问题:
+* 1)如何在属性值缺失的情况下进行划分属性选择?
+* 2)给定划分属性,若样本在该属性上的值缺失,如何对样本进行划分?
+
+对于第一个问题,还是沿用信息增益来进行划分,借助无缺失值的样本.
+$$Gain(D,a)=\rho\*Gain(\tilde{D},a)=\rho\*(Ent(\tilde{D}-\sum\_{v=1}^{V}\tilde{r\_{v}}Ent(\tilde{D}^v)))</script><p>其中,<script type="math/tex">Ent(\tilde{D})=-\sum\_{k=1}^{|Y|}\tilde{p}\_{k}log\_2\tilde{p}\_k</script>.(参考西瓜书Page86)</p>
+<p>对于第二个问题,若样本x在划分属性a上的取值已知,则将x划入与其取值对应的子结点,且样本权值在子结点中保持为$W_x$.若样本x在划分属性a上的取值未知,则将x同时划入所有子结点,且样本权值在与属性值$a^v$对应的子结点调整为$\tilde{r_v}\cdot{w_x}$.</p>
+<p>4.8 多变量决策树: 实现斜划分甚至更复杂的决策树.<strong>在多变量决策树的学习过程中,不是为每个非叶结点寻找一个最优划分属性,而是试图建立一个合适线性分类器.</strong></p>
+<hr>
+<h3 id="第五章-神经网络"><a href="#第五章-神经网络" class="headerlink" title="第五章 神经网络"></a>第五章 神经网络</h3><p>1 神经网络的学习过程就是根据训练数据来调整神经元之间的<strong>连接权</strong>以及每个功能神经元的<strong>阈值</strong>.</p>
+<p>2 感知机: 由两层神经元组成,输入层接受外界输入信号后传递给输出层,输出层是M-P神经元,亦称”阈值逻辑单元”. 对于非线性问题,需要考虑使用多层功能神经元.</p>
+<p>3 误逆差传播算法(亦称反向传播算法,BP算法):BP算法是基于梯度下降策略,以目标的负梯度方向对参数进行调整.</p>
+<p>4 累积BP算法的目标是最小化训练集D上的累积误差<script type="math/tex">E=\frac{1}{m}\sum\_{k=1}^{m}E\_k</script>.标准BP算法每次更新只针对单个样例,参数更新得非常频繁,而对不同样例进行更新的效果可能出现”抵消”现象.因此为了达到同样的累积误差极小点,标准BP算法往往需要进行更多次数的迭代.累积BP算法直接针对累积误差最小化,它在读取整个训练集D一遍后才对参数进行更新,其参数更新的频率低得多,但在很多任务中,累积误差下降到一定程度后,进一步下降会非常缓慢,这时标准BP往往会更快获得较好的解,尤其是在训练集D非常大时更明显.</p>
+<p>5 BP神经网络经常遭遇过拟合,两种策略解决: <strong>a)早停</strong>,将数据分成训练集和验证集,训练集用来计算梯度/更新连接权和阈值,验证集用来估计误差,若训练集误差降低但验证集误差升高,则停止训练,同时返回具有最小验证集误差的连接权和阈值. <strong>b)正则化</strong>,其基本思想是在误差目标函数中增加一个用于描述网络负责度的部分.</p>
+<p>6 神经网络采用一下策略”跳出”局部极小:</p>
+<ul>
+<li><strong>以多组不同参数值初始化多个神经网络</strong>,按标准方法训练后,<strong>取其中误差最小的解作为最终参数</strong>.</li>
+<li>使用”<strong>模拟退火</strong>“,即以一定概率接受比当前解更差的结果.</li>
+<li>使用<strong>随机梯度下降</strong>.与标准梯度下降精确计算梯度不同,随即梯度下降法在计算梯度时加入了随即因素,于是,即使陷入局部极小点,它计算出的梯度仍可能不为0,这样有机会跳出局部极小点继续搜索.</li>
+</ul>
+<p><strong>(补充)</strong>:梯度下降:</p>
+<ul>
+<li>1)批量梯度下降:每次使用全量的训练集样本来更新模型参数</li>
+<li>2)随机梯度下降:每次从训练集中随机选择一个样本来进行学习</li>
+<li>3)小批量梯度下降:每次更新速度与更新次数中间取得一个平衡，其每次更新从训练集中随机选择 m (m小于n) 个样本进行学习</li>
+</ul>
+<p>7 其他常见神经网络</p>
+<ul>
+<li>RBF网络(使用径向基函数作为隐层神经元激活函数,而输出层是对隐层神经元输出的线性组合.)</li>
+<li>ART网络(竞争型学习是神经网络中一种常用的无监督学习策略,在使用该策略时,网络的输出神经元相互竞争,每一时刻仅有一个竞争获胜的神经元被激活,其他的神经元的状态被抑制.ART网络有比较层/识别层/识别阈值和重置模块构成.比较层负责接收输入样本,并将其传递给识别层神经元.识别层每个神经元对应一个模式类,神经元数目可在训练过程中动态增长以增加新的模式类)</li>
+<li>SOM网络(一种竞争学习型的无监督神经网络,它能将高维输入数据映射到低维空间,同时保持输入数据在高维空间的拓扑结构.)</li>
+<li>级联相关网络</li>
+<li>Elman网络</li>
+<li>Boltzmann机</li>
+</ul>
+<p>8 深度学习:一般地，CNN的基本结构包括两层，其一为特征提取层，每个神经元的输入与前一层的局部接受域相连，并提取该局部的特征。一旦该局部特征被提取后，它与其它特征间的位置关系也随之确定下来；其二是特征映射层，网络的每个计算层由多个特征映射组成，每个特征映射是一个平面，平面上所有神经元的权值相等。特征映射结构采用影响函数核小的sigmoid函数作为卷积网络的激活函数，使得特征映射具有位移不变性。此外，由于一个映射面上的神经元共享权值，因而减少了网络自由参数的个数。卷积神经网络中的每一个卷积层都紧跟着一个用来求局部平均与二次提取的计算层，这种特有的两次特征提取结构减小了特征分辨率。CNN主要用来识别位移、缩放及其他形式扭曲不变性的二维图形.</p>
+<p>8.1 卷积: 说白了,卷积操作就是一种加权求和.在卷积层中,通常包含若干个特征平面,每个特征平面由一些矩形排列的神经元组成,同一特征平面的神经共享单元共享权值,共享的权值就是卷积核.卷积核带来的直接好处减少网络各层之间的连接,同时降低了过拟合的风险.</p>
+<p>8.2 池化: 也叫子采样,降维处理,减少了模型的参数.</p>
+<p><strong>(补充)</strong>:神经网络的误差反向传播算法的推导需要重新看.</p>
+<hr>
+<h3 id="第六章-支持向量机"><a href="#第六章-支持向量机" class="headerlink" title="第六章 支持向量机"></a>第六章 支持向量机</h3><h4 id="第六章-西瓜书"><a href="#第六章-西瓜书" class="headerlink" title="第六章 西瓜书"></a>第六章 西瓜书</h4><p>1.划分超平面:在样本空间中,划分超平面可通过如下线性方程来描述:</p>
+<script type="math/tex; mode=display">w^Tx+b=0$$,
+其中,$$w=(w\_1;w\_2;...;w\_d)$$为法向量;b为位移项,决定了超平面与原点之间的距离.将超平面记为(**w**,b),样本空间中任意点x到超平面(**w**,b)的距离为$$r=\frac{|w^T+b|}{||w||}$$.
+
+2.**支持向量**:假设超平面(**w**,b)能将训练样本正确分类,即对于$$(x\_i,y\_i)\in{D}$$,若y<sub>i</sub>=+1,则有$$w^T+b>0$$;若y<sub>i</sub>=-1,则有$w^T+b<0$.令$w^T+b\geq{+1},y\_i=1$;$w^T+b\leq{+1},y\_i=-1$.距离超平面最近的这几个训练样本点使上述等号成立,它们被称为"支持向量".两个异类支持向量到超平面的距离之和为$$\gamma=\frac{2}{||w||}$$.它们被称为"间隔".
+
+3.**支持向量机**:$min\_{w,b}\frac{1}{2}||w||^2,s.t. y\_i(w^Tx\_i+b)\geq{1},i=1,2,3,...,m.$.
+
+**(补充:)**SMO算法:
+* 选取一对需要更新的变量$\alpha\_{i}$和$\alpha\_{j}$
+* 固定$\alpha\_{i}$和$\alpha\_{j}$以外的参数,求解拉格朗日函数后更新$\alpha\_{i}$和$\alpha\_{j}$
+SMO算法先选取违背KKT条件程度最大的变量,第二个变量本应选择一个使目标函数值减小最快的变量,但由于比较各变量所对应的目标函数值减幅的复杂度过高,<font color='red'>**因此SMO采用了一个启发式:使选取的两变量所对应样本之间的间隔最大.**</font>
+
+4.正定矩阵:实对称矩阵
+
+5.二次规划问题:给定一个目标函数,找到n维的向量x,使得
+$$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩阵,那么该问题就是**凸二次规划问题**.凸二次规划问题,如果至少一个向量满足约束并且在可行域有下界,则凸二次规划问题就有一个全局最小值.如果Q是正定的,则这类二次规划为严格的凸二次规划问题,那么全局最小值就是唯一的.
+
+6.对于凸二次规划问题解法:拉格朗日方法/Lemke方法,内点法,有效集法,椭球法等.
+
+7.对偶问题:任何一个求极大化的线性规划问题都有一个求极小化的线性规划问题与之对应,反之亦然.如果我们把其中一个叫原问题,则另一个就叫做它的对偶问题,并称这一对互相联系的两个问题为一对**对偶问题**.
+
+8.核函数:当样本在原始样本空间中线性不可分时,可以将样本映射到更高维的特征空间中,使得样本在这个特征空间内线性可分.如果原始空间是有限维,那么一定存在一个高维特征空间使样本可分.即x<sub>i</sub>与x<sub>j</sub>在特征空间的内积等于它们在原始样本空间中通过函数*k(.,.)*计算的结果,这里的*k(.,.)*就是**核函数**.有了这样的函数,就不必计算高维甚至无穷维特征空间中的内积.
+
+9.核函数类型:
+* 线性核
+* 多项式核
+* 高斯核(RBF核)
+* 拉普拉斯核
+* Sigmoid核
+
+**(补充)**:核函数的组合形式($k\_1(x)$为核函数):
+* 1.核函数的线性组合还是核函数
+* 2.核函数的直积还是核函数$k\_1\times{k\_2}(x,z)=k\_1(x,z)k\_2(z)$仍是核函数
+* 3.对任意函数$g(x)$,$k(x,z)=g(x)k\_1(x,z)g(z)$仍是核函数
+
+**10.软间隔和正则化**
+
+10.1 软间隔:在现实任务中往往很难确定合适的核函数使得训练样本在特征空间中线性可分;退一步说,即便恰好找到了某个核函数使训练集在特征空间中可分,也很难判定这个"线性可分"是不是由过拟合造成的.缓解该问题的一个方法是允许支持向量机在一些样本上出错.支持向量机形式要求所有样本均满足约束,即所有样本都必须划分正确,这称为**"硬间隔"**.而**软间隔**允许某些样本不满足约束.
+
+**补充**:软间隔线性支持向量机优化目标为:
+1.$$min\_{w,b}\frac{1}{2}{||w||}^2+C\sum\_{i=1}^{m}l\_{0/1}(y\_i(w^T+b)-1)</script><p>2.C为惩罚参数,当C无穷大时,则迫使所有样本都满足约束.当C取有限值时,则允许有一些样本不满足约束.<br>3.$l_{0/1}$为0/1损失函数.<br>4.硬间隔和软间隔区别在于:前者是$0\leq{\alpha_i}\leq{C}$,后者是$0\leq{\alpha_i}$.<br>5.支持向量机模型都由两项构成:结构风险和经验风险.结构风险用于描述模型的某些性质,经验风险用于描述模型与训练数据的契合程度.为了降低模型复杂度和防止过拟合,通过$L_p$范数来正则化结构风险.</p>
+<p>11.损失函数:</p>
+<ul>
+<li>hinge损失</li>
+<li>指数损失</li>
+<li>对率损失</li>
+</ul>
+<p><strong>补充</strong>:SVR-支持向量回归</p>
+<ul>
+<li>1)容忍$f(x)$与真实输出$y$之间有$\epsilon$的误差,通过这种方式来最大限度的包容尽可能多的点在内</li>
+<li>2)目标函数的优化,依然用拉格朗日乘子法.</li>
+</ul>
+<hr>
+<h4 id="第六章-统计学习方法"><a href="#第六章-统计学习方法" class="headerlink" title="第六章 统计学习方法"></a>第六章 统计学习方法</h4><p>1.支持向量机学习方法包含构建由简至繁的模型:线性可分支持向量机,线性支持向量机及非线性支持向量机.当<strong>训练数据线性可分时</strong>,通过<strong>硬间隔最大化</strong>学习一个线性的分类器,即<strong>线性可分支持向量机</strong>,又称为硬间隔支持向量机;当<strong>训练数据近似线性可分时</strong>,通过<strong>软间隔最大化</strong>,也学习一个线性的分类器,即<strong>线性支持向量机</strong>,又称为软间隔支持向量机;当<strong>训练数据线性不可分时</strong>,通过<strong>核技巧及软间隔最大化</strong>,学习<strong>非线性支持向量机</strong>.</p>
+<p><strong>2.空间概念</strong></p>
+<p>2.1 线性空间(向量空间)</p>
+<blockquote>
+<p>线性空间又称作向量空间,对于一个线性空间,知道”基”(相当于三维空间中的坐标系)便可确定空间中元素的坐标(即位置).<strong>线性空间之定义了加法和数乘元算</strong>.</p>
+</blockquote>
+<p>2.2 赋范线性空间</p>
+<blockquote>
+<p>定义了范数的线性空间(为了了解<strong>向量的长度</strong>)</p>
+</blockquote>
+<p>2.3 内积空间</p>
+<blockquote>
+<p>定义了内积的线性空间(为了了解<strong>向量的夹角</strong>)</p>
+</blockquote>
+<p>2.4 欧式空间</p>
+<blockquote>
+<p>定义了内积的实线性空间V为实内积空间或欧几里德空间.</p>
+</blockquote>
+<p>2.5 Banach空间</p>
+<blockquote>
+<p>完备的赋范线性空间</p>
+</blockquote>
+<p>2.6 希尔伯特空间</p>
+<blockquote>
+<p>希尔伯特空间是欧几里德空间的一个推广,其不再局限于有限维的情形.与欧几里德空间相仿,希尔伯特空间也是内积空间,其上有距离和角的概念,此外,希尔伯特空间还是一个完备的空间,其上所有的柯西序列等价于收敛序列,从而微积分中的大部分概念都可以无障碍地推广到希尔伯特空间中.<br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/ML-01.jpg" alt="空间的一些数学概念"></p>
+</blockquote>
+<hr>
+<h3 id="第七章-提升方法-boosting"><a href="#第七章-提升方法-boosting" class="headerlink" title="第七章 提升方法(boosting)"></a>第七章 提升方法(boosting)</h3><ol>
+<li><p>提升方法是一种常用的统计学习方法,在分类问题中,它通过<strong>改变训练样本的权重</strong>,学习多个分类器,并将这些<strong>分类器进行线性组合</strong>,提升分类的性能.\</p>
+</li>
+<li><p><strong>提升树</strong>是以<strong>分类树</strong>或<strong>回归树</strong>为基本分类器的提升方法. 以决策树为基函数的提升方法称为提升树,对分类问题决策树是二叉分类树,对回归问题决策树是二叉回归树.</p>
+</li>
+<li><p>提升树算法采用前向分步算法.</p>
+</li>
+<li><p>提升树利用加法模型与前向分步算法实现学习的优化过程,当损失函数是平方损失和指数损失函数时,每一步的优化是简单的.但对一般的损失函数而言,往往每一步优化并不容易,这里可以使用梯度提升算法. <strong>其关键是利用损失函数的负梯度在当前模型的值作为回归问题提升树算法中的残差的近似值</strong>,拟合一个回归树.</p>
+</li>
+</ol>
+<hr>
+<h3 id="第八章-贝叶斯分类器"><a href="#第八章-贝叶斯分类器" class="headerlink" title="第八章 贝叶斯分类器"></a>第八章 贝叶斯分类器</h3><ol>
+<li><p>对分类任务来说,在所有相关概率都已知的理想情形下,贝叶斯决策论考虑如何基于这些概率和误判损失来选择最优的类别标记.</p>
+</li>
+<li><p>贝叶斯判定准则: 为了最小化总体风险,只需在每个样本上选择那个是条件风险最小的类别标记.(条件风险=期望损失).</p>
+</li>
+<li><p>极大似然估算后验概率,两种策略: 1) 给定样本x,可通过直接建模P(c|x)来预测c(从为x的类别标记),这样得到的是”判别式模型”; 2) 也可以先对联合概率分布P(x,c)建模,然后由此获得P(c|x),这样得到的是”生成式模型”;</p>
+</li>
+</ol>
+<p>4.求解贝叶斯分类器:朴素贝叶斯分类器.基于一个假设:所有属性之间相互独立</p>
+<ul>
+<li>对于离散性属性:$P(x_i|c)=\frac{D_{c,x_i}}{D_c}$</li>
+<li>对于连续性属性:$p(x_i|c)=\frac{1}{\sqrt{2\pi}\sigma_{c,i}}exp(-\frac{({x_i-\mu_{c,i}})^2}{2{\sigma_{c,i}}^2})$</li>
+</ul>
+<p>5.为了避免其他属性携带的信息被训练集中未出现的属性值”抹去”,在估计概率值时通常要进行”平滑”,<strong>常用”拉普拉斯修正”</strong>.令N表示训练集D中可能的类别数,$N_i$表示第i个属性可能的取值数,则修正为:</p>
+<ul>
+<li>$P(c)=\frac{|D_c|+1}{|D|+N}$</li>
+<li>$P(x_i|c)=\frac{|D_{c,x_i}|+1}{|D_c|+N_i}$</li>
+</ul>
+<p>6.如果任务对预测速度要求较高,则针对训练集将朴素贝叶斯分类器涉及的所有概率估值事先计算好存储起来.如果任务数据更替频繁,则可事先不进行任何训练,待收到预测请求时再根据当前数据集进行概率估值.如果数据不断增加,则可在现有估值的基础上,仅对新增样本的属性值所涉及的概率估值进行计数修正即可实现增量学习.</p>
+<blockquote>
+<p>判别式模型常见的主要有：<br>Logistic Regression<br>SVM<br>Traditional Neural Networks<br>Nearest Neighbor<br>CRF<br>Linear Discriminant Analysis<br>Boosting<br>Linear Regression</p>
+<p>产生式模型常见的主要有：<br>Gaussians<br>Naive Bayes<br>Mixtures of Multinomials<br>Mixtures of Gaussians<br>Mixtures of Experts<br>HMMs<br>Sigmoidal Belief Networks, Bayesian Networks<br>Markov Random Fields<br>Latent Dirichlet Allocation</p>
+</blockquote>
+<p>(判别式模型和生成式模型:<a href="http://www.cnblogs.com/fanyabo/p/4067295.html" target="_blank" rel="external">http://www.cnblogs.com/fanyabo/p/4067295.html</a>)</p>
+<p><strong>补充:</strong>:<br>1.贝叶斯最优分类器为:$h^*=argmax_{c\in{y}}P(c|x)$.要用贝叶斯判定准则来最小化决策风险,首先要获得后验概率$P(c|x)$,而这在现实生活中是难以直接获得的,机器学习所要实现的是基于有限的训练样本集尽可能准确地估计出后验概率.有两种策略:判别式模型和生成式模型.</p>
+<p>2.判别式模型和生成式模型比较:<br>定义单个测试数据为$(c_0,x_0)$,$c_0$为测试数据的label,$x_0$为测试数据的feature</p>
+<ul>
+<li>判别式模型(注重条件概率):它是训练完毕后,输入测试数据,判别模型直接给出的是$P(c|x_0)$.实际上是我们看了训练过的数据之后,学习到了对数据分步的后验知识,然后根据这个认识和测试样本的feature来决策.判别模型求解的思路是：条件分布———&gt;模型参数后验概率最大———-&gt;（似然函数\cdot 参数先验）最大———-&gt;最大似然</li>
+<li>生成式模型(注重联合分布概率):给定输入$x_0$,生成式模型可以给出输入和输出的联合分布$P(x_0,c_0)$.生成模型的求解思路是：联合分布———-&gt;求解类别先验概率和类别条件概率</li>
+</ul>
+<p>3.<strong>半朴素贝叶斯分类器</strong><br>3.1 目的:为了降低贝叶斯公式中的后验概率$P(c|x)$的困难,朴素贝叶斯分类器采用了属性条件独立的假设,但在现实任务中这个假设很难成立.<br>3.2 做法:适当考虑一部分属性间的相互依赖信息<br>3.3 策略:独依赖估计(One-Dependent Estimator)-ODE,就是<strong>假设每个属性在类别之外最多依赖于一个其他属性</strong>.$P(c|x)\propto{P(c)\prod_{i=1}^{d}P(x_i|c,pa_i))}$.相比朴素贝叶斯分类器,$x_i$多了一个依赖.$pa_i$为属性$x_i$所依赖的属性.<br>3.4 问题的关键就在于:如何确定每个属性的父属性,也就是所依赖的属性.<br>方案:</p>
+<ul>
+<li>1.<strong>SPODE</strong>-所有的属性都依赖于同一个属性,称为”超父”,然后通过交叉验证等模型选择方法来确定超父属性</li>
+<li>2.<strong>TAN</strong>-在最大带权生成树算法的基础上,将属性间依赖关系约简到一种树形结构.<ul>
+<li>1.计算任意两个结点的互信息$I(x_i,x_j|y)=\sum_{x_i,x_j;c\in{y}}P(x_i,x_j|c)log\frac{P(x_i,x_j|c)}{P(x_i|c)P(x_j|c)}$</li>
+<li>2.以属性为结点构建完全图,任意两个结点之间边的<strong>权重设为$I(x_i,x_j|y)$</strong></li>
+<li>3.构建此完全图的<strong>最大带权生成树</strong>,挑选根变量,将边置为有向</li>
+<li>4.加入类别结点y,增加从y到每个属性的有向边</li>
+</ul>
+</li>
+<li>3.<strong>AODE</strong>-一种基于集成学习机制,更为强大的独依赖分类器.AODE尝试将每个属性作为超父来构建SPODE,然后将那些具有足够训练数据支撑的<strong>SPODE集成</strong>起来作为最终结果.即$P(c|x)\propto{\sum_{i=1,|D_{x_i}|\geq{m^{‘}}}^{d}P(c,x_i)\prod_{j=1}^{d}P(x_j|c,x_i))}$</li>
+</ul>
+<p>4.<strong>贝叶斯网</strong><br>4.1 概念:借助有向无环图来刻画属性之间的依赖关系,并使用条件概率表来描述属性的联合概率分布.一个贝叶斯网B由结构G和参数$\theta$两部分构成,$\theta$定量描述变量的依赖关系.<br>4.2 结构:给定父结点集,贝叶斯网假设每个属性与它的非后裔属性独立,于是$B=&lt;G,\theta&gt;$将属性$x_1,x_2,…,x_d$的联合概率分布定义为$P_B(x_1,x_2,…,x_d)=\prod_{i=1}^{d}P_B(x_i|\pi_i)=\prod_{i=1}^{d}\theta_{x_i|\pi_i}$</p>
+<hr>
+<h3 id="第九章-集成学习-提升方法"><a href="#第九章-集成学习-提升方法" class="headerlink" title="第九章 集成学习(提升方法)"></a>第九章 集成学习(提升方法)</h3><p><strong>1.概念介绍</strong></p>
+<ol>
+<li>1 集成学习方法大致分为两类: 1) 个体学习器之间存在强依赖关系,必须串行化生成的序列化方法; 2) 个体学习器间不存在强依赖关系,可同时生成的并行化方法. <strong>1)的代表是Boosting</strong>;<strong>2)的代表是Bagging和”随机森林”</strong>;</li>
+</ol>
+<p>1.2 Bagging是并行集成学习方法最著名的代表,训练基于<strong>自助采样法</strong>.</p>
+<p>1.3 Bagging通常对分类任务使用简单投票法,对回归任务使用简单平均法.</p>
+<p>1.4 随机森林(Random Forest)是Bagging的一个扩展变体,RF在以决策树为基学习器构建Bagging集成的基础上,进一步在决策树的训练过程中引入了随机属性选择.</p>
+<p><strong>补充:</strong><br>1.5 集成中只包含同种类型的个体学习器称为”同质的”.同质集成中的学习器亦称”基学习器”,相应的学习算法称为”基学习算法”.集成也可包含不同类型的个体学习器,这样的集成是”异质的”.相应的个体学习器一般不称为基学习器,常成为组件学习器.</p>
+<p>1.6 <strong>Important:</strong>要获得好的集成,个体学习器应<strong>“好而不同”</strong>,<strong>即个体学习器要有一定的”准确性”</strong>,<strong>即学习器不能太坏,并且要有”多样性”,即学习器间具有差异</strong>.</p>
+<p>1.7 <strong>Boosting</strong>:</p>
+<p>1.7.1 概念:Boosting是一族可将弱学习器提升为强学习器的算法.</p>
+<p>1.7.1 工作机制:先从初始训练集训练出一个基学习器,再根据基学习器的表现对训练样本分布进行调整,使得先前基学习器做错的训练样本在后续受到更多关注,然后基于调整后的样本分布来训练下一个基学习器;如此重复,直至基学习器数目达到事先指定的值T,最终将这T个基学习器进行加权结合.</p>
+<p>1.7.2 代表算法AdaBoost</p>
+<ul>
+<li>推导:基于”加性模型”,即学习器的线性组合,$H(x)=\sum_{t=1}^{T}\alpha_th_t(x)$.训练T个基分类器,对上一轮分类错误的样本分配更多的权重.</li>
+</ul>
+<p>1.8 <strong>Bagging和随机森林</strong></p>
+<p>1.8.1 概念:Bagging是并行式集成学习方法最著名的代表.直接<strong>基于自主采样法(bootstrap sampling),有放回的采样</strong>.</p>
+<p>1.8.2 操作:Bagging对分类任务使用简单投票法,对回归任务使用简单平均法.</p>
+<p>1.8.3 随机森林:是Bagging的一个扩展变体.<strong>RF在以决策树构建Bagging集成的基础上,进一步再决策树的训练过程中引入了随机属性选择.</strong>具体来说,传统决策树在选择划分属性时是在当前结点的属性集合中选择一个属性;而在RF中,对基决策树的每个结点,先从该结点的属性集合中<strong>随机选择一个包含k个属性的子集</strong>,然后再从这个子集中<strong>选择一个最优属性用于划分</strong>.</p>
+<p><strong>2.组合策略</strong></p>
+<p>2.1 平均法<br>包括简单平均法和加权平均法.加权平均法的权重一般是从训练数据中学习而得,但是加权平均法未必一定优于简单平均法.<strong>一般而言,在个体学习器性能相差较大时宜使用加权平均法,而在个体学习器性能相近是宜使用简单平均法.</strong></p>
+<p>2.2 投票法<br>包括绝对多数投票法,相对多数投票法及加权投票法.</p>
+<p>2.3 学习法<br>当训练数据很多时,一种更为强大的结合策略是使用”学习法”,即通过另一个学习器来进行结合.<strong>Stacking是学习法的典型代表</strong>.Stacking先从初始数据集训练出初级学习器,然后”生成”一个新数据集用于训练次级学习器.在这个新数据集中,<strong>初级学习器的输出被当做样例输入特征</strong>,而初始样本的标记仍被当作样例标记.</p>
+<hr>
+<h3 id="第十章-聚类"><a href="#第十章-聚类" class="headerlink" title="第十章 聚类"></a>第十章 聚类</h3><p><strong>1.性能度量</strong></p>
+<p>1.1 聚类性能的度量有两类: 一类是将聚类结果与某个”参考模型”进行比较,称为”外部指标”.另一类是直接考察聚类结果而不利用任何参考模型,称为”内部指标”.</p>
+<p><strong>1.1 外部指标</strong></p>
+<p>1.2 a = |SS|,b=|SD|,c=|DS|,d=|DD|(关于SS,SD,DS和DD的解释参考书Page198),常用的三种性能度量:</p>
+<ul>
+<li>Jaccard系数: <script type="math/tex">JC=\frac{a}{a+b+c}</script></li>
+<li>FM指数: <script type="math/tex">FMI=\sqrt{\frac{a}{a+b}\frac{a}{a+c}}</script></li>
+<li>$RI=\frac{2(a+d)}{m(m-1)}$<br>上述性能度量的结果均在[0,1]区间,值越大越好.</li>
+</ul>
+<p><strong>1.2内部指标</strong><br><strong>补充:</strong>通过考虑聚类结果的簇之间的距离<br><strong>DBI指数和DI指数</strong>(DBI值越小越好,而DI值越大越好.)</p>
+<p><strong>2.聚类算法</strong><br>2.1 <strong>原型聚类</strong>:k-means聚类,学习向量量化(LVQ)-有标记聚类,高斯混合聚类<br>2.2 <strong>密度聚类</strong>:DBSACN:1.找到所有的核心对象;2.从核心对象出发将密度可达点加入生成聚类簇<br>2.3 <strong>层次聚类</strong>:Hierarchical clustering:先将数据集中的每个样本看作一个初始聚类簇,然后在算法运行的每一步中找出距离最近的两个聚类簇进行合并,不断重复,直到达到预设的聚类簇个数.</p>
+<p><strong>补充:3距离计算</strong><br>3.1 距离度量函数满足以下性质:</p>
+<ul>
+<li>非负性</li>
+<li>同一性</li>
+<li>对称性</li>
+<li>直递性</li>
+</ul>
+<p>3.2 常用的距离度量函数</p>
+<ul>
+<li>Minkowski distance(闵可夫斯基距离)$dist_{mk}(x_i,x_j)=(\sum_{n}^{u=1}|x_{iu}-x_{ju}|^p)^\frac{1}{p}$</li>
+<li>Euclidean distance(欧式距离) 当闵可夫斯基距离中的p=2时,即为欧式距离</li>
+<li>Manhattan distance(曼哈顿距离) 当闵可夫斯基距离中的p=1时,即为曼哈顿距离</li>
+</ul>
+<p>3.3 无序属性的处理</p>
+<ul>
+<li><p>对<strong>无序属性可采用VDM</strong>(Value Difference Metric).令$m_{u,a}$表示在属性u上取值为a的样本数,$m_{u,a,i}$表示在第i个样本簇中的属性u上取值为a的样本数,k为样本簇数,则属性u上两个离散值a和b之间的VDM距离为$VDM_p(a,b)=\sum_{i=1}^{k}|\frac{m_{u,a,i}}{m_{u,a}}-\frac{m_{u,b,i}}{m_{u,b}}|^p$.</p>
+</li>
+<li><p>将闵可夫斯基距离和VDM结合即可处理混合属性.假定有$n_c$个有序属性,$n-n_c$个无序属性,则$MinkovDM_p(x_i,x_j)=(\sum_{u=1}^{n_c}|x_{iu}-x_{ju}|^p+\sum_{u=n_c+1}^{n}VDM_p(x_{iu},x_{ju}))^\frac{1}{p}$</p>
+</li>
+</ul>
+<hr>
+<h3 id="第十一章-降维与度量学习"><a href="#第十一章-降维与度量学习" class="headerlink" title="第十一章 降维与度量学习"></a>第十一章 降维与度量学习</h3><p><strong>1.降维(维数约简)</strong><br>1.1 为什么要降维?因为在高维情形下出现的<strong>数据样本稀疏,距离计算困难</strong>等问题,是所有机器学习方法共同面临的严重障碍.</p>
+<p>1.2 为什么能进行降维?因为在很多时候,人们观测或收集到的数据样本虽然是高维的,但与学习任务密切相关的也许仅仅是某个低维分布,即高维空间中的一个低维”嵌入”.</p>
+<p>1.3 降维方法:</p>
+<ul>
+<li><strong>多维缩放MDS</strong>(最优化问题解法:计算内积矩阵)<br><strong>补充:</strong><ul>
+<li>原样本为$R^{m\times{m}}$,降维后为$R^{d’\times{m}}$,使得任意两个样本在$d’$维空间中的欧式距离等于原始空间中的距离,即$||z_i-z_j||=dist_{ij}$.</li>
+<li>令$B=Z^TZ$,B为降维后的内积矩阵,$b_{ij}=z_i^Tz_j$,$dist_{ij}^2=||z_i||^2+||z_j||^2-2z_i^Tz_j=b_{ij}+b_{jj}-2b_{ij}$,对Z进行中心化,然后推导求出B;求出B后利用特征值分解,求得Z矩阵</li>
+</ul>
+</li>
+<li><strong>主成分分析PCA</strong>(Principal Component Analysis)(最优化问题解法:计算协方差矩阵),用一个超平面对所有样本进行恰当表达.<ul>
+<li><strong>最近重构性</strong>:样本点到这个超平面的距离都足够近</li>
+<li><strong>最大可分性</strong>:样本点在这个超平面上的投影点能尽可能分开</li>
+<li><strong>思路</strong>:将所有的样本投影到超平面上,然后求投影变换后的新坐标系,正交基向量</li>
+</ul>
+</li>
+<li><strong>核化线性降维(KPCA)</strong></li>
+<li><strong>流形学习(Manifold Learning)</strong><ul>
+<li>等度量映射(Isometric Mapping)(将多维空间中的测地线距离作为MDS算法的原始空间距离矩阵的输入,其中任意两点之间的最短路径可以用Dijkstra或者Floyd算法求)</li>
+<li>局部线性嵌入(Locally Linear Embeeding)</li>
+</ul>
+</li>
+<li><strong>度量学习(Metric Learning)</strong>(通过学习的方式,学到一种转换维度的距离度量的方式)</li>
+</ul>
+<hr>
+<h3 id="第十二章-特征选择与稀疏学习"><a href="#第十二章-特征选择与稀疏学习" class="headerlink" title="第十二章 特征选择与稀疏学习"></a>第十二章 特征选择与稀疏学习</h3><p><strong>1.概念和意义</strong><br>1.1 特征选择：从给定的特征集合中选择出相关特征子集的过程，成为”特征选择”;</p>
+<p>1.2 特征选择的原因:</p>
+<ul>
+<li>在现实任务中经常会遇到<strong>维数灾难</strong>的问题,这是由于属性过多造成的，如果能从中选择出重要的特征，使得后续的学习过程仅需在一部分特征上构建模型,则维数灾难问题会大为减轻。</li>
+<li><strong>去除不相关特征</strong>往往会降低学习任务的难度。</li>
+</ul>
+<p><strong>2.如何特征选择</strong><br>分为两步:</p>
+<ul>
+<li>“子集搜索”:前向搜索，每次向特征集合中添加，直到结果不再优为止;或者后向搜索，从完整的特征候选集合中减少特征（类似于贪心算法）。</li>
+<li>“子集评价”:基于<strong>信息增益</strong>计算属性特征的贡献。对于属性子集A,假定根据其取值将D分成了V个子集{$D^1$,$D^2$,…,$D^V$},每个子集中的样本在A上取值相同,于是我们可计算属性子集A的信息增益.信息增益越大,意味着特征子集A包含的有助于分类的信息越多.基于每个属性子集的信息增益作为评价准则.</li>
+</ul>
+<p><strong>3.特征选择的方法</strong><br><strong>3.1 过滤式</strong><br>过滤式选择不考虑后续学习器。</p>
+<blockquote>
+<p>Relief是一种著名的过滤式特征选择方法，该方法设计了一个”相关统计量”来度量特征的重要性。（是为二分类问题设计的。扩展变体Relief-F能处理多分类的问题。）可以设定相关统计量的<strong>阈值</strong>或者设定选择<strong>特征的个数K</strong>.</p>
+</blockquote>
+<p><strong>3.2 包裹式</strong><br>与过滤式选择不考虑后续学习器不同，包裹式选择<strong>直接把最终将要使用的学习器的性能作为特征子集的评价准则</strong>。In other words，包裹式选择的目的就是为给定学习器选择最有利于其性能的特征子集。包裹式选择方法直接针对给定学习器进行优化。</p>
+<blockquote>
+<p>LWW(Las Vegas Wrapper)是一个典型的包裹式特征选择方法，它在拉斯维加斯方法框架下使用<strong>随机策略</strong>来进行子集搜索，并<strong>以最终分类器的误差为特征子集评价准则</strong>。-交叉验证</p>
+</blockquote>
+<p><strong>3.3 嵌入式</strong><br>嵌入式选择是将特征选择过程与学习器训练过程融为一体，两者在同一个优化过程中完成，即在学习器训练过程中自动地进行了特征选择。<br>具体做法：将过拟合中的正则项中的L2范数替换为L1范数，L1范数和L2范数都有助于降低过拟合的风险，但L1范数还会带来一个额外的好处，它比后者更易于获得”稀疏”解。</p>
+<p><strong>4.稀疏表示与字典学习</strong><br>4.1 将样本转化为合适的稀疏表示形式，从而使学习任务得以简化，模型复杂度得以降低，通常称为”字典学习”，亦称”稀疏编码”。</p>
+<p><strong>5.压缩感知</strong><br>压缩感知关注的是如何利用信号本身所具有的稀疏性，从部分观测样本中恢复原信号。通常认为，压缩感知分为”感知测量”和”重构恢复”这两个阶段。”感知测量”关注如何对原始信号进行处理以获得稀疏样本表示;”重构恢复”关注的使如何基于洗属性从少量观测中恢复原信号，这是压缩感知的精髓。</p>
+<hr>
+<h3 id="第十三章-半监督学习"><a href="#第十三章-半监督学习" class="headerlink" title="第十三章 半监督学习"></a>第十三章 半监督学习</h3><p><strong>1.概念</strong><br>在只有少量的标注样本,而有大量的未标注样本,让学习器不依赖外界交互,自动地利用未标记样本来提升学习性能,就是半监督学习.</p>
+<p><strong>2.方法</strong><br><strong>2.1 假设</strong></p>
+<ul>
+<li>聚类假设:假设数据存在簇结构,同一个簇的样本属于同一个类别.</li>
+<li>流形假设:假设数据分布在同一个流形结构上,邻近的样本拥有相似的输出值.”邻近”程度常用”相似”程度来刻画,因此,流形假设可看作聚类假设的推广,但流形假设对输出值没有限制,因此比聚类假设的使用范围更广.<br>其实,这两个假设本质都是<strong>“相似的样本拥有相似的输出”</strong>.</li>
+</ul>
+<p><strong>2.2 分类</strong><br>半监督学习可分为纯半监督学习和直推学习.</p>
+<ul>
+<li>纯半监督学习:假定训练数据中的未标记样本并非待预测的数据.</li>
+<li>直推学习:假定学习过程中所考虑的未标记样本恰是待预测数据.</li>
+</ul>
+<p><strong>2.3 具体方法</strong></p>
+<ul>
+<li>生成式方法</li>
+<li>半监督SVM</li>
+<li>图半监督学习</li>
+<li>基于分歧的方法(与上述三个不同的是,基于分歧的方法使用多学习器,而学习器之间的”分歧”对未标记数据的利用至关重要.)</li>
+<li>半监督聚类</li>
+</ul>
+<hr>
+<h3 id="第十四章-概率图模型"><a href="#第十四章-概率图模型" class="headerlink" title="第十四章 概率图模型"></a>第十四章 概率图模型</h3><p><strong>1.隐马尔可夫模型</strong><br>1.假定所关心的变量集合为Y,可观测变量集合为O,其他变量的集合为R,”生成式”模型考虑联合分布P(Y,R,O),”判别式”模型考虑条件分布P(Y,R|O).给定一组观测变量值,推断就是要由P(Y,R,O)或P(Y,R|O)得到条件概率分布P(Y|O).</p>
+<p>2.概率图模型是一类用图来表达变量相关关系的概率模型.它以图为表示工具,最常见的是用一个结点表示一个或一组随即变量,结点之间的边表示变量间的概率相关关系,即”变量关系图”.</p>
+<p>3.概率图模型大致分为两类:</p>
+<ul>
+<li>使用有向无环图表示变量之间的依赖关系,称为<strong>有向图模型或贝叶斯网</strong>.</li>
+<li>使用无向图表示变量间的相关关系,称为<strong>无向图模型或马尔可夫网</strong>.</li>
+</ul>
+<p>4.隐马尔可夫模型是结构最简单的动态贝叶斯网.(主要用于时序数据建模,在语音识别/自然语言处理等领域有广泛应用.)</p>
+<p>5.确定一个隐马尔可夫模型需要以下三组参数:</p>
+<ul>
+<li>状态转移概率(状态转移矩阵)</li>
+<li>输出观测概率(输出观测矩阵)</li>
+<li>初始状态概率</li>
+</ul>
+<p><strong>2.马尔可夫随机场(MRF)</strong><br>2.1 全局马尔可夫性:给定两个变量子集的分离集,则这两个变量子集条件独立.</p>
+<p>2.2 由全局马尔可夫性得到两个有用的推论:</p>
+<ul>
+<li><strong>局部马尔可夫性</strong>:给定某变量的邻接变量,则该变量条件独立于其他变量.</li>
+<li><strong>成对马尔可夫性</strong>:给定所有其他变量,两个非邻接变量条件独立.</li>
+</ul>
+<p>2.3 指数函数常被用于定义势函数.</p>
+<p><strong>3.条件随机场</strong><br>3.1 条件随机场是一种判别式无向图模型.</p>
+<p>3.2 生成式模型是直接对联合分布进行建模,而判别式模型则是对条件分布进行建模.(隐马尔可夫模型和马尔可夫随机场都是生成式模型,条件随机场是判别式模型.)</p>
+<hr>
+<h3 id="第十五章-规则学习"><a href="#第十五章-规则学习" class="headerlink" title="第十五章 规则学习"></a>第十五章 规则学习</h3><p><strong>1.基本概念</strong><br>1.1 规则分为两类: <strong>“命题规则”</strong>和<strong>“一阶规则”</strong>,前者由是”原子命题”和逻辑连接词”与,或,非”和”蕴含”构成的简单陈述句.后者的基本成分是能描述事物的属性或关系的”原子公式”.</p>
+<p><strong>2.方法</strong><br>2.1 序贯覆盖</p>
+<p>2.2 剪枝优化(预剪枝和后剪枝)</p>
+<p>2.3 一阶规则学习<br>受限于命题逻辑表达能力,命题规则学习难以处理对象之间的”关系”,而关系信息在很多任务中非常重要.例如,我们在现实世界挑选西瓜时,通常很难把水果摊上所有西瓜的特征用属性值描述出来,因为我们很难判断:色泽看起来多深才叫”色泽青绿”?敲起来声音多低才叫”敲声沉闷”?比较现实的做法是将西瓜进行相互比较,例如,”瓜1的颜色比瓜2更深,并且瓜1的根蒂比瓜2更蜷”,因此”瓜1比瓜2更好”.</p>
+<hr>
+<h3 id="第十六章-强化学习"><a href="#第十六章-强化学习" class="headerlink" title="第十六章 强化学习"></a>第十六章 强化学习</h3><p><strong>1.基本概念</strong><br><strong>1)</strong>强化学习任务通常用<strong>马尔可夫决策过程(MDP-Markov Decision Process)</strong>来描述:机器处于<strong>环境E</strong>中,<strong>状态空间为X</strong>,其中每个状态x是机器感知到的环境的描述.机器能采取的动作构成了<strong>动作空间A</strong>.若某个动作a作用在当前状态x上,则潜在的<strong>转移函数P</strong>将使得环境从当前状态按某种概率转移到另一个状态.在转移到另一个状态的同时,环境会根据潜在的<strong>“奖赏”函数R</strong>反馈给机器一个奖赏.</p>
+<p><strong>2)</strong>强化学习任务对应了四元组<strong>E=<x,a,p,r></x,a,p,r></strong>,其中P:X*A*X-&gt;R指定了状态转移概率,R:X*A*X-&gt;R指定了奖赏;在有的应用中,奖赏函数可能仅与状态转移有关,即R:X*X-&gt;R;</p>
+<p><strong>3)</strong>机器要做的是通过在环境中不断尝试而学得一个<strong>“策略”Pi</strong>,根据这个策略,在状态x下,就能得知要执行的动作<strong>a=Pi(x)</strong>.</p>
+<p>策略有两种方法:</p>
+<ul>
+<li>一种是将策略表示为函数<strong>Pi:X-&gt;A,确定性策略</strong>常用这种表示.</li>
+<li>另一种是概率表示<strong>Pi:X*A-&gt;R,随机性策略</strong>常用这种表示,Pi(x,a)为状态x下选择动作a的概率,动作概率之和为1.</li>
+</ul>
+<p><strong>总结</strong>:在强化学习任务中,学习的目的就是要找到能使长期累积奖赏最大化的策略.</p>
+<ul>
+<li>T步累积奖赏</li>
+<li>r折扣累积奖赏</li>
+</ul>
+<p><strong>4)</strong>强化学习和监督学习的差别和联系</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">强化学习</th>
+<th style="text-align:center">监督学习</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">状态(x)</td>
+<td style="text-align:center">示例(x)</td>
+</tr>
+<tr>
+<td style="text-align:center">动作(a)</td>
+<td style="text-align:center">标记(y)</td>
+</tr>
+<tr>
+<td style="text-align:center">策略(Pi)</td>
+<td style="text-align:center">分类器或回归器</td>
+</tr>
+</tbody>
+</table>
+</div>
+<blockquote>
+<p>与一般监督学习不同,强化学习任务的最终奖赏是在多步动作之后才能观察到的.</p>
+</blockquote>
+<p><strong>2.应用</strong><br>2.1 K-摇臂赌博机</p>
+<ul>
+<li>若仅为获知<strong>每个摇臂的期望奖赏</strong>,则<strong>可采用”仅探索”法</strong>,将所有<strong>尝试机会平均分配</strong>给每个摇臂,最后以每个摇臂各自的平均吐币概率作为其奖赏期望的近似估计.</li>
+<li>若仅为执行<strong>奖赏最大的动作</strong>下,则<strong>可采用”仅利用”法</strong>,,按下目前最优的(即到目前为止平均奖赏最大的)摇臂.</li>
+</ul>
+<p><strong>总结</strong>:”探索”和”利用”两者是矛盾的,因为尝试次数有限,加强了一方则会自然削弱另一方.这就是强化学习所面临的”探索-利用窘境”.显然,欲累积奖赏最大,则必须在探索和利用之间达成较好的折中.</p>
+<p>策略:</p>
+<ul>
+<li>epsilon-贪心:基于一个概率来对探索和利用进行折中,每次尝试时,以epsilon的概率进行探索,以均匀概率选取一个摇臂,以1-epsilon的概率进行利用,即选择当前平均奖赏最高的摇臂.</li>
+<li>Softmax:基于当前已知的摇臂平均奖赏来对探索和利用进行折中.若各摇臂的平均奖赏相当,则选取各摇臂的概率也相当;若某些摇臂的平均奖赏明显高于其他摇臂,则它们被选取的概率也明显更高.</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/13/Interview/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -300,7 +925,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T00:00:00+08:00">
                 2018-03-13
               </time>
@@ -317,7 +942,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -487,7 +1112,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T09:23:03+08:00">
                 2018-03-07
               </time>
@@ -504,7 +1129,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -666,7 +1291,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-27T10:30:32+08:00">
                 2018-02-27
               </time>
@@ -683,7 +1308,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -924,7 +1549,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-04T14:57:09+08:00">
                 2018-02-04
               </time>
@@ -941,7 +1566,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -1097,7 +1722,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-31T13:48:15+08:00">
                 2018-01-31
               </time>
@@ -1114,7 +1739,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -1261,7 +1886,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-30T09:32:43+08:00">
                 2018-01-30
               </time>
@@ -1278,7 +1903,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -1429,7 +2054,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-29T10:17:50+08:00">
                 2018-01-29
               </time>
@@ -1446,7 +2071,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -1583,7 +2208,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-28T10:23:17+08:00">
                 2018-01-28
               </time>
@@ -1600,7 +2225,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -1721,7 +2346,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <span class="post-meta-item-text">Posted on</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-27T11:20:13+08:00">
                 2018-01-27
               </time>
@@ -1738,7 +2363,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">in</span>
+              <span class="post-meta-item-text">In</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -1842,260 +2467,6 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/26/Obama6/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/26/Obama6/" itemprop="url">
-                  Obama-塑造一个更加完美的合众国
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-26T11:00:33+08:00">
-                2018-01-26
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>A MORE PERFECT UNION</p>
-<p>March 18, 2008 | Philadelphia, Pennsylvania </p>
-<p>“We the people, in order to form a more perfect union.”<br>Two hundred and twenty-one years ago, in a hall that still stands across the street, a group of men gathered and, with these simple words, launched America’s improbable experiment in democracy. Farmers and scholars; statesmen and patriots, who had traveled across an ocean to escape tyranny and persecution , finally made real their declaration of independence at a Philadelphia convention that lasted through the spring of 1787.</p>
-<p>The document they produced was eventually signed but ultimately unfinished. It was stained by this nation’s original sin of slavery, a question that divided the colonies and brought the convention to a stalemate until the founders chose to allow the slave trade to continue for at least twenty more years, and to leave any final resolution to future generations.<br>Of course, the answer to the slavery question was already embedded within our Constitution a Constitution that had at its very core the ideal of equal citizenship under the law; a Constitution that promised its people liberty, and justice, and a union that could be and should be perfected over time. And yet words on a parchment would not be enough to deliver slaves from bondage , or provide men and women of every color and creed their full rights and obligations as citizens of the United States. What would be needed were Americans in successive generations who were willing to do their part—through protests and struggle, on the streets and in the courts, through a civil war and civil disobedience and always at great risk—to narrow that gap between the promise of our ideals and the reality of their time.</p>
-<p>This was one of the tasks we set forth at the beginning of this campaign—to continue the long march of those who came before us, a march for a more just, more equal, more free, more caring, and more prosperous America. I chose to run for the presidency at this moment in history because I believe deeply that we cannot solve the challenges of our time unless we solve them together—unless we perfect our union by understanding that we may have different stories, but we hold common hopes; that we may not look the same and we may not have come from the same place, but we all want to move in the same direction—toward a better future for our children and our grandchildren.</p>
-<p>This belief comes from my unyielding faith in the decency and generosity of the American people. But it also comes from my own American story.</p>
-<p>I am the son of a black man from Kenya and a white woman from Kansas. I was raised with the help of a white grandfather who survived a Depression to serve in Patton ’s army during World War II and a white grandmother who worked on a bomber assembly line at Fort Leavenworth while he was overseas. I’ve gone to some of the best schools in America and lived in one of the world’s poorest nations. I am married to a black American who carries within her the blood of slaves and slave owners—an inheritance we pass on to our two precious daughters. I have brothers, sisters, nieces, nephews, uncles, and cousins of every race and every hue scattered across three continents, and for as long as I live, I will never forget that in no other country on Earth is my story even possible.</p>
-<p>It’s a story that hasn’t made me the most conventional candidate. But it is a story that has seared into my genetic makeup the idea that this nation is more than the sum of its parts—that out of many, we are truly one.</p>
-<p>Throughout the first year of this campaign, against all predictions to the contrary, we saw how hungry the American people were for this message of unity. Despite the temptation to view my candidacy through a purely racial lens , we won commanding victories in states with some of the whitest populations in the country. In South Carolina, where the Confederate flag still flies, we built a powerful coalition of African Americans and white Americans.</p>
-<p>This is not to say that race has not been an issue in the campaign. At various stages in the campaign, some commentators have deemed me either “too black” or “not black enough.” We saw racial tensions bubble to the surface during the week before the South Carolina primary. The press has scoured every exit poll for the latest evidence of racial polarization , not just in terms of white and black, but black and brown as well.</p>
-<p>And yet, it has only been in the last couple of weeks that the discussion of race in this campaign has taken a particularly divisive turn.</p>
-<p>On one end of the spectrum , we’ve heard the implication that my candidacy is somehow an exercise in affirmative action ; that it’s based solely on the desire of wide-eyed liberals to purchase racial reconciliation on the cheap. On the other end, we’ve heard my former pastor, Reverend Jeremiah Wright, use incendiary language to express views that have the potential not only to widen the racial divide, but views that denigrate both the greatness and the goodness of our nation, that rightly offend white and black alike.</p>
-<p>I have already condemned, in unequivocal terms, the statements of Reverend Wright that have caused such controversy. For some, nagging questions remain. Did I know him to be an occasionally fierce critic of American domestic and foreign policy? Of course. Did I ever hear him make remarks that could be considered controversial while I sat in church? Yes. Did I strongly disagree with many of his political views? Absolutely—just as I’m sure many of you have heard remarks from your pastors, priests , or rabbis with which you strongly disagreed.</p>
-<p>But the remarks that have caused this recent firestorm weren’t simply controversial. They weren’t simply a religious leader’s effort to speak out against perceived injustice. Instead, they expressed a profoundly distorted view of this country—a view that sees white racism as endemic , and that elevates what is wrong with America above all that we know is right with America; a view that sees the conflicts in the Middle East as rooted primarily in the actions of stalwart allies like Israel, instead of emanating from the perverse and hateful ideologies of radical Islam.</p>
-<p>As such, Reverend Wright’s comments were not only wrong but divisive , divisive at a time when we need unity; racially charged at a time when we need to come together to solve a set of monumental problems—two wars, a terrorist threat, a failing economy, a chronic health care crisis, and potentially devastating climate change; problems that are neither black or white or Latino or Asian, but rather problems that confront us all.</p>
-<p>Given my background, my politics, and my professed values and ideals, there will no doubt be those for whom my statements of condemnation are not enough. Why associate myself with Reverend Wright in the first place, they may ask? Why not join another church? And I confess that if all that I knew of Reverend Wright were the snippets of those sermons that have run in an endless loop on the television and YouTube, or if Trinity United Church of Christ conformed to the caricatures being peddled by some commentators, there is no doubt that I would react in much the same way.</p>
-<p>But the truth is, that isn’t all that I know of the man. The man I met more than twenty years ago is a man who helped introduce me to my Christian faith, a man who spoke to me about our obligations to love one another, to care for the sick and lift up the poor. He is a man who served his country as a U.S. Marine , who has studied and lectured at some of the finest universities and seminaries in the country, and who for over thirty years led a church that serves the community by doing God’s work here on Earth—by housing the homeless, ministering to the needy , providing day care services and scholarships and prison ministries, and reaching out to those suffering from HIV/AIDS.</p>
-<p>In my first book, Dreams from My Father, I described the experience of my first service at Trinity:<br>People began to shout, to rise from their seats and clap and cry out , a forceful wind carrying the reverend’s voice up into the rafters . And in that single note—hope!—I heard something else; at the foot of that cross , inside the thousands of churches across the city, I imagined the stories of ordinary black people merging with the stories of David and Goliath , Moses and Pharaoh , the Christians in the lion’s den , Ezekiel ’s field of dry bones. Those stories—of survival, and freedom, and hope—became our story, my story; the blood that had spilled was our blood, the tears our tears; until this black church, on this bright day, seemed once more a vessel carrying the story of a people into future generations and into a larger world. Our trials and triumphs became at once unique and universal, black and more than black; in chronicling our journey, the stories and songs gave us a means to reclaim memories that we didn’t need to feel shame about—memories that all people might study and cherish—and with which we could start to rebuild.</p>
-<p>That has been my experience at Trinity. Like other predominantly black churches across the country, Trinity embodies the black community in its entirety—the doctor and the welfare mom, the model student and the former gangbanger . Like other black churches, Trinity’s services are full of raucous laughter and sometimes bawdy humor. They are full of dancing, clapping, screaming, and shouting that may seem jarring to the untrained ear. The church contains in full the kindness and cruelty, the fierce intelligence and the shocking ignorance, the struggles and successes, the love and, yes, the bitterness and bias that make up the black experience in America.</p>
-<p>And this helps explain, perhaps, my relationship with Reverend Wright. As imperfect as he may be, he has been like family to me. He strengthened my faith, officiated my wedding, and baptized my children. Not once in my conversations with him have I heard him talk about any ethnic group in derogatory terms, or treat whites with whom he interacted with anything but courtesy and respect. He contains within him the contradictions—the good and the bad—of the community that he has served diligently for so many years.</p>
-<p>I can no more disown him than I can disown the black community. I can no more disown him than I can my white grandmother—a woman who helped raise me, a woman who sacrificed again and again for me, a woman who loves me as much as she loves anything in this world, but a woman who once confessed her fear of black men who passed by her on the street, and who on more than one occasion has uttered racial or ethnic stereotypes that made me cringe.</p>
-<p>These people are a part of me. And they are a part of America, this country that I love.</p>
-<p>Some will see this as an attempt to justify or excuse comments that are simply inexcusable. I can assure you it is not. I suppose the politically safe thing would be to move on from this episode and just hope that it fades into the woodwork. We can dismiss Reverend Wright as a crank or a demagogue , just as some have dismissed Geraldine Ferraro, in the aftermath of her recent statements, as harboring some deep-seated racial bias .</p>
-<p>But race is an issue that I believe this nation cannot afford to ignore right now. We would be making the same mistake that Reverend Wright made in his offending sermons about America—to simplify and stereotype and amplify the negative to the point that it distorts reality.</p>
-<p>The fact is that the comments that have been made and the issues that have surfaced over the last few weeks reflect the complexities of race in this country that we’ve never really worked through—a part of our union that we have yet to perfect. And if we walk away now, if we simply retreat into our respective corners, we will never be able to come together and solve challenges like health care, or education, or the need to find good jobs for every American.</p>
-<p>Understanding this reality requires a reminder of how we arrived at this point. As William Faulkner once wrote, “The past isn’t dead and buried. In fact, it isn’t even past.” We do not need to recite here the history of racial injustice in this country. But we do need to remind ourselves that so many of the disparities that exist in the African-American community today can be directly traced to inequalities passed on from an earlier generation that suffered under the brutal legacy of slavery and Jim Crow.</p>
-<p>Segregated schools were, and are, inferior schools; we still haven’t fixed them, fifty years after Brown v. Board of Education, and the inferior education they provided, then and now, helps explain the pervasive achievement gap between today’s black and white students.</p>
-<p>Legalized discrimination —where blacks were prevented, often through violence, from owning property, or loans were not granted to African-American business owners, or black home owners could not access FHA mortgages, or blacks were excluded from unions, or the police force, or fire departments—meant that black families could not amass any meaningful wealth to bequeath to future generations. That history helps explain the wealth and income gap between black and white, and the concentrated pockets of poverty that persist in so many of today’s urban and rural communities.</p>
-<p>A lack of economic opportunity among black men, and the shame and frustration that came from not being able to provide for one’s family, contributed to the erosion of black families—a problem that welfare policies for many years may have worsened. And the lack of basic services in so many urban black neighborhoods—parks for kids to play in, police walking the beat, regular garbage pick up, and building code enforcement—all helped create a cycle of violence, blight , and neglect that continues to haunt us.</p>
-<p>This is the reality in which Reverend Wright and other African Americans of his generation grew up. They came of age in the late fifties and early sixties, a time when segregation was still the law of the land and opportunity was systematically constricted. What’s remarkable is not how many failed in the face of discrimination, but rather how many men and women overcame the odds, how many were able to make a way out of no way for those like me who would come after them.</p>
-<p>But for all those who scratched and clawed their way to get a piece of the American Dream, there were many who didn’t make it—those who were ultimately defeated, in one way or another, by discrimination. That legacy of defeat was passed on to future generations—those young men and increasingly young women who we see standing on street corners or languishing in our prisons, without hope or prospects for the future. Even for those blacks who did make it, questions of race, and racism, continue to define their worldview in fundamental ways. For the men and women of Reverend Wright’s generation, the memories of humiliation and doubt and fear have not gone away; nor has the anger and the bitterness of those years. That anger may not get expressed in public, in front of white coworkers or white friends. But it does find voice in the barbershop or around the kitchen table. At times, that anger is exploited by politicians, to gin up votes along racial lines, or to make up for a politician’s own failings.</p>
-<p>And occasionally it finds voice in the church on Sunday morning, in the pulpit and in the pews . The fact that so many people are surprised to hear that anger in some of Reverend Wright’s sermons simply reminds us of the old truism that the most segregated hour in American life occurs on Sunday morning. That anger is not always productive; indeed, all too often it distracts attention from solving real problems; it keeps us from squarely facing our own complicity in our condition, and prevents the African-American community from forging the alliances it needs to bring about real change. But the anger is real; it is powerful; and to simply wish it away, to condemn it without understanding its roots, only serves to widen the chasm of misunderstanding that exists between the races.</p>
-<p>In fact, a similar anger exists within segments of the white community. Most working- and middle-class white Americans don’t feel that they have been particularly privileged by their race. Their experience is the immigrant experience—as far as they’re concerned, no one’s handed them anything, they’ve built it from scratch . They’ve worked hard all their lives, many times only to see their jobs shipped overseas or their pension dumped after a lifetime of labor. They are anxious about their futures, and feel their dreams slipping away ; in an era of stagnant wages and global competition, opportunity comes to be seen as a zero sum game , in which your dreams come at my expense. So when they are told to bus their children to a school across town, when they hear that an African American is getting an advantage in landing a good job or a spot in a good college because of an injustice that they themselves never committed, when they’re told that their fears about crime in urban neighborhoods are somehow prejudiced, resentment builds over time.</p>
-<p>Like the anger within the black community, these resentments aren’t always expressed in polite company. But they have helped shape the political landscape for at least a generation. Anger over welfare and affirmative action helped forge the Reagan Coalition. Politicians routinely exploited fears of crime for their own electoral ends. Talk-show hosts and conservative commentators built entire careers unmasking bogus claims of racism while dismissing legitimate discussions of racial injustice and inequality as mere political correctness or reverse racism.</p>
-<p>Just as black anger often proved counterproductive, so have these white resentments distracted attention from the real culprits of the middle-class squeeze —a corporate culture rife with inside dealing, questionable accounting practices, and short-term greed; a Washington dominated by lobbyists and special interests; economic policies that favor the few over the many. And yet, to wish away the resentments of white Americans, to label them as misguided or even racist, without recognizing they are grounded in legitimate concerns— this, too, widens the racial divide, and blocks the path to understanding.</p>
-<p>This is where we are right now. It’s a racial stalemate we’ve been stuck in for years. Contrary to the claims of some of my critics, black and white, I have never been so naive as to believe that we can get beyond our racial divisions in a single election cycle, or with a single candidacy—particularly a candidacy as imperfect as my own.<br>But I have asserted a firm conviction—a conviction rooted in my faith in God and my faith in the American people—that working together we can move beyond some of our old racial wounds, and that in fact we have no choice if we are to continue on the path of a more perfect union.</p>
-<p>For the African-American community, that path means embracing the burdens of our past without becoming victims of our past. It means continuing to insist on a full measure of justice in every aspect of American life. But it also means binding our particular grievances—for better health care, and better schools, and better jobs—to the larger aspirations of all Americans—the white woman struggling to break the glass ceiling, the white man who has been laid off, the immigrant trying to feed his family. And it means taking full responsibility for our own lives—by demanding more from our fathers, and spending more time with our children, and reading to them, and teaching them that while they may face challenges and discrimination in their own lives, they must never succumb to despair or cynicism; they must always believe that they can write their own destiny.</p>
-<p>Ironically, this quintessentially American—and yes, conservative— notion of self-help found frequent expression in Reverend Wright’s sermons. But what my former pastor too often failed to understand is that embarking on a program of self-help also requires a belief that society can change.</p>
-<p>The profound mistake of Reverend Wright’s sermons is not that he spoke about racism in our society. It’s that he spoke as if our society was static; as if no progress has been made; as if this country—a country that has made it possible for one of his own members to run for the highest office in the land and build a coalition of white and black, Latino and Asian, rich and poor, young and old—is still irrevocably bound to a tragic past. But what we know— what we have seen—is that America can change. That is the true genius of this nation. What we have already achieved gives us hope—the audacity to hope—for what we can and must achieve tomorrow.</p>
-<p>In the white community, the path to a more perfect union means acknowledging that what ails the African- American community does not just exist in the minds of black people; that the legacy of discrimination and current incidents of discrimination—while less overt than in the past—are real and must be addressed. Not just with words, but with deeds—by investing in our schools and our communities; by enforcing our civil rights laws and ensuring fairness in our criminal justice system; by providing this generation with ladders of opportunity that were unavailable for previous generations. It requires all Americans to realize that your dreams do not have to come at the expense of my dreams; that investing in the health, welfare, and education of black and brown and white children will ultimately help all of America prosper.</p>
-<p>In the end, then, what is called for is nothing more, and nothing less, than what all the world’s great religions demand—that we do unto others as we would have them do unto us. Let us be our brother’s keeper, Scripture tells us. Let us be our sister’s keeper. Let us find that common stake we all have in one another, and let our politics reflect that spirit as well.</p>
-<p>For we have a choice in this country. We can accept a politics that breeds division, and conflict, and cynicism. We can tackle race only as spectacle, as we did in the OJ trial—or in the wake of tragedy, as we did in the aftermath of Katrina— or as fodder for the nightly news. We can play Reverend Wright’s sermons on every channel, every day, and talk about them from now until the election, and make the only question in this campaign whether or not the American people think that I somehow believe or sympathize with his most offensive words. We can pounce on some gaffe by a Hillary supporter as evidence that she’s playing the race card , or we can speculate on whether white men will all flock to John McCain in the general election regardless of his policies.<br>We can do that.</p>
-<p>But if we do, I can tell you that in the next election, we’ll be talking about some other distraction. And then another one. And then another one. And nothing will change.</p>
-<p>That is one option. Or, at this moment, in this election, we can come together and say, “Not this time.” This time we want to talk about the crumbling schools that are stealing the future of black children and white children and Asian children and Hispanic children and Native American children. This time we want to reject the cynicism that tells us that these kids can’t learn; that those kids who don’t look like us are somebody else’s problem. The children of America are not those kids, they are our kids, and we will not let them fall behind in a twenty-first-century economy. Not this time.</p>
-<p>This time we want to talk about how the lines in the emergency room are filled with whites and blacks and Hispanics who do not have health care, who don’t have the power on their own to overcome the special interests in Washington, but who can take them on if we do it together.</p>
-<p>This time we want to talk about the shuttered mills that once provided a decent life for men and women of every race, and the homes for sale that once belonged to Americans from every religion, every region, every walk of life. This time we want to talk about the fact that the real problem is not that someone who doesn’t look like you might take your job; it’s that the corporation you work for will ship it overseas for nothing more than a profit.</p>
-<p>This time we want to talk about the men and women of every color and creed who serve together, and fight together, and bleed together under the same proud flag. We want to talk about how to bring them home from a war that never should’ve been authorized and never should’ve been waged, and we want to talk about how we’ll show our patriotism by caring for them, and their families, and giving them the benefits they have earned.</p>
-<p>I would not be running for President if I didn’t believe with all my heart that this is what the vast majority of Americans want for this country. This union may never be perfect, but generation after generation has shown that it can always be perfected. And today, whenever I find myself feeling doubtful or cynical about this possibility, what gives me the most hope is the next generation—the young people whose attitudes and beliefs and openness to change have already made history in this election.</p>
-<p>There is one story in particular that I’d like to leave you with today—a story I told when I had the great honor of speaking on Dr. King’s birthday at his home church, Ebenezer Baptist, in Atlanta .</p>
-<p>There is a young, twenty-three-year-old white woman named Ashley Baia who organized for our campaign in Florence , South Carolina. She had been working to organize a mostly African-American community since the beginning of this campaign, and one day she was at a round-table discussion where everyone went around telling their stories and why they were there.</p>
-<p>And Ashley said that when she was nine years old, her mother got cancer. And because she had to miss days of work, she was let go and lost her health care. They had to file for bankruptcy, and that’s when Ashley decided that she had to do something to help her mom.</p>
-<p>She knew that food was one of their most expensive costs, and so Ashley convinced her mother that what she really liked and really wanted to eat more than anything else was mustard and relish sandwiches. Because that was the cheapest way to eat.</p>
-<p>She did this for a year until her mom got better, and she told everyone at the round table that the reason she joined our campaign was so that she could help the millions of other children in the country who want and need to help their parents, too.</p>
-<p>Now Ashley might have made a different choice. Perhaps somebody told her along the way that the source of her mother’s problems were blacks who were on welfare and too lazy to work, or Hispanics who were coming into the country illegally. But she didn’t. She sought out allies in her fight against injustice.</p>
-<p>Anyway, Ashley finishes her story and then goes around the room and asks everyone else why they’re supporting the campaign. They all have different stories and reasons. Many bring up a specific issue. And finally they come to this elderly black man who’s been sitting there quietly the entire time. And Ashley asks him why he’s there. And he does not bring up a specific issue. He does not say health care or the economy. He does not say education or the war. He does not say that he was there because of Barack Obama. He simply says to everyone in the room, “I am here because of Ashley.”</p>
-<p>“I am here because of Ashley.” By itself, that single moment of recognition between that young white girl and that old black man is not enough. It is not enough to give health care to the sick, or jobs to the jobless, or education to our children.</p>
-<p>But it is where we start. It is where our union grows stronger. And as so many generations have come to realize over the course of the two hundred and twenty-one years since a band of patriots signed that document in Philadelphia, that is where the perfection begins.</p>
-<p>  “我们—人民，为建立一个更加完美的联邦的人民。”</p>
-<p>　　221年前，在至今仍屹立于街对面的一个大厅里，一群人在那里集会，并用上述这些简单的文字，开始了一场几无可能的美利坚民主实验。这些农场主、学者、政治家和爱国人士为躲避暴政和迫害而穿越大洋来到美洲，并最终在1787年持续了整个春季的费城大会上使他们的独立宣言变为现实。</p>
-<p>　　他们制定的这份文件虽最终获得签署，但并未彻底完成。它被这个国家的奴隶制原罪所玷污。在是否废除奴隶制这一问题上，各殖民地意见分歧，整个大会曾一度陷入僵局，最后联邦创建者们选择允许奴隶贸易再延续至少20年，并将这一问题留待后人最终解决。</p>
-<p>　　当然，对奴隶制这一问题的答案已经深深植入了我们的《宪法》之中—《宪法》的核心就是公民依法享有平等的公民权；它承诺给予人民自由和公正，以及一个能够且应该随着时间推移而逐步完善起来的联邦。</p>
-<p>　　然而，羊皮纸上的承诺并不足以使奴隶们摆脱制度的束缚，或使不同肤色、不同信仰的男女被赋予作为美利坚合众国公民应享有的一切权利和应承担的全部义务。还需要一代又一代美国人履行自己的职责—无论是通过街头和法庭上的抗议和斗争，还是通过内战和温和反抗，并始终冒着巨大风险，去缩小我们理想中的承诺与现实之间的差距。</p>
-<p>　　这就是我们在竞选初期所提出的任务之一—继续前人的长征，继续为建立一个更加公正、平等、自由、有爱心和繁荣的美利坚长征。之所以选择在这一历史时刻竞选总统，是因为我深信，我们只有通过并肩努力才能解决我们这个时代的问题—只有通过进一步完善这个联邦，并且认识到我们的经历虽各不相同但都怀着共同的希望；我们可能相貌不同、来自不同的地方，但我们都想朝着同一个方向前进，只有这样，才能为我们的子孙创造一个更美好的未来。</p>
-<p>　　这个信念源于我对美国人民的正统和慷慨坚信不疑，也源于我自己的美国故事。</p>
-<p>　　我的父亲是肯尼亚黑人，母亲是堪萨斯州白人，而帮助他们将我抚养成人的是我的白人外祖父母。我的外祖父熬过了大萧条，第二次世界大战期间曾在巴顿将军的部队里服役。外祖父海外征战期间，外祖母则在莱文沃思堡的一条炮弹生产装配线上工作。我曾在美国一些最好的学校就读，也曾在世界上最贫穷的国家中生活过。我娶了一位美国黑人为妻，她身体里同时流淌着奴隶和奴隶主的血液—我们又将这条血脉传给了我们的两个宝贝女儿。我那种族各异、肤色也不尽相同的兄弟姐妹、叔舅甥侄们分散在世界三大洲。有生之年我都不会忘记，我的故事在地球上其他任何一个国家都不可能发生。</p>
-<p>　　这个故事虽没有将我塑造成一位最符合传统的候选人，但它却将这样一个观念深深烙在了我的基因中，那就是这个国家不只是各部分的相加—而是真正意义上的合众为一。</p>
-<p>　　在这次竞选的第一年里，与所有预言不同的是，我们看到了美国人民对团结一心这一理念的渴望。即便有人试图以纯粹种族的眼光来审视我参选一事，我们还是在这个国家的一些白人人口比例最高的州获得了重大胜利。在邦联旗帜依然飘扬的南卡罗来纳州，我们建立了一个由非裔美国人和美国白人组成的强大联盟。</p>
-<p>　　但这也并不意味着种族问题在本次竞选活动中不足以成为问题。在不同的竞选阶段，一些评论员要么认为我“太黑”，要么认为我“不够黑”。我们看到，在南卡罗来纳州初选前一周里，紧张的种族关系问题还是浮出了水面。媒体也未放过每一次选后民意调查，以求发现不只是黑人和白人之间，还有黑人和棕色人种之间种族分化的最新证据。</p>
-<p>　　但是，直到最近几周，本次竞选中关于种族的讨论才走到了一个极具分裂性的转折点。</p>
-<p>　　在声音的一端，我们听到的是这样的暗示，称我的候选人资格是执行“平权措施”的结果，完全是出于天真的自由派欲廉价求得种族和解的意愿。而声音的另一端，则是我原来的牧师杰里迈亚·赖特用煽动性的语言来表达他的一些观点，而这些观点不仅可能扩大种族分裂，而且诋毁了我们国家的伟大和善良，并同时冒犯了白人和黑人。</p>
-<p>　　我已明确地对赖特牧师引起争论的那些言论做出了谴责。然而，有些人依然对此疑虑重重。我以前是否知道他有时会对美国的内政外交进行猛烈抨击？我当然知道。我以前在教堂里有没有听过他发表有可能被视为具有争议性的观点？我当然听过。我是不是强烈反对他的政治观点？千真万确—正如我确信你们中很多人也都听到过你们的牧师、神父或拉比发表过你们不敢苟同的意见一样。</p>
-<p>　　但最近引起轩然大波的言论绝不仅仅是有争议性而已，它也不单是一个宗教领袖对所见之不公正现象进行毫无保留的言语鞭笞，而是表达了对这个国家的一种极度扭曲的观点—它认为白人种族主义是美国特有的，并把美国的弊病置于我们所知的美国其他优点之上；这种观点还认为中东冲突的症结在于如以色列这样的坚定盟友所采取的行动，而不在于伊斯兰教极端分子乖张、仇恨的意识形态。</p>
-<p>　　这样看来，赖特牧师的观点不只错误，还具有分裂性，而此时我们需要的却是团结；他的一些看法还充满了种族怨气，而我们此刻需要的却是同心协力地解决一系列重大问题—两场战争、恐怖主义威胁、衰退的经济、旷日持久的医保危机，以及极具破坏性的气候变化问题。这些问题不是黑人、白人、拉美裔人和亚裔人中任何一方的问题，而是我们大家共同面临的问题。</p>
-<p>　　由于我的个人背景、政治经历、价值观和理想等原因，总会有一些人对我不依不饶。他们可能会问，为什么一开始要与赖特牧师交往？为什么不加入另一个教会？我承认，若我所了解的关于赖特牧师的一切仅限于电视或YouTube网站上那些翻来覆去播放的布道片段，若三一联合基督教会确实如某些评论员所讽刺、所描绘的那样，那么我必然也会做出大致相同的反应。</p>
-<p>　　但事实却是，上述这些并不是我所认识的赖特的全部。20多年前与他初遇时，是他引我进入了基督教的信仰殿堂，教导我与众人互相关爱，教导我要尽到照顾病人、扶助穷困的责任。他曾加入海军陆战队为这个国家服役，曾在这个国家的一些精英学府和神学院中求学和讲学。他主持教会30多年，勤恳服务于邻里社区，在俗世之中传播上帝的福祉—收留无家可归的人、帮助缺衣少食的人、照管幼儿、奖励学生、教化犯人，还向艾滋病患者和病毒感染者伸出援手。</p>
-<p>　　在我的第一本书《父亲的梦想》里，我这样描述第一次在三一教会参加礼拜的情形：</p>
-<p>　　人们开始呼喊、起身鼓掌、喝彩，这些声音如一阵疾风般将牧师的声音带上了房椽。在他那声简单地对“希望”的呼喊中，我仿佛听到了一些别的东西；在那个十字架的下方，在遍布于这个城市的成千座教堂里，我想象着，有多少普通黑人的故事与大卫和歌利亚、摩西和法老、狮穴里的基督徒和以西结①看到枯骨遍地的故事融合在一起。这些关于生存、自由和希望的故事成了我们的故事、我自己的故事；故事里抛洒的热血是我们的热血，洒下的眼泪是我们的眼泪；直至这样明媚的一天，这个黑人教堂仿佛成了一艘航船，满载着一个民族的故事驶向我们的后代、驶向一个更为广阔的世界。我们的苦难与成功立刻变得既独一无二又非常普遍，它们属于黑人，却又不仅属于黑人；在记录我们这段历程时，这些故事和歌曲得以让我们重拾往日记忆，一段我们无须为之感到羞耻的记忆—或许所有人都应去正视和珍惜它—然后，我们借此重建生活。</p>
-<p>　　那就是我在三一教堂的经历。像全国各地其他以黑人信徒为主的教堂一样，三一教堂将黑人群体的各个阶层集合起来—有医生和靠福利度日的母亲，也有模范生和黑帮混混。和其他黑人教堂一样，三一教堂的礼拜充满了喧闹的笑声，时而掺杂一些粗俗的幽默，还有在不常来的人看来甚至难以接受的舞蹈、掌声、尖叫和大喊。教堂将美国黑人经历中的一切都包含其中，仁慈与残酷、绝顶的智慧与惊人的无知、奋斗与成功—是的，还有爱与辛酸以及偏见。</p>
-<p>　　这或许可以更好地解释我与赖特牧师之间的关系。他也许并非完人，但他待我却如家人一般。他坚定了我的信念，主持了我的婚礼，还给我的孩子洗礼。在与他的对话中，我从未听到他对其他族裔发表过任何诋毁性的言论。在与白人的交往中，他从来都是以礼相待、以敬相交。他是个矛盾体—有好的一面也有不好的一面，这正如他多年勤恳服务的社区一样。</p>
-<p>　　我若断绝与他的关系，就如同断绝与黑人族群的关系。与他断绝关系，就好比与我的白人外祖母断绝关系—她是一个抚养我长大、为我一再牺牲、爱我如同爱世上其他一切的女人，也是一个曾坦言惧怕在街头与她擦肩而过的黑人男子，并时常将那些让我厌倦的种族偏见言论挂在嘴边的女人。</p>
-<p>　　这些人都是我的一部分，他们也是美国的一部分，是我深爱的这个国家的一部分。</p>
-<p>　　有人会认为，这是企图对那些不可宽恕的言论进行辩护或开脱。但请你们相信我，事实并非如此。我想，或许政治上比较安全的做法就是将此事抛诸脑后，希望它随时间慢慢淡去。我们大可将赖特牧师视为一个思想怪异的人或煽动家，正像有人在听到杰拉尔丁·费拉罗最近发表的言论后，便认为她心中抱有根深蒂固的种族偏见一样，对他们嗤之以鼻。</p>
-<p>　　但是，我认为种族问题在这个国家目前已到了不容忽视的地步了。否则，我们同样可能犯下赖特牧师在他那关于美国的、引起众怒的布道辞中所犯的错误—将消极面简单化、常规化、放大化到足以歪曲事实的程度。</p>
-<p>　　事实是，过去几周中出现的一些言论和浮现出来的问题反映了这个国家种族问题的复杂性，而我们尚未将其真正解决—这也是亟待我们去完善的一方面。若我们将之搁置或干脆退缩回各自的角落，我们就永远无法走到一起，解决诸如医保、教育和就业之类的问题。</p>
-<p>　　要了解这一现实，还须认清我们是如何走进今日这样的窘境之中的。威廉·福克纳曾写道：“过去并未死去也没有被埋葬。实际上，它根本就还没有过去。”我们无须去复述这个国家种族歧视的历史，但我们必须提醒自己，今日非裔美国人群体中存在的众多不公正现象可直接追溯到奴隶制和“吉姆·克劳法”①时期一代代谬种流传的不平等。</p>
-<p>　　实行种族隔离的学校过去是、如今仍是劣等学校。在布朗诉教育理事会案50年后的今天，我们还未真正整顿过这些学校。它们提供的劣等教育，无论是当年还是如今，都解释了为何今天的黑人学生和白人学生之间普遍存在成绩差距。</p>
-<p>　　合法化的歧视—如常常通过暴力手段禁止黑人拥有财产、不向非裔美国企业主发放贷款、黑人家庭买房无法享受联邦住宅管理局抵押贷款，或将黑人排斥在工会、警队或消防队之外—意味着黑人家庭将无法积累起一定量的财富传之后代。这段历史解释了为什么黑人和白人之间存在财富和收入差距，以及如今众多城乡社区中一些地区的贫困痼疾。</p>
-<p>　　黑人男子缺少工作机会的现状，以及因不能支持家庭生活而产生的羞耻感和挫败感，加剧了黑人家庭所承受的冲击—而政府多年来的福利政策将该问题进一步恶化。众多城市黑人社区面临着基础服务的匮乏—儿童乐园、巡警、定期垃圾回收以及强制建筑标准—所有这一切导致了我们无法摆脱的暴力、破坏和忽视的恶性循环。</p>
-<p>　　赖特牧师和他同时的非裔美国人正是在这样的环境中长大的。他们于20世纪50年代末、60年代初的时候成年，当时这边土地仍旧实行种族隔离政策，他们能获得的机会在制度上受到了限制。然而，值得注意的并不是有多少人在种族歧视压力面前失败，而是有多少人克服了重重困难、在毫无出路的绝境中努力为像我这样的后来人开辟出一条道路来。</p>
-<p>　　然而，纵使有一些美国黑人通过摸爬滚打最终小小成就了自己那份美国梦，可还有多少人无法实现自己的梦想—他们以这样或那样的方式被种族歧视这个敌人完全打败。失败的阴影在后代的生活中继续延续—年轻的黑人男子和越来越多的青年女子，或闲立街角，或在狱中消磨着自己的意志，对未来不抱任何希望和憧憬。即使是那些成功实现了美国梦的黑人，他们的世界观依然从根本上被种族和种族歧视问题所主导。对赖特牧师那一代黑人男女而言，屈辱、怀疑和恐惧的记忆并未从他们脑海中消散，而那段岁月里的愤怒和辛酸也仍旧难以忘却。他们也许不会在公开场合表达这种愤怒，也不会在白人同事或白人朋友面前宣泄。但在理发店里或茶余饭后，这种情感便找到了发泄的渠道。曾几何时，他们的这种愤怒被政客们加以利用，沿着种族界线来捞取选票，或用来掩盖政客自己的不足。</p>
-<p>　　有时，我们还会在周日清晨的教堂礼拜上、讲坛上和做礼拜的人群中听到类似情感的宣泄。很多人在听到赖特牧师布道辞中的愤怒之声后大感惊讶，其实这不过是提醒我们注意这样一个事实，那就是在美国人的生活中，种族隔离意识最为强烈的时刻便是周日早晨这段时间。这种发泄其实无济于事，反而常常将我们的注意力从解决实际问题上转移开来；它让我们一直未能正视我们自己对此境况应负的责任，并妨碍了非裔美国人群体组成一个能带来真正变革的联盟。但是，这种愤怒之情是实际存在的，也是强烈的；仅仅希望它自行消失，或在未认清其根源之前对其加以谴责，只会不断拉大种族间误解的鸿沟。</p>
-<p>　　事实上，类似的愤怒也存在于白人群体之中。劳工阶层和中产阶级中的很多美国白人都觉得自己并没有因身为白人而获得特权。他们的经历就是移民的经历—对他们而言，从未有人平白赠与过他们任何东西，他们靠的完全是白手起家。一生勤奋耕耘的他们，常常眼见工作机会流向海外或一生辛苦劳碌后的养老金缩水。他们为未来焦虑不已，感到梦想也正悄然远离；在这个薪酬停滞、全球竞争的时代，所谓机会也成了一场零和博弈—你的成功必然以我的失败为代价。所以，当他们得知自己的孩子必须坐着校车到外区上学；当他们听说非裔美国人在找工作或上大学时享受优待，原因是这些非裔美国人在历史上受过不公正的对待，而这种不公正却非现代白人之过；当他们得知自己对城区犯罪的忧虑有种族偏见之嫌，随着时间的推移，他们心中便产生了怨愤。</p>
-<p>　　与黑人的愤怒一样，这些怨恨一般不在有礼貌的交往中显露出来，但它却塑造了延续至少一代人时间的美国政治形势。对福利政策和平权措施的不满催生出了“里根联盟”。政客们不断利用人们对犯罪活动的忧惧来捞取选票。脱口秀主持人和保守的时政评论员则一味地指责种族歧视一说有多么荒唐，同时认为关于种族不公和不平等问题的合理讨论只不过是政治正确或逆向歧视的表现。</p>
-<p>　　正如黑人宣泄愤怒却常常适得其反一样，白人的这些怨恨也让他们忽视了导致中产阶级困境的罪魁祸首—充斥着内幕交易、令人生疑的财务行为和追求短期利益贪婪行为的企业文化，被政治说客和特殊利益集团占领的华盛顿，还有偏向少数人利益的经济政策。然而，祈求白人的怨恨自行消失或给他们贴上受人误导或种族主义者的标签，而未认识到他们忧虑的理由—这同样也会扩大种族隔阂，阻碍种族间达成相互理解。</p>
-<p>　　这就是我们目前的处境，一个胶着多年的种族僵局。与一些批评我的人—无论黑人还是白人—所持观点相反的是，我从未如此天真地认为，因为一次选举或因为一个候选人—尤其是像我这样一个并不完美的候选人，我们就能使种族问题迎刃而解。</p>
-<p>　　但是，我已坚定地表达了我的不渝信念—它植根于我对上帝的信仰和对美国人民的信心—携起手来我们才能治愈种族问题的一些痼疾，事实上，若想在完善联邦的道路上继续走下去，我们已别无选择。</p>
-<p>　　对非裔美国人而言，这条道路意味着去坦然接受历史的包袱，而不要成为历史的受害者；还意味着要在美国生活的各个方面继续坚持实现全面公正。但这同样也意味着要将我们的委屈与不满（如要求更好的医疗卫生条件、更好的教育、更好的工作）与全体美国人—欲努力打破职场限制的白人妇女、失业的白人男子和为养家糊口而打拼的移民—更大的追求结合在一起；意味着我们要对自己的生活负责—要求做父亲的尽更多的义务，花更多时间与孩子相处，给他们读书，教导他们在面对挑战和歧视时，绝不要屈服于绝境或愤世嫉俗，必须永远坚信自己可以书写自己的命运。</p>
-<p>　　具有讽刺意味的是，自立自助这个美国经典、保守主义的信条，也常常在赖特牧师的布道中体现出来。但我的老牧师往往忽略了一点，自立自助必须建立在这样一个信念之上，那就是相信社会可以变革。</p>
-<p>　　赖特布道中最深层次的错误，不是他指出了社会上的种族歧视问题，而是在他看来，我们这个社会是停滞不前的，没有取得过任何进步；这个国家—一个能够让其教众之一竞选这片土地上的最高公职，并建立一个由白人和黑人、拉美裔人和亚裔人以及贫富老幼组成的联邦国家—注定无法走出悲剧的过去。但我们所知道并目睹的是，美国可以改变。这才是这个国家的真正本质。我们已经取得的成就赋予我们希望—以及敢于希望的勇气—去成就我们将来有能力成就并且必须成就的事业。</p>
-<p>　　对白人而言，塑造一个更加完美的合众国意味着要承认困扰着非裔美国人的那些问题并非他们自行臆造；种族歧视的流毒和当前发生的歧视事件—虽然不像以前那样明显—是真实存在的，而且必须得到解决。要解决它不能仅仅停留在口头上，而要实际行动起来—加大对学校和社区的投入；严格执行民权法律，确保刑事司法体系的公正；向这一代人提供更多前人所无法企及的发展机会。要让所有美国人都意识到，你的成功并不一定要建立在我的失败之上；对健康、福利以及各种族儿童教育问题上做出的投资，最终都将促进美国的繁荣昌盛。</p>
-<p>　　最终我们所呼吁的，正是世界上所有伟大宗教要求的那样—你们愿意别人怎样对待你们，你们也要怎样对待别人。《圣经》教导我们要成为兄弟的守护者，那就让我们也成为姐妹的守护者。让我们寻找彼此间的共同利益，并将该精神贯彻到我们的政治生活中去。</p>
-<p>　　我们国家总是面临着选择。我们可以接受一种滋长分裂、冲突和愤世嫉俗态度的政治。我们可以将种族问题处理成一场如辛普森案那样的闹剧—或在悲剧发生后再来亡羊补牢，正如卡特里娜飓风来袭之后—又或者使之成为夜间新闻的谈资。我们可以在每个频道、每天都播放赖特牧师的布道，从此一直纠缠于他所讲的字字句句直至选举结束，使此次竞选活动只存在唯一一个话题，即美国人是否认为我对赖特极具冒犯性的言论表示认同或支持。我们可以对希拉里的某个支持者的失态大做文章，并由此指责她在打种族牌。或者，我们还可以猜测是不是全体白人男性选民都会不顾其具体政策而在大选中将票投给约翰·麦凯恩。</p>
-<p>　　我们可以这么做。</p>
-<p>　　倘若我们这么做了，我可以告诉你，下次选举中，我们又会开始讨论一些旁枝末节、无关紧要的问题，如此一而再、再而三，无穷无尽，而一切都得不到改变。</p>
-<p>　　当然，那只是我们的一个选项。又或者，我们可以在此时此刻的选举中走到一起来，向世人宣告“这次再也不能这样了”。这一次，我们要谈谈每况愈下的学校，它们正在吞噬各族孩子的未来。这一次，我们要摒弃那种厌世嘲讽的态度，抛却那些认为这些孩子不可教、那些非我族裔的孩子是别人的问题的想法。美国的孩子们不应受到如此冷遇，他们是我们的孩子，我们不能让他们在21世纪的竞争中落伍。这一次，再不能这样。</p>
-<p>　　这一次，我们要谈谈拥挤在急诊室里的白人、黑人和拉美裔人，他们没有医疗保险，仅凭自己的力量也无法与华盛顿特殊利益集团抗衡。但如若我们同心协力，他们便能与之好好较量一番。</p>
-<p>　　这一次，我们要谈谈破败的工厂，它们曾一度让各种族的劳动者过上了体面的生活；还有那些抵押待售的房屋，曾几何时，它们属于来自各宗教、各地区和各行各业的美国民众。这一次，我们要谈谈这样一个事实，那就是，真正的问题不是那些与你相貌不同的人可能抢走你的饭碗，而是你所工作的公司把工作机会转移到海外，而其目的不过是追求利润而已。</p>
-<p>　　这一次，我们要谈谈那些肤色不同、信仰各异的男女，他们在同一面令人骄傲的旗帜下，一起服役，一起战斗，一起流血。我们要谈谈怎样才能让他们从一场本不该批准和发动的战争中回家，我们还想谈谈怎样通过关爱他们和他们的家人，以及给予他们应得的待遇，来体现我们的爱国主义。</p>
-<p>　　若非完全相信这是大多数美国人对这个国家发出的心声，我便不会参加此次总统竞选。这个联邦可能永远无法成就完美，但多少年来的经验却证明了它总能获得改善。如今，每当我对这种可能性表示怀疑或不屑的时候，年轻的一代人给了我最多的希望—他们的态度、信念和对变革的包容已经在这次选举中创造了历史。</p>
-<p>　　今天，我想给大家带来一个特别的故事—在马丁·路德·金博士诞辰那天，我有幸在其生前主持的亚特兰大埃比尼泽浸礼会教堂讲过这个故事。</p>
-<p>　　有这样一位23岁的年轻白人女士，名叫阿什利·拜亚，她负责组织我们在南卡罗来纳州弗洛伦斯市的竞选活动。从竞选一开始，她便一直致力于将一个非裔美国人为主的社区组织起来。一天，她参加了一个圆桌讨论会，每一位与会者都轮流讲述了他们各自的经历以及他们到这里（参加助选）的原因。</p>
-<p>　　阿什利说，她9岁那年，妈妈患上了癌症，因此很多天没能上班，结果被雇主开除，医疗保险也就此化为泡影。她们一家只能申请破产，而正是在这个时候，阿什利决定要帮自己的妈妈做些事情。</p>
-<p>　　她知道全家在食物方面开销最大，于是阿什利让妈妈相信，她真正喜欢吃的、最想吃的就是芥末泡菜三明治，因为这样吃最便宜。</p>
-<p>　　阿什利就这么吃了一年，直至妈妈身体见好。她告诉参加讨论的每一个人，她之所以加入我们的助选活动，是因为她能通过这种方式来为这个国家许许多多想要并需要帮父母做点事情的孩子们提供帮助。</p>
-<p>　　阿什利本可以做出一个不同的选择。也许有人曾不断告诉她，她母亲的问题源于那些靠福利维生、懒惰而不愿劳作的黑人，或是非法入境的拉美裔人。但阿什利并没有听信这些，而是选择与大家联合起来，与不公正现象做斗争。</p>
-<p>　　阿什利讲完了她的故事之后，又挨个儿问房间里每一个人支持竞选的原因。大家都有不同的故事和理由，很多人都谈到了具体的事情。最后，轮到了一位黑人老者，他一直默默坐在一旁，没有什么言语。阿什利问他为什么来这儿，他没有讲述什么具体的故事，没有说到医保或经济方面的原因，没谈起教育或战争问题，也不是因为巴拉克·奥巴马。他只是告诉在场的每一个人：“我来这儿是因为阿什利。”</p>
-<p>　　“我来这儿是因为阿什利。”单就这句话而言，这个年轻白人姑娘和一个年长的黑人男子之间那一刻达成的认同还无法改变什么。它还不足以为病弱者解决医保问题，为失业者找到工作，或为孩子们提供教育机会。</p>
-<p>　　但它却是我们的新起点，是我们这个联邦日益强大的起点。221年前，一群爱国志士在费城签署了那份宣言。而正如一代又一代美国人在这221年的历程中已经意识到的那样：这，就是走向完善的起点。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2141,8 +2512,8 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">64</span>
-              <span class="site-state-item-name">Artikel</span>
+              <span class="site-state-item-count">65</span>
+              <span class="site-state-item-name">posts</span>
             </a>
           </div>
 
@@ -2150,7 +2521,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">12</span>
-                <span class="site-state-item-name">Kategorien</span>
+                <span class="site-state-item-name">categories</span>
               
             </div>
           
@@ -2159,7 +2530,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">Tags</span>
+                <span class="site-state-item-name">tags</span>
               
             </div>
           
@@ -2255,7 +2626,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
 
 
 <div class="powered-by">
-  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
