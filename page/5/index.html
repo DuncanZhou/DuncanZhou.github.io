@@ -261,6 +261,215 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/17/StatisticLearning/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/17/StatisticLearning/" itemprop="url">
+                  StatisticLearning
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-17T15:49:11+08:00">
+                2018-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="lt-统计学习方法-gt-李航"><a href="#lt-统计学习方法-gt-李航" class="headerlink" title="&lt;统计学习方法&gt; - 李航"></a>&lt;统计学习方法&gt; - 李航</h1><hr>
+<p><strong>重在推导过程,简单记录一些细节</strong></p>
+<h3 id="第一章-统计学习方法概论"><a href="#第一章-统计学习方法概论" class="headerlink" title="第一章 统计学习方法概论"></a>第一章 统计学习方法概论</h3><p>1.泛化误差/期望损失(风险函数):是理论模型f(X)<strong>关于联合分布P(X,Y)</strong>的平均意义下的损失.</p>
+<p>2.训练误差(经验风险/经验损失):是模型f(X)关于训练数据集的平均损失</p>
+<p>3.根据大数定律,<strong>当样本容量N趋于无穷时,经验风险趋于期望风险</strong>,所以一般用经验风险估计期望风险.但现实中训练样本数目有限,所以对经验风险要进行一定的矫正.<strong>经验风险最小化和结构风险最小化(正则化)</strong></p>
+<p>4.过拟合解决方案:</p>
+<ul>
+<li>正则化</li>
+<li>交叉验证<ul>
+<li>简单交叉验证</li>
+<li>K-Fold交叉验证</li>
+<li>留一交叉验证</li>
+</ul>
+</li>
+</ul>
+<p>5.生成方法和判别方法比较</p>
+<ul>
+<li><strong>生成方法</strong>:由数据<strong>学习联合概率分布P(X,Y),然后求出条件概率分布P(Y|X)</strong>作为预测模型,即生成模型$P(Y|X)=\frac{P(X,Y)}{P(X)}$.</li>
+<li><strong>判别方法</strong>:由数据<strong>直接学习决策函数f(X)或者条件概率分布P(Y|X)</strong>作为预测的模型.</li>
+<li>两者区别:<ul>
+<li>生成方法可以还原出联合概率分布,而判别方法不能;生成方法的学习收敛速度更快.</li>
+<li>判别方法直接学习的式条件概率或决策函数,直接面对预测,往往学习的准确率更高.可以对数据进行各种程度上的抽象,定义特征并使用特征,简化学习问题.</li>
+</ul>
+</li>
+</ul>
+<p>6.回归问题按照输入变量的个数分为<strong>一元回归和多元回归</strong>;按照输入变量和输出变量之间关系的类型即模型的类型,分为<strong>线性回归和非线性回归</strong>.</p>
+<p>7.回归学习最常用的损失函数是<strong>平方损失函数</strong> - <strong>最小二乘法求解</strong>.</p>
+<h3 id="第二章-感知机"><a href="#第二章-感知机" class="headerlink" title="第二章 感知机"></a>第二章 感知机</h3><p>1.模型:$f(x)=sign(w\cdot{x}+b)$,找一个可以划分正负样例的超平面,属于判别模型</p>
+<p>2.学习策略:损失函数定义为误分类点到超平面的总距离</p>
+<p>3.学习算法:随机梯度下降</p>
+<h3 id="第三章-k近邻法"><a href="#第三章-k近邻法" class="headerlink" title="第三章 k近邻法"></a>第三章 k近邻法</h3><p>kd tree的划分方法和搜索方法参考网上资料</p>
+<h3 id="第四章-朴素贝叶斯"><a href="#第四章-朴素贝叶斯" class="headerlink" title="第四章 朴素贝叶斯"></a>第四章 朴素贝叶斯</h3><p>1.基于属性独立的强假设</p>
+<p>2.朴素贝叶斯 -&gt; 贝叶斯估计(防止有属性概率为0存在)</p>
+<p>略</p>
+<h3 id="第五章-决策树"><a href="#第五章-决策树" class="headerlink" title="第五章 决策树"></a>第五章 决策树</h3><p>1.决策树模型呈树形结构,在分类问题中,表示基于特征对实例进行分类的过程.可以认为<strong>是if-then规则的集合</strong>,也可以认为是<strong>定义在特征空间与类空间上的条件概率分布</strong>.</p>
+<p>2.决策树学习过程包含三个步骤:<strong>特征选择,决策树的生成和决策树模型的修剪</strong></p>
+<p>3.决策树的<strong>损失函数通常是正则化的极大似然函数</strong>,决策树学习的<strong>策略是以损失函数为目标函数的最小化</strong>,决策树的学习算法通常采用启发式方法,因为从所有可能的决策树中选取最优决策树是NP完全问题.</p>
+<p>4.<strong>特征选择</strong></p>
+<p>4.1 特征选择的准则通常是选择信息增益或信息增益率(基尼系数)</p>
+<p>4.2 熵:$H(p)=-\sum_{i=1}^{n}p_ilogp_i$,熵越大,不确定性越大</p>
+<p>4.3 条件熵H(Y|X)表示在已知随机变量X的条件下随机变量Y的不确定性.$H(Y|X)=\sum_{i=1}^{n}p_iH(Y|X=x_i)$</p>
+<p>4.4 <strong>信息增益</strong>:特征A对训练集D的信息增益g(D,A),定义为集合D的经验熵H(D)与特征A给定条件下D的经验条件熵H(D|A)之差,即$g(D,A)=H(D)-H(D|A)$</p>
+<p>4.5 <strong>信息增益比</strong>:特征A对训练集D的信息增益比$g_R(D,A)$定义为其信息增益$g(D,A)$与训练集D的经验熵H(D)之比为:$g_R(D,A)=\frac{g(D,A)}{H(D)}$</p>
+<p>5.<strong>ID3算法/C4.5算法</strong>参考&lt;西瓜书&gt;,西瓜书上讲得略微好一点</p>
+<p>6.<strong>CART算法</strong>:<strong>最小二乘法生成回归树</strong>,<strong>基于基尼系数生成回归树</strong></p>
+<p>7.剪枝策略:预剪枝和后剪枝 (参考西瓜书上) 将数据集分为训练集和验证集,用验证集来进行剪枝操作.</p>
+<h3 id="第六章-Logistic回归和最大熵模型"><a href="#第六章-Logistic回归和最大熵模型" class="headerlink" title="第六章 Logistic回归和最大熵模型"></a>第六章 Logistic回归和最大熵模型</h3><p>1.X服从Logistic分布是指X具有以下分布函数和密度函数:</p>
+<script type="math/tex; mode=display">F(x)=P(X\leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma }}</script><script type="math/tex; mode=display">f(x)=F'(x)=\frac{e^{-(x-\mu)/\gamma}}{\gamma (1+e^{-(x-\mu)/\gamma})^2}</script><p>式中,$\mu$为位置参数,$\gamma&gt;0$为形状参数.</p>
+<p>2.logistic回归策略:<strong>构造极大似然函数</strong>,使用<strong>梯度下降方法或拟牛顿法</strong>求解优化.</p>
+<p>3.最大熵模型(待完善)</p>
+<h3 id="第七章-SVM"><a href="#第七章-SVM" class="headerlink" title="第七章 SVM"></a>第七章 SVM</h3><p>其他略,已经复习过</p>
+<p><strong>补充</strong>:SMO(序列最小最优化算法):<br><strong>1.总体思路</strong></p>
+<ul>
+<li>选取一对需要更新的变量$\alpha_i$,$\alpha_j$</li>
+<li>固定$\alpha_i$,$\alpha_j$以外的参数,求解对偶问题</li>
+</ul>
+<p><strong>2.具体细节</strong></p>
+<ul>
+<li>First,SMO算法先选取<strong>违背KKT条件程度最大的变量</strong></li>
+<li>Second,第二个变量理应选择一个使目标函数值减小最快的变量,但由于比较各变量所对应的目标函数值减幅的复杂度过高,<strong>因此SMO采用了一个启发式:使选取的两变量所对应样本之间的间隔最大.</strong></li>
+</ul>
+<h3 id="第八章-提升方法"><a href="#第八章-提升方法" class="headerlink" title="第八章 提升方法"></a>第八章 提升方法</h3><p>1.概念:对提升方法来说,有两个问题需要回答</p>
+<ul>
+<li>在每一轮如何改变训练数据的权值或概率分布 - <strong>AdaBoost提高那些前一轮弱分类器错误分类样本的权值,而降低那些被正确分类样本的权值</strong></li>
+<li>如何将弱分类器组合成一个强分类器 - AdaBoost采取加权多数表决的方法,具体地,<strong>加大分类误差率较小的弱分类器的权值</strong>,使其表决中起较大的作用,<strong>减小分类误差率较大的弱分类器的权值</strong>,使其再表决中其较小的作用.</li>
+</ul>
+<p>2.<strong>AdaBoost</strong><br>学习样本权重$D_m$,学习分类器权重$\alpha_m$</p>
+<ul>
+<li>$D_m={w_{m1},w_{m2},…,w_{mN}}$,样本权重和上一次的分类器分类结果有关</li>
+<li>$\alpha_m=\frac{1}{2}log\frac{1-e_m}{e_m}$,$e_m$为分类误差错误率(算错误率时乘上样本权重)</li>
+</ul>
+<p>3.<strong>提升树</strong><br>前向分步法+拟合残差,在拟合残差时,如果损失函数是平方差函数或指数损失函数时,每一步优化很简单.如果是一般损失函数,则可以使用梯度提升算法.</p>
+<p>4.<strong>Bagging</strong>和<strong>Stacking</strong>见&lt;西瓜书&gt;</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/15/MachineLearningNotes/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -300,7 +509,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T18:58:32+08:00">
                 2018-03-15
               </time>
@@ -317,7 +526,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -925,7 +1134,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T00:00:00+08:00">
                 2018-03-13
               </time>
@@ -942,7 +1151,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -1112,7 +1321,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T09:23:03+08:00">
                 2018-03-07
               </time>
@@ -1129,7 +1338,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1291,7 +1500,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-27T10:30:32+08:00">
                 2018-02-27
               </time>
@@ -1308,7 +1517,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1549,7 +1758,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-04T14:57:09+08:00">
                 2018-02-04
               </time>
@@ -1566,7 +1775,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -1722,7 +1931,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-31T13:48:15+08:00">
                 2018-01-31
               </time>
@@ -1739,7 +1948,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -1886,7 +2095,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-30T09:32:43+08:00">
                 2018-01-30
               </time>
@@ -1903,7 +2112,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -2054,7 +2263,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-29T10:17:50+08:00">
                 2018-01-29
               </time>
@@ -2071,7 +2280,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -2208,7 +2417,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-28T10:23:17+08:00">
                 2018-01-28
               </time>
@@ -2225,7 +2434,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -2269,175 +2478,6 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
           
             <p>We shall go on to the end, we shall fight in France, we shall fight on the seas and oceans, we shall fight with growing confidence and growing strength in the air, we shall defend our Island, whatever the cost may be, we shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets, we shall fight in the hills; we shall never surrender, and even if, which I do not for a moment believe, this Island or a large part of it were subjugated and starving, then our Empire beyond the seas, armed and guarded by the British Fleet, would carry on the struggle, until, in God’s good time, the New World, with all its power and might, steps forth to the rescue and the liberation of the old.</p>
 <p>我们将战斗到底。我们将在法国作战，我们将在海洋中作战，我们将以越来越大的信心和越来越强的力量在空中作战，我们将不惜一切代价保卫本土，我们将在海滩作战，我们将在敌人的登陆点作战，我们将在田野和街头作战，我们将在山区作战。我们绝不投降，即使我们这个岛屿或这个岛屿的大部分被征服并陷于饥饿之中——我从来不相信会发生这种情况——我们在海外的帝国臣民，在英国舰队的武装和保护下也会继续战斗，直到新世界在上帝认为适当的时候，拿出它所有一切的力量来拯救和解放这个旧世界。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/27/Obama7/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/27/Obama7/" itemprop="url">
-                  Obama-实现美国梦
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-27T11:20:13+08:00">
-                2018-01-27
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Hello, Chicago!<br>芝加哥，你好！</p>
-<p>If there is anyone out there who still doubts that America is a place where all things are possible; who still wonders if the dream of our founders is alive in our time; who still questions the power of our democracy, tonight is your answer.<br>如果有人怀疑美国是个一切皆有可能的地方，怀疑美国奠基者的梦想在我们这个时代依然燃烧，怀疑我们民主的力量，那么今晚这些疑问都有了答案。</p>
-<p>It’s the answer told by lines that stretched around schools and churches in numbers this nation has never seen; by people who waited three hours and four hours, many for the very first time in their lives, because they believed that this time must be different; that their voice could be that difference.<br>学校和教堂门外的长龙便是答案。排队的人数之多，在美国历史上前所未有。为了投票，他们排队长达三、四个小时。许多人一生中第一次投票，因为他们认为这一次大选结果必须不同以往，而他们手中的一票可能决定胜负。</p>
-<p>It’s the answer spoken by young and old, rich and poor, Democrat and Republican, black, white, Latino, Asian, Native American, gay, straight, disabled and not disabled — Americans who sent a message to the world that we have never been a collection of red states and blue states; we are, and always will be, the United States of America.<br>无论年龄，无论贫富，无论民主党人或共和党人，无论黑人、白人，无论拉美裔、亚裔、印地安人, 无论同性恋、异性恋，无论残障人、健全人，所有的人，他们向全世界喊出了同一个声音：我们并不隶属 “红州”与“蓝州”的对立阵营，我们属于美利坚合众国，现在如此，永远如此！</p>
-<p>It’s the answer that led those who have been told for so long by so many to be cynical, and fearful, and doubtful of what we can achieve to put their hands on the arc of history and bend it once more toward the hope of a better day.<br>长久以来，很多人说：我们对自己的能量应该冷漠，应该恐惧，应该怀疑。但是，历史之轮如今已在我们手中，我们又一次将历史之轮转往更美好的未来。</p>
-<p>It’s been a long time coming, but tonight, because of what we did on this day, in this election, at this defining moment, change has come to America.<br>漫漫征程，今宵终于来临。特殊的一天，特殊的一次大选，特殊的决定性时刻，美国迎来了变革。</p>
-<p>I just received a very gracious call from Sen. McCain. He fought long and hard in this campaign, and he’s fought even longer and harder for the country he loves. He has endured sacrifices for America that most of us cannot begin to imagine, and we are better off for the service rendered by this brave and selfless leader. I congratulate him and Gov. Palin for all they have achieved, and I look forward to working with them to renew this nation’s promise in the months ahead.<br>刚才，麦凯恩参议员很有风度地给我打了个电话。在这次竞选中，他的努力持久而艰巨。为了这个他挚爱的国家，他的努力更持久、更艰巨。他为美国的奉献超出绝大多数人的想象。他是一位勇敢无私的领袖，有了他的奉献，我们的生活才更美好。我对他和佩林州长的成绩表示祝贺。同时，我也期待着与他们共同努力，再续美国辉煌。</p>
-<p>I want to thank my partner in this journey, a man who campaigned from his heart and spoke for the men and women he grew up with on the streets of Scranton and rode with on that train home to Delaware, the vice-president-elect of the United States, Joe Biden.<br>我要感谢我的竞选搭档——当选副总统乔.拜登。为了与他一起在斯克兰顿市街头长大、一起坐火车返回特拉华州的人们，拜登全心全意地竟选，他代表了这些普通人的声音。</p>
-<p>I would not be standing here tonight without the unyielding support of my best friend for the last 16 years, the rock of our family and the love of my life, our nation’s next first lady, Michelle Obama. Sasha and Malia, I love you both so much, and you have earned the new puppy that’s coming with us to the White House. And while she’s no longer with us, I know my grandmother is watching, along with the family that made me who I am. I miss them tonight, and know that my debt to them is beyond measure.<br>我要感谢下一位第一夫人米歇尔.奥巴马。她是我家的中流砥柱，是我生命中的最爱。没有她在过去16年来的坚定支持，今晚我就不可能站在这里。我要感谢两个女儿萨沙和玛丽娅，我太爱你们两个了，你们将得到一条新的小狗，它将与我们一起入住白宫。我还要感谢已去世的外婆，我知道此刻她正在天上注视着我。她与我的家人一起造就了今天的我。今夜我思念他们，他们对我的恩情比山高、比海深。</p>
-<p>To my campaign manager, David Plouffe; my chief strategist, David Axelrod; and the best campaign team ever assembled in the history of politics — you made this happen, and I am forever grateful for what you’ve sacrificed to get it done.<br>我要感谢我的竞选经理大卫.普鲁夫，感谢首席策划师大卫.阿克塞罗德以及整个竞选团队，他们是政治史上最优秀的竞选团队。你们成就了今夜，我永远感谢你们为今夜所付出的一切。</p>
-<p>But above all, I will never forget who this victory truly belongs to — it belongs to you.<br>但最重要的是，我将永远不会忘记这场胜利真正属于谁—-是你们！</p>
-<p>I was never the likeliest candidate for this office. We didn’t start with much money or many endorsements. Our campaign was not hatched in the halls of Washington — it began in the backyards of Des Moines and the living rooms of Concord and the front porches of Charleston.<br>我从来不是最有希望的候选人。起初，我们的资金不多，赞助人也不多。我们的竞选并非始于华盛顿的华丽大厅，而是起于德莫奈地区某家的后院、康科德地区的某家客厅、查尔斯顿地区的某家前廊。</p>
-<p>It was built by working men and women who dug into what little savings they had to give $5 and $10 and $20 to this cause. It grew strength from the young people who rejected the myth of their generation’s apathy; who left their homes and their families for jobs that offered little pay and less sleep; from the not-so-young people who braved the bitter cold and scorching heat to knock on the doors of perfect strangers; from the millions of Americans who volunteered and organized, and proved that more than two centuries later, a government of the people, by the people and for the people has not perished from this earth. This is your victory.<br>劳动大众从自己的微薄积蓄中掏出5美元、10美元、20美元，拿来捐助我们的事业。年轻人证明了他们绝非所谓“冷漠的一代”。他们远离家乡和亲人，拿着微薄的报酬，起早摸黑地助选。上了年纪的人也顶着严寒酷暑，敲开陌生人的家门助选。无数美国人自愿组织起来，充当自愿者。正是这些人壮大了我们的声势。他们的行动证明了在两百多年以后，民有、民治、民享的政府并未从地球上消失。这是你们的胜利。</p>
-<p>I know you didn’t do this just to win an election, and I know you didn’t do it for me. You did it because you understand the enormity of the task that lies ahead. For even as we celebrate tonight, we know the challenges that tomorrow will bring are the greatest of our lifetime — two wars, a planet in peril, the worst financial crisis in a century. Even as we stand here tonight, we know there are brave Americans waking up in the deserts of Iraq and the mountains of Afghanistan to risk their lives for us. There are mothers and fathers who will lie awake after their children fall asleep and wonder how they’ll make the mortgage, or pay their doctor’s bills, or save enough for college. There is new energy to harness and new jobs to be created; new schools to build and threats to meet and alliances to repair.<br>你们这样做，并不只是为了赢得一场大选，更不是为了我个人。你们这样做，是因为你们清楚未来的任务有多么艰巨。今晚我们在欢庆，明天我们就将面对一生之中最为严峻的挑战－－两场战争、一个充满危险的星球，还有百年一遇的金融危机。今晚我们在这里庆祝，但我们知道在伊拉克的沙漠里，在阿富汗的群山中，许许多多勇敢的美国人醒来后就将为了我们而面临生命危险。许许多多的父母会在孩子熟睡后仍难以入眠，他们正在为月供、医药费，孩子今后的大学费用而发愁。我们需要开发新能源，创造就业机会，建造新学校，迎接挑战和威胁，并修复与盟国的关系。</p>
-<p>The road ahead will be long. Our climb will be steep. We may not get there in one year, or even one term, but America — I have never been more hopeful than I am tonight that we will get there. I promise you: We as a people will get there.<br>前方道路还很漫长，任务艰巨。一年之内，甚至一届总统任期之内，我们可能都无法完成这些任务。但我从未像今晚这样对美国满怀希望，我相信我们会实现这个目标。我向你们承诺－－我们美利坚民族将实现这一目标！</p>
-<p>There will be setbacks and false starts. There are many who won’t agree with every decision or policy I make as president, and we know that government can’t solve every problem. But I will always be honest with you about the challenges we face. I will listen to you, especially when we disagree. And, above all, I will ask you join in the work of remaking this nation the only way it’s been done in America for 221 years — block by block, brick by brick, callused hand by callused hand.<br>我们会遇到挫折，会出师不利，会有许多人不认同我的某一项决定或政策。政府并不能解决所有问题，但我会向你们坦陈我们所面临的挑战。我会聆听你们的意见，尤其是在我们意见相左之时。最重要的是，我会让你们一起重建这个国家。用自己的双手，从一砖一瓦做起。这是美国立国221年以来的前进方式，也是惟一的方式。</p>
-<p>What began 21 months ago in the depths of winter must not end on this autumn night. This victory alone is not the change we seek — it is only the chance for us to make that change. And that cannot happen if we go back to the way things were. It cannot happen without you.<br>21个月前那个隆冬所开始的一切，绝不应在这一个秋夜结束。我们所寻求的变革并不只是赢得大选，这只是给变革提供了一个机会。假如我们照老路子办事，就没有变革；没有你们，就没有变革。</p>
-<p>So let us summon a new spirit of patriotism; of service and responsibility where each of us resolves to pitch in and work harder and look after not only ourselves, but each other. Let us remember that if this financial crisis taught us anything, it’s that we cannot have a thriving Wall Street while Main Street suffers. In this country, we rise or fall as one nation — as one people.<br>让我们重新发扬爱国精神，树立崭新的服务意识、责任感，每个人下定决心，一起努力工作，彼此关爱；让我们牢记这场金融危机带来的教训：不能允许商业街挣扎的同时却让华尔街繁荣。在这个国家，我们作为同一个民族，同生死共存亡。</p>
-<p>Let us resist the temptation to fall back on the same partisanship and pettiness and immaturity that has poisoned our politics for so long. Let us remember that it was a man from this state who first carried the banner of the Republican Party to the White House — a party founded on the values of self-reliance, individual liberty and national unity. Those are values we all share, and while the Democratic Party has won a great victory tonight, we do so with a measure of humility and determination to heal the divides that have held back our progress.<br>党派之争、琐碎幼稚，长期以来这些东西荼毒了我们的政坛。让我们牢记，当来自伊利诺伊州的一位先生首次将共和党大旗扛进白宫时，伴随着他的是自强自立、个人自由、国家统一的共和党建党理念。这也是我们所有人都珍视的理念。虽然民主党今晚大胜，但我们态度谦卑，并决心弥合阻碍我们进步的分歧。</p>
-<p>As Lincoln said to a nation far more divided than ours, “We are not<br>enemies, but friends… Though passion may have strained, it must<br>not break our bonds of affection.” And, to those Americans whose<br>support I have yet to earn, I may not have won your vote, but I<br>hear your voices, I need your help, and I will be your president,<br>too.<br>当年,林肯面对的是一个远比目前更为分裂的国家。他说：“我们不是敌人，而是朋友……虽然激情可能不再，但是我们的感情纽带不会割断。”对于那些现在并不支持我的美国人，我想说，虽然我没有赢得你们的选票，但我听到了你们的声音，我需要你们的帮助，我也将是你们的总统。</p>
-<p>And to all those watching tonight from beyond our shores, from parliaments and palaces to those who are huddled around radios in the forgotten corners of our world — our stories are singular, but our destiny is shared, and a new dawn of American leadership is at hand. To those who would tear this world down: We will defeat you. To those who seek peace and security: We support you. And to all those who have wondered if America’s beacon still burns as bright: Tonight, we proved once more that the true strength of our nation comes not from the might of our arms or the scale of our wealth, but from the enduring power of our ideals: democracy, liberty, opportunity and unyielding hope.<br>对于关注今夜结果的国际人士，不管他们是在国会、皇宫关注，还是在荒僻地带收听电台，我们的态度是：我们美国人的经历各有不同，但我们的命运相关，新的美国领袖诞生了。对于想毁灭这个世界的人们，我们必将击败你们。对于追求和平和安全的人们，我们将支持你们。对于怀疑美国这盏灯塔是否依然明亮的人们，今天晚上我们已再次证明：美国的真正力量来源并非军事威力或财富规模，而是我们理想的恒久力量：民主、自由、机会和不屈的希望。</p>
-<p>For that is the true genius of America — that America can change. Our union can be perfected. And what we have already achieved gives us hope for what we can and must achieve tomorrow.<br>美国能够变革，这才是美国真正的精髓。我们的联邦会不断完善。我们已经取得的成就，将为我们将来能够并且必须取得的成就增添希望。</p>
-<p>This election had many firsts and many stories that will be told for generations. But one that’s on my mind tonight is about a woman who cast her ballot in Atlanta. She’s a lot like the millions of others who stood in line to make their voice heard in this election, except for one thing: Ann Nixon Cooper is 106 years old.<br>这次大选创造了多项“第一”，诞生了很多将流芳后世的故事，但今晚令我最为难忘的却是一位在亚特兰大投票的妇女：安妮.库波尔。她和无数排队等候投票的选民没有什么差别，唯一的不同是她高龄106岁。</p>
-<p>She was born just a generation past slavery; a time when there were no cars on the road or planes in the sky; when someone like her couldn’t vote for two reasons — because she was a woman and because of the color of her skin.<br>在她出生的那个时代，黑奴制刚刚废除。那时路上没有汽车，天上没有飞机。当时像她这样的人由于两个原因不能投票－－一第一因为她是女性，第二个原因是她的肤色。</p>
-<p>And tonight, I think about all that she’s seen throughout her century in America — the heartache and the hope; the struggle and the progress; the times we were told that we can’t and the people who pressed on with that American creed: Yes, we can.<br>今天晚上，我想到了安妮在美国过去一百年间的种种经历：心痛和希望，挣扎和进步，那些我们被告知我们办不到的年代，以及我们现在这个年代。现在，我们坚信美国式信念──是的，我们能！</p>
-<p>At a time when women’s voices were silenced and their hopes dismissed, she lived to see them stand up and speak out and reach for the ballot. Yes, we can.<br>在那个年代，妇女的声音被压制，她们的希望被剥夺。但安妮活到了今天，看到妇女们站起来了，可以大声发表意见了，有选举权了。是的，我们能。</p>
-<p>When there was despair in the Dust Bowl and depression across the land, she saw a nation conquer fear itself with a New Deal, new jobs and a new sense of common purpose. Yes, we can.<br>安妮经历了上世纪三十年代的大萧条。农田荒芜，绝望笼罩美国大地。她看到了美国以新政、新的就业机会以及崭新的共同追求战胜了恐慌。是的，我们能。</p>
-<p>When the bombs fell on our harbor and tyranny threatened the world, she was there to witness a generation rise to greatness and a democracy was saved. Yes, we can.<br>二战时期，炸弹袭击我们的海港，全世界受到独裁专制威胁，安妮见证了一代美国人的英雄本色，他们捍卫了民主。是的，我们能。</p>
-<p>She was there for the buses in Montgomery, the hoses in Birmingham, a bridge in Selma and a preacher from Atlanta who told a people that “We Shall Overcome.” Yes, we can.<br>安妮经历了蒙哥马利公交车事件、伯明翰黑人暴动事件、塞尔马血腥周末事件。来自亚特兰大的一位牧师告诉人们：我们终将胜利。是的，我们能。</p>
-<p>A man touched down on the moon, a wall came down in Berlin, a world was connected by our own science and imagination. And this year, in this election, she touched her finger to a screen and cast her vote, because after 106 years in America, through the best of times and the darkest of hours, she knows how America can change. Yes, we can.<br>人类登上了月球、柏林墙倒下了，科学和想像把世界连成了一块。今年，在这次选举中，安妮的手指轻触电子屏幕，投下自己的一票。她在美国生活了106年，其间有最美好的时光，也有最黑暗的时刻，她知道美国能够变革。是的，我们能。</p>
-<p>America, we have come so far. We have seen so much. But there is so much more to do. So tonight, let us ask ourselves: If our children should live to see the next century; if my daughters should be so lucky to live as long as Ann Nixon Cooper, what change will they see? What progress will we have made?<br>美利坚，我们已经一路走来，我们已经看到了那么多变化，但我们仍有很多事情要做。今夜，让我们问自己这样一个问题：假如我们的孩子能够活到下一个世纪，假如我的女儿们有幸与安妮一样长寿，她们将会看到怎样的改变？我们又取得了怎样的进步？</p>
-<p>This is our chance to answer that call. This is our moment. This is our time — to put our people back to work and open doors of opportunity for our kids; to restore prosperity and promote the cause of peace; to reclaim the American Dream and reaffirm that fundamental truth that out of many, we are one; that while we breathe, we hope, and where we are met with cynicism, and doubt, and those who tell us that we can’t, we will respond with that timeless creed that sums up the spirit of a people: Yes, we can.<br>现在，我们获得了回答这个问题的机会。这是我们的时刻，我们的时代。让我们的人民重新就业，为我们的孩子打开机会的大门；恢复繁荣，促进和平；让美国梦重放光芒，再证这一根本性真理，那就是：团结一致，众志成城；一息尚存，希望就在；倘若有人嘲讽和怀疑，说我们不能，我们就以这一永恒信条回应，因为它凝聚了整个民族的精神——是的，我们能！</p>
-<p>Thank you, God bless you, and may God bless the United States of America.<br>谢谢大家！愿上帝保佑你们，保佑美利坚合众国。</p>
 
           
         
@@ -2512,8 +2552,8 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">65</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -2521,7 +2561,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">12</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -2530,7 +2570,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -2617,7 +2657,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
 <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -2626,7 +2666,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

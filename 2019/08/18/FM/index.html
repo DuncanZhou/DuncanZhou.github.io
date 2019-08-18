@@ -1,0 +1,806 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="MachineLearning," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Duncan's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="模型表示为：因子分解机（Factorization Machine）1.概念在如广告点击预测问题中，根据用户画像、广告位以及一些其他特征来预测用户是否会点击广告。当对离散特征进行One-hot编码后，将出现特征维度爆炸，而且特征数据较稀疏。因此，FM最大的特点是对于稀疏的数据具有很好的学习能力。
+
+可以处理以下三类问题：
+
+回归问题：使用最小均方误差作为优化标准
+二分类问题：加一个激活函数，如si">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FM & FFM & DeepFM">
+<meta property="og:url" content="https://github.com/DuncanZhou/2019/08/18/FM/index.html">
+<meta property="og:site_name" content="Duncan's Blog">
+<meta property="og:description" content="模型表示为：因子分解机（Factorization Machine）1.概念在如广告点击预测问题中，根据用户画像、广告位以及一些其他特征来预测用户是否会点击广告。当对离散特征进行One-hot编码后，将出现特征维度爆炸，而且特征数据较稀疏。因此，FM最大的特点是对于稀疏的数据具有很好的学习能力。
+
+可以处理以下三类问题：
+
+回归问题：使用最小均方误差作为优化标准
+二分类问题：加一个激活函数，如si">
+<meta property="og:image" content="https://github.com/DuncanZhou/DuncanZhou/2019/08/18/FM/C:/Users\DUNCAN~1\AppData\Local\Temp\1566111191953.png">
+<meta property="og:updated_time" content="2019-08-18T13:56:31.566Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FM & FFM & DeepFM">
+<meta name="twitter:description" content="模型表示为：因子分解机（Factorization Machine）1.概念在如广告点击预测问题中，根据用户画像、广告位以及一些其他特征来预测用户是否会点击广告。当对离散特征进行One-hot编码后，将出现特征维度爆炸，而且特征数据较稀疏。因此，FM最大的特点是对于稀疏的数据具有很好的学习能力。
+
+可以处理以下三类问题：
+
+回归问题：使用最小均方误差作为优化标准
+二分类问题：加一个激活函数，如si">
+<meta name="twitter:image" content="https://github.com/DuncanZhou/DuncanZhou/2019/08/18/FM/C:/Users\DUNCAN~1\AppData\Local\Temp\1566111191953.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/DuncanZhou/2019/08/18/FM/"/>
+
+
+
+
+
+  <title> FM & FFM & DeepFM | Duncan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Duncan's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            menu.主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            menu.分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            menu.关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            menu.归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            menu.标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/18/FM/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                FM & FFM & DeepFM
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-18T14:17:40+08:00">
+                2019-08-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MachineLearning/" itemprop="url" rel="index">
+                    <span itemprop="name">MachineLearning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="模型表示为：因子分解机（Factorization-Machine）"><a href="#模型表示为：因子分解机（Factorization-Machine）" class="headerlink" title="模型表示为：因子分解机（Factorization Machine）"></a>模型表示为：因子分解机（Factorization Machine）</h3><h3 id="1-概念"><a href="#1-概念" class="headerlink" title="1.概念"></a>1.概念</h3><p>在如广告点击预测问题中，根据用户画像、广告位以及一些其他特征来预测用户是否会点击广告。当对离散特征进行One-hot编码后，将出现特征维度爆炸，而且特征数据较稀疏。因此，FM最大的特点是对于稀疏的数据具有很好的学习能力。</p>
+<hr>
+<p>可以处理以下三类问题：</p>
+<ul>
+<li><strong>回归问题</strong>：使用最小均方误差作为优化标准</li>
+<li><strong>二分类问题</strong>：加一个激活函数，如sigmoid或tanh函数等</li>
+<li><strong>排序问题</strong>：按照预测分数召回</li>
+</ul>
+<h3 id="2-优点"><a href="#2-优点" class="headerlink" title="2.优点"></a>2.优点</h3><ul>
+<li>可以<strong>在非常稀疏的数据</strong>中进行合理的参数估计</li>
+<li>在FM模型的<strong>复杂度是线性</strong>的</li>
+<li>FM是一个<strong>通用模型</strong>，可以应用于任何特征为实值的情况</li>
+</ul>
+<h3 id="3-为什么有效？模型细节"><a href="#3-为什么有效？模型细节" class="headerlink" title="3.为什么有效？模型细节"></a>3.为什么有效？模型细节</h3><ul>
+<li><p>在一般的线性模型中，各个特征独立考虑的，没有考虑到特征与特征之间的相互关系。但实际上，<strong>大量的特征之间是有关联</strong>的。 </p>
+<blockquote>
+<p>举例：电商中，男性购买啤酒较多，女性购买化妆品较多，性别与购买类别之间存在关联。</p>
+</blockquote>
+</li>
+<li><p>模型</p>
+<ul>
+<li><p>一般的线性模型为</p>
+<script type="math/tex; mode=display">y=w_0+\sum_{i=1}^{n}w_ix_i</script></li>
+<li><p>对于度为2的因子分解机模型为：</p>
+<script type="math/tex; mode=display">y=w_0+\sum_{i=1}^{n}w_ix_i+\sum_{i=1}^{n-1}\sum_{j=i+1}^{n}<v_i,v_j>x_ix_j</script><p>，其中，$<v_i,v_j>$表示两个大小为$k$的向量之间的点积。与线性模型相比，FM的模型多了后面特征组合的部分。</v_i,v_j></p>
+</li>
+</ul>
+</li>
+<li><p>如何求解？</p>
+<p>对每一个特征分量$x<em>i$构造一个辅助向量$v_i=(v</em>{i1},v<em>{i2},…,v</em>{i<em>k})$，利用$v_iv_j^T$对交叉项的$w</em>{ij}$进行估计。</p>
+</li>
+<li><p>K的选取？</p>
+<p>k越大能够解释的特征维度越高，但是k的选取不宜太大。</p>
+</li>
+<li><p>为什么求解模型复杂度是线性的？</p>
+<p><img src="/DuncanZhou/2019/08/18/FM/C:/Users\DUNCAN~1\AppData\Local\Temp\1566111191953.png" alt="1566111191953"></p>
+</li>
+<li><p>求解过程</p>
+<p>使用随机梯度下降方式求解</p>
+</li>
+</ul>
+<hr>
+<h3 id="局部感知因子分解机（FFM）"><a href="#局部感知因子分解机（FFM）" class="headerlink" title="局部感知因子分解机（FFM）"></a>局部感知因子分解机（FFM）</h3><h3 id="1-基于FM改进之处"><a href="#1-基于FM改进之处" class="headerlink" title="1.基于FM改进之处"></a>1.基于FM改进之处</h3><p>特征One-hot之后过于稀疏，因此，同一个categorical特征经过One-hot编码之后生成的数值特征可以放到同一个field。</p>
+<p>因此在FFM中，每一维特征都会针对其他特征的每个field，分别学习一个隐变量，该隐变量不仅与特征相关，也与field相关。假设样本的$n$个特征属于$f$个field，那么FFM的二次项有$nf$个隐向量。而在FM模型中每一维特征的隐向量只有一个。如果隐向量的长度为$k$，那么FFM的二次项参数有$nfk$个，远多于FM的$nk$个。</p>
+<h3 id="2-模型"><a href="#2-模型" class="headerlink" title="2.模型"></a>2.模型</h3><script type="math/tex; mode=display">y=w_0+\sum_{i=1}^nw_ix_i+\sum_{i=1}^n\sum_{j=i+1}^n<v_{i,fj},v_{j,fi}>x_ix_j</script><h3 id="3-求解"><a href="#3-求解" class="headerlink" title="3.求解"></a>3.求解</h3><p>随机梯度下降，同FM</p>
+<h3 id="4-应用"><a href="#4-应用" class="headerlink" title="4.应用"></a>4.应用</h3><p>为了使用FFM方法，所有的特征必须转换成“field_id:feat_id:value”格式，field_id代表特征所属field的编号，feat_id是特征编号，value是特征的值。 </p>
+<hr>
+<h3 id="DeepFM"><a href="#DeepFM" class="headerlink" title="DeepFM"></a>DeepFM</h3><h3 id="1-概念-1"><a href="#1-概念-1" class="headerlink" title="1.概念"></a>1.概念</h3><p>DeepFM目的是同时学习<strong>低阶和高阶</strong>的特征交叉，主要由FM和DNN两部分组成，底部共享同样的输入。模型可以表示为：</p>
+<script type="math/tex; mode=display">y=sigmoid(y_{FM}+y_{DNN})</script><p>这里的低阶和高阶指的是特征组合的维度，虽然FM理论上可以对高阶特征组合进行建模，但实际上因为计算复杂度原因，一般都只用到了二阶特征组合。因此，FM负责二阶特征组合，DNN负责高阶特征的组合。</p>
+<h3 id="2-优势"><a href="#2-优势" class="headerlink" title="2.优势"></a>2.优势</h3><ul>
+<li>同时结合高阶和低阶特征组合（FM+DNN）</li>
+<li>端到端模型，无需特征工程（DNN）</li>
+<li>共享相同的输入和embedding参数，训练高效（借助FFM来做预训练，得到embedding后的向量）</li>
+<li>评估模型时，用到了新的指标“Gini Normalization”</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/MachineLearning/" rel="tag"># MachineLearning</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/17/ubuntu-sublime/" rel="next" title="ubuntu下sublime中文输入问题">
+                <i class="fa fa-chevron-left"></i> ubuntu下sublime中文输入问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="-mob-share-ui-button -mob-share-open">分享</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+	<li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-weibo"><p>微博</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=24a08c2197375"></script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg"
+               alt="duncan" />
+          <p class="site-author-name" itemprop="name">duncan</p>
+          <p class="site-description motion-element" itemprop="description">write something useful</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/DuncanZhou" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://instagram.com/callmeduncanzhou" target="_blank" title="instagram">
+                  
+                    <i class="fa fa-fw fa-instagram"></i>
+                  
+                  instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=317536872" target="_blank" title="music">
+                  
+                    <i class="fa fa-fw fa-music"></i>
+                  
+                  music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/duncanzhou-22/activities" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-gift"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=371362&auto=1&height=66"></iframe>
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#模型表示为：因子分解机（Factorization-Machine）"><span class="nav-number">1.</span> <span class="nav-text">模型表示为：因子分解机（Factorization Machine）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念"><span class="nav-number">2.</span> <span class="nav-text">1.概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-优点"><span class="nav-number">3.</span> <span class="nav-text">2.优点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-为什么有效？模型细节"><span class="nav-number">4.</span> <span class="nav-text">3.为什么有效？模型细节</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#局部感知因子分解机（FFM）"><span class="nav-number">5.</span> <span class="nav-text">局部感知因子分解机（FFM）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-基于FM改进之处"><span class="nav-number">6.</span> <span class="nav-text">1.基于FM改进之处</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-模型"><span class="nav-number">7.</span> <span class="nav-text">2.模型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-求解"><span class="nav-number">8.</span> <span class="nav-text">3.求解</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-应用"><span class="nav-number">9.</span> <span class="nav-text">4.应用</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#DeepFM"><span class="nav-number">10.</span> <span class="nav-text">DeepFM</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-概念-1"><span class="nav-number">11.</span> <span class="nav-text">1.概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-优势"><span class="nav-number">12.</span> <span class="nav-text">2.优势</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">duncan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+<span id="busuanzi_container_site_pv">
+   | Total visited <span id="busuanzi_value_site_pv"></span> times
+</span>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

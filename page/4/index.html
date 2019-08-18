@@ -261,7 +261,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/SVM(Extension)/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/Exploring Folksonomy for Personalized Search/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -286,8 +286,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/08/10/SVM(Extension)/" itemprop="url">
-                  支持向量机(Support Vector Machine)学习（补充）
+                <a class="post-title-link" href="/2019/08/17/Exploring Folksonomy for Personalized Search/" itemprop="url">
+                  Personalized Search论文阅读笔记-08年SIGIR
                 </a>
               
             
@@ -300,9 +300,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
-                2018-08-10
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
+                2019-08-17
               </time>
             
 
@@ -317,7 +317,355 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Paper/" itemprop="url" rel="index">
+                    <span itemprop="name">Paper</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="论文题目"><a href="#论文题目" class="headerlink" title="论文题目"></a>论文题目</h2><h3 id="Exploring-Folksonomy-for-Personalized-Search"><a href="#Exploring-Folksonomy-for-Personalized-Search" class="headerlink" title="Exploring Folksonomy for Personalized Search"></a>Exploring Folksonomy for Personalized Search</h3><h2 id="概念解释"><a href="#概念解释" class="headerlink" title="概念解释"></a>概念解释</h2><p><strong>Folksonomy:</strong></p>
+<blockquote>
+<p>该单词由folk和taxonomy组成，folk是口语中伙伴的意思，taxonomy是分类方法的意思，该词用来表示现在存在的大众分类的一种现象。目前许多应用允许用户上传资源时选择标签标注该资源。现有的应用如flickr和dogear。</p>
+</blockquote>
+<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>对于这样允许大众分类的应用，如何满足用户在搜索时尽可能准确地返回用户所需要的资源是一个有意思的问题。因为如果像传统的搜索方法仅通过查询关键词去匹配搜索结果，返回的结果可能会不满足用户的初衷。而且，不同的用户在搜索不同的资源时有可能会使用同样的关键词，比如，爱好运动和爱好喝咖啡的用户在搜索杯子的时候使用的关键词都可能是“杯子”，而返回的结果对于爱好运动的用户来说应该尽可能是运动型杯子，对于爱好喝咖啡的用户来说应该尽可能是咖啡杯子。所以，这里的问题都归结于Personalized Search。</p>
+<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>根据之前的工作，解决这样问题的方法有两类:<font color="red">Query Refinement</font>和<font color="red">Result Processing</font> </p>
+<blockquote>
+<p>1)对于查询术语进行替换和扩展，替换成其他的术语或者用其他的术语来填充<br>2)对查询返回的结果再排序或者结果聚类等方法<br>使用较为普遍的是Result Processing，该篇论文中使用的也是第二种方法。</p>
+</blockquote>
+<p>本文中提出的方法分为三个步骤：<br>1)Query中的terms先求结果排序得到Ranklist<br>2)通过User的Interest Vector和资源的Topic Vector求相似性得到Ranklist<br>3)聚合两个list得到最终的Ranklist<br>(具体在实验过程中，为了提高效率，第二步求Ranklist只对第一步中的前N个再去求排序)</p>
+<h2 id="Details-Of-Methods"><a href="#Details-Of-Methods" class="headerlink" title="Details-Of-Methods"></a>Details-Of-Methods</h2><p><font color="red"><strong>Step1：</strong></font><br>对于Query中的terms去求资源排序，本文中采用<strong>BM25</strong>和<strong>Language Model for IR(LMIR)</strong>这两种文本检索模型。<br>先通过基本的文本检索去得到第一步的Ranklist。</p>
+<p><font color="red"><strong>Step2：</strong></font><br>第二步是本文的核心。关键在于建立Topic Space,因为建立了Topic Space后，才能对用户建立兴趣向量，才能对资源建立主题向量，然后再去计算两者之间的相似性。</p>
+<p>1.本文中的主题空间使用了Folksonomy的方法，以标注的tag作为向量的每一维，每个维的值的计算方法可以通过tfidf或者BM25来计算，从而构成用户和资源的兴趣和topic向量。<br>此外，本文中以ODP分好类的web pages的topic space作为baseline方法。</p>
+<p>2.当分别构建好用户和资源的向量后，本文通过类PageRank算法来迭代形成最终的用户和资源的矩阵。R矩阵行代表用户，列代表兴趣。T矩阵行代表资源，列代表topic。</p>
+<p><font color="red"><strong>Step3：</strong></font><br>本文中聚合两个list的方法是通过简单的WBF方法去得到最终的Ranklist</p>
+<h2 id="Evaluation-Methods"><a href="#Evaluation-Methods" class="headerlink" title="Evaluation-Methods"></a>Evaluation-Methods</h2><p>本文基于一个假设：用户收藏过或标注过的资源即为用户相关资源，以此来通过检索评价标准来评价Personalized Search。</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/DataMiningNotes/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/08/17/DataMiningNotes/" itemprop="url">
+                  数据挖掘整理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:58+08:00">
+                2019-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Data-Mining/" itemprop="url" rel="index">
+                    <span itemprop="name">Data Mining</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="数据挖掘整理"><a href="#数据挖掘整理" class="headerlink" title="数据挖掘整理"></a>数据挖掘整理</h2><h3 id="1-数据的基本描述"><a href="#1-数据的基本描述" class="headerlink" title="1.数据的基本描述"></a>1.数据的基本描述</h3><h4 id="1-1-中心趋势度量"><a href="#1-1-中心趋势度量" class="headerlink" title="1.1 中心趋势度量"></a>1.1 中心趋势度量</h4><ul>
+<li><strong>均值</strong></li>
+<li><strong>截尾均值</strong>：丢弃高低端极端值后的均值</li>
+<li><strong>中位数</strong>：有序数据值得中间值</li>
+<li><strong>众数</strong>：集合中出现最频繁的值</li>
+<li><strong>中列数</strong>：最大值和最小值的平均值</li>
+</ul>
+<h4 id="1-2-数据散布"><a href="#1-2-数据散布" class="headerlink" title="1.2 数据散布"></a>1.2 数据散布</h4><ul>
+<li><p><strong>极差</strong>：最大值与最小值之差</p>
+</li>
+<li><p><strong>分位数</strong>：取自数据分布的每隔一定间隔上的点，把数据划分成基本上大小相等的连贯集合</p>
+</li>
+<li><p><strong>四分位数</strong>：3个数据点，把数据分布划分成4个相等的部分，使得每部分表示数据分布的四分之一。（<strong>中位数、四分位数、百分位数</strong>是使用广泛的分位数）</p>
+</li>
+<li><p><strong>方差</strong></p>
+</li>
+<li><p><strong>标准差</strong></p>
+</li>
+<li><p><strong>四分位数极差（IQR）</strong>：第1个和第3个四分位数之间的距离，IQR = Q3 - Q1</p>
+<blockquote>
+<p>识别可疑的<strong>离群点</strong>的通畅规则是，挑选落在<strong>第3个四分位数之上</strong>或<strong>第一个四分位数之下至少1.5*IQR</strong>处的值。</p>
+</blockquote>
+<hr>
+<p><strong><em>图形的表示</em></strong></p>
+<hr>
+</li>
+</ul>
+<ul>
+<li><p><strong>a)盒图</strong>：盒的端点一般在四分位数上，使得盒的长度是四分位数极差IQR。中位数用盒内的线标记。盒外的两条线延伸到最小和最大观测值。</p>
+</li>
+<li><p><strong>b)分位数图</strong>：一种观察单变量数据分布的简单有效方法</p>
+</li>
+<li><p><strong>c)直方图：</strong></p>
+</li>
+<li><p><strong>d)散点图：</strong>确定两个数值变量之间看上去是否存在联系、模式或趋势的最有效的图形方法之一</p>
+</li>
+</ul>
+<h4 id="1-3-相似性的度量"><a href="#1-3-相似性的度量" class="headerlink" title="1.3 相似性的度量"></a>1.3 相似性的度量</h4><ul>
+<li>Jaccard相似性</li>
+<li>余弦相似性</li>
+<li>欧式距离、曼哈顿距离、闵可夫斯基距离</li>
+</ul>
+<h3 id="2-数据预处理"><a href="#2-数据预处理" class="headerlink" title="2.数据预处理"></a>2.数据预处理</h3><p><strong>2.1数据清洗</strong>：填写缺失值、光滑噪声数据，识别或删除离群点，并解决不一致性来“清理”数据</p>
+<ul>
+<li>缺失值的处理：忽略该行、人工填写缺失值、使用一个全局常量填充、使用属性的中心度量（均值或中位数）、使用与给定元组属同一类的所有样本的均值或中位数、使用最可能的值填充缺失值（使用回归、使用贝叶斯形式方法的基于推理的工具或决策树归纳确定）</li>
+</ul>
+<p><strong>2.2数据集成</strong>：分析中的数据来自多个数据源</p>
+<ul>
+<li>冗余和相关性分析：标称数据的卡方相关检验、Pearson相关系数、协方差</li>
+</ul>
+<p><strong>2.3数据归约</strong>：维归约和数值归约</p>
+<p><strong>2.4数据变换</strong>：</p>
+<ul>
+<li>光滑：去掉噪声</li>
+<li>属性构造：可以由给定的属性构造新的属性并添加到属性集中</li>
+<li>聚集：对数据进行汇总或聚集</li>
+<li>规范化：把属性数据按比例缩放</li>
+<li>离散化：label encoder 、onehot</li>
+<li>由标称数据产生概念分层：属性层级划分</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/concept-of-ml/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/08/17/concept-of-ml/" itemprop="url">
+                  准确率和召回率及如何提高准确率
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:58+08:00">
+                2019-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -359,17 +707,32 @@
       
         
           
-            <h1 id="SMO算法-Sequential-Minimal-Optimization"><a href="#SMO算法-Sequential-Minimal-Optimization" class="headerlink" title="SMO算法(Sequential Minimal Optimization)"></a>SMO算法(Sequential Minimal Optimization)</h1><h2 id="1-定义"><a href="#1-定义" class="headerlink" title="1.定义"></a>1.定义</h2><blockquote>
-<p>SMO算法用于训练SVM，将大优化问题分解为多个小优化问题。这些小优化问题往往很容易求解，并且对它们进行顺序求解的结构与将它们作为整体来求解的结果是完全一致。</p>
+            <p><script type="text/javascript" async src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-MML-AM_CHTML"> </script></p>
+<h3 id="准确率和召回率的计算"><a href="#准确率和召回率的计算" class="headerlink" title="准确率和召回率的计算"></a>准确率和召回率的计算</h3><blockquote>
+<p>准确率是预测正确数量 / 总数量</p>
+<p>精确率(precision)是针对<font color="red">预测结果</font>而言,它表示的是预测为正的样本中有多少是真正的正样本.预测为正有两种可能,一种就是把正类预测为正类(TP),另一种就是把负类预测为正类(FP),P = TP / (TP + FP)</p>
+<p>召回率(recall)是针对<font color="red">原来的样本</font>而言的，它表示的是样本中的正例有多少被预测正确了。那也有两种可能，一种是把原来的正类预测成正类(TP)，另一种就是把原来的正类预测为负类(FN)。R = TP / (TP + FN)</p>
 </blockquote>
-<h2 id="2-目标及原理"><a href="#2-目标及原理" class="headerlink" title="2.目标及原理"></a>2.目标及原理</h2><blockquote>
-<p>SMO算法的工作目标是求出一系列alpha和b,一旦求出了这些alpha，就能求出权重向量w。</p>
-<p>每次循环中选择两个alpha进行优化处理。一旦找到一对合适的alpha，那么就增大其中一个同时减少另一个。这里所谓的“合适”就是指两个alpha必须要符合一定的条件，条件之一就是这两个alpha必须在间隔边界之外，而其第二个条件则是这两个alpha还没有进行过区间化处理或者不在边界上。</p>
+<p>精确率 = 提取出的正确信息条数 / 提取出的信息条数<br>召回率 = 提取出的正确信息条数 / 样本中的信息条数</p>
+<blockquote>
+<font color="green">举这样一个例子：某池塘有1400条鲤鱼，300只虾，300只鳖。现在以捕鲤鱼为目的。撒一大网，逮着了700条鲤鱼，200只虾，100只鳖。那么，这些指标分别如下：
+正确率 = 700 / (700 + 200 + 100) = 70%
+召回率 = 700 / 1400 = 50%
+F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
+
 </blockquote>
-<h2 id="3-调参"><a href="#3-调参" class="headerlink" title="3.调参"></a>3.调参</h2><blockquote>
-<p>SVM中有两个参数<font color="red">C</font>和<font color="red">K1</font>，其中C是惩罚系数，即对误差的宽容度。C越高，说明越不能容忍出误差，容易过拟合。C越小，容易欠拟合。</p>
-<p>k1是参数是RBF函数作为核函数后，该函数自带的一个参数，隐含的决定了数据映射到新的特征空间后的分布，k1越大，支持向量越少，k1越小，支持向量越多。支持向量的个数影响训练与预测的速度。</p>
+<p>F值 = 精确率 * 召回率 * 2 / (精确率 + 召回率)</p>
+<p>对于多分类或者n个二分类混淆矩阵上综合考察查准率(precision)和查全率(recall)<br>1.一种直接的做法是现在各混淆矩阵上分别计算出查准率和查全率,记为(P1,R1),…,(Pn,Rn),再计算平均值,这样就得到”宏查全率”(macro-P),”宏查全率”(macro-R),以及相应的”宏F1”(macro-F1):<br>\(macro-P = \frac{1}{n}\sum_{i=1}^{n}Pi\)</p>
+<p>\(macro-R=\frac{1}{n}\sum_{i=1}^{n}Ri\)</p>
+<p>\(macro-F1=\frac{2*macro-P*macro-R}{macro-P+macro-R}\)</p>
+<p>2.还可先将各混淆矩阵对应元素进行平均,得到TP/FP/TN/FN的平均值,分别记为ATP,AFP,ATN,AFN,再基于这些平均值计算出”微查准率(micro-P)”/“微查全率”(micro-R)和”微F1”(micro-F1):<br>\(micro-P = \frac{ATP}{ATP + AFP}\)</p>
+<p>\(micro-R=\frac{ATP}{ATP + AFN}\)</p>
+<p>\(micro-F1=\frac{2*micro-P*micro-R}{micro-P+micro-R}\)</p>
+<h3 id="如何提高准确率"><a href="#如何提高准确率" class="headerlink" title="如何提高准确率"></a>如何提高准确率</h3><p>提高准确率的手段可以分为三种:1)Bagging 2)Boosting 3)随即森林</p>
+<blockquote>
+<p>在一般经验中,如果把好坏不等的东西掺到一起,那么通常结果会是比最坏的要好一些,比最好的要坏一些.集成学习把多个学习器结合起来,如何能够获得比最好的单一学习器更好的性能呢?</p>
 </blockquote>
+<p>要获得好的集成,个体学习器应”好而不同”,即个体学习器要有一定的”准确性”,即学习器不能太坏,并且要有”多样性”,即学习器间具有差异.<br>目前的集成学习方法大致分为两大类:个体学习器间存在强依赖关系,必须串行生成的序列化方法,以及个体学习器间不存在强依赖关系,可同时生成的并行化方法;前者的代表是Boosting,后者的代表是Bagging和”随机森林”.<br>Boosting最著名的代表是AdaBoost.</p>
 
           
         
@@ -408,7 +771,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/SVM-Support vector Machine/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/BackTrackingNote/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -433,164 +796,7 @@
             
               
                 
-                <a class="post-title-link" href="/2018/08/10/SVM-Support vector Machine/" itemprop="url">
-                  支持向量机(Support Vector Machine)学习
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
-                2018-08-10
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Seminar/" itemprop="url" rel="index">
-                    <span itemprop="name">Seminar</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="支持向量机-SVM-Support-Vector-Machine-："><a href="#支持向量机-SVM-Support-Vector-Machine-：" class="headerlink" title="支持向量机(SVM-Support Vector Machine)："></a>支持向量机(SVM-Support Vector Machine)：</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>1.SVM是一种分类算法，是一种<em>二类分类模型</em>,用于解决分类和回归问题。通过寻求结构化风险最小来提高学习机泛化能力，实现经验风险和置信范围最小化，从而达到在统计样本量较少的情况下，亦能获得良好统计规律的目的。</p>
-<blockquote>
-<p><em>i.e.</em><font color="red">给定一个包含正例和反例的样本集合，svm的目的是寻找一个超平面来对样本进行分割，把样本中的正例面和反例面分开，但不是简单的分开，原则是使正例和反例之间的间隔最大，鲁棒性最好。</font></p>
-</blockquote>
-<p>2.<em>基本公式</em>：在样本空间中，划分超平面的线性方程：<img src="https://github.com/DuncanZhou/images/raw/master/1.PNG" alt="线性方程"><br>样本空间中任意点x到超平面（w，b）距离为<img src="https://github.com/DuncanZhou/images/raw/master/2.PNG" alt="距离"><br>假设正确分类，<img src="https://github.com/DuncanZhou/images/raw/master/3.PNG" alt="">“间隔”为<img src="https://github.com/DuncanZhou/images/raw/master/4.PNG" alt=""><br>所以，现在的目标是求得<em>“最大间隔”</em><img src="https://github.com/DuncanZhou/images/raw/master/5.PNG" alt=""><br>这就是SVM的基本型。</p>
-<p>3.求“最大间隔”过程中的问题转化（转换成对偶问题）</p>
-<blockquote>
-<p>最大 -&gt; 最小 -&gt; 凸二次规划|<font color="red">拉格朗日乘子法</font></p>
-</blockquote>
-<h2 id="线性划分-gt-非线性划分"><a href="#线性划分-gt-非线性划分" class="headerlink" title="线性划分 -&gt; 非线性划分"></a>线性划分 -&gt; 非线性划分</h2><h3 id="1-问题"><a href="#1-问题" class="headerlink" title="1.问题"></a>1.问题</h3><p><img src="https://github.com/DuncanZhou/images/raw/master/6.PNG" alt=""><br>之前的讨论是假设样本是线性可分的，然而现实生活任务中，原始样本空间也许并不存在一个能正确划分两类样本的超平面。(如“异或问题”)，<font color="red">对于这样的问题，可以将原始样本空间映射到一个更高维的特征空间。</font>（Fortunately,如果原始空间是有限集，那么一定存在一个高维特征空间是样本可分。）</p>
-<h3 id="2-解决方案"><a href="#2-解决方案" class="headerlink" title="2.解决方案"></a>2.解决方案</h3><p>映射后求解“最大间隔”的解<br><img src="https://github.com/DuncanZhou/images/raw/master/7.PNG" alt=""></p>
-<h3 id="3-涉及到的问题"><a href="#3-涉及到的问题" class="headerlink" title="3.涉及到的问题"></a>3.涉及到的问题</h3><p>在求解过程中涉及计算样本Xi与Xi映射到特征空间之后的内积。由于特征空间维数可能很高，甚至可能是无穷维，因此直接计算内积通常是困难的，为了避开这个问题，设想这样一个函数-核函数<img src="https://github.com/DuncanZhou/images/raw/master/8.PNG" alt=""><br>求解后得到<img src="https://github.com/DuncanZhou/images/raw/master/9.PNG" alt=""></p>
-<h3 id="4-常用的核函数"><a href="#4-常用的核函数" class="headerlink" title="4.常用的核函数"></a>4.常用的核函数</h3><p><img src="https://github.com/DuncanZhou/images/raw/master/10.PNG" alt=""></p>
-<h2 id="软间隔与正则化"><a href="#软间隔与正则化" class="headerlink" title="软间隔与正则化"></a>软间隔与正则化</h2><blockquote>
-<p><em>软间隔</em>：现实任务中往往很难确定合适的核函数使训练集在特征空间中线性可分，即使恰好找到了某个核函数使训练集在特征空间中线性可分，也很难判定这个貌似线性可分的结果不是由于过拟合所造成的。</p>
-</blockquote>
-<p><em>解决该问题的一个方法是允许svm在一些样本上出错</em>。如<img src="https://github.com/DuncanZhou/images/raw/master/11.PNG" alt=""></p>
-<p>也就是在求解最大化间隔时，同时使不满足约束的样本尽可能少。<img src="https://github.com/DuncanZhou/images/raw/master/15.PNG" alt=""></p>
-<p>三种常用的替代损失函数：<img src="https://github.com/DuncanZhou/images/raw/master/12.PNG" alt=""></p>
-<p>共性：<img src="https://github.com/DuncanZhou/images/raw/master/13.PNG" alt=""></p>
-<h2 id="支持向量回归（Support-Vector-Regression）"><a href="#支持向量回归（Support-Vector-Regression）" class="headerlink" title="支持向量回归（Support Vector Regression）"></a>支持向量回归（Support Vector Regression）</h2><p>给定样本D={(x1,y1),(x2,y2),…},希望学得一个回归模型，使得f(x)与y尽可能接近，w和b是待确定参数。<br>传统回归模型通常直接基于模型输出f(x)与真实输出y之间的差别来计算损失，当且仅当f(x)与y完全相同时，损失才为0.与次不同，SVR假设我们能容忍f(x)与y之间最多有e的偏差，小于等于e的都算0误差。SVR问题形式化为<img src="https://github.com/DuncanZhou/images/raw/master/14.PNG" alt=""></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/BackTrackingNote/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/08/10/BackTrackingNote/" itemprop="url">
+                <a class="post-title-link" href="/2019/08/17/BackTrackingNote/" itemprop="url">
                   回溯法笔记
                 </a>
               
@@ -604,9 +810,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
-                2018-08-10
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:58+08:00">
+                2019-08-17
               </time>
             
 
@@ -621,7 +827,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -726,7 +932,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/08/10/Exploring Folksonomy for Personalized Search/">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/Alogorithms_Learning/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
     <meta itemprop="name" content="duncan">
@@ -751,8 +957,8 @@
             
               
                 
-                <a class="post-title-link" href="/2018/08/10/Exploring Folksonomy for Personalized Search/" itemprop="url">
-                  Personalized Search论文阅读笔记-08年SIGIR
+                <a class="post-title-link" href="/2019/08/17/Alogorithms_Learning/" itemprop="url">
+                  求最优解算法学习
                 </a>
               
             
@@ -765,9 +971,9 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-08-10T17:24:49+08:00">
-                2018-08-10
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:58+08:00">
+                2019-08-17
               </time>
             
 
@@ -782,11 +988,11 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Paper/" itemprop="url" rel="index">
-                    <span itemprop="name">Paper</span>
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
                   </a>
                 </span>
 
@@ -824,22 +1030,18 @@
       
         
           
-            <h2 id="论文题目"><a href="#论文题目" class="headerlink" title="论文题目"></a>论文题目</h2><h3 id="Exploring-Folksonomy-for-Personalized-Search"><a href="#Exploring-Folksonomy-for-Personalized-Search" class="headerlink" title="Exploring Folksonomy for Personalized Search"></a>Exploring Folksonomy for Personalized Search</h3><h2 id="概念解释"><a href="#概念解释" class="headerlink" title="概念解释"></a>概念解释</h2><p><strong>Folksonomy:</strong></p>
+            <h3 id="简要"><a href="#简要" class="headerlink" title="简要"></a>简要</h3><p>本篇主要记录三种求最优解的算法:<strong>动态规划(dynamic programming)</strong>,<strong>贪心算法</strong>和<strong>平摊分析</strong>.</p>
+<h3 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h3><p>1.动态规划是通过组合子问题的解而解决整个问题的.分治法算法是指将问题划分成一些<font color="red">独立</font>的子问题, <font color="red">递归地求解</font>各个子问题,然后<font color="red">合并子问题的解</font>而得到原问题的解.与此不同,动态规划适用于<font color="red">子问题不是独立</font>的情况,也就是各个子问题包含公共的子子问题.在这种情况下,若用分治法则会做许多不必要的工作,即重复地求解公共的子子问题.</p>
+<p>动态规划算法的设计可以分为以下四个步骤:</p>
 <blockquote>
-<p>该单词由folk和taxonomy组成，folk是口语中伙伴的意思，taxonomy是分类方法的意思，该词用来表示现在存在的大众分类的一种现象。目前许多应用允许用户上传资源时选择标签标注该资源。现有的应用如flickr和dogear。</p>
+<p>1.描述最优解的结构<br>2.递归定义最优解的值<br>3.按自底向上的方式计算最优解的值<br>4.由计算出的结果构造一个最优解</p>
 </blockquote>
-<h2 id="Motivation"><a href="#Motivation" class="headerlink" title="Motivation"></a>Motivation</h2><p>对于这样允许大众分类的应用，如何满足用户在搜索时尽可能准确地返回用户所需要的资源是一个有意思的问题。因为如果像传统的搜索方法仅通过查询关键词去匹配搜索结果，返回的结果可能会不满足用户的初衷。而且，不同的用户在搜索不同的资源时有可能会使用同样的关键词，比如，爱好运动和爱好喝咖啡的用户在搜索杯子的时候使用的关键词都可能是“杯子”，而返回的结果对于爱好运动的用户来说应该尽可能是运动型杯子，对于爱好喝咖啡的用户来说应该尽可能是咖啡杯子。所以，这里的问题都归结于Personalized Search。</p>
-<h2 id="Solution"><a href="#Solution" class="headerlink" title="Solution"></a>Solution</h2><p>根据之前的工作，解决这样问题的方法有两类:<font color="red">Query Refinement</font>和<font color="red">Result Processing</font> </p>
-<blockquote>
-<p>1)对于查询术语进行替换和扩展，替换成其他的术语或者用其他的术语来填充<br>2)对查询返回的结果再排序或者结果聚类等方法<br>使用较为普遍的是Result Processing，该篇论文中使用的也是第二种方法。</p>
-</blockquote>
-<p>本文中提出的方法分为三个步骤：<br>1)Query中的terms先求结果排序得到Ranklist<br>2)通过User的Interest Vector和资源的Topic Vector求相似性得到Ranklist<br>3)聚合两个list得到最终的Ranklist<br>(具体在实验过程中，为了提高效率，第二步求Ranklist只对第一步中的前N个再去求排序)</p>
-<h2 id="Details-Of-Methods"><a href="#Details-Of-Methods" class="headerlink" title="Details-Of-Methods"></a>Details-Of-Methods</h2><p><font color="red"><strong>Step1：</strong></font><br>对于Query中的terms去求资源排序，本文中采用<strong>BM25</strong>和<strong>Language Model for IR(LMIR)</strong>这两种文本检索模型。<br>先通过基本的文本检索去得到第一步的Ranklist。</p>
-<p><font color="red"><strong>Step2：</strong></font><br>第二步是本文的核心。关键在于建立Topic Space,因为建立了Topic Space后，才能对用户建立兴趣向量，才能对资源建立主题向量，然后再去计算两者之间的相似性。</p>
-<p>1.本文中的主题空间使用了Folksonomy的方法，以标注的tag作为向量的每一维，每个维的值的计算方法可以通过tfidf或者BM25来计算，从而构成用户和资源的兴趣和topic向量。<br>此外，本文中以ODP分好类的web pages的topic space作为baseline方法。</p>
-<p>2.当分别构建好用户和资源的向量后，本文通过类PageRank算法来迭代形成最终的用户和资源的矩阵。R矩阵行代表用户，列代表兴趣。T矩阵行代表资源，列代表topic。</p>
-<p><font color="red"><strong>Step3：</strong></font><br>本文中聚合两个list的方法是通过简单的WBF方法去得到最终的Ranklist</p>
-<h2 id="Evaluation-Methods"><a href="#Evaluation-Methods" class="headerlink" title="Evaluation-Methods"></a>Evaluation-Methods</h2><p>本文基于一个假设：用户收藏过或标注过的资源即为用户相关资源，以此来通过检索评价标准来评价Personalized Search。</p>
+<p><font color="red"><strong>能否运用动态规划方法的标志之一:</strong></font>一个问题的最优解包含了子问题的一个最优解.这个性质为最优子结构.</p>
+<p>适合采用动态规划的最优化问题的两个要素:<font color="red"><strong>最优子结构</strong></font>和<font color="red"><strong>重叠子问题</strong></font></p>
+<h3 id="贪心算法"><a href="#贪心算法" class="headerlink" title="贪心算法"></a>贪心算法</h3><p>1.贪心算法是使所做的选择看起来都是当前最佳的,期望通过所做的局部最优选择来产生出一个全局最优解.</p>
+<p>2.贪心算法的每一次操作都对结果产生直接影响,而动态规划不是.贪心算法对每个子问题的解决方案做出选择,不能回退;动态规划则会根据之前的选择结果对当前进行选择,有回退功能.动态规划主要运用于二维或三维问题,而贪心一般是一维问题.</p>
+<p>3.贪心算法要经过证明才能运用到算法中.</p>
+<h3 id="平摊分析"><a href="#平摊分析" class="headerlink" title="平摊分析"></a>平摊分析</h3><p>(未完-待续)</p>
 
           
         
@@ -917,7 +1119,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T11:22:39+08:00">
                 2018-05-23
               </time>
@@ -934,7 +1136,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Competition/" itemprop="url" rel="index">
@@ -1110,7 +1312,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T10:06:44+08:00">
                 2018-04-25
               </time>
@@ -1127,7 +1329,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Crawler/" itemprop="url" rel="index">
@@ -1265,7 +1467,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T10:03:51+08:00">
                 2018-04-17
               </time>
@@ -1282,7 +1484,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Mining/" itemprop="url" rel="index">
@@ -1501,7 +1703,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-29T09:35:21+08:00">
                 2018-03-29
               </time>
@@ -1518,7 +1720,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1692,7 +1894,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-20T23:26:03+08:00">
                 2018-03-20
               </time>
@@ -1709,7 +1911,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1752,215 +1954,6 @@
         
           
             <p>刷题leetcode题解: <a href="https://github.com/DuncanZhou/LeetCodePractice">https://github.com/DuncanZhou/LeetCodePractice</a><br>大约有300多道,如有错误,欢迎指教,邮箱链接: ymzhou@stu.suda.edu.cn</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/17/StatisticLearning/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/17/StatisticLearning/" itemprop="url">
-                  StatisticLearning
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-17T15:49:11+08:00">
-                2018-03-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="lt-统计学习方法-gt-李航"><a href="#lt-统计学习方法-gt-李航" class="headerlink" title="&lt;统计学习方法&gt; - 李航"></a>&lt;统计学习方法&gt; - 李航</h1><hr>
-<p><strong>重在推导过程,简单记录一些细节</strong></p>
-<h3 id="第一章-统计学习方法概论"><a href="#第一章-统计学习方法概论" class="headerlink" title="第一章 统计学习方法概论"></a>第一章 统计学习方法概论</h3><p>1.泛化误差/期望损失(风险函数):是理论模型f(X)<strong>关于联合分布P(X,Y)</strong>的平均意义下的损失.</p>
-<p>2.训练误差(经验风险/经验损失):是模型f(X)关于训练数据集的平均损失</p>
-<p>3.根据大数定律,<strong>当样本容量N趋于无穷时,经验风险趋于期望风险</strong>,所以一般用经验风险估计期望风险.但现实中训练样本数目有限,所以对经验风险要进行一定的矫正.<strong>经验风险最小化和结构风险最小化(正则化)</strong></p>
-<p>4.过拟合解决方案:</p>
-<ul>
-<li>正则化</li>
-<li>交叉验证<ul>
-<li>简单交叉验证</li>
-<li>K-Fold交叉验证</li>
-<li>留一交叉验证</li>
-</ul>
-</li>
-</ul>
-<p>5.生成方法和判别方法比较</p>
-<ul>
-<li><strong>生成方法</strong>:由数据<strong>学习联合概率分布P(X,Y),然后求出条件概率分布P(Y|X)</strong>作为预测模型,即生成模型$P(Y|X)=\frac{P(X,Y)}{P(X)}$.</li>
-<li><strong>判别方法</strong>:由数据<strong>直接学习决策函数f(X)或者条件概率分布P(Y|X)</strong>作为预测的模型.</li>
-<li>两者区别:<ul>
-<li>生成方法可以还原出联合概率分布,而判别方法不能;生成方法的学习收敛速度更快.</li>
-<li>判别方法直接学习的式条件概率或决策函数,直接面对预测,往往学习的准确率更高.可以对数据进行各种程度上的抽象,定义特征并使用特征,简化学习问题.</li>
-</ul>
-</li>
-</ul>
-<p>6.回归问题按照输入变量的个数分为<strong>一元回归和多元回归</strong>;按照输入变量和输出变量之间关系的类型即模型的类型,分为<strong>线性回归和非线性回归</strong>.</p>
-<p>7.回归学习最常用的损失函数是<strong>平方损失函数</strong> - <strong>最小二乘法求解</strong>.</p>
-<h3 id="第二章-感知机"><a href="#第二章-感知机" class="headerlink" title="第二章 感知机"></a>第二章 感知机</h3><p>1.模型:$f(x)=sign(w\cdot{x}+b)$,找一个可以划分正负样例的超平面,属于判别模型</p>
-<p>2.学习策略:损失函数定义为误分类点到超平面的总距离</p>
-<p>3.学习算法:随机梯度下降</p>
-<h3 id="第三章-k近邻法"><a href="#第三章-k近邻法" class="headerlink" title="第三章 k近邻法"></a>第三章 k近邻法</h3><p>kd tree的划分方法和搜索方法参考网上资料</p>
-<h3 id="第四章-朴素贝叶斯"><a href="#第四章-朴素贝叶斯" class="headerlink" title="第四章 朴素贝叶斯"></a>第四章 朴素贝叶斯</h3><p>1.基于属性独立的强假设</p>
-<p>2.朴素贝叶斯 -&gt; 贝叶斯估计(防止有属性概率为0存在)</p>
-<p>略</p>
-<h3 id="第五章-决策树"><a href="#第五章-决策树" class="headerlink" title="第五章 决策树"></a>第五章 决策树</h3><p>1.决策树模型呈树形结构,在分类问题中,表示基于特征对实例进行分类的过程.可以认为<strong>是if-then规则的集合</strong>,也可以认为是<strong>定义在特征空间与类空间上的条件概率分布</strong>.</p>
-<p>2.决策树学习过程包含三个步骤:<strong>特征选择,决策树的生成和决策树模型的修剪</strong></p>
-<p>3.决策树的<strong>损失函数通常是正则化的极大似然函数</strong>,决策树学习的<strong>策略是以损失函数为目标函数的最小化</strong>,决策树的学习算法通常采用启发式方法,因为从所有可能的决策树中选取最优决策树是NP完全问题.</p>
-<p>4.<strong>特征选择</strong></p>
-<p>4.1 特征选择的准则通常是选择信息增益或信息增益率(基尼系数)</p>
-<p>4.2 熵:$H(p)=-\sum_{i=1}^{n}p_ilogp_i$,熵越大,不确定性越大</p>
-<p>4.3 条件熵H(Y|X)表示在已知随机变量X的条件下随机变量Y的不确定性.$H(Y|X)=\sum_{i=1}^{n}p_iH(Y|X=x_i)$</p>
-<p>4.4 <strong>信息增益</strong>:特征A对训练集D的信息增益g(D,A),定义为集合D的经验熵H(D)与特征A给定条件下D的经验条件熵H(D|A)之差,即$g(D,A)=H(D)-H(D|A)$</p>
-<p>4.5 <strong>信息增益比</strong>:特征A对训练集D的信息增益比$g_R(D,A)$定义为其信息增益$g(D,A)$与训练集D的经验熵H(D)之比为:$g_R(D,A)=\frac{g(D,A)}{H(D)}$</p>
-<p>5.<strong>ID3算法/C4.5算法</strong>参考&lt;西瓜书&gt;,西瓜书上讲得略微好一点</p>
-<p>6.<strong>CART算法</strong>:<strong>最小二乘法生成回归树</strong>,<strong>基于基尼系数生成回归树</strong></p>
-<p>7.剪枝策略:预剪枝和后剪枝 (参考西瓜书上) 将数据集分为训练集和验证集,用验证集来进行剪枝操作.</p>
-<h3 id="第六章-Logistic回归和最大熵模型"><a href="#第六章-Logistic回归和最大熵模型" class="headerlink" title="第六章 Logistic回归和最大熵模型"></a>第六章 Logistic回归和最大熵模型</h3><p>1.X服从Logistic分布是指X具有以下分布函数和密度函数:</p>
-<script type="math/tex; mode=display">F(x)=P(X\leq x)=\frac{1}{1+e^{-(x-\mu)/\gamma }}</script><script type="math/tex; mode=display">f(x)=F'(x)=\frac{e^{-(x-\mu)/\gamma}}{\gamma (1+e^{-(x-\mu)/\gamma})^2}</script><p>式中,$\mu$为位置参数,$\gamma&gt;0$为形状参数.</p>
-<p>2.logistic回归策略:<strong>构造极大似然函数</strong>,使用<strong>梯度下降方法或拟牛顿法</strong>求解优化.</p>
-<p>3.最大熵模型(待完善)</p>
-<h3 id="第七章-SVM"><a href="#第七章-SVM" class="headerlink" title="第七章 SVM"></a>第七章 SVM</h3><p>其他略,已经复习过</p>
-<p><strong>补充</strong>:SMO(序列最小最优化算法):<br><strong>1.总体思路</strong></p>
-<ul>
-<li>选取一对需要更新的变量$\alpha_i$,$\alpha_j$</li>
-<li>固定$\alpha_i$,$\alpha_j$以外的参数,求解对偶问题</li>
-</ul>
-<p><strong>2.具体细节</strong></p>
-<ul>
-<li>First,SMO算法先选取<strong>违背KKT条件程度最大的变量</strong></li>
-<li>Second,第二个变量理应选择一个使目标函数值减小最快的变量,但由于比较各变量所对应的目标函数值减幅的复杂度过高,<strong>因此SMO采用了一个启发式:使选取的两变量所对应样本之间的间隔最大.</strong></li>
-</ul>
-<h3 id="第八章-提升方法"><a href="#第八章-提升方法" class="headerlink" title="第八章 提升方法"></a>第八章 提升方法</h3><p>1.概念:对提升方法来说,有两个问题需要回答</p>
-<ul>
-<li>在每一轮如何改变训练数据的权值或概率分布 - <strong>AdaBoost提高那些前一轮弱分类器错误分类样本的权值,而降低那些被正确分类样本的权值</strong></li>
-<li>如何将弱分类器组合成一个强分类器 - AdaBoost采取加权多数表决的方法,具体地,<strong>加大分类误差率较小的弱分类器的权值</strong>,使其表决中起较大的作用,<strong>减小分类误差率较大的弱分类器的权值</strong>,使其再表决中其较小的作用.</li>
-</ul>
-<p>2.<strong>AdaBoost</strong><br>学习样本权重$D_m$,学习分类器权重$\alpha_m$</p>
-<ul>
-<li>$D_m={w_{m1},w_{m2},…,w_{mN}}$,样本权重和上一次的分类器分类结果有关</li>
-<li>$\alpha_m=\frac{1}{2}log\frac{1-e_m}{e_m}$,$e_m$为分类误差错误率(算错误率时乘上样本权重)</li>
-</ul>
-<p>3.<strong>提升树</strong><br>前向分步法+拟合残差,在拟合残差时,如果损失函数是平方差函数或指数损失函数时,每一步优化很简单.如果是一般损失函数,则可以使用梯度提升算法.</p>
-<p>4.<strong>Bagging</strong>和<strong>Stacking</strong>见&lt;西瓜书&gt;</p>
 
           
         
@@ -2035,8 +2028,8 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">65</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
@@ -2044,7 +2037,7 @@
             <div class="site-state-item site-state-categories">
               
                 <span class="site-state-item-count">12</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -2053,7 +2046,7 @@
             <div class="site-state-item site-state-tags">
               
                 <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -2140,7 +2133,7 @@
 <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2018</span>
+  <span itemprop="copyrightYear">2019</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
@@ -2149,7 +2142,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

@@ -1,0 +1,778 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="SQL," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Duncan's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="partition by
+partition by关键字是分析性函数的一部分，它和聚合函数不同的地方在于它能返回一个分组中的多条记录，而聚合函数一般只有一条反映统计值的记录，partition by用于给结果集分组，如果没有指定那么它把整个结果集作为一个分组
+
+example: 一个班有学生id，成绩，班级，现在将学生根据班级按照成绩排名。(partition by)
+1select *,row_">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hive SQL 学习">
+<meta property="og:url" content="https://github.com/DuncanZhou/2019/08/17/SQL_Learning/index.html">
+<meta property="og:site_name" content="Duncan's Blog">
+<meta property="og:description" content="partition by
+partition by关键字是分析性函数的一部分，它和聚合函数不同的地方在于它能返回一个分组中的多条记录，而聚合函数一般只有一条反映统计值的记录，partition by用于给结果集分组，如果没有指定那么它把整个结果集作为一个分组
+
+example: 一个班有学生id，成绩，班级，现在将学生根据班级按照成绩排名。(partition by)
+1select *,row_">
+<meta property="og:updated_time" content="2018-08-17T07:20:10.019Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Hive SQL 学习">
+<meta name="twitter:description" content="partition by
+partition by关键字是分析性函数的一部分，它和聚合函数不同的地方在于它能返回一个分组中的多条记录，而聚合函数一般只有一条反映统计值的记录，partition by用于给结果集分组，如果没有指定那么它把整个结果集作为一个分组
+
+example: 一个班有学生id，成绩，班级，现在将学生根据班级按照成绩排名。(partition by)
+1select *,row_">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/DuncanZhou/2019/08/17/SQL_Learning/"/>
+
+
+
+
+
+  <title> Hive SQL 学习 | Duncan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Duncan's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            menu.主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            menu.分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            menu.关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            menu.归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            menu.标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/SQL_Learning/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hive SQL 学习
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
+                2019-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="partition-by"><a href="#partition-by" class="headerlink" title="partition by"></a>partition by</h3><blockquote>
+<p>partition by关键字是分析性函数的一部分，它和聚合函数不同的地方在于它能返回一个分组中的多条记录，而聚合函数一般只有一条反映统计值的记录，partition by用于给结果集分组，如果没有指定那么它把整个结果集作为一个分组</p>
+</blockquote>
+<p>example: 一个班有学生id，成绩，班级，现在将学生根据班级按照成绩排名。(partition by)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select *,row_number() over(partition by Grade order by Score desc) as Sequence from Student</div></pre></td></tr></table></figure>
+<h3 id="lateral-view"><a href="#lateral-view" class="headerlink" title="lateral view"></a>lateral view</h3><h3 id="explode-posexplode"><a href="#explode-posexplode" class="headerlink" title="explode / posexplode"></a>explode / posexplode</h3><blockquote>
+<p>explode 拆分一行称多行，而posexplode是根据多行匹配行号进行拆分多行。</p>
+</blockquote>
+<h3 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h3><h4 id="a-first-value"><a href="#a-first-value" class="headerlink" title="a. first_value"></a>a. first_value</h4><p>​    取分组内排序后，截止到当前行，第一个值</p>
+<h4 id="b-last-value"><a href="#b-last-value" class="headerlink" title="b.last_value"></a>b.last_value</h4><p>​    取分组内排序后，截止到当前行，最后一个值  </p>
+<h4 id="c-lead-col-n-default"><a href="#c-lead-col-n-default" class="headerlink" title="c.lead(col,n,default)"></a>c.lead(col,n,default)</h4><p>​    用于统计窗口内往下第n行值。第一个参数为列名，第二个参数为往下第n行（可选，默认为1），第三个参数为默认值（当往下第n行为NULL时候，取默认值，如不指定，则为NULL） </p>
+<h4 id="d-lag-col-n-default"><a href="#d-lag-col-n-default" class="headerlink" title="d.lag(col,n,default)"></a>d.lag(col,n,default)</h4><p>​    与lead相反，用于统计窗口内往上第n行值。第一个参数为列名，第二个参数为往上第n行（可选，默认为1），第三个参数为默认值（当往上第n行为NULL时候，取默认值，如不指定，则为NULL） </p>
+<h4 id="c-聚集函数-over-partition-by-col1-order-by-col-rows-range-between-UNBOUNDED-num-preceding-and-num-FOLLOWING-current-ROW"><a href="#c-聚集函数-over-partition-by-col1-order-by-col-rows-range-between-UNBOUNDED-num-preceding-and-num-FOLLOWING-current-ROW" class="headerlink" title="c.聚集函数 + over + (partition by col1 [order by col (rows | range) between (UNBOUNDED | [num]) preceding and (num FOLLOWING | current ROW))"></a>c.聚集函数 + over + (partition by col1 [order by col (rows | range) between (UNBOUNDED | [num]) preceding and (num FOLLOWING | current ROW))</h4><h4 id="d-ROW-NUMBER"><a href="#d-ROW-NUMBER" class="headerlink" title="d.ROW_NUMBER()"></a>d.ROW_NUMBER()</h4><p>​    从1开始，按照顺序，生成分组内记录的序列 </p>
+<h4 id="e-RANK"><a href="#e-RANK" class="headerlink" title="e.RANK()"></a>e.RANK()</h4><p>​    生成数据项在分组中的排名，排名相等会在名次中留下空位 </p>
+<h4 id="f-DENSE-RANK"><a href="#f-DENSE-RANK" class="headerlink" title="f.DENSE_RANK()"></a>f.DENSE_RANK()</h4><p>​    生成数据项在分组中的排名，排名相等会在名次中不会留下空位  </p>
+<h4 id="g-CUME-DIST"><a href="#g-CUME-DIST" class="headerlink" title="g.CUME_DIST()"></a>g.CUME_DIST()</h4><p>​    小于等于当前值的行数/分组内总行数 </p>
+<h4 id="h-PERCENT-RANK"><a href="#h-PERCENT-RANK" class="headerlink" title="h.PERCENT_RANK ()"></a>h.PERCENT_RANK ()</h4><p>​    分组内当前行的RANK值-1/分组内总行数-1  </p>
+<h4 id="i-NTILE-n"><a href="#i-NTILE-n" class="headerlink" title="i.NTILE(n)"></a>i.NTILE(n)</h4><p>​    用于将分组数据按照顺序切分成n片，返回当前切片值，如果切片不均匀，默认增加第一个切片的分布 </p>
+<p>Note:</p>
+<ul>
+<li>From子句：执行顺序自上而下，从左到右，从后往前，所以<strong>数据量少的表尽量放后</strong></li>
+<li>where子句：执行顺序自下而上，从右到左，<strong>可以过滤掉大量记录的条件写在where子句的末尾</strong></li>
+<li>group by子句：通过将不需要的记录在group by之前过滤掉，<strong>避免使用having来过滤</strong></li>
+<li>having子句：尽量少用</li>
+<li>select子句：尽量少用*，取字段名称</li>
+<li>order by子句：执行顺序为从左到右排序</li>
+<li>join：<strong>尽量把数据量大的表放在最右边来进行关联</strong></li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/SQL/" rel="tag"># SQL</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/17/SparkDataFrameLearning/" rel="next" title="pyspark记录">
+                <i class="fa fa-chevron-left"></i> pyspark记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/17/SuperParas/" rel="prev" title="超参的搜索方法整理">
+                超参的搜索方法整理 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="-mob-share-ui-button -mob-share-open">分享</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+	<li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-weibo"><p>微博</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=24a08c2197375"></script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg"
+               alt="duncan" />
+          <p class="site-author-name" itemprop="name">duncan</p>
+          <p class="site-description motion-element" itemprop="description">write something useful</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">66</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">12</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/DuncanZhou" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://instagram.com/callmeduncanzhou" target="_blank" title="instagram">
+                  
+                    <i class="fa fa-fw fa-instagram"></i>
+                  
+                  instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=317536872" target="_blank" title="music">
+                  
+                    <i class="fa fa-fw fa-music"></i>
+                  
+                  music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/duncanzhou-22/activities" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-gift"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=371362&auto=1&height=66"></iframe>
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#partition-by"><span class="nav-number">1.</span> <span class="nav-text">partition by</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#lateral-view"><span class="nav-number">2.</span> <span class="nav-text">lateral view</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#explode-posexplode"><span class="nav-number">3.</span> <span class="nav-text">explode / posexplode</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#窗口函数"><span class="nav-number">4.</span> <span class="nav-text">窗口函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#a-first-value"><span class="nav-number">4.1.</span> <span class="nav-text">a. first_value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#b-last-value"><span class="nav-number">4.2.</span> <span class="nav-text">b.last_value</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c-lead-col-n-default"><span class="nav-number">4.3.</span> <span class="nav-text">c.lead(col,n,default)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#d-lag-col-n-default"><span class="nav-number">4.4.</span> <span class="nav-text">d.lag(col,n,default)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#c-聚集函数-over-partition-by-col1-order-by-col-rows-range-between-UNBOUNDED-num-preceding-and-num-FOLLOWING-current-ROW"><span class="nav-number">4.5.</span> <span class="nav-text">c.聚集函数 + over + (partition by col1 [order by col (rows | range) between (UNBOUNDED | [num]) preceding and (num FOLLOWING | current ROW))</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#d-ROW-NUMBER"><span class="nav-number">4.6.</span> <span class="nav-text">d.ROW_NUMBER()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#e-RANK"><span class="nav-number">4.7.</span> <span class="nav-text">e.RANK()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#f-DENSE-RANK"><span class="nav-number">4.8.</span> <span class="nav-text">f.DENSE_RANK()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#g-CUME-DIST"><span class="nav-number">4.9.</span> <span class="nav-text">g.CUME_DIST()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#h-PERCENT-RANK"><span class="nav-number">4.10.</span> <span class="nav-text">h.PERCENT_RANK ()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#i-NTILE-n"><span class="nav-number">4.11.</span> <span class="nav-text">i.NTILE(n)</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">duncan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+<span id="busuanzi_container_site_pv">
+   | Total visited <span id="busuanzi_value_site_pv"></span> times
+</span>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>
