@@ -261,6 +261,486 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/09/05/Spark笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/09/05/Spark笔记/" itemprop="url">
+                  Spark学习记录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-05T11:10:23+08:00">
+                2019-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Big-Data/" itemprop="url" rel="index">
+                    <span itemprop="name">Big Data</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="Spark笔记"><a href="#Spark笔记" class="headerlink" title="Spark笔记"></a>Spark笔记</h3><h3 id="1-数据结构方式"><a href="#1-数据结构方式" class="headerlink" title="1.数据结构方式"></a>1.数据结构方式</h3><p> RDD是Spark处理数据的数据结构，可以通过两种方式加载数据创建RDD</p>
+<ul>
+<li>从程序中parallelize一种现有的数据：如Array</li>
+<li>从外部读取文件：CSV，Hive等</li>
+</ul>
+<h3 id="2-RDD操作类型"><a href="#2-RDD操作类型" class="headerlink" title="2.RDD操作类型"></a>2.RDD操作类型</h3><p>2.1 RDD的计算方式是lazy加载，即用的时候再计算。</p>
+<p>2.2 如果一个变量需要经常使用，可以持久化persist</p>
+<p>2.3 封装函数有多种方式：</p>
+<ul>
+<li>封装静态方法，创建<strong>object</strong></li>
+<li>封装方法以及变量参数等等，创建<strong>class</strong></li>
+</ul>
+<p>2.3 常用转换方法</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Transformation</th>
+<th style="text-align:left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>map</strong>(<em>func</em>)</td>
+<td style="text-align:left">Return a new distributed dataset formed by passing each element of the source through a function <em>func</em>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>filter</strong>(<em>func</em>)</td>
+<td style="text-align:left">Return a new dataset formed by selecting those elements of the source on which <em>func</em>returns true.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>flatMap</strong>(<em>func</em>)</td>
+<td style="text-align:left">Similar to map, but each input item can be mapped to 0 or more output items (so <em>func</em> should return a Seq rather than a single item).</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>mapPartitions</strong>(<em>func</em>)</td>
+<td style="text-align:left">Similar to map, but runs separately on each partition (block) of the RDD, so <em>func</em> must be of type Iterator<t> =&gt; Iterator<u> when running on an RDD of type T.</u></t></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>mapPartitionsWithIndex</strong>(<em>func</em>)</td>
+<td style="text-align:left">Similar to mapPartitions, but also provides <em>func</em> with an integer value representing the index of the partition, so <em>func</em> must be of type (Int, Iterator<t>) =&gt; Iterator<u> when running on an RDD of type T.</u></t></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>sample</strong>(<em>withReplacement</em>, <em>fraction</em>, <em>seed</em>)</td>
+<td style="text-align:left">Sample a fraction <em>fraction</em> of the data, with or without replacement, using a given random number generator seed.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>union</strong>(<em>otherDataset</em>)</td>
+<td style="text-align:left">Return a new dataset that contains the union of the elements in the source dataset and the argument.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>intersection</strong>(<em>otherDataset</em>)</td>
+<td style="text-align:left">Return a new RDD that contains the intersection of elements in the source dataset and the argument.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>distinct</strong>([<em>numPartitions</em>]))</td>
+<td style="text-align:left">Return a new dataset that contains the distinct elements of the source dataset.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>groupByKey</strong>([<em>numPartitions</em>])</td>
+<td style="text-align:left">When called on a dataset of (K, V) pairs, returns a dataset of (K, Iterable<v>) pairs.  <strong>Note:</strong> If you are grouping in order to perform an aggregation (such as a sum or average) over each key, using <code>reduceByKey</code> or <code>aggregateByKey</code> will yield much better performance.  <strong>Note:</strong> By default, the level of parallelism in the output depends on the number of partitions of the parent RDD. You can pass an optional <code>numPartitions</code> argument to set a different number of tasks.</v></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>reduceByKey</strong>(<em>func</em>, [<em>numPartitions</em>])</td>
+<td style="text-align:left">When called on a dataset of (K, V) pairs, returns a dataset of (K, V) pairs where the values for each key are aggregated using the given reduce function <em>func</em>, which must be of type (V,V) =&gt; V. Like in <code>groupByKey</code>, the number of reduce tasks is configurable through an optional second argument.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>aggregateByKey</strong>(<em>zeroValue</em>)(<em>seqOp</em>, <em>combOp</em>, [<em>numPartitions</em>])</td>
+<td style="text-align:left">When called on a dataset of (K, V) pairs, returns a dataset of (K, U) pairs where the values for each key are aggregated using the given combine functions and a neutral “zero” value. Allows an aggregated value type that is different than the input value type, while avoiding unnecessary allocations. Like in <code>groupByKey</code>, the number of reduce tasks is configurable through an optional second argument.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>sortByKey</strong>([<em>ascending</em>], [<em>numPartitions</em>])</td>
+<td style="text-align:left">When called on a dataset of (K, V) pairs where K implements Ordered, returns a dataset of (K, V) pairs sorted by keys in ascending or descending order, as specified in the boolean <code>ascending</code> argument.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>join</strong>(<em>otherDataset</em>, [<em>numPartitions</em>])</td>
+<td style="text-align:left">When called on datasets of type (K, V) and (K, W), returns a dataset of (K, (V, W)) pairs with all pairs of elements for each key. Outer joins are supported through <code>leftOuterJoin</code>, <code>rightOuterJoin</code>, and <code>fullOuterJoin</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>cogroup</strong>(<em>otherDataset</em>, [<em>numPartitions</em>])</td>
+<td style="text-align:left">When called on datasets of type (K, V) and (K, W), returns a dataset of (K, (Iterable<v>, Iterable<w>)) tuples. This operation is also called <code>groupWith</code>.</w></v></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>cartesian</strong>(<em>otherDataset</em>)</td>
+<td style="text-align:left">When called on datasets of types T and U, returns a dataset of (T, U) pairs (all pairs of elements).</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>pipe</strong>(<em>command</em>, <em>[envVars]</em>)</td>
+<td style="text-align:left">Pipe each partition of the RDD through a shell command, e.g. a Perl or bash script. RDD elements are written to the process’s stdin and lines output to its stdout are returned as an RDD of strings.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>coalesce</strong>(<em>numPartitions</em>)</td>
+<td style="text-align:left">Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>repartition</strong>(<em>numPartitions</em>)</td>
+<td style="text-align:left">Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>repartitionAndSortWithinPartitions</strong>(<em>partitioner</em>)</td>
+<td style="text-align:left">Repartition the RDD according to the given partitioner and, within each resulting partition, sort records by their keys. This is more efficient than calling <code>repartition</code> and then sorting within each partition because it can push the sorting down into the shuffle machinery.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-创建DataFrame的三种方式"><a href="#3-创建DataFrame的三种方式" class="headerlink" title="3.创建DataFrame的三种方式"></a>3.创建DataFrame的三种方式</h3><ul>
+<li><p>使用toDF函数</p>
+</li>
+<li><p>使用createDataFrame函数</p>
+</li>
+<li>通过文件直接创建</li>
+</ul>
+<h3 id="4-scala的vector和spark包中vector不一样"><a href="#4-scala的vector和spark包中vector不一样" class="headerlink" title="4.scala的vector和spark包中vector不一样"></a>4.scala的vector和spark包中vector不一样</h3><h3 id="5-Spark优化：（美团Spark）"><a href="#5-Spark优化：（美团Spark）" class="headerlink" title="5.Spark优化：（美团Spark）"></a>5.Spark优化：（美团Spark）</h3><p>基础版：<a href="https://tech.meituan.com/2016/04/29/spark-tuning-basic.html" target="_blank" rel="external">https://tech.meituan.com/2016/04/29/spark-tuning-basic.html</a></p>
+<p>高级版：<a href="https://tech.meituan.com/2016/05/12/spark-tuning-pro.html" target="_blank" rel="external">https://tech.meituan.com/2016/05/12/spark-tuning-pro.html</a></p>
+<h3 id="6-Spark保留运行环境（用于查错）"><a href="#6-Spark保留运行环境（用于查错）" class="headerlink" title="6.Spark保留运行环境（用于查错）"></a>6.Spark保留运行环境（用于查错）</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conf.spark.yarn.preserve.staging.files=true</div></pre></td></tr></table></figure>
+<h3 id="7-宽依赖和窄依赖"><a href="#7-宽依赖和窄依赖" class="headerlink" title="7.宽依赖和窄依赖"></a>7.宽依赖和窄依赖</h3><ul>
+<li><strong>窄依赖</strong>：指父RDD的每个分区只被一个子RDD分区使用，子RDD分区通常只对应常数个父RDD分区。（map、filter、union操作）。</li>
+<li><strong>宽依赖</strong>：指父RDD的每个分区都有可能被多个子RDD分区使用，子RDD分区通常对应父RDD所有分区。（groupByKey、partitionBy等操作）</li>
+<li>比较：<strong>宽依赖通常对应着shuffle操作</strong>，需要在运行的过程中将同一个RDD分区传入到不同的RDD分区中，中间可能涉及多个节点之间数据的传输。</li>
+</ul>
+<h3 id="8-RDD构建和转换"><a href="#8-RDD构建和转换" class="headerlink" title="8.RDD构建和转换"></a>8.RDD构建和转换</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/09/05/Flink笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/09/05/Flink笔记/" itemprop="url">
+                  Flink学习记录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-05T11:10:23+08:00">
+                2019-09-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Streaming-Data/" itemprop="url" rel="index">
+                    <span itemprop="name">Streaming Data</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Flink笔记"><a href="#Flink笔记" class="headerlink" title="Flink笔记"></a>Flink笔记</h2><h3 id="1-数据集类型"><a href="#1-数据集类型" class="headerlink" title="1.数据集类型"></a>1.数据集类型</h3><ul>
+<li>有界数据集：具有时间边界，在处理过程中数据一定会在某个时间范围内起始和结束。提供DataSet API</li>
+<li>无界数据集： 数据从一开始就一直持续产生的。提供DataStream API</li>
+</ul>
+<h3 id="2-Flink编程接口"><a href="#2-Flink编程接口" class="headerlink" title="2.Flink编程接口"></a>2.Flink编程接口</h3><ul>
+<li>Flink SQL</li>
+<li>Table API：在内存中的DataSet和DataStream基础上加上Schema信息，将数据类型<strong>抽象成表结构</strong></li>
+<li>DataStream API和DataSet API</li>
+<li>Stateful Stream Process API</li>
+</ul>
+<h3 id="3-程序结构"><a href="#3-程序结构" class="headerlink" title="3.程序结构"></a>3.程序结构</h3><ul>
+<li><p>设定运行环境：</p>
+<ul>
+<li><figure class="highlight plain"><figcaption><span>env = StreamExecutionEnvironment.getExecutionEnvironment```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">* ```/*设置并行度为5*/val env = StreamExecutionEnvironment.createLocalEnvironment(5)</div></pre></td></tr></table></figure>
+</li>
+<li><figure class="highlight scala"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">val</span> env = <span class="type">StreamExecutionEnvironment</span>.createRemoteEnvironment(<span class="string">"JobManagerHost"</span>,<span class="number">6021</span>,<span class="number">5</span>,<span class="string">"/user/application.jar"</span>)</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>初始化数据：</p>
+<p>将外部数据转换成DataStream<t>或者DataSet<t></t></t></p>
+</li>
+<li><p>执行转换逻辑：</p>
+<ul>
+<li>复杂的逻辑通过实现MapFunction接口，然后调用map()方法将实现类传入</li>
+<li>匿名函数</li>
+<li>RichFunction接口</li>
+</ul>
+</li>
+<li><p>分区key指定</p>
+</li>
+<li><p>根据第一个字段分区，根据第二个字段求和</p>
+<p><code>val result = DataStream.keyBy(0).sum(1)</code></p>
+</li>
+<li><p>输出结果</p>
+<ul>
+<li>基于文件输出</li>
+<li>基于控制台输出</li>
+<li>Connector</li>
+</ul>
+</li>
+<li><p>程序触发</p>
+<p>调用ExecutionEnvironment的execute()</p>
+</li>
+</ul>
+<h3 id="4-数据类型"><a href="#4-数据类型" class="headerlink" title="4.数据类型"></a>4.数据类型</h3><ul>
+<li>原生数据类型</li>
+<li>Tuple2元组类型</li>
+<li>Scala case class类型</li>
+<li>POJOs类型：复杂数据结构类型</li>
+<li>Flink Value类型：IntValue、DoubleValue、StringValue</li>
+<li>特殊数据类型：List，Map、Etither、Option、Try</li>
+</ul>
+<h3 id="5-DataStream-API"><a href="#5-DataStream-API" class="headerlink" title="5.DataStream API"></a>5.DataStream API</h3><ul>
+<li>DataSource<ul>
+<li>内置数据源<ul>
+<li>文件数据源</li>
+<li>Socket数据源</li>
+<li>集合数据源</li>
+</ul>
+</li>
+<li>外置数据源<ul>
+<li>Kafka</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Transformation<ul>
+<li>单DataFrame操作：Map、FlatMap、Filter、KeyBy、Reduce、Aggregation函数（min、max、sum）</li>
+<li>多DataFrame操作：Union、Connect、CoMap、CoFlatMap、Split、Select、Iterate</li>
+</ul>
+</li>
+<li>DataSink<ul>
+<li>文件系统</li>
+<li>Kafka</li>
+<li>Apache Cassandra</li>
+<li>HDFS</li>
+<li>RabbitMQ</li>
+</ul>
+</li>
+</ul>
+<h3 id="6-时间概念"><a href="#6-时间概念" class="headerlink" title="6.时间概念"></a>6.时间概念</h3><ul>
+<li>Event Time（事件生成时间）</li>
+<li>Ingestion Time（事件接入时间）</li>
+<li><p>Process Time（事件处理时间）</p>
+<p>— 再记录（2019-09-05）</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/18/FM/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -300,7 +780,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-18T14:17:40+08:00">
                 2019-08-18
               </time>
@@ -317,7 +797,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/MachineLearning/" itemprop="url" rel="index">
@@ -491,7 +971,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
                 2019-08-17
               </time>
@@ -508,7 +988,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -638,7 +1118,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
                 2019-08-17
               </time>
@@ -655,7 +1135,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Paper/" itemprop="url" rel="index">
@@ -838,7 +1318,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
                 2019-08-17
               </time>
@@ -855,7 +1335,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -975,7 +1455,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
                 2019-08-17
               </time>
@@ -992,7 +1472,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Seminar/" itemprop="url" rel="index">
@@ -1132,7 +1612,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
                 2019-08-17
               </time>
@@ -1149,7 +1629,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1279,7 +1759,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
                 2019-08-17
               </time>
@@ -1296,7 +1776,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/MachineLearning/" itemprop="url" rel="index">
@@ -1422,7 +1902,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
                 2019-08-17
               </time>
@@ -1439,7 +1919,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/SQL/" itemprop="url" rel="index">
@@ -1538,319 +2018,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/SparkDataFrameLearning/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/08/17/SparkDataFrameLearning/" itemprop="url">
-                  pyspark记录
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
-                2019-08-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Spark-DataFrame学习"><a href="#Spark-DataFrame学习" class="headerlink" title="Spark DataFrame学习"></a>Spark DataFrame学习</h2><h3 id="1-文件的读取"><a href="#1-文件的读取" class="headerlink" title="1. 文件的读取"></a>1. 文件的读取</h3><p>1.1 spark.read.json() / spark.read.parquet() 或者 spark.read.load(path,format=”parquet/json”)</p>
-<p>1.2 和数据库的交互 spark.sql(“”)</p>
-<h3 id="2-函数使用"><a href="#2-函数使用" class="headerlink" title="2.函数使用"></a>2.函数使用</h3><ul>
-<li><p>2.1 printSchema() - 显示表结构</p>
-</li>
-<li><p>2.2 df.select(col) - 查找某一列的值</p>
-</li>
-<li><p>2.3 df.show([int n])  - 显示[某几行的]的值</p>
-</li>
-<li><p>2.4 df.filter(condition) - 过滤出符合条件的行</p>
-</li>
-<li><p>2.5 df.groupby(col).count() </p>
-<p>df.groupby(col).agg(col,func.min(),func.max(),func.sum()) - 聚合函数</p>
-</li>
-<li><p>2.6 spark.createDataFrame([(),(),(),()…,()],(col1,col2,col3,…,coln))</p>
-</li>
-<li><p>2.7 自定义udf函数</p>
-</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">@pandas_udf("col1 type,col2 type,...,coln type",PandasUDFType.GROUPD_MAP)</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">f</span><span class="params">(pdf)</span>:</span></div><div class="line">	<span class="keyword">pass</span></div></pre></td></tr></table></figure>
-<p>df.groupby(col).apply(f).show()</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/SomeModels/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/08/17/SomeModels/" itemprop="url">
-                  模型记录
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
-                2019-08-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-Mining/" itemprop="url" rel="index">
-                    <span itemprop="name">Data Mining</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="实战模型记录"><a href="#实战模型记录" class="headerlink" title="实战模型记录"></a>实战模型记录</h2><h3 id="1-GBDT（Gradient-Boosting-Decision-Tree）"><a href="#1-GBDT（Gradient-Boosting-Decision-Tree）" class="headerlink" title="1.GBDT（Gradient Boosting Decision Tree）"></a>1.GBDT（Gradient Boosting Decision Tree）</h3><ul>
-<li>GBDT中的树是<strong>回归树（不是分类树）</strong>，GBDT用来做回归预测，调整后也可以用来分类。</li>
-<li>回归树：回归树总体流程类似于分类树，<strong>区别在于，回归树的每一个节点都会得到一个预测值</strong>，以年龄为例，该预测值等于属于这个节点的所有人年龄的平均值。分枝时穷举每个feature的每个阈值找最好的分割点，<strong>但衡量标准不再是最大熵，而是最小平方误差</strong>。<strong>分枝终止条件为属性值唯一或者预设的终止条件（叶子个数上限）</strong></li>
-<li>提升树算法：提升树是迭代多棵回归树来共同决策。<strong>当采用平方误差损失函数时</strong>，<strong>每一个棵回归树学习的是之前所有树的结论和残差</strong>，拟合得到一个当前的残差回归树。</li>
-<li><strong>梯度提升决策树：</strong>当损失函数是平方损失和指数损失函数时，每一步的优化很简单，如平方损失函数学习残差回归树。但<strong>对于一般的损失函数，往往每一步优化没那么容易</strong>（如绝对值损失函数和Huber损失函数），所以有梯度下降方法。</li>
-</ul>
-<h3 id="2-XGBoost（eXtreme-Gradient-Boosting）"><a href="#2-XGBoost（eXtreme-Gradient-Boosting）" class="headerlink" title="2.XGBoost（eXtreme Gradient Boosting）"></a>2.XGBoost（eXtreme Gradient Boosting）</h3><p>和gbdt对比：</p>
-<ul>
-<li>1.GBDT以CART作为基分类器，xgboost还<strong>支持线性分类器</strong>。</li>
-<li>2.GBDT在优化函数中只用到一阶导数信息，<strong>xgboost则对代价函数进行了二阶泰勒展开</strong>，同时用到了一阶和二阶导数。</li>
-<li>3.xgboost在代价函数中<strong>加入了正则项</strong>，控制了模型的复杂度。正则项包含两部分：叶子节点数和叶子结点输出分数。</li>
-<li>4.划分点的查找:<strong>贪心算法和近似算法</strong></li>
-<li>5.支持并行，<strong>在特征粒度上并行</strong>，预先对数据进行排序，保存为block结构，在节点分裂时计算每个特征的信息增益，<strong>各个特征的信息增益就是多个线程进行</strong>。</li>
-</ul>
-<h3 id="3-LightGBM"><a href="#3-LightGBM" class="headerlink" title="3.LightGBM"></a>3.LightGBM</h3><p>优化点</p>
-<ul>
-<li>1.Histogram算法：先把连续的浮点特征值离散化成k个整数，同事构造一个宽度为k的直方图。遍历数据时，根据离散化后的值作为索引在直方图中累计统计量，当遍历一次数据后，直方图累积了需要的统计量，然后根据直方图的离散值，遍历寻找最优的分割点。</li>
-<li>2.带深度限制的Leaf-wise的叶子生长策略：每次从当前所有叶子中，<strong>找到分裂增益最大的一个叶子，然后分裂，如此循环</strong>。因此同Level-wise相比，在分裂次数相同的情况下，Leaf-wise可以降低更多的误差，得到更好的精度。 </li>
-</ul>
-<h3 id="4-RandomForest"><a href="#4-RandomForest" class="headerlink" title="4.RandomForest"></a>4.RandomForest</h3><p>用<strong>bootstrap自助法生成m个训练集</strong>，<strong>对每个训练集构造一颗决策树</strong>，在节点找特征进行分裂的时候，并不是对所有特征找到使得指标（如信息增益）最大的，而是<strong>在特征中随机抽取一部分特征</strong>，在抽取到的特征中找到最优解，进行分裂。模型预测阶段就是bagging策略，分类投票，回归取均值。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1896,16 +2063,16 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">66</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">12</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -1913,8 +2080,8 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -2010,7 +2177,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

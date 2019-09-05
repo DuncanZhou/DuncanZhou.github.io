@@ -261,6 +261,296 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/GraphAndTree/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/08/17/GraphAndTree/" itemprop="url">
+                  判断无向图是否是一颗树
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
+                2019-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>这是一个基本概念,且很重要,记录一下.</p>
+<blockquote>
+<p>树的定义:用图的知识来表示即为,无环的连通图或者边数等于顶点数减1.</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div></pre></td><td class="code"><pre><div class="line">package questionCheckisTree;</div><div class="line"></div><div class="line">import java.util.Scanner;</div><div class="line"></div><div class="line">/**</div><div class="line"> * Created by duncan on 17-7-30.</div><div class="line"> */</div><div class="line"></div><div class="line">//本题为判断一个无向图是否是一颗树</div><div class="line">    //树为无环的连通图或者边数等于顶点数-1</div><div class="line">class Graph&#123;</div><div class="line">    //邻接矩阵,从1开始存储</div><div class="line">    int[][] graph = new int[501][501];</div><div class="line">    //顶点数和边数</div><div class="line">    int nodes,edges;</div><div class="line">&#125;</div><div class="line">public class Main &#123;</div><div class="line">    //判断是否是连通图,并且顶点数-1是否是边数</div><div class="line">    //判断是否是连通图深度遍历一遍,都遍历到了即为连通图</div><div class="line">    public void DFS(int[] visited,Graph graph,int start)&#123;</div><div class="line">        //如果该顶点没有访问过</div><div class="line">        if(visited[start] == 0)&#123;</div><div class="line">            visited[start] = 1;</div><div class="line">            //继续访问与其相连的顶点</div><div class="line">            for(int i = 1; i &lt;= graph.nodes; i++)&#123;</div><div class="line">                if(graph.graph[start][i] == 1)</div><div class="line">                    DFS(visited,graph,i);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">    public static void main(String[] args) &#123;</div><div class="line">        Main solution = new Main();</div><div class="line">        Scanner in = new Scanner(System.in);</div><div class="line">        int num = in.nextInt();</div><div class="line">        for(int i = 0; i &lt; num; i++)&#123;</div><div class="line">            //输入顶点数和边数</div><div class="line">            Graph graph = new Graph();</div><div class="line">            graph.nodes = in.nextInt();</div><div class="line">            graph.edges = in.nextInt();</div><div class="line">            //初始化邻接矩阵</div><div class="line">            for(int j = 0; j &lt; graph.edges; j++)&#123;</div><div class="line">                int a = in.nextInt();</div><div class="line">                int b = in.nextInt();</div><div class="line">                graph.graph[a][b] = 1;</div><div class="line">                graph.graph[b][a] = 1;</div><div class="line">            &#125;</div><div class="line">            if(graph.edges != graph.nodes - 1)</div><div class="line">            &#123;</div><div class="line">                System.out.println(&quot;NO&quot;);</div><div class="line">                continue;</div><div class="line">            &#125;</div><div class="line">            //判断是否连通</div><div class="line">            //初始化一个顶点访问数组,从1开始存储</div><div class="line">            int[] visited = new int[graph.nodes+1];</div><div class="line">            solution.DFS(visited,graph,1);</div><div class="line">            //对visited数组判断</div><div class="line">            boolean flag = true;</div><div class="line">            for(int j = 1; j &lt; graph.nodes; j++) &#123;</div><div class="line">                if (visited[j] == 0) &#123;</div><div class="line">                    flag = false;</div><div class="line">                    break;</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">            if(flag)</div><div class="line">                System.out.println(&quot;YES&quot;);</div><div class="line">            else</div><div class="line">                System.out.println(&quot;NO&quot;);</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/Expression/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/08/17/Expression/" itemprop="url">
+                  四则运算表达式求值
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
+                2019-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="表达式求值"><a href="#表达式求值" class="headerlink" title="表达式求值"></a>表达式求值</h3><blockquote>
+<p>对于表达式的求值,一般使用中缀表达式转后缀表达式后,对后缀表达式求值,因为对于后缀或者前缀表达式计算,计算的顺序都是唯一的.</p>
+</blockquote>
+<h4 id="中缀表达式转后缀表达式的方法："><a href="#中缀表达式转后缀表达式的方法：" class="headerlink" title="中缀表达式转后缀表达式的方法："></a>中缀表达式转后缀表达式的方法：</h4><ul>
+<li>1.遇到操作数：直接输出（添加到后缀表达式中）</li>
+<li>2.栈为空时，遇到运算符，直接入栈</li>
+<li>3.遇到左括号：将其入栈</li>
+<li>4.遇到右括号：执行出栈操作，并将出栈的元素输出，直到弹出栈的是左括号，左括号不输出。</li>
+<li>5.遇到其他运算符：加减乘除：弹出所有优先级大于或者等于该运算符的栈顶元素，然后将该运算符入栈</li>
+<li>6.最终将栈中的元素依次出栈，输出。<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">public ArrayList&lt;String&gt; SuffixExpression(ArrayList&lt;String&gt; string)&#123;</div><div class="line">        ArrayList&lt;String&gt; suffix = new ArrayList&lt;&gt;();</div><div class="line">        Stack&lt;String&gt; stack = new Stack&lt;&gt;();</div><div class="line">        for(int i = 0; i &lt; string.size(); i++)&#123;</div><div class="line">            if(string.get(i).equals(&quot;*&quot;) || string.get(i).equals(&quot;/&quot;) || string.get(i).equals(&quot;(&quot;))&#123;</div><div class="line">                //push</div><div class="line">                stack.push(string.get(i));</div><div class="line">            &#125;</div><div class="line">            else if(string.get(i).equals(&quot;+&quot;) || string.get(i).equals(&quot;-&quot;))&#123;</div><div class="line">                while(!stack.isEmpty() &amp;&amp; (stack.peek().equals(&quot;*&quot;) || stack.peek().equals(&quot;/&quot;)))</div><div class="line">                &#123;</div><div class="line">                        suffix.add(stack.pop());</div><div class="line">                &#125;</div><div class="line">                //push</div><div class="line">                stack.push(string.get(i));</div><div class="line">            &#125;</div><div class="line">            else if(string.get(i).equals(&quot;)&quot;))</div><div class="line">            &#123;</div><div class="line">                while(!stack.isEmpty() &amp;&amp; !stack.peek().equals(&quot;(&quot;))</div><div class="line">                    suffix.add(stack.pop());</div><div class="line">                //pop (</div><div class="line">                stack.pop();</div><div class="line">            &#125;else&#123;</div><div class="line">                suffix.add(string.get(i));</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        //push all elements in stack</div><div class="line">        while(!stack.isEmpty())</div><div class="line">            suffix.add(stack.pop());</div><div class="line">        return suffix;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="计算后缀表达式"><a href="#计算后缀表达式" class="headerlink" title="计算后缀表达式"></a>计算后缀表达式</h3><p>遇到操作数压入栈,否则弹出两个操作数进行操作后再压入栈中<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public int CalaculateSuffix(ArrayList&lt;String&gt; suffix)&#123;</div><div class="line">        //when meet operator, pop two elements to calaculate</div><div class="line">        Stack&lt;String&gt; stack = new Stack&lt;&gt;();</div><div class="line">        for(int i = 0; i &lt; suffix.size(); i++)&#123;</div><div class="line">            if(!(suffix.get(i).equals(&quot;+&quot;) || suffix.get(i).equals(&quot;-&quot;) || suffix.get(i).equals(&quot;*&quot;) || suffix.get(i).equals(&quot;/&quot;)))</div><div class="line">                //push into stack</div><div class="line">                stack.push(suffix.get(i));</div><div class="line">            else&#123;</div><div class="line">                //calucate</div><div class="line">                String operator = suffix.get(i);</div><div class="line">                String b = stack.pop();</div><div class="line">                String a = stack.pop();</div><div class="line">                String temp = String.valueOf(operate(a,b,operator));</div><div class="line">                stack.push(temp);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">        return Integer.valueOf(stack.pop());</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/Exploring Folksonomy for Personalized Search/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -300,7 +590,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
                 2019-08-17
               </time>
@@ -317,7 +607,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Paper/" itemprop="url" rel="index">
@@ -452,7 +742,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:58+08:00">
                 2019-08-17
               </time>
@@ -469,7 +759,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Mining/" itemprop="url" rel="index">
@@ -648,7 +938,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:58+08:00">
                 2019-08-17
               </time>
@@ -665,7 +955,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -810,7 +1100,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:58+08:00">
                 2019-08-17
               </time>
@@ -827,7 +1117,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -971,7 +1261,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:58+08:00">
                 2019-08-17
               </time>
@@ -988,7 +1278,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1119,7 +1409,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-23T11:22:39+08:00">
                 2018-05-23
               </time>
@@ -1136,7 +1426,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Competition/" itemprop="url" rel="index">
@@ -1312,7 +1602,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T10:06:44+08:00">
                 2018-04-25
               </time>
@@ -1329,7 +1619,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Crawler/" itemprop="url" rel="index">
@@ -1467,7 +1757,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T10:03:51+08:00">
                 2018-04-17
               </time>
@@ -1484,7 +1774,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Data-Mining/" itemprop="url" rel="index">
@@ -1655,334 +1945,6 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/29/Models/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/29/Models/" itemprop="url">
-                  记录几个经典模型
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-29T09:35:21+08:00">
-                2018-03-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
-<h3 id="参考网络博客和个人理解记录如下"><a href="#参考网络博客和个人理解记录如下" class="headerlink" title="参考网络博客和个人理解记录如下:"></a>参考网络博客和个人理解记录如下:</h3><hr>
-<h3 id="1-GBDT-Gradient-Boosting-Decision-Tree"><a href="#1-GBDT-Gradient-Boosting-Decision-Tree" class="headerlink" title="1.GBDT(Gradient Boosting Decision Tree)"></a><font color="red">1.GBDT(Gradient Boosting Decision Tree)</font></h3><p><strong>1.优势</strong></p>
-<ul>
-<li>效果还不错</li>
-<li>既可用于分类也可用于回归</li>
-<li>可以筛选特征</li>
-</ul>
-<p><strong>2.关键点</strong></p>
-<p><strong>2.1 gbdt 的算法的流程？</strong><br>gbdt通过多轮迭代,每轮迭代生成一个弱分类器,每个分类器在上一轮分类器的残差基础上进行训练.(<strong>弱分类器一般会选择CART TREE - 分类回归树</strong>)</p>
-<p><strong>最终的总分类器是将每轮训练得到的弱分类器加权求和得到. - 加法模型</strong></p>
-<p>模型最终可描述为:$F_M(x)=\sum_{m=1}^{M}T(x;\theta_{m})$<br>模型一共训练M轮,每轮产生一个弱分类器$T(x;\theta_m)$,弱分类器的损失函数<script type="math/tex">\hat{\theta}\_m=argmin\_{\theta\_m}\sum\_{i=1}^{N}L\{y\_i,F\_{m-1}(x\_i)+T\_m(x\_i;\theta\_m)\}</script></p>
-<p>gbdt在每轮迭代的时候,都去拟合损失函数在当前模型下的负梯度.<br><strong>2.2 gbdt 如何选择特征 ？</strong><br>原始的gbdt做法非常暴力,首先<strong>遍历每个特征</strong>,然后<strong>对每个特征遍历它所有可能的切分点</strong>,找到最优特征m的最优切分点j.</p>
-<p><strong>2.3 gbdt 如何构建特征 ？</strong><br>工业界做法是和<strong>逻辑回归结合</strong>,得到组合特征.</p>
-<p><strong>2.4 gbdt 如何用于分类？</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/gbdt-multiclassifier.png" alt="gbdt多分类"></p>
-<p>对于多分类任务,GBDT的做法采用<strong>一对多</strong>的策略.一共有K个类别,训练M轮,每一轮都训练K个树,训练完成后一共有M*K个树.<strong>损失函数log loss</strong></p>
-<p><strong>2.5 gbdt 通过什么方式减少误差 ？</strong><br>拟合残差,梯度下降</p>
-<p><strong>2.6 gbdt的效果相比于传统的LR，SVM效果为什么好一些 ？</strong></p>
-<ul>
-<li>1.结合了多个弱分类器,是集成学习,所以泛化能力和准确率更高</li>
-<li>2.SVM对于训练集不同的维度,数据量的大小,核函数的选择直接决定了模型的训练效果.gbdt相较于SVM和LR更不容易过拟合,因为它的超参学习能力较好,gbdt的泛化能力更多取决于数据集.</li>
-</ul>
-<p><strong>2.7 gbdt的参数有哪些，如何调参 ？</strong><br><strong>1.框架参数</strong></p>
-<ul>
-<li>步长 - 选择一个较大的步长</li>
-<li>迭代次数或者说学习器的个数 - 100左右</li>
-<li>学习率$\eta$</li>
-<li>损失函数 - 分类问题和回归问题不一样(分类问题有对数似然和指数似然函数;回归模型有均方误差,绝对损失,Huber损失和分位数损失)</li>
-</ul>
-<p><strong>2.弱学习器参数</strong></p>
-<ul>
-<li>树的深度 - 10-100</li>
-<li>最大特征数 - 划分时考虑的最大特征数</li>
-<li>最小叶子结点样本数</li>
-<li>最大叶子结点个数 - 限制最大叶子结点数,防止过拟合</li>
-</ul>
-<p><strong>2.8 gbdt的优缺点 ？</strong><br><strong>1.优点</strong></p>
-<ul>
-<li>泛化能力强,不容易过拟合</li>
-<li>不需要复杂的特征工程</li>
-</ul>
-<p><strong>2.缺点</strong></p>
-<ul>
-<li>难以实行并行化</li>
-<li>模型复杂度较高,深入分析和调优有一定难度</li>
-</ul>
-<h3 id="2-XgBoost-Extreme-Gradient-Boosting"><a href="#2-XgBoost-Extreme-Gradient-Boosting" class="headerlink" title="2.XgBoost(Extreme Gradient Boosting)"></a><font color="red">2.XgBoost(Extreme Gradient Boosting)</font></h3><p><strong>1.xgboost和GBDT区别</strong></p>
-<ul>
-<li>传统GBDT以CART作为基分类器,<strong>xgboost还支持线性分类器.</strong></li>
-<li>传统GBDT在优化时只用到<strong>一阶导数信息</strong>,而<strong>xgboost进行了二阶泰勒展开</strong></li>
-<li>xgboost在代价函数中<strong>加入了正则项</strong></li>
-<li>对于<strong>缺失值的处理</strong>,xgboost可以自动学习出它的分裂方向</li>
-<li>xgboost支持并行,<strong>并行过程是在确定最佳分割点时</strong>,每一轮的训练还是前向分步法,这个过程不能并行.选择最佳分割点时使用近似直方图算法</li>
-</ul>
-<h3 id="3-SVM-Support-Vector-Machine"><a href="#3-SVM-Support-Vector-Machine" class="headerlink" title="3.SVM(Support Vector Machine)"></a><font color="red">3.SVM(Support Vector Machine)</font></h3><p>参考该篇博客: <a href="https://blog.csdn.net/szlcw1/article/details/52259668" target="_blank" rel="external">https://blog.csdn.net/szlcw1/article/details/52259668</a> (谢谢作者整理)</p>
-<h3 id="4-CNN-Convolutional-Neural-Network"><a href="#4-CNN-Convolutional-Neural-Network" class="headerlink" title="4.CNN(Convolutional Neural Network)"></a><font color="red">4.CNN(Convolutional Neural Network)</font></h3>
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/20/Leetcode/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/03/20/Leetcode/" itemprop="url">
-                  Leetcode
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-20T23:26:03+08:00">
-                2018-03-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Learning/" itemprop="url" rel="index">
-                    <span itemprop="name">Learning</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>刷题leetcode题解: <a href="https://github.com/DuncanZhou/LeetCodePractice">https://github.com/DuncanZhou/LeetCodePractice</a><br>大约有300多道,如有错误,欢迎指教,邮箱链接: ymzhou@stu.suda.edu.cn</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2028,16 +1990,16 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">66</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">12</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -2045,8 +2007,8 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -2142,7 +2104,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">

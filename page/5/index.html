@@ -261,6 +261,334 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/29/Models/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/29/Models/" itemprop="url">
+                  记录几个经典模型
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-29T09:35:21+08:00">
+                2018-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script></p>
+<h3 id="参考网络博客和个人理解记录如下"><a href="#参考网络博客和个人理解记录如下" class="headerlink" title="参考网络博客和个人理解记录如下:"></a>参考网络博客和个人理解记录如下:</h3><hr>
+<h3 id="1-GBDT-Gradient-Boosting-Decision-Tree"><a href="#1-GBDT-Gradient-Boosting-Decision-Tree" class="headerlink" title="1.GBDT(Gradient Boosting Decision Tree)"></a><font color="red">1.GBDT(Gradient Boosting Decision Tree)</font></h3><p><strong>1.优势</strong></p>
+<ul>
+<li>效果还不错</li>
+<li>既可用于分类也可用于回归</li>
+<li>可以筛选特征</li>
+</ul>
+<p><strong>2.关键点</strong></p>
+<p><strong>2.1 gbdt 的算法的流程？</strong><br>gbdt通过多轮迭代,每轮迭代生成一个弱分类器,每个分类器在上一轮分类器的残差基础上进行训练.(<strong>弱分类器一般会选择CART TREE - 分类回归树</strong>)</p>
+<p><strong>最终的总分类器是将每轮训练得到的弱分类器加权求和得到. - 加法模型</strong></p>
+<p>模型最终可描述为:$F_M(x)=\sum_{m=1}^{M}T(x;\theta_{m})$<br>模型一共训练M轮,每轮产生一个弱分类器$T(x;\theta_m)$,弱分类器的损失函数<script type="math/tex">\hat{\theta}\_m=argmin\_{\theta\_m}\sum\_{i=1}^{N}L\{y\_i,F\_{m-1}(x\_i)+T\_m(x\_i;\theta\_m)\}</script></p>
+<p>gbdt在每轮迭代的时候,都去拟合损失函数在当前模型下的负梯度.<br><strong>2.2 gbdt 如何选择特征 ？</strong><br>原始的gbdt做法非常暴力,首先<strong>遍历每个特征</strong>,然后<strong>对每个特征遍历它所有可能的切分点</strong>,找到最优特征m的最优切分点j.</p>
+<p><strong>2.3 gbdt 如何构建特征 ？</strong><br>工业界做法是和<strong>逻辑回归结合</strong>,得到组合特征.</p>
+<p><strong>2.4 gbdt 如何用于分类？</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/gbdt-multiclassifier.png" alt="gbdt多分类"></p>
+<p>对于多分类任务,GBDT的做法采用<strong>一对多</strong>的策略.一共有K个类别,训练M轮,每一轮都训练K个树,训练完成后一共有M*K个树.<strong>损失函数log loss</strong></p>
+<p><strong>2.5 gbdt 通过什么方式减少误差 ？</strong><br>拟合残差,梯度下降</p>
+<p><strong>2.6 gbdt的效果相比于传统的LR，SVM效果为什么好一些 ？</strong></p>
+<ul>
+<li>1.结合了多个弱分类器,是集成学习,所以泛化能力和准确率更高</li>
+<li>2.SVM对于训练集不同的维度,数据量的大小,核函数的选择直接决定了模型的训练效果.gbdt相较于SVM和LR更不容易过拟合,因为它的超参学习能力较好,gbdt的泛化能力更多取决于数据集.</li>
+</ul>
+<p><strong>2.7 gbdt的参数有哪些，如何调参 ？</strong><br><strong>1.框架参数</strong></p>
+<ul>
+<li>步长 - 选择一个较大的步长</li>
+<li>迭代次数或者说学习器的个数 - 100左右</li>
+<li>学习率$\eta$</li>
+<li>损失函数 - 分类问题和回归问题不一样(分类问题有对数似然和指数似然函数;回归模型有均方误差,绝对损失,Huber损失和分位数损失)</li>
+</ul>
+<p><strong>2.弱学习器参数</strong></p>
+<ul>
+<li>树的深度 - 10-100</li>
+<li>最大特征数 - 划分时考虑的最大特征数</li>
+<li>最小叶子结点样本数</li>
+<li>最大叶子结点个数 - 限制最大叶子结点数,防止过拟合</li>
+</ul>
+<p><strong>2.8 gbdt的优缺点 ？</strong><br><strong>1.优点</strong></p>
+<ul>
+<li>泛化能力强,不容易过拟合</li>
+<li>不需要复杂的特征工程</li>
+</ul>
+<p><strong>2.缺点</strong></p>
+<ul>
+<li>难以实行并行化</li>
+<li>模型复杂度较高,深入分析和调优有一定难度</li>
+</ul>
+<h3 id="2-XgBoost-Extreme-Gradient-Boosting"><a href="#2-XgBoost-Extreme-Gradient-Boosting" class="headerlink" title="2.XgBoost(Extreme Gradient Boosting)"></a><font color="red">2.XgBoost(Extreme Gradient Boosting)</font></h3><p><strong>1.xgboost和GBDT区别</strong></p>
+<ul>
+<li>传统GBDT以CART作为基分类器,<strong>xgboost还支持线性分类器.</strong></li>
+<li>传统GBDT在优化时只用到<strong>一阶导数信息</strong>,而<strong>xgboost进行了二阶泰勒展开</strong></li>
+<li>xgboost在代价函数中<strong>加入了正则项</strong></li>
+<li>对于<strong>缺失值的处理</strong>,xgboost可以自动学习出它的分裂方向</li>
+<li>xgboost支持并行,<strong>并行过程是在确定最佳分割点时</strong>,每一轮的训练还是前向分步法,这个过程不能并行.选择最佳分割点时使用近似直方图算法</li>
+</ul>
+<h3 id="3-SVM-Support-Vector-Machine"><a href="#3-SVM-Support-Vector-Machine" class="headerlink" title="3.SVM(Support Vector Machine)"></a><font color="red">3.SVM(Support Vector Machine)</font></h3><p>参考该篇博客: <a href="https://blog.csdn.net/szlcw1/article/details/52259668" target="_blank" rel="external">https://blog.csdn.net/szlcw1/article/details/52259668</a> (谢谢作者整理)</p>
+<h3 id="4-CNN-Convolutional-Neural-Network"><a href="#4-CNN-Convolutional-Neural-Network" class="headerlink" title="4.CNN(Convolutional Neural Network)"></a><font color="red">4.CNN(Convolutional Neural Network)</font></h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/20/Leetcode/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2018/03/20/Leetcode/" itemprop="url">
+                  Leetcode
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-20T23:26:03+08:00">
+                2018-03-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>刷题leetcode题解: <a href="https://github.com/DuncanZhou/LeetCodePractice">https://github.com/DuncanZhou/LeetCodePractice</a><br>大约有300多道,如有错误,欢迎指教,邮箱链接: ymzhou@stu.suda.edu.cn</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/03/17/StatisticLearning/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -300,7 +628,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-17T15:49:11+08:00">
                 2018-03-17
               </time>
@@ -317,7 +645,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -509,7 +837,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-15T18:58:32+08:00">
                 2018-03-15
               </time>
@@ -526,7 +854,7 @@
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1134,7 +1462,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-13T00:00:00+08:00">
                 2018-03-13
               </time>
@@ -1151,7 +1479,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Note/" itemprop="url" rel="index">
@@ -1321,7 +1649,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-03-07T09:23:03+08:00">
                 2018-03-07
               </time>
@@ -1338,7 +1666,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1500,7 +1828,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-27T10:30:32+08:00">
                 2018-02-27
               </time>
@@ -1517,7 +1845,7 @@ $$minimize \frac{1}{2}x^TQx+c^Tx,subject to Ax\leq{b}$$.如果Q为半正定矩�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Learning/" itemprop="url" rel="index">
@@ -1758,7 +2086,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-02-04T14:57:09+08:00">
                 2018-02-04
               </time>
@@ -1775,7 +2103,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -1931,7 +2259,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-31T13:48:15+08:00">
                 2018-01-31
               </time>
@@ -1948,7 +2276,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -2095,7 +2423,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
               </span>
-              <span class="post-meta-item-text">Posted on</span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-30T09:32:43+08:00">
                 2018-01-30
               </time>
@@ -2112,7 +2440,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
               <span class="post-meta-item-icon">
                 <i class="fa fa-folder-o"></i>
               </span>
-              <span class="post-meta-item-text">In</span>
+              <span class="post-meta-item-text">in</span>
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
                   <a href="/categories/Life/" itemprop="url" rel="index">
@@ -2215,298 +2543,6 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/29/Roosevelt/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/29/Roosevelt/" itemprop="url">
-                  Roosevelt-珍珠港演说
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-29T10:17:50+08:00">
-                2018-01-29
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Mr. Vice President, Mr. Speaker, Members of the Senate, and of the House of Representatives:<br>副总统先生、议长先生、参众两院各位议员：</p>
-<p>Yesterday, December 7th, 1941 — a date which will live in infamy — the United States of America was suddenly and deliberately attacked by naval and air forces of the Empire of Japan.</p>
-<p>The United States was at peace with that nation and, at the solicitation of Japan, was still in conversation with its government and its emperor looking toward the maintenance of peace in the Pacific.</p>
-<p>Indeed, one hour after Japanese air squadrons had commenced bombing in the American island of Oahu, the Japanese ambassador to the United States and his colleague delivered to our Secretary of State a formal reply to a recent American message. And while this reply stated that it seemed useless to continue the existing diplomatic negotiations, it contained no threat or hint of war or of armed attack.<br>昨天， 1941年12月7日——必须永远记住这个耻辱的日子——美利坚合众国受到了日本帝国海空军突然的蓄意的进攻。美国和日本是和平相处的，根据日本的请求仍在同它的政府和天皇进行会谈，以期维护太平洋和平。实际上，就在日本空军中队已经开始轰炸美国瓦湖岛之后的一小时，日本驻美国大使还向我们的国务卿提交了对美国最近致日方信函的正式答复。虽然复函声称继续现行外交谈判似已无用，但并未包含有关战争或武装进攻的威胁或暗示。</p>
-<p>It will be recorded that the distance of Hawaii from Japan makes it obvious that the attack was deliberately planned many days or even weeks ago. During the intervening time, the Japanese government has deliberately sought to deceive the United States by false statements and expressions of hope for continued peace.<br>历史将会证明，夏威夷距日本这么遥远，表明这次进攻是经过许多天或甚至许多个星期精心策划的。在此期间，日本政府蓄意以虚伪的声明和表示继续维护和平的愿望来欺骗美国。</p>
-<p>The attack yesterday on the Hawaiian islands has caused severe damage to American naval and military forces. I regret to tell you that very many American lives have been lost. In addition, American ships have been reported torpedoed on the high seas between San Francisco and Honolulu.<br>昨天对夏威夷岛的进攻给美国海陆军部队造成了严重的损害。我遗憾地告诉各位，很多美国人丧失了生命，此外，据报，美国船只在旧金山和火奴鲁鲁（檀香山）之间的公海上也遭到了鱼雷袭击。</p>
-<p>Yesterday, the Japanese government also launched an attack against Malaya.<br>昨天，日本政府已发动了对马来亚的进攻。</p>
-<p>Last night, Japanese forces attacked Hong Kong.<br>昨夜，日本军队进攻了香港。</p>
-<p>Last night, Japanese forces attacked Guam.<br>昨夜，日本军队进攻了关岛。</p>
-<p>Last night, Japanese forces attacked the Philippine Islands.<br>昨夜，日本军队进攻了菲律宾群岛。</p>
-<p>Last night, the Japanese attacked Wake Island.<br>昨夜，日本人进攻了威克岛。</p>
-<p>And this morning, the Japanese attacked Midway Island.<br>今晨，日本人进攻了中途岛。</p>
-<p>Japan has, therefore, undertaken a surprise offensive extending throughout the Pacific area. The facts of yesterday and today speak for themselves. The people of the United States have already formed their opinions and well understand the implications to the very life and safety of our nation.<br>因此，日本在整个太平洋区域采取了突然的攻势。昨天和今天的事实不言自明。美国的人民已经形成了自己的见解，并且十分清楚这关系到我们国家的安全和生存的本身。</p>
-<p>As commander in chief of the Army and Navy, I have directed that all measures be taken for our defense. But always will our whole nation remember the character of the onslaught against us.<br>作为陆海军，总司令，我已指示，为了我们的防务采取一切措施。</p>
-<p>No matter how long it may take us to overcome this premeditated invasion, the American people in their righteous might will win through to absolute victory.<br>但是，我们整个国家都将永远记住这次对我们进攻的性质。不论要用多长时间才能战胜这次预谋的入侵，美国人民以自己的正义力量一定要赢得绝对的胜利。</p>
-<p>I believe that I interpret the will of the Congress and of the people when I assert that we will not only defend ourselves to the uttermost, but will make it very certain that this form of treachery shall never again endanger us.<br>我们现在预言，我们不仅要做出最大的努力来保卫我们自己，我们还将确保这种形式的背信弃义永远不会再危及我们。我这样说，相信是表达了国会和人民的意志。</p>
-<p>Hostilities exist. There is no blinking at the fact that our people, our territory, and our interests are in grave danger.<br>敌对行动已经存在。无庸讳言，我国人民、我国领土和我国利益都处于严重危险之中。</p>
-<p>With confidence in our armed forces, with the unbounding determination of our people, we will gain the inevitable triumph — so help us God.<br>I ask that the Congress declare that since the unprovoked and dastardly attack by Japan on Sunday, December 7th, 1941, a state of war has existed between the United States and the Japanese empire.<br>相信我们的武装部队——依靠我国人民的坚定决心－－我们将取得必然的胜利，愿上帝帮助我们！我要求国会宣布：自1941年12月7日星期日日本发动无端的、卑鄙的进攻时起，美国和日本帝国之间已处于战争状态。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/01/28/Obama8/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/01/28/Obama8/" itemprop="url">
-                  Churchill-敦克尔刻撤退演讲(我们将战斗到底-摘录最后一段)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Posted on</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-28T10:23:17+08:00">
-                2018-01-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">In</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Life/" itemprop="url" rel="index">
-                    <span itemprop="name">Life</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>We shall go on to the end, we shall fight in France, we shall fight on the seas and oceans, we shall fight with growing confidence and growing strength in the air, we shall defend our Island, whatever the cost may be, we shall fight on the beaches, we shall fight on the landing grounds, we shall fight in the fields and in the streets, we shall fight in the hills; we shall never surrender, and even if, which I do not for a moment believe, this Island or a large part of it were subjugated and starving, then our Empire beyond the seas, armed and guarded by the British Fleet, would carry on the struggle, until, in God’s good time, the New World, with all its power and might, steps forth to the rescue and the liberation of the old.</p>
-<p>我们将战斗到底。我们将在法国作战，我们将在海洋中作战，我们将以越来越大的信心和越来越强的力量在空中作战，我们将不惜一切代价保卫本土，我们将在海滩作战，我们将在敌人的登陆点作战，我们将在田野和街头作战，我们将在山区作战。我们绝不投降，即使我们这个岛屿或这个岛屿的大部分被征服并陷于饥饿之中——我从来不相信会发生这种情况——我们在海外的帝国臣民，在英国舰队的武装和保护下也会继续战斗，直到新世界在上帝认为适当的时候，拿出它所有一切的力量来拯救和解放这个旧世界。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -2552,16 +2588,16 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">66</span>
-              <span class="site-state-item-name">posts</span>
+              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
 
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">12</span>
-                <span class="site-state-item-name">categories</span>
+                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-name">Kategorien</span>
               
             </div>
           
@@ -2569,8 +2605,8 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">14</span>
-                <span class="site-state-item-name">tags</span>
+                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-name">Tags</span>
               
             </div>
           
@@ -2666,7 +2702,7 @@ $$\sigma_i(z)=\frac{e^{z_i}}{\sum_{j=1}^{m}e^{z_j}}</script><p>从Softmax函数�
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
