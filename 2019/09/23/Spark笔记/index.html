@@ -1,0 +1,911 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="大数据," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Duncan's Blog" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="Spark笔记1.数据结构方式 RDD是Spark处理数据的数据结构，可以通过两种方式加载数据创建RDD
+
+从程序中parallelize一种现有的数据：如Array
+从外部读取文件：CSV，Hive等
+
+2.RDD操作类型2.1 RDD的计算方式是lazy加载，即用的时候再计算。
+2.2 如果一个变量需要经常使用，可以持久化persist
+2.3 封装函数有多种方式：
+
+封装静态方法，创建obj">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Spark笔记">
+<meta property="og:url" content="https://github.com/DuncanZhou/2019/09/23/Spark笔记/index.html">
+<meta property="og:site_name" content="Duncan's Blog">
+<meta property="og:description" content="Spark笔记1.数据结构方式 RDD是Spark处理数据的数据结构，可以通过两种方式加载数据创建RDD
+
+从程序中parallelize一种现有的数据：如Array
+从外部读取文件：CSV，Hive等
+
+2.RDD操作类型2.1 RDD的计算方式是lazy加载，即用的时候再计算。
+2.2 如果一个变量需要经常使用，可以持久化persist
+2.3 封装函数有多种方式：
+
+封装静态方法，创建obj">
+<meta property="og:updated_time" content="2019-09-23T06:48:36.344Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Spark笔记">
+<meta name="twitter:description" content="Spark笔记1.数据结构方式 RDD是Spark处理数据的数据结构，可以通过两种方式加载数据创建RDD
+
+从程序中parallelize一种现有的数据：如Array
+从外部读取文件：CSV，Hive等
+
+2.RDD操作类型2.1 RDD的计算方式是lazy加载，即用的时候再计算。
+2.2 如果一个变量需要经常使用，可以持久化persist
+2.3 封装函数有多种方式：
+
+封装静态方法，创建obj">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://github.com/DuncanZhou/2019/09/23/Spark笔记/"/>
+
+
+
+
+
+  <title> Spark笔记 | Duncan's Blog </title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Duncan's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-主页">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            menu.主页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-分类">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            menu.分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-关于">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            menu.关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-归档">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            menu.归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-标签">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            menu.标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/09/23/Spark笔记/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Spark笔记
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-09-23T00:00:00+08:00">
+                2019-09-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="Spark笔记"><a href="#Spark笔记" class="headerlink" title="Spark笔记"></a>Spark笔记</h3><h3 id="1-数据结构方式"><a href="#1-数据结构方式" class="headerlink" title="1.数据结构方式"></a>1.数据结构方式</h3><p> RDD是Spark处理数据的数据结构，可以通过两种方式加载数据创建RDD</p>
+<ul>
+<li>从程序中parallelize一种现有的数据：如Array</li>
+<li>从外部读取文件：CSV，Hive等</li>
+</ul>
+<h3 id="2-RDD操作类型"><a href="#2-RDD操作类型" class="headerlink" title="2.RDD操作类型"></a>2.RDD操作类型</h3><p>2.1 RDD的计算方式是lazy加载，即用的时候再计算。</p>
+<p>2.2 如果一个变量需要经常使用，可以持久化persist</p>
+<p>2.3 封装函数有多种方式：</p>
+<ul>
+<li>封装静态方法，创建<strong>object</strong></li>
+<li>封装方法以及变量参数等等，创建<strong>class</strong></li>
+</ul>
+<p>2.3 常用转换方法</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Transformation</th>
+<th style="text-align:left">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left"><strong>map</strong>(<em>func</em>)</td>
+<td style="text-align:left">Return a new distributed dataset formed by passing each element of the source through a function <em>func</em>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>filter</strong>(<em>func</em>)</td>
+<td style="text-align:left">Return a new dataset formed by selecting those elements of the source on which <em>func</em>returns true.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>flatMap</strong>(<em>func</em>)</td>
+<td style="text-align:left">Similar to map, but each input item can be mapped to 0 or more output items (so <em>func</em> should return a Seq rather than a single item).</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>mapPartitions</strong>(<em>func</em>)</td>
+<td style="text-align:left">Similar to map, but runs separately on each partition (block) of the RDD, so <em>func</em> must be of type Iterator<t> =&gt; Iterator<u> when running on an RDD of type T.</u></t></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>mapPartitionsWithIndex</strong>(<em>func</em>)</td>
+<td style="text-align:left">Similar to mapPartitions, but also provides <em>func</em> with an integer value representing the index of the partition, so <em>func</em> must be of type (Int, Iterator<t>) =&gt; Iterator<u> when running on an RDD of type T.</u></t></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>sample</strong>(<em>withReplacement</em>, <em>fraction</em>, <em>seed</em>)</td>
+<td style="text-align:left">Sample a fraction <em>fraction</em> of the data, with or without replacement, using a given random number generator seed.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>union</strong>(<em>otherDataset</em>)</td>
+<td style="text-align:left">Return a new dataset that contains the union of the elements in the source dataset and the argument.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>intersection</strong>(<em>otherDataset</em>)</td>
+<td style="text-align:left">Return a new RDD that contains the intersection of elements in the source dataset and the argument.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>distinct</strong>([<em>numPartitions</em>]))</td>
+<td style="text-align:left">Return a new dataset that contains the distinct elements of the source dataset.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>groupByKey</strong>([<em>numPartitions</em>])</td>
+<td style="text-align:left">When called on a dataset of (K, V) pairs, returns a dataset of (K, Iterable<v>) pairs.  <strong>Note:</strong> If you are grouping in order to perform an aggregation (such as a sum or average) over each key, using <code>reduceByKey</code> or <code>aggregateByKey</code> will yield much better performance.  <strong>Note:</strong> By default, the level of parallelism in the output depends on the number of partitions of the parent RDD. You can pass an optional <code>numPartitions</code> argument to set a different number of tasks.</v></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>reduceByKey</strong>(<em>func</em>, [<em>numPartitions</em>])</td>
+<td style="text-align:left">When called on a dataset of (K, V) pairs, returns a dataset of (K, V) pairs where the values for each key are aggregated using the given reduce function <em>func</em>, which must be of type (V,V) =&gt; V. Like in <code>groupByKey</code>, the number of reduce tasks is configurable through an optional second argument.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>aggregateByKey</strong>(<em>zeroValue</em>)(<em>seqOp</em>, <em>combOp</em>, [<em>numPartitions</em>])</td>
+<td style="text-align:left">When called on a dataset of (K, V) pairs, returns a dataset of (K, U) pairs where the values for each key are aggregated using the given combine functions and a neutral “zero” value. Allows an aggregated value type that is different than the input value type, while avoiding unnecessary allocations. Like in <code>groupByKey</code>, the number of reduce tasks is configurable through an optional second argument.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>sortByKey</strong>([<em>ascending</em>], [<em>numPartitions</em>])</td>
+<td style="text-align:left">When called on a dataset of (K, V) pairs where K implements Ordered, returns a dataset of (K, V) pairs sorted by keys in ascending or descending order, as specified in the boolean <code>ascending</code> argument.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>join</strong>(<em>otherDataset</em>, [<em>numPartitions</em>])</td>
+<td style="text-align:left">When called on datasets of type (K, V) and (K, W), returns a dataset of (K, (V, W)) pairs with all pairs of elements for each key. Outer joins are supported through <code>leftOuterJoin</code>, <code>rightOuterJoin</code>, and <code>fullOuterJoin</code>.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>cogroup</strong>(<em>otherDataset</em>, [<em>numPartitions</em>])</td>
+<td style="text-align:left">When called on datasets of type (K, V) and (K, W), returns a dataset of (K, (Iterable<v>, Iterable<w>)) tuples. This operation is also called <code>groupWith</code>.</w></v></td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>cartesian</strong>(<em>otherDataset</em>)</td>
+<td style="text-align:left">When called on datasets of types T and U, returns a dataset of (T, U) pairs (all pairs of elements).</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>pipe</strong>(<em>command</em>, <em>[envVars]</em>)</td>
+<td style="text-align:left">Pipe each partition of the RDD through a shell command, e.g. a Perl or bash script. RDD elements are written to the process’s stdin and lines output to its stdout are returned as an RDD of strings.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>coalesce</strong>(<em>numPartitions</em>)</td>
+<td style="text-align:left">Decrease the number of partitions in the RDD to numPartitions. Useful for running operations more efficiently after filtering down a large dataset.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>repartition</strong>(<em>numPartitions</em>)</td>
+<td style="text-align:left">Reshuffle the data in the RDD randomly to create either more or fewer partitions and balance it across them. This always shuffles all data over the network.</td>
+</tr>
+<tr>
+<td style="text-align:left"><strong>repartitionAndSortWithinPartitions</strong>(<em>partitioner</em>)</td>
+<td style="text-align:left">Repartition the RDD according to the given partitioner and, within each resulting partition, sort records by their keys. This is more efficient than calling <code>repartition</code> and then sorting within each partition because it can push the sorting down into the shuffle machinery.</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="3-创建DataFrame的三种方式"><a href="#3-创建DataFrame的三种方式" class="headerlink" title="3.创建DataFrame的三种方式"></a>3.创建DataFrame的三种方式</h3><ul>
+<li><p>使用toDF函数</p>
+</li>
+<li><p>使用createDataFrame函数</p>
+</li>
+<li>通过文件直接创建</li>
+</ul>
+<h3 id="4-scala的vector和spark包中vector不一样"><a href="#4-scala的vector和spark包中vector不一样" class="headerlink" title="4.scala的vector和spark包中vector不一样"></a>4.scala的vector和spark包中vector不一样</h3><h3 id="5-Spark优化：（美团Spark）"><a href="#5-Spark优化：（美团Spark）" class="headerlink" title="5.Spark优化：（美团Spark）"></a>5.Spark优化：（美团Spark）</h3><p>基础版：<a href="https://tech.meituan.com/2016/04/29/spark-tuning-basic.html" target="_blank" rel="external">https://tech.meituan.com/2016/04/29/spark-tuning-basic.html</a></p>
+<p>高级版：<a href="https://tech.meituan.com/2016/05/12/spark-tuning-pro.html" target="_blank" rel="external">https://tech.meituan.com/2016/05/12/spark-tuning-pro.html</a></p>
+<h3 id="6-Spark保留运行环境（用于查错）"><a href="#6-Spark保留运行环境（用于查错）" class="headerlink" title="6.Spark保留运行环境（用于查错）"></a>6.Spark保留运行环境（用于查错）</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conf.spark.yarn.preserve.staging.files=true</div></pre></td></tr></table></figure>
+<h3 id="7-宽依赖和窄依赖"><a href="#7-宽依赖和窄依赖" class="headerlink" title="7.宽依赖和窄依赖"></a>7.宽依赖和窄依赖</h3><ul>
+<li><strong>窄依赖</strong>：指父RDD的每个分区只被一个子RDD分区使用，子RDD分区通常只对应常数个父RDD分区。（map、filter、union操作）。</li>
+<li><strong>宽依赖</strong>：指父RDD的每个分区都有可能被多个子RDD分区使用，子RDD分区通常对应父RDD所有分区。（groupByKey、partitionBy等操作）</li>
+<li>比较：<strong>宽依赖通常对应着shuffle操作</strong>，需要在运行的过程中将同一个RDD分区传入到不同的RDD分区中，中间可能涉及多个节点之间数据的传输。</li>
+</ul>
+<h3 id="8-ORC格式和PARQUET格式文件对比"><a href="#8-ORC格式和PARQUET格式文件对比" class="headerlink" title="8.ORC格式和PARQUET格式文件对比"></a>8.ORC格式和PARQUET格式文件对比</h3><blockquote>
+<p>impala暂时不支持orc格式的表查询</p>
+</blockquote>
+<h3 id="9-left-anti-join（某个字段过滤用）"><a href="#9-left-anti-join（某个字段过滤用）" class="headerlink" title="9.left anti join（某个字段过滤用）"></a>9.left anti join（某个字段过滤用）</h3><ul>
+<li>left semi join —&gt; exists</li>
+<li>left anti join —&gt; not exists</li>
+</ul>
+<h3 id="10-Shuffle过程数据倾斜"><a href="#10-Shuffle过程数据倾斜" class="headerlink" title="10.Shuffle过程数据倾斜"></a>10.Shuffle过程数据倾斜</h3><blockquote>
+<p>和Hive中类似，数据的倾斜都发生在shuffle过程中，下面以hive的shuffle进行总结。发生倾斜的根本原因在于，shuffle之后，key的分布不均匀，使得大量的key集中在某个reduce节点，导致此节点过于“忙碌”，在其他节点都处理完之后，任务的结整需要等待此节点处理完，使得整个任务被此节点堵塞。</p>
+<p>要解决此问题，主要可以分为两大块：</p>
+<ul>
+<li>一是尽量不shuffle；</li>
+<li>二是shuffle之后，在reduce节点上的key分布尽量均匀。</li>
+</ul>
+</blockquote>
+<p>方案总结如下：</p>
+<hr>
+<p>解决方案：MapJoin，添加随机前缀，使用列桶表</p>
+<ul>
+<li>mapjoin</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">-- mapjoin配置</div><div class="line">set hive.auto.convert.join = true;</div><div class="line">set hive.mapjoin.smalltable.filesize=25000000;</div></pre></td></tr></table></figure>
+<ul>
+<li>手动分割成两部分进行join</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">select t1.* </div><div class="line">from t1 join t2 on t1.key=t2.key</div><div class="line"></div><div class="line">拆成以下SQL:</div><div class="line"></div><div class="line">select t1.* </div><div class="line">from t1 join t2 on t1.key=t2.key</div><div class="line">where t1.key=A</div><div class="line">union all </div><div class="line">select t1.*</div><div class="line">from t1 join t2 on t1.key=t2.key</div><div class="line">where t1.key&lt;&gt;A</div></pre></td></tr></table></figure>
+<ul>
+<li>当小表不是很小，不太方便用mapjoin，大表添加N中随机前缀，小表膨胀N倍数据</li>
+<li>使用Skewed Table 或者 List Bucketing Table</li>
+</ul>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/大数据/" rel="tag"># 大数据</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/09/23/Scala笔记/" rel="next" title="Scala笔记">
+                <i class="fa fa-chevron-left"></i> Scala笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+        <div class="-mob-share-ui-button -mob-share-open">分享</div>
+<div class="-mob-share-ui" style="display: none">
+    <ul class="-mob-share-list">
+	<li class="-mob-share-weixin"><p>微信</p></li>
+        <li class="-mob-share-weibo"><p>微博</p></li>
+        <li class="-mob-share-douban"><p>豆瓣</p></li>
+        <li class="-mob-share-facebook"><p>Facebook</p></li>
+        <li class="-mob-share-twitter"><p>Twitter</p></li>
+    </ul>
+    <div class="-mob-share-close">取消</div>
+</div>
+<div class="-mob-share-ui-bg"></div>
+<script id="-mob-share" src="http://f1.webshare.mob.com/code/mob-share.js?appkey=24a08c2197375"></script>
+
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg"
+               alt="duncan" />
+          <p class="site-author-name" itemprop="name">duncan</p>
+          <p class="site-description motion-element" itemprop="description">write something useful</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/">
+              <span class="site-state-item-count">70</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">Kategorien</span>
+              
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">18</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/DuncanZhou" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://instagram.com/callmeduncanzhou" target="_blank" title="instagram">
+                  
+                    <i class="fa fa-fw fa-instagram"></i>
+                  
+                  instagram
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://music.163.com/#/user/home?id=317536872" target="_blank" title="music">
+                  
+                    <i class="fa fa-fw fa-music"></i>
+                  
+                  music
+                </a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="https://www.zhihu.com/people/duncanzhou-22/activities" target="_blank" title="zhihu">
+                  
+                    <i class="fa fa-fw fa-gift"></i>
+                  
+                  zhihu
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+        <iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="//music.163.com/outchain/player?type=2&id=371362&auto=1&height=66"></iframe>
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#Spark笔记"><span class="nav-number">1.</span> <span class="nav-text">Spark笔记</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-数据结构方式"><span class="nav-number">2.</span> <span class="nav-text">1.数据结构方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-RDD操作类型"><span class="nav-number">3.</span> <span class="nav-text">2.RDD操作类型</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-创建DataFrame的三种方式"><span class="nav-number">4.</span> <span class="nav-text">3.创建DataFrame的三种方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-scala的vector和spark包中vector不一样"><span class="nav-number">5.</span> <span class="nav-text">4.scala的vector和spark包中vector不一样</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-Spark优化：（美团Spark）"><span class="nav-number">6.</span> <span class="nav-text">5.Spark优化：（美团Spark）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-Spark保留运行环境（用于查错）"><span class="nav-number">7.</span> <span class="nav-text">6.Spark保留运行环境（用于查错）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-宽依赖和窄依赖"><span class="nav-number">8.</span> <span class="nav-text">7.宽依赖和窄依赖</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-ORC格式和PARQUET格式文件对比"><span class="nav-number">9.</span> <span class="nav-text">8.ORC格式和PARQUET格式文件对比</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-left-anti-join（某个字段过滤用）"><span class="nav-number">10.</span> <span class="nav-text">9.left anti join（某个字段过滤用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-Shuffle过程数据倾斜"><span class="nav-number">11.</span> <span class="nav-text">10.Shuffle过程数据倾斜</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+</script>
+<div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">duncan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+<span id="busuanzi_container_site_pv">
+   | Total visited <span id="busuanzi_value_site_pv"></span> times
+</span>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+  
+  
+
+  
+  
+
+
+  
+
+  
+
+  
+
+  
+</body>
+</html>

@@ -261,6 +261,313 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/SuperParas/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/08/17/SuperParas/" itemprop="url">
+                  超参的搜索方法整理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
+                2019-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/MachineLearning/" itemprop="url" rel="index">
+                    <span itemprop="name">MachineLearning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-网格搜索"><a href="#1-网格搜索" class="headerlink" title="1.网格搜索"></a>1.网格搜索</h3><p>网格搜索通过查找搜索范围内的所有的点，来确定最优值。它返回目标函数的最大值或损失函数的最小值。给出较大的搜索范围，以及较小的步长，网格搜索是一定可以找到全局最大值或最小值的。 </p>
+<p>当人们实际使用网格搜索来找到最佳超参数集的时候，一般会先使用较广的搜索范围，以及较大的步长，来找到全局最大值或者最小值可能的位置。然后，人们会缩小搜索范围和步长，来达到更精确的最值。 </p>
+<h3 id="2-随机搜索"><a href="#2-随机搜索" class="headerlink" title="2.随机搜索"></a>2.随机搜索</h3><p>随机搜索的思想和网格搜索比较相似，只是不再测试上界和下界之间的所有值，只是在搜索范围中随机取样本点。它的理论依据是，如果随即样本点集足够大，那么也可以找到全局的最大或最小值，或它们的近似值。</p>
+<p>通过对搜索范围的随机取样，随机搜索一般会比网格搜索要快一些。但是和网格搜索的快速版（非自动版）相似，结果也是没法保证的。 </p>
+<h3 id="3-基于梯度的优化"><a href="#3-基于梯度的优化" class="headerlink" title="3.基于梯度的优化"></a>3.基于梯度的优化</h3><h3 id="4-贝叶斯优化"><a href="#4-贝叶斯优化" class="headerlink" title="4.贝叶斯优化"></a>4.贝叶斯优化</h3><p>贝叶斯优化寻找使全局达到最值的参数时，使用了和网格搜索、随机搜索完全不同的方法。网格搜索和随机搜索在测试一个新的点时，会忽略前一个点的信息。而贝叶斯优化充分利用了这个信息。贝叶斯优化的工作方式是通过对目标函数形状的学习，找到使结果向全局最大值提升的参数。它学习目标函数形状的方法是，根据先验分布，假设一个搜集函数。在每一次使用新的采样点来测试目标函数时，它使用这个信息来更新目标函数的先验分布。然后，算法测试由后验分布给出的，全局最值最可能出现的位置的点。 </p>
+<p>补充:</p>
+<p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/alipsipng.png" alt="PSI"></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/SQL_Learning/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/08/17/SQL_Learning/" itemprop="url">
+                  Hive SQL 学习
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
+                2019-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/SQL/" itemprop="url" rel="index">
+                    <span itemprop="name">SQL</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="partition-by"><a href="#partition-by" class="headerlink" title="partition by"></a>partition by</h3><blockquote>
+<p>partition by关键字是分析性函数的一部分，它和聚合函数不同的地方在于它能返回一个分组中的多条记录，而聚合函数一般只有一条反映统计值的记录，partition by用于给结果集分组，如果没有指定那么它把整个结果集作为一个分组</p>
+</blockquote>
+<p>example: 一个班有学生id，成绩，班级，现在将学生根据班级按照成绩排名。(partition by)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select *,row_number() over(partition by Grade order by Score desc) as Sequence from Student</div></pre></td></tr></table></figure>
+<h3 id="lateral-view"><a href="#lateral-view" class="headerlink" title="lateral view"></a>lateral view</h3><h3 id="explode-posexplode"><a href="#explode-posexplode" class="headerlink" title="explode / posexplode"></a>explode / posexplode</h3><blockquote>
+<p>explode 拆分一行称多行，而posexplode是根据多行匹配行号进行拆分多行。</p>
+</blockquote>
+<h3 id="窗口函数"><a href="#窗口函数" class="headerlink" title="窗口函数"></a>窗口函数</h3><h4 id="a-first-value"><a href="#a-first-value" class="headerlink" title="a. first_value"></a>a. first_value</h4><p>​    取分组内排序后，截止到当前行，第一个值</p>
+<h4 id="b-last-value"><a href="#b-last-value" class="headerlink" title="b.last_value"></a>b.last_value</h4><p>​    取分组内排序后，截止到当前行，最后一个值  </p>
+<h4 id="c-lead-col-n-default"><a href="#c-lead-col-n-default" class="headerlink" title="c.lead(col,n,default)"></a>c.lead(col,n,default)</h4><p>​    用于统计窗口内往下第n行值。第一个参数为列名，第二个参数为往下第n行（可选，默认为1），第三个参数为默认值（当往下第n行为NULL时候，取默认值，如不指定，则为NULL） </p>
+<h4 id="d-lag-col-n-default"><a href="#d-lag-col-n-default" class="headerlink" title="d.lag(col,n,default)"></a>d.lag(col,n,default)</h4><p>​    与lead相反，用于统计窗口内往上第n行值。第一个参数为列名，第二个参数为往上第n行（可选，默认为1），第三个参数为默认值（当往上第n行为NULL时候，取默认值，如不指定，则为NULL） </p>
+<h4 id="c-聚集函数-over-partition-by-col1-order-by-col-rows-range-between-UNBOUNDED-num-preceding-and-num-FOLLOWING-current-ROW"><a href="#c-聚集函数-over-partition-by-col1-order-by-col-rows-range-between-UNBOUNDED-num-preceding-and-num-FOLLOWING-current-ROW" class="headerlink" title="c.聚集函数 + over + (partition by col1 [order by col (rows | range) between (UNBOUNDED | [num]) preceding and (num FOLLOWING | current ROW))"></a>c.聚集函数 + over + (partition by col1 [order by col (rows | range) between (UNBOUNDED | [num]) preceding and (num FOLLOWING | current ROW))</h4><h4 id="d-ROW-NUMBER"><a href="#d-ROW-NUMBER" class="headerlink" title="d.ROW_NUMBER()"></a>d.ROW_NUMBER()</h4><p>​    从1开始，按照顺序，生成分组内记录的序列 </p>
+<h4 id="e-RANK"><a href="#e-RANK" class="headerlink" title="e.RANK()"></a>e.RANK()</h4><p>​    生成数据项在分组中的排名，排名相等会在名次中留下空位 </p>
+<h4 id="f-DENSE-RANK"><a href="#f-DENSE-RANK" class="headerlink" title="f.DENSE_RANK()"></a>f.DENSE_RANK()</h4><p>​    生成数据项在分组中的排名，排名相等会在名次中不会留下空位  </p>
+<h4 id="g-CUME-DIST"><a href="#g-CUME-DIST" class="headerlink" title="g.CUME_DIST()"></a>g.CUME_DIST()</h4><p>​    小于等于当前值的行数/分组内总行数 </p>
+<h4 id="h-PERCENT-RANK"><a href="#h-PERCENT-RANK" class="headerlink" title="h.PERCENT_RANK ()"></a>h.PERCENT_RANK ()</h4><p>​    分组内当前行的RANK值-1/分组内总行数-1  </p>
+<h4 id="i-NTILE-n"><a href="#i-NTILE-n" class="headerlink" title="i.NTILE(n)"></a>i.NTILE(n)</h4><p>​    用于将分组数据按照顺序切分成n片，返回当前切片值，如果切片不均匀，默认增加第一个切片的分布 </p>
+<p>Note:</p>
+<ul>
+<li>From子句：执行顺序自上而下，从左到右，从后往前，所以<strong>数据量少的表尽量放后</strong></li>
+<li>where子句：执行顺序自下而上，从右到左，<strong>可以过滤掉大量记录的条件写在where子句的末尾</strong></li>
+<li>group by子句：通过将不需要的记录在group by之前过滤掉，<strong>避免使用having来过滤</strong></li>
+<li>having子句：尽量少用</li>
+<li>select子句：尽量少用*，取字段名称</li>
+<li>order by子句：执行顺序为从左到右排序</li>
+<li>join：<strong>尽量把数据量大的表放在最右边来进行关联</strong></li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/SparkDataFrameLearning/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1520,290 +1827,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/py2neo/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/08/17/py2neo/" itemprop="url">
-                  python与neo-4j交互(对py2neo包做的笔记)
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
-                2019-08-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1.连接数据库(三种方式相等)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">graph_1 = Graph()</div><div class="line">graph_2 = Graph(host=&quot;localhost&quot;)</div><div class="line">graph_3 = Graph(&quot;http://localhost:7474/db/data&quot;)</div></pre></td></tr></table></figure></p>
-<p>2.事务操作<br>a)直接返回结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">graph.data(&quot;MATCH (a:Person) RETURN a.name, a.born LIMIT 4&quot;)</div></pre></td></tr></table></figure></p>
-<p>b)以pandas格式返回结果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DataFrame(graph.data(&quot;MATCH (a:Person) RETURN a.name, a.born LIMIT 4&quot;))</div></pre></td></tr></table></figure></p>
-<p>事务操作样例<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">from py2neo import Graph, Node, Relationship</div><div class="line">g = Graph()</div><div class="line">tx = g.begin()</div><div class="line">a = Node(&quot;Person&quot;, name=&quot;Alice&quot;)</div><div class="line">tx.create(a)</div><div class="line">b = Node(&quot;Person&quot;, name=&quot;Bob&quot;)</div><div class="line">ab = Relationship(a, &quot;KNOWS&quot;, b)</div><div class="line">tx.create(ab)</div><div class="line">tx.commit()</div><div class="line">g.exists(ab)</div></pre></td></tr></table></figure></p>
-<p>3.匹配关系<br>查找alice的所有朋友<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">for rel in graph.match(start_node=alice,rel_type=&quot;FRIEND&quot;):</div><div class="line">	print(rel.end_node()[&apos;name&apos;])</div></pre></td></tr></table></figure></p>
-<p>4.带参数查询<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">from py2neo import Graph</div><div class="line">g = Graph()</div><div class="line"># evaluate()返回结果的第一个值</div><div class="line">g.run(&quot;&quot;MATCH (a) WHERE a.email=&#123;x&#125; RETURN a.name&quot;,x=&quot;bob@acme.com&quot;).evaluate()</div><div class="line">g.run(&quot;&quot;MATCH (a) WHERE a.email=&#123;x&#125; RETURN a.name&quot;,x=&quot;bob@acme.com&quot;).data()</div></pre></td></tr></table></figure></p>
-<p>5.NodeSelector使用,可以使用Cypher语言的where部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">from py2neo import Graph,NodeSelector</div><div class="line">graph = Graph()</div><div class="line">selector = NodeSelector(graph)</div><div class="line">slected = selector.select(&quot;Person&quot;,name=&quot;Keanu Reeves&quot;)</div><div class="line">list(selected)</div><div class="line">selected = selector.select(&quot;Person&quot;).where(&quot;_.name =~ &apos;J.*&apos;&quot;,&quot;1960 &lt;= _.born &lt; 1970&quot;)</div><div class="line">list(selected)</div></pre></td></tr></table></figure></p>
-<p>6.删除操作<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"># 删除所有的</div><div class="line">graph.delete_all()</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/pip_changeSource/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2019/08/17/pip_changeSource/" itemprop="url">
-                  pip安装包更换pypi源
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
-                2019-08-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Note/" itemprop="url" rel="index">
-                    <span itemprop="name">Note</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>使用豆瓣源</p>
-<blockquote>
-<p>sudo pip install #package -i <a href="http://pypi.douban.com.simple" target="_blank" rel="external">http://pypi.douban.com.simple</a> —trusted-host pypi.douban.com</p>
-</blockquote>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1849,7 +1872,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">70</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -1857,7 +1880,7 @@
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">Kategorien</span>
               
             </div>
@@ -1866,7 +1889,7 @@
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">Tags</span>
               
             </div>

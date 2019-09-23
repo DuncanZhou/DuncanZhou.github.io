@@ -261,6 +261,352 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/JVM/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/08/17/JVM/" itemprop="url">
+                  JAVA虚拟机了解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
+                2019-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="1-走进JAVA"><a href="#1-走进JAVA" class="headerlink" title="1.走进JAVA"></a>1.走进JAVA</h3><p>1.JDK(Java Developmen Kit):将Java程序设计语言,Java虚拟机和Java API类库这三部分统称为JDK.</p>
+<p>2.JRE(Java Runtime Environment):把Java API类库中的Java SE API子集和Java虚拟机这两部分统称为JRE.</p>
+<h3 id="2-JAVA内存区域与内存溢出异常"><a href="#2-JAVA内存区域与内存溢出异常" class="headerlink" title="2.JAVA内存区域与内存溢出异常"></a>2.JAVA内存区域与内存溢出异常</h3><p><strong>先放一张jvm运行时数据区分配情况图</strong><br><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-01.png" alt="jvm运行时数据区"></p>
+<ol>
+<li><p>Java堆中分配内存方式:如果Java堆中的内存是绝对规整的,所有用过的内存都放在一边,空闲的内存放在另一边,中间放着一个指针作为分界点的指示器,那所分配内存就是仅仅把那个指针向空闲空间那边挪动一段与对象大小相等的距离,这种分配方式称为<strong>指针碰撞(Bump the pointer)</strong>;如果Java堆中的内存并不是规整的,已使用内存和空闲的内存相互交错,虚拟机就必须维护一个列表,记录上哪些内存块是可用的,在分配的时候从列表中找到一块足够大的空间划分给对象,并更新列表上的记录,这种分配方式称为<strong>空闲列表(Free List)</strong>;</p>
+</li>
+<li><p>划分内存过程需要考虑同步问题,两种方式:1)对分配内存空间的动作进行同步处理(CAS配上失败重试的方式保证更新操作的原子性);2)每个线程在Java堆中预先分配一小块内存,为<strong>本地线程分配缓冲(Thread Local Allocation Buffer)</strong>,当TLAB分配完了之后再做同步操作.</p>
+</li>
+<li><p>对象的访问定位:<strong>使用句柄和直接指针</strong></p>
+</li>
+</ol>
+<h3 id="3-垃圾收集算法"><a href="#3-垃圾收集算法" class="headerlink" title="3.垃圾收集算法"></a>3.垃圾收集算法</h3><ul>
+<li>标记-清除算法:首先标记出所有需要回收的对象,在标记完成后一次性回收所有被标记的对象.</li>
+<li>复制算法:将可用内存分为两块,每次只使用其中一块,当着一块内存用完了,就将还存活的对象复制到另一块上,然后把已使用的内存空间一次清理掉.</li>
+<li>标记-整理算法:首先标记出所有需要回收的对象,让所有存活的对象都向一端移动,然后直接清理掉端界外的内存.\</li>
+<li>分代收集法:将堆分为新生代和老年代,根据每个代的特点选择合适的垃圾回收算法.</li>
+</ul>
+<h3 id="4-垃圾收集器"><a href="#4-垃圾收集器" class="headerlink" title="4.垃圾收集器"></a>4.垃圾收集器</h3><p><img src="https://raw.githubusercontent.com/DuncanZhou/images/master/jvm-02.png" alt="jvm垃圾收集器"></p>
+<ol>
+<li><p>Serial收集器<br>这个收集器是一个单线程的收集器,但它的”单线程”的意义并不仅仅说明它只会使用一个CPU或一条收集线程去完成垃圾收集工作,更重要的是在它进行垃圾收集时,必须暂停其他所有的工作线程,直到它收集结束.(Client模式下默认的垃圾收集器)</p>
+</li>
+<li><p>ParNew收集器<br>ParNew收集器就是Serial收集器的多线程版本,除了使用多条线程进行垃圾收集之外,其余行为包括Serial收集器可用的所有控制参数,收集算法,Stop the world,对象分配规则,回收策略等都与Serial收集器完全一样.(Server模式下的垃圾收集器)</p>
+</li>
+<li><p>Parallel Scavenge收集器<br>Parallel Scavenge收集器更多关注于控制吞吐量(吞吐量=运行用户代码时间/(运行用户代码时间+垃圾收集时间)).</p>
+</li>
+<li><p>Serial Old收集器</p>
+</li>
+<li><p>Parallel Old收集器</p>
+</li>
+<li><p>CMS收集器<br>CMS收集器是一种以<strong>获取最短回收停顿时间为目标</strong>的收集器.目前很大一部分的Java应用集中在互联网站或者B/S系统的服务端上.<br>CMS收集器是基于”标记-清除”算法实现的,运作过程分为4个步骤:</p>
+</li>
+</ol>
+<ul>
+<li>初始标记</li>
+<li>并发标记</li>
+<li>重新标记</li>
+<li>并发清除</li>
+</ul>
+<ol>
+<li>G1收集器<br>运作大致分为:</li>
+</ol>
+<ul>
+<li>初始标记(标记GC Roots直接关联到的对象)</li>
+<li>并发标记(GC Roots可达性分析)</li>
+<li>最终标记(修正在并发标记阶段标记发生改变的那部分标记记录)</li>
+<li>筛选回收(对各个Region的回收价值和成本排序)</li>
+</ul>
+<h3 id="5-内存对象收集器"><a href="#5-内存对象收集器" class="headerlink" title="5.内存对象收集器"></a>5.内存对象收集器</h3><p>1.新生代GC(Minor GC):指发生在新生代的垃圾收集动作,Minor GC非常频繁,一般回收速度也比较快.</p>
+<p>2.老年代GC(Major GC/Full GC):指发生在老年代的GC,出现了Major GC,经常会伴随至少一次的Minor GC,Major GC的速度一般会比Minor GC慢10倍以上.</p>
+<h3 id="6-虚拟机性能监控与故障处理工具"><a href="#6-虚拟机性能监控与故障处理工具" class="headerlink" title="6.虚拟机性能监控与故障处理工具"></a>6.虚拟机性能监控与故障处理工具</h3><ul>
+<li>jps:虚拟机进程状况工具</li>
+<li>jstat:虚拟机统计信息监视工具</li>
+<li>jinfo:Java配置信息工具(实时地查看和调整虚拟机各项参数)</li>
+<li>jmap:Java内存映像工具</li>
+<li>jhat:虚拟机堆转储快照分析工具</li>
+<li>jstack:Java堆栈跟踪工具</li>
+<li>JConsole和VisualVM(可视化工具)</li>
+</ul>
+<h3 id="7-虚拟机执行子系统"><a href="#7-虚拟机执行子系统" class="headerlink" title="7.虚拟机执行子系统"></a>7.虚拟机执行子系统</h3>
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/IVandWOE/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="duncan">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="Duncan's Blog">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2019/08/17/IVandWOE/" itemprop="url">
+                  IV值和WOE值记录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Veröffentlicht am</span>
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-08-17T16:14:59+08:00">
+                2019-08-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">in</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Learning/" itemprop="url" rel="index">
+                    <span itemprop="name">Learning</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+          
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="IV和WOE记录"><a href="#IV和WOE记录" class="headerlink" title="IV和WOE记录"></a>IV和WOE记录</h2><h3 id="IV-（Information-Value）"><a href="#IV-（Information-Value）" class="headerlink" title="IV （Information Value）"></a>IV （Information Value）</h3><p>1）用途：评价特征或变量的预测能力。类似的指标还有信息增益    、增益率和基尼系数等</p>
+<p>2）IV的计算依赖于WOE</p>
+<h3 id="WOE（Weight-of-Evidence）"><a href="#WOE（Weight-of-Evidence）" class="headerlink" title="WOE（Weight of Evidence）"></a>WOE（Weight of Evidence）</h3><p>1）要对一个变量进行WOE编码，需要把这个变量进行分组处理（离散化 / 分箱），分组后对于第i组，WOE的计算公式如下：</p>
+<script type="math/tex; mode=display">WOE_i=ln(\frac{py_i}{pn_i})=ln(\frac{\frac{\#y_i}{\#y_T}}{\frac{\#n_i}{\#n_T}})</script><p>其中，$py_i$是<strong>这个组中响应客户</strong>占所有<strong>样本中响应客户</strong>的比例，$pn_i$是<strong>这个组中未响应客户</strong>占<strong>样本中未响应客户</strong>的比例。</p>
+<blockquote>
+<p> 所以，WOE表示的实际上是<strong>“当前分组中响应客户占所有响应客户的比例”和”当前分组中没有响应的客户占所有没响应的客户的比例“的差异</strong></p>
+</blockquote>
+<h3 id="IV的计算"><a href="#IV的计算" class="headerlink" title="IV的计算"></a>IV的计算</h3><script type="math/tex; mode=display">IV_i=(py_i-pn_i)*WOE_i</script><script type="math/tex; mode=display">IV = \sum_{i}^{n}IV_i</script><p>其中，n为变量分组的个数。</p>
+<h3 id="为什么使用IV而不是直接用WOE"><a href="#为什么使用IV而不是直接用WOE" class="headerlink" title="为什么使用IV而不是直接用WOE"></a>为什么使用IV而不是直接用WOE</h3><ul>
+<li>1.IV和WOE的差别在于IV在WOE基础上乘以（$py_i-pn_i$）- $pyn$ ,乘以了这个$pyn$变量保证了每个分组的结果都是<strong>非负数</strong>。</li>
+<li>2.乘以$pyn$后，体现出了变量当前分组中个体的数量占整体个体数量的比例，对变量预测能力的影响。</li>
+</ul>
+<h3 id="IV的极端情况处理"><a href="#IV的极端情况处理" class="headerlink" title="IV的极端情况处理"></a>IV的极端情况处理</h3><ul>
+<li>1.合理分组</li>
+<li>2.0 —&gt; 1</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
   <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2019/08/17/GraphAndTree/">
 
   <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1554,397 +1900,6 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/04/25/Crawler/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/04/25/Crawler/" itemprop="url">
-                  Crawler
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-25T10:06:44+08:00">
-                2018-04-25
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Crawler/" itemprop="url" rel="index">
-                    <span itemprop="name">Crawler</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <blockquote>
-<p>由于论文需要补充数据集,现抓取微博上演员,歌手,导演,运动员和普通用户共1w个.包括他们的基本信息和粉丝和朋友关系.</p>
-</blockquote>
-<hr>
-<h3 id="步骤"><a href="#步骤" class="headerlink" title="步骤"></a>步骤</h3><p>(不考虑多线程)</p>
-<ul>
-<li><p>1.安装依赖的库: <strong>requests,selenium,BeautifulSoup</strong></p>
-</li>
-<li><p>2.分析页面,从微博搜索框输入相应领域,获得分页的结果页面,从结果页面提取用户的id.</p>
-</li>
-<li><p>3.由于返回的结果页面是异步加载,通过<strong>selenium</strong>模拟浏览器访问,抓取返回的结果页面上的id.(需要对selenium<strong>添加请求头信息</strong>)</p>
-</li>
-<li><p>4.抓取到用户id后,可通过weibo API抓取其基本信息和关系信息.</p>
-</li>
-</ul>
-<p>(在抓取用户的关注时,使用多线程)</p>
-<ul>
-<li>5.python多线程模块threading,因为是I/O密集型,所以用多线程</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-  <link itemprop="mainEntityOfPage" href="https://github.com/DuncanZhou/2018/04/17/ProbabilityTheory/">
-
-  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
-    <meta itemprop="name" content="duncan">
-    <meta itemprop="description" content="">
-    <meta itemprop="image" content="https://raw.githubusercontent.com/DuncanZhou/images/master/webwxgetmsgimg.jpg">
-  </span>
-
-  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-    <meta itemprop="name" content="Duncan's Blog">
-    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-      <img style="display:none;" itemprop="url image" alt="Duncan's Blog" src="">
-    </span>
-  </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2018/04/17/ProbabilityTheory/" itemprop="url">
-                  ProbabilityTheory
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              <span class="post-meta-item-text">Veröffentlicht am</span>
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-04-17T10:03:51+08:00">
-                2018-04-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">in</span>
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Data-Mining/" itemprop="url" rel="index">
-                    <span itemprop="name">Data Mining</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-
-          
-          
-
-          
-          
-          
-
-          
-
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=default"></script>
-
-<h1 id="概率论相关公式整理如下"><a href="#概率论相关公式整理如下" class="headerlink" title="概率论相关公式整理如下:"></a>概率论相关公式整理如下:</h1><hr>
-<h3 id="第二章-基本概念"><a href="#第二章-基本概念" class="headerlink" title="第二章 基本概念"></a>第二章 基本概念</h3><ul>
-<li>交换律:A + B = B + A,AB=BA</li>
-<li>结合律:(A+B)+C=A+(B+C)=A+B+C,(AB)C=A(BC)=ABC</li>
-<li>分配律:(A+B)C=AC+BC,AB+C = (A+C)(B+C)</li>
-<li>德摩根律: $\overline{A+B}=\bar{A}\bar{B}$,$\overline{AB}=\bar{A}+\bar{B}$</li>
-<li>P(A-B) = P(A)-P(AB)</li>
-<li>P(A+B) = P(A) + P(B) - P(AB)</li>
-<li>乘法概率公式: 若P(B)&gt;0,$P(AB)=P(B)P(A|B)$.若P(A)&gt;0,$P(AB)=P(A)P(B|A)$.<br>一般地,$P(A_1A_2…A_{n-1})&gt;0$,则$P(A_1A_2…A_n)=P(A_1)P(A_2|A_1)P(A_3|A_2A_1)…P(A_n|A_1A_2…A_{n-1})$</li>
-<li>全概率公式: $P(B)=\sum_{i=1}^{n}P(A_i)P(B|A_i)$</li>
-<li>贝叶斯概率公式: $P(B|A) = \frac{P(B)P(A|B)}{P(A)}$</li>
-</ul>
-<h3 id="第三章-分布"><a href="#第三章-分布" class="headerlink" title="第三章 分布"></a>第三章 分布</h3><p>1.<strong>离散型分布</strong></p>
-<ul>
-<li><p>1.0-1分布 $X\sim B(1,p)$</p>
-<script type="math/tex; mode=display">P(X=k)=p^k(1-p)^{1-k}(0<p<1,k=0,1)</script></li>
-<li><p>2.二项分布 $X \sim B(n,p)$</p>
-<script type="math/tex; mode=display">P(X=k)=C\_n^kp^kq^{n-k}(k=0,1,2,...,n)(0<p<1,q=1-p)</script></li>
-<li><p>3.泊松分布 $X \sim P(\lambda)$</p>
-<script type="math/tex; mode=display">P(X=k)=\frac{\lambda^ke^{-\lambda}}{k!}(k=0,1,2,...)</script></li>
-</ul>
-<p>2.<strong>连续型分布</strong></p>
-<ul>
-<li><p>1.均匀分布 $X \sim U[a,b]$</p>
-<script type="math/tex; mode=display">f(x)=\begin{cases}
-\frac{1}{b-a} & a\leq x\leq b \\ 
-0 & others
-\end{cases}</script></li>
-<li><p>2.指数分布 $X \sim E(\lambda)$</p>
-<script type="math/tex; mode=display">f(x)=\begin{cases}
-\lambda e^{-\lambda x} & x > 0 \\ 
-0 & x \leq 0
-\end{cases}</script><p>$\lambda&gt;0$</p>
-</li>
-<li><p>3.正态分布 $X\sim N(\mu,\sigma^2)$</p>
-<script type="math/tex; mode=display">f(x) = \frac{1}{\sqrt{2\pi}\sigma}e^{-\frac{(x-\mu)^2}{2\sigma^2}},-\infty < x < +\infty</script></li>
-</ul>
-<h3 id="第四章-随机变量的特征"><a href="#第四章-随机变量的特征" class="headerlink" title="第四章 随机变量的特征"></a>第四章 随机变量的特征</h3><p>1.<strong>期望概念</strong></p>
-<ul>
-<li>离散型: $E(X)=\sum_{i=1}^{\infty}x_ip_i$</li>
-<li>连续型: 设连续型随机变量X的概率密度函数为f(x),若积分$\int_{-\infty}^{+\infty}|x|f(x)dx&lt;+\infty$存在,并称积分$\int_{-\infty}^{+\infty}xf(x)dx$为X的数学期望,记为E(X),即$E(X)=\int_{-\infty}^{+\infty}xf(x)dx$</li>
-</ul>
-<p>2.<strong>期望性质</strong></p>
-<ul>
-<li>E(c) = c, 其中c为常数</li>
-<li>E(cX) = cE(X), 其中c为常数</li>
-<li>E(X+Y) = E(X) + E(Y)</li>
-<li>若X,Y相互独立,E(XY) = E(X)E(Y)</li>
-</ul>
-<p>3.<strong>方差概念</strong><br>$D(X)=E(X^2)-[E(X)]^2$</p>
-<p>4.<strong>方差性质</strong></p>
-<ul>
-<li>D(c) = 0, 其中c为常数</li>
-<li>$D(cX) = c^2D(X)$, 其中c为常数</li>
-<li>若X,Y相互独立, D(X+Y) = D(X) + D(Y)</li>
-</ul>
-<p>5.<strong>协防差</strong><br>$Cov(X,Y) = E{[X-E(X)][Y-E(Y)]}$</p>
-<p>6.<strong>相关系数</strong><br>$\rho_{XY}=\frac{Cov(X,Y)}{\sqrt{D(X)}\sqrt{D(Y)}}$</p>
-<p>7.<strong>协防差和相关系数性质</strong></p>
-<ul>
-<li>Cov(X,Y) = Cov(Y,X)</li>
-<li>Cov(aX,bY) = abCov(X,Y), a,b为常数</li>
-<li>$Cov(X_1+X_2,Y) = Cov(X_1,Y) + Cov(X_2,Y)$</li>
-<li>D(X+Y) = D(X) + D(Y) + 2Cov(X,Y)</li>
-<li>Cov(X,Y) = E(XY) - E(X)E(Y)</li>
-<li>$|\rho_{XY}| \leq 1$</li>
-<li>若X,Y相互独立,则$\rho_{XY}=0$</li>
-<li>$\rho_{XY}=\pm$的充要条件是存在两个常数a,b,且$a\neq0$,使得$P{Y=aX+b}=1$.</li>
-</ul>
-<h3 id="第五章-大数定律和中心极限定理"><a href="#第五章-大数定律和中心极限定理" class="headerlink" title="第五章 大数定律和中心极限定理"></a>第五章 大数定律和中心极限定理</h3><p>1.<strong>契比雪夫不等式</strong>: 设随机变量X的数学期望为E(X)=a,方差为D(X),则对于给定的数$\epsilon&gt;0$,有</p>
-<script type="math/tex; mode=display">P\{|X-a|\geq \epsilon\}\leq \frac{D(X)}{\epsilon^2}</script><p>2.<strong>大数定律</strong>: 设{X<sub>n</sub>}为一随机变量序列,a为一个常数,如果对任何给定的正数$\epsilon$,有$\lim_{n \to \infty}P{|X_n-a|\geq \epsilon}=0$,则称随机变量序列{X<sub>n</sub>}依概率收敛于a,记为<script type="math/tex">X\_n \overset{P}{\rightarrow}a(n \to \infty)</script>.</p>
-<p>3.<strong>契比雪夫大数定律</strong>: 设{X<sub>n</sub>}为一随机变量序列,若对于所有的自然数n,数学期望E(X<sub>n</sub>)及方差D(X<sub>n</sub>)均存在,且存在某常数M&gt;0,使得D(X<sub>n</sub>)$\leq M$,则有<script type="math/tex">\frac{1}{n}\sum\_{i=1}^{n}[X\_i-E(X\_i)]\overset{P}{\rightarrow}0</script>.</p>
-<p>4.<strong>贝努里大数定律</strong>: 在n次重复独立试验中,设Y<sub>n</sub>为事件A发生的次数,每次试验事件A发生的概率为P,则<script type="math/tex">\frac{Y\_n}{n} \overset{P}{\rightarrow}P(n \to \infty)</script>.</p>
-<p>5.<strong>辛钦大数定律</strong>: 设{X<sub>n</sub>}为独立同分布的随机变量序列,且具有数学期望E(X<sub>i</sub>)=$\mu,i=1,2,…$,则<script type="math/tex">\frac{1}{n}\sum\_{i=1}^{n}X\_i\overset{P}{\rightarrow}\mu(n \to \infty)</script>.</p>
-<p>6.<strong>中心极限定理</strong>: 设{X<sub>n</sub>}为独立同分布的随机变量序列,且E(X<sub>i</sub>)=$\mu$,D(X<sub>i</sub>)=$\sigma^2\neq0,i=1,2,…$,则当n充分大时,$\frac{\sum_{i=1}^{n}X_i-E(\sum_{i=1}^{n}X_i)}{\sqrt{D(\sum_{k=1}^{n}X_k)}}$近似地服从标准正态分布,记作<script type="math/tex">\frac{\sum\_{i=1}^{n}X\_i-E(\sum\_{i=1}^{n}X\_i)}{\sqrt{D(\sum\_{k=1}^{n}X\_k)}}=\frac{\sum\_{i=1}^{n}X\_k-n\mu}{\sqrt{n}\sigma}\sim N(0,1)</script>.</p>
-<h3 id="第六章-数理统计概念"><a href="#第六章-数理统计概念" class="headerlink" title="第六章 数理统计概念"></a>第六章 数理统计概念</h3><p>1.<strong>统计量</strong></p>
-<ul>
-<li>样本均值: $\bar{X}=\frac{1}{n}\sum_{i=1}^{n}X_i$</li>
-<li>样本方差: $S^2 = \frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar{X})^2=\frac{1}{n-1}[\sum_{i=1}^{n}X_i^2-n(\bar{X})^2]$ </li>
-<li>样本标准差: $S=\sqrt{S^2}$</li>
-<li>样本k阶原点矩 $A_k=\frac{1}{n}\sum_{i=1}^{n}X_i^k(k=1,2,..)$ </li>
-<li>样本k阶中心矩 $B_k=\frac{1}{n}\sum_{i=1}^{n}(X_i-\bar{X})^k$</li>
-</ul>
-<p>2.<strong>抽样分布</strong><br>卡方分布,F分布,正态分布</p>
-<h3 id="第七章-参数估计"><a href="#第七章-参数估计" class="headerlink" title="第七章 参数估计"></a>第七章 参数估计</h3><p>1.<strong>矩估计</strong>: 概括来讲就是用样本矩估计总体矩(原点矩).<br>2.<strong>极大似然估计法</strong></p>
-<ul>
-<li>离散型:概率连乘求极大</li>
-<li>连续型:概率密度函数连乘求偏导</li>
-</ul>
-<p>3.<strong>估计量的评价标准</strong>:待完善</p>
-<p>4.<strong>区间估计</strong>:待完善</p>
-<h3 id="第八章-假设检验"><a href="#第八章-假设检验" class="headerlink" title="第八章 假设检验"></a>第八章 假设检验</h3><ul>
-<li>1.建立原假设H<sub>0</sub>(备选假设H<sub>1</sub>)</li>
-<li>2.根据检验对象,构造适当的统计量g(X<sub>1</sub>,X<sub>2</sub>,…,X<sub>n</sub>)</li>
-<li>3.在H<sub>0</sub>成立的条件下,确定统计量g(X<sub>1</sub>,X<sub>2</sub>,…,X<sub>n</sub>)的分布</li>
-<li>4.由显著性水平$\alpha$确定临界值,从而得到拒绝域或接受域</li>
-<li>5.根据样本值计算统计量的观测值,由此作出接受原假设或拒绝原假设的结论</li>
-</ul>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1990,7 +1945,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/">
-              <span class="site-state-item-count">68</span>
+              <span class="site-state-item-count">70</span>
               <span class="site-state-item-name">Artikel</span>
             </a>
           </div>
@@ -1998,7 +1953,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
           
             <div class="site-state-item site-state-categories">
               
-                <span class="site-state-item-count">14</span>
+                <span class="site-state-item-count">13</span>
                 <span class="site-state-item-name">Kategorien</span>
               
             </div>
@@ -2007,7 +1962,7 @@ F值 = 70% \* 50% \* 2 / (70% + 50%) = 58.3%</font>
           
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">18</span>
                 <span class="site-state-item-name">Tags</span>
               
             </div>

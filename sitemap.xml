@@ -2,16 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://github.com/DuncanZhou/2019/09/05/Flink%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://github.com/DuncanZhou/2019/09/23/Redis%E7%AC%94%E8%AE%B0/</loc>
     
-    <lastmod>2019-09-05T03:18:22.352Z</lastmod>
+    <lastmod>2019-09-23T06:50:23.424Z</lastmod>
     
   </url>
   
   <url>
-    <loc>https://github.com/DuncanZhou/2019/09/05/Spark%E7%AC%94%E8%AE%B0/</loc>
+    <loc>https://github.com/DuncanZhou/2019/09/23/Scala%E7%AC%94%E8%AE%B0/</loc>
     
-    <lastmod>2019-09-05T03:17:41.655Z</lastmod>
+    <lastmod>2019-09-23T06:49:47.411Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://github.com/DuncanZhou/2019/09/23/Spark%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-09-23T06:48:36.344Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://github.com/DuncanZhou/2019/09/05/Flink%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2019-09-05T03:18:22.352Z</lastmod>
     
   </url>
   
